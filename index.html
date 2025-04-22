@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Animated Favicon -->
+<link rel="icon" href="favicon.gif" type="image/gif">
+  <title>AI Product Builder - Real Humans on Hire</title>
+  <style>
+    /* General reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      /* overflow: hidden; */
+      /* height: 100vh; */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      padding: 50px 10px 0;
+      margin-top: 40px;
+    } 
+    p {
+      margin-bottom: 0px;
+      line-height: 1.6;
+      text-align: center;
+    }
+    p.title {
+        margin-top: 20px;        
+      font-size: 24px;
+      /* font-weight: 500; */
+      color: #323232;
+    }
+    p.description {
+      font-size: 16px;
+      color: #666;
+        margin-bottom: 20px;
+
+    }
+    .cta-button {
+        margin-top: 20px;
+        display: inline-block;
+      background-color: #ff6f61;
+      text-decoration: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+      background-color: #e45548;
+    }
+
+    /* Floating particles animation */
+    .particle {
+      position: absolute;
+      background-color: rgba(210, 210, 210, 0.8);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      animation: float 3s infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-50px) rotate(180deg);
+      }
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
+    }
+
+    /* USP Section */
+    .usp {
+      text-align: center;
+      /* background-color: #282c34; */
+      color: #333;
+      padding: 20px 20px;
+      /* margin-top: 40px; */
+    } 
+
+    /* Client Reviews Section */
+    .reviews {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .review-slider {
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .review {
+      display: none;
+      font-size: 14px;
+      color: #777;
+      margin: 0 15px;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    .review.active {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+        position: fixed; 
+        bottom: 0;  
+        left: 0; 
+        right: 0;
+        background: white;  
+        padding: 10px;
+        text-align: center;
+        color: #777;
+        z-index: 100;  
+    }
+
+    footer p {
+        font-size: 11px;
+        margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Content Section -->
+  <div class="content">
+     <p class="title">Real Humans on Hire</p>
+    <p class="description">We build your MVPs in weeks — not months.<br>  
+       Hire elite developers using smart AI tooling & a decade of experience.<br>  
+       <strong>$200 / 6hrs • MVP-ready in 4–7 weeks • Team setup in India</strong>
+    </p>
+  </div>
+
+  <!-- USP Section -->
+  <div class="usp">
+    <p class="title">Tech Stack:</p>
+    <p class="description"> HTML, SCSS, Angular, React, Next.js,<br />Ruby on Rails, Node.js,<br />Python, C++, Hybrid Apps (Ionic, SwiftUI), Automation.., etc.</p>
+    <!-- <button class="cta-button">Get in Touch →</button> -->
+    <a href="mailto:d.ranolia92@gmail.com?subject=Inquiry%20About%20MVP%20Development" class="cta-button">Get in Touch →</a>
+  </div>
+
+  <!-- Floating Particle Animation -->
+  <div id="particles"></div>
+
+  <!-- Client Reviews Section -->
+  <div class="reviews">
+    <p class="title">Client Reviews</p>
+    <div class="review-slider">
+      <div class="review active">
+        "Working with this team has been a game-changer for us. Their speed and quality are unmatched. MVP delivered in just 4 weeks!"
+        <br>- Startup Founder
+      </div>
+      <div class="review">
+        "I was able to save on costs while still getting high-quality results. Highly recommend them for rapid MVP development."
+        <br>- Tech Entrepreneur
+      </div>
+      <div class="review">
+        "The team was responsive, professional, and incredibly skilled. They truly brought our vision to life in record time."
+        <br>- Product Manager
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer with copyright -->
+  <footer>
+    <p>&copy; 2025 Offline-Pixel</p>
+  </footer>
+
+  <script>
+    // Particle animation for background
+    function createParticles() {
+      const particleCount = 50; // Number of particles to generate
+      const particlesContainer = document.getElementById('particles');
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+
+        // Randomize initial positions and animation durations
+        const size = Math.random() * 5 + 5; // Random size between 5px and 10px
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+        particle.style.top = `${Math.random() * 100}vh`; // Random vertical position
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration
+
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    createParticles();
+
+    // Review Slider functionality
+    let currentReviewIndex = 0;
+    const reviews = document.querySelectorAll('.review');
+    const totalReviews = reviews.length;
+
+    function showNextReview() {
+      reviews[currentReviewIndex].classList.remove('active');
+      currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
+      reviews[currentReviewIndex].classList.add('active');
+    }
+
+    setInterval(showNextReview, 4000); // Change review every 4 seconds
+  </script>
+
+</body>
+</html>
