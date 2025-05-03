@@ -204,9 +204,15 @@
     // Get element using more robust selector
     const uspStrip = document.querySelector('#usp-strip');
     const showOutside = document.querySelector("#showOutside");
-    if (!uspStrip || !showOutside) {
+    if (!uspStrip) {
       console.error("Element not found - DOM not ready or ID changed");
       setTimeout(initGeolocationCheck, 100); // Retry after 100ms
+      return;
+    }
+
+    if (!showOutside) {
+      console.error("Element not found - showOutside DOM not ready or ID changed");
+      setTimeout(initGeolocationCheck, 200); // Retry after 100ms
       return;
     }
 
