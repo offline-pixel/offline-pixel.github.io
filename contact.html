@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Animated Favicon -->
+  <meta name="description" content="IT Professionals on Hire. MVP-ready product development using AI tooling in 4-7 weeks.">
+  <meta name="keywords" content="MVP development, AI product builder, gumroad pine script, Medium blog, npm packages, Deepak Ranolia">
+  <meta name="author" content="Deepak Ranolia">
+  <link rel="stylesheet" href="styles.css">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MM8039GLD');
+  </script>
+    <style>
+        /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Body */
+body {
+  background-color: #f4f7fa;
+  color: #333;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.hero .title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.hero .description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #ff5f57;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #ff3d2d;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 50px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.contact-section .contact-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.contact-section .contact-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+    </style>
+  <!-- GSAP and Particles.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  
+  <link rel="icon" href="favicon.gif" type="image/gif">
+  <title>AI Product Builder - Real Humans on Hire</title>
+</head>
+<body>
+  <!-- Header Section with Particle Background -->
+  <section class="hero" id="hero">
+    <div id="particles"></div>
+    <div class="hero-content">
+      <p class="title">Get in Touch</p>
+      <p class="description">
+        Ready to build your MVP or need elite tech consultation?<br><br>
+        I offer 6-hour rapid prototyping sessions, end-to-end MVP builds, and expert developer setups tailored to your business goals.
+      </p>
+      <a href="mailto:d.ranolia92@gmail.com?subject=Excited%20to%20work%20with%20you" class="cta-button">Contact via Email →</a>
+    </div>
+  </section>
+
+  <!-- Contact Form or Details Section -->
+  <section class="contact-section">
+    <div class="container">
+      <p class="contact-title">Let’s get started on your project!</p>
+      <p class="contact-description">I can assist in building your product from the ground up or help with specific technical expertise tailored to your needs. Reach out, and let's discuss your goals!</p>
+    </div>
+  </section>
+
+  <!-- External Scripts -->
+  <script src="scripts/loader.js"></script>
+  <script src="scripts/particles.js"></script>
+  <script src="scripts/slider.js"></script>
+  <script src="scripts/gsapAnimations.js"></script>
+  <script src="scripts/scripts.js"></script>
+
+  <!-- Particle.js Background Initialization -->
+  <script>
+    particlesJS('particles', {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#ffffff"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": true,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true,
+          "anim": {
+            "enable": true,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#ffffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
+        }
+      }
+    });
+
+    // GSAP Animations for Hero Section
+    gsap.from('.hero .title', {
+      opacity: 0,
+      y: -50,
+      duration: 1.5,
+      delay: 0.5,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero .description', {
+      opacity: 0,
+      y: 50,
+      duration: 1.5,
+      delay: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.cta-button', {
+      opacity: 0,
+      scale: 0.5,
+      duration: 1,
+      delay: 1.5,
+      ease: 'back.out(1.7)'
+    });
+  </script>
+  <script>
+    // Redirect only for root path
+    (function() {
+        const validPaths = [
+            '/product-launch/',
+            '/product-launch',
+            '/product-launch/index.html'
+        ];
+        
+        if (validPaths.includes(window.location.pathname)) {
+            window.location.href = '/product-launch/coming-soon.html';
+        }
+    })();
+</script>
+</body>
+</html>
