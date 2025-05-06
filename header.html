@@ -61,7 +61,7 @@ body {
 .usp-strip {
   display: flex;
   align-items: center;
-  background-color: #fff;
+  background-color: #f6f6f6;
   color: #2d3e50;
   padding: 7px 20px;
   border-top: 1px solid #ddd;
@@ -85,18 +85,34 @@ body {
 }
 
 .usp-content {
-  display: inline-block;
+  display: flex;
   white-space: nowrap;
-  animation: scroll-left 25s linear infinite;
+  animation: scroll-left 45s linear infinite;
   font-size: 13px;
 }
 .usp-content span {
-    padding: 0 17px;
+  padding: 0 17px;
+  border-right: 1px solid #e1e1e1;
+  border-left: 1px solid #fff;
+  /* border-radius: 10px 10px 0 0; */
+}
+.usp-content span:hover {
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+  color: #101010;
+  border-right: 1px solid #999;
+  /* border-left: 1px solid #fff; */
+}
+.usp-content span:last-child {
+  border-right: none;
+}
+.usp-content span:first-child {
+  border-left: none;
 }
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(100%);
+    transform: translateX(-10%);
   }
   100% {
     transform: translateX(-100%);
@@ -246,4 +262,5 @@ nav {
       </div>
     </div>
   </div>
+  
   
