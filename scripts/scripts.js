@@ -1,7 +1,7 @@
 // scripts.js
 
 // Adjusted to dynamically resolve relative path
-const basePath = window.location.pathname.includes('/pages/') ? '../sections/' : 'pages/sections/';
+const basePath = window.location.pathname.includes('/pages/') ? '../sections/' : './sections/';
 
 async function loadIncludes() {
   const [header, footer] = await Promise.all([
