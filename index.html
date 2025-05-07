@@ -27,7 +27,8 @@
   
 </head>
 
-  <body><section class="section section-hero">
+  <body>
+    <section class="section section-hero">
     <div class="hero-slider">
       <!-- Slide 1 -->
       <div class="hero-slide active" style="--bg-color: #FF7043;">
@@ -130,14 +131,98 @@
     </div>
   </section>
   
-    
-    
+    <style>
+      .tech-slide {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+  background: linear-gradient(to right, var(--bg-color) 0%, #ffffff 35%);
+  color: var(--color-light);
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.hero-benefitss {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 10px 20px; /* Adjust row and column spacing */
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+}
+@media (max-width: 600px) {
+  .hero-benefitss {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tech-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-slide .left, .tech-slide .right {
+  flex: 0.5;
+  padding: 40px;
+}
+
+.tech-slide .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #3b3b3b;
+}
+
+.tech-slide .right {
+  background-color: #fff;
+  color: #333;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #303F9F;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #f8f8f8;
+}
+
+    </style>
+  <section class="section section-tech" style="--bg-color: #3949AB;">
+    <div class="tech-slide active">
+      <div class="left">
+        <h1 class="hero-title">Our Tech Arsenal</h1>
+        <p class="hero-subtitle">Battle-tested stack. Designed to scale.</p>
+      </div>
+      <div class="right">
+        <p class="hero-description">
+          We handpick every tool we use—based on performance, scalability, and ecosystem maturity. No fads, just serious technology.
+        </p>
+        <ul class="hero-benefitss">
+          <li>✔️ Frontend: Angular, React, Next.js, vanilla, HTML5, SCSS</li>
+          <li>✔️ Backend: Node.js, NestJS, Ruby on Rails, Python, C++</li>
+          <li>✔️ Databases & more: MongoDB, Redis, Ios Plugins, Automation: Playwright, selenium</li>
+          <li>✔️ Infra: Docker, Heroku, Azure, Kubernetes, AWS, Vercel</li>
+          <!-- <li>✔️ Bonus: C++, Ios Plugins, Automation: Playwright, selenium etc</li> -->
+        </ul>
+        <a href="mailto:d.ranolia92@gmail.com?subject=Inquiry%20About%20MVP%20Development" class="cta-button">Get in Touch →</a>
+      </div>
+    </div>
+  </section>
   
-    <section class="section section-tech">
-      <p class="title">Tech Stack:</p>
-      <p class="description"> HTML, SCSS, Angular, React, Next.js, Ruby on Rails, Node.js...</p>
-      <a href="mailto:d.ranolia92@gmail.com?subject=Inquiry%20About%20MVP%20Development" class="cta-button">Get in Touch →</a>
-    </section>
   
     <section class="section section-cards">
       <div class="card-container">
