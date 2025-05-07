@@ -1,14 +1,16 @@
 // scripts.js
 
-// Header/Footer Includes
+// Adjusted to dynamically resolve relative path
+const basePath = window.location.pathname.includes('/pages/') ? '../sections/' : 'pages/sections/';
+
 async function loadIncludes() {
-  const rootPath = window.location.origin;
   const [header, footer] = await Promise.all([
-    fetch(`${rootPath}/pages/sections/header.html`).then(res => res.text()),
-    fetch(`${rootPath}/pages/sections/footer.html`).then(res => res.text())
+    fetch(`${basePath}header.html`).then(res => res.text()),
+    fetch(`${basePath}footer.html`).then(res => res.text())
   ]);
   document.body.insertAdjacentHTML('afterbegin', header);
   document.body.insertAdjacentHTML('beforeend', footer);
 }
+
 
 document.addEventListener('DOMContentLoaded', loadIncludes);
