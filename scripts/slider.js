@@ -1,15 +1,16 @@
-let currentReviewIndex = 0;
 const reviews = document.querySelectorAll('.review');
+let currentReviewIndex = 0;
 const totalReviews = reviews.length;
 
-function showNextReview() {
-  reviews[currentReviewIndex].classList.remove('active');
-  currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
-  reviews[currentReviewIndex].classList.add('active');
+if (totalReviews > 0) {
+  function showNextReview() {
+    reviews[currentReviewIndex].classList.remove('active');
+    currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
+    reviews[currentReviewIndex].classList.add('active');
+  }
+
+  setInterval(showNextReview, 4000);
 }
-
-setInterval(showNextReview, 4000);
-
 
 const slides = document.querySelectorAll(".hero-slide");
 const dots = document.querySelectorAll(".dot");

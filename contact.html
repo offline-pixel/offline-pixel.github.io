@@ -35,8 +35,6 @@ body {
 .hero {
   position: relative;
   height: 100vh;
-  background-color: #1a1a1a;
-  color: #fff;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -138,73 +136,7 @@ body {
   <script src="../scripts/scripts.js"></script>
 
   <!-- Particle.js Background Initialization -->
-  <script>
-    particlesJS('particles', {
-      "particles": {
-        "number": {
-          "value": 80,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#ffffff"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-          "polygon": {
-            "nb_sides": 5
-          }
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": false,
-          "anim": {
-            "enable": true,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 3,
-          "random": true,
-          "anim": {
-            "enable": true,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 6,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      }
-    });
-
+  <script> 
     // GSAP Animations for Hero Section
     gsap.from('.hero .title', {
       opacity: 0,
@@ -229,20 +161,6 @@ body {
       delay: 1.5,
       ease: 'back.out(1.7)'
     });
-  </script>
-  <script>
-    // Redirect only for root path
-    (function() {
-        const validPaths = [
-            '/product-launch/',
-            '/product-launch',
-            '/product-launch/index.html'
-        ];
-        
-        if (validPaths.includes(window.location.pathname)) {
-            window.location.href = '/product-launch/coming-soon.html';
-        }
-    })();
-</script>
+  </script> 
 </body>
 </html>
