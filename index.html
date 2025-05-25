@@ -736,237 +736,253 @@
     </section> -->
     
   <style>/* --- NEW: Coming Soon / Our Products Section Styles --- */
-    /* --- NEW: Lifestyle-focused Innovation Preview Section Styles --- */
-.section-innovation-preview {
-  padding: 100px 5%; /* Increased padding for more breathing room */
-  background: radial-gradient(circle at top left, #f7fcfd, #e0f2f7, #c1e0e8); /* Softer, dynamic gradient */
-  color: #333;
+  .section-innovation-preview {
+  padding: 120px 5%; /* More generous padding */
+  background: radial-gradient(circle at 10% 20%, #f0f7ff, #e5f2ff, #d9ebff); /* Ultra soft, expansive blue gradient */
+  color: #2c3e50; /* Darker, more sophisticated text color */
   text-align: center;
   overflow: hidden;
   position: relative;
-  font-family: 'Inter', sans-serif; /* Ensure consistent font */
+  font-family: 'Inter', sans-serif;
+  
+  /* Subtle animated background elements for a dynamic feel */
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: rgba(100, 149, 237, 0.1); /* CornflowerBlue with transparency */
+    border-radius: 50%;
+    filter: blur(80px); /* Soft blur for a glowing effect */
+    animation: floatingBubbles 20s infinite alternate ease-in-out;
+    z-index: 0;
+  }
+  
+  &::before {
+    top: 10%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    animation-delay: 0s;
+  }
+  
+  &::after {
+    bottom: 15%;
+    right: 8%;
+    transform: translate(50%, 50%);
+    animation-delay: 5s;
+  }
 }
 
-/* Subtle border at the top, if desired, to align with existing sections */
-.section-innovation-preview::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 8px; /* Slightly thinner */
-  background: linear-gradient(90deg, #00ACC1, #3949AB); /* Matches existing brand accents */
-  border-radius: 0 0 5px 5px; /* Softer edges */
+@keyframes floatingBubbles {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+  25% { transform: translate(-40%, -60%) scale(1.05); opacity: 0.15; }
+  50% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
+  75% { transform: translate(-60%, -40%) scale(1.05); opacity: 0.15; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
 }
+
 
 .innovation-content {
-  max-width: 1100px; /* Wider content area */
+  max-width: 1300px; /* Wider content area */
   margin: 0 auto;
+  position: relative; /* Ensure content is above pseudo-elements */
+  z-index: 1;
 }
 
 .innovation-title {
-  font-size: 3.2rem; /* Larger, more impactful title */
-  color: #1a1a1a; /* Deeper color for contrast */
-  margin-bottom: 25px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.innovation-title::after {
-  content: "";
-  display: block;
-  width: 120px; /* Slightly wider */
-  height: 6px; /* Thicker accent line */
-  background: #00ACC1; /* Brand color */
-  margin: 20px auto 0; /* More spacing */
-  border-radius: 3px;
-  opacity: 0.8; /* Softer appearance */
+  font-size: 4.5rem; /* Massive, impactful title */
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  font-weight: 800; /* Extra bold */
+  line-height: 1.1;
+  letter-spacing: -0.03em; /* Tighten for impact */
+  /* Text shadow for subtle depth */
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .innovation-subtitle {
-  font-size: 1.45rem; /* More prominent subtitle */
-  color: #555;
-  margin-bottom: 70px; /* More space before products */
-  line-height: 1.7;
-  max-width: 800px;
+  font-size: 1.8rem; /* Large, readable subtitle */
+  color: #5f6a7d; /* Softer dark gray */
+  margin-bottom: 90px; /* More breathing room */
+  line-height: 1.6;
+  max-width: 900px; /* Constrain width for readability */
   margin-left: auto;
   margin-right: auto;
-  font-weight: 400;
+  font-weight: 300; /* Lighter weight for lifestyle feel */
 }
 
-.product-spotlight {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px; /* Increased gap between cards */
-  margin-bottom: 80px; /* More space before footer */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+  gap: 60px; /* Increased gap */
+  max-width: 1200px;
+  margin: 0 auto 100px auto; /* More space before footer */
 }
 
-.spotlight-card {
+.product-item {
   background: #ffffff;
-  border-radius: 20px; /* More rounded corners */
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); /* Softer, larger shadow */
-  padding: 45px; /* More internal padding */
-  width: 450px; /* Wider card */
+  border-radius: 25px; /* Even more rounded */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07); /* Softer, larger shadow */
+  padding: 50px; /* More internal padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  text-decoration: none; /* Remove underline from link */
+  text-decoration: none;
   color: inherit;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, background 0.4s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease; /* Smoother, more natural transition */
   position: relative;
   overflow: hidden;
-  border: none; /* Remove explicit border */
-  /* Add subtle background pattern or texture */
-  background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M100 0L0 100h100V0z" fill="%23f8faff" fill-opacity="0.5"/%3E%3C/svg%3E');
-  background-size: 20px 20px;
+  border: none;
+  border-bottom: 6px solid transparent; /* Prepare for dynamic border */
+  
+  /* Initial state for GSAP/ScrollTrigger animation */
+  opacity: 0;
+  transform: translateY(50px);
 }
 
-.spotlight-card:hover {
-  transform: translateY(-12px) scale(1.02); /* More pronounced lift and slight scale */
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
-  background: #ffffff; /* Ensure background is solid white on hover if pattern is too much */
+/* On-scroll animation effect (simulated with CSS for now) */
+/* In a real implementation, you'd use GSAP/ScrollTrigger to add a class like 'is-revealed' */
+/* For demonstration, I'll just set it to its final state */
+.product-item {
+  opacity: 1; /* Make visible by default for CSS only */
+  transform: translateY(0);
 }
 
-/* Specific styling for the 'future-product' card to make it feel distinct */
-.spotlight-card.future-product {
-  opacity: 0.9; /* Slightly faded to denote "coming soon" */
-  pointer-events: auto; /* Allow clicks even if slightly faded */
-  background: linear-gradient(145deg, #f0f8ff, #e6f7ff); /* Different background for future products */
-  border: 1px solid #d0e8f7; /* Subtle border for distinction */
+
+.product-item:hover {
+  transform: translateY(-15px) scale(1.02); /* More pronounced lift and scale */
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+  /* Dynamic border color on hover */
+  border-bottom-color: #3949AB; /* Primary accent color */
 }
 
-.spotlight-card.future-product:hover {
-    background: #e0f0ff; /* Light blue on hover */
-}
+/* Specific border colors for each product */
+.product-item:nth-child(1):hover { border-bottom-color: #00ACC1; } /* nfsRambo */
+.product-item:nth-child(2):hover { border-bottom-color: #f39c12; } /* MarketMoot (orange for market) */
+.product-item:nth-child(3):hover { border-bottom-color: #9b59b6; } /* ventaBlackAI (purple for AI/precision) */
 
-.spotlight-icon {
-  width: 70px; /* Larger icon */
-  height: 70px;
-  background: linear-gradient(45deg, #3949AB, #00ACC1); /* Gradient background for icon */
+
+.item-icon {
+  width: 80px; /* Larger icon */
+  height: 80px;
+  background: linear-gradient(45deg, #00ACC1, #3949AB); /* Gradient background for icon */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 25px;
-  box-shadow: 0 8px 20px rgba(57, 73, 171, 0.3); /* Shadow for depth */
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(57, 73, 171, 0.2); /* Deeper shadow for depth */
   color: #fff;
+  transition: background 0.3s ease;
 }
 
-.spotlight-icon svg {
-  width: 35px; /* Adjust SVG size */
-  height: 35px;
+.product-item:nth-child(2) .item-icon { background: linear-gradient(45deg, #f39c12, #e67e22); } /* MarketMoot icon */
+.product-item:nth-child(3) .item-icon { background: linear-gradient(45deg, #9b59b6, #8e44ad); } /* ventaBlackAI icon */
+
+.item-icon svg {
+  width: 40px; /* Adjust SVG size */
+  height: 40px;
 }
 
-.spotlight-name {
-  font-size: 2.2rem; /* Larger, bolder name */
-  color: #3949AB; /* Primary brand color */
-  margin-top: 10px;
-  margin-bottom: 18px;
+.item-name {
+  font-size: 2.5rem; /* Larger, bolder name */
+  color: #1a1a1a; /* Darker for impact */
+  margin-top: 15px;
+  margin-bottom: 20px;
   font-weight: 700;
   line-height: 1.2;
 }
 
-.spotlight-description {
-  font-size: 1.15rem; /* Slightly larger description */
-  color: #555;
-  line-height: 1.8;
-  margin-bottom: 40px; /* More space before CTA */
+.item-description {
+  font-size: 1.25rem; /* Larger description text */
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 40px;
   flex-grow: 1;
   font-weight: 400;
 }
 
-.spotlight-cta {
-  display: inline-flex;
-  align-items: center;
-  padding: 15px 30px; /* Larger button */
-  background-color: #00ACC1; /* Brand CTA color */
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 50px; /* Pill shape for modern feel */
-  font-weight: 600;
-  font-size: 1.15rem; /* Larger font size */
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  white-space: nowrap;
-  box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); /* Shadow for CTA */
-}
-
-.spotlight-cta:hover {
-  background-color: #0097A7;
-  transform: translateY(-3px); /* More pronounced lift */
-  box-shadow: 0 12px 25px rgba(0, 172, 193, 0.4);
-}
-
-.spotlight-cta .arrow {
-  margin-left: 12px; /* Slightly more space */
-  font-size: 1.3em; /* Larger arrow */
-  transition: margin-left 0.3s ease;
-}
-
-.spotlight-cta:hover .arrow {
-  margin-left: 18px; /* More dynamic arrow movement */
-}
-
-.spotlight-status-badge {
-  position: absolute;
-  top: 25px; /* Slightly lower position */
-  right: 25px;
-  background-color: #76FF03; /* Vibrant green for "Live" */
-  color: #1a1a1a;
-  padding: 10px 18px; /* Larger padding */
-  border-radius: 25px; /* More rounded */
-  font-size: 0.95em; /* Slightly larger text */
+.item-status {
+  display: inline-block;
+  padding: 12px 22px; /* Larger badge */
+  border-radius: 30px; /* More rounded */
+  font-size: 0.95em;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.7px; /* More pronounced spacing */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
-  white-space: nowrap;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Push to bottom */
 }
 
-.spotlight-status-badge.coming-soon-color {
-  background-color: #FFD600; /* Softer yellow for "Coming Soon" */
+.status-live {
+  background-color: #8BC34A; /* Green for live */
+  color: #fff;
+}
+
+.status-coming-soon {
+  background-color: #FFEB3B; /* Soft yellow for coming soon */
   color: #333;
 }
 
 .innovation-footer {
-  font-size: 1.2rem; /* Larger footer text */
+  font-size: 1.4rem; /* Even larger footer text */
   color: #777;
-  margin-top: 50px; /* More spacing */
-  font-weight: 300; /* Lighter weight for a softer feel */
+  margin-top: 80px; /* More spacing */
+  font-weight: 300;
+  line-height: 1.6;
 }
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
   .innovation-title {
-    font-size: 2.8rem;
+    font-size: 3.8rem;
   }
   .innovation-subtitle {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+  }
+  .product-grid {
+    gap: 40px;
+  }
+  .product-item {
+    padding: 40px;
+  }
+  .item-name {
+    font-size: 2.2rem;
+  }
+  .item-description {
+    font-size: 1.15rem;
   }
 }
 
 @media (max-width: 992px) {
-  .product-spotlight {
-    gap: 30px;
-  }
-  .spotlight-card {
-    width: 90%; /* Take more width on smaller desktops */
-    max-width: 400px; /* But keep a max-width */
-    padding: 35px;
-  }
   .innovation-title {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
   }
   .innovation-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 50px;
+    font-size: 1.4rem;
+    margin-bottom: 70px;
   }
-  .spotlight-name {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .product-item {
+    padding: 35px;
+  }
+  .item-name {
     font-size: 2rem;
   }
-  .spotlight-description {
+  .item-description {
     font-size: 1.05rem;
+  }
+  .item-icon {
+    width: 70px;
+    height: 70px;
+  }
+  .item-icon svg {
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -974,43 +990,34 @@
   .section-innovation-preview {
     padding: 80px 4%;
   }
-  .product-spotlight {
-    flex-direction: column; /* Stack cards vertically */
-    align-items: center;
-    gap: 30px;
-  }
-  .spotlight-card {
-    width: 95%; /* Even wider on mobile */
-    max-width: 350px;
-    padding: 30px;
-  }
   .innovation-title {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-  }
-  .innovation-title::after {
-    margin: 10px auto 0;
+    font-size: 2.8rem;
   }
   .innovation-subtitle {
-    font-size: 1.05rem;
-    margin-bottom: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 60px;
   }
-  .spotlight-name {
+  .product-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    max-width: 380px; /* Constrain width for single column */
+    margin: 0 auto 80px auto;
+  }
+  .product-item {
+    padding: 30px;
+  }
+  .item-name {
     font-size: 1.8rem;
   }
-  .spotlight-description {
+  .item-description {
     font-size: 0.95rem;
-    margin-bottom: 30px;
   }
-  .spotlight-cta {
-    padding: 12px 25px;
-    font-size: 1rem;
-  }
-  .spotlight-status-badge {
-    padding: 8px 15px;
+  .item-status {
+    padding: 10px 18px;
     font-size: 0.85em;
-    top: 15px;
-    right: 15px;
+  }
+  .innovation-footer {
+    font-size: 1.2rem;
+    margin-top: 60px;
   }
 }
 
@@ -1019,60 +1026,76 @@
     padding: 60px 3%;
   }
   .innovation-title {
-    font-size: 1.9rem;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
   }
   .innovation-subtitle {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    margin-bottom: 50px;
   }
-  .spotlight-icon {
+  .item-icon {
     width: 60px;
     height: 60px;
   }
-  .spotlight-icon svg {
+  .item-icon svg {
     width: 30px;
     height: 30px;
   }
-  .spotlight-name {
+  .item-name {
     font-size: 1.6rem;
   }
 }
     </style>
+    
     <section class="section section-innovation-preview">
       <div class="innovation-content">
-        <h2 class="innovation-title">Innovations for a Simpler Tomorrow</h2>
-        <p class="innovation-subtitle">Discover tools crafted to bring clarity and control to your IT landscape, enhancing your peace of mind.</p>
-        
-        <div class="product-spotlight">
-          <a href="https://www.producthunt.com/products/nfsrambo" target="_blank" class="spotlight-card">
-            <div class="spotlight-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+        <h2 class="innovation-title">Innovate. Simplify. Thrive.</h2>
+        <p class="innovation-subtitle">
+          Crafting intelligent tools that transform challenges into seamless experiences. Elevate your potential, effortlessly.
+        </p>
+
+        <div class="product-grid">
+          <a href="https://www.producthunt.com/products/nfsrambo" target="_blank" class="product-item">
+            <div class="item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354l-4.697 2.812c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.006Z" clip-rule="evenodd" />
               </svg>
             </div>
-            <h3 class="spotlight-name">nfsRambo: Effortless Cloud Cost Clarity</h3>
-            <p class="spotlight-description">
-              Streamline your cloud spending with intelligent insights. **Visualize, optimize, and save** across major providers, turning complex bills into simple understanding.
+            <h3 class="item-name">nfsRambo: Cloud Clarity</h3>
+            <p class="item-description">
+              **Effortless cloud cost optimization.** Transform complex bills into transparent insights, ensuring you manage spending with complete confidence.
             </p>
-            <span class="spotlight-cta">Discover the Difference <span class="arrow">&rarr;</span></span>
-            <span class="spotlight-status-badge">Live on Product Hunt!</span>
+            <span class="item-status status-live">Live on Product Hunt</span>
           </a>
 
-          <a href="#" class="spotlight-card future-product">
-            <div class="spotlight-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0V13.5h2.25a.75.75 0 0 0 0-1.5H12.75V9Z" clip-rule="evenodd" />
-                </svg>
+          <a href="https://www.producthunt.com/products/marketmoot" target="_blank" class="product-item">
+            <div class="item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10.957 3.692a1.5 1.5 0 0 0-1.914 0l-5.316 4.316A1.5 1.5 0 0 0 3 9.748V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V9.748a1.5 1.5 0 0 0-.742-1.24l-5.316-4.316a1.5 1.5 0 0 0-1.914 0Z" />
+              </svg>
             </div>
-            <h3 class="spotlight-name">Your Next Innovation: Coming Soon</h3>
-            <p class="spotlight-description">
-              We're developing the next tool to empower IT professionals. Stay tuned for solutions that redefine efficiency and productivity.
+            <h3 class="item-name">MarketMoot: Intelligent Discourse</h3>
+            <p class="item-description">
+              A digital agora for **developers & investors**. Uncover smarter market insights by leveraging historical data and informed community discussions.
             </p>
-            <!-- <span class="spotlight-cta">Contact Us <span class="arrow">&rarr;</span></span> -->
-            <span class="spotlight-status-badge coming-soon-color">Anticipate Greatness</span>
+            <span class="item-status status-coming-soon">Launching Soon</span>
+          </a>
+
+          <a href="https://www.producthunt.com/products/ventablackai" target="_blank" class="product-item">
+            <div class="item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="item-name">ventaBlackAI: Expert Pairing</h3>
+            <p class="item-description">
+              **Instant access to top 1% vetted experts.** Our AI precision matches you with the perfect talent, saving you time and ensuring optimal results.
+            </p>
+            <span class="item-status status-coming-soon">Launching Soon</span>
           </a>
         </div>
 
-        <p class="innovation-footer">Join us on a journey to smarter IT. More impactful tools are on the horizon.</p>
+        <p class="innovation-footer">Your future, simplified. Explore the edge of what's possible with our growing suite of intelligent solutions.</p>
       </div>
     </section>
 
