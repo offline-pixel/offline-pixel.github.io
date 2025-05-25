@@ -735,7 +735,347 @@
       </div>
     </section> -->
     
-  
+  <style>/* --- NEW: Coming Soon / Our Products Section Styles --- */
+    /* --- NEW: Lifestyle-focused Innovation Preview Section Styles --- */
+.section-innovation-preview {
+  padding: 100px 5%; /* Increased padding for more breathing room */
+  background: radial-gradient(circle at top left, #f7fcfd, #e0f2f7, #c1e0e8); /* Softer, dynamic gradient */
+  color: #333;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Inter', sans-serif; /* Ensure consistent font */
+}
+
+/* Subtle border at the top, if desired, to align with existing sections */
+.section-innovation-preview::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px; /* Slightly thinner */
+  background: linear-gradient(90deg, #00ACC1, #3949AB); /* Matches existing brand accents */
+  border-radius: 0 0 5px 5px; /* Softer edges */
+}
+
+.innovation-content {
+  max-width: 1100px; /* Wider content area */
+  margin: 0 auto;
+}
+
+.innovation-title {
+  font-size: 3.2rem; /* Larger, more impactful title */
+  color: #1a1a1a; /* Deeper color for contrast */
+  margin-bottom: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.innovation-title::after {
+  content: "";
+  display: block;
+  width: 120px; /* Slightly wider */
+  height: 6px; /* Thicker accent line */
+  background: #00ACC1; /* Brand color */
+  margin: 20px auto 0; /* More spacing */
+  border-radius: 3px;
+  opacity: 0.8; /* Softer appearance */
+}
+
+.innovation-subtitle {
+  font-size: 1.45rem; /* More prominent subtitle */
+  color: #555;
+  margin-bottom: 70px; /* More space before products */
+  line-height: 1.7;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+.product-spotlight {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px; /* Increased gap between cards */
+  margin-bottom: 80px; /* More space before footer */
+}
+
+.spotlight-card {
+  background: #ffffff;
+  border-radius: 20px; /* More rounded corners */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); /* Softer, larger shadow */
+  padding: 45px; /* More internal padding */
+  width: 450px; /* Wider card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none; /* Remove underline from link */
+  color: inherit;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, background 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: none; /* Remove explicit border */
+  /* Add subtle background pattern or texture */
+  background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M100 0L0 100h100V0z" fill="%23f8faff" fill-opacity="0.5"/%3E%3C/svg%3E');
+  background-size: 20px 20px;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-12px) scale(1.02); /* More pronounced lift and slight scale */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+  background: #ffffff; /* Ensure background is solid white on hover if pattern is too much */
+}
+
+/* Specific styling for the 'future-product' card to make it feel distinct */
+.spotlight-card.future-product {
+  opacity: 0.9; /* Slightly faded to denote "coming soon" */
+  pointer-events: auto; /* Allow clicks even if slightly faded */
+  background: linear-gradient(145deg, #f0f8ff, #e6f7ff); /* Different background for future products */
+  border: 1px solid #d0e8f7; /* Subtle border for distinction */
+}
+
+.spotlight-card.future-product:hover {
+    background: #e0f0ff; /* Light blue on hover */
+}
+
+.spotlight-icon {
+  width: 70px; /* Larger icon */
+  height: 70px;
+  background: linear-gradient(45deg, #3949AB, #00ACC1); /* Gradient background for icon */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(57, 73, 171, 0.3); /* Shadow for depth */
+  color: #fff;
+}
+
+.spotlight-icon svg {
+  width: 35px; /* Adjust SVG size */
+  height: 35px;
+}
+
+.spotlight-name {
+  font-size: 2.2rem; /* Larger, bolder name */
+  color: #3949AB; /* Primary brand color */
+  margin-top: 10px;
+  margin-bottom: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.spotlight-description {
+  font-size: 1.15rem; /* Slightly larger description */
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 40px; /* More space before CTA */
+  flex-grow: 1;
+  font-weight: 400;
+}
+
+.spotlight-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 30px; /* Larger button */
+  background-color: #00ACC1; /* Brand CTA color */
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape for modern feel */
+  font-weight: 600;
+  font-size: 1.15rem; /* Larger font size */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(0, 172, 193, 0.3); /* Shadow for CTA */
+}
+
+.spotlight-cta:hover {
+  background-color: #0097A7;
+  transform: translateY(-3px); /* More pronounced lift */
+  box-shadow: 0 12px 25px rgba(0, 172, 193, 0.4);
+}
+
+.spotlight-cta .arrow {
+  margin-left: 12px; /* Slightly more space */
+  font-size: 1.3em; /* Larger arrow */
+  transition: margin-left 0.3s ease;
+}
+
+.spotlight-cta:hover .arrow {
+  margin-left: 18px; /* More dynamic arrow movement */
+}
+
+.spotlight-status-badge {
+  position: absolute;
+  top: 25px; /* Slightly lower position */
+  right: 25px;
+  background-color: #76FF03; /* Vibrant green for "Live" */
+  color: #1a1a1a;
+  padding: 10px 18px; /* Larger padding */
+  border-radius: 25px; /* More rounded */
+  font-size: 0.95em; /* Slightly larger text */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px; /* More pronounced spacing */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  white-space: nowrap;
+}
+
+.spotlight-status-badge.coming-soon-color {
+  background-color: #FFD600; /* Softer yellow for "Coming Soon" */
+  color: #333;
+}
+
+.innovation-footer {
+  font-size: 1.2rem; /* Larger footer text */
+  color: #777;
+  margin-top: 50px; /* More spacing */
+  font-weight: 300; /* Lighter weight for a softer feel */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .innovation-title {
+    font-size: 2.8rem;
+  }
+  .innovation-subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .product-spotlight {
+    gap: 30px;
+  }
+  .spotlight-card {
+    width: 90%; /* Take more width on smaller desktops */
+    max-width: 400px; /* But keep a max-width */
+    padding: 35px;
+  }
+  .innovation-title {
+    font-size: 2.5rem;
+  }
+  .innovation-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+  }
+  .spotlight-name {
+    font-size: 2rem;
+  }
+  .spotlight-description {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-innovation-preview {
+    padding: 80px 4%;
+  }
+  .product-spotlight {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+    gap: 30px;
+  }
+  .spotlight-card {
+    width: 95%; /* Even wider on mobile */
+    max-width: 350px;
+    padding: 30px;
+  }
+  .innovation-title {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+  .innovation-title::after {
+    margin: 10px auto 0;
+  }
+  .innovation-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 40px;
+  }
+  .spotlight-name {
+    font-size: 1.8rem;
+  }
+  .spotlight-description {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+  .spotlight-cta {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  .spotlight-status-badge {
+    padding: 8px 15px;
+    font-size: 0.85em;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-innovation-preview {
+    padding: 60px 3%;
+  }
+  .innovation-title {
+    font-size: 1.9rem;
+  }
+  .innovation-subtitle {
+    font-size: 0.95rem;
+  }
+  .spotlight-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .spotlight-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .spotlight-name {
+    font-size: 1.6rem;
+  }
+}
+    </style>
+    <section class="section section-innovation-preview">
+      <div class="innovation-content">
+        <h2 class="innovation-title">Innovations for a Simpler Tomorrow</h2>
+        <p class="innovation-subtitle">Discover tools crafted to bring clarity and control to your IT landscape, enhancing your peace of mind.</p>
+        
+        <div class="product-spotlight">
+          <a href="https://www.producthunt.com/products/nfsrambo" target="_blank" class="spotlight-card">
+            <div class="spotlight-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354l-4.697 2.812c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.006Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="spotlight-name">nfsRambo: Effortless Cloud Cost Clarity</h3>
+            <p class="spotlight-description">
+              Streamline your cloud spending with intelligent insights. **Visualize, optimize, and save** across major providers, turning complex bills into simple understanding.
+            </p>
+            <span class="spotlight-cta">Discover the Difference <span class="arrow">&rarr;</span></span>
+            <span class="spotlight-status-badge">Live on Product Hunt!</span>
+          </a>
+
+          <a href="#" class="spotlight-card future-product">
+            <div class="spotlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 9a.75.75 0 0 0-1.5 0v2.25H9a.75.75 0 0 0 0 1.5h2.25v2.25a.75.75 0 0 0 1.5 0V13.5h2.25a.75.75 0 0 0 0-1.5H12.75V9Z" clip-rule="evenodd" />
+                </svg>
+            </div>
+            <h3 class="spotlight-name">Your Next Innovation: Coming Soon</h3>
+            <p class="spotlight-description">
+              We're developing the next tool to empower IT professionals. Stay tuned for solutions that redefine efficiency and productivity.
+            </p>
+            <!-- <span class="spotlight-cta">Contact Us <span class="arrow">&rarr;</span></span> -->
+            <span class="spotlight-status-badge coming-soon-color">Anticipate Greatness</span>
+          </a>
+        </div>
+
+        <p class="innovation-footer">Join us on a journey to smarter IT. More impactful tools are on the horizon.</p>
+      </div>
+    </section>
+
     <script src="scripts/loader.js"></script>
     <script src="scripts/particles.js"></script>
     <script src="scripts/slider.js"></script>
