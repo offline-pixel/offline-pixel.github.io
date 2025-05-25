@@ -188,7 +188,236 @@
       </div>
     </div>
   </section>
-  
+  <style>
+    /* styles/featured-blogs.css or integrate into your main.css */
+    .section-featured-blogs {
+      padding: 60px 0;
+      background-color: #f0f2f5;
+      margin: auto;
+      /* max-width: 1200px; */
+      box-sizing: border-box;
+    }
+    
+    .featured-blogs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+    
+    .featured-blogs-header h2 {
+      font-size: 2.2rem;
+      color: #1a1a1a;
+      margin: 0;
+    }
+    
+    .view-all-link {
+      font-size: 1.1rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .view-all-link:hover {
+      color: #155bb5;
+    }
+    
+    /* Main container for the scrollable cards */
+    .blog-carousel-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding-bottom: 20px;
+    }
+    
+    /* Hide scrollbar */
+    .blog-carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    .blog-carousel-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Cards container */
+    .blog-carousel {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 25px;
+      padding: 0 20px;
+      width: max-content; /* Allow container to expand with content */
+    }
+    
+    /* Individual card styles */
+    .blog-card {
+      flex: 0 0 auto;
+      width: 320px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+    }
+    
+    .blog-card-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .blog-card-content {
+      padding: 18px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card-title {
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .blog-card-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+      flex-grow: 1;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+    
+    .blog-card-author {
+      font-size: 0.85rem;
+      color: #333;
+      font-weight: 600;
+      margin-top: auto;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .blog-carousel {
+        padding: 0 15px;
+      }
+      
+      .blog-card {
+        width: 280px;
+      }
+      
+      .section-featured-blogs {
+        padding: 40px 0;
+      }
+      
+      .featured-blogs-header {
+        padding: 0 15px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .featured-blogs-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .view-all-link {
+        font-size: 1rem;
+      }
+      
+      .blog-card-title {
+        font-size: 1.1rem;
+      }
+      
+      .blog-card-description {
+        font-size: 0.9rem;
+      }
+      
+      .blog-card {
+        width: 260px;
+      }
+    }
+    </style>
+    
+    <section class="section section-featured-blogs">
+      <div class="featured-blogs-header">
+        <h2>Latest Insights</h2>
+        <!-- <a href="tech-blogs.html" class="view-all-link">View All Posts &rarr;</a> -->
+      </div>
+    
+      <div class="blog-carousel-container">
+        <div class="blog-carousel">
+          
+          <a href="whats-your-ceiling.html" class="blog-card">
+            <img src="assets/03.gif" alt="Earning Ceiling" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">$30K vs $5K: Breaking Your Earnings Ceiling as a Developer</h3>
+              <p class="blog-card-description">Discover the strategies to transition from $5K/month to $30K+ projects by targeting high-value global clients...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="work-smart-from-anywhere.html" class="blog-card">
+            <img src="assets/01.webp" alt="AI Agent Revolution" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">The $15,000 Global AI Agent Revolution: How Offshore Talent & FastAPI Let You Work Smart From Anywhere</h3>
+              <p class="blog-card-description">Discover how offshore talent and FastAPI can power AI agents for passive income and geographic freedom...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="why-working-yourself-is-not-good-idea.html" class="blog-card">
+            <img src="assets/04.webp" alt="Outsourcing Cost Savings" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">Doing Everything Yourself Costs $20,000 More: How I Learned to Work Less, Earn More...</h3>
+              <p class="blog-card-description">Learn the surprising financial truth about solo freelancing and how strategic outsourcing can save you thousands...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="5000dollar-as-a-freelancer.html" class="blog-card">
+            <img src="assets/05.webp" alt="Freelancing Income" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">$5000 paycheck a month in Freelancing</h3>
+              <p class="blog-card-description">Unlock the secrets to consistently earning a $5000 monthly paycheck in freelancing...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="10000dollar-Application-Can-5X-10X-Your-Income.html" class="blog-card">
+            <img src="assets/10000.gif" alt="Freelancing Income" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">$10,000 Application Can 5X-10X Your Income</h3>
+              <p class="blog-card-description">Why Build a $10K Forecasting App With Offshore Talent (Instead of Hiring Silicon Valley Devs)...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 <!-- Enhanced Tech Stack Section with AI/ML Focus -->
 <section class="section section-tech" style="--bg-color: #3949AB;">
   <div class="tech-slide active">
