@@ -740,43 +740,8 @@
   background: radial-gradient(circle at 10% 20%, #f0f7ff, #e5f2ff, #d9ebff); /* Ultra soft, expansive blue gradient */
   color: #2c3e50; /* Darker, more sophisticated text color */
   text-align: center;
-  
-  /* Subtle animated background elements for a dynamic feel */
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background: rgba(100, 149, 237, 0.1); /* CornflowerBlue with transparency */
-    border-radius: 50%;
-    filter: blur(80px); /* Soft blur for a glowing effect */
-    animation: floatingBubbles 20s infinite alternate ease-in-out;
-    z-index: 0;
+  margin: 200px auto;
   }
-  
-  &::before {
-    top: 10%;
-    left: 5%;
-    transform: translate(-50%, -50%);
-    animation-delay: 0s;
-  }
-  
-  &::after {
-    bottom: 15%;
-    right: 8%;
-    transform: translate(50%, 50%);
-    animation-delay: 5s;
-  }
-}
-
-@keyframes floatingBubbles {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
-  25% { transform: translate(-40%, -60%) scale(1.05); opacity: 0.15; }
-  50% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
-  75% { transform: translate(-60%, -40%) scale(1.05); opacity: 0.15; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.1; }
-}
-
 
 .innovation-content {
   max-width: 1300px; /* Wider content area */
