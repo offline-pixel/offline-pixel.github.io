@@ -65,7 +65,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
             color: var(--dark);
             padding-bottom: 40px;
             overflow-x: hidden;
@@ -177,7 +177,6 @@
             position: relative;
         }
         
-        
         .stat-card::after {
             content: "";
             position: absolute;
@@ -209,7 +208,6 @@
             opacity: 0.8; /* Slight fade out */
         }
     }
-        
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
@@ -262,25 +260,22 @@
         }
 
         .cards-grid {
+            /* display: flex; */
+        }
+        .card-row-container {
+            padding: 10px 0;
+            gap: 10px;
             display: flex;
             width: calc((var(--item-width) + var(--item-gap)) * var(--max-items-per-row) + var(--item-gap));
-            /* This calculates the total width needed for 7 items + their gaps. */
-            /* Adding an extra var(--item-gap) at the end for consistency */
-
             overflow-x: auto; /* Enable horizontal scrolling when content overflows */
             overflow-y: hidden; /* Hide vertical scrollbar for this container */
             -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-
-            padding: var(--item-gap); /* Padding around the grid, equal to item gap */
+            /* padding: var(--item-gap); Padding around the grid, equal to item gap */
             margin: 30px auto; /* Center the container on the page */
             max-width: 100vw; /* Ensure it doesn't overflow the body, but itself can scroll */
-
-            /* Optional: Style scrollbar for aesthetic purposes */
             scrollbar-width: thin; /* Firefox */
             scrollbar-color: var(--primary) var(--light-gray); /* Firefox */
 
-            gap: 10px;
-            padding: 10px 0;
         }
         .card-header {
             padding: 0px 0 0px 15px;
@@ -443,7 +438,6 @@
             margin-bottom: 1.5rem;
         }
         
-        
         .btn {
             display: inline-block;
             background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -527,6 +521,7 @@
             }
         }
     </style>
+
 </head>
 <body>
     <header class="side-income">
@@ -568,7 +563,7 @@
             </div>
         </div>
         
-        <div class="cards-grid" id="cardsContainer"> </div>
+        <div class="cards-grid" id="mainCardsGridContainer"> </div>
         
         <section class="cta-section">
             <h2 class="cta-title">Ready to Start Earning Commissions?</h2>
@@ -682,13 +677,34 @@
             "Start Earning Today: Your First $500 Web Dev Commission Step-by-Step"
         ];
         
-        // Function to generate cards
-        function generateCards() {
-            const container = document.getElementById('cardsContainer');
-            container.innerHTML = '';
+        
+        // Function to generate a unique ID
+        function generateUniqueId() {
+            return 'row-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        }
 
-            blogTitles.forEach((title, index) => {
-                // Determine income level for filtering
+        /**
+         * Generates and renders cards into the main container, breaking them into rows.
+         * @param {Array} titlesToRender - An array of blog titles to display.
+         */
+        function generateCards(titlesToRender = blogTitles) { // Default to all titles
+            const mainContainer = document.getElementById('mainCardsGridContainer');
+            mainContainer.innerHTML = ''; // Clear existing content
+
+            const cardsPerRow = 7;
+            let currentRowContainer = null;
+            let cardCountInCurrentRow = 0;
+
+            titlesToRender.forEach((title, index) => {
+                // Create a new row container if needed for the current card
+                if (cardCountInCurrentRow === 0) {
+                    currentRowContainer = document.createElement('div');
+                    currentRowContainer.className = 'card-row-container'; // Add a class for styling/selection
+                    currentRowContainer.id = generateUniqueId(); // Assign a unique ID
+                    mainContainer.appendChild(currentRowContainer);
+                }
+
+                // Determine income level based on title content
                 let incomeLevel = 'beginner';
                 if (title.includes('$1') || title.includes('$1250') || title.includes('$1500') || title.includes('$1750')) {
                     incomeLevel = 'intermediate';
@@ -704,26 +720,77 @@
                         <span class="income-badge">${incomeLevel.charAt(0).toUpperCase() + incomeLevel.slice(1)} Level</span>
                     </div>
                 `;
-                container.appendChild(card);
-            });
-        }
-        // <div class="card-header">Strategy #${index + 1}</div>
+                currentRowContainer.appendChild(card);
+                cardCountInCurrentRow++;
 
-        // Function to apply filter logic (extracted for reuse)
-        function applyFilter(filter) {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                if (filter === 'all') {
-                    card.style.display = 'flex';
-                } else {
-                    if (card.classList.contains(filter)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                // Reset count if the current row is full, preparing for the next row
+                if (cardCountInCurrentRow >= cardsPerRow) {
+                    cardCountInCurrentRow = 0;
                 }
             });
+
+            // After generating, apply the scroll animation offsets
+            applyRowScrollAnimationOffsets();
         }
+
+        /**
+         * Applies the translateX transformation for the horizontal scroll effect on rows.
+         * This function should be called after cards are generated or re-generated.
+         */
+        function applyRowScrollAnimationOffsets() {
+            const rowContainers = document.querySelectorAll('.card-row-container');
+            const scrollY = window.scrollY || window.pageYOffset; // Get current scroll position
+
+            const scrollSpeed = 0.5; // Adjust sensitivity
+
+            rowContainers.forEach((row, index) => {
+                let translateXValue;
+                if (index % 2 === 0) { // Even row (0, 2, 4...)
+                    translateXValue = -scrollY * scrollSpeed;
+                } else { // Odd row (1, 3, 5...)
+                    translateXValue = scrollY * scrollSpeed;
+                }
+                row.style.transform = `translateX(${translateXValue}px)`;
+            });
+        }
+
+
+        // Function to apply filter logic
+        function applyFilter(filter) {
+            let filteredTitles = [];
+
+            if (filter === 'all') {
+                filteredTitles = blogTitles; // Show all titles
+            } else {
+                // Filter blogTitles based on incomeLevel (re-determining level for each title)
+                filteredTitles = blogTitles.filter(title => {
+                    let incomeLevel = 'beginner';
+                    if (title.includes('$1') || title.includes('$1250') || title.includes('$1500') || title.includes('$1750')) {
+                        incomeLevel = 'intermediate';
+                    } else if (title.includes('$2') || title.includes('$2500') || title.includes('$3000') || title.includes('$5000')) {
+                        incomeLevel = 'advanced';
+                    }
+                    return incomeLevel === filter;
+                });
+            }
+            
+            // Re-generate the entire grid with only the filtered titles
+            generateCards(filteredTitles);
+            
+            // Re-apply the animation delays for the new set of cards (if you have the ::after animation)
+            applyCardAnimationDelay();
+        }
+
+        // Function to apply staggering animation delay to individual cards (if you have the ::after animation)
+        function applyCardAnimationDelay() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                // Ensure --stat-card-animation-delay-offset is defined in your CSS :root
+                const delayOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--stat-card-animation-delay-offset') || '0.1'); // Fallback to 0.1
+                card.style.setProperty('--card-animation-delay', `${index * delayOffset}s`);
+            });
+        }
+
 
         // Filter functionality for buttons
         document.querySelectorAll('.filter-btn').forEach(button => {
@@ -733,22 +800,28 @@
                 button.classList.add('active');
 
                 const filter = button.dataset.filter;
-                applyFilter(filter); // Use the new function
+                applyFilter(filter);
             });
         });
 
+        // Event listener for the main scroll animation effect
+        window.addEventListener('scroll', applyRowScrollAnimationOffsets);
+
+
         // Initialize cards and apply default filter on page load
         window.onload = () => {
-            generateCards();
-            // Get the filter value from the button that has the 'active' class by default
+            generateCards(); // Generate all cards initially
             const defaultActiveButton = document.querySelector('.filter-btn.active');
             if (defaultActiveButton) {
                 const defaultFilter = defaultActiveButton.dataset.filter;
                 applyFilter(defaultFilter); // Apply the default filter
             } else {
-                // Fallback: if no button is active, show all or a default
                 applyFilter('all');
             }
+            // Initial application of card animation delays (if needed)
+            applyCardAnimationDelay();
+            // Initial application of row scroll animation
+            applyRowScrollAnimationOffsets();
         };
     </script>
     <script src="scripts/scripts.js" defer></script>
