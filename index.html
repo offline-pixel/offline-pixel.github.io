@@ -116,6 +116,9 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        .container-child {
+            display: flex;
+        }
         
         h1 {
             font-size: 2.5rem;
@@ -499,6 +502,15 @@
         }
         
         @media (max-width: 768px) {
+            .container-child, .cards-grid {
+                display: block;
+            }
+            .card-row-container {
+                transform: translateX(0px) !important;
+            }
+            .card {
+                width: 40%; clip-path: polygon(0 0, 100% 0, 100% 85%, 95% 100%, 5% 100%, 0 85%);
+            }
             :root {
                 --card-width: 100%;
             }
@@ -533,7 +545,7 @@
     </header>
     
     <main class="container">
-        <div class="" style="display: flex;">
+        <div class="container-child">
             <section class="intro">
                 <h2>Turn Connections Into Commissions</h2>
                 <p>Discover how you can earn substantial side income by referring web development projects to our team. No technical skills needed - just your ability to connect businesses with solutions.</p>
