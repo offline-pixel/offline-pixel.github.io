@@ -50,6 +50,10 @@
             --card-width: 300px;
             --card-height: 180px;
             --row-height: 220px;
+            /* Animation variables */
+            --stat-card-animation-duration: 1.5s; /* How long one full cycle takes */
+            --stat-card-animation-delay-offset: 0.1s; /* Staggering delay for each card */
+            --stat-card-offset: 5px; /* How far the ::after element moves */
         }
         
         * {
@@ -164,8 +168,28 @@
             height: 100%;
             border: 1px solid var(--primary);
             z-index: -1;
+            /* Initial transform state (no offset) */
+            transform: translate(0, 0);
+            /* Apply the animation */
+            animation: stat-card-move var(--stat-card-animation-duration) ease-in-out infinite alternate;
+            /* Animation delay will be set by JavaScript for staggering */
         }
-        
+        /* Keyframes for the animation */
+    @keyframes stat-card-move {
+        0% {
+            transform: translate(0, 0); /* Original position */
+            opacity: 0.8; /* Slight fade in */
+        }
+        50% {
+            /* Move 5px right and 5px bottom */
+            transform: translate(var(--stat-card-offset), var(--stat-card-offset));
+            opacity: 1; /* Fully opaque at peak */
+        }
+        100% {
+            transform: translate(0, 0); /* Return to original position */
+            opacity: 0.8; /* Slight fade out */
+        }
+    }
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
