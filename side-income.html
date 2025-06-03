@@ -81,6 +81,22 @@
             overflow: hidden;
             max-height: unset;
             position: static;
+            animation: header-bg var(--stat-card-animation-duration) ease-in-out infinite alternate;
+        }
+        /* Keyframes for the animation */
+        @keyframes header-bg {
+            0% {
+                background: linear-gradient(to right, var(--primary), var(--secondary));
+                opacity: 0.8; /* Slight fade in */
+            }
+            50% {
+                background: linear-gradient(to left, var(--primary), var(--secondary));
+                opacity: 1; /* Fully opaque at peak */
+            }
+            100% {
+                background: linear-gradient(to right, var(--primary), var(--secondary));
+                opacity: 0.8; /* Slight fade out */
+            }
         }
         
         header::before {
