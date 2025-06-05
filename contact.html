@@ -101,6 +101,40 @@ body {
 }
 
     </style>
+    <style>
+    /* Add this to your existing styles */
+    .teams-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      margin-left: 15px;
+      border: 1px solid #6264A7; /* Teams brand color */
+      /* color: white; */
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+    }
+    
+    .teams-button:hover {
+      background-color: #f8f8f8; /* Darker Teams color */
+      transform: translateY(-2px);
+    }
+    
+    .teams-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xOS41NjMgMy4wMDFoLTMuMTg3djMuMTg3aDMuMTg3VjMuMDAxem0tNC4xODcgMS4wNjR2MS4wNjRoLTkuMzc1Yy0xLjAzOCAwLTEuODc1LjgzNy0xLjg3NSAxLjg3NXY5LjM3NWMwIDEuMDM4LjgzNyAxLjg3NSAxLjg3NSAxLjg3NWg5LjM3NWMxLjAzOCAwIDEuODc1LS44MzcgMS44NzUtMS44NzVWOC4yNDloMS4wNjR2Ni4zMTNjMCAxLjY1LTEuMzM2IDIuOTg2LTIuOTg2IDIuOTg2SDQuNjg2QzMuMDM2IDE3LjU0OCAxLjcgMTYuMjEyIDEuNyAxNC41NjJWNC42ODZDMS43IDMuMDM2IDMuMDM2IDEuNyA0LjY4NiAxLjdoOS44NzVjMS42NSAwIDIuOTg2IDEuMzM2IDIuOTg2IDIuOTg2djEuMzY1eiIvPjwvc3ZnPg==');
+      background-size: contain;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  </style>
   <!-- GSAP and Particles.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -121,11 +155,25 @@ body {
         Ready to build your MVP or need elite tech consultation?<br><br>
         I offer 6-hour rapid prototyping sessions, end-to-end MVP builds, and expert developer setups tailored to your business goals.
       </p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform?usp=header" class="cta-button">Contact us →</a>
-    </div>
-  </section>
+      <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform?usp=header" class="cta-button">Contact us →</a> -->
 
-  <!-- Contact Form or Details Section -->
+      <div class="button-container">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform?usp=header" class="cta-button">Contact us →</a>
+        <a href="#" onclick="openTeamsChat()" class="teams-button">
+          <img src="assets/teams.png" width="32" height="32" /> &nbsp;&nbsp;Chat on Teams
+        </a>
+      </div> 
+    </div> 
+  </section>
+<script>
+  // Simple concatenation with minimal processing
+function openTeamsChat() {
+  const parts = ['deepak', 'ranolia', '@', 'outlook', '.com'];
+  window.open(`https://teams.microsoft.com/l/chat/0/0?users=${parts.join('')}`, 
+             '_blank',
+             'noopener,noreferrer');
+}
+</script>
   <section class="contact-section">
     <div class="container">
       <p class="contact-title">Let’s get started on your project!</p>
@@ -159,13 +207,21 @@ body {
       ease: 'power3.out'
     });
 
-    gsap.from('.cta-button', {
+    gsap.from('.button-container', {
       opacity: 0,
       scale: 0.5,
       duration: 1,
       delay: 1.5,
       ease: 'back.out(1.7)'
     });
+
+    // gsap.from('.teams-button', {
+    //   opacity: 0,
+    //   scale: 0.5,
+    //   duration: 1,
+    //   delay: 2,
+    //   ease: 'back.out(1.7)'
+    // });
   </script> 
   </div>
 </body>
