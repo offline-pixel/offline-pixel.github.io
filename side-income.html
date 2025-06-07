@@ -683,11 +683,6 @@
         function generateUniqueId() {
             return 'row-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
         }
-
-        /**
-         * Generates and renders cards into the main container, breaking them into rows.
-         * @param {Array} titlesToRender - An array of blog titles to display.
-         */
         function generateCards(titlesToRender = blogTitles) { // Default to all titles
             const mainContainer = document.getElementById('mainCardsGridContainer');
             mainContainer.innerHTML = ''; // Clear existing content
@@ -733,11 +728,7 @@
             // After generating, apply the scroll animation offsets
             applyRowScrollAnimationOffsets();
         }
-
-        /**
-         * Applies the translateX transformation for the horizontal scroll effect on rows.
-         * This function should be called after cards are generated or re-generated.
-         */
+        
         function applyRowScrollAnimationOffsets() {
             const rowContainers = document.querySelectorAll('.card-row-container');
             const scrollY = window.scrollY || window.pageYOffset; // Get current scroll position
