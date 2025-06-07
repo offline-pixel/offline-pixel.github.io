@@ -4,16 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>100 Pine Script Profit Strategies</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f7fa;
-        }
+    <style> 
         h1 {
             color: #2c3e50;
             text-align: center;
@@ -98,6 +89,7 @@
     </style>
 </head>
 <body>
+    <div class="main-wrapper" style="max-width: 80%; margin: 100px auto;">
     <h1>100 Pine Script Profit Strategies</h1>
     
     <div class="controls">
@@ -135,7 +127,7 @@
             <!-- Strategies will be inserted here by JavaScript -->
         </tbody>
     </table>
-
+</div>
     <script>
         // Strategy data
         const strategies = [
@@ -154,10 +146,10 @@
             {id: 13, title: "Pine Script $1000/Week Scalping Bot", timeframe: "week", amount: 1000, link: "pine-script-1000-week-scalping-bot.html" },
 
             {id: 14, title: "$10K/Week Pine Script Futures System", timeframe: "week", amount: 10000, link: "pine-script-10k-week-futures-system.html" },
-            {id: 15, title: "Pine Script $2000/Week Mean Reversion", timeframe: "week", amount: 2000, link: "pine-script-2000-week-mean-reversion.html" },
+            // {id: 15, title: "Pine Script $2000/Week Mean Reversion", timeframe: "week", amount: 2000, link: "pine-script-2000-week-mean-reversion.html" },
             {id: 16, title: "$7500/Week Pine Script Breakout Algo", timeframe: "week", amount: 7500, link: "pine-script-7500-week-breakout-algo.html" },
-            {id: 17, title: "Pine Script $1500/Week RSI Trader", timeframe: "week", amount: 1500},
-            {id: 18, title: "$25K/Week Pine Script High-Frequency Bot", timeframe: "week", amount: 25000},
+            {id: 17, title: "Pine Script $1500/Week RSI Trader", timeframe: "week", amount: 1500, link: "pine-script-1500-week-rsi-trader.html" },
+            {id: 18, title: "$25K/Week Pine Script High-Frequency Bot", timeframe: "week", amount: 25000, link: "pine-script-25k-week-hft-bot.html" },
             {id: 19, title: "Pine Script $5000/Week MACD System", timeframe: "week", amount: 5000},
             {id: 20, title: "$3000/Week Pine Script VWAP Strategy", timeframe: "week", amount: 3000},
             {id: 21, title: "Pine Script $10K/Month Strategy", timeframe: "month", amount: 10000},
@@ -350,5 +342,7 @@
             rows.forEach(row => tbody.appendChild(row));
         }
     </script>
+  <script src="scripts/scripts.js" defer></script>
+
 </body>
 </html>
