@@ -95,7 +95,13 @@ if short_condition
     strategy.entry("Short", strategy.short)
     strategy.exit("Exit Short", "Short", stop=close + atr * atr_mult)
 </code></pre>
-
+<h2>How This Pine Script Works</h2>
+<p>This breakout strategy differs from standard implementations by combining channel breakouts with dynamic ATR-based stops. Key innovations:</p>
+<ul>
+  <li><strong>Channel Calculation:</strong> Uses <code>ta.highest()</code>/<code>ta.lowest()</code> (unlike Bollinger Bands or Keltner Channels in other strategies)</li>
+  <li><strong>ATR Multiplier:</strong> Adjusts stop-loss sensitivity dynamically (1.5x ATR reduces whipsaws vs. fixed percentages)</li>
+  <li><strong>Position Sizing:</strong> Allocates 10% of equity per trade (optimized for Russell 2000 volatility)</li>
+</ul>
       <h2>Optimal Configuration</h2>
       <table class="optimal-settings">
         <tr>

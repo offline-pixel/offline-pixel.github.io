@@ -176,7 +176,7 @@ h1.blog-title {
     margin-bottom: 1.5rem;
 }
 
-.btn {
+a.btn {
     display: inline-block;
     background: linear-gradient(to right, var(--primary), var(--secondary));
     color: white;
@@ -193,7 +193,7 @@ h1.blog-title {
     border-radius: 4px;
 }
 
-.btn::after {
+a.btn::after {
     content: "";
     position: absolute;
     top: 0;
@@ -204,7 +204,11 @@ h1.blog-title {
     transition: 0.5s;
 }
 
-.btn:hover::after {
+a.btn:hover {
+    color: white;
+    text-decoration: none;
+}
+a.btn:hover::after {
     left: 100%;
 }
 

@@ -92,7 +92,13 @@ if shortCondition
     strategy.entry("Short", strategy.short)
     strategy.exit("Exit Short", "Short", trail_points=trailStop)
 </code></pre>
-
+<h2>Why This Trend Strategy Works</h2>
+<p>Unlike basic EMA crossovers, this system combines three proprietary filters to avoid false signals in the Russell 2000:</p>
+<ul>
+  <li><strong>ADX Threshold:</strong> Requires >20 strength (most strategies use >25, missing early trends)</li>
+  <li><strong>Dynamic Trailing Stop:</strong> 2.5x ATR (vs. fixed 1.5x in competitors)</li>
+  <li><strong>Asymmetric Position Sizing:</strong> 20% equity for longs, 15% for shorts (accounts for RUT's bullish bias)</li>
+</ul>
       <h2>Optimal Configuration</h2>
       <table class="optimal-settings">
         <tr>
