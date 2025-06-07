@@ -243,3 +243,32 @@ footer {
 .job-posted-time, .job-location {
     padding: 5px 0;
 }
+
+ 
+/* --- Code Block Specific Styles (for good design in GUI) --- */
+pre {
+    background-color: #343434; /* Dark background for code block */
+    color: #f8f8f2; /* Light text color for contrast */
+    padding: 15px 20px;
+    border-radius: 8px;
+    overflow-x: auto; /* Enables horizontal scrolling for long lines */
+    margin: 25px 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Fira Code', 'Roboto Mono', 'Consolas', 'Monaco', monospace; /* Monospace font for code */
+    font-size: 0.95em;
+    line-height: 1.5;
+    tab-size: 4; /* Ensures consistent tab spacing */
+    -moz-tab-size: 4;
+}
+
+code {
+    display: block; /* Ensures code takes full width of pre and line breaks correctly */
+    white-space: pre; /* Preserves whitespace and line breaks */
+}
+
+/* Optional: Basic syntax highlighting (manual for a few keywords) */
+.comment { color: #8e8e8e; } /* Grey for comments */
+.keyword { color: #569cd6; } /* Blue for keywords */
+.string { color: #d69d85; }  /* Orange for strings */
+.number { color: #b5cea8; }  /* Green for numbers */
+.function { color: #dcdcaa; } /* Yellow for functions */

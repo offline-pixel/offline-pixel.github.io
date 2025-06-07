@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Pine Script Profit Strategies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        #search {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        #timeframe-filter, #amount-filter {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            position: relative;
+        }
+        th:hover {
+            background-color: #2980b9;
+        }
+        th.sort-asc::after {
+            content: " ↑";
+        }
+        th.sort-desc::after {
+            content: " ↓";
+        }
+        tr:hover {
+            background-color: #f1f8fe;
+        }
+        .timeframe-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .day { background-color: #e3f2fd; color: #0d47a1; }
+        .week { background-color: #e8f5e9; color: #1b5e20; }
+        .month { background-color: #fff3e0; color: #e65100; }
+        .other { background-color: #f3e5f5; color: #4a148c; }
+        .highlight {
+            background-color: #fffde7;
+        }
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+            #search {
+                width: 100%;
+            }
+        }
+        a {
+            color: rgb(2, 142, 174);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>100 Pine Script Profit Strategies</h1>
+    
+    <div class="controls">
+        <input type="text" id="search" placeholder="Search strategies..." onkeyup="filterStrategies()">
+        
+        <select id="timeframe-filter" onchange="filterStrategies()">
+            <option value="">All Timeframes</option>
+            <option value="day">Daily</option>
+            <option value="week">Weekly</option>
+            <option value="month">Monthly</option>
+            <option value="other">Other</option>
+        </select>
+        
+        <select id="amount-filter" onchange="filterStrategies()">
+            <option value="">All Amounts</option>
+            <option value="500">$500+</option>
+            <option value="1000">$1,000+</option>
+            <option value="5000">$5,000+</option>
+            <option value="10000">$10,000+</option>
+            <option value="50000">$50,000+</option>
+            <option value="100000">$100,000+</option>
+        </select>
+    </div>
+    
+    <table id="strategies-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">ID</th>
+                <th onclick="sortTable(1)">Strategy Title</th>
+                <th onclick="sortTable(2)">Timeframe</th>
+                <th onclick="sortTable(3)">Amount</th>
+            </tr>
+        </thead>
+        <tbody id="strategies-body">
+            <!-- Strategies will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Strategy data
+        const strategies = [
+            {id: 1, title: "Pine Script $500/Day Strategy", timeframe: "day", amount: 500, link: "pine-script-500-dollar-strategy.html" },
+            {id: 2, title: "$1000/Day Pine Script Scalper", timeframe: "day", amount: 1000, link: "pine-script-1000-dollar-strategy.html" },
+            {id: 3, title: "Pine Script $2000 Daily Profit", timeframe: "day", amount: 2000, link: "pine-script-2000-dollar-strategy.html" },
+            {id: 4, title: "$5000/Day Pine Script Algorithm", timeframe: "day", amount: 5000, link: "pine-script-5000-dollar-strategy.html" },
+            {id: 5, title: "Pine Script $300/Day Forex System", timeframe: "day", amount: 300, link: "pine-script-300-dollar-forex-strategy.html" },
+            {id: 6, title: "$1500/Day Pine Script Swing Trader", timeframe: "day", amount: 1500, link: "pine-script-1500-swing-trader.html" },
+            {id: 7, title: "Pine Script $750/Day Gold Strategy", timeframe: "day", amount: 750, link: "pine-script-750-gold-strategy.html" },
+            {id: 8, title: "$2500/Day Pine Script Crypto Bot", timeframe: "day", amount: 2500, link: "pine-script-2500-dollar-crypto-bot.html" },
+            {id: 9, title: "Pine Script $100/Day Reversion System", timeframe: "day", amount: 100, link: "pine-script-100-dollar-reversion-system.html" },
+            {id: 10, title: "$500/Day Pine Script Breakout Trader", timeframe: "day", amount: 500},
+            {id: 11, title: "Pine Script $3000/Week Strategy", timeframe: "week", amount: 3000},
+            {id: 12, title: "$5000/Week Pine Script Trend Follower", timeframe: "week", amount: 5000},
+            {id: 13, title: "Pine Script $1000/Week Scalping Bot", timeframe: "week", amount: 1000},
+            {id: 14, title: "$10K/Week Pine Script Futures System", timeframe: "week", amount: 10000},
+            {id: 15, title: "Pine Script $2000/Week Mean Reversion", timeframe: "week", amount: 2000},
+            {id: 16, title: "$7500/Week Pine Script Breakout Algo", timeframe: "week", amount: 7500},
+            {id: 17, title: "Pine Script $1500/Week RSI Trader", timeframe: "week", amount: 1500},
+            {id: 18, title: "$25K/Week Pine Script High-Frequency Bot", timeframe: "week", amount: 25000},
+            {id: 19, title: "Pine Script $5000/Week MACD System", timeframe: "week", amount: 5000},
+            {id: 20, title: "$3000/Week Pine Script VWAP Strategy", timeframe: "week", amount: 3000},
+            {id: 21, title: "Pine Script $10K/Month Strategy", timeframe: "month", amount: 10000},
+            {id: 22, title: "$50K/Month Pine Script Algorithm", timeframe: "month", amount: 50000},
+            {id: 23, title: "Pine Script $20K/Month Swing System", timeframe: "month", amount: 20000},
+            {id: 24, title: "$100K/Month Pine Script Crypto Bot", timeframe: "month", amount: 100000},
+            {id: 25, title: "Pine Script $15K/Month Forex Trader", timeframe: "month", amount: 15000},
+            {id: 26, title: "$30K/Month Pine Script Trend Catcher", timeframe: "month", amount: 30000},
+            {id: 27, title: "Pine Script $5000/Month Scalper", timeframe: "month", amount: 5000},
+            {id: 28, title: "$75K/Month Pine Script AI Strategy", timeframe: "month", amount: 75000},
+            {id: 29, title: "Pine Script $25K/Month Breakout System", timeframe: "month", amount: 25000},
+            {id: 30, title: "$200K/Month Pine Script Quant Bot", timeframe: "month", amount: 200000},
+            {id: 31, title: "Pine Script $1000/Day Scalper", timeframe: "day", amount: 1000},
+            {id: 32, title: "$3000/Day Pine Script Micro Scalper", timeframe: "day", amount: 3000},
+            {id: 33, title: "Pine Script $5000/Day Tick Trader", timeframe: "day", amount: 5000},
+            {id: 34, title: "$10K/Day Pine Script Ultra Scalper", timeframe: "day", amount: 10000},
+            {id: 35, title: "Pine Script $2000/Day Momentum Scalper", timeframe: "day", amount: 2000},
+            {id: 36, title: "Pine Script $5000/Week Swing Trader", timeframe: "week", amount: 5000},
+            {id: 37, title: "$15K/Week Pine Script Positional System", timeframe: "week", amount: 15000},
+            {id: 38, title: "Pine Script $30K/Month Swing Algo", timeframe: "month", amount: 30000},
+            {id: 39, title: "$50K/Month Pine Script Multi-Day Trader", timeframe: "month", amount: 50000},
+            {id: 40, title: "Pine Script $100K/Quarter Swing Bot", timeframe: "other", amount: 100000},
+            {id: 41, title: "Pine Script $5000/Day Bitcoin Bot", timeframe: "day", amount: 5000},
+            {id: 42, title: "$10K/Day Pine Script Altcoin Trader", timeframe: "day", amount: 10000},
+            {id: 43, title: "Pine Script $50K/Month Crypto System", timeframe: "month", amount: 50000},
+            {id: 44, title: "$200K/Month Pine Script ETH Algo", timeframe: "month", amount: 200000},
+            {id: 45, title: "Pine Script $1M/Year Crypto Quant", timeframe: "other", amount: 1000000},
+            {id: 46, title: "Pine Script $3000/Day Forex Bot", timeframe: "day", amount: 3000},
+            {id: 47, title: "$5000/Day Pine Script Gold Trader", timeframe: "day", amount: 5000},
+            {id: 48, title: "Pine Script $10K/Week Oil System", timeframe: "week", amount: 10000},
+            {id: 49, title: "$20K/Month Pine Script EURUSD Algo", timeframe: "month", amount: 20000},
+            {id: 50, title: "Pine Script $50K/Month Forex Quant", timeframe: "month", amount: 50000},
+            {id: 51, title: "Pine Script $10K/Day HFT Bot", timeframe: "day", amount: 10000},
+            {id: 52, title: "$25K/Day Pine Script AI Trader", timeframe: "day", amount: 25000},
+            {id: 53, title: "Pine Script $100K/Month Neural Net", timeframe: "month", amount: 100000},
+            {id: 54, title: "$500K/Month Pine Script Quant Algo", timeframe: "month", amount: 500000},
+            {id: 55, title: "Pine Script $1M/Year AI Strategy", timeframe: "other", amount: 1000000},
+            {id: 56, title: "Pine Script $500/Day Safe Scalper", timeframe: "day", amount: 500},
+            {id: 57, title: "$1000/Day Pine Script Low-Risk Bot", timeframe: "day", amount: 1000},
+            {id: 58, title: "Pine Script $2000/Day Steady Trader", timeframe: "day", amount: 2000},
+            {id: 59, title: "$5000/Week Pine Script Consistent System", timeframe: "week", amount: 5000},
+            {id: 60, title: "Pine Script $10K/Month Reliable Algo", timeframe: "month", amount: 10000},
+            {id: 61, title: "Pine Script $10K/Day High-Risk Bot", timeframe: "day", amount: 10000},
+            {id: 62, title: "$50K/Day Pine Script Hyper-Growth Algo", timeframe: "day", amount: 50000},
+            {id: 63, title: "Pine Script $200K/Month Rocket Trader", timeframe: "month", amount: 200000},
+            {id: 64, title: "$500K/Month Pine Script Aggressive System", timeframe: "month", amount: 500000},
+            {id: 65, title: "Pine Script $1M+/Year Monster Strategy", timeframe: "other", amount: 1000000},
+            {id: 66, title: "Pine Script $3000/Day Options Bot", timeframe: "day", amount: 3000},
+            {id: 67, title: "$5000/Day Pine Script Futures Algo", timeframe: "day", amount: 5000},
+            {id: 68, title: "Pine Script $10K/Week ETF Trader", timeframe: "week", amount: 10000},
+            {id: 69, title: "$20K/Month Pine Script Penny Stock Bot", timeframe: "month", amount: 20000},
+            {id: 70, title: "Pine Script $50K/Month Index Trader", timeframe: "month", amount: 50000},
+            {id: 71, title: "Pine Script $500/Hour Scalper", timeframe: "other", amount: 500},
+            {id: 72, title: "$1000/Hour Pine Script Flash Trader", timeframe: "other", amount: 1000},
+            {id: 73, title: "Pine Script $5000/Session Day Trader", timeframe: "other", amount: 5000},
+            {id: 74, title: "$10K/Overnight Pine Script Swing Bot", timeframe: "other", amount: 10000},
+            {id: 75, title: "Pine Script $50K/Weekend Crypto System", timeframe: "other", amount: 50000},
+            {id: 76, title: "Pine Script $100K/Month VIP Trader", timeframe: "month", amount: 100000},
+            {id: 77, title: "$250K/Month Pine Script Hedge Fund Algo", timeframe: "month", amount: 250000},
+            {id: 78, title: "Pine Script $500K/Month Pro Bot", timeframe: "month", amount: 500000},
+            {id: 79, title: "$1M+/Month Pine Script BlackBox System", timeframe: "month", amount: 1000000},
+            {id: 80, title: "Pine Script $10M/Year Institutional Strategy", timeframe: "other", amount: 10000000},
+            {id: 81, title: "Pine Script $200/Day Starter Bot", timeframe: "day", amount: 200},
+            {id: 82, title: "$500/Day Pine Script Easy Trader", timeframe: "day", amount: 500},
+            {id: 83, title: "Pine Script $1000/Week Simple System", timeframe: "week", amount: 1000},
+            {id: 84, title: "$3000/Month Pine Script Noob Algo", timeframe: "month", amount: 3000},
+            {id: 85, title: "Pine Script $10K/Year Basic Strategy", timeframe: "other", amount: 10000},
+            {id: 86, title: "Pine Script $5000/Day Verified Bot", timeframe: "day", amount: 5000},
+            {id: 87, title: "$10K/Day Pine Script Proven Algo", timeframe: "day", amount: 10000},
+            {id: 88, title: "Pine Script $50K/Month Tested System", timeframe: "month", amount: 50000},
+            {id: 89, title: "$200K/Month Pine Script Historical Winner", timeframe: "month", amount: 200000},
+            {id: 90, title: "Pine Script $1M+ Backtested Champion", timeframe: "other", amount: 1000000},
+            {id: 91, title: "Pine Script $10K/Day Secret Bot", timeframe: "day", amount: 10000},
+            {id: 92, title: "$50K/Day Pine Script Members-Only Algo", timeframe: "day", amount: 50000},
+            {id: 93, title: "Pine Script $200K/Month Private Trader", timeframe: "month", amount: 200000},
+            {id: 94, title: "$500K/Month Pine Script Elite System", timeframe: "month", amount: 500000},
+            {id: 95, title: "Pine Script $2M/Year Confidential Strategy", timeframe: "other", amount: 2000000},
+            {id: 96, title: "Pine Script $300/Day 90% Win Rate", timeframe: "day", amount: 300},
+            {id: 97, title: "$1000/Day Pine Script 95% Accurate", timeframe: "day", amount: 1000},
+            {id: 98, title: "Pine Script $5000/Day Near-Perfect Bot", timeframe: "day", amount: 5000},
+            {id: 99, title: "$10K/Day Pine Script Foolproof System", timeframe: "day", amount: 10000},
+            {id: 100, title: "Pine Script $100K/Month Guaranteed Trader", timeframe: "month", amount: 100000}
+        ];
+
+        // Display all strategies on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayStrategies(strategies);
+        });
+
+        // Display strategies in the table
+        function displayStrategies(strategiesToDisplay) {
+            const tbody = document.getElementById('strategies-body');
+            tbody.innerHTML = '';
+            
+            strategiesToDisplay.forEach(strategy => {
+                const row = document.createElement('tr');
+                
+                // Determine timeframe class for styling
+                let timeframeClass = strategy.timeframe;
+                let timeframeDisplay = '';
+                switch(strategy.timeframe) {
+                    case 'day': timeframeDisplay = 'Daily'; break;
+                    case 'week': timeframeDisplay = 'Weekly'; break;
+                    case 'month': timeframeDisplay = 'Monthly'; break;
+                    default: timeframeDisplay = 'Other'; timeframeClass = 'other'; break;
+                }
+                
+                // Format amount with commas
+                const formattedAmount = '$' + strategy.amount.toLocaleString();
+                
+                row.innerHTML = `
+                    <td>${strategy.id}</td>
+                    <td><a href="${strategy.link}">${strategy.title}</a></td>
+                    <td><span class="timeframe-tag ${timeframeClass}">${timeframeDisplay}</span></td>
+                    <td>${formattedAmount}</td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+        }
+
+        // Filter strategies based on search and dropdowns
+        function filterStrategies() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const timeframeFilter = document.getElementById('timeframe-filter').value;
+            const amountFilter = parseInt(document.getElementById('amount-filter').value) || 0;
+            
+            const filtered = strategies.filter(strategy => {
+                // Search term matching
+                const matchesSearch = strategy.title.toLowerCase().includes(searchTerm);
+                
+                // Timeframe filtering
+                const matchesTimeframe = !timeframeFilter || strategy.timeframe === timeframeFilter;
+                
+                // Amount filtering
+                const matchesAmount = !amountFilter || strategy.amount >= amountFilter;
+                
+                return matchesSearch && matchesTimeframe && matchesAmount;
+            });
+            
+            displayStrategies(filtered);
+        }
+
+        // Sort table columns
+        let currentSortColumn = -1;
+        let sortDirection = 1; // 1 for ascending, -1 for descending
+        
+        function sortTable(columnIndex) {
+            const tbody = document.getElementById('strategies-body');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            // Remove previous sort indicators
+            document.querySelectorAll('th').forEach(th => {
+                th.classList.remove('sort-asc', 'sort-desc');
+            });
+            
+            // If clicking the same column, reverse direction
+            if (currentSortColumn === columnIndex) {
+                sortDirection *= -1;
+            } else {
+                currentSortColumn = columnIndex;
+                sortDirection = 1;
+            }
+            
+            // Add sort indicator to current column
+            const th = document.querySelectorAll('th')[columnIndex];
+            th.classList.add(sortDirection === 1 ? 'sort-asc' : 'sort-desc');
+            
+            rows.sort((a, b) => {
+                const aValue = a.cells[columnIndex].textContent;
+                const bValue = b.cells[columnIndex].textContent;
+                
+                // Special handling for ID column (numeric)
+                if (columnIndex === 0) {
+                    return (parseInt(aValue) - parseInt(bValue)) * sortDirection;
+                }
+                // Special handling for Amount column (extract numeric value)
+                else if (columnIndex === 3) {
+                    const aNum = parseInt(aValue.replace(/\D/g, ''));
+                    const bNum = parseInt(bValue.replace(/\D/g, ''));
+                    return (aNum - bNum) * sortDirection;
+                }
+                // Default text comparison
+                else {
+                    return aValue.localeCompare(bValue) * sortDirection;
+                }
+            });
+            
+            // Rebuild the table with sorted rows
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>
