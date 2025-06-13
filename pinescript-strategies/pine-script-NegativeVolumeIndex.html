@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Negative Volume Index (NVI) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Negative Volume Index (NVI) in Pine Script for TradingView - a unique volume-based indicator that tracks smart money activity primarily on low-volume days, to confirm trends and spot divergence.">
+    <meta name="keywords" content="pine script strategies, Negative Volume Index, NVI, tradingview indicator, technical analysis, volume analysis, smart money, trend confirmation, divergence, institutional activity">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Negative Volume Index (NVI) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Negative Volume Index (NVI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Negative Volume Index (NVI) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-NegativeVolumeIndex.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Negative Volume Index (NVI) ",
+      "description": "Comprehensive tutorial on implementing and using the Negative Volume Index (NVI) in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Negative Volume Index (NVI) </h1>
+      <p class="blog-subtitle">Master this unique volume-based indicator in TradingView's Pine Script, designed to track "smart money" activity, particularly on low-volume days, to confirm trends and anticipate price movements.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is the Negative Volume Index (NVI)?</h2>
+    <p>The <b>Negative Volume Index (NVI)</b> is a cumulative momentum indicator that focuses on periods of <b>decreasing volume</b>. Developed by Paul Dysart and popularized by Norman Fosback, the underlying theory behind NVI is that "smart money" (institutional or well-informed investors) tends to operate on low-volume days, while "uninformed money" operates on high-volume days. Therefore, changes in price action on low-volume days are considered more significant than changes on high-volume days.</p>
+
+    <p>The NVI essentially tracks a cumulative sum that is adjusted only when volume decreases from the previous day. If volume decreases, the NVI is adjusted by the percentage change in price. If volume increases, the NVI remains unchanged. A rising NVI suggests smart money is accumulating an asset, even on low volume, which often precedes price increases. A falling NVI suggests smart money is distributing. NVI is primarily used to:</p>
+    <ul>
+      <li> <b>Identify divergences:</b> When price and NVI move in opposite directions, it can signal an impending trend reversal.</li>
+      <li> <b>Confirm price trends:</b> NVI's trend confirms the underlying strength of a price trend, particularly on low-volume days.</li>
+      <li> <b>Gauge long-term sentiment:</b> It's often used as a long-term indicator for the overall market or individual stocks.</li>
+    </ul>
+
+    <p>In Pine Script, NVI offers a distinctive way to analyze market sentiment by focusing on the less obvious, but often more telling, periods of trading activity.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Negative Volume Index is cumulative and depends on the relationship between current and previous volume:</p>
+    <ol>
+      <li> <b>Initialize NVI:</b> The starting value of NVI is usually set to 1000 (or some other arbitrary base value) to provide a convenient reference point.</li>
+      <li> <b>Conditional Update:</b> For each period:
+        <ul>
+          <li>If <b>Current Volume < Previous Volume:</b>
+            `NVI = Previous NVI + (Previous NVI * ((Close - Previous Close) / Previous Close))`
+            Essentially, `NVI = Previous NVI * (1 + Price Percentage Change)`
+            * Handle `Previous Close == 0` to avoid division by zero.
+          </li>
+          <li>If <b>Current Volume > Previous Volume:</b>
+            `NVI = Previous NVI` (NVI remains unchanged)
+          </li>
+          <li>If <b>Current Volume == Previous Volume:</b>
+            `NVI = Previous NVI` (NVI remains unchanged)
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>NVI is often smoothed with an Exponential Moving Average (EMA) (e.g., 255-period EMA for annual trend) to reduce noise and identify its long-term trend.</p>
+
+    <h2>Basic Negative Volume Index (NVI) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.nvi()` for calculating the Negative Volume Index.</p>
+
+    <pre><code>//@version=5
+indicator("My Negative Volume Index (NVI)", overlay=false) // overlay=false to plot in a separate pane
+
+// Input for NVI starting value (arbitrary, but common to start at 1000)
+nviStartValue = input.float(1000, title="NVI Start Value")
+
+// Calculate NVI using the built-in function
+// ta.nvi() uses 'close' for price comparison and 'volume' for volume comparison
+nviValue = ta.nvi(nviStartValue, close, volume)
+
+// Plot the NVI line
+plot(nviValue, title="NVI", color=color.blue, linewidth=2)
+
+// Optional: Add a Moving Average of NVI (often a long-term EMA) as a signal line
+// A common length for the NVI MA is 255 (representing roughly a year of trading days)
+nviMALength = input.int(255, title="NVI MA Length", minval=1)
+nviMA = ta.ema(nviValue, nviMALength)
+
+// Plot the NVI Moving Average
+plot(nviMA, title="NVI MA", color=color.orange, linewidth=1)
+</code></pre>
+
+    <div class="tip">
+      <b>Smart Money Focus:</b> NVI specifically tracks activity on low-volume days, believing that these are the days when informed investors subtly position themselves.
+    </div>
+
+    <h2>Practical NVI Trading Strategies</h2>
+
+    <h3>1. NVI and Moving Average Crossovers (Trend Confirmation)</h3>
+    <p>The most common strategy with NVI involves comparing it to its own moving average (often a long-term EMA like a 255-period). This helps confirm the direction of the "smart money" trend.</p>
+    <ul>
+      <li><strong>Bullish Signal</strong>: NVI crosses <b>above its moving average</b>. This suggests that smart money is accumulating, and the long-term trend based on low-volume days is positive. Often used to confirm a long-term uptrend in price.</li>
+      <li><strong>Bearish Signal</strong>: NVI crosses <b>below its moving average</b>. This suggests smart money is distributing, and the long-term trend based on low-volume days is negative. Often used to confirm a long-term downtrend in price.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("NVI Crossover Strategy", overlay=true)
+
+nviStartValue = input.float(1000, title="NVI Start Value")
+nviMALength = input.int(255, title="NVI MA Length", minval=1) // Long-term MA
+
+nviValue = ta.nvi(nviStartValue, close, volume)
+nviMA = ta.ema(nviValue, nviMALength)
+
+plot(nviValue, "NVI", color=color.blue, display=display.pane_only)
+plot(nviMA, "NVI MA", color=color.orange, display=display.pane_only)
+
+// Long entry: NVI crosses above its MA
+longCondition = ta.crossover(nviValue, nviMA)
+
+// Short entry: NVI crosses below its MA
+shortCondition = ta.crossunder(nviValue, nviMA)
+
+if (longCondition)
+    strategy.entry("Long NVI", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short NVI", strategy.short)
+
+// Basic exit: opposite signal
+strategy.close("Long NVI", when=shortCondition)
+strategy.close("Short NVI", when=longCondition)
+</code></pre>
+
+    <h3>2. NVI Divergence (Key Reversal Signal)</h3>
+    <p>Divergence between price and NVI can be a powerful signal, suggesting a weakening trend and potential reversal, as smart money's actions are not confirming the current price trend.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but NVI makes a <b>higher low</b>. This indicates that despite falling prices, smart money is accumulating, hinting at a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but NVI makes a <b>lower high</b>. This indicates that despite rising prices, smart money is distributing, hinting at a potential downward reversal.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("NVI Divergence Strategy", overlay=true)
+
+nviStartValue = input.float(1000, title="NVI Start Value")
+nviValue = ta.nvi(nviStartValue, close, volume)
+nviMALength = input.int(255, title="NVI MA Length", minval=1)
+nviMA = ta.ema(nviValue, nviMALength)
+
+plot(nviValue, "NVI", color=color.blue, display=display.pane_only)
+plot(nviMA, "NVI MA", color=color.orange, display=display.pane_only)
+
+// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)
+// This example looks for recent higher/lower swings in price and NVI.
+
+// Bullish Divergence: Price lower low, NVI higher low
+bullishDiv = close &lt; close[1] and close[1] &lt; close[2] and nviValue > nviValue[1] and nviValue[1] > nviValue[2]
+
+// Bearish Divergence: Price higher high, NVI lower high
+bearishDiv = close > close[1] and close[1] > close[2] and nviValue &lt; nviValue[1] and nviValue[1] &lt; nviValue[2]
+
+// Plot shapes on the chart to indicate divergence
+plotshape(bullishDiv, title="Bullish NVI Divergence", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(bearishDiv, title="Bearish NVI Divergence", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+if (bullishDiv)
+    strategy.entry("Long Divergence", strategy.long)
+if (bearishDiv)
+    strategy.entry("Short Divergence", strategy.short)
+
+// Basic exit after a few bars or on opposite signal
+strategy.exit("Long Divergence Exit", from_entry="Long Divergence", profit=close*0.02, loss=close*0.01)
+strategy.exit("Short Divergence Exit", from_entry="Short Divergence", profit=close*0.02, loss=close*0.01)
+</code></pre>
+
+    <h3>3. NVI as a Long-Term Trend Filter</h3>
+    <p>Given NVI's focus on smart money and its typically long-term smoothing, it can act as an excellent filter for other trading strategies, especially for confirming bull or bear markets.</p>
+    <ul>
+      <li><strong>Long-Term Bullish Filter</strong>: Only take long trades from your primary strategy when NVI is above its long-term moving average. This suggests smart money is generally bullish.</li>
+      <li><strong>Long-Term Bearish Filter</strong>: Only take short trades from your primary strategy when NVI is below its long-term moving average. This suggests smart money is generally bearish.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("NVI Trend Filter Strategy", overlay=true)
+
+nviStartValue = input.float(1000, title="NVI Start Value")
+nviMALength = input.int(255, title="NVI MA Length", minval=1) // Long-term MA filter
+
+nviValue = ta.nvi(nviStartValue, close, volume)
+nviMA = ta.ema(nviValue, nviMALength)
+
+plot(nviValue, "NVI", color=color.blue, display=display.pane_only)
+plot(nviMA, "NVI MA", color=color.orange, display=display.pane_only)
+
+// Define NVI trend direction
+isNviUptrend = nviValue > nviMA
+isNviDowntrend = nviValue &lt; nviMA
+
+// Example: Combine with a simple price EMA crossover strategy
+fastPriceMALength = input.int(10, title="Fast Price MA Length", minval=1)
+slowPriceMALength = input.int(20, title="Slow Price MA Length", minval=1)
+
+fastPriceMA = ta.ema(close, fastPriceMALength)
+slowPriceMA = ta.ema(close, slowPriceMALength)
+
+longEntrySignal = ta.crossover(fastPriceMA, slowPriceMA)
+shortEntrySignal = ta.crossunder(fastPriceMA, slowPriceMALength)
+
+// Only take long entries if NVI confirms a bullish trend
+if (longEntrySignal and isNviUptrend)
+    strategy.entry("Filtered Long", strategy.long)
+
+// Only take short entries if NVI confirms a bearish trend
+if (shortEntrySignal and isNviDowntrend)
+    strategy.entry("Filtered Short", strategy.short)
+
+// Exit on opposite price MA crossover, regardless of NVI filter for simplicity
+strategy.close("Filtered Long", when=ta.crossunder(fastPriceMA, slowPriceMA))
+strategy.close("Filtered Short", when=ta.crossover(fastPriceMA, slowPriceMA))
+
+// Optional: Color background based on NVI trend
+bgcolor(isNviUptrend ? color.new(color.lime, 95) : na, title="NVI Bullish Bias")
+bgcolor(isNviDowntrend ? color.new(color.maroon, 95) : na, title="NVI Bearish Bias")
+</code></pre>
+
+    <h2>Optimizing Negative Volume Index (NVI) Performance</h2>
+    <p>To get the most from the Negative Volume Index in Pine Script:</p>
+    <ul>
+      <li><strong>Smoothing is Crucial:</strong> NVI can be very volatile, especially on lower timeframes. Applying a long-term moving average (e.g., 255-period EMA for daily charts) is essential to smooth out noise and identify its underlying trend.</li>
+      <li><strong>Focus on Divergence:</strong> Like other volume-based indicators, NVI's most powerful signals often come from <b>divergences</b> with price. These can provide early warnings of trend reversals as smart money deviates from the mainstream price action.</li>
+      <li><strong>Timeframe Consideration:</strong> NVI is more suited for <b>longer-term analysis</b> (daily, weekly charts) due to its theory focusing on smart money's subtle, low-volume activity. It might be less effective or generate more noise on very short intraday timeframes.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm NVI signals with <b>price action</b>. An NVI signal is more reliable if supported by clear candlestick patterns, breaks of support/resistance, or other price-based confirmations.</li>
+      <li><strong>Context is Key:</strong> Interpret NVI in the context of the overall market or asset. Its absolute value is not important; what matters is its trend relative to its moving average, and its divergence from price.</li>
+    </ul>
+
+    <div class="tip">
+      <b>Unmasking Smart Money:</b> NVI offers a rare glimpse into the actions of potentially more informed investors, as it attributes greater significance to price changes that occur on quiet, low-volume days.
+    </div>
+
+    <h2>Common NVI Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> As a cumulative indicator smoothed by a moving average, NVI inherently lags price action. Its signals are often for confirmation or long-term trend shifts rather than immediate entries.</li>
+      <li> <b>False Signals:</b> Like any indicator, it can generate false signals, especially in markets with erratic volume patterns or during periods of very low liquidity where volume changes might not truly reflect smart money activity.</li>
+      <li> <b>Absolute Value Meaningless:</b> The raw NVI value (e.g., starting at 1000) has no intrinsic meaning other than its relation to its past values and its moving average.</li>
+      <li> <b>Limited on High Volume Days:</b> By design, NVI ignores price action on high-volume days. This means it misses significant information, and should always be used alongside other indicators that capture high-volume moves.</li>
+      <li> <b>Not a Standalone Indicator:</b> NVI provides crucial insights but should never be used in isolation. It works best as a confirming or filtering indicator within a broader trading strategy.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Negative Volume Index (NVI) is a unique and insightful technical indicator available in Pine Script for TradingView. By specifically focusing on <b>price movements on low-volume days</b>, it attempts to track the activity of "smart money" and provide a distinct perspective on underlying market sentiment. While its greatest strengths lie in confirming long-term trends and identifying powerful <b>divergences</b> with price (signaling potential trend reversals), it is most effective when smoothed with a moving average and integrated strategically with price action and other technical analysis tools. By understanding its calculation and thoughtfully utilizing its signals, you can leverage NVI to enhance your <b>pine script strategies</b> and gain a clearer understanding of market conviction, particularly from the perspective of informed investors.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

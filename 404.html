@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Page Not Found - Offline Pixel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load Inter font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ensure Inter font is applied to the body */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom animation for the 404 text */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(-5%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(0);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        /* Custom animation for the SVG icon */
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+    <script>
+        // --- IMPORTANT: Keep the original redirect logic at the very top for immediate execution ---
+        const path = window.location.pathname;
+        
+        // Case 1: /pinescript/* → /pinescript-strategies/*
+        if (path.startsWith('/pinescript/')) {
+            const newUrl = path.replace('/pinescript/', '/pinescript-strategies/');
+            window.location.replace(newUrl);
+        }
+        // Case 2: /pinescripts.html → /pinescript-strategies.html
+        else if (path === '/pinescripts.html') {
+            window.location.replace('/pinescript-strategies.html');
+        }
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800 p-4">
+    <div class="text-center bg-white p-8 md:p-12 rounded-xl shadow-2xl transform transition-all duration-300 hover:scale-105 border border-blue-200">
+        <!-- Large, animated 404 text -->
+        <div class="text-blue-600 text-6xl md:text-8xl font-extrabold mb-4 animate-bounce">
+            404
+        </div>
+        <!-- Main heading for the error -->
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">
+            Oops! Page Not Found.
+        </h1>
+        <!-- Explanatory paragraph -->
+        <p class="text-lg md:text-xl text-gray-600 mb-8">
+            It looks like the page you were looking for doesn't exist or has moved.
+        </p>
+        
+        <!-- Animated SVG for visual appeal - A simple "lost" face icon -->
+        <svg class="mx-auto mb-8 w-32 h-32 md:w-48 md:h-48 text-blue-500 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+        </svg>
+
+        <!-- Dynamic fallback message -->
+        <p class="text-sm text-gray-500 mb-6">
+            You might be redirected automatically. If not, please click the button below.
+        </p>
+
+        <!-- Dynamic fallback button to home or new location -->
+        <a id="redirectLink" href="/" class="inline-block bg-blue-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+            Go to Homepage
+        </a>
+    </div>
+    <script>
+        // Update fallback link dynamically after the page has loaded and elements are available.
+        // This ensures the link always points to the most relevant new location or homepage.
+        const currentPath = window.location.pathname;
+        let fallbackHref = "/"; // Default to homepage
+
+        if (currentPath.startsWith('/pinescript/')) {
+            fallbackHref = currentPath.replace('/pinescript/', '/pinescript-strategies/');
+        } else if (currentPath === '/pinescripts.html') {
+            fallbackHref = '/pinescript-strategies.html';
+        }
+        document.getElementById('redirectLink').href = fallbackHref;
+    </script>
+</body>
+</html>

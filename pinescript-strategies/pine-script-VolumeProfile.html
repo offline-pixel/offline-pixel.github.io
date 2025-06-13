@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Volume Profile - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.">
+    <meta name="keywords" content="pine script strategies, Volume Profile, POC, Value Area, HVN, LVN, tradingview indicator, technical analysis, volume distribution, market profile, support resistance, supply demand">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Volume Profile - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Volume Profile in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Volume Profile - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeProfile.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Volume Profile ",
+      "description": "Comprehensive tutorial on implementing and using Volume Profile in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Volume Profile </h1>
+      <p class="blog-subtitle">Master this powerful technical analysis tool in TradingView's Pine Script that displays trading activity over a specified price range, revealing key areas of supply and demand for more informed trading decisions.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is Volume Profile?</h2>
+    <p> <b>Volume Profile</b> is an advanced charting indicator that displays trading activity over a specified price range during a specified period. It shows the total volume traded at each price level, often represented as a horizontal histogram on the left or right side of the price chart. Unlike traditional volume indicators that show total volume traded over a specific time period (e.g., a bar), Volume Profile reveals *where* that volume was traded across different price points.</p>
+
+    <p>This insight into the distribution of volume provides a deeper understanding of market dynamics and participant behavior. Key components derived from the Volume Profile include:</p>
+    <ul>
+      <li> <b>Point of Control (POC):</b> The price level with the highest traded volume for the specified period. It represents the price where the most trading activity occurred and is considered a fair value area.</li>
+      <li> <b>Value Area (VA):</b> The price range where a significant percentage of the total volume (typically 70% or 68%) was traded. It signifies where the majority of participants found value.</li>
+      <li> <b>High Volume Nodes (HVN):</b> Price levels where a large amount of volume was traded, indicating areas of agreement or consolidation. These often act as strong support or resistance.</li>
+      <li> <b>Low Volume Nodes (LVN):</b> Price levels where very little volume was traded, indicating areas of disagreement or rapid price movement. These often act as weak support/resistance and tend to be easily broken through.</li>
+    </ul>
+
+    <p>Volume Profile is an indispensable tool for active traders, helping them identify key supply/demand zones, understand market sentiment, and plan their <b>pine script strategies</b> for entries, exits, and risk management.</p>
+
+    <h2>Components and Calculation (Conceptual)</h2>
+    <p>The Volume Profile is constructed by taking all the trades (volume) that occurred within a defined time window (e.g., a day, a week, or a fixed number of bars) and categorizing them into discrete price "bins" or levels. For each bin, the total volume traded at that price level is accumulated. This accumulation is then displayed as a horizontal bar, with longer bars indicating more volume traded at that price.
+    
+    The calculation conceptually involves:</p>
+    <ol>
+      <li> <b>Define the Analysis Period:</b> This can be a specific session (e.g., daily, weekly) or a fixed number of bars (e.g., last 100 bars).</li>
+      <li> <b>Determine Price Range:</b> Identify the high and low prices within the analysis period.</li>
+      <li> <b>Define Bins:</b> Divide the price range into a specified number of equal price "bins." For example, if the range is $10 and you want 10 bins, each bin would be $1 wide.</li>
+      <li> <b>Distribute Volume:</b> For each bar within the analysis period, distribute its volume across the price bins that its `high`-`low` range covers. If a bar's `high` is in one bin and its `low` in another, its volume is proportionally distributed. Many implementations simply assign the bar's entire volume to the bin corresponding to its `close` price, or use a more complex mid-point distribution.</li>
+      <li> <b>Aggregate Volume per Bin:</b> Sum up the volume for each price bin.</li>
+      <li> <b>Identify POC, VA, HVN, LVN:</b> Once the volume distribution is complete, the POC is the bin with the highest volume. The Value Area is found by accumulating volume from the POC outwards until the specified percentage (e.g., 70%) of total volume is reached. HVNs are visually prominent large bars, and LVNs are visually prominent small bars or gaps.</li>
+    </ol>
+
+    <h2>Basic Volume Profile Implementation in Pine Script</h2>
+    <p>Pine Script v5 significantly simplifies Volume Profile implementation with its dedicated `volume` module. It provides functions like `volume.profile_fixed()` and `volume.profile_session()` to draw these profiles directly on the chart.</p>
+
+    <pre><code>//@version=5
+indicator("My Volume Profile", overlay=true, max_bars_back=500) // overlay=true to plot on price chart.
+
+// --- User Inputs ---
+profileType = input.string("Fixed Range", title="Profile Type", options=["Fixed Range", "Session Profile"])
+fixedRangeBars = input.int(100, title="Fixed Range Bars (for Fixed Range Profile)", minval=10, maxval=500, tooltip="Number of historical bars to calculate the fixed volume profile over.")
+numberOfRows = input.int(20, title="Number of Rows (Bins)", minval=5, maxval=100, tooltip="Number of price bins for the volume profile histogram.")
+valueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99, tooltip="Percentage of total volume contained within the Value Area.")
+
+// --- Plotting Colors ---
+upVolumeColor = input.color(color.new(color.lime, 40), title="Up Volume Color")
+downVolumeColor = input.color(color.new(color.red, 40), title="Down Volume Color")
+pocColor = input.color(color.new(color.purple, 0), title="POC Color")
+vaColor = input.color(color.new(color.yellow, 60), title="Value Area Color")
+
+// --- Implement Volume Profile Logic ---
+
+if profileType == "Fixed Range"
+    // Use volume.profile_fixed for a profile calculated over a fixed number of recent bars.
+    // This is useful for analyzing a specific market segment.
+    profile = volume.profile_fixed(fixedRangeBars, numberOfRows, valueAreaPercentage)
+
+    // Plotting the profile. The `profile` object contains all the data needed for plotting.
+    if barstate.islast and not na(profile)
+        profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)
+
+else if profileType == "Session Profile"
+    // Use volume.profile_session for a profile calculated for each trading session (e.g., daily, weekly).
+    // This provides a new profile for each distinct session.
+    // The `profile` object is automatically created for each session.
+    profile = volume.profile_session(numberOfRows, valueAreaPercentage)
+
+    // Plotting the session profile. This function automatically handles plotting for each session.
+    if not na(profile)
+        profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)
+
+// Note: Pine Script's built-in `volume` module handles the complex drawing
+// of the histogram, POC line, and Value Area shading automatically.
+// We just need to define the parameters and tell it to plot.
+</code></pre>
+
+    <div class="tip">
+      <strong>Supply & Demand Hotspots:</strong> Volume Profile helps identify where the majority of trading activity occurred, pinpointing true supply and demand zones where institutions and large players have likely taken positions.
+    </div>
+
+    <h2>Practical Volume Profile Trading Strategies</h2>
+
+    <h3>1. Support and Resistance with HVNs & LVNs</h3>
+    <p>HVNs act as strong areas of agreement and potential support/resistance, while LVNs represent areas of rapid transit and weak support/resistance.</p>
+    <ul>
+      <li> <b>HVN as Support/Resistance:</b> When price approaches an HVN, it's likely to consolidate or reverse as significant past trading activity suggests strong conviction at that level. Long entries near an HVN acting as support; short entries near an HVN acting as resistance.</li>
+      <li> <b>LVN as Price Magnet/Breakout:</b> Price tends to move quickly through LVNs because there was little prior agreement. An LVN can act as a "price magnet" when price approaches it, or a zone where breakouts are likely to accelerate.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("VP: HVN/LVN Strategy", overlay=true)
+
+// Use a session profile for clear daily levels
+numberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)
+valueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)
+
+profile = volume.profile_session(numberOfRows, valueAreaPercentage)
+
+// Plotting (kept for visual context, usually this is in a separate indicator script)
+if not na(profile)
+    profile.plot(color.new(color.lime, 40), color.new(color.red, 40), color.new(color.purple, 0), color.new(color.yellow, 60))
+
+// Example strategy logic (conceptual, as Pine Script strategy cannot directly access historical HVN/LVN from profile object easily)
+// For actual strategy, you'd need to manually calculate or store HVN/LVN values from previous sessions.
+// For simplicity, let's illustrate concept with POC and VA levels.
+
+// Point of Control (POC) from previous session
+// The `volume.profile_session` only returns the current session's profile.
+// To get previous session's POC/VA, we need to use `request.security` on `high` or `low` in a higher timeframe
+// and then use the `volume.profile_fixed` within that higher timeframe.
+// For strategy purposes, let's simplify and use the last available POC of the *current* profile once it's complete.
+// This is a common limitation for true historical VP strategies in Pine Script.
+
+// Let's manually identify a "significant" HVN from the profile's data, which is more complex.
+// The built-in `profile.plot` handles drawing. For strategy, we can use `profile.poc_price`.
+
+if not na(profile) and barstate.isconfirmed // Ensure profile is finalized for current bar
+    pocPrice = profile.poc_price
+
+    // Simple strategy: Price crosses POC
+    longCondition = ta.crossover(close, pocPrice)
+    shortCondition = ta.crossunder(close, pocPrice)
+
+    if (longCondition)
+        strategy.entry("Long POC Break", strategy.long)
+
+    if (shortCondition)
+        strategy.entry("Short POC Break", strategy.short)
+
+    // Exit on opposite POC cross
+    strategy.close("Long POC Break", when=shortCondition)
+    strategy.close("Short POC Break", when=longCondition)
+</code></pre>
+
+    <h3>2. Value Area (VA) as Fair Price Zone</h3>
+    <p>The Value Area represents where the majority of trades occurred and where market participants found "fair value."</p>
+    <ul>
+      <li> <b>Trading within Value Area:</b> Price tends to spend a significant amount of time within the Value Area. If price opens within the VA, it suggests a rotational or range-bound day.</li>
+      <li> <b>Opening outside Value Area:</b> If price opens significantly outside the previous day's Value Area (and especially outside the Value Area High/Low), it often suggests a trending day, as the market is seeking a new fair value.
+        <ul>
+          <li> <b>Open above VAH (Value Area High):</b> Strong bullish bias, target higher prices.</li>
+          <li> <b>Open below VAL (Value Area Low):</b> Strong bearish bias, target lower prices.</li>
+        </ul>
+      </li>
+      <li> <b>VA as Support/Resistance:</b> The Value Area High (VAH) and Value Area Low (VAL) act as dynamic support and resistance levels.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("VP: Value Area Strategy", overlay=true)
+
+numberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)
+valueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)
+
+profile = volume.profile_session(numberOfRows, valueAreaPercentage)
+
+// Plotting
+if not na(profile)
+    profile.plot(color.new(color.lime, 40), color.new(color.red, 40), color.new(color.purple, 0), color.new(color.yellow, 60))
+
+// Get VAH and VAL from previous session for strategy logic
+// This requires fetching from a higher timeframe.
+// For simplicity in a single indicator, we'll use the current session's VAH/VAL as they become finalized.
+// For true daily VA analysis, use request.security to get previous day's VAH/VAL.
+
+// This is a simplified way to get the previous session's VAH/VAL:
+// The `profile` object is calculated bar by bar. `profile.value_area_high` and `profile.value_area_low`
+// will give the VAH/VAL of the *current* session as it progresses.
+// To truly trade off the *previous* session's VA, you need to store them at session close.
+var float prevVAH = na
+var float prevVAL = na
+
+// Check if it's the start of a new session (e.g., new day)
+isNewSession = ta.change(time("D"))
+
+if isNewSession[1] and not na(profile[1]) // At the start of a new session, get values from the *just completed* session
+    prevVAH := profile[1].value_area_high
+    prevVAL := profile[1].value_area_low
+
+// Use `nz` to carry forward the previous session's VAH/VAL
+prevVAH := nz(prevVAH[1], prevVAH)
+prevVAL := nz(prevVAL[1], prevVAL)
+
+// Simple strategy: Open outside Value Area for trend continuation
+// Only execute if previous VAH/VAL are defined
+if not na(prevVAH) and not na(prevVAL)
+
+    // Long entry: Open below VAL, then close back above VAL (reversal/absorption) or open above VAH (trend)
+    // Short entry: Open above VAH, then close back below VAH (reversal/absorption) or open below VAL (trend)
+
+    // Strategy 1: Open outside Value Area, move back in (Absorption)
+    longAbsorption = open &lt; prevVAL and close > prevVAL
+    shortAbsorption = open > prevVAH and close &lt; prevVAH
+
+    if (longAbsorption)
+        strategy.entry("Long VA Absorb", strategy.long)
+        strategy.exit("Long VA Absorb Exit", profit=prevVAH, stop=prevVAL - syminfo.mintick * 10) // Target VAH, stop just below VAL
+
+    if (shortAbsorption)
+        strategy.entry("Short VA Absorb", strategy.short)
+        strategy.exit("Short VA Absorb Exit", profit=prevVAL, stop=prevVAH + syminfo.mintick * 10) // Target VAL, stop just above VAH
+
+
+    // Strategy 2: Open outside Value Area, trend continues away (Trend Day)
+    longTrendDay = open > prevVAH and close > open and close > prevVAH // Strong open above VAH, price continues up
+    shortTrendDay = open &lt; prevVAL and close &lt; open and close &lt; prevVAL // Strong open below VAL, price continues down
+
+    if (longTrendDay)
+        strategy.entry("Long VA Trend", strategy.long)
+        strategy.exit("Long VA Trend Exit", profit=strategy.position_avg_price + (prevVAH - prevVAL) * 1.5, stop=prevVAH) // Target 1.5x VA range, stop at VAH
+
+    if (shortTrendDay)
+        strategy.entry("Short VA Trend", strategy.short)
+        strategy.exit("Short VA Trend Exit", profit=strategy.position_avg_price - (prevVAH - prevVAL) * 1.5, stop=prevVAL) // Target 1.5x VA range, stop at VAL
+
+</code></pre>
+
+    <h3>3. POC Rejection/Breakout</h3>
+    <p>The Point of Control (POC) is the single most traded price level. It acts as a significant magnet and a strong area of support/resistance.</p>
+    <ul>
+      <li> <b>POC Rejection:</b> Price rallies towards the POC and then reverses, suggesting strong supply at POC. Or declines to POC and reverses, suggesting strong demand. Often seen on less volatile days.</li>
+      <li> <b>POC Breakout:</b> Price decisively breaks and holds above/below the POC, often indicating a shift in fair value and potential trend continuation. A breakout of POC, especially with increased volume, is a strong signal that market participants are accepting higher/lower prices.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("VP: POC Strategy", overlay=true)
+
+numberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)
+valueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)
+
+profile = volume.profile_session(numberOfRows, valueAreaPercentage)
+
+// Plotting
+if not na(profile)
+    profile.plot(color.new(color.lime, 40), color.new(color.red, 40), color.new(color.purple, 0), color.new(color.yellow, 60))
+
+// Get POC from previous session.
+// Similar to VAH/VAL, for true historical POC, use `request.security`.
+// For simplicity, we'll grab the POC of the just-completed session.
+var float prevPOC = na
+
+isNewSession = ta.change(time("D"))
+
+if isNewSession[1] and not na(profile[1])
+    prevPOC := profile[1].poc_price
+
+prevPOC := nz(prevPOC[1], prevPOC)
+
+// Strategy Logic: Rejection or Breakout of Previous Session's POC
+if not na(prevPOC)
+
+    // POC Rejection (Mean Reversion)
+    // Long: Price approaches POC from below, rejects it, and closes higher
+    longPOCRejection = low &lt; prevPOC and close > prevPOC and close[1] &lt; prevPOC[1]
+
+    // Short: Price approaches POC from above, rejects it, and closes lower
+    shortPOCRejection = high > prevPOC and close &lt; prevPOC and close[1] > prevPOC[1]
+
+    if (longPOCRejection)
+        strategy.entry("Long POC Rejection", strategy.long)
+        strategy.exit("Long POC Rejection Exit", profit=prevPOC + (prevPOC - open) * 1.0, stop=prevPOC - (prevPOC - low) * 1.0) // Example dynamic target/stop
+
+    if (shortPOCRejection)
+        strategy.entry("Short POC Rejection", strategy.short)
+        strategy.exit("Short POC Rejection Exit", profit=prevPOC - (open - prevPOC) * 1.0, stop=prevPOC + (high - prevPOC) * 1.0)
+
+
+    // POC Breakout (Trend Continuation)
+    // Long: Price breaks above POC and continues
+    longPOCBreakout = close > prevPOC and close[1] &lt;= prevPOC[1] and volume > ta.sma(volume, 20) * 1.2 // Breakout with conviction
+
+    // Short: Price breaks below POC and continues
+    shortPOCBreakout = close &lt; prevPOC and close[1] >= prevPOC[1] and volume > ta.sma(volume, 20) * 1.2 // Breakout with conviction
+
+    if (longPOCBreakout)
+        strategy.entry("Long POC Breakout", strategy.long)
+        // Target next logical resistance, stop loss at POC
+        strategy.exit("Long POC Breakout Exit", profit=strategy.position_avg_price + (high - prevPOC) * 1.5, stop=prevPOC)
+
+    if (shortPOCBreakout)
+        strategy.entry("Short POC Breakout", strategy.short)
+        // Target next logical support, stop loss at POC
+        strategy.exit("Short POC Breakout Exit", profit=strategy.position_avg_price - (prevPOC - low) * 1.5, stop=prevPOC)
+</code></pre>
+
+    <h2>Optimizing Volume Profile Performance</h2>
+    <p>To get the most from Volume Profile in Pine Script:</p>
+    <ul>
+      <li> <b>Contextual Analysis:</b> Volume Profile is best used in conjunction with price action and overall market context. Understand the broader trend before trading individual VP levels.</li>
+      <li> <b>Timeframe Selection:</b> The chosen `profileType` ("Fixed Range" vs. "Session Profile") and the chart's timeframe greatly impact the profile's relevance. Daily session profiles are excellent for intraday decisions, while fixed profiles over longer periods can highlight significant longer-term supply/demand zones.</li>
+      <li> <b>Number of Rows (Bins):</b> Experiment with the `numberOfRows`. Too few bins can make the profile too coarse, missing subtle nuances. Too many can make it overly detailed and noisy. Start with 20-30 and adjust.</li>
+      <li> <b>Value Area Percentage:</b> The default 70% is common, but some traders prefer 68% or other percentages depending on their focus (e.g., tighter VA for strong agreement).</li>
+      <li> <b>Confluence with Other Indicators:</b> Volume Profile levels (POC, VAH/VAL, HVN/LVN) gain significant strength when they align with other technical indicators like:
+        <ul>
+          <li>Moving Averages</li>
+          <li>Fibonacci Retracements/Extensions</li>
+          <li>Trendlines</li>
+          <li>Psychological price levels</li>
+        </ul>
+      </li>
+      <li> <b>Volume Confirmation:</b> Always seek confirmation from volume. A breakout of a key level with strong, increasing volume is more reliable than a weak breakout.</li>
+      <li> <b>Market Open/Close Behavior:</b> Pay attention to how price reacts to the previous session's POC and Value Area boundaries at the market open and near the close.</li>
+      <li> <b>Fixed vs. Session Profile:</b> Understand when to use each. `volume.profile_session` is for recurring periods (e.g., daily) while `volume.profile_fixed` is for analyzing a specific range of bars, useful for studying reactions to news events or specific trend segments.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Institutional Footprint:</strong> Volume Profile helps visualize where "smart money" (large institutions) has likely accumulated or distributed positions, as these are often the areas of highest volume.
+    </div>
+
+    <h2>Common Volume Profile Pitfalls</h2>
+    <ul>
+      <li> <b>Lagging Nature:</b> Volume Profile is a lagging indicator. It shows where volume *has been* traded, not where it *will* be traded. Use it for confirmation and understanding market structure, not as a standalone predictive tool.</li>
+      <li> <b>False Signals:</b> Price can temporarily penetrate or "fake out" around key Volume Profile levels, especially in low-liquidity markets or during news events. Confirmation from price action and other indicators is essential.</li>
+      <li> <b>Over-Reliance:</b> Using Volume Profile as the sole decision-making tool without considering the broader market context, fundamental news, or other technical analysis can lead to poor trading decisions.</li>
+      <li> <b>Data Quality:</b> The accuracy of Volume Profile is highly dependent on the quality and granularity of volume data. Tick volume is more precise but not always available.</li>
+      <li> <b>Visual Clutter:</b> With too many profiles or too many rows, the chart can become overly cluttered and difficult to read. Keep settings clean and focused.</li>
+      <li> <b>Dynamic Nature in Strategies:</b> Implementing strategies based on *previous* session's POC/VAH/VAL can be tricky in Pine Script because `volume.profile_session` only provides the *current* session's data. You often need `request.security` to fetch previous session data, which can add complexity.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Volume Profile is an exceptionally powerful and insightful technical analysis tool available in Pine Script for TradingView. By providing a clear visualization of trading activity across different price levels, it allows traders to identify key areas of supply and demand, understand market conviction, and pinpoint significant support and resistance zones. Mastering its components – the Point of Control (POC), Value Area (VA), High Volume Nodes (HVN), and Low Volume Nodes (LVN) – can significantly enhance your <b>pine script strategies</b>. While requiring careful consideration of its settings and integration with other technical analysis, Volume Profile provides a unique "x-ray" view into market structure, helping you make more informed and robust trading decisions by understanding where the true battle between buyers and sellers took place.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

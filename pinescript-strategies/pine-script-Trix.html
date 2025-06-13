@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Trix (Triple Exponential Average) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Trix indicator in Pine Script for TradingView - a comprehensive guide to identifying trends, momentum, and overbought/oversold conditions with reduced noise.">
+    <meta name="keywords" content="pine script strategies, Trix, triple exponential average, tradingview indicator, technical analysis, momentum trading, overbought oversold">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Trix (Triple Exponential Average) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Trix indicator in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Trix (Triple Exponential Average) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-Trix.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Trix (Triple Exponential Average) ",
+      "description": "Comprehensive tutorial on implementing and using the Trix indicator in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Trix (Triple Exponential Average) </h1>
+      <p class="blog-subtitle">Master this unique oscillator in TradingView's Pine Script for identifying trends, momentum, and divergence with reduced noise.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is Trix?</h2>
+    <p>The <b>Trix (Triple Exponential Average)</b> indicator is a momentum oscillator developed by Jack Hutson. It aims to filter out insignificant price movements (noise) by applying an exponential moving average (EMA) three times to the closing price. The result is a smooth line that oscillates around a zero line, helping traders identify trends, gauge momentum, and spot potential divergences.</p>
+
+    <p>Because of its triple smoothing, Trix is particularly effective at reducing short-term fluctuations, allowing traders to focus on the broader trend and less on minor price changes.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>Trix is derived from a triple-smoothed Exponential Moving Average of the closing price. The calculation process involves three main steps:</p>
+    <ol>
+      <li><strong>First EMA</strong>: Calculate an EMA of the closing price over a specified period (e.g., 15 periods).</li>
+      <li><strong>Second EMA</strong>: Calculate an EMA of the first EMA over the same period.</li>
+      <li><strong>Third EMA</strong>: Calculate an EMA of the second EMA over the same period.</li>
+      <li><strong>Trix Value</strong>: The percentage change of this third EMA from the previous bar. This effectively turns the smoothed moving average into a momentum oscillator.</li>
+    </ol>
+    <p>Often, a signal line (typically a 9-period EMA of the Trix line) is also plotted to generate crossover signals, similar to how MACD works.</p>
+
+    <h2>Basic Trix Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in `ta.trix()` function for easy implementation.</p>
+
+    <pre><code>//@version=5
+indicator("My Trix Indicator", overlay=false)
+
+// Inputs for Trix parameters
+length = input.int(15, title="Trix Length")
+signalLength = input.int(9, title="Signal Length")
+
+// Calculate Trix value using the built-in function
+trixValue = ta.trix(close, length)
+
+// Calculate the Signal Line (EMA of Trix)
+trixSignal = ta.ema(trixValue, signalLength)
+
+// Plot the Trix Line
+plot(trixValue, title="Trix Line", color=color.blue, linewidth=2)
+
+// Plot the Signal Line
+plot(trixSignal, title="Signal Line", color=color.red, linewidth=1)
+
+// Plot a horizontal line at zero for reference
+hline(0, "Zero Line", color=color.gray, linestyle=hline.style_dotted)
+</code></pre>
+
+    <div class="tip">
+      <strong>Zero Line Importance:</strong> The zero line is crucial for Trix. Crossing above zero indicates bullish momentum, while crossing below indicates bearish momentum.
+    </div>
+
+    <h2>Practical Trix Trading Strategies</h2>
+
+    <h3>1. Zero Line Crossover Strategy (Trend Direction)</h3>
+    <p>One of the simplest ways to use Trix is by observing its crossovers with the zero line. This indicates a shift in the primary trend or momentum.</p>
+    <ul>
+      <li><strong>Bullish Signal</strong>: Trix crosses above the zero line. Suggests an uptrend or increasing bullish momentum.</li>
+      <li><strong>Bearish Signal</strong>: Trix crosses below the zero line. Suggests a downtrend or increasing bearish momentum.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("Trix Zero Line Strategy", overlay=true)
+
+length = input.int(15, title="Trix Length")
+signalLength = input.int(9, title="Signal Length")
+
+trixValue = ta.trix(close, length)
+trixSignal = ta.ema(trixValue, signalLength)
+
+// Define conditions
+longCondition = ta.crossover(trixValue, 0)
+shortCondition = ta.crossunder(trixValue, 0)
+
+// Strategy entries
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short", strategy.short)
+
+// Optional: Plot Trix in a separate pane for visualization
+// plot(trixValue, "Trix Line", color.blue)
+// plot(trixSignal, "Signal Line", color.red)
+// hline(0, "Zero Line", color.gray)
+</code></pre>
+
+    <h3>2. Trix Signal Line Crossover Strategy (Entry/Exit Signals)</h3>
+    <p>Similar to MACD, Trix also uses a signal line (an EMA of Trix) to generate more frequent and refined trading signals.</p>
+    <ul>
+      <li><strong>Bullish Crossover</strong>: Trix Line crosses above its Signal Line. This is often used as a buy signal.</li>
+      <li><strong>Bearish Crossover</strong>: Trix Line crosses below its Signal Line. This is often used as a sell signal.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("Trix Signal Crossover Strategy", overlay=true)
+
+length = input.int(15, title="Trix Length")
+signalLength = input.int(9, title="Signal Length")
+
+trixValue = ta.trix(close, length)
+trixSignal = ta.ema(trixValue, signalLength)
+
+// Define conditions
+longCondition = ta.crossover(trixValue, trixSignal)
+shortCondition = ta.crossunder(trixValue, trixSignal)
+
+// Strategy entries
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short", strategy.short)
+
+// Optional: Plot Trix in a separate pane for visualization
+// plot(trixValue, "Trix Line", color.blue)
+// plot(trixSignal, "Signal Line", color.red)
+// hline(0, "Zero Line", color.gray)
+</code></pre>
+
+    <h3>3. Trix Divergence Strategy</h3>
+    <p>Divergence between the Trix indicator and price action can signal potential reversals, indicating that the current trend is losing momentum.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but Trix makes a higher low. Suggests weakening bearish momentum.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but Trix makes a lower high. Suggests weakening bullish momentum.</li>
+    </ul>
+
+    <pre><code>//@version=5
+indicator("Trix Divergence Scanner", overlay=true)
+
+length = input.int(15, title="Trix Length")
+signalLength = input.int(9, title="Signal Length")
+
+trixValue = ta.trix(close, length)
+trixSignal = ta.ema(trixValue, signalLength)
+
+// Plot Trix and Signal lines for visual confirmation
+plot(trixValue, "Trix Line", color.blue)
+plot(trixSignal, "Signal Line", color.red)
+hline(0, "Zero Line", color.gray)
+
+// Simple divergence detection (conceptual, for advanced scripts this needs robust pivot detection)
+// This is a simplified example and might need refinement for actual trading.
+
+// Bullish Divergence Example
+bullishDiv = (close[2] > close[1] and close[1] > close) and (trixValue[2] < trixValue[1] and trixValue[1] < trixValue)
+
+// Bearish Divergence Example
+bearishDiv = (close[2] < close[1] and close[1] < close) and (trixValue[2] > trixValue[1] and trixValue[1] > trixValue)
+
+// Plot divergence signals on the price chart
+plotshape(bullishDiv, title="Bullish Divergence", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(bearishDiv, title="Bearish Divergence", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+// Alert for divergence
+alertcondition(bullishDiv, "Bullish Trix Divergence", "Trix bullish divergence detected! Potential reversal.")
+alertcondition(bearishDiv, "Bearish Trix Divergence", "Trix bearish divergence detected! Potential reversal.")
+</code></pre>
+
+    <h2>Optimizing Trix Performance</h2>
+    <p>To enhance the effectiveness of the Trix indicator in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter significantly impacts Trix's responsiveness. A shorter length makes it more sensitive but prone to noise, while a longer length smooths it more but adds lag. Experiment with different lengths (e.g., 9, 15, 20) and `signalLength` for various assets and timeframes.</li>
+      <li><strong>Combine with Volume:</strong> Confirm Trix signals with volume. Strong breakouts or crossovers on high volume are generally more reliable.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Use Trix on a higher timeframe to confirm the overall trend direction, and then look for signals on a lower timeframe for entries and exits.</li>
+      <li><strong>Filter Ranging Markets:</strong> Trix performs best in trending markets. In choppy or sideways markets, it can still produce false signals despite its smoothing. Consider using a trend filter (like ADX or SuperTrend) to confirm trend presence before acting on Trix signals.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Smoothed but Lagging:</strong> While Trix effectively filters noise, the triple-smoothing process introduces more lag compared to single-EMA indicators. Be aware of this when timing entries.
+    </div>
+
+    <h2>Common Trix Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Due to its extensive smoothing, Trix can sometimes generate signals later than other, less-smoothed oscillators, potentially causing delayed entries/exits.</li>
+      <li> <b>Whipsaws in Consolidation:</b> Despite noise reduction, Trix can still produce false signals in prolonged sideways or ranging markets, especially if the `length` is too short.</li>
+      <li> <b>Over-Reliance:</b> No single indicator provides perfect signals. Trix should always be used in conjunction with other technical analysis tools and proper risk management.</li>
+      <li> <b>Misinterpretation of Flat Trix:</b> A Trix line that is flat and hovering near zero indicates a lack of strong trend or momentum, making it a poor time for trend-following strategies.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Trix indicator is a sophisticated and highly effective momentum oscillator in Pine Script for TradingView. Its triple-smoothing mechanism significantly reduces noise, allowing traders to identify underlying trends, gauge momentum, and spot crucial divergences with greater clarity. By mastering its components, understanding its signals, and integrating it thoughtfully into your multi-indicator strategies, you can leverage Trix to refine your market analysis and enhance your trading decisions.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

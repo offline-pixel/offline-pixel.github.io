@@ -7,9 +7,9 @@
 ---
 
 ## 💡 Why Choose Us?
-We help founders and startups **build production-ready MVPs in 4-7 weeks** at 1/3 the cost of Western agencies.  
+We help founders and startups **build production-ready MVPs in 4-7 weeks</b> at 1/3 the cost of Western agencies.  
 
-✅ **$35/hour** (vs. $150+ in US/EU)  
+✅ **$35/hour</b> (vs. $150+ in US/EU)  
 ✅ **Full-stack expertise**: Next.js, React, Node.js, Python, Firebase  
 ✅ **Proven track record**: 50+ MVPs shipped since 2020  
 ✅ **US-aligned workflows**: Daily standups, Slack/Notion integration  
@@ -18,11 +18,11 @@ We help founders and startups **build production-ready MVPs in 4-7 weeks** at 1/
 
 ## 🛠️ How It Works
 
-1. **Consultation** (Free)  
+1. **Consultation</b> (Free)  
    - 30-min call to scope your MVP  
-2. **Prototype** ($2,000)  
+2. **Prototype</b> ($2,000)  
    - Core features built in 2 weeks  
-3. **Polish & Launch** ($3,000+)  
+3. **Polish & Launch</b> ($3,000+)  
    - Refinements + deployment  
 
 [![Book a Call](https://img.shields.io/badge/Book_Free_30min_Call-Calendly-blue)](https://rb.gy/9tod91)  
@@ -39,7 +39,7 @@ We help founders and startups **build production-ready MVPs in 4-7 weeks** at 1/
 ---
 
 ## 🌟 Why Developers Star This Repo
-- **Free starter templates** in `/` folder  
-- **Open-source components** you can reuse (MIT License)  
-- **Transparent pricing models** for freelance devs  
+- **Free starter templates</b> in `/` folder  
+- **Open-source components</b> you can reuse (MIT License)  
+- **Transparent pricing models</b> for freelance devs  
 

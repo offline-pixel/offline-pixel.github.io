@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Volume-Adjusted RSI (VARSI) in Pine Script for TradingView - an enhanced RSI that incorporates volume to provide more reliable overbought/oversold and divergence signals.">
+    <meta name="keywords" content="pine script strategies, Volume-Adjusted RSI, VARSI, tradingview indicator, technical analysis, momentum, overbought oversold, divergence, volume analysis, RSI">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Volume-Adjusted RSI (VARSI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeAdjustedRSI.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Volume-Adjusted RSI (VARSI) ",
+      "description": "Comprehensive tutorial on implementing and using Volume-Adjusted RSI (VARSI) in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Volume-Adjusted RSI (VARSI) </h1>
+      <p class="blog-subtitle">Master this enhanced momentum oscillator in TradingView's Pine Script that incorporates volume into its calculation, providing more reliable overbought/oversold levels and stronger divergence signals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is Volume-Adjusted RSI (VARSI)?</h2>
+    <p> <b>Volume-Adjusted RSI (VARSI)</b> is an adaptation of the popular Relative Strength Index (RSI) that aims to improve its reliability by incorporating volume. While the traditional RSI only considers the magnitude of price changes, VARSI weights these price changes by their associated trading volume. The core idea is that price movements backed by higher volume are more significant and should have a greater impact on the momentum calculation than price movements on lower volume.</p>
+
+    <p>By integrating volume, VARSI seeks to filter out "weak" momentum signals that occur on low trading activity and to emphasize "strong" momentum signals that are supported by substantial market participation. This can lead to:</p>
+    <ul>
+      <li> <b>More robust overbought/oversold readings:</b> VARSI might stay in overbought/oversold territory longer or reach it more decisively when volume confirms the move.</li>
+      <li> <b>Stronger divergence signals:</b> Divergences between price and VARSI gain more credibility when the volume component underscores the lack of conviction.</li>
+      <li> <b>Enhanced trend confirmation:</b> Momentum supported by volume is considered more sustainable.</li>
+    </ul>
+
+    <p>In Pine Script, implementing VARSI requires a custom calculation, as it's not a built-in indicator, but it leverages Pine Script's powerful functions for RSI-like smoothing and volume data.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Volume-Adjusted RSI builds upon the traditional RSI formula by introducing a volume weighting step. Here's a breakdown:</p>
+    <ol>
+      <li> <b>Price Change Calculation:</b>
+        * `Up_Change = max(close - close[1], 0)` (positive price difference, 0 if negative)
+        * `Down_Change = max(close[1] - close, 0)` (positive price difference on down days, 0 if up)
+      </li>
+      <li> <b>Volume-Adjusted Price Change:</b> Each price change is multiplied by the current bar's volume.
+        * `Volume_Adj_Up = Up_Change * volume`
+        * `Volume_Adj_Down = Down_Change * volume`
+      </li>
+      <li> <b>Average Volume-Adjusted Gains and Losses:</b> These volume-adjusted changes are smoothed using a Reinforced Moving Average (`ta.rma`), similar to how RSI smooths its gains and losses.
+        * `Avg_Gain_Vol_Adj = ta.rma(Volume_Adj_Up, Length)`
+        * `Avg_Loss_Vol_Adj = ta.rma(Volume_Adj_Down, Length)`
+        (Where `Length` is the RSI period, typically 14)
+      </li>
+      <li> <b>Volume-Adjusted Relative Strength (VARS):</b> This is the ratio of the average volume-adjusted gain to the average volume-adjusted loss.
+        * `VARS = Avg_Gain_Vol_Adj / Avg_Loss_Vol_Adj`
+        * <b>Important:</b> Handle division by zero. If `Avg_Loss_Vol_Adj` is 0:
+            * If `Avg_Gain_Vol_Adj` is also 0, `VARS` is indeterminate (can default to 0 or 1).
+            * If `Avg_Gain_Vol_Adj` is > 0, `VARS` is considered infinite (leading to VARSI = 100).
+      </li>
+      <li> <b>Volume-Adjusted RSI (VARSI):</b> The final VARSI value is calculated using the standard RSI formula:
+        <br>
+        `VARSI = 100 - (100 / (1 + VARS))`
+    </ol>
+    <p>The `Length` parameter is typically 14, mirroring the default RSI period.</p>
+
+    <h2>Basic Volume-Adjusted RSI (VARSI) Implementation in Pine Script</h2>
+    <p>Implementing VARSI in Pine Script involves a custom calculation leveraging `ta.rma()` and careful handling of potential division by zero.</p>
+
+    <pre><code>//@version=5
+indicator("My Volume-Adjusted RSI (VARSI)", overlay=false) // overlay=false to plot in a separate pane
+
+// Input for VARSI length (smoothing period, similar to standard RSI)
+length = input.int(14, title="VARSI Length", minval=1)
+
+// Calculate price changes
+up_change = math.max(close - close[1], 0)
+down_change = math.max(close[1] - close, 0)
+
+// Calculate volume-adjusted price changes
+volume_adj_up = up_change * volume
+volume_adj_down = down_change * volume
+
+// Calculate average volume-adjusted gains and losses using RMA (Wilder's smoothing)
+avg_gain_vol_adj = ta.rma(volume_adj_up, length)
+avg_loss_vol_adj = ta.rma(volume_adj_down, length)
+
+// Calculate Volume-Adjusted Relative Strength (VARS)
+// Handle division by zero for avg_loss_vol_adj
+vars = if avg_loss_vol_adj != 0
+    avg_gain_vol_adj / avg_loss_vol_adj
+else
+    // If avg_loss_vol_adj is 0:
+    // If avg_gain_vol_adj is positive, RSI is 100
+    // If avg_gain_vol_adj is 0, RSI is 50 (or some other neutral value)
+    // Here, we'll set VARS to a large number if only gains, effectively making VARSI 100.
+    // If both are 0, VARS should be 1 (VARSI 50), which happens if no movement.
+    // Given the `max(val, 0)` and `rma` logic, if avg_loss_vol_adj is 0, avg_gain_vol_adj must be >= 0.
+    // So if avg_gain_vol_adj > 0 and avg_loss_vol_adj == 0, it means all bars were up or flat, RSI is 100.
+    // If both are 0, means all bars were flat, RSI is 50.
+    if avg_gain_vol_adj > 0
+        1000000000.0 // A very large number to make VARSI close to 100
+    else
+        1.0 // Both are 0, represents neutral, so VARSI will be 50
+
+// Calculate Volume-Adjusted RSI (VARSI)
+v_rsi = 100 - (100 / (1 + vars))
+
+// Plot the VARSI line
+plot(v_rsi, title="Volume-Adjusted RSI", color=color.blue, linewidth=2)
+
+// Plot standard RSI levels
+hline(70, "Overbought", color=color.red, linestyle=hline.style_dashed)
+hline(30, "Oversold", color=color.green, linestyle=hline.style_dashed)
+hline(50, "Mid-Line", color=color.gray, linestyle=hline.style_dotted)
+
+// Highlight overbought/oversold zones for clarity
+bgcolor(v_rsi > 70 ? color.new(color.red, 90) : na, title="Overbought Zone")
+bgcolor(v_rsi &lt; 30 ? color.new(color.green, 90) : na, title="Oversold Zone")
+</code></pre>
+
+    <div class="tip">
+      <strong>Volume Power:</strong> VARSI's key advantage is that it gives more weight to price movements that are supported by higher volume, potentially making its signals for overbought/oversold conditions and divergences more reliable.
+    </div>
+
+    <h2>Practical Volume-Adjusted RSI (VARSI) Trading Strategies</h2>
+
+    <h3>1. Overbought/Oversold Signals with Volume Conviction</h3>
+    <p>VARSI can be used in a similar way to traditional RSI for identifying potential reversal points, but with the added confidence that the extreme readings are backed by significant volume.</p>
+    <ul>
+      <li><strong>Sell Signal (Overbought)</strong>: VARSI moves into overbought territory (e.g., above 70) and then turns down. This suggests that the buying pressure, even when volume-adjusted, is becoming unsustainable.</li>
+      <li><strong>Buy Signal (Oversold)</strong>: VARSI moves into oversold territory (e.g., below 30) and then turns up. This suggests that the selling pressure, even when volume-adjusted, is exhausting.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("VARSI Overbought/Oversold Strategy", overlay=true)
+
+length = input.int(14, title="VARSI Length", minval=1)
+obLevel = input.int(70, title="Overbought Level", minval=50, maxval=90)
+osLevel = input.int(30, title="Oversold Level", minval=10, maxval=50)
+
+up_change = math.max(close - close[1], 0)
+down_change = math.max(close[1] - close, 0)
+volume_adj_up = up_change * volume
+volume_adj_down = down_change * volume
+avg_gain_vol_adj = ta.rma(volume_adj_up, length)
+avg_loss_vol_adj = ta.rma(volume_adj_down, length)
+
+vars = if avg_loss_vol_adj != 0
+    avg_gain_vol_adj / avg_loss_vol_adj
+else if avg_gain_vol_adj > 0
+    1000000000.0
+else
+    1.0
+
+v_rsi = 100 - (100 / (1 + vars))
+
+plot(v_rsi, "VARSI", color=color.blue, display=display.pane_only)
+hline(obLevel, "Overbought", color=color.red, linestyle=hline.style_dashed, display=display.pane_only)
+hline(osLevel, "Oversold", color=color.green, linestyle=hline.style_dashed, display=display.pane_only)
+
+// Long entry: VARSI crosses above oversold level
+longCondition = ta.crossover(v_rsi, osLevel)
+
+// Short entry: VARSI crosses below overbought level
+shortCondition = ta.crossunder(v_rsi, obLevel)
+
+if (longCondition)
+    strategy.entry("Long VARSI", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short VARSI", strategy.short)
+
+// Basic exit: opposite signal
+strategy.close("Long VARSI", when=shortCondition)
+strategy.close("Short VARSI", when=longCondition)
+    </code></pre>
+
+    <h3>2. Divergence (Enhanced Reversal Signal)</h3>
+    <p>Divergence between price and VARSI is a particularly strong signal, as it indicates a disconnect between price action and the underlying volume-weighted momentum. This adds conviction to the potential for a trend reversal.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but VARSI makes a <b>higher low</b> (or fails to make a significantly lower low). This implies that despite falling prices, the volume-adjusted selling momentum is weakening, hinting at an upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but VARSI makes a <b>lower high</b> (or fails to make a significantly higher high). This implies that despite rising prices, the volume-adjusted buying momentum is weakening, hinting at a downward reversal.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("VARSI Divergence Strategy", overlay=true)
+
+length = input.int(14, title="VARSI Length", minval=1)
+
+up_change = math.max(close - close[1], 0)
+down_change = math.max(close[1] - close, 0)
+volume_adj_up = up_change * volume
+volume_adj_down = down_change * volume
+avg_gain_vol_adj = ta.rma(volume_adj_up, length)
+avg_loss_vol_adj = ta.rma(volume_adj_down, length)
+
+vars = if avg_loss_vol_adj != 0
+    avg_gain_vol_adj / avg_loss_vol_adj
+else if avg_gain_vol_adj > 0
+    1000000000.0
+else
+    1.0
+
+v_rsi = 100 - (100 / (1 + vars))
+
+plot(v_rsi, "VARSI", color=color.blue, display=display.pane_only)
+hline(70, "Overbought", color=color.red, linestyle=hline.style_dashed, display=display.pane_only)
+hline(30, "Oversold", color=color.green, linestyle=hline.style_dashed, display=display.pane_only)
+
+// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)
+// This example looks for recent higher/lower swings in price and VARSI.
+
+// Bullish Divergence: Price lower low, VARSI higher low
+bullishDiv = close &lt; close[1] and close[1] &lt; close[2] and v_rsi > v_rsi[1] and v_rsi[1] > v_rsi[2]
+
+// Bearish Divergence: Price higher high, VARSI lower high
+bearishDiv = close > close[1] and close[1] > close[2] and v_rsi &lt; v_rsi[1] and v_rsi[1] &lt; v_rsi[2]
+
+// Plot shapes on the chart to indicate divergence
+plotshape(bullishDiv, title="Bullish VARSI Divergence", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(bearishDiv, title="Bearish VARSI Divergence", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+if (bullishDiv)
+    strategy.entry("Long Divergence", strategy.long)
+if (bearishDiv)
+    strategy.entry("Short Divergence", strategy.short)
+
+// Basic exit after a few bars or on opposite signal
+strategy.exit("Long Divergence Exit", from_entry="Long Divergence", profit=close*0.02, loss=close*0.01)
+strategy.exit("Short Divergence Exit", from_entry="Short Divergence", profit=close*0.02, loss=close*0.01)
+    </code></pre>
+
+    <h3>3. Trend Confirmation with VARSI's Mid-Line</h3>
+    <p>Similar to standard RSI, VARSI can be used to confirm the prevailing trend. Its mid-line (50 level) acts as a key separator between bullish and bearish momentum backed by volume.</p>
+    <ul>
+      <li><strong>Uptrend Confirmation</strong>: VARSI consistently stays <b>above the 50 level</b>. This suggests that volume-adjusted buying momentum is dominant, confirming an uptrend.</li>
+      <li><strong>Downtrend Confirmation</strong>: VARSI consistently stays <b>below the 50 level</b>. This suggests that volume-adjusted selling momentum is dominant, confirming a downtrend.</li>
+      <li><strong>Mid-Line Crossover</strong>: A crossover of the 50 level can signal a shift in the prevailing volume-adjusted momentum bias.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("VARSI Mid-Line Trend Strategy", overlay=true)
+
+length = input.int(14, title="VARSI Length", minval=1)
+
+up_change = math.max(close - close[1], 0)
+down_change = math.max(close[1] - close, 0)
+volume_adj_up = up_change * volume
+volume_adj_down = down_change * volume
+avg_gain_vol_adj = ta.rma(volume_adj_up, length)
+avg_loss_vol_adj = ta.rma(volume_adj_down, length)
+
+vars = if avg_loss_vol_adj != 0
+    avg_gain_vol_adj / avg_loss_vol_adj
+else if avg_gain_vol_adj > 0
+    1000000000.0
+else
+    1.0
+
+v_rsi = 100 - (100 / (1 + vars))
+
+plot(v_rsi, "VARSI", color=color.blue, display=display.pane_only)
+hline(50, "Mid-Line", color=color.gray, linestyle=hline.style_dotted, linewidth=2, display=display.pane_only)
+
+// Long entry: VARSI crosses above 50
+longCondition = ta.crossover(v_rsi, 50)
+
+// Short entry: VARSI crosses below 50
+shortCondition = ta.crossunder(v_rsi, 50)
+
+if (longCondition)
+    strategy.entry("Long Mid-Line", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short Mid-Line", strategy.short)
+
+// Basic exit: opposite signal
+strategy.close("Long Mid-Line", when=shortCondition)
+strategy.close("Short Mid-Line", when=longCondition)
+
+// Color background based on VARSI's position relative to 50
+bgcolor(v_rsi > 50 ? color.new(color.lime, 95) : na, title="Bullish Momentum")
+bgcolor(v_rsi &lt; 50 ? color.new(color.maroon, 95) : na, title="Bearish Momentum")
+    </code></pre>
+
+    <h2>Optimizing Volume-Adjusted RSI (VARSI) Performance</h2>
+    <p>To get the most from Volume-Adjusted RSI in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter (commonly 14) directly impacts VARSI's sensitivity. Shorter lengths make it more reactive but potentially noisy. Longer lengths provide a smoother reading but with more lag. Experiment to find a balance for your asset and timeframe.</li>
+      <li><strong>Focus on Divergence:</strong> VARSI's key strength lies in its ability to confirm divergences with price due to the added volume component. These are often the most powerful and actionable signals.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm VARSI signals with <b>price action</b>. An overbought VARSI signal is stronger if price also forms a bearish reversal candlestick pattern or hits a resistance level.</li>
+      <li><strong>Volume Data Quality:</strong> VARSI's effectiveness is highly dependent on accurate and reliable volume data. Ensure the asset you are trading has consistent volume reporting.</li>
+      <li><strong>Adaptive Levels:</strong> While 70/30 are standard for RSI, the "overbought" and "oversold" levels for VARSI might need slight adjustment based on the asset's typical behavior and the impact of volume.</li>
+      <li><strong>Use as a Filter:</strong> VARSI can be used as a filter for other strategies. For example, only take long entries if VARSI is above 50 or showing bullish divergence.</li>
+    </ul>
+
+    <div class="tip">
+      <b>Conviction Check:</b> VARSI acts as a "conviction check" for momentum. Is the price movement genuinely supported by significant volume, or is it just noise? VARSI helps answer that.
+    </div>
+
+    <h2>Common Volume-Adjusted RSI (VARSI) Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Despite being volume-adjusted, VARSI is still a lagging indicator. It will confirm momentum shifts after they have already begun.</li>
+      <li> <b>Whipsaws in Choppy Markets:</b> In highly volatile and non-trending (choppy) markets, VARSI can generate frequent crossovers and enter/exit overbought/oversold zones frequently, leading to false signals.</li>
+      <li> <b>Volume Data Consistency:</b> If volume data for an asset is inconsistent, sparse, or manipulated, VARSI's readings will be unreliable.</li>
+      <li> <b>Not a Standalone Indicator:</b> VARSI provides valuable insights but should never be used in isolation. It works best as a confirming or filtering indicator within a broader trading strategy.</li>
+      <li> <b>Interpretation Complexity:</b> For beginners, understanding the nuances of volume-adjusted momentum might be more challenging than a simple price-based RSI.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Volume-Adjusted RSI (VARSI) is a powerful and insightful momentum oscillator for Pine Script in TradingView. By integrating <b>volume weighting</b> into the traditional RSI calculation, it provides a more robust measure of overbought/oversold conditions, enhances the reliability of <b>divergence signals</b>, and offers a clearer confirmation of price trend conviction. While requiring a custom implementation and careful attention to its unique interpretation, VARSI serves as an excellent tool for traders seeking to validate momentum with underlying volume strength. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with price action and other technical analysis tools, you can leverage VARSI to significantly enhance your <b>pine script strategies</b> and gain a deeper understanding of true market strength.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

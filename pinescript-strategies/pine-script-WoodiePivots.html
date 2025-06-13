@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Woodie Pivots - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Woodie Pivots in Pine Script for TradingView - a type of pivot point emphasizing the closing price for identifying potential intraday support, resistance, and trading ranges.">
+    <meta name="keywords" content="pine script strategies, Woodie Pivots, tradingview indicator, technical analysis, support resistance, intraday trading, pivot levels, range trading, breakout trading">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Woodie Pivots - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Woodie Pivots in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Woodie Pivots - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-WoodiePivots.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Woodie Pivots ",
+      "description": "Comprehensive tutorial on implementing and using Woodie Pivots in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Woodie Pivots </h1>
+      <p class="blog-subtitle">Master this unique pivot point system in TradingView's Pine Script that emphasizes the previous day's closing price, making it particularly reactive for identifying intraday trading opportunities and trends.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What are Woodie Pivots?</h2>
+    <p> <b>Woodie Pivots</b> are a set of support and resistance levels primarily used by short-term traders, particularly intraday traders. They are distinct from Classic Pivots because their central Pivot Point calculation places a much heavier emphasis on the previous period's closing price. This makes Woodie Pivots highly reactive to recent market sentiment and momentum, as opposed to the broader average used in Classic Pivots.</p>
+
+    <p>Developed by Ken Wood, Woodie Pivots derive their levels from the previous day's (or chosen period's) High, Low, and Closing prices. They typically consist of a central Pivot Point (PP), two resistance levels (R1, R2), and two support levels (S1, S2). Some variations also include R3 and S3.</p>
+
+    <p>Traders primarily use Woodie Pivots for:</p>
+    <ul>
+      <li> <b>Intraday Trend Confirmation:</b> If price opens above PP and holds, it signals a bullish bias.</li>
+      <li> <b>Breakout Trading:</b> A decisive break of R1/S1 or R2/S2 can indicate strong continuation.</li>
+      <li> <b>Reversal Trading:</b> Identifying potential bounces off support or rejections from resistance.</li>
+      <li> <b>Setting Entry/Exit Points:</b> Providing clear reference points for order placement, especially for volatile assets.</li>
+    </ul>
+
+    <p>In Pine Script, Woodie Pivots offer a dynamic and responsive set of levels for short-term trading <b>pine script strategies</b>, particularly for those focusing on momentum and reactive trading.</p>
+
+    <h2>Components and Calculation (Woodie Pivots)</h2>
+    <p>Woodie Pivots are calculated using the previous period's High, Low, and Close prices, with the most significant difference being in the Pivot Point (PP) formula:</p>
+    <br>
+    Let `H`, `L`, `C` be the previous period's High, Low, and Close.
+
+    <ol>
+      <li> <b>Pivot Point (PP):</b> Woodie's PP strongly emphasizes the previous close.
+        <br>
+        `PP = (C * 2 + H + L) / 4`
+      </li>
+      <li> <b>First Resistance (R1):</b>
+        <br>
+        `R1 = (2 * PP) - Low`
+      </li>
+      <li> <b>First Support (S1):</b>
+        <br>
+        `S1 = (2 * PP) - High`
+      </li>
+      <li> <b>Second Resistance (R2):</b>
+        <br>
+        `R2 = PP + (High - Low)`
+        `R2 = PP + (R1 - PP)` (Alternative, based on PP and R1 distance)
+      </li>
+      <li> <b>Second Support (S2):</b>
+        <br>
+        `S2 = PP - (High - Low)`
+        `S2 = PP - (PP - S1)` (Alternative, based on PP and S1 distance)
+      </li>
+      <li> <b>Third Resistance (R3):</b>
+        <br>
+        `R3 = R2 + (High - Low)` (Often derived from R2 and Range)
+      </li>
+      <li> <b>Third Support (S3):</b>
+        <br>
+        `S3 = S2 - (High - Low)` (Often derived from S2 and Range)
+    </ol>
+    <p>These levels remain constant throughout the current trading day and are recalculated at the start of the next trading day (or chosen period).</p>
+
+    <h2>Basic Woodie Pivots Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.pivotpoints()` that can calculate various pivot types, including "Woodie". This simplifies the implementation significantly.</p>
+
+    <pre><code>//@version=5
+indicator("My Woodie Pivots", overlay=true, max_bars_back=500) // overlay=true to plot on price chart.
+
+// Input for the Pivot Point calculation timeframe
+// Woodie pivots are predominantly used for intraday trading, so "D" (Daily) is most common.
+pivotTimeframe = input.string("D", title="Pivot Timeframe", options=["D", "W", "M"])
+
+// Get the Pivot Points values using ta.pivotpoints() with "Woodie" type
+// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]
+[pp, r1, r2, r3, s1, s2, s3] = ta.pivotpoints("Woodie", pivotTimeframe, high, low, close, 1) // `1` indicates to look back 1 period for HLC
+
+// Plotting the Woodie Levels
+plot(pp,   title="Woodie PP",    color=color.purple,   linewidth=2, style=plot.style_stepline)
+plot(r1,   title="Woodie R1",    color=color.red,      linewidth=1, style=plot.style_stepline)
+plot(r2,   title="Woodie R2",    color=color.red,      linewidth=1, style=plot.style_stepline)
+plot(r3,   title="Woodie R3",    color=color.red,      linewidth=1, style=plot.style_stepline)
+plot(s1,   title="Woodie S1",    color=color.green,    linewidth=1, style=plot.style_stepline)
+plot(s2,   title="Woodie S2",    color=color.green,    linewidth=1, style=plot.style_stepline)
+plot(s3,   title="Woodie S3",    color=color.green,    linewidth=1, style=plot.style_stepline)
+
+// Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)
+var label pp_label = na
+var label r1_label = na
+var label r2_label = na
+var label r3_label = na
+var label s1_label = na
+var label s2_label = na
+var label s3_label = na
+
+// Check if it's the first bar of the new period (e.g., new day)
+isNewPeriod = ta.change(time(pivotTimeframe))
+
+if isNewPeriod
+    label.delete(pp_label)
+    label.delete(r1_label)
+    label.delete(r2_label)
+    label.delete(r3_label)
+    label.delete(s1_label)
+    label.delete(s2_label)
+    label.delete(s3_label)
+
+    pp_label := label.new(bar_index, pp, text="PP", style=label.style_label_left, color=color.new(color.purple, 70), textcolor=color.white)
+    r1_label := label.new(bar_index, r1, text="R1", style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+    r2_label := label.new(bar_index, r2, text="R2", style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+    r3_label := label.new(bar_index, r3, text="R3", style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+    s1_label := label.new(bar_index, s1, text="S1", style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+    s2_label := label.new(bar_index, s2, text="S2", style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+    s3_label := label.new(bar_index, s3, text="S3", style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+
+// Extend labels horizontally
+label.set_x(pp_label, bar_index)
+label.set_x(r1_label, bar_index)
+label.set_x(r2_label, bar_index)
+label.set_x(r3_label, bar_index)
+label.set_x(s1_label, bar_index)
+label.set_x(s2_label, bar_index)
+label.set_x(s3_label, bar_index)
+</code></pre>
+
+    <div class="tip">
+      <strong>Close Price Focus:</strong> Woodie Pivots' unique strength lies in their strong emphasis on the previous day's closing price in the Pivot Point calculation, making them very responsive to recent market sentiment.
+    </div>
+
+    <h2>Practical Woodie Pivots Trading Strategies</h2>
+
+    <h3>1. Pivot Point (PP) as Intraday Trend Bias</h3>
+    <p>The central Woodie Pivot Point (PP) is a crucial level. Price action relative to PP can strongly indicate the intraday trend bias.</p>
+    <ul>
+      <li> <b>Bullish Bias:</b> If price opens and holds <b>above the Woodie PP</b>, it suggests a bullish intraday bias. Traders would favor long opportunities at support levels or on pullbacks.</li>
+      <li> <b>Bearish Bias:</b> If price opens and holds <b>below the Woodie PP</b>, it suggests a bearish intraday bias. Traders would favor short opportunities at resistance levels or on rallies.</li>
+      <li> <b>PP Breakout:</b> A decisive break of the PP can signal a shift in the intraday trend.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("Woodie PP Trend Bias Strategy", overlay=true)
+
+pivotTimeframe = input.string("D", title="Pivot Timeframe", options=["D", "W", "M"])
+[pp, r1, r2, r3, s1, s2, s3] = ta.pivotpoints("Woodie", pivotTimeframe, high, low, close, 1)
+
+// Plotting (simplified for strategy example)
+plot(pp,   title="Woodie PP",    color=color.purple,   linewidth=2, style=plot.style_stepline)
+
+// Determine intraday bias based on price relative to PP
+isBullishBias = close > pp
+isBearishBias = close &lt; pp
+
+// Color background to easily visualize bias
+bgcolor(isBullishBias ? color.new(color.teal, 95) : na, title="Bullish Intraday Bias")
+bgcolor(isBearishBias ? color.new(color.maroon, 95) : na, title="Bearish Intraday Bias")
+
+// Simple entry/exit based on PP crossovers
+longCondition = ta.crossover(close, pp)
+shortCondition = ta.crossunder(close, pp)
+
+if (longCondition)
+    strategy.entry("Long PP Cross", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short PP Cross", strategy.short)
+
+// Basic exit: opposite signal
+strategy.close("Long PP Cross", when=shortCondition)
+strategy.close("Short PP Cross", when=longCondition)
+</code></pre>
+
+    <h3>2. Range Trading (Between S1 and R1)</h3>
+    <p>Woodie's R1 and S1 often define a narrow, high-probability range for mean-reverting strategies, especially if price opens within this range. The idea is that price is likely to revert towards the PP or the opposite level.</p>
+    <ul>
+      <li> <b>Buy Signal:</b> Price declines towards <b>S1</b> and shows bullish reversal patterns (e.g., hammer, engulfing, strong bounce). Aim for PP or R1. Stop loss just below S2.</li>
+      <li> <b>Sell Signal:</b> Price rallies towards <b>R1</b> and shows bearish reversal patterns (e.g., shooting star, engulfing, strong rejection). Aim for PP or S1. Stop loss just above R2.</li>
+      <li> <b>Consolidation:</b> If price frequently oscillates between S1 and R1, it indicates a range-bound market, suitable for mean reversion.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("Woodie Range Trading Strategy", overlay=true)
+
+pivotTimeframe = input.string("D", title="Pivot Timeframe", options=["D", "W", "M"])
+[pp, r1, r2, r3, s1, s2, s3] = ta.pivotpoints("Woodie", pivotTimeframe, high, low, close, 1)
+
+// Plotting (simplified for strategy example)
+plot(r1, title="R1", color=color.red, linewidth=1, style=plot.style_stepline)
+plot(s1, title="S1", color=color.green, linewidth=1, style=plot.style_stepline)
+plot(pp, title="PP", color=color.purple, linewidth=2, style=plot.style_stepline)
+
+// Check if price is within R1/S1 range (or near it)
+isPriceInInnerRange = close &lt; r1 and close > s1
+
+// Long entry: Price bounces from S1 (or near it) and is currently in inner range.
+// (Simplified: Price closes above S1 after touching it)
+longCondition = close > s1 and close[1] &lt;= s1[1] and isPriceInInnerRange[1]
+
+// Short entry: Price bounces from R1 (or near it) and is currently in inner range.
+// (Simplified: Price closes below R1 after touching it)
+shortCondition = close &lt; r1 and close[1] >= r1[1] and isPriceInInnerRange[1]
+
+if (longCondition)
+    strategy.entry("Long S1 Bounce", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short R1 Rejection", strategy.short)
+
+// Exit: Target PP or opposite pivot level. Stop loss beyond S2/R2.
+strategy.exit("Long S1 Bounce Exit", from_entry="Long S1 Bounce", profit=r1, stop=s2)
+strategy.exit("Short R1 Rejection Exit", from_entry="Short R1 Rejection", profit=s1, stop=r2)
+</code></pre>
+
+    <h3>3. Breakout Trading (Beyond R2 and S2)</h3>
+    <p>While Woodie Pivots are great for ranges, a strong breakout beyond R2 or S2 (and potentially R3/S3) with high volume can signal a powerful trending day, indicating that the previous day's range is being decisively overcome.</p>
+    <ul>
+      <li> <b>Buy Signal (Breakout):</b> Price breaks decisively <b>above R2</b> (or R3) with strong momentum and volume. This indicates a strong bullish trend.</li>
+      <li> <b>Sell Signal (Breakout):</b> Price breaks decisively <b>below S2</b> (or S3) with strong momentum and volume. This indicates a strong bearish trend.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("Woodie Breakout Strategy", overlay=true)
+
+pivotTimeframe = input.string("D", title="Pivot Timeframe", options=["D", "W", "M"])
+[pp, r1, r2, r3, s1, s2, s3] = ta.pivotpoints("Woodie", pivotTimeframe, high, low, close, 1)
+
+// Plotting (simplified for strategy example)
+plot(r2, title="R2", color=color.red, linewidth=2, style=plot.style_stepline)
+plot(s2, title="S2", color=color.green, linewidth=2, style=plot.style_stepline)
+
+// Breakout logic: Price closes decisively above/below R2 or S2
+longBreakoutCondition = close > r2 and close[1] &lt;= r2[1] // Price closes above R2 after being below
+shortBreakoutCondition = close &lt; s2 and close[1] >= s2[1] // Price closes below S2 after being above
+
+// Optional: Add volume confirmation for breakouts
+volumeFactor = input.float(1.5, title="Volume Confirmation Factor", minval=1.0, step=0.1)
+avgVolume = ta.sma(volume, 20) // Simple average volume for comparison
+isHighVolume = volume > avgVolume * volumeFactor
+
+if (longBreakoutCondition and isHighVolume)
+    strategy.entry("Long R2 Breakout", strategy.long)
+
+if (shortBreakoutCondition and isHighVolume)
+    strategy.entry("Short S2 Breakout", strategy.short)
+
+// Exit: Fixed profit/loss or target a fixed number of ATRs
+atrLength = input.int(14, title="ATR Length for Exits", minval=1)
+atrValue = ta.atr(atrLength)
+profitMultiplier = input.float(2.0, title="Profit Target (ATR)", minval=0.5, step=0.1)
+stopLossMultiplier = input.float(1.0, title="Stop Loss (ATR)", minval=0.1, step=0.1)
+
+strategy.exit("Long R2 Breakout Exit", from_entry="Long R2 Breakout", 
+             profit=strategy.position_avg_price + atrValue * profitMultiplier, 
+             stop=strategy.position_avg_price - atrValue * stopLossMultiplier)
+
+strategy.exit("Short S2 Breakout Exit", from_entry="Short S2 Breakout", 
+             profit=strategy.position_avg_price - atrValue * profitMultiplier, 
+             stop=strategy.position_avg_price + atrValue * stopLossMultiplier)
+</code></pre>
+
+    <h2>Optimizing Woodie Pivots Performance</h2>
+    <p>To get the most from Woodie Pivots in Pine Script:</p>
+    <ul>
+      <li> <b>Timeframe Selection:</b> Woodie Pivots are most effective for <b>intraday trading</b>. Using them on daily or weekly charts might provide less relevant signals as their responsiveness to the previous close is diluted over longer periods. Ensure your chart timeframe is lower (e.g., 5-min, 15-min, 1-hour) than the pivot calculation timeframe (typically "D").</li>
+      <li> <b>Confirmation is Key:</b> Never rely solely on Woodie Pivots. Always combine them with other indicators (e.g., candlestick patterns, volume, momentum oscillators like RSI, MACD) to confirm reversals or breakouts. High volume on a breakout from a pivot level adds significant credibility.</li>
+      <li> <b>Open and Close Relationship:</b> Pay attention to where the current bar opens and closes relative to the Woodie PP. An open above PP followed by a strong close above it further confirms bullish bias.</li>
+      <li> <b>Volatility Context:</b> Woodie Pivots are highly responsive. They work well in moderately volatile markets that tend to respect intraday levels. In extremely low-volatility markets, they might be too tight. In excessively high-volatility markets, price might blow through all levels quickly.</li>
+      <li> <b>Trade Entry/Exit Zones:</b> Think of Woodie levels as <b>zones</b> where price action is likely to react, rather than exact lines. Look for price to consolidate around these levels or form clear reversal/continuation patterns.</li>
+    </ul>
+
+    <div class="tip">
+      <b>Reactive to Recent Price:</b> Woodie Pivots' emphasis on the previous close makes them highly reactive to the most recent significant price data, which is ideal for short-term and active traders.
+    </div>
+
+    <h2>Common Woodie Pivots Pitfalls</h2>
+    <ul>
+      <li> <b>Timeframe Misuse:</b> Using Woodie Pivots on daily or higher timeframes, or trying to trade them on very low liquidity assets, will likely yield suboptimal results.</li>
+      <li> <b>False Signals/Whipsaws:</b> In very choppy markets or during strong news events, price can repeatedly cross Woodie levels, leading to whipsaws and false signals, especially the central PP.</li>
+      <li> <b>Over-Reliance:</b> Using Woodie Pivots as the sole decision-making tool without additional confirmation can lead to significant losses.</li>
+      <li> <b>Gap Risk:</b> Large overnight gaps can cause the current day's trading to occur far away from the calculated Woodie levels, making them less immediately relevant until price approaches them.</li>
+      <li> <b>Limited Beyond R2/S2 (or R3/S3):</b> Once price breaks beyond R2/S2 with strong momentum, it's considered to be in a trending market, and other trend-following tools might be more effective for targets.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Woodie Pivots are a dynamic and highly reactive set of support and resistance levels available in Pine Script for TradingView. By uniquely emphasizing the <b>previous day's closing price</b> in their calculation, they provide a sensitive framework for navigating intraday price movements, confirming trend biases, and identifying potential reversal or breakout opportunities. While primarily suited for short-term and active traders, their effectiveness is significantly enhanced when combined with other confirming indicators like candlestick patterns, volume, and momentum oscillators. By understanding their calculation, applying them to appropriate timeframes, and integrating them strategically into your <b>pine script strategies</b>, you can leverage Woodie Pivots to improve your entry/exit timing and manage risk in dynamic markets.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

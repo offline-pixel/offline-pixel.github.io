@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Gann Square of Nine - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Gann Square of Nine price levels in Pine Script for TradingView - a unique tool based on W.D. Gann's theories to identify potential support, resistance, and reversal points based on price and geometric relationships.">
+    <meta name="keywords" content="pine script strategies, Gann Square of Nine, Gann Theory, tradingview indicator, technical analysis, support resistance, price cycles, angle levels, square roots, turning points">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Gann Square of Nine - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Gann Square of Nine price levels in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Gann Square of Nine - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-GannSquareOfNine.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Gann Square of Nine ",
+      "description": "Comprehensive tutorial on implementing and using Gann Square of Nine price levels in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Gann Square of Nine </h1>
+      <p class="blog-subtitle">Master this advanced and unique technical analysis tool in TradingView's Pine Script that identifies key price levels based on W.D. Gann's geometric and numerical theories, revealing potential support, resistance, and turning points.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Expert</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is the Gann Square of Nine?</h2>
+    <p> <b>The Gann Square of Nine</b> is a unique and complex analytical tool developed by legendary trader W.D. Gann. It's a spiral of numbers where numbers are arranged in a clockwise spiral, starting from a central number (often 1). The key insight of the Square of Nine is that specific numbers (prices) that fall on certain angles (e.g., 90, 180, 270, 360 degrees, or cardinal and ordinal crosses) from a central starting point tend to act as significant support and resistance levels, and even indicate potential price reversals.</p>
+
+    <p>Gann believed that markets move in predictable, geometric patterns, and that there's a harmonious relationship between price and time. The Square of Nine attempts to reveal these hidden relationships. For traders, the practical application often involves:</p>
+    <ul>
+      <li> <b>Identifying potential support and resistance levels:</b> Prices falling on key angular lines from a significant high or low are considered strong levels.</li>
+      <li> <b>Predicting turning points:</b> When price approaches these angular levels, it's considered a potential area for reversal or acceleration.</li>
+      <li> <b>Understanding market harmony:</b> The belief that markets adhere to mathematical laws and cycles.</li>
+    </ul>
+
+    <p>It's crucial to understand that implementing the full visual and time-based complexity of Gann's Square of Nine in Pine Script is challenging. This guide will focus on calculating and plotting the <b>price levels</b> derived from the Square of Nine, based on a user-defined anchor price and scaling.</p>
+
+    <h2>Components and Calculation (Gann Square of Nine Price Levels)</h2>
+    <p>The core concept of the Gann Square of Nine for price levels is that square roots of prices, when plotted, form an arithmetic progression. Key levels are then derived from these square roots. A common way to calculate the significant angular price levels for a given `start_price` and a `box_size` (which represents the increment in the spiral) involves the following steps:</p>
+
+    <ol>
+      <li> <b>Normalize the Starting Price:</b> Divide the `start_price` by the `box_size`. This scales the price to fit the numerical spiral.
+        <br>
+        `Normalized_Price = start_price / box_size`
+      </li>
+      <li> <b>Find the Square Root:</b> Take the square root of the `Normalized_Price`.
+        <br>
+        `Root_Price = math.sqrt(Normalized_Price)`
+      </li>
+      <li> <b>Identify the Integer Roots:</b> Determine the integer part of the `Root_Price` and the next integer.
+        <br>
+        `N = math.floor(Root_Price)`
+        <br>
+        `N_plus_1 = N + 1`
+      </li>
+      <li> <b>Calculate Levels for the Current Cycle/Ring:</b> The levels are derived from `(N + X)^2 * box_size` or `(N_plus_1 + X)^2 * box_size`, where `X` represents fractional steps around the square (0.0 for 0 degrees, 0.125 for 45 degrees, 0.25 for 90 degrees, etc.).
+        <br>
+        This essentially means we calculate the prices corresponding to 0, 45, 90, 135, 180, 225, 270, 315, and 360 degrees based on the current spiral rotation relative to the `start_price`.
+      </li>
+    </ol>
+    <p>The `box_size` is a critical input that needs to be chosen carefully based on the asset's price scale (e.g., 1 for stocks trading in whole numbers, 0.1 for lower-priced stocks, 0.0001 for forex pairs). It defines the "step" around the square.</p>
+
+    <h2>Basic Gann Square of Nine Implementation in Pine Script</h2>
+    <p>Since Pine Script does not have a built-in `ta.gannSquareOfNine()` function, we will create a custom function to calculate these levels based on the described methodology. This indicator will plot horizontal lines at these calculated price levels.</p>
+
+    <pre>
+```pine
+//@version=5
+indicator("My Gann Square of Nine Levels", overlay=true, max_bars_back=500) // overlay=true to plot on price chart.
+
+// --- User Inputs ---
+// Anchor price: This is the central point from which the Gann Square is built.
+// It can be a significant swing high/low, or simply the current close.
+// Using `close` as default for dynamic adjustment.
+anchorPriceInput = input.float(close, title="Anchor Price (Start of Square)", tooltip="The central price from which Gann levels are calculated. Use 'close' for dynamic, or a fixed value for static.")
+
+// Box Size (Increment): This defines the step size around the square.
+// It's crucial for scaling the levels correctly for different assets.
+// Example: 1 for stocks, 0.01 for some forex pairs, etc.
+boxSize = input.float(1.0, title="Box Size / Increment", minval=0.000001, tooltip="The increment used in the Gann Square spiral (e.g., 1 for whole numbers, 0.0001 for 4-digit forex).")
+
+lineTransparency = input.int(10, title="Line Transparency (0-100)", minval=0, maxval=100)
+showLabels = input.bool(true, title="Show Level Labels")
+
+// Function to calculate a Gann Square of Nine price level for a given degree
+f_gann_level(currentPrice, boxSize, degree) =>
+    float normalizedPrice = currentPrice / boxSize
+    float sqrtNormalizedPrice = math.sqrt(normalizedPrice)
+
+    // Determine the 'ring' (integer part of the square root)
+    float n_val = math.floor(sqrtNormalizedPrice)
+
+    // Calculate the levels based on degrees.
+    // Each 45 degrees usually corresponds to a change of 0.125 in the square root for a full unit step.
+    // For Gann's methods, it's about movement around the spiral.
+    // The formula (N + angle_fraction)^2 * boxSize is a common way.
+    
+    // Adjust N based on whether currentPrice is in the inner or outer part of the current "ring"
+    // The '0 degree' point of a cycle is N*N. The '360 degree' point is (N+1)*(N+1).
+    // Determine which side of the spiral the current price is on to correctly locate its 'angle'.
+
+    // This is a common interpretation to find the 'base' value for the current cycle of the square
+    // to calculate the various degree levels around the current price.
+    float base_num = math.floor(sqrtNormalizedPrice)
+    float base_price = base_num * base_num * boxSize
+
+    float angle_step = 0.125 // Each 45 degrees is 1/8 of a unit in the square root domain (approx)
+
+    // Determine the precise start point of the current spiral based on the current price's position.
+    // If sqrtNormalizedPrice is between N and N+0.5, start is N*N.
+    // If sqrtNormalizedPrice is between N+0.5 and N+1, start is (N+0.5)^2 (mid-point of spiral direction change)
+    // This part is highly interpretive for dynamic Gann.
+    
+    // Let's use a simpler, more robust method for calculating discrete levels around the anchor price.
+    // We will calculate a set of levels around the anchor, for several "rings" or cycles.
+    // This is the most practical way to show Gann levels without trying to replicate the complex spiral drawing.
+
+    float result_price = na
+
+    // Calculate levels for several steps (e.g., 0, 45, 90, 135, 180, 225, 270, 315, 360 degrees)
+    // around the current "root" derived from the anchor price.
+    // This loop effectively calculates levels for the 'current' ring and some adjacent rings.
+
+    float angle_root_step = 0.125 // Equivalent to 45 degrees in a 360-degree cycle of the square.
+    
+    // Find the closest perfect square root to the anchor price.
+    float root_around_anchor = math.round(sqrtNormalizedPrice / angle_root_step) * angle_root_step
+
+    // Calculate level based on the root and the desired degree.
+    // Degree 0 (0 degrees) corresponds to (root_around_anchor)^2.
+    // Degree 45 (45 degrees) corresponds to (root_around_anchor + angle_root_step)^2.
+    // And so on for all 8 positions plus the current one.
+    
+    // To generate fixed levels, we need to pick a reference point for the "0 degree" of a square.
+    // Let's take the floor of sqrt(anchorPrice) as the base root.
+    float base_gann_root = math.floor(math.sqrt(anchorPrice / boxSize))
+
+    // Calculate the actual price corresponding to a specific angle from this base root.
+    // The sequence is: (base_gann_root + (angle / 360) * 2)^2 * boxSize if moving outwards.
+    // Or simpler: for each full rotation (360 degrees), the root increases by 1.
+    // So 45 degrees is 1/8th of a root increment.
+    
+    // This is a common way to calculate the 8 cardinal/ordinal levels for a single cycle:
+    // (N + 0/8)^2, (N + 1/8)^2, ..., (N + 7/8)^2 * boxSize
+    // AND the (N+1)^2 * boxSize level for the completion of the cycle.
+    
+    // Let's get the levels relative to the current anchor price
+    // We will calculate a series of levels, extending a few "rings" outwards from the anchor.
+    
+    float initial_sqrt = math.sqrt(math.abs(anchorPrice / boxSize)) // Use abs for safety
+    if initial_sqrt == 0
+        initial_sqrt = 0.001 // Prevent division by zero later if anchor is zero or too small
+
+    // Calculate levels for multiple cycles above and below the anchor.
+    // We'll aim to calculate levels for a few rings for visual breadth.
+    float calculated_level = na
+    float current_degree_step = degree / 360.0 // Normalize degree to a fraction of a circle
+
+    // The formula is often (sqrt(anchor) +/- N +/- angle_fraction)^2
+    // Let's generate levels symmetrically around the `anchorPrice`.
+    // Generate levels based on common Gann square roots progression:
+    // sqrt_price +/- 0.5, sqrt_price +/- 1.0, sqrt_price +/- 1.5, ...
+    
+    // This formula calculates a specific level based on an integer root `n_` and an angle
+    // It's a common interpretation of Gann Square levels
+    float n_ = math.round(math.sqrt(currentPrice / boxSize))
+    
+    if (degree == 0) // 0 degrees
+        calculated_level = (n_ * n_) * boxSize
+    else if (degree == 45) // 45 degrees
+        calculated_level = (n_ + 0.125) * (n_ + 0.125) * boxSize
+    else if (degree == 90) // 90 degrees
+        calculated_level = (n_ + 0.25) * (n_ + 0.25) * boxSize
+    else if (degree == 135) // 135 degrees
+        calculated_level = (n_ + 0.375) * (n_ + 0.375) * boxSize
+    else if (degree == 180) // 180 degrees
+        calculated_level = (n_ + 0.5) * (n_ + 0.5) * boxSize
+    else if (degree == 225) // 225 degrees
+        calculated_level = (n_ + 0.625) * (n_ + 0.625) * boxSize
+    else if (degree == 270) // 270 degrees
+        calculated_level = (n_ + 0.75) * (n_ + 0.75) * boxSize
+    else if (degree == 315) // 315 degrees
+        calculated_level = (n_ + 0.875) * (n_ + 0.875) * boxSize
+    else if (degree == 360) // 360 degrees (completion of cycle)
+        calculated_level = (n_ + 1) * (n_ + 1) * boxSize
+    else
+        calculated_level = na // Invalid degree
+
+    calculated_level
+
+
+// Store the dynamically calculated levels for the current bar
+// We use `var` to ensure these values are stored across bars until a new `anchorPriceInput` is detected
+var float gann_level_0 = na
+var float gann_level_45 = na
+var float gann_level_90 = na
+var float gann_level_135 = na
+var float gann_level_180 = na
+var gann_level_225 = na
+var gann_level_270 = na
+var gann_level_315 = na
+var gann_level_360 = na
+
+// Only recalculate when the anchor price changes (or on the first bar)
+if barstate.isfirst or ta.change(anchorPriceInput) or ta.change(boxSize)
+    gann_level_0 = f_gann_level(anchorPriceInput, boxSize, 0)
+    gann_level_45 = f_gann_level(anchorPriceInput, boxSize, 45)
+    gann_level_90 = f_gann_level(anchorPriceInput, boxSize, 90)
+    gann_level_135 = f_gann_level(anchorPriceInput, boxSize, 135)
+    gann_level_180 = f_gann_level(anchorPriceInput, boxSize, 180)
+    gann_level_225 = f_gann_level(anchorPriceInput, boxSize, 225)
+    gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)
+    gann_level_315 = f_gann_level(anchorPriceInput, boxSize, 315)
+    gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)
+
+
+// Plotting the Gann Levels
+plot(gann_level_0,   title="Gann 0/360 Deg", color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_45,  title="Gann 45 Deg",  color=color.new(color.orange, lineTransparency), linewidth=1, style=plot.style_stepline)
+plot(gann_level_90,  title="Gann 90 Deg",  color=color.new(color.red, lineTransparency),    linewidth=2, style=plot.style_stepline) // Strong level
+plot(gann_level_135, title="Gann 135 Deg", color=color.new(color.yellow, lineTransparency), linewidth=1, style=plot.style_stepline)
+plot(gann_level_180, title="Gann 180 Deg", color=color.new(color.purple, lineTransparency), linewidth=2, style=plot.style_stepline) // Strong level
+plot(gann_level_225, title="Gann 225 Deg", color=color.new(color.aqua, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_270, title="Gann 270 Deg", color=color.new(color.blue, lineTransparency),   linewidth=2, style=plot.style_stepline) // Strong level
+plot(gann_level_315, title="Gann 315 Deg", color=color.new(color.lime, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_360, title="Gann 360 Deg", color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline) // Same as 0, completion
+
+// --- Optional: Add Labels to Lines ---
+if showLabels and barstate.islast
+    // Only draw labels on the current (last) bar for clarity
+    label.new(x=bar_index, y=gann_level_0,   text="0°", style=label.style_label_right, color=color.new(color.gray, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_45,  text="45°", style=label.style_label_right, color=color.new(color.orange, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_90,  text="90°", style=label.style_label_right, color=color.new(color.red, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_135, text="135°", style=label.style_label_right, color=color.new(color.yellow, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_180, text="180°", style=label.style_label_right, color=color.new(color.purple, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_225, text="225°", style=label.style_label_right, color=color.new(color.aqua, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_270, text="270°", style=label.style_label_right, color=color.new(color.blue, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_315, text="315°", style=label.style_label_right, color=color.new(color.lime, 70), textcolor=color.white, size=size.small)
+    label.new(x=bar_index, y=gann_level_360, text="360°", style=label.style_label_right, color=color.new(color.gray, 70), textcolor=color.white, size=size.small)
+
+
+// --- Simple Strategy Example (Conceptual) ---
+// This strategy demonstrates how you might react to Gann Square of Nine levels.
+// It is highly simplified and for educational purposes only.
+// Real trading strategies require more complex confirmation and context.
+
+strategy("Gann Square of Nine Strategy", overlay=true)
+
+// Re-calculate the current Gann levels for strategy logic if not already calculated
+// (Ensures they are available to the strategy, though usually would be done once in indicator)
+// For a strategy, you'd typically want to ensure the anchor is well-defined and stable.
+// Using `request.security` on a higher timeframe for anchor for more stability is common.
+var float strat_gann_level_90 = na
+var float strat_gann_level_180 = na
+var float strat_gann_level_270 = na
+var float strat_gann_level_360 = na // Or 0 degrees
+
+if barstate.islast or ta.change(anchorPriceInput) or ta.change(boxSize)
+    strat_gann_level_90 = f_gann_level(anchorPriceInput, boxSize, 90)
+    strat_gann_level_180 = f_gann_level(anchorPriceInput, boxSize, 180)
+    strat_gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)
+    strat_gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)
+
+// Strategy Logic: Simple bounces off 90/270 and 180/360 degrees (strong levels)
+// We assume 90/270 are key resistance/support points, and 180/360 are strong reversal/continuation points.
+
+// Long Entry: Price bounces from 270 degrees (support)
+// Simplified: Price closes above 270 after being below
+longCondition = close > strat_gann_level_270 and close[1] &lt;= strat_gann_level_270[1]
+
+// Short Entry: Price rejects from 90 degrees (resistance)
+// Simplified: Price closes below 90 after being above
+shortCondition = close &lt; strat_gann_level_90 and close[1] >= strat_gann_level_90[1]
+
+if (longCondition and not na(strat_gann_level_270) and not na(strat_gann_level_360))
+    strategy.entry("Long Gann 270", strategy.long)
+
+if (shortCondition and not na(strat_gann_level_90) and not na(strat_gann_level_0))
+    strategy.entry("Short Gann 90", strategy.short)
+
+// Exit Logic: Target the next major Gann level (e.g., 360/0 or 180) or a fixed ATR stop loss.
+// For long: Target 360 degrees (or 0 degrees of next cycle), stop loss below 270.
+// For short: Target 0 degrees (or 360 degrees of previous cycle), stop loss above 90.
+
+// Using fixed profit/loss targets for simplicity, adjust as needed.
+profitTargetPoints = input.float(2.0, title="Profit Target (Points)", minval=0.1)
+stopLossPoints = input.float(1.0, title="Stop Loss (Points)", minval=0.1)
+
+strategy.exit("Long Gann 270 Exit", from_entry="Long Gann 270", profit=strategy.position_avg_price + profitTargetPoints, stop=strategy.position_avg_price - stopLossPoints)
+strategy.exit("Short Gann 90 Exit", from_entry="Short Gann 90", profit=strategy.position_avg_price - profitTargetPoints, stop=strategy.position_avg_price + stopLossPoints)
+```
+</pre>
+
+    <h2>Optimizing Gann Square of Nine Performance</h2>
+    <p>To get the most from Gann Square of Nine levels in Pine Script:</p>
+    <ul>
+      <li> <b>Anchor Price Selection:</b> The choice of the `anchorPriceInput` is paramount. It should typically be a significant swing high or low from which a new move is expected. Using a dynamic `close` as the anchor will make the levels constantly shift, which can be useful for very short-term, reactive strategies but might not capture the long-term harmonic relationships Gann envisioned. Consider using `request.security` to fetch a significant high/low from a higher timeframe for a more stable anchor.</li>
+      <li> <b>Box Size (Increment) Tuning:</b> The `boxSize` is crucial for the indicator's relevance. It determines the "step" or "increment" between the numbers in the Gann spiral. Experiment to find a `boxSize` that makes the lines visually meaningful for your asset. For example, for a stock like AAPL, a `boxSize` of 1 might be appropriate, while for EURUSD, it might be 0.0001. Incorrect `boxSize` will render the levels irrelevant.</li>
+      <li> <b>Confluence is Key:</b> Gann's theories are complex and rarely used in isolation. The Gann Square of Nine levels become much more powerful when they align (show "confluence") with other forms of support/resistance:
+        <ul>
+          <li>Traditional Pivot Points (Classic, Camarilla, Woodie)</li>
+          <li>Fibonacci Retracements/Extensions</li>
+          <li>Significant historical highs/lows</li>
+          <li>Moving Averages</li>
+          <li>Trendlines</li>
+        </ul>
+        A price reaction at a Gann level that also coincides with a strong trendline is a high-probability signal.</li>
+      <li> <b>Price Action Confirmation:</b> Always confirm price reactions at Gann levels with strong candlestick patterns (e.g., bullish engulfing, hammer at support; bearish engulfing, shooting star at resistance) and volume. A clear reversal pattern or a strong breakout with increased volume at a Gann level adds significant credibility.</li>
+      <li> <b>Understanding Angle Interpretations:</b> Each angle (0°, 45°, 90°, etc.) on the Gann Square has specific interpretations regarding its strength as support/resistance and its role in price movement. 90°, 180°, 270°, and 360° (or 0°) are generally considered the strongest cardinal levels, while 45°, 135°, 225°, and 315° are ordinal levels.</li>
+      <li> <b>Time Cycles (Advanced):</b> While this implementation focuses on price levels, true Gann analysis often integrates time cycles (e.g., 90 calendar days, 180 calendar days from a major turning point). This requires advanced Pine Script coding beyond simple horizontal lines.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Geometric Harmony:</strong> Gann's Square of Nine is rooted in the belief that markets move in predictable, geometric patterns and that specific price levels and timeframes are harmonically related. This indicator helps visualize those price harmonics.
+    </div>
+
+    <h2>Common Gann Square of Nine Pitfalls</h2>
+    <ul>
+      <li> <b>Subjectivity and Complexity:</b> Gann's methods are highly subjective and complex. The "correct" `anchorPriceInput` and `boxSize` can be difficult to determine, and different interpretations exist, leading to varying results.</li>
+      <li> <b>Not a Guaranteed System:</b> Gann's tools are not infallible. Price can, and often will, move through Gann levels without reaction, especially during periods of high volatility or fundamental news.</li>
+      <li> <b>Over-Reliance:</b> Using Gann Square of Nine as the sole decision-making tool without additional confirmation from other technical or fundamental analysis can lead to poor trading decisions and significant losses.</li>
+      <li> <b>Lack of Standardization:</b> Unlike traditional indicators (e.g., RSI, MACD), there isn't one single, universally accepted formula for the Gann Square of Nine. Implementations can vary.</li>
+      <li> <b>Lagging Element (for Anchor):</b> If the `anchorPriceInput` is based on historical data (e.g., a past swing high/low), the levels derived from it are somewhat static and historical, though they are believed to influence future price.</li>
+      <li> <b>Visual Clutter:</b> Plotting too many levels or using incorrect parameters can clutter the chart, making it difficult to read price action clearly.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Gann Square of Nine, as implemented in Pine Script, offers a fascinating and advanced approach to identifying potential support and resistance levels based on W.D. Gann's profound theories. By calculating specific price points corresponding to geometric angles around a chosen anchor, this indicator provides a unique framework for understanding market structure and anticipating turning points. While demanding careful selection of the `anchorPriceInput` and `boxSize`, and requiring diligent confirmation from other technical analysis tools and price action, mastering the Gann Square of Nine can significantly enhance your <b>pine script strategies</b>. By integrating these harmonically derived levels into your trading plan, you can gain a deeper and more nuanced understanding of market dynamics and improve your timing for entries and exits.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

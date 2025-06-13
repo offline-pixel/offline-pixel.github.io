@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Fibonacci Retracements - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Fibonacci Retracements in Pine Script for TradingView - a powerful tool for identifying potential support and resistance levels during price pullbacks within a trend.">
+    <meta name="keywords" content="pine script strategies, Fibonacci Retracements, Fibo levels, tradingview indicator, technical analysis, support resistance, trend continuation, reversal points, Fibonacci ratios, swing trading">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Fibonacci Retracements - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Fibonacci Retracements in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Fibonacci Retracements - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-FibonacciRetracements.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Fibonacci Retracements ",
+      "description": "Comprehensive tutorial on implementing and using Fibonacci Retracements in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Fibonacci Retracements </h1>
+      <p class="blog-subtitle">Master this powerful technical analysis tool in TradingView's Pine Script that identifies key potential support and resistance levels during price pullbacks within a trend, based on mathematical ratios.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What are Fibonacci Retracements?</h2>
+    <p> <b>Fibonacci Retracements</b> are horizontal lines used in technical analysis that indicate potential support and resistance levels. They are derived from the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...) where each number is the sum of the two preceding ones. The key ratios used in retracements are obtained by dividing a number in the sequence by the number that follows it (e.g., 34/55 ≈ 0.618 or 61.8%), or by two numbers after it (e.g., 34/89 ≈ 0.382 or 38.2%).</p>
+
+    <p>These levels are drawn by taking two extreme points (a swing high and a swing low) on a chart and then drawing horizontal lines at the classic Fibonacci ratios: <b>23.6%, 38.2%, 50% (not a Fibonacci ratio, but commonly included), 61.8%, and 78.6% (sometimes 76.4%)</b>. The idea is that after a significant price move (impulse wave), price will often retrace a portion of that move to one of these Fibonacci levels before continuing in its original direction.</p>
+
+    <p>Fibonacci Retracements are primarily used to:</p>
+    <ul>
+      <li> <b>Identify potential entry points:</b> During a pullback, price might find support/resistance at a Fibonacci level, offering an entry opportunity for trend continuation.</li>
+      <li> <b>Set profit targets:</b> Traders might use these levels as areas to take partial or full profits on existing positions.</li>
+      <li> <b>Place stop-loss orders:</b> A stop-loss could be placed just beyond a critical Fibonacci level.</li>
+      <li> <b>Confirm trend strength:</b> A strong bounce from a key Fibonacci level (e.g., 50% or 61.8%) can confirm the underlying trend.</li>
+    </ul>
+
+    <p>In Pine Script, implementing Fibonacci Retracements involves identifying the swing points and then drawing dynamic lines based on these calculated ratios.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>To calculate Fibonacci Retracement levels, you first need to identify a <b>significant price swing</b>, which means a distinct high and a distinct low. Once these are defined, the levels are calculated as follows:</p>
+    <br>
+    <b>For an Uptrend (Price retracing downwards from a high):</b>
+    * `Retracement Level = High_Price - (High_Price - Low_Price) * Fibonacci_Ratio`
+    <br>
+    <b>For a Downtrend (Price retracing upwards from a low):</b>
+    * `Retracement Level = Low_Price + (High_Price - Low_Price) * Fibonacci_Ratio`
+    <br>
+    Common Fibonacci Ratios:
+    * <b>0.236 (23.6%)</b>
+    * <b>0.382 (38.2%)</b>
+    * <b>0.500 (50%)</b> - Often called the "mid-point" or "half-back"
+    * <b>0.618 (61.8%)</b> - Known as the "Golden Ratio"
+    * <b>0.786 (78.6%)</b> - Square root of 0.618, also commonly used.
+
+    <p>To implement this dynamically in Pine Script, we often use `ta.highest()` and `ta.lowest()` to find a significant swing within a specified lookback period.</p>
+
+    <h2>Basic Fibonacci Retracements Implementation in Pine Script</h2>
+    <p>Since Pine Script doesn't have a direct `ta.fibonacciRetracements()` function that automatically draws these levels in the way users might manually, we'll create a custom indicator that finds the highest high and lowest low within a user-defined lookback period and then plots the Fibonacci levels dynamically from those points.</p>
+
+    <pre><code>//@version=5
+indicator("My Fibonacci Retracements", overlay=true, max_bars_back=500) // overlay=true to plot on price chart.
+
+// --- User Inputs ---
+lookbackPeriod = input.int(50, title="Lookback Period for Swing", minval=10, maxval=500)
+showLevels = input.bool(true, title="Show Fibonacci Levels")
+showLabels = input.bool(true, title="Show Level Labels")
+
+// --- Define Fibonacci Ratios ---
+fib0 = 0.0
+fib236 = 0.236
+fib382 = 0.382
+fib500 = 0.500
+fib618 = 0.618
+fib786 = 0.786
+fib100 = 1.0
+
+// --- Identify Swing High and Swing Low within the lookback period ---
+// Find the highest high and lowest low within the last 'lookbackPeriod' bars
+hh = ta.highest(high, lookbackPeriod)
+ll = ta.lowest(low, lookbackPeriod)
+
+// Find the bar_index where the highest high and lowest low occurred
+hh_idx = ta.highestbars(high, lookbackPeriod) // Returns negative offset from current bar
+ll_idx = ta.lowestbars(low, lookbackPeriod)   // Returns negative offset from current bar
+
+// Get the actual high and low values at those specific bar indices
+current_hh_val = hh
+current_ll_val = ll
+
+// Determine the direction of the main swing for drawing retracements
+// If the highest high occurred AFTER the lowest low within the period, it's an UP swing.
+// If the lowest low occurred AFTER the highest high within the period, it's a DOWN swing.
+// This logic is crucial to draw retracements correctly.
+
+// Using `nz()` for historical reference and `time` to check if a new swing has started
+var float swingHighPrice = na
+var float swingLowPrice = na
+var int swingHighBarIndex = na
+var int swingLowBarIndex = na
+var string swingDirection = na // "up" or "down"
+
+// Logic to identify a new significant swing based on the highest/lowest within lookback
+// This is a simplified approach. More robust pivot detection can be used.
+
+// Check if a new swing high has formed and it's higher than the previous one
+if (high == hh and bar_index == bar_index[lookbackPeriod - abs(hh_idx)]) // hh_idx is negative offset, so subtract
+    swingHighPrice := high
+    swingHighBarIndex := bar_index
+    // If the swing high is identified, reset swing low to find new low relative to this high
+    // or if this is the start of a new swing entirely
+    if na(swingLowPrice) or (swingHighPrice > swingLowPrice and swingLowBarIndex &lt; swingHighBarIndex) // ensure proper sequence
+        swingDirection := "up"
+        swingLowPrice := ta.lowest(low, bar_index - swingHighBarIndex + lookbackPeriod) // Find lowest AFTER this high
+        swingLowBarIndex := bar_index - ta.lowestbars(low, bar_index - swingHighBarIndex + lookbackPeriod)
+
+// Check if a new swing low has formed and it's lower than the previous one
+if (low == ll and bar_index == bar_index[lookbackPeriod - abs(ll_idx)])
+    swingLowPrice := low
+    swingLowBarIndex := bar_index
+    // If the swing low is identified, reset swing high to find new high relative to this low
+    if na(swingHighPrice) or (swingLowPrice &lt; swingHighPrice and swingHighBarIndex &lt; swingLowBarIndex)
+        swingDirection := "down"
+        swingHighPrice := ta.highest(high, bar_index - swingLowBarIndex + lookbackPeriod) // Find highest AFTER this low
+        swingHighBarIndex := bar_index - ta.highestbars(high, bar_index - swingLowBarIndex + lookbackPeriod)
+
+
+// More practical way to determine current swing points for dynamic plotting:
+// Use `fixnan` to carry forward the last detected swing high/low
+var float currentSwingHigh = na
+var float currentSwingLow = na
+var int currentSwingHighIdx = na
+var int currentSwingLowIdx = na
+
+// Detect new pivot high/low using `ta.pivothigh` and `ta.pivotlow` for more robust swing detection
+// Needs a left and right bar strength.
+leftBars = 5 // Look this many bars to the left
+rightBars = 5 // Look this many bars to the right
+
+pivotHigh = ta.pivothigh(high, leftBars, rightBars)
+pivotLow = ta.pivotlow(low, leftBars, rightBars)
+
+if not na(pivotHigh)
+    currentSwingHigh := pivotHigh
+    currentSwingHighIdx := bar_index[rightBars] // pivot high is at `bar_index - rightBars`
+if not na(pivotLow)
+    currentSwingLow := pivotLow
+    currentSwingLowIdx := bar_index[rightBars] // pivot low is at `bar_index - rightBars`
+
+// Ensure we have at least one high and one low detected
+if not na(currentSwingHigh) and not na(currentSwingLow)
+    // Determine the active swing based on which pivot is more recent or if price is trending
+    float range = math.abs(currentSwingHigh - currentSwingLow)
+    if range > 0 // Avoid division by zero later
+
+        // Calculate Fibonacci Retracement Levels dynamically
+        float fib236_level = na
+        float fib382_level = na
+        float fib500_level = na
+        float fib618_level = na
+        float fib786_level = na
+
+        // Determine if it's an uptrend swing (Low to High) or downtrend swing (High to Low)
+        // More robust: check if the high occurred after the low or vice versa
+        isUptrendSwing = currentSwingHighIdx > currentSwingLowIdx // High is more recent
+        isDowntrendSwing = currentSwingLowIdx > currentSwingHighIdx // Low is more recent
+
+        // If the current bar is past both pivot points,
+        // determine the direction of the swing that just completed
+        if isUptrendSwing
+            // Calculate retracement from currentSwingHigh down to currentSwingLow
+            fib236_level := currentSwingHigh - (range * fib236)
+            fib382_level := currentSwingHigh - (range * fib382)
+            fib500_level := currentSwingHigh - (range * fib500)
+            fib618_level := currentSwingHigh - (range * fib618)
+            fib786_level := currentSwingHigh - (range * fib786)
+        else if isDowntrendSwing
+            // Calculate retracement from currentSwingLow up to currentSwingHigh
+            fib236_level := currentSwingLow + (range * fib236)
+            fib382_level := currentSwingLow + (range * fib382)
+            fib500_level := currentSwingLow + (range * fib500)
+            fib618_level := currentSwingLow + (range * fib618)
+            fib786_level := currentSwingLow + (range * fib786)
+
+        // --- Plotting Fibonacci Levels ---
+        if showLevels
+            plot(fib236_level, title="23.6%", color=color.new(color.blue, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib382_level, title="38.2%", color=color.new(color.green, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib500_level, title="50.0%", color=color.new(color.purple, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib618_level, title="61.8%", color=color.new(color.orange, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib786_level, title="78.6%", color=color.new(color.red, 0), style=plot.style_stepline, linewidth=1)
+            plot(currentSwingHigh, title="0% / Swing High", color=color.gray, style=plot.style_stepline, linewidth=1) // 0% or 100% depending on swing
+            plot(currentSwingLow, title="100% / Swing Low", color=color.gray, style=plot.style_stepline, linewidth=1) // 100% or 0% depending on swing
+
+        // --- Plotting Labels ---
+        if showLabels
+            // Labels for the actual swing high/low points
+            // Note: Pine Script's `plot` function draws at current `bar_index`.
+            // To show the labels at the correct historical pivot points for clarity:
+            // We would need to use `line.new` for fixed lines or `label.new` for fixed labels.
+            // For dynamic plotting, we'll plot the levels on the current bar, and their labels.
+
+            // Labels for the levels, assuming the plots extend
+            var label label236 = na
+            var label label382 = na
+            var label label500 = na
+            var label label618 = na
+            var label label786 = na
+            var label label0 = na
+            var label label100 = na
+
+            // Only update labels when a new swing is confirmed (or on the first bar)
+            // This is a simplified check. More robust pivot detection would signal label update.
+            if ta.bar_index == leftBars + rightBars + 1 or not na(pivotHigh) or not na(pivotLow)
+                label.delete(label236)
+                label.delete(label382)
+                label.delete(label500)
+                label.delete(label618)
+                label.delete(label786)
+                label.delete(label0)
+                label.delete(label100)
+
+                label236 := label.new(bar_index, fib236_level, text="23.6%", style=label.style_label_right, color=color.new(color.blue, 70), textcolor=color.white)
+                label382 := label.new(bar_index, fib382_level, text="38.2%", style=label.style_label_right, color=color.new(color.green, 70), textcolor=color.white)
+                label500 := label.new(bar_index, fib500_level, text="50.0%", style=label.style_label_right, color=color.new(color.purple, 70), textcolor=color.white)
+                label618 := label.new(bar_index, fib618_level, text="61.8%", style=label.style_label_right, color=color.new(color.orange, 70), textcolor=color.white)
+                label786 := label.new(bar_index, fib786_level, text="78.6%", style=label.style_label_right, color=color.new(color.red, 70), textcolor=color.white)
+                label0 := label.new(bar_index, currentSwingHigh, text="0%", style=label.style_label_right, color=color.new(color.gray, 70), textcolor=color.white)
+                label100 := label.new(bar_index, currentSwingLow, text="100%", style=label.style_label_right, color=color.new(color.gray, 70), textcolor=color.white)
+
+            // Keep labels extending to the right
+            label.set_x(label236, bar_index)
+            label.set_x(label382, bar_index)
+            label.set_x(label500, bar_index)
+            label.set_x(label618, bar_index)
+            label.set_x(label786, bar_index)
+            label.set_x(label0, bar_index)
+            label.set_x(label100, bar_index)
+
+// --- Simple Strategy Example (Conceptual) ---
+// This strategy demonstrates how you might react to Fibonacci levels.
+// It is highly simplified and for educational purposes only.
+// Real trading strategies require more complex confirmation.
+
+strategy("Fibonacci Retracement Strategy", overlay=true)
+
+// Re-calculate the current fib levels for strategy logic based on the most recent identified swing
+// This uses the same logic for currentSwingHigh/Low as above
+// For a strategy, you'd typically want to lock in the swing high/low once it's confirmed
+// and use that for subsequent bars until a new, valid swing forms.
+// This example uses the `ta.pivothigh`/`ta.pivotlow` detection directly.
+
+// Check if we have valid pivots to trade against
+if not na(currentSwingHigh) and not na(currentSwingLow)
+
+    // Example 1: Buy on bounce from 61.8% retracement in an uptrend
+    // Assumption: We are in an uptrend, so we're looking for a pullback to buy.
+    // This requires `currentSwingHigh` to be from a recent high and `currentSwingLow` from a recent low.
+    // A more robust strategy would verify the overall trend of the market.
+    isCurrentlyUptrendSwing = currentSwingHighIdx > currentSwingLowIdx // More recent high means an UP swing completed
+    
+    // Calculate relevant levels for this strategy
+    float fib618BuyLevel = na
+    float fib382ProfitTarget = na
+
+    if isCurrentlyUptrendSwing
+        range = math.abs(currentSwingHigh - currentSwingLow)
+        if range > 0
+            fib618BuyLevel := currentSwingHigh - (range * fib618)
+            fib382ProfitTarget := currentSwingHigh - (range * fib382) // Target 38.2% retracement for profit
+
+            // Long entry: Price closes above 61.8% level after touching it
+            // Add a filter that price should be generally above the swing low
+            longCondition = close > fib618BuyLevel and close[1] &lt;= fib618BuyLevel[1] and close > currentSwingLow // ensure not too far down
+
+            // Exit: Price reaches 38.2% level or stop loss below 78.6%
+            stopLossLevel = currentSwingHigh - (range * fib786) // Stop below 78.6%
+            
+            if (longCondition)
+                strategy.entry("Long Fib 61.8", strategy.long)
+            
+            // For exit, we use the profit target and stop loss. Ensure the levels are valid.
+            if not na(fib382ProfitTarget) and not na(stopLossLevel)
+                strategy.exit("Long Fib 61.8 Exit", from_entry="Long Fib 61.8", profit=fib382ProfitTarget, stop=stopLossLevel)
+
+
+    // Example 2: Sell on bounce from 61.8% retracement in a downtrend
+    // Assumption: We are in a downtrend, looking for a rally to sell.
+    isCurrentlyDowntrendSwing = currentSwingLowIdx > currentSwingHighIdx // More recent low means a DOWN swing completed
+
+    float fib618SellLevel = na
+    float fib382ProfitTargetSell = na
+
+    if isCurrentlyDowntrendSwing
+        range = math.abs(currentSwingHigh - currentSwingLow)
+        if range > 0
+            fib618SellLevel := currentSwingLow + (range * fib618)
+            fib382ProfitTargetSell := currentSwingLow + (range * fib382) // Target 38.2% retracement for profit
+
+            // Short entry: Price closes below 61.8% level after touching it
+            shortCondition = close &lt; fib618SellLevel and close[1] >= fib618SellLevel[1] and close &lt; currentSwingHigh // ensure not too far up
+
+            // Exit: Price reaches 38.2% level or stop loss above 78.6%
+            stopLossLevelSell = currentSwingLow + (range * fib786) // Stop above 78.6%
+
+            if (shortCondition)
+                strategy.entry("Short Fib 61.8", strategy.short)
+
+            if not na(fib382ProfitTargetSell) and not na(stopLossLevelSell)
+                strategy.exit("Short Fib 61.8 Exit", from_entry="Short Fib 61.8", profit=fib382ProfitTargetSell, stop=stopLossLevelSell)
+
+</code></pre>
+
+    <h2>Optimizing Fibonacci Retracements Performance</h2>
+    <p>To get the most from Fibonacci Retracements in Pine Script:</p>
+    <ul>
+      <li><strong>Accurate Swing Point Selection:</strong> The most crucial aspect is correctly identifying the significant swing high and swing low from which to draw the retracements. This can be subjective manually, but programmatically, using robust pivot detection (e.g., `ta.pivothigh()` and `ta.pivotlow()` with appropriate left/right bar strength) is essential.</li>
+      <li><strong>Confluence is Key:</strong> Fibonacci levels are rarely strong enough to act as standalone support/resistance. They become much more powerful when they align (show "confluence") with other technical levels, such as:
+        <ul>
+          <li>Previous significant highs/lows</li>
+          <li>Moving averages</li>
+          <li>Trendlines</li>
+          <li>Psychological whole numbers</li>
+          <li>Pivot Points</li>
+        </ul>
+      </li>
+      <li><strong>Volume Confirmation:</strong> Look for volume to confirm bounces or breaks of Fibonacci levels. A bounce off a level with strong buying volume suggests strong support. A break of a level with strong selling volume suggests resistance is giving way.</li>
+      <li><strong>Candlestick Patterns:</strong> Confirm reactions at Fibonacci levels with bullish or bearish candlestick patterns (e.g., hammer, engulfing, pin bar) for higher probability trades.</li>
+      <li><strong>Trend Context:</strong> Use Fibonacci retracements primarily for <b>trend continuation</b> strategies. In an uptrend, look for buying opportunities at retracement levels. In a downtrend, look for selling opportunities at retracement levels. Avoid using them in sideways or choppy markets.</li>
+      <li><strong>Multiple Timeframes:</strong> Fibonacci levels on higher timeframes (e.g., daily) can provide stronger support/resistance than those on lower timeframes. Use higher timeframe levels to confirm lower timeframe trades.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>The Golden Ratio:</strong> The 61.8% (and its inverse 38.2%) Fibonacci ratio is often considered the most significant for reversals. Price frequently finds strong support/resistance at or around this level.
+    </div>
+
+    <h2>Common Fibonacci Retracements Pitfalls</h2>
+    <ul>
+      <li> <b>Subjectivity in Swing Point Selection:</b> Manually selecting swing highs and lows can be subjective and lead to different interpretations among traders. Automated detection can help but requires careful parameter tuning.</li>
+      <li> <b>Self-Fulfilling Prophecy:</b> Because many traders use Fibonacci levels, they can become self-fulfilling prophecies. However, this also means they are widely watched and can generate valid reactions.</li>
+      <li> <b>Not Guaranteed Support/Resistance:</b> Fibonacci levels are potential zones, not guaranteed levels. Price can overshoot, undershoot, or ignore them completely.</li>
+      <li> <b>Whipsaws in Choppy Markets:</b> In ranging or consolidating markets, price might move back and forth across multiple Fibonacci levels without a clear reaction, leading to false signals.</li>
+      <li> <b>Over-Reliance:</b> Relying solely on Fibonacci retracements without additional confirmation (price action, volume, other indicators) can lead to poor trading decisions.</li>
+      <li> <b>Too Many Levels:</b> Plotting too many levels or using irrelevant swing points can clutter the chart and lead to analysis paralysis. Focus on the most significant levels and swings.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Fibonacci Retracements are a deeply ingrained and widely used technical analysis tool available in Pine Script for TradingView. By providing mathematically derived potential support and resistance levels during price pullbacks, they offer traders a valuable framework for anticipating market reactions, identifying entry/exit points, and managing risk within a trending market. While requiring careful selection of swing points and confirmation from other indicators like candlestick patterns and volume, mastering Fibonacci Retracements can significantly enhance your <b>pine script strategies</b>. By understanding their calculation, thoughtfully applying them to clear price swings, and integrating them strategically into your overall trading plan, you can leverage these powerful levels to improve your decision-making and better capitalize on market opportunities.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Chande Momentum Oscillator (CMO) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Chande Momentum Oscillator (CMO) in Pine Script for TradingView - a versatile momentum indicator for identifying trends, overbought/oversold conditions, and divergence.">
+    <meta name="keywords" content="pine script strategies, Chande Momentum Oscillator, CMO, tradingview indicator, technical analysis, momentum oscillator, overbought, oversold, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Chande Momentum Oscillator (CMO) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Chande Momentum Oscillator (CMO) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Chande Momentum Oscillator (CMO) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-CMO.html" />
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Chande Momentum Oscillator (CMO) ",
+      "description": "Comprehensive tutorial on implementing and using the Chande Momentum Oscillator (CMO) in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Chande Momentum Oscillator (CMO) </h1>
+      <p class="blog-subtitle">Master this unique momentum oscillator in TradingView's Pine Script for identifying trend strength, overbought/oversold conditions, and divergence.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is the Chande Momentum Oscillator (CMO)?</h2>
+    <p>The <b>Chande Momentum Oscillator (CMO)</b>, developed by Tushar Chande, is a technical momentum indicator that measures the difference between the sum of recent gains and the sum of recent losses, divided by the sum of all price changes over a specific period. Unlike other oscillators like RSI or Stochastic which limit their range, CMO ranges from -100 to +100. This broad range allows it to directly quantify pure momentum without being skewed by fixed scaling, providing a clearer picture of trend strength and potential turning points.</p>
+
+    <p>In Pine Script, CMO is a valuable tool for traders seeking to identify the underlying directional bias and conviction of price movements, as well as classic overbought/oversold and divergence signals.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of CMO involves tracking positive and negative price changes:</p>
+    <ol>
+      <li><strong>Calculate Upward and Downward Momentum</strong>:
+        <ul>
+          <li>`SM_Up = Sum of (Current Close - Previous Close)` for positive changes over `length` periods. (If `Current Close < Previous Close`, the change is 0 for `SM_Up`).</li>
+          <li>`SM_Down = Sum of (Previous Close - Current Close)` for positive changes over `length` periods. (If `Current Close > Previous Close`, the change is 0 for `SM_Down`).</li>
+        </ul>
+      </li>
+      <li><strong>CMO Formula</strong>:
+        <br>
+        `CMO = ((SM_Up - SM_Down) / (SM_Up + SM_Down)) * 100`
+        <br>
+        The result is multiplied by 100 to scale it between -100 and +100.
+      </li>
+    </ol>
+    <p>A CMO value near +100 indicates strong upward momentum, while a value near -100 indicates strong downward momentum. Values near 0 suggest low momentum or a flat trend.</p>
+
+    <h2>Basic Chande Momentum Oscillator Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.cmo()` for straightforward implementation.</p>
+
+    <pre><code>//@version=5
+indicator("My Chande Momentum Oscillator", overlay=false) // overlay=false to plot in a separate pane
+
+// Input for CMO length
+length = input.int(9, title="CMO Length", minval=1)
+
+// Calculate CMO value using the built-in function
+cmoValue = ta.cmo(close, length)
+
+// Plot the CMO line
+plot(cmoValue, title="CMO", color=color.blue, linewidth=2)
+
+// Plot horizontal lines for overbought and oversold levels
+h_overbought = hline(50, "Overbought (+50)", color=color.red, linestyle=hline.style_dashed)
+h_oversold = hline(-50, "Oversold (-50)", color=color.green, linestyle=hline.style_dashed)
+hline(0, "Zero Line", color=color.gray, linestyle=hline.style_dotted)
+
+// Fill background between CMO and levels for visual clarity
+fill(h_overbought, h_oversold, color.new(color.gray, 90))
+</code></pre>
+
+    <div class="tip">
+      <strong>Standard Levels:</strong> Typical overbought levels are +50 and oversold levels are -50, though these can be adjusted.
+    </div>
+
+    <h2>Practical Chande Momentum Oscillator Trading Strategies</h2>
+
+    <h3>1. Overbought and Oversold Conditions</h3>
+    <p>When CMO moves significantly above +50, the asset is considered overbought, indicating strong bullish momentum that might be nearing exhaustion. Conversely, a move significantly below -50 is oversold, suggesting strong bearish momentum that might be nearing exhaustion.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: CMO moves below -50 (oversold) and then crosses back above -50.</li>
+      <li><strong>Sell Signal</strong>: CMO moves above +50 (overbought) and then crosses back below +50.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("CMO Overbought/Oversold Strategy", overlay=true)
+
+// Inputs for CMO
+length = input.int(9, title="CMO Length", minval=1)
+overboughtLevel = input.int(50, title="Overbought Level")
+oversoldLevel = input.int(-50, title="Oversold Level")
+
+// Calculate CMO
+cmoValue = ta.cmo(close, length)
+
+// Define conditions for entries and exits
+// Buy when CMO moves below oversold and then crosses back above it
+longCondition = ta.crossunder(cmoValue, oversoldLevel) // CMO goes oversold
+longExitCondition = ta.crossover(cmoValue, oversoldLevel) // CMO exits oversold (potential buy)
+
+// Sell when CMO moves above overbought and then crosses back below it
+shortCondition = ta.crossover(cmoValue, overboughtLevel) // CMO goes overbought
+shortExitCondition = ta.crossunder(cmoValue, overboughtLevel) // CMO exits overbought (potential sell)
+
+// Strategy entries/exits (entry upon exiting extreme zones)
+if (longExitCondition)
+    strategy.entry("Long", strategy.long)
+
+if (shortExitCondition)
+    strategy.entry("Short", strategy.short)
+
+// Optional: Plot CMO in a separate pane for visualization
+// plot(cmoValue, "CMO", color.blue)
+// hline(overboughtLevel, "Overbought", color.red)
+// hline(oversoldLevel, "Oversold", color.green)
+// hline(0, "Zero Line", color.gray)
+</code></pre>
+
+    <h3>2. CMO Zero Line Crossover (Trend Direction)</h3>
+    <p>The zero line in CMO serves as a crucial indicator of momentum bias. A crossover suggests a shift in the short-term trend.</p>
+    <ul>
+      <li><strong>Bullish Momentum</strong>: CMO crosses above the zero line. This indicates that bullish momentum is dominating bearish momentum.</li>
+      <li><strong>Bearish Momentum</strong>: CMO crosses below the zero line. This indicates that bearish momentum is dominating bullish momentum.</li>
+    </ul>
+
+    <pre><code>//@version=5
+strategy("CMO Zero Line Crossover Strategy", overlay=true)
+
+// Inputs for CMO
+length = input.int(9, title="CMO Length", minval=1)
+zeroLine = 0
+
+// Calculate CMO
+cmoValue = ta.cmo(close, length)
+
+// Define conditions for entries
+longSignal = ta.crossover(cmoValue, zeroLine)
+shortSignal = ta.crossunder(cmoValue, zeroLine)
+
+// Strategy entries/exits
+if (longSignal)
+    strategy.entry("Long", strategy.long)
+
+if (shortSignal)
+    strategy.entry("Short", strategy.short)
+
+// Optional: Plot CMO in a separate pane
+// plot(cmoValue, "CMO", color.blue)
+// hline(zeroLine, "Zero Line", color.gray)
+</code></pre>
+
+    <h3>3. CMO Divergence Strategy</h3>
+    <p>Divergence between price and CMO can signal potential trend reversals. This occurs when price makes a new high/low, but CMO fails to confirm it, indicating weakening momentum.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but CMO makes a higher low. This indicates weakening bearish momentum and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but CMO makes a lower high. This indicates weakening bullish momentum and a potential downward reversal.</li>
+    </ul>
+
+    <pre><code>//@version=5
+indicator("CMO Divergence Scanner", overlay=true)
+
+// Inputs for CMO
+length = input.int(9, title="CMO Length", minval=1)
+overboughtLevel = input.int(50, title="Overbought Level")
+oversoldLevel = input.int(-50, title="Oversold Level")
+centerLine = input.int(0, title="Zero Line")
+
+// Calculate CMO
+cmoValue = ta.cmo(close, length)
+
+// Plot CMO in a separate pane
+plot(cmoValue, "CMO", color=color.blue)
+hline(overboughtLevel, "Overbought (+50)", color=color.red)
+hline(oversoldLevel, "Oversold (-50)", color=color.green)
+hline(centerLine, "Zero Line", color=color.gray)
+
+// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)
+// This is a simplified example focusing on price vs CMO divergence.
+
+// Bullish Divergence (Price lower low, CMO higher low)
+bullishDivergence = close[2] > close[1] and close[1] > close and cmoValue[2] &lt; cmoValue[1] and cmoValue[1] &lt; cmoValue
+
+// Bearish Divergence (Price higher high, CMO lower high)
+bearishDivergence = close[2] &lt; close[1] and close[1] &lt; close and cmoValue[2] > cmoValue[1] and cmoValue[1] > cmoValue
+
+plotshape(bullishDivergence, title="Bullish Divergence", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(bearishDivergence, title="Bearish Divergence", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+alertcondition(bullishDivergence, "Bullish CMO Divergence", "Potential bullish reversal based on CMO divergence.")
+alertcondition(bearishDivergence, "Bearish CMO Divergence", "Potential bearish reversal based on CMO divergence.")
+</code></pre>
+
+    <h2>Optimizing CMO Performance</h2>
+    <p>To get the most from the Chande Momentum Oscillator in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter (default 9 or 20) significantly influences CMO's sensitivity. Shorter lengths make it more responsive but potentially noisier, while longer lengths provide smoother signals but with more lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Adjust Extreme Levels:</strong> For highly volatile assets or strong trends, you might consider adjusting the overbought/oversold levels (e.g., +60/-60 or +70/-70) to filter for only more significant momentum extremes.</li>
+      <li><strong>Combine with Trend Filters:</strong> While CMO can indicate trend strength, it's still an oscillator. Using a longer-term trend filter (like a long-period moving average or Ichimoku Cloud) can help avoid false signals against the primary trend, especially when CMO hovers near the zero line.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm CMO signals on a higher timeframe before acting on signals from a lower timeframe for added reliability.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for CMO signals to be confirmed by price action, such as candlestick patterns, breaks of support/resistance, or chart patterns.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Relative to Price Changes:</strong> CMO measures the relative strength of positive vs. negative price changes. A strong CMO (near +100 or -100) indicates high conviction in the current direction.
+    </div>
+
+    <h2>Common CMO Pitfalls</h2>
+    <ul>
+      <li> <b>False Signals in Ranging Markets:</b> Like most oscillators, CMO can generate numerous false overbought/oversold signals when the market is consolidating sideways.</li>
+      <li> <b>Lag:</b> Despite being a momentum indicator, CMO still has some inherent lag due to its averaging components.</li>
+      <li> <b>Divergence Can Be Early:</b> Divergence is powerful but can signal a potential reversal too early, and the trend might continue for some time after the divergence appears.</li>
+      <li> <b>Not a Standalone Indicator:</b> CMO should always be used as part of a broader trading system, combined with other indicators (e.g., volume, volatility indicators) and price action analysis for confirmation.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Chande Momentum Oscillator (CMO) is a unique and highly effective momentum indicator in Pine Script for TradingView. Its distinct calculation provides a clear measure of directional conviction and trend strength, making it valuable for identifying overbought/oversold conditions, shifts across the zero line, and potential reversals through divergence. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically within your comprehensive trading approach, you can leverage the CMO to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>
