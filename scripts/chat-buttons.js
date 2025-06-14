@@ -70,7 +70,7 @@ function openGoogleMeet() {
                 <span>&nbsp;Connect on Meet</span>
             </a>
             <a href="#" class="chat-btn whatsapp-button" aria-label="Chat on WhatsApp">
-                <img src="../assets/whatsapp.png" width="34" height="24" alt="" aria-hidden="true">
+                <img src="../assets/whatsapp.png" width="24" height="24" alt="" aria-hidden="true">
                 <span>&nbsp;Chat on WhatsApp</span>
             </a>
         `;
