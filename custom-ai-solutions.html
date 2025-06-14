@@ -176,6 +176,7 @@
   </header>
 
   <article class="fullscreen">
+      <div class="" id="top-chat-buttons"></div>
     <!-- 1. What Are Custom AI Solutions? -->
     <h2>What Are Custom AI Solutions?</h2>
     <p>Unlike off-the-shelf AI tools, <b>custom AI solutions</b> are tailored to your specific business processes, data streams, and decision-making needs. We combine:</p>
@@ -239,12 +240,25 @@
     <!-- 5. CTA -->
     <div class="cta-section">
       <h2>Ready to Explore Custom AI for Your Business?</h2>
-      <a href="https://offline-pixel.github.io/contact.html" class="cta-button">Get Your Free AI Assessment</a>
+      <!-- <a href="https://offline-pixel.github.io/contact.html" class="cta-button">Get Your Free AI Assessment</a> -->
       <p><small>Limited AI strategy slots available this month.</small></p>
+      <div class="" id="bottom-chat-buttons"></div>
     </div>
   </article>
 
   <script src="../scripts/chat-buttons.js"></script>
   <script src="../scripts/scripts.js"></script>
+
+  <script>
+    // Usage remains the same
+    injectChatButtons('#top-chat-buttons', {
+      margins: '20px 0 20px 0',
+      position: 'prepend'
+    });;
+    injectChatButtons('#bottom-chat-buttons', {
+      margins: '20px 0 0 0',
+      position: 'prepend'
+    });
+  </script>
 </body>
 </html>
