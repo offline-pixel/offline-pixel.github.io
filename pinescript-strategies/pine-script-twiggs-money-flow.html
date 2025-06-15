@@ -1,0 +1,218 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <link rel="stylesheet" href="../styles/blog-common.css" />  
+    <style>  
+        .fullscreen {  
+            padding: 10px 50px;  
+            max-width: 70%;  
+            margin: auto;  
+            text-align: justify;  
+        }   
+        .tip {  
+            background: #e8f4fc;  
+            padding: 15px;  
+            border-left: 4px solid #3498db;  
+            margin: 20px 0;  
+        }  
+        .code-comment {  
+            color: #6a9955;  
+            font-style: italic;  
+        }  
+    </style>  
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>  
+    <script>  
+        window.dataLayer = window.dataLayer || [];  
+        function gtag(){dataLayer.push(arguments);}  
+        gtag('js', new Date());  
+        gtag('config', 'G-0MM8039GLD');   
+    </script>  
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>   
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>  
+      
+    <title>Pine Script Twiggs Money Flow - Complete TradingView Guide</title>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <meta name="description" content="Master the Twiggs Money Flow in Pine Script for TradingView. Advanced guide with practical examples and pine script strategies for volume-based trading." />  
+    <meta name="keywords" content="pine script strategies, twiggs money flow, tradingview indicator, volume analysis, technical analysis, pine script" />  
+      
+    <!-- Open Graph / Social Meta -->  
+    <meta property="og:title" content="Pine Script Twiggs Money Flow ">  
+    <meta property="og:description" content="Advanced tutorial on implementing Twiggs Money Flow in Pine Script for TradingView, with strategy examples and tips.">  
+    <meta property="og:type" content="article">  
+      
+    <!-- Twitter Card -->  
+    <meta name="twitter:card" content="summary_large_image">  
+    <meta name="twitter:title" content="Pine Script Twiggs Money Flow ">  
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-twiggs-money-flow.html" />  
+
+    <!-- JSON-LD Schema -->  
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script type="application/ld+json">  
+    {  
+      "@context": "https://schema.org",  
+      "@type": "BlogPosting",  
+      "headline": "Pine Script Twiggs Money Flow ",  
+      "description": "Advanced tutorial on implementing Twiggs Money Flow in Pine Script for TradingView, with pine script strategies and practical trading examples.",  
+      "author": {  
+        "@type": "Person",  
+        "name": "Offline Pixel Computers"  
+      },  
+      "datePublished": "2023-11-15",  
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"  
+    }  
+    </script>  
+</head>  
+<body>   
+  <header class="blog-header">  
+    <div class="container">  
+      <h1 class="blog-title">Pine Script Twiggs Money Flow </h1>  
+      <p class="blog-subtitle">Unlock advanced volume-based pine script strategies with this comprehensive guide to Twiggs Money Flow in TradingView</p>  
+      <p class="job-meta">  
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>  
+        <span class="job-location">Expertise: Intermediate/Advanced</span>  
+      </p>  
+    </div>  
+  </header>  
+
+  <article class="fullscreen">  
+    <h2>Why Twiggs Money Flow Matters in Pine Script Strategies</h2>  
+    <p>Twiggs Money Flow (TMF) is a powerful volume-based indicator that helps traders gauge the strength of buying and selling pressure over time. By combining price and volume, TMF provides more nuanced signals than traditional oscillators, making it a valuable tool for pine script strategies focused on trend confirmation and reversal detection.</p>  
+    <ul>  
+      <li>Identifies accumulation and distribution phases</li>  
+      <li>Confirms trend strength and potential reversals</li>  
+      <li>Filters out false breakouts using volume-weighted data</li>  
+    </ul>  
+
+    <h2>Basic Twiggs Money Flow Implementation in Pine Script</h2>  
+    <p>Here's how to code the classic Twiggs Money Flow indicator in Pine Script v5:</p>  
+    <pre><code>//@version=5
+indicator("Twiggs Money Flow", shorttitle="TMF", overlay=false)
+
+// User inputs
+length = input.int(21, title="TMF Length")
+
+// Calculate the Money Flow Multiplier
+mf_multiplier = ((close - low) - (high - close)) / (high - low)
+mf_multiplier := na(mf_multiplier) ? 0 : mf_multiplier
+
+// Money Flow Volume
+mf_volume = mf_multiplier * volume
+
+// Sum over the chosen period
+sum_mf_volume = ta.sma(mf_volume, length)
+sum_volume = ta.sma(volume, length)
+
+// Twiggs Money Flow calculation
+tmf = sum_mf_volume / sum_volume
+
+plot(tmf, "Twiggs Money Flow", color=color.teal, style=plot.style_line)
+hline(0, "Zero Line", color=color.gray)
+</code></pre>  
+
+    <div class="tip">  
+      <strong>Key Insight:</strong> Twiggs Money Flow oscillates above and below zero, signaling bullishness when positive and bearishness when negative. It is especially effective when combined with other pine script strategies for confirmation.  
+    </div>  
+
+    <h2>Twiggs Money Flow vs Classic Money Flow Index</h2>  
+    <p>While both TMF and MFI are volume-based, TMF uses a unique multiplier and smoothing, making it less sensitive to price spikes and better at highlighting sustained accumulation or distribution. For pine script strategies, TMF can offer clearer trend signals in choppy markets.</p>  
+    <ol>  
+      <li><strong>Smoother signals:</strong> TMF reduces noise compared to MFI</li>  
+      <li><strong>Better for trend trading:</strong> TMF highlights persistent buying/selling pressure</li>  
+      <li><strong>Improved divergence detection:</strong> TMF can reveal hidden reversals</li>  
+    </ol>  
+
+    <h2>Advanced Pine Script Strategies Using Twiggs Money Flow</h2>  
+      
+    <h3>1. TMF Trend Confirmation Strategy</h3>  
+    <pre><code>//@version=5
+strategy("TMF Trend Confirmation", overlay=true)
+
+tmfLength = input.int(21, "TMF Length")
+priceMA = input.int(50, "Price MA Length")
+
+// Calculate TMF
+mf_multiplier = ((close - low) - (high - close)) / (high - low)
+mf_multiplier := na(mf_multiplier) ? 0 : mf_multiplier
+mf_volume = mf_multiplier * volume
+sum_mf_volume = ta.sma(mf_volume, tmfLength)
+sum_volume = ta.sma(volume, tmfLength)
+tmf = sum_mf_volume / sum_volume
+
+// Price MA
+ma = ta.sma(close, priceMA)
+
+// Strategy logic
+longCondition = close > ma and tmf > 0
+shortCondition = close < ma and tmf < 0
+
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+if (shortCondition)
+    strategy.entry("Short", strategy.short)
+</code></pre>  
+
+    <h3>2. TMF Divergence Detection</h3>  
+    <pre><code>//@version=5
+indicator("TMF Divergence Detector", overlay=true)
+
+tmfLength = input.int(21, "TMF Length")
+tmf = ta.sma(((close - low) - (high - close)) / (high - low) * volume, tmfLength) / ta.sma(volume, tmfLength)
+
+// Detect price and TMF divergence
+priceHigh = ta.highest(high, 14)
+tmfHigh = ta.highest(tmf, 14)
+bearDiv = high > high[1] and tmf < tmf[1] and tmf < 0
+bullDiv = low < low[1] and tmf > tmf[1] and tmf > 0
+
+plotshape(bearDiv, "Bearish Div", shape.triangledown, location.top, color.red)
+plotshape(bullDiv, "Bullish Div", shape.triangleup, location.bottom, color.green)
+</code></pre>  
+
+    <h2>Optimizing TMF for Your Pine Script Strategies</h2>  
+    <p>To maximize the impact of Twiggs Money Flow in your pine script strategies:</p>  
+    <ul>  
+      <li><strong>Combine with moving averages:</strong> Use TMF to confirm MA crossovers</li>  
+      <li><strong>Adjust length for your timeframe:</strong> Shorter periods for swing trading, longer for position trading</li>  
+      <li><strong>Filter signals:</strong> Add RSI or price action filters to reduce noise</li>  
+    </ul>  
+
+    <h3>Dynamic TMF Threshold Example</h3>  
+    <pre><code>//@version=5
+indicator("Dynamic TMF Thresholds", overlay=false)
+length = input.int(21, "TMF Length")
+lookback = input.int(50, "Threshold Lookback")
+
+mf_multiplier = ((close - low) - (high - close)) / (high - low)
+mf_multiplier := na(mf_multiplier) ? 0 : mf_multiplier
+mf_volume = mf_multiplier * volume
+
+tmf = ta.sma(mf_volume, length) / ta.sma(volume, length)
+upperBand = ta.percentile(tmf, lookback, 75)
+lowerBand = ta.percentile(tmf, lookback, 25)
+
+plot(tmf, "TMF", color=color.teal)
+hline(upperBand, "Upper Band", color=color.red)
+hline(lowerBand, "Lower Band", color=color.green)
+hline(0, "Zero Line", color=color.gray)
+</code></pre>  
+
+    <h2>Common TMF Pitfalls to Avoid in Pine Script Strategies</h2>  
+    <div class="tip">  
+      <strong>Warning:</strong> TMF can produce false signals in illiquid markets or during news events. Always use TMF as part of a broader pine script strategy, not in isolation.  
+    </div>  
+    <ul>  
+      <li>Ignoring volume anomalies (e.g., earnings spikes)</li>  
+      <li>Using TMF without price or trend confirmation</li>  
+      <li>Overfitting TMF length to past data</li>  
+    </ul>  
+
+    <h2>Conclusion</h2>  
+    <p>Twiggs Money Flow is a robust volume-based indicator for Pine Script strategies, offering unique insights into accumulation and distribution. By integrating TMF with price action and other indicators, traders can build more reliable and adaptive pine script strategies for TradingView.</p>  
+  </article>  
+
+  <script src="../scripts/scripts.js"></script>  
+  <script src="../scripts/dynamicContent.js" defer></script>  
+</body>  
+</html>

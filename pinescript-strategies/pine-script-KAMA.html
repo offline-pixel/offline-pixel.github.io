@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script KAMA (Kaufman’s Adaptive MA) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Kaufman's Adaptive Moving Average (KAMA) in Pine Script for TradingView - an intelligent indicator that adapts its smoothing based on market volatility.">
+    <meta name="keywords" content="pine script strategies, KAMA, Kaufman's Adaptive Moving Average, adaptive moving average, tradingview indicator, technical analysis, trend following, market volatility, noise reduction">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script KAMA (Kaufman’s Adaptive MA) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Kaufman's Adaptive Moving Average (KAMA) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script KAMA (Kaufman’s Adaptive MA) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-KAMA.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script KAMA (Kaufman’s Adaptive MA) ",
+      "description": "Comprehensive tutorial on implementing and using Kaufman's Adaptive Moving Average (KAMA) in Pine Script for TradingView.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script KAMA (Kaufman’s Adaptive MA) </h1>
+      <p class="blog-subtitle">Master this intelligent adaptive moving average in TradingView's Pine Script for enhanced trend following and noise reduction.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>What is Kaufman’s Adaptive Moving Average (KAMA)?</h2>
+    <p>Kaufman's Adaptive Moving Average (KAMA), developed by Perry Kaufman, is a sophisticated moving average that dynamically adjusts its smoothing period based on market volatility. Unlike traditional moving averages (like SMA or EMA) that use a fixed period, KAMA becomes more responsive when the market is trending (high volatility) and less responsive (more smoothed) when the market is ranging or choppy (low volatility). This unique adaptability allows KAMA to filter out noise effectively in sideways markets while remaining sensitive enough to capture real trend changes.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The core of KAMA's adaptability lies in its <b>Efficiency Ratio (ER)</b> and <b>Smoothing Constant (SC)</b>.</p>
+    <ol>
+      <li><strong>Change (Directional Movement)</strong>: Measures the absolute price change over a specified KAMA length: `abs(close - close[length])`.</li>
+      <li><strong>Volatility (Total Movement)</strong>: Measures the sum of absolute price changes over the same KAMA length: `sum(abs(close - close[1]), length)`.</li>
+      <li><strong>Efficiency Ratio (ER)</strong>: `Change / Volatility`. This ratio varies between 0 and 1. An ER close to 1 indicates a strong trend (efficient movement), while an ER close to 0 indicates a choppy or ranging market (inefficient movement).</li>
+      <li><strong>Smoothing Constant (SC)</strong>: `(ER * (fastestSC - slowestSC) + slowestSC)^2`. This formula converts the ER into a smoothing factor that adapts between a "fast" smoothing period (when ER is high) and a "slow" smoothing period (when ER is low).</li>
+      <li><strong>KAMA Calculation</strong>: KAMA is calculated recursively, similar to an EMA, but using the adaptive smoothing constant: `KAMA = KAMA[1] + SC * (price - KAMA[1])`.</li>
+    </ol>
+    <p>The `fastestSC` and `slowestSC` are derived from short and long EMA lengths (e.g., 2 and 30 periods, respectively), which define the boundaries of KAMA's responsiveness.</p>
+
+    <h2>Basic KAMA Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.kama()` for straightforward implementation.</p>
+
+    <pre><code>//@version=5
+indicator("My KAMA Indicator", overlay=true)
+
+// Inputs for KAMA parameters
+length = input.int(10, title="KAMA Length")
+fastestLength = input.int(2, title="Fastest EMA Length")
+slowestLength = input.int(30, title="Slowest EMA Length")
+
+// Calculate KAMA using the built-in function
+kamaValue = ta.kama(close, length, fastestLength, slowestLength)
+
+// Plot the KAMA line
+plot(kamaValue, title="KAMA", color=color.blue, linewidth=2)
+</code></pre>
+
+    <div class="tip">
+      <strong>Standard Settings:</strong> Common settings for KAMA are a `length` of 10, `fastestLength` of 2, and `slowestLength` of 30. However, these can be adjusted for different assets or timeframes.
+    </div>
+
+    <h2>Practical KAMA Strategies</h2>
+
+    <h3>1. KAMA as a Trend Filter / Trend Following</h3>
+    <p>KAMA's ability to hug price during trends and flatten during choppy periods makes it an excellent trend filter. When price is consistently above KAMA, it indicates an uptrend. When consistently below, it indicates a downtrend.</p>
+
+    <pre><code>//@version=5
+strategy("KAMA Trend Filter Strategy", overlay=true)
+
+// Inputs for KAMA
+length = input.int(10, title="KAMA Length")
+fastestLength = input.int(2, title="Fastest EMA Length")
+slowestLength = input.int(30, title="Slowest EMA Length")
+
+// Calculate KAMA
+kamaValue = ta.kama(close, length, fastestLength, slowestLength)
+
+// Plot KAMA
+plot(kamaValue, title="KAMA", color=color.blue, linewidth=2)
+
+// Trend conditions
+uptrend = close > kamaValue
+downtrend = close &lt; kamaValue
+
+// Highlight background based on trend
+bgcolor(uptrend ? color.new(color.green, 90) : na)
+bgcolor(downtrend ? color.new(color.red, 90) : na)
+
+// Example entry logic: buy on crossover above KAMA, sell on crossunder below KAMA
+longCondition = ta.crossover(close, kamaValue)
+shortCondition = ta.crossunder(close, kamaValue)
+
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short", strategy.short)
+</code></pre>
+
+    <h3>2. KAMA Crossover with another MA (e.g., SMA)</h3>
+    <p>Combining KAMA with another moving average can generate powerful crossover signals, benefiting from KAMA's adaptive smoothing.</p>
+
+    <pre><code>//@version=5
+strategy("KAMA & SMA Crossover", overlay=true)
+
+// KAMA Inputs
+kamaLength = input.int(10, title="KAMA Length")
+fastestLength = input.int(2, title="Fastest EMA Length")
+slowestLength = input.int(30, title="Slowest EMA Length")
+
+// SMA Input
+smaLength = input.int(50, title="SMA Length")
+
+// Calculate KAMA and SMA
+kama = ta.kama(close, kamaLength, fastestLength, slowestLength)
+sma = ta.sma(close, smaLength)
+
+// Plot lines
+plot(kama, title="KAMA", color=color.blue, linewidth=2)
+plot(sma, title="SMA", color=color.orange, linewidth=2)
+
+// Crossover conditions
+longCondition = ta.crossover(kama, sma)
+shortCondition = ta.crossunder(kama, sma)
+
+// Strategy entries
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short", strategy.short)
+</code></pre>
+
+    <h3>3. KAMA-Based Divergence</h3>
+    <p>While KAMA is primarily a trend-following indicator, divergences between KAMA and price can sometimes signal potential trend exhaustion or reversals.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but KAMA makes a higher low.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but KAMA makes a lower high.</li>
+    </ul>
+
+    <pre><code>//@version=5
+indicator("KAMA Divergence", overlay=true)
+
+length = input.int(10, title="KAMA Length")
+fastestLength = input.int(2, title="Fastest EMA Length")
+slowestLength = input.int(30, title="Slowest EMA Length")
+
+kamaValue = ta.kama(close, length, fastestLength, slowestLength)
+
+plot(kamaValue, title="KAMA", color=color.blue, linewidth=2)
+
+// Highlight divergence (simplified example, robust divergence detection is complex)
+// This example is conceptual and requires robust peak/trough detection for practical use.
+bullishDiv = kamaValue > kamaValue[1] and kamaValue[1] > kamaValue[2] and close < close[1] and close[1] < close[2]
+bearishDiv = kamaValue < kamaValue[1] and kamaValue[1] < kamaValue[2] and close > close[1] and close[1] > close[2]
+
+plotshape(bullishDiv, title="Bullish Divergence", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(bearishDiv, title="Bearish Divergence", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+alertcondition(bullishDiv, "KAMA Bullish Divergence", "Potential bullish reversal based on KAMA divergence.")
+alertcondition(bearishDiv, "KAMA Bearish Divergence", "Potential bearish reversal based on KAMA divergence.")
+</code></pre>
+
+    <h2>Optimizing KAMA Performance</h2>
+    <p>To get the most from KAMA in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> Experiment with `length`, `fastestLength`, and `slowestLength`. A longer `length` makes KAMA smoother overall. Adjusting `fastestLength` and `slowestLength` controls its range of adaptability.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Use KAMA on higher timeframes to confirm the underlying trend, and on lower timeframes for precise entries and exits.</li>
+      <li><strong>Combine with Volume:</strong> Strong trends confirmed by high volume alongside KAMA signals can increase reliability.</li>
+      <li><strong>Confluence with Support/Resistance:</strong> KAMA often acts as dynamic support or resistance. Signals that occur at these levels are typically more powerful.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Adaptive, Not Predictive:</strong> KAMA adapts to existing volatility; it doesn't predict future volatility. Use it in conjunction with other tools for comprehensive analysis.
+    </div>
+
+    <h2>Common KAMA Pitfalls</h2>
+    <ul>
+      <li> <b>Lag during Sudden Reversals:</b> While adaptive, KAMA still lags price like all moving averages. In very sharp and sudden reversals, it might be slow to react.</li>
+      <li> <b>Complex Calculation:</b> Although Pine Script provides `ta.kama()`, understanding the underlying ER and SC calculations is important for advanced tuning and avoiding misinterpretations.</li>
+      <li> <b>Over-Optimization:</b> As with any indicator, over-optimizing KAMA's parameters to past data can lead to poor performance in live market conditions.</li>
+      <li> <b>Not a Standalone Indicator:</b> KAMA provides excellent trend identification and smoothing, but it should ideally be combined with other indicators (e.g., volume, oscillators) for entry/exit confirmation and overall market context.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Kaufman's Adaptive Moving Average (KAMA) is a powerful and intelligent indicator in Pine Script for TradingView. Its unique ability to adjust its smoothing based on market efficiency helps traders filter out noise and stay in tune with prevailing trends more effectively than traditional moving averages. By understanding its adaptive mechanism and incorporating it thoughtfully into your multi-indicator strategies, KAMA can be an invaluable tool for refining your trend analysis and improving your trading decisions.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

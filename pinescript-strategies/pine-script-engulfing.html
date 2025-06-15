@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 45%; /* Adjust for two columns */
+            max-width: 45%; /* Adjust for two columns */
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .bullish .candle-body { fill: #4CAF50; } /* Green for bullish */
+        .bullish .wick { stroke: #4CAF50; }
+        .bearish .candle-body { fill: #F44336; } /* Red for bearish */
+        .bearish .wick { stroke: #F44336; }
+        .engulfing-body { opacity: 0.7; } /* Slightly transparent for the engulfing candle */
+        .previous-body { opacity: 1; }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Engulfing Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Bullish and Bearish Engulfing candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for trend reversals.">
+    <meta name="keywords" content="pine script, engulfing pattern, bullish engulfing, bearish engulfing, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Engulfing Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Bullish and Bearish Engulfing patterns in Pine Script for price action and reversal strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing.html"> <!-- Updated URL -->
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Engulfing Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing.html" /> <!-- Updated URL -->
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Engulfing Candlestick Patterns ",
+      "description": "Advanced tutorial on implementing Bullish and Bearish Engulfing patterns in Pine Script for TradingView",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Master Engulfing Candlestick Patterns (Bullish & Bearish)</h1>
+      <p class="blog-subtitle">Unlock powerful reversal signals with this comprehensive guide to detecting and strategizing with Engulfing patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>Why Engulfing Patterns Matter in Pine Script</h2>
+    <p>The <b> Engulfing candlestick pattern</b> is one of the most powerful and widely recognized reversal signals in technical analysis. It consists of two candles, where the second candle's body completely "engulfs" the first candle's body. These patterns often indicate a strong shift in market sentiment, making them invaluable for:</p>
+    <ul>
+      <li>Identifying potential trend reversals (top for bearish, bottom for bullish).</li>
+      <li>Confirming existing trend strength or weakness.</li>
+      <li>Generating entry and exit signals in trading strategies.</li>
+    </ul>
+
+    <h2>Understanding Engulfing Candlestick Patterns</h2>
+    <p>An engulfing pattern provides a strong visual clue about who's in control—buyers or sellers. The larger the engulfing candle relative to the previous one, and the larger its body, the stronger the signal. Importantly, the colors of the two candles must be opposite.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Bullish Engulfing Pattern</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Previous Bearish Candle -->
+                <line x1="25" y1="60" x2="25" y2="70" stroke="#F44336" stroke-width="2" class="wick"/>
+                <rect x="20" y="50" width="10" height="20" fill="#F44336" class="previous-body candle-body"/>
+                <line x1="25" y1="50" x2="25" y2="40" stroke="#F44336" stroke-width="2" class="wick"/>
+
+                <!-- Engulfing Bullish Candle -->
+                <line x1="75" y1="30" x2="75" y2="80" stroke="#4CAF50" stroke-width="2" class="wick"/>
+                <rect x="70" y="30" width="10" height="50" fill="#4CAF50" class="engulfing-body candle-body"/>
+            </svg>
+            <p>A small bearish candle is completely covered by a large bullish candle, often after a downtrend.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Bearish Engulfing Pattern</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Previous Bullish Candle -->
+                <line x1="25" y1="30" x2="25" y2="40" stroke="#4CAF50" stroke-width="2" class="wick"/>
+                <rect x="20" y="40" width="10" height="20" fill="#4CAF50" class="previous-body candle-body"/>
+                <line x1="25" y1="60" x2="25" y2="70" stroke="#4CAF50" stroke-width="2" class="wick"/>
+
+                <!-- Engulfing Bearish Candle -->
+                <line x1="75" y1="20" x2="75" y2="70" stroke="#F44336" stroke-width="2" class="wick"/>
+                <rect x="70" y="20" width="10" height="50" fill="#F44336" class="engulfing-body candle-body"/>
+            </svg>
+            <p>A small bullish candle is completely covered by a large bearish candle, often after an uptrend.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristic:</strong> The engulfing candle's <b> body</b> (the solid part between open and close) must completely overlap the previous candle's <b> body</b>. Wicks (shadows) are not considered for the engulfing criteria, although wider engulfing wicks can add to conviction.
+    </div>
+
+    <h2>Basic Engulfing Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect both Bullish and Bearish Engulfing patterns in Pine Script v5:</p>
+    
+    <pre><code>//@version=5
+indicator("Engulfing Pattern Detector", overlay=true)
+
+// Get candle properties for current and previous bar
+prevOpen = open[1]
+prevClose = close[1]
+prevHigh = high[1]
+prevLow = low[1]
+
+// Check if previous candle was bullish (green) or bearish (red)
+isPrevBullish = prevClose > prevOpen
+isPrevBearish = prevClose < prevOpen
+
+// Define Bullish Engulfing criteria
+// 1. Previous candle is bearish
+// 2. Current candle is bullish
+// 3. Current candle's body completely engulfs previous candle's body
+isBullishEngulfing = isPrevBearish and (close > open) and (close > prevHigh) and (open < prevLow)
+
+// Define Bearish Engulfing criteria
+// 1. Previous candle is bullish
+// 2. Current candle is bearish
+// 3. Current candle's body completely engulfs previous candle's body
+isBearishEngulfing = isPrevBullish and (close < open) and (open > prevHigh) and (close < prevLow)
+
+// Plot signals on the chart
+plotshape(isBullishEngulfing, title="Bullish Engulfing", location=location.belowbar, color=color.new(color.green, 0), style=shape.triangleup, size=size.small)
+plotshape(isBearishEngulfing, title="Bearish Engulfing", location=location.abovebar, color=color.new(color.red, 0), style=shape.triangledown, size=size.small)
+
+// Alert conditions (optional)
+alertcondition(isBullishEngulfing, title="Bullish Engulfing Alert", message="Bullish Engulfing Pattern Detected!")
+alertcondition(isBearishEngulfing, title="Bearish Engulfing Alert", message="Bearish Engulfing Pattern Detected!")
+</code></pre>
+
+    <h2>Advanced Engulfing Strategies</h2>
+    <p>While basic detection is useful, combining engulfing patterns with other indicators provides stronger, more reliable signals.</p>
+    
+    <h3>1. Engulfing with Trend Confirmation (Using Moving Average)</h3>
+    <pre><code>//@version=5
+strategy("Engulfing with Trend Confirmation", overlay=true)
+
+// Input for Moving Average length
+maLength = input(20, "MA Length")
+ma = ta.ema(close, maLength) // Using EMA for trend detection
+
+// Engulfing Pattern Detection (from basic example)
+isPrevBullish = close[1] > open[1]
+isPrevBearish = close[1] < open[1]
+isBullishEngulfing = isPrevBearish and (close > open) and (close > high[1]) and (open < low[1])
+isBearishEngulfing = isPrevBullish and (close < open) and (open > high[1]) and (close < low[1])
+
+// Trend Confirmation:
+// For Bullish Engulfing: Price should be below MA (downtrend)
+// For Bearish Engulfing: Price should be above MA (uptrend)
+isDowntrend = close < ma
+isUptrend = close > ma
+
+// Strategy Logic with Trend Confirmation
+longSignal = isBullishEngulfing and isDowntrend
+shortSignal = isBearishEngulfing and isUptrend
+
+if (longSignal)
+    strategy.entry("Long", strategy.long)
+    
+if (shortSignal)
+    strategy.entry("Short", strategy.short)
+
+// Plot MA
+plot(ma, "Trend MA", color.blue)
+
+// Plot confirmed signals
+plotshape(longSignal, title="Confirmed Bullish Engulfing", location=location.belowbar, color=color.new(color.navy, 0), style=shape.arrowup, size=size.normal)
+plotshape(shortSignal, title="Confirmed Bearish Engulfing", location=location.abovebar, color=color.new(color.fuchsia, 0), style=shape.arrowdown, size=size.normal)
+</code></pre>
+
+    <h3>2. Engulfing with Volume Confirmation</h3>
+    <pre><code>//@version=5
+indicator("Engulfing with Volume Confirmation", overlay=true)
+
+// Engulfing Pattern Detection (from basic example)
+isPrevBullish = close[1] > open[1]
+isPrevBearish = close[1] < open[1]
+isBullishEngulfing = isPrevBearish and (close > open) and (close > high[1]) and (open < low[1])
+isBearishEngulfing = isPrevBullish and (close < open) and (open > high[1]) and (close < low[1])
+
+// Volume Confirmation:
+// Engulfing candle's volume should be higher than previous candle's volume
+isVolumeConfirmed = volume > volume[1]
+
+// Combined signals
+confirmedBullish = isBullishEngulfing and isVolumeConfirmed
+confirmedBearish = isBearishEngulfing and isVolumeConfirmed
+
+// Plot confirmed signals
+barcolor(confirmedBullish ? color.new(color.teal, 60) : na)
+barcolor(confirmedBearish ? color.new(color.maroon, 60) : na)
+
+plotshape(confirmedBullish, title="Bullish Engulfing (Vol Confirmed)", location=location.belowbar, color=color.new(color.green, 0), style=shape.labelup, size=size.small, text="Bull Vol")
+plotshape(confirmedBearish, title="Bearish Engulfing (Vol Confirmed)", location=location.abovebar, color=color.new(color.red, 0), style=shape.labeldown, size=size.small, text="Bear Vol")
+
+// Optional: Plot volume for visual check
+plot(volume, title="Volume", color=color.gray, style=plot.style_columns)
+</code></pre>
+
+    <h3>3. Engulfing with RSI Confirmation</h3>
+    <pre><code>//@version=5
+indicator("Engulfing with RSI Confirmation", overlay=true)
+
+// RSI Inputs
+rsiLength = input(14, "RSI Length")
+overbought = input(70, "RSI Overbought Level")
+oversold = input(30, "RSI Oversold Level")
+
+// Calculate RSI
+rsiValue = ta.rsi(close, rsiLength)
+
+// Engulfing Pattern Detection
+isPrevBullish = close[1] > open[1]
+isPrevBearish = close[1] < open[1]
+isBullishEngulfing = isPrevBearish and (close > open) and (close > high[1]) and (open < low[1])
+isBearishEngulfing = isPrevBullish and (close < open) and (open > high[1]) and (close < low[1])
+
+// RSI Confirmation:
+// Bullish Engulfing: RSI below oversold level (or rising from it)
+// Bearish Engulfing: RSI above overbought level (or falling from it)
+rsiBullishConfirm = rsiValue < oversold
+rsiBearishConfirm = rsiValue > overbought
+
+// Combined signals
+signalBullish = isBullishEngulfing and rsiBullishConfirm
+signalBearish = isBearishEngulfing and rsiBearishConfirm
+
+// Plot signals
+plotshape(signalBullish, title="Bullish Engulfing (RSI Confirmed)", location=location.belowbar, color=color.new(color.aqua, 0), style=shape.arrowup, size=size.normal)
+plotshape(signalBearish, title="Bearish Engulfing (RSI Confirmed)", location=location.abovebar, color=color.new(color.orange, 0), style=shape.arrowdown, size=size.normal)
+
+// Plot RSI in a separate pane
+plot(rsiValue, "RSI", color.blue, linewidth=2, display=display.pane)
+hline(overbought, "Overbought", color.red)
+hline(oversold, "Oversold", color.green)
+    </code></pre>
+
+    <h2>Optimizing Engulfing Pattern Performance</h2>
+    <p>To maximize the effectiveness of Engulfing patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><strong>Context is King:</strong> Always consider the larger trend. Bullish engulfing patterns are strongest after a downtrend, and bearish engulfing patterns are strongest after an uptrend.</li>
+      <li><strong>Volume Confirmation:</strong> Look for higher volume on the engulfing candle compared to the previous one, indicating stronger conviction behind the move.</li>
+      <li><strong>Support & Resistance:</strong> Engulfing patterns that occur at significant support or resistance levels tend to be more reliable.</li>
+      <li><strong>Timeframe:</strong> While visible on all timeframes, signals on higher timeframes (e.g., daily, weekly) generally carry more weight than those on lower timeframes.</li>
+      <li><strong>Confirmation from Other Indicators:</strong> Combine with momentum oscillators (RSI, Stochastic), trend indicators (Moving Averages, ADX), or volatility tools (Bollinger Bands) for higher probability trades.</li>
+    </ul>
+
+    <h2>Common Engulfing Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not all engulfing patterns are strong reversal signals. Avoid trading them in choppy or ranging markets without additional confirmation, as they can lead to false signals.
+    </div>
+    <ul>
+      <li><b> Ignoring Trend:</b> An engulfing pattern against the primary trend is usually a weaker signal.</li>
+      <li><b> Small Candles:</b> Patterns involving very small candles (dojis, spinning tops) might not carry enough conviction.</li>
+      <li><b> Lack of Volume:</b> A weak volume on the engulfing candle can indicate a lack of true buying/selling pressure.</li>
+      <li><b> Over-reliance:</b> Using engulfing patterns alone without other forms of analysis (e.g., support/resistance, market structure) can lead to whipsaws.</li>
+      <li><b> Mistaking Gaps:</b> Ensure the engulfing candle truly opens below/above the previous candle's close, not just engulfs the body due to a large gap.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b> Engulfing candlestick pattern</b> is a foundational element of price action analysis and a powerful tool in a trader's arsenal. When properly understood and combined with other technical indicators and market context, it can provide high-probability signals for trend reversals. By implementing these patterns in Pine Script, you can automate their detection, integrate them into sophisticated trading strategies, and enhance your ability to read the market's pulse, ultimately improving your trading decisions.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>

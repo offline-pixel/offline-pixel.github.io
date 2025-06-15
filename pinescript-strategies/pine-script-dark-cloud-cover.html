@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align candles at the top of their wicks for bearish patterns */
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 60%; /* Adjusted for two candles side-by-side */
+            max-width: 60%; 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 200px; /* Wider for two candles */
+            height: 150px; 
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        /* Specific colors for candle bodies and wicks for clarity */
+        .candle-body-green { fill: #4CAF50; } 
+        .candle-body-red { fill: #F44336; } 
+        .wick-green { stroke: #4CAF50; }
+        .wick-red { stroke: #F44336; }
+
+        /* Specific positioning for the 2-candle pattern */
+        .dark-cloud-candle-1 { transform: translateX(-40px); }
+        .dark-cloud-candle-2 { transform: translateX(40px); }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Dark Cloud Cover Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Dark Cloud Cover candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bearish reversals after an uptrend.">
+    <meta name="keywords" content="pine script, dark cloud cover, bearish dark cloud cover, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action, two-candle pattern">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Dark Cloud Cover Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Dark Cloud Cover patterns in Pine Script for bearish reversal strategies after an uptrend.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-dark-cloud-cover.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Dark Cloud Cover Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-dark-cloud-cover.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Dark Cloud Cover Candlestick Patterns ",
+      "description": "Advanced tutorial on implementing Dark Cloud Cover candlestick patterns in Pine Script for TradingView",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/pines.jpg"
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Dark Cloud Cover Candlestick Pattern</h1>
+      <p class="blog-subtitle">Unlock powerful bearish reversal signals with this comprehensive guide to detecting and strategizing with Dark Cloud Cover patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+    <h2>Why the Dark Cloud Cover Pattern Matters in Pine Script</h2>
+    <p>The <b>Dark Cloud Cover candlestick pattern</b> is a two-candle bearish reversal pattern that typically forms after an uptrend. It signals a potential top and a strong shift in momentum from buyers to sellers. This pattern indicates that despite initial buying pressure, sellers stepped in decisively, pushing prices significantly lower to "cover" deep into the body of the previous bullish candle. This makes Dark Cloud Cover patterns invaluable for:</p>
+    <ul>
+      <li>Identifying potential bearish trend reversals at key resistance levels.</li>
+      <li>Signaling a potential exhaustion of buying pressure.</li>
+      <li>Generating entry signals for short positions, often with good risk-reward.</li>
+    </ul>
+
+    <h2>Understanding the Dark Cloud Cover Candlestick Pattern</h2>
+    <p>A Dark Cloud Cover pattern consists of two specific candles:</p>
+    <ol>
+        <li><b>First Candle (Bullish):</b> A long bullish (green) candle, indicating strong buying pressure and a continuation of the uptrend.</li>
+        <li><b>Second Candle (Bearish):</b> A long bearish (red) candle that opens <b>above the high</b> of the first bullish candle (a significant gap up) and then closes <b>below the midpoint</b> of the first bullish candle's body, but *above* its low.</li>
+    </ol>
+    <p>The pattern demonstrates an initial bullish momentum followed by a strong bearish rejection of higher prices, "covering" the previous bullish sentiment.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Dark Cloud Cover Pattern</h3>
+            <svg viewBox="0 0 200 150">
+                <!-- Previous Bullish Candle (Long) -->
+                <line x1="60" y1="30" x2="60" y2="130" stroke="#4CAF50" stroke-width="2" class="wick-green dark-cloud-candle-1"/>
+                <rect x="55" y="30" width="10" height="100" fill="#4CAF50" class="candle-body-green dark-cloud-candle-1"/>
+
+                <!-- Current Bearish Candle (Long, Gaps Up, Covers into Previous) -->
+                <line x1="140" y1="20" x2="140" y2="120" stroke="#F44336" stroke-width="2" class="wick-red dark-cloud-candle-2"/>
+                <rect x="135" y="20" width="10" height="100" fill="#F44336" class="candle-body-red dark-cloud-candle-2"/>
+                
+                <!-- Midpoint line for visual reference -->
+                <line x1="50" y1="80" x2="150" y2="80" stroke="#A9A9A9" stroke-dasharray="4" stroke-width="1"/>
+                <text x="170" y="80" fill="#A9A9A9" font-size="10">Midpoint of previous candle</text>
+            </svg>
+            <p>A long green candle, followed by a red candle that gaps up, but then falls to close below the midpoint of the green candle's body.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Candle 1:</b> Long bullish candle.</li>
+        <li><b>Candle 2:</b> Long bearish candle that opens above the high of Candle 1.</li>
+        <li><b>Candle 2's Close:</b> Must close below the midpoint of Candle 1's real body, but *above* its low.</li>
+        <li><b>Context:</b> Most significant when appearing at the <b>top of a clear uptrend</b>.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Dark Cloud Cover Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect Dark Cloud Cover patterns in Pine Script v5:</p>
+    
+    <pre><code>//@version=5
+indicator("Dark Cloud Cover Pattern Detector", overlay=true)
+
+// Candle 1 (previous bar) - Long Bullish
+isC1Bullish = close[1] > open[1]
+// The length of the first candle's body should be significant (e.g., > 0.5 ATR)
+isC1Long = (close[1] - open[1]) > ta.atr(14)[1] * 0.5 
+
+// Candle 2 (current bar) - Long Bearish with Specific Open/Close conditions
+isC2Bearish = close < open
+// The length of the second candle's body should also be significant
+isC2Long = (open - close) > ta.atr(14) * 0.5
+
+// Condition 1: Second candle opens above the high of the first candle
+opensAbovePrevHigh = open > high[1]
+
+// Condition 2: Second candle closes below the midpoint of the first candle's body
+midpointPrevBody = close[1] - ((close[1] - open[1]) / 2) // Calculate midpoint of previous bullish body
+closesBelowMidpoint = close < midpointPrevBody
+
+// Condition 3: Second candle closes above the low of the first candle
+closesAbovePrevLow = close > low[1]
+
+// Combine all criteria for Dark Cloud Cover
+isDarkCloudCover = isC1Bullish and isC1Long and isC2Bearish and isC2Long and opensAbovePrevHigh and closesBelowMidpoint and closesAbovePrevLow
+
+// Plot signal on the chart
+plotshape(isDarkCloudCover, title="Dark Cloud Cover", location=location.abovebar, color=color.new(color.maroon, 0), style=shape.triangledown, size=size.normal)
+
+// Alert condition (optional)
+alertcondition(isDarkCloudCover, title="Dark Cloud Cover Detected", message="Dark Cloud Cover Candlestick Pattern Detected!")
+</code></pre>
+
+    <h2>Advanced Dark Cloud Cover Strategies</h2>
+    <p>Combining Dark Cloud Cover patterns with other indicators and market context provides stronger, more reliable signals for potential bearish reversals.</p>
+    
+    <h3>1. Dark Cloud Cover with Uptrend Confirmation (Using Moving Average)</h3>
+    <pre><code>//@version=5
+strategy("Dark Cloud Cover with Trend Confirmation", overlay=true)
+
+// Input for Moving Average length
+maLength = input(50, "MA Length (for trend)")
+ma = ta.ema(close, maLength) // Using EMA for uptrend detection
+
+// Dark Cloud Cover Pattern Detection (from basic example)
+isC1Bullish = close[1] > open[1]
+isC1Long = (close[1] - open[1]) > ta.atr(14)[1] * 0.5 
+
+isC2Bearish = close < open
+isC2Long = (open - close) > ta.atr(14) * 0.5
+
+opensAbovePrevHigh = open > high[1]
+midpointPrevBody = close[1] - ((close[1] - open[1]) / 2)
+closesBelowMidpoint = close < midpointPrevBody
+closesAbovePrevLow = close > low[1]
+
+isDarkCloudCover = isC1Bullish and isC1Long and isC2Bearish and isC2Long and opensAbovePrevHigh and closesBelowMidpoint and closesAbovePrevLow
+
+// Trend Confirmation: Price should be above the MA (uptrend)
+// AND the MA itself should be sloping upwards (optional, but stronger)
+isUptrend = close > ma and ma > ma[1] 
+
+// Strategy Logic with Trend Confirmation
+shortSignal = isDarkCloudCover and isUptrend
+
+if (shortSignal)
+    strategy.entry("Short", strategy.short)
+    
+// Plot MA
+plot(ma, "Trend MA", color.blue)
+
+// Plot confirmed signals
+plotshape(shortSignal, title="Confirmed Dark Cloud Cover", location=location.abovebar, color=color.new(color.fuchsia, 0), style=shape.arrowdown, size=size.normal)
+</code></pre>
+
+    <h3>2. Dark Cloud Cover with Volume Confirmation</h3>
+    <pre><code>//@version=5
+indicator("Dark Cloud Cover with Volume Confirmation", overlay=true)
+
+// Dark Cloud Cover Pattern Detection (from basic example)
+isC1Bullish = close[1] > open[1]
+isC1Long = (close[1] - open[1]) > ta.atr(14)[1] * 0.5 
+
+isC2Bearish = close < open
+isC2Long = (open - close) > ta.atr(14) * 0.5
+
+opensAbovePrevHigh = open > high[1]
+midpointPrevBody = close[1] - ((close[1] - open[1]) / 2)
+closesBelowMidpoint = close < midpointPrevBody
+closesAbovePrevLow = close > low[1]
+
+isDarkCloudCover = isC1Bullish and isC1Long and isC2Bearish and isC2Long and opensAbovePrevHigh and closesBelowMidpoint and closesAbovePrevLow
+
+// Volume Confirmation:
+// Volume on the second bearish candle should be higher than average volume
+avgVolume = ta.sma(volume, 20) // 20-period Simple Moving Average of Volume
+isVolumeConfirmed = volume > avgVolume * 1.5 // Volume is 1.5x average
+
+// Combined signal
+confirmedDarkCloudCover = isDarkCloudCover and isVolumeConfirmed
+
+// Plot confirmed signals
+barcolor(confirmedDarkCloudCover ? color.new(color.purple, 60) : na)
+
+plotshape(confirmedDarkCloudCover, title="Dark Cloud Cover (Vol Confirmed)", location=location.abovebar, color=color.new(color.red, 0), style=shape.labeldown, size=size.small, text="DCC Vol")
+
+// Optional: Plot volume for visual check
+plot(volume, title="Volume", color=color.gray, style=plot.style_columns)
+plot(avgVolume, title="Avg Volume", color=color.orange, style=plot.style_line)
+</code></pre>
+
+    <h3>3. Dark Cloud Cover with RSI Confirmation</h3>
+    <pre><code>//@version=5
+indicator("Dark Cloud Cover with RSI Confirmation", overlay=true)
+
+// RSI Inputs
+rsiLength = input(14, "RSI Length")
+overbought = input(70, "RSI Overbought Level")
+
+// Calculate RSI
+rsiValue = ta.rsi(close, rsiLength)
+
+// Dark Cloud Cover Pattern Detection
+isC1Bullish = close[1] > open[1]
+isC1Long = (close[1] - open[1]) > ta.atr(14)[1] * 0.5 
+
+isC2Bearish = close < open
+isC2Long = (open - close) > ta.atr(14) * 0.5
+
+opensAbovePrevHigh = open > high[1]
+midpointPrevBody = close[1] - ((close[1] - open[1]) / 2)
+closesBelowMidpoint = close < midpointPrevBody
+closesAbovePrevLow = close > low[1]
+
+isDarkCloudCover = isC1Bullish and isC1Long and isC2Bearish and isC2Long and opensAbovePrevHigh and closesBelowMidpoint and closesAbovePrevLow
+
+// RSI Confirmation: RSI should be in overbought territory or falling from it
+rsiConfirmation = rsiValue >= overbought or (rsiValue[1] >= overbought and rsiValue < rsiValue[1])
+
+// Combined signal
+signalDarkCloudCover = isDarkCloudCover and rsiConfirmation
+
+// Plot signals
+plotshape(signalDarkCloudCover, title="Dark Cloud Cover (RSI Confirmed)", location=location.abovebar, color=color.new(color.orange, 0), style=shape.arrowdown, size=size.normal)
+
+// Plot RSI in a separate pane
+plot(rsiValue, "RSI", color.blue, linewidth=2, display=display.pane)
+hline(overbought, "Overbought", color.red)
+</code></pre>
+
+    <h2>Optimizing Dark Cloud Cover Pattern Performance</h2>
+    <p>To maximize the effectiveness of Dark Cloud Cover patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Confirm Uptrend:</b> The Dark Cloud Cover is a <b>bearish reversal</b> pattern, so it's most reliable when it appears after a clear uptrend. Avoid trading it in a downtrend or sideways market.</li>
+      <li><b>Volume Confirmation:</b> Look for higher volume on the second bearish candle compared to the first, as it indicates strong selling interest and adds conviction to the reversal signal.</li>
+      <li><b>Resistance Levels:</b> Dark Cloud Cover patterns that form at significant resistance levels (e.g., previous highs, strong moving averages, Fibonacci retracement levels) tend to be more powerful and reliable.</li>
+      <li><b>The "Covering" Depth:</b> The deeper the second candle penetrates the body of the first (ideally well below the 50% mark), the stronger the signal.</li>
+      <li><b>Timeframe:</b> While visible on all timeframes, signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are considered more reliable for sustained reversals.</li>
+    </ul>
+
+    <h2>Common Dark Cloud Cover Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not every two-candle sequence that superficially resembles a Dark Cloud Cover is a valid pattern. Strict adherence to criteria and contextual analysis are essential.
+    </div>
+    <ul>
+      <li><b>Ignoring Trend Context:</b> A Dark Cloud Cover is a reversal pattern; if it appears in a downtrend or ranging market, its predictive power is significantly diminished.</li>
+      <li><b>Insufficient Penetration:</b> If the second bearish candle fails to close below the midpoint of the first bullish candle's body, the pattern is weak or invalid.</li>
+      <li><b>Lack of Gap Up:</b> While sometimes less strict in certain markets, a clear gap up at the open of the second candle adds significant strength to the pattern.</li>
+      <li><b>Small Candles:</b> Patterns formed by very small first or second candles might not carry enough conviction. Both should ideally have substantial bodies.</li>
+      <li><b>Over-reliance:</b> Using the Dark Cloud Cover pattern in isolation without confirmation from other indicators, resistance levels, or broader market analysis can lead to false signals.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Dark Cloud Cover candlestick pattern</b> is a robust and visually clear signal for bearish reversals. By understanding its precise two-candle formation, its contextual importance within an uptrend, and integrating it with other technical confirmations, you can leverage it effectively in your trading. Implementing Dark Cloud Cover detection in Pine Script allows you to automate signal generation, combine it with complementary indicators for higher probability trades, and enhance your price action analysis to make more informed trading decisions on TradingView.</p>
+  </article>
+
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+</body>
+</html>
