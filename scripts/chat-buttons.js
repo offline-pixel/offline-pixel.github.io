@@ -28,9 +28,9 @@ const encoded = {
     );
   } 
 
-function openWAChat() {
-  window.open(`https://wa.me/${decode(encoded.w)}`, '_blank', 'noopener,noreferrer');
-} 
+// function openWAChat() {
+//   window.open(`https://wa.me/${decode(encoded.w)}`, '_blank', 'noopener,noreferrer');
+// } 
 
 function openGoogleMeet() {
   window.open(
@@ -69,22 +69,22 @@ function openGoogleMeet() {
                 <img src="../assets/google-meet.png" width="24" height="24" alt="" aria-hidden="true">
                 <span>&nbsp;Connect on Meet</span>
             </a>
-            <a href="#" class="chat-btn whatsapp-button" aria-label="Chat on WhatsApp">
-                <img src="../assets/whatsapp.png" width="24" height="24" alt="" aria-hidden="true">
-                <span>&nbsp;Chat on WhatsApp</span>
-            </a>
         `;
 
+            // <a href="#" class="chat-btn whatsapp-button" aria-label="Chat on WhatsApp">
+            //     <img src="../assets/whatsapp.png" width="24" height="24" alt="" aria-hidden="true">
+            //     <span>&nbsp;Chat on WhatsApp</span>
+            // </a>
         container.addEventListener('click', (e) => {
             const btn = e.target.closest('.chat-btn');
             if (!btn) return;
             e.preventDefault();
             
             const actions = {
-            'teams-button': openTeamsChat,
-            'zoom-button': openZoomMeeting,
-            'google-meet': openGoogleMeet,
-            'whatsapp-button': openWAChat
+              'teams-button': openTeamsChat,
+              'zoom-button': openZoomMeeting,
+              'google-meet': openGoogleMeet,
+              // 'whatsapp-button': openWAChat
             };
             
             actions[btn.classList[1]]?.();
