@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Busiest Washington Metro Stations | Offline Pixel</title>
+    <meta name="description" content="Discover the top 10 busiest Washington Metro stations by average weekday ridership, including station details and lines served.">
+    <meta name="keywords" content="Washington Metro, WMATA, busiest metro stations, DC transit, metro ridership, Union Station, Metro Center">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Top 10 Busiest Washington Metro Stations (2024 Ridership Data)">
+    <meta property="og:description" content="Explore the busiest stations in Washington's Metro system based on average weekday entries.">
+    <meta property="og:url" content="https://offline-pixel.github.io/washington-metro-stations.html">
+    <!-- <meta property="og:image" content="https://offline-pixel.github.io/images/washington-metro-ridership.jpg"> -->
+
+    <!-- <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Top 10 Busiest Washington Metro Stations">
+    <meta name="twitter:description" content="WMATA data reveals the most crowded stations in Washington's Metro system.">
+    <meta name="twitter:image" content="https://offline-pixel.github.io/images/washington-metro-twitter.jpg"> -->
+    <link rel="canonical" href="https://offline-pixel.github.io/washington-metro-stations.html">
+
+    <meta name="google-adsense-account" content="ca-pub-9243803325136617">
+
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://offline-pixel.github.io/washington-metro-stations.html"
+          },
+          "headline": "Top 10 Busiest Washington Metro Stations (2024 Ridership Data)",
+          "description": "Discover the top 10 busiest Washington Metro stations by average weekday ridership, including station details and lines served.",
+          
+          "author": {
+            "@type": "Person",
+            "name": "offline-pixel",
+            "url": "https://rb.gy/9tod91"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Offline Pixel",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://offline-pixel.github.io/favicon.ico",
+              "width": 100,
+              "height": 100
+            }
+          },
+          "datePublished": "2025-05-29T00:00:00+05:30",
+          "dateModified": "2025-05-29T00:00:00+05:30",
+          "keywords": "Washington Metro, WMATA, busiest metro stations, DC transit, metro ridership",
+          "articleSection": [
+            "Top 10 Busiest Stations"
+          ],
+          "wordCount": 800
+        }
+    </script>
+    <style>
+        /* Base Styles - Reset and Font */
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eee;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1a73e8;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .navbar-links a {
+            color: #555;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .navbar-links a:hover {
+            color: #1a73e8;
+        }
+
+        /* Main Page Layout */
+        .page-layout {
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            max-width: 800px;
+            min-width: 0;
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        p, li {
+            line-height: 32px;
+            text-align: justify;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1a73e8;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Header, Meta, Content, Footer */
+        header {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            word-break: break-word;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #1a1a1a;
+        }
+
+        .meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            background-color: #fff9c4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+        }
+
+        /* Sidebar Styles */
+        .left-sidebar,
+        .right-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            background-color: #f3f3f3;
+            padding: 1rem;
+            border-radius: 8px;
+            box-sizing: border-box;
+            align-self: flex-start;
+            position: sticky;
+            top: calc(1rem + 60px);
+            max-height: calc(100vh - (1rem + 60px) - 20px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            word-break: break-word;
+        }
+
+        /* Ad Slot Styles */
+        .ad-unit {
+            background-color: #e8e8e8;
+            border: 1px dashed #aaa;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .ad-unit ins {
+            display: block !important;
+            margin: 0 auto;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .page-layout {
+                padding: 0 15px;
+                gap: 15px;
+            }
+            .left-sidebar,
+            .right-sidebar {
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .page-layout {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 15px;
+                gap: 20px;
+            }
+            .left-sidebar,
+            .right-sidebar {
+                display: none;
+            }
+            .main-content {
+                max-width: 700px;
+                width: 100%;
+                padding: 1.5rem;
+            }
+            .navbar {
+                padding: 1rem 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem 10px;
+            }
+            .navbar-links a {
+                margin-left: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .main-content {
+                padding: 1rem;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .page-layout {
+                margin: 10px auto;
+                padding: 0 10px;
+            }
+            table {
+                font-size: 0.8rem;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+
+        /* Fallback for extremely small screens */
+        p, li {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">Offline Pixel</a>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <div class="page-layout">
+        <aside class="left-sidebar">
+            <div class="ad-unit sidebar-ad">
+                <!-- AdSense or other ad code -->
+            </div>
+            <div class="ad-unit sidebar-ad">
+                <!-- AdSense or other ad code -->
+            </div>
+        </aside>
+
+        <div class="main-content">
+            <header>
+                <h1>Top 10 Busiest Washington Metro Stations (2024 Ridership Data)</h1>
+                <div class="meta">
+                    <span class="author">offline-pixel</span>
+                    <span> · </span>
+                    <span class="read-time">4 min read</span>
+                    <span> · </span>
+                    <span class="date">May 29, 2025</span>
+                </div>
+            </header>
+
+            <article class="content">
+                <p>The Washington Metro system is a vital part of the city's transportation infrastructure, serving thousands of commuters daily. Based on the latest WMATA data, here are the top 10 busiest stations by average weekday entries:</p>
+
+                <h2>Top 10 Busiest Stations</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Station</th>
+                                <th>Lines</th>
+                                <th>Avg. Daily Riders</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Union Station</td>
+                                <td>Red</td>
+                                <td>12,202</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Metro Center</td>
+                                <td>Red, Orange, Blue, Silver</td>
+                                <td>11,736</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Foggy Bottom–GWU</td>
+                                <td>Orange, Blue, Silver</td>
+                                <td>10,154</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Gallery Place</td>
+                                <td>Red, Green, Yellow</td>
+                                <td>9,658</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Farragut North</td>
+                                <td>Red</td>
+                                <td>9,658</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>L'Enfant Plaza</td>
+                                <td>Orange, Blue, Silver, Green, Yellow</td>
+                                <td>7,506</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>NoMa–Gallaudet U</td>
+                                <td>Red</td>
+                                <td>8,914</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Columbia Heights</td>
+                                <td>Green, Yellow</td>
+                                <td>7,229</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Farragut West</td>
+                                <td>Orange, Blue, Silver</td>
+                                <td>6,593</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Pentagon</td>
+                                <td>Blue, Yellow</td>
+                                <td>6,593</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+
+                <p>Note: Ridership numbers are approximate averages based on recent MTA data and may vary seasonally.</p>
+            </article>
+
+            <footer>
+                <p>© 2025 Offline Pixel. All rights reserved.</p>
+                <small><a href="privacy-policy.html">Privacy Policy</a></small> <small><a href="terms-conditions.html">Terms & Conditions</a></small>
+            </footer>
+        </div>
+
+        <aside class="right-sidebar">
+            <div class="ad-unit sidebar-ad">
+                <!-- AdSense or other ad code -->
+            </div>
+            <div class="ad-unit sidebar-ad">
+                <!-- AdSense or other ad code -->
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        // GSAP Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Header animation
+            gsap.from("header", {
+                opacity: 0,
+                y: -20,
+                duration: 1,
+                ease: "power2.out"
+            });
+
+            // Meta animation
+            gsap.from(".meta", {
+                opacity: 0,
+                y: -10,
+                duration: 0.8,
+                delay: 0.3,
+                ease: "power2.out"
+            });
+
+            // Content animation
+            gsap.from(".content", {
+                opacity: 0,
+                y: 20,
+                duration: 1,
+                delay: 0.6,
+                ease: "power2.out"
+            });
+
+            // Table row animations
+            gsap.utils.toArray("table tr").forEach((row, i) => {
+                gsap.from(row, {
+                    opacity: 0,
+                    x: i % 2 === 0 ? -20 : 20,
+                    duration: 0.5,
+                    scrollTrigger: {
+                        trigger: row,
+                        start: "top 90%",
+                        toggleActions: "play none none none"
+                    },
+                    delay: i * 0.02
+                });
+            });
+
+            // Footer animation
+            gsap.from("footer", {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: "footer",
+                    start: "top 95%",
+                    toggleActions: "play none none none"
+                },
+                ease: "power2.out"
+            });
+
+            // Sidebar animations
+            gsap.from(".left-sidebar", {
+                opacity: 0,
+                x: -50,
+                duration: 1,
+                delay: 0.8,
+                ease: "power2.out"
+            });
+            gsap.from(".right-sidebar", {
+                opacity: 0,
+                x: 50,
+                duration: 1,
+                delay: 0.8,
+                ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>

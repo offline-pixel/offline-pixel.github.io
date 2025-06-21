@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        } 
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Anchored VWAP (AVWAP) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Anchored VWAP (AVWAP) in Pine Script for TradingView - a powerful tool that calculates the Volume-Weighted Average Price from a specific starting point, revealing true support/resistance and market conviction.">
+    <meta name="keywords" content="pine script strategies, Anchored VWAP, AVWAP, tradingview indicator, technical analysis, volume weighted average price, support resistance, market conviction, smart money, trend following, mean reversion">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Anchored VWAP (AVWAP) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Anchored VWAP (AVWAP) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Anchored VWAP (AVWAP) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-AnchoredVWAP.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script Anchored VWAP (AVWAP) - Complete TradingView Guide",
+  "description": "Master Anchored VWAP (AVWAP) in Pine Script for TradingView - a powerful tool that calculates the Volume-Weighted Average Price from a specific starting point.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-AnchoredVWAP.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Anchored VWAP",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-AnchoredVWAP.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Anchored VWAP (AVWAP) </h1>
+      <p class="blog-subtitle">Master this powerful technical analysis tool in TradingView's Pine Script that calculates the Volume-Weighted Average Price from a specific, user-defined anchor point, revealing significant support, resistance, and market conviction.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+  
+
+  <article class="fullscreen">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://offline-pixel.github.io/">Home</a> >
+    <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+    <span aria-current="page">Anchored VWAP</span>
+  </nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Anchored VWAP (AVWAP)?</h2>
+    <p> <b>Anchored Volume-Weighted Average Price (AVWAP)</b> is a powerful technical indicator that calculates the Volume-Weighted Average Price (VWAP) starting from a specific, user-defined "anchor" point on the chart. Unlike the standard VWAP (which typically resets at the start of each trading session), the AVWAP accumulates volume and price data from its anchor point indefinitely, providing a continuous average of the price at which the majority of volume has been traded *since that specific event or price level*.</p>
+
+    <p>The core philosophy behind AVWAP is that major market movements, significant news events, earnings releases, or important swing highs/lows can serve as "anchors" for new phases of market activity. By tracking the average price paid (weighted by volume) since such an event, traders can infer whether market participants who entered around that anchor point are currently in profit or loss, and identify areas of strong support or resistance.</p>
+
+    <p>AVWAP is primarily used by professional and institutional traders to:</p>
+    <ul>
+      <li> <b>Identify true support and resistance:</b> AVWAP lines often act as dynamic support when price is above them and dynamic resistance when price is below them.</li>
+      <li> <b>Gauge market conviction:</b> Price trading significantly above AVWAP indicates strong buying conviction from the anchor point; below indicates selling conviction.</li>
+      <li> <b>Assess "smart money" positions:</b> Traders can anchor VWAP to major institutional entry points to see if those players are currently profitable or under pressure.</li>
+      <li> <b>Confirm trends and reversals:</b> A break and hold above/below an AVWAP can signal a new trend direction or continuation, while bounces can confirm existing trends.</li>
+    </ul>
+
+    <p>In Pine Script, implementing Anchored VWAP requires a custom calculation of cumulative price-volume and cumulative volume from a user-specified starting bar or time, making it a highly customizable tool for advanced <b>pine script strategies</b>.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Anchored VWAP is based on the cumulative sum of `(Typical Price * Volume)` divided by the cumulative sum of `Volume`, starting from the designated anchor point. The formula is as follows:</p>
+    <br>
+    `Typical Price (TP) = (High + Low + Close) / 3`
+    <br>
+    `Cumulative TP * Volume = sum(TP * volume)` from anchor bar to current bar
+    <br>
+    `Cumulative Volume = sum(volume)` from anchor bar to current bar
+    <br>
+    `AVWAP = Cumulative TP * Volume / Cumulative Volume`
+    <br>
+    <p>Crucially, the accumulation of `TP * volume` and `volume` only begins *after* the specified anchor point and continues indefinitely until the indicator is reset or the chart changes.</p>
+
+    <h2>Basic Anchored VWAP Implementation in Pine Script</h2>
+    <p>Since Pine Script does not have a direct built-in `ta.anchoredVwap()` function that dynamically anchors to arbitrary points like a manual drawing tool, we'll implement a custom version. This version will allow you to specify the anchor either by its bar index (e.g., bar of a swing high/low) or by a specific date/time. Using a date/time input is often more practical for anchoring to specific historical events.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Anchored VWAP (AVWAP)"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">5000</span>) <span class="comment">// overlay=true to plot on price chart.</span>
+<span class="comment">// max_bars_back is important for calculations over long periods.</span>
+
+<span class="comment">// --- User Inputs for Anchor Point ---</span>
+anchorType = <span class="keyword">input</span>.string(<span class="string">"Time"</span>, title=<span class="string">"Anchor Type"</span>, options=[<span class="string">"Time"</span>, <span class="string">"Bar Index"</span>])
+anchorTime = <span class="keyword">input</span>.time(<span class="builtin">timestamp</span>(<span class="string">"01 Jan 2024 09:15 +0530"</span>), title=<span class="string">"Anchor Date/Time (HH:MM IST)"</span>, tooltip=<span class="string">"Set a specific date and time for the AVWAP to start from. Format: 'DD Mon YYYY HH:MM +HHMM'"</span>)
+anchorBarOffset = <span class="keyword">input</span>.int(<span class="number">200</span>, title=<span class="string">"Anchor Bars Back (from current bar)"</span>, minval=<span class="number">1</span>, tooltip=<span class="string">"Number of bars back from the current bar to set the anchor. Used if 'Anchor Type' is 'Bar Index'."</span>)
+resetOnSession = <span class="keyword">input</span>.bool(<span class="keyword">false</span>, title=<span class="string">"Reset AVWAP on New Session?"</span>, tooltip=<span class="string">"If true, AVWAP will reset calculation at the start of each new daily session, behaving like a traditional daily VWAP. If false, it continues from its anchor point."</span>)
+
+<span class="comment">// --- Plotting Options ---</span>
+avwapColor = <span class="keyword">input</span>.color(<span class="builtin">color.new</span>(<span class="builtin">color</span>.blue, <span class="number">0</span>), title=<span class="string">"AVWAP Line Color"</span>)
+avwapWidth = <span class="keyword">input</span>.int(<span class="number">2</span>, title=<span class="string">"AVWAP Line Width"</span>, minval=<span class="number">1</span>, maxval=<span class="number">4</span>)
+
+<span class="comment">// --- Calculate Anchor Bar Index ---</span>
+<span class="keyword">var</span> <span class="keyword">int</span> anchorIdx = <span class="keyword">na</span> <span class="comment">// This will store the bar index of our anchor point</span>
+
+<span class="comment">// Find the anchor bar index based on the chosen anchor type</span>
+<span class="keyword">if</span> anchorType == <span class="string">"Time"</span>
+    <span class="comment">// For 'Time' anchor, find the first bar whose `time` is greater than or equal to `anchorTime`</span>
+    <span class="comment">// We only need to set this once when the script loads or when anchorTime changes.</span>
+    <span class="comment">// Use `varip` to initialize once per script instance.</span>
+    <span class="keyword">varip</span> <span class="keyword">bool</span> anchorFound = <span class="keyword">false</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> anchorFound
+        <span class="keyword">for</span> i = <span class="number">0</span> <span class="keyword">to</span> bar_index
+            <span class="keyword">if</span> time[i] >= anchorTime
+                anchorIdx := bar_index[i]
+                anchorFound := <span class="keyword">true</span>
+                <span class="keyword">break</span>
+<span class="keyword">else</span> <span class="comment">// Anchor Type == "Bar Index"</span>
+    anchorIdx := bar_index - anchorBarOffset
+
+<span class="comment">// Ensure anchorIdx is not NA and is within valid range</span>
+<span class="keyword">if</span> <span class="builtin">na</span>(anchorIdx) <span class="keyword">or</span> anchorIdx &lt; <span class="number">0</span>
+    anchorIdx := <span class="number">0</span> <span class="comment">// Default to first bar if anchor not found or invalid</span>
+
+<span class="comment">// --- Calculate AVWAP ---</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cumulative_tp_volume = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cumulative_volume = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="keyword">float</span> avwap_value = <span class="keyword">na</span>
+
+<span class="comment">// Reset logic based on input</span>
+<span class="keyword">var</span> <span class="keyword">bool</span> isNewSession = <span class="keyword">false</span>
+<span class="keyword">if</span> resetOnSession
+    isNewSession := <span class="builtin">ta.change</span>(time(<span class="string">"D"</span>))
+    <span class="keyword">if</span> isNewSession
+        cumulative_tp_volume := <span class="number">0.0</span>
+        cumulative_volume := <span class="number">0.0</span>
+
+<span class="comment">// Calculate typical price for the current bar</span>
+<span class="keyword">float</span> tp = (high + low + close) / <span class="number">3.0</span>
+
+<span class="comment">// Accumulate data only from the anchor bar onwards</span>
+<span class="keyword">if</span> bar_index >= anchorIdx
+    cumulative_tp_volume := cumulative_tp_volume + (tp * volume)
+    cumulative_volume := cumulative_volume + volume
+
+    <span class="comment">// Avoid division by zero</span>
+    <span class="keyword">if</span> cumulative_volume > <span class="number">0</span>
+        avwap_value := cumulative_tp_volume / cumulative_volume
+    <span class="keyword">else</span>
+        avwap_value := tp <span class="comment">// If no volume yet (e.g., very first bar after anchor), use typical price</span>
+<span class="keyword">else</span>
+    <span class="comment">// Before the anchor point, AVWAP is not plotted or is NA</span>
+    avwap_value := <span class="keyword">na</span>
+    cumulative_tp_volume := <span class="number">0.0</span> <span class="comment">// Reset sums before anchor for correct restart</span>
+    cumulative_volume := <span class="number">0.0</span>
+
+
+<span class="comment">// --- Plotting AVWAP ---</span>
+<span class="builtin">plot</span>(avwap_value, title=<span class="string">"AVWAP"</span>, color=avwapColor, linewidth=avwapWidth)
+
+<span class="comment">// Optional: Highlight the anchor point visually</span>
+anchorPlotColor = <span class="builtin">color.new</span>(<span class="builtin">color</span>.white, <span class="number">20</span>)
+<span class="builtin">plotshape</span>(bar_index == anchorIdx ? high : <span class="keyword">na</span>, title=<span class="string">"Anchor Point"</span>, location=location.belowbar, color=anchorPlotColor, style=shape.triangleup, size=size.small, text=<span class="string">"Anchor"</span>)
+
+<span class="comment">// --- Simple Strategy Example (Conceptual) ---</span>
+<span class="comment">// This strategy demonstrates how you might react to AVWAP levels.</span>
+<span class="comment">// It is highly simplified and for educational purposes only.</span>
+<span class="comment">// Real trading strategies require more complex confirmation.</span>
+
+<span class="keyword">strategy</span>(<span class="string">"AVWAP Strategy"</span>, overlay=<span class="keyword">true</span>, initial_capital=<span class="number">10000</span>, default_qty_type=<span class="builtin">strategy</span>.percent_of_equity, default_qty_value=<span class="number">10</span>)
+
+<span class="comment">// Ensure AVWAP value is valid before using in strategy</span>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="builtin">na</span>(avwap_value) <span class="keyword">and</span> bar_index > anchorIdx <span class="comment">// Only trade after the anchor is established</span>
+
+    <span class="comment">// Strategy 1: Price crossing AVWAP (Mean Reversion/Trend Confirmation)</span>
+    <span class="comment">// Long Entry: Price crosses above AVWAP</span>
+    longCondition = <span class="builtin">ta.crossover</span>(close, avwap_value)
+
+    <span class="comment">// Short Entry: Price crosses below AVWAP</span>
+    shortCondition = <span class="builtin">ta.crossunder</span>(close, avwap_value)
+
+    <span class="keyword">if</span> (longCondition)
+        <span class="builtin">strategy</span>.entry(<span class="string">"Long AVWAP Cross"</span>, <span class="builtin">strategy</span>.long)
+
+    <span class="keyword">if</span> (shortCondition)
+        <span class="builtin">strategy</span>.entry(<span class="string">"Short AVWAP Cross"</span>, <span class="builtin">strategy</span>.short)
+
+    <span class="comment">// Exit on opposite cross</span>
+    <span class="builtin">strategy</span>.close(<span class="string">"Long AVWAP Cross"</span>, when=shortCondition)
+    <span class="builtin">strategy</span>.close(<span class="string">"Short AVWAP Cross"</span>, when=longCondition)
+
+
+    <span class="comment">// Strategy 2: Price bouncing off AVWAP (Support/Resistance)</span>
+    <span class="comment">// This requires more sophisticated logic to detect a "bounce" vs. a "cross".</span>
+    <span class="comment">// For simplicity, let's look for closes near AVWAP in the direction of the bounce.</span>
+    
+    <span class="comment">// Check if price closes above AVWAP after being below it and is near AVWAP</span>
+    closeAboveAVWAP = close > avwap_value <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= avwap_value[<span class="number">1</span>]
+    isNearAVWAP = <span class="builtin">math.abs</span>(close - avwap_value) / close * <span class="number">100</span> &lt; <span class="number">0.1</span> <span class="comment">// Within 0.1% of AVWAP</span>
+    
+    <span class="comment">// Long Bounce: price goes below AVWAP and closes back above it, confirming support</span>
+    longBounceCondition = low &lt; avwap_value <span class="keyword">and</span> close > avwap_value <span class="keyword">and</span> closeAboveAVWAP
+
+    <span class="comment">// Short Bounce: price goes above AVWAP and closes back below it, confirming resistance</span>
+    shortBounceCondition = high > avwap_value <span class="keyword">and</span> close &lt; avwap_value <span class="keyword">and</span> <span class="keyword">not</span> closeAboveAVWAP
+
+
+    <span class="comment">// For a more robust strategy, you might need additional filters like trend, momentum, etc.</span>
+    <span class="comment">// Example: Only take long bounces if overall trend is up (e.g., price > 200 EMA)</span>
+    <span class="comment">// currentTrendIsUp = close > ta.ema(close, 200)</span>
+
+    <span class="comment">// if (longBounceCondition and currentTrendIsUp)</span>
+    <span class="comment">//     strategy.entry("Long AVWAP Bounce", strategy.long)</span>
+
+    <span class="comment">// if (shortBounceCondition and not currentTrendIsUp)</span>
+    <span class="comment">//     strategy.entry("Short AVWAP Bounce", strategy.short)</span>
+
+    <span class="comment">// Basic exit with fixed profit/loss or opposite signal</span>
+    <span class="comment">// For AVWAP bounces, often target swing highs/lows or R:R.</span>
+    <span class="comment">// profitTargetPct = input.float(2.0, title="Profit Target (%)", minval=0.1)</span>
+    <span class="comment">// stopLossPct = input.float(1.0, title="Stop Loss (%)", minval=0.1)</span>
+
+    <span class="comment">// strategy.exit("Long AVWAP Bounce Exit", from_entry="Long AVWAP Bounce", profit=close * (1 + profitTargetPct / 100), stop=close * (1 - stopLossPct / 100))</span>
+    <span class="comment">// strategy.exit("Short AVWAP Bounce Exit", from_entry="Short AVWAP Bounce", profit=close * (1 - profitTargetPct / 100), stop=close * (1 + stopLossPct / 100))</span>
+
+</code></pre>
+
+    <h2>Optimizing Anchored VWAP (AVWAP) Performance</h2>
+    <p>To get the most from Anchored VWAP in Pine Script:</p>
+    <ul>
+      <li> <b>Anchor Point Selection:</b> This is the *most critical* aspect. The effectiveness of AVWAP heavily depends on anchoring it to a genuinely significant event. Common anchor points include:
+        <ul>
+          <li> <b>Major Swing High/Low:</b> The start of a new trend or a significant turning point.</li>
+          <li> <b>Earnings Report/News Event:</b> The bar where a major news announcement or earnings report came out.</li>
+          <li> <b>Market Open/Close (for specific sessions):</b> Although VWAP usually does this, AVWAP allows you to specify a *single* session's open/close if needed for specific analysis.</li>
+          <li> <b>Gap Open/Close:</b> The bar where a significant price gap formed or closed.</li>
+        </ul>
+        The input `anchorTime` or `anchorBarOffset` in the script needs to be adjusted based on the specific historical event you want to analyze.</li>
+      <li> <b>Confluence is Key:</b> AVWAP is a powerful tool, but it's rarely used in isolation. Its signals gain significant strength when they align with other technical analysis tools:
+        <ul>
+          <li> <b>Price Action:</b> Look for strong bullish/bearish candlestick patterns confirming bounces or breaks.</li>
+          <li> <b>Volume:</b> High volume on a breakout or rejection of AVWAP reinforces the signal.</li>
+          <li> <b>Other Support/Resistance:</b> When AVWAP converges with trendlines, Fibonacci levels, or previous supply/demand zones, it becomes a high-probability area.</li>
+        </ul>
+      </li>
+      <li> <b>Trend Confirmation:</b> Use AVWAP to confirm the trend from the anchor point. If price consistently stays above AVWAP, the uptrend from that anchor is strong. If below, the downtrend is strong.</li>
+      <li> <b>Fair Value Assessment:</b> Consider price relative to AVWAP. If price is far above AVWAP, it might be overextended from the average price paid by recent participants; conversely if far below.</li>
+      <li> <b>Multiple AVWAPs:</b> Some traders plot multiple AVWAPs anchored to different significant events (e.g., one from a recent swing low, another from a major earnings report). This creates a web of dynamic support/resistance.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Smart Money Compass:</strong> AVWAP acts as a compass for institutional and "smart money" participation. If price is above their average entry (AVWAP), they're profitable; if below, they're under pressure. This provides a unique lens into market conviction.
+    </div>
+
+    <h2>Common Anchored VWAP (AVWAP) Pitfalls</h2>
+    <ul>
+      <li> <b>Anchor Point Subjectivity:</b> Choosing the "correct" anchor point can be subjective and is crucial for the indicator's effectiveness. An ill-chosen anchor will result in irrelevant levels.</li>
+      <li> <b>Lagging Indicator:</b> Like all moving averages, AVWAP is a lagging indicator. It reflects past price and volume action. It's best used for confirmation and context, not as a predictive signal on its own.</li>
+      <li> <b>False Signals/Whipsaws:</b> In very choppy or range-bound markets, price can repeatedly cross AVWAP, leading to whipsaws and false signals if not combined with other filters or higher timeframe analysis.</li>
+      <li> <b>Over-Reliance:</b> Using AVWAP as the sole decision-making tool without considering the broader market context, fundamental news, or other technical analysis can lead to poor trading decisions.</li>
+      <li> <b>Volume Data Quality:</b> AVWAP relies heavily on accurate volume data. For assets with unreliable or low-quality volume data, AVWAP may be less effective.</li>
+      <li> <b>Misinterpretation in Strong Trends:</b> In very strong, parabolic trends, price might stay far from AVWAP, making it less useful for immediate entry/exit signals but still valuable for assessing overall conviction.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Anchored VWAP (AVWAP) is an exceptionally powerful and insightful technical analysis tool available in Pine Script for TradingView. By calculating the Volume-Weighted Average Price from a precise, user-defined anchor point, it provides a unique and continuous perspective on market conviction, revealing dynamic support and resistance levels that reflect the collective average entry price of market participants since a significant event. While demanding careful selection of the anchor point and diligent confirmation from price action, volume, and other technical tools, mastering AVWAP can significantly enhance your <b>pine script strategies</b>. By integrating this indicator into your trading plan, you can gain a deeper understanding of market dynamics, identify high-probability trading zones, and make more informed decisions based on where the true "smart money" has transacted.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

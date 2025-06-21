@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Pivot Points - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Pivot Points in Pine Script for TradingView - a foundational indicator used to identify potential intraday support, resistance, and reversal levels.">
+    <meta name="keywords" content="pine script strategies, Pivot Points, tradingview indicator, technical analysis, support resistance, intraday trading, pivot levels, reversal points, classic pivot points">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Pivot Points - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Pivot Points in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Pivot Points - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-PivotPoints.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Pivot Points - Complete TradingView Guide",
+      "description": "Master Pivot Points in Pine Script for TradingView - a foundational indicator used to identify potential intraday support, resistance, and reversal levels.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-PivotPoints.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Pivot Points",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-PivotPoints.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Pivot Points </h1>
+      <p class="blog-subtitle">Master this foundational indicator in TradingView's Pine Script that identifies key potential support, resistance, and reversal levels for intraday and swing trading strategies.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Pivot Points</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What are Pivot Points?</h2>
+    <p> <b>Pivot Points</b> are significant levels derived from the high, low, and closing prices of a previous trading period (e.g., previous day, week, or month). Traders use these levels to predict potential support and resistance zones for the current or upcoming trading period. They are particularly popular among intraday traders for identifying key turning points or areas where price action might react.</p>
+
+    <p>The core idea is that these calculated levels represent a consensus of past price action, and therefore, they are likely to influence future price movements. When price approaches a pivot point, traders watch for either a bounce (support/resistance) or a breakout (continuation).</p>
+
+    <p>There are several types of Pivot Points (Classic, Fibonacci, Woodie, Camarilla, Demark), each with slightly different calculation formulas. However, the <b>Classic Pivot Points</b> are the most widely used and provide a solid foundation for understanding the concept.</p>
+
+    <p>In Pine Script, Pivot Points are a powerful tool for visualizing key price levels that can inform your <b>pine script strategies</b> for entries, exits, and risk management.</p>
+
+    <h2>Components and Calculation (Classic Pivot Points)</h2>
+    <p>Classic Pivot Points consist of a central Pivot Point (PP), three resistance levels (R1, R2, R3), and three support levels (S1, S2, S3). These are calculated using the previous period's (e.g., yesterday's) High, Low, and Close prices:</p>
+    <ol>
+      <li> <b>Pivot Point (PP):</b> The central point, considered the "fair value" or balance point for the current period.
+        <br>
+        `PP = (High[previous_period] + Low[previous_period] + Close[previous_period]) / 3`
+      </li>
+      <li> <b>First Resistance (R1):</b>
+        <br>
+        `R1 = (2 * PP) - Low[previous_period]`
+      </li>
+      <li> <b>First Support (S1):</b>
+        <br>
+        `S1 = (2 * PP) - High[previous_period]`
+      </li>
+      <li> <b>Second Resistance (R2):</b>
+        <br>
+        `R2 = PP + (High[previous_period] - Low[previous_period])`
+        `R2 = PP + (R1 - S1)` (Alternative calculation based on R1 and S1, known as Range)
+      </li>
+      <li> <b>Second Support (S2):</b>
+        <br>
+        `S2 = PP - (High[previous_period] - Low[previous_period])`
+        `S2 = PP - (R1 - S1)` (Alternative calculation based on R1 and S1, known as Range)
+      </li>
+      <li> <b>Third Resistance (R3):</b>
+        <br>
+        `R3 = R1 + (High[previous_period] - Low[previous_period])`
+        `R3 = R1 + (R2 - S1)` (Alternative using R2 and S1 range)
+      </li>
+      <li> <b>Third Support (S3):</b>
+        <br>
+        `S3 = S1 - (High[previous_period] - Low[previous_period])`
+        `S3 = S1 - (R1 - S2)` (Alternative using R1 and S2 range)
+    </ol>
+    <p>These levels remain constant throughout the trading day and are recalculated at the start of the next trading day (or chosen period, e.g., week, month).</p>
+
+    <h2>Basic Pivot Points Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.pivotpoints()` which simplifies the calculation and plotting of various types of Pivot Points. We can specify the type and the timeframe for the pivot calculation.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Pivot Points"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">500</span>) <span class="comment">// overlay=true to plot on price chart. max_bars_back for historical pivots.</span>
+
+<span class="comment">// Input for the Pivot Point calculation timeframe</span>
+<span class="comment">// Common options: "D" (Daily), "W" (Weekly), "M" (Monthly)</span>
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+
+<span class="comment">// Input for the type of Pivot Points</span>
+<span class="comment">// Options: "Classic", "Fibonacci", "Woodie", "Camarilla", "Demark"</span>
+<span class="keyword">pivotType</span> = <span class="function">input.string</span>(<span class="string">"Classic"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Type"</span>, <span class="keyword">options</span>=[<span class="string">"Classic"</span>, <span class="string">"Fibonacci"</span>, <span class="string">"Woodie"</span>, <span class="string">"Camarilla"</span>, <span class="string">"Demark"</span>])
+
+<span class="comment">// Get the Pivot Points values using ta.pivotpoints()</span>
+<span class="comment">// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]</span>
+[pp, r1, r2, r3, s1, s2, s3] = <span class="function">ta.pivotpoints</span>(pivotType, pivotTimeframe, high, low, close, <span class="number">1</span>) <span class="comment">// `1` indicates to look back 1 period for HLC</span>
+
+<span class="comment">// Plotting the Pivot Points levels</span>
+<span class="function">plot</span>(pp,   <span class="keyword">title</span>=<span class="string">"Pivot Point"</span>,    <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">purple</span>,   <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r1,   <span class="keyword">title</span>=<span class="string">"Resistance 1"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r2,   <span class="keyword">title</span>=<span class="string">"Resistance 2"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r3,   <span class="keyword">title</span>=<span class="string">"Resistance 3"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s1,   <span class="keyword">title</span>=<span class="string">"Support 1"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s2,   <span class="keyword">title</span>=<span class="string">"Support 2"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s3,   <span class="keyword">title</span>=<span class="string">"Support 3"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+
+<span class="comment">// Optional: Add labels to the pivot lines for clarity</span>
+<span class="keyword">var</span> label pp_label = <span class="keyword">na</span>
+<span class="keyword">var</span> label r1_label = <span class="keyword">na</span>
+<span class="keyword">var</span> label r2_label = <span class="keyword">na</span>
+<span class="keyword">var</span> label r3_label = <span class="keyword">na</span>
+<span class="keyword">var</span> label s1_label = <span class="keyword">na</span>
+<span class="keyword">var</span> label s2_label = <span class="keyword">na</span>
+<span class="keyword">var</span> label s3_label = <span class="keyword">na</span>
+
+<span class="comment">// Only draw labels on the first bar of a new pivot period (e.g., start of new day)</span>
+<span class="keyword">if</span> <span class="function">ta.change</span>(<span class="function">time</span>(pivotTimeframe))
+    <span class="function">label.delete</span>(pp_label)
+    <span class="function">label.delete</span>(r1_label)
+    <span class="function">label.delete</span>(r2_label)
+    <span class="function">label.delete</span>(r3_label)
+    <span class="function">label.delete</span>(s1_label)
+    <span class="function">label.delete</span>(s2_label)
+    <span class="function">label.delete</span>(s3_label)
+
+    pp_label := <span class="function">label.new</span>(bar_index, pp, <span class="keyword">text</span>=<span class="string">"PP"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    r1_label := <span class="function">label.new</span>(bar_index, r1, <span class="keyword">text</span>=<span class="string">"R1"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    r2_label := <span class="function">label.new</span>(bar_index, r2, <span class="keyword">text</span>=<span class="string">"R2"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    r3_label := <span class="function">label.new</span>(bar_index, r3, <span class="keyword">text</span>=<span class="string">"R3"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    s1_label := <span class="function">label.new</span>(bar_index, s1, <span class="keyword">text</span>=<span class="string">"S1"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    s2_label := <span class="function">label.new</span>(bar_index, s2, <span class="keyword">text</span>=<span class="string">"S2"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    s3_label := <span class="function">label.new</span>(bar_index, s3, <span class="keyword">text</span>=<span class="string">"S3"</span>, <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+
+<span class="comment">// Extend labels horizontally if on higher timeframes to be visible</span>
+<span class="function">label.set_x</span>(pp_label, bar_index)
+<span class="function">label.set_x</span>(r1_label, bar_index)
+<span class="function">label.set_x</span>(r2_label, bar_index)
+<span class="function">label.set_x</span>(r3_label, bar_index)
+<span class="function">label.set_x</span>(s1_label, bar_index)
+<span class="function">label.set_x</span>(s2_label, bar_index)
+<span class="function">label.set_x</span>(s3_label, bar_index)
+</code>
+</pre>
+
+
+    <div class="tip">
+      <strong>Static Levels:</strong> Unlike moving averages, Pivot Points are static levels for the entire trading period, calculated based on the previous period's high, low, and close. This makes them predictable.
+    </div>
+
+    <h2>Practical Pivot Points <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Support and Resistance Trading (Reversals)</h3>
+    <p>This is the most common use of Pivot Points. Traders look for price to react to these levels, either bouncing off them or failing to break through, signaling potential reversals.</p>
+    <ul>
+      <li> <b>Buy Signal:</b> Price approaches or touches S1, S2, or S3 from above and shows bullish reversal patterns (e.g., hammer, engulfing, strong bounce). This suggests support.</li>
+      <li> <b>Sell Signal:</b> Price approaches or touches R1, R2, or R3 from below and shows bearish reversal patterns (e.g., shooting star, engulfing, strong rejection). This suggests resistance.</li>
+      <li> <b>Pivot Point as Magnet:</b> Price often gravitates towards the central Pivot Point (PP). If price starts far from PP, it might revert to it, or if it crosses PP, it often continues towards the next pivot level.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Pivot Point Reversal Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+<span class="keyword">pivotType</span> = <span class="function">input.string</span>(<span class="string">"Classic"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Type"</span>, <span class="keyword">options</span>=[<span class="string">"Classic"</span>, <span class="string">"Fibonacci"</span>, <span class="string">"Woodie"</span>, <span class="string">"Camarilla"</span>, <span class="string">"Demark"</span>])
+[pp, r1, r2, r3, s1, s2, s3] = <span class="function">ta.pivotpoints</span>(pivotType, pivotTimeframe, high, low, close, <span class="number">1</span>)
+
+<span class="comment">// Plotting (removed labels for brevity in strategy example, but you'd keep them for visual trading)</span>
+<span class="function">plot</span>(pp,   <span class="keyword">title</span>=<span class="string">"Pivot Point"</span>,    <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">purple</span>,   <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r1,   <span class="keyword">title</span>=<span class="string">"Resistance 1"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r2,   <span class="keyword">title</span>=<span class="string">"Resistance 2"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r3,   <span class="keyword">title</span>=<span class="string">"Resistance 3"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s1,   <span class="keyword">title</span>=<span class="string">"Support 1"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s2,   <span class="keyword">title</span>=<span class="string">"Support 2"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s3,   <span class="keyword">title</span>=<span class="string">"Support 3"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+
+
+<span class="comment">// Simple reversal logic: price touches a support/resistance and closes back</span>
+<span class="comment">// (Needs to be more sophisticated for production, e.g., bullish/bearish candle confirmation)</span>
+longCondition = close > s1 <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= s1[<span class="number">1</span>] <span class="comment">// Price bounces from S1</span>
+shortCondition = close &lt; r1 <span class="keyword">and</span> close[<span class="number">1</span>] >= r1[<span class="number">1</span>] <span class="comment">// Price rejected from R1</span>
+
+<span class="comment">// Add conditions to ensure it's a new pivot period to avoid multiple entries on same pivot</span>
+isNewPeriod = <span class="function">ta.change</span>(<span class="function">time</span>(pivotTimeframe))
+
+<span class="keyword">if</span> (longCondition <span class="keyword">and</span> <span class="keyword">not</span> isNewPeriod) <span class="comment">// only enter if not the very start of the pivot period</span>
+    <span class="function">strategy.entry</span>(<span class="string">"Long Reversal S1"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition <span class="keyword">and</span> <span class="keyword">not</span> isNewPeriod)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Reversal R1"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Basic exit logic: exit on opposite pivot or fixed profit/loss</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Reversal S1 Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long Reversal S1"</span>, <span class="keyword">profit</span>=r1, <span class="keyword">stop</span>=s2)
+<span class="function">strategy.exit</span>(<span class="string">"Short Reversal R1 Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short Reversal R1"</span>, <span class="keyword">profit</span>=s1, <span class="keyword">stop</span>=r2)
+</code></pre>
+
+
+    <h3>2. Breakout Trading (Continuation)</h3>
+    <p>If price decisively breaks through a pivot level with strong momentum and volume, it can signal a continuation of the trend towards the next pivot level.</p>
+    <ul>
+      <li> <b>Buy Signal:</b> Price breaks <b>above R1, R2, or R3</b> with strong bullish momentum (e.g., large bullish candle, high volume). This suggests a continuation of the uptrend.</li>
+      <li> <b>Sell Signal:</b> Price breaks <b>below S1, S2, or S3</b> with strong bearish momentum (e.g., large bearish candle, high volume). This suggests a continuation of the downtrend.</li>
+      <li> <b>False Breakouts:</b> Be wary of price quickly reversing after a breakout. Confirmation from volume or subsequent bar closes is crucial.</li>
+    </ul>
+
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Pivot Point Breakout Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+<span class="keyword">pivotType</span> = <span class="function">input.string</span>(<span class="string">"Classic"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Type"</span>, <span class="keyword">options</span>=[<span class="string">"Classic"</span>, <span class="string">"Fibonacci"</span>, <span class="string">"Woodie"</span>, <span class="string">"Camarilla"</span>, <span class="string">"Demark"</span>])
+[pp, r1, r2, r3, s1, s2, s3] = <span class="function">ta.pivotpoints</span>(pivotType, pivotTimeframe, high, low, close, <span class="number">1</span>)
+
+<span class="comment">// Plotting (as above)</span>
+<span class="function">plot</span>(pp,   <span class="keyword">title</span>=<span class="string">"Pivot Point"</span>,    <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">purple</span>,   <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r1,   <span class="keyword">title</span>=<span class="string">"Resistance 1"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r2,   <span class="keyword">title</span>=<span class="string">"Resistance 2"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r3,   <span class="keyword">title</span>=<span class="string">"Resistance 3"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s1,   <span class="keyword">title</span>=<span class="string">"Support 1"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s2,   <span class="keyword">title</span>=<span class="string">"Support 2"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s3,   <span class="keyword">title</span>=<span class="string">"Support 3"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+
+<span class="comment">// Breakout logic: Price closes decisively above/below a pivot level</span>
+<span class="comment">// Check for prior bar close below/above the level to confirm a true breakout</span>
+longBreakoutCondition = close > r1 <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= r1[<span class="number">1</span>] <span class="keyword">and</span> volume > volume[<span class="number">1</span>] * <span class="number">1.5</span> <span class="comment">// Break above R1 with higher volume</span>
+shortBreakoutCondition = close &lt; s1 <span class="keyword">and</span> close[<span class="number">1</span>] >= s1[<span class="number">1</span>] <span class="keyword">and</span> volume > volume[<span class="number">1</span>] * <span class="number">1.5</span> <span class="comment">// Break below S1 with higher volume</span>
+
+<span class="keyword">if</span> (longBreakoutCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Breakout R1"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortBreakoutCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Breakout S1"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Exit: Target next pivot level or fixed profit/loss</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Breakout R1 Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long Breakout R1"</span>, <span class="keyword">profit</span>=r2, <span class="keyword">stop</span>=pp)
+<span class="function">strategy.exit</span>(<span class="string">"Short Breakout S1 Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short Breakout S1"</span>, <span class="keyword">profit</span>=s2, <span class="keyword">stop</span>=pp)
+</code></pre>
+
+
+    <h3>3. Trend Bias with Pivot Point (PP)</h3>
+    <p>The central Pivot Point (PP) can act as an excellent indicator of the intraday trend bias. Its position relative to the current price tells you if buyers or sellers are in control for the day.</p>
+    <ul>
+      <li> <b>Bullish Bias:</b> If price consistently trades <b>above the Pivot Point (PP)</b>, it suggests a bullish intraday bias. Traders would favor long setups.</li>
+      <li> <b>Bearish Bias:</b> If price consistently trades <b>below the Pivot Point (PP)</b>, it suggests a bearish intraday bias. Traders would favor short setups.</li>
+      <li> <b>Mid-Day Crossing:</b> If price crosses the PP mid-day, it can signal a shift in the intraday bias.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Pivot Point Trend Bias"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+<span class="keyword">pivotType</span> = <span class="function">input.string</span>(<span class="string">"Classic"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Type"</span>, <span class="keyword">options</span>=[<span class="string">"Classic"</span>, <span class="string">"Fibonacci"</span>, <span class="string">"Woodie"</span>, <span class="string">"Camarilla"</span>, <span class="string">"Demark"</span>])
+[pp, r1, r2, r3, s1, s2, s3] = <span class="function">ta.pivotpoints</span>(pivotType, pivotTimeframe, high, low, close, <span class="number">1</span>)
+
+<span class="comment">// Plotting (as above)</span>
+<span class="function">plot</span>(pp,   <span class="keyword">title</span>=<span class="string">"Pivot Point"</span>,    <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">purple</span>,   <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r1,   <span class="keyword">title</span>=<span class="string">"Resistance 1"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r2,   <span class="keyword">title</span>=<span class="string">"Resistance 2"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(r3,   <span class="keyword">title</span>=<span class="string">"Resistance 3"</span>,   <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>,      <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s1,   <span class="keyword">title</span>=<span class="string">"Support 1"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s2,   <span class="keyword">title</span>=<span class="string">"Support 2"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(s3,   <span class="keyword">title</span>=<span class="string">"Support 3"</span>,      <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>,    <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+
+<span class="comment">// Determine intraday bias based on price relative to PP</span>
+<span class="keyword">isBullishBias</span> = close > pp
+<span class="keyword">isBearishBias</span> = close &lt; pp
+
+<span class="comment">// Color background to easily visualize bias</span>
+<span class="function">bgcolor</span>(isBullishBias ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">teal</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Bullish Intraday Bias"</span>)
+<span class="function">bgcolor</span>(isBearishBias ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">maroon</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Bearish Intraday Bias"</span>)
+
+<span class="comment">// Plot arrows on price crossing PP to show bias shift</span>
+<span class="function">plotarrow</span>(<span class="function">ta.crossover</span>(close, pp) ? close : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Bias Shift Up"</span>, <span class="keyword">colorarrow</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">aqua</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_circles</span>, <span class="keyword">offset</span>=-bar_index+bar_index[<span class="number">1</span>])
+<span class="function">plotarrow</span>(<span class="function">ta.crossunder</span>(close, pp) ? close : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Bias Shift Down"</span>, <span class="keyword">colorarrow</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_circles</span>, <span class="keyword">offset</span>=-bar_index+bar_index[<span class="number">1</span>])
+</code></pre>
+
+
+    <h2>Optimizing Pivot Points Performance</h2>
+    <p>To get the most from Pivot Points in Pine Script:</p>
+    <ul>
+      <li><strong>Timeframe Alignment:</strong> Ensure the pivot timeframe (e.g., "D" for daily pivots) aligns with your trading style. Daily pivots are common for intraday trading, while weekly/monthly pivots are useful for swing trading.</li>
+      <li><strong>Confirmation is Key:</strong> Never rely solely on Pivot Points. Combine them with other indicators (e.g., candlestick patterns, volume, MACD, RSI) to confirm reversals or breakouts. High volume on a breakout from a pivot level adds significant credibility.</li>
+      <li><strong>Market Open Reaction:</strong> Pay close attention to how price reacts to the initial Pivot Point (PP) and R1/S1 levels at the market open. A strong immediate move through PP can signal a trending day, while a bounce or rejection can signal a range-bound day.</li>
+      <li><strong>Different Pivot Types:</strong> Experiment with different pivot calculation types (Fibonacci, Woodie, Camarilla) in `ta.pivotpoints()` to see which provides more relevant levels for the asset and market conditions you are trading.</li>
+      <li><strong>Watch for Confluence:</strong> Pivot Points become even more powerful when they align with other significant technical levels, such as moving averages, trendlines, or previous significant highs/lows.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Predictable Levels:</strong> Pivot Points are unique because they are fixed and known at the beginning of the trading period, allowing traders to plan their strategies in advance.
+    </div>
+
+    <h2>Common Pivot Points Pitfalls</h2>
+    <ul>
+      <li> <b>Not Universal Support/Resistance:</b> While often acting as support/resistance, Pivot Points are not guaranteed. Price can slice through them without reaction, especially in highly volatile or news-driven markets.</li>
+      <li> <b>Trend vs. Range:</b> Pivot Points work best in ranging or moderately trending markets. In strong, unidirectional trends, price might only interact with the outermost R3/S3 or not react at all.</li>
+      <li> <b>Over-Reliance:</b> Using Pivot Points as the sole decision-making tool is risky. Always combine them with other technical analysis tools for confirmation.</li>
+      <li> <b>Lookback Period:</b> Using the wrong pivot timeframe (e.g., daily pivots on a 1-minute chart in a non-standard market hours) can lead to irrelevant levels.</li>
+      <li> <b>False Breakouts:</b> Price can frequently "fake out" by briefly breaking a pivot level only to reverse quickly. Confirmation is vital.</li>
+      <li> <b>Gaps:</b> Large overnight gaps can make the initial Pivot Point levels less relevant, as price starts far away from them.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Pivot Points are a foundational and highly valued technical indicator available in Pine Script for TradingView. By providing pre-calculated levels of potential support, resistance, and reversals, they offer traders a clear framework for navigating intraday and short-term price movements. While their primary strength lies in identifying these static levels, their true power is unlocked when combined with price action, volume analysis, and other confirming indicators. By understanding their calculation, thoughtfully selecting the appropriate timeframe and type, and integrating them strategically into your <b>pine script strategies</b>, you can leverage Pivot Points to enhance your decision-making, improve your entry/exit timing, and better manage risk in dynamic markets.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Tillson T3 - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Tillson T3 Moving Average in Pine Script for TradingView - an advanced indicator known for its smoothness and responsiveness for trend identification.">
+    <meta name="keywords" content="pine script strategies, Tillson T3, T3 MA, tradingview indicator, technical analysis, smoothing, responsiveness, trend following, low lag">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Tillson T3 - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Tillson T3 Moving Average in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Tillson T3 - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-TillsonT3.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Tillson T3 - Complete TradingView Guide",
+      "description": "Master the Tillson T3 Moving Average in Pine Script for TradingView - an advanced indicator known for its smoothness and responsiveness for trend identification.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-TillsonT3.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Tillson T3",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-TillsonT3.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Tillson T3 </h1>
+      <p class="blog-subtitle">Master this advanced, low-lag, and smooth moving average in TradingView's Pine Script for precise trend identification and robust signals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Tillson T3</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Tillson T3 Moving Average?</h2>
+    <p>The <b>Tillson T3 Moving Average</b>, developed by Tim Tillson, is an advanced moving average that is renowned for its combination of smoothness and responsiveness. It achieves this by applying a specific type of moving average (Generalized Double Exponential Moving Average or GDEMA) six times, with a volumetric factor, resulting in a highly filtered and low-lagging trend indicator. The goal of T3 is to provide a cleaner visual representation of the trend, minimizing whipsaws often seen in traditional moving averages while still reacting promptly to significant price changes.</p>
+
+    <p>In Pine Script, T3 is a sophisticated tool for traders who seek a highly optimized moving average that offers clarity in trend direction without compromising too much on timeliness.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of T3 is quite intricate, as it involves a series of nested Exponential Moving Averages (EMAs) and a volume factor. The core idea is based on the GDEMA, which is a weighted average of an EMA and a double EMA (DEMA).</p>
+    <p>The formula for GDEMA is: `GDEMA(price, period, volumeFactor) = (1 + volumeFactor) * EMA(price, period) - volumeFactor * EMA(EMA(price, period), period)`</p>
+    <p>The T3 indicator applies this GDEMA calculation recursively six times. Each successive application further smooths the line while attempting to minimize lag due to the volumetric factor (often denoted as `vFactor` or `a`).</p>
+
+    <pre><code>//@version=5 // Helper function to calculate GDEMA, which T3 relies on
+      <span class="function">gdema</span>(src, len, vFactor) => ema1 = <span class="builtin">ta.ema</span>(src, len) ema2 = 
+      <span class="builtin">ta.ema</span>(ema1, len) (<span class="number">1</span> + vFactor) * ema1 - vFactor * ema2
+      <span class="comment">// The actual T3 calculation (simplified for clarity, using custom gdema function)</span>
+      <span class="comment">// For demonstration, a conceptual breakdown; ta.t3 handles the nesting.</span>
+      <span class="comment">// T3 = gdema(gdema(gdema(gdema(gdema(gdema(source, len, vFactor), len, vFactor), len, vFactor), len, vFactor), len, vFactor), len, vFactor)</span>
+    </code></pre>
+    <p>Fortunately, Pine Script provides a direct built-in function to compute T3, abstracting away the complex nested calculations.</p>
+
+    <h2>Basic Tillson T3 Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides the convenient built-in function `ta.t3()` for the Tillson T3 Moving Average.</p>
+<pre><code><span class="comment">//@version5</span> <span class="function">indicator</span>(<span class="string">"My Tillson T3 Indicator"</span>, overlay=<span class="keyword">true</span>)
+  <span class="comment">// Inputs for T3 parameters</span>
+  length = <span class="builtin">input.int</span>(<span class="number">10</span>, title=<span class="string">"T3 Length"</span>, minval=<span class="number">1</span>) vFactor = <span class="builtin">input.float</span>(<span class="number">0.7</span>, title=<span class="string">"Volume Factor (vFactor)"</span>, minval=<span class="number">0.0</span>, maxval=<span class="number">1.0</span>)
+  <span class="comment">// Often called 'a' or 'factor'</span>
+  <span class="comment">// Calculate T3 using the built-in function</span>
+  t3Value = <span class="builtin">ta.t3</span>(close, length, vFactor)
+  <span class="comment">// Plot the T3 line</span>
+  <span class="builtin">plot</span>(t3Value, title=<span class="string">"T3"</span>, color=color.blue, linewidth=<span class="number">2</span>) </code></pre>
+
+    <div class="tip">
+      <strong>Standard Parameters:</strong> Common settings for T3 are a `length` of 10 and a `vFactor` (volume factor) of 0.7. Adjusting these can significantly impact its behavior.
+    </div>
+
+    <h2>Practical Tillson T3 Strategies</h2>
+
+    <h3>1. T3 as a Trend Direction Filter (Color Change)</h3>
+    <p>T3's smooth nature and responsiveness make it ideal for identifying the prevailing trend direction with minimal false signals. Coloring the T3 line based on its slope is a common and effective visual strategy.</p>
+    <ul>
+      <li><strong>Uptrend</strong>: T3 is rising (current T3 &gt; previous T3).</li>
+      <li><strong>Downtrend</strong>: T3 is falling (current T3 &lt; previous T3).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span> <span class="function">strategy</span>(<span class="string">"T3 Trend Color Strategy"</span>, overlay=<span class="keyword">true</span>)
+  <span class="comment">// Inputs for T3</span>
+  length = <span class="builtin">input.int</span>(<span class="number">10</span>, title=<span class="string">"T3 Length"</span>, minval=<span class="number">1</span>) vFactor = <span class="builtin">input.float</span>(<span class="number">0.7</span>, title=<span class="string">"Volume Factor"</span>, minval=<span class="number">0.0</span>, maxval=<span class="number">1.0</span>)
+  <span class="comment">// Calculate T3</span>
+  t3Value = <span class="builtin">ta.t3</span>(close, length, vFactor)
+  <span class="comment">// Determine T3 color based on its direction</span>
+  t3Color = t3Value > t3Value[<span class="number">1</span>] ? <span class="builtin">color.green</span> : <span class="builtin">color.red</span>
+  <span class="comment">// Plot the T3 line with dynamic color</span>
+  <span class="builtin">plot</span>(t3Value, title=<span class="string">"T3"</span>, color=t3Color, linewidth=<span class="number">2</span>)
+  <span class="comment">// Example entry logic: buy when T3 turns green, sell when T3 turns red</span>
+  longCondition = t3Value > t3Value[<span class="number">1</span>] <span class="keyword">and</span> t3Value[<span class="number">1</span>] &lt;= t3Value[<span class="number">2</span>]
+  <span class="comment">// T3 turns up</span> 
+  shortCondition = t3Value &lt; t3Value[<span class="number">1</span>] <span class="keyword">and</span> t3Value[<span class="number">1</span>] >= t3Value[<span class="number">2</span>]
+  <span class="comment">// T3 turns down</span>
+  <span class="keyword">if</span> (longCondition) <span class="builtin">strategy.entry</span>(<span class="string">"Long"</span>, <span class="builtin">strategy.long</span>) <span class="keyword">if</span> (shortCondition) <span class="builtin">strategy.entry</span>(<span class="string">"Short"</span>, <span class="builtin">strategy.short</span>) </code></pre>
+
+    <h3>2. T3 Crossover Strategy (with Price or another T3)</h3>
+    <p>Crossovers involving T3 are often considered strong signals due to its unique smoothing and lag reduction. This can be price crossing the T3 line, or two T3s of different lengths crossing each other.</p>
+
+    <pre><code>
+      <span class="comment">//@version=5</span>
+      <span class="function">strategy</span>(<span class="string">"T3 Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+      <span class="comment">// Inputs for T3 lengths</span>
+      fastT3Length = <span class="builtin">input.int</span>(<span class="number">10</span>, title=<span class="string">"Fast T3 Length"</span>, minval=<span class="number">1</span>) slowT3Length = <span class="builtin">input.int</span>(<span class="number">20</span>, title=<span class="string">"Slow T3 Length"</span>, minval=<span class="number">1</span>) vFactor = <span class="builtin">input.float</span>(<span class="number">0.7</span>, title=<span class="string">"Volume Factor"</span>, minval=<span class="number">0.0</span>, maxval=<span class="number">1.0</span>)
+      <span class="comment">// Calculate T3s</span>
+      fastT3 = <span class="builtin">ta.t3</span>(close, fastT3Length, vFactor) slowT3 = <span class="builtin">ta.t3</span>(close, slowT3Length, vFactor)
+      <span class="comment">// Plot the T3s</span>
+      <span class="builtin">plot</span>(fastT3, title=<span class="string">"Fast T3"</span>, color=<span class="builtin">color.blue</span>, linewidth=<span class="number">2</span>) <span class="builtin">plot</span>(slowT3, title=<span class="string">"Slow T3"</span>, color=<span class="builtin">color.orange</span>, linewidth=<span class="number">2</span>)
+      <span class="comment">// Crossover conditions (Fast T3 crossing Slow T3)</span>
+      longCondition = <span class="builtin">ta.crossover</span>(fastT3, slowT3) shortCondition = <span class="builtin">ta.crossunder</span>(fastT3, slowT3)
+      <span class="comment">// Strategy entries/exits</span>
+      <span class="keyword">if</span> (longCondition) <span class="builtin">strategy.entry</span>(<span class="string">"Long"</span>, <span class="builtin">strategy.long</span>) <span class="keyword">if</span> (shortCondition) <span class="builtin">strategy.entry</span>(<span class="string">"Short"</span>, <span class="builtin">strategy.short</span>) </code></pre>
+
+    <h3>3. T3 for Dynamic Support and Resistance</h3>
+    <p>Given its smoothness and responsiveness, T3 can effectively act as dynamic support in uptrends and dynamic resistance in downtrends. Price interaction with the T3 line can offer insights into the trend's health and potential turning points.</p>
+
+    <pre><code>
+      <span class="comment">//@version=5</span>
+      <span class="function">indicator</span>(<span class="string">"T3 Dynamic S/R"</span>, overlay=<span class="keyword">true</span>) length = <span class="builtin">input.int</span>(<span class="number">10</span>, title=<span class="string">"T3 Length"</span>, minval=<span class="number">1</span>) vFactor = <span class="builtin">input.float</span>(<span class="number">0.7</span>, title=<span class="string">"Volume Factor"</span>, minval=<span class="number">0.0</span>, maxval=<span class="number">1.0</span>) t3Value = <span class="builtin">ta.t3</span>(close, length, vFactor) <span class="builtin">plot</span>(t3Value, title=<span class="string">"T3"</span>, color=<span class="builtin">color.blue</span>, linewidth=<span class="number">2</span>)
+      <span class="comment">// Highlight potential support/resistance interactions (conceptual - adjust thresholds)</span>
+      <span class="comment">// These conditions check for price being very close to T3, implying a test or bounce</span>
+      isSupportTouch = close > t3Value * <span class="number">0.995</span> <span class="keyword">and</span> close &lt; t3Value * <span class="number">1.005</span> <span class="keyword">and</span> t3Value[<span class="number">1</span>] &lt; close[<span class="number">1</span>]
+      <span class="comment">// Price touches T3 from below or just above</span>
+      isResistanceTouch = close &lt; t3Value * <span class="number">1.005</span>
+      <span class="keyword">and</span> close > t3Value * <span class="number">0.995</span> <span class="keyword">and</span> t3Value[<span class="number">1</span>] > close[<span class="number">1</span>]
+      <span class="comment">// Price touches T3 from above or just below</span> <span class="builtin">plotshape</span>(isSupportTouch, title=<span class="string">"Potential Support"</span>, location=<span class="builtin">location.belowbar</span>, color=<span class="builtin">color.lime</span>, style=<span class="builtin">shape.circle</span>, size=<span class="builtin">size.tiny</span>) <span class="builtin">plotshape</span>(isResistanceTouch, title=<span class="string">"Potential Resistance"</span>, location=<span class="builtin">location.abovebar</span>, color=<span class="builtin">color.fuchsia</span>, style=<span class="builtin">shape.circle</span>, size=<span class="builtin">size.tiny</span>) </code></pre>
+
+    <h2>Optimizing T3 Performance</h2>
+    <p>To get the most from the Tillson T3 Moving Average in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> Experiment with the `length` and especially the `vFactor` (volume factor) inputs. The `vFactor` controls the degree of noise reduction and lag. A higher `vFactor` (closer to 1.0) increases smoothing but might add more lag, while a lower `vFactor` (closer to 0.0) makes it more responsive but potentially noisier.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Use T3 on higher timeframes to establish the dominant trend, then look for signals on lower timeframes for precise entries and exits. This helps to filter out noise on shorter timeframes.</li>
+      <li><strong>Combine with Other Indicators:</strong> While T3 is highly optimized, it's beneficial to combine it with other indicators. For instance, use oscillators like RSI or MACD for momentum confirmation or overbought/oversold conditions, or incorporate volume analysis for added confluence.</li>
+      <li><strong>Trend Confirmation:</strong> T3 performs best in trending markets. In prolonged sideways or non-trending markets, even T3 can generate whipsaws. Consider using a trend strength indicator (e.g., ADX) to confirm a clear trend before relying heavily on T3 signals.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Balance is Key:</strong> The beauty of T3 lies in its balance between lag reduction and smoothing. Fine-tuning the `vFactor` is critical to achieve optimal performance for your specific trading style and asset.
+    </div>
+
+    <h2>Common T3 Pitfalls</h2>
+    <ul>
+      <li> <b>Complexity of Calculation:</b> While `ta.t3()` simplifies its use, understanding the underlying GDEMA and nested EMA calculations is crucial for effective parameter tuning and advanced strategy development.</li>
+      <li> <b>Whipsaws in Extreme Consolidation:</b> Despite its advanced smoothing, T3 can still produce false signals in very flat or extremely volatile, non-trending markets.</li>
+      <li> <b>Over-Optimization:</b> Excessive tuning of T3's parameters to past data can lead to curve-fitting, where the strategy performs well historically but fails in live trading.</li>
+      <li> <b>Not a Standalone Indicator:</b> T3 is excellent for trend following. However, it doesn't provide overbought/oversold information directly, and should be part of a broader trading system.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Tillson T3 Moving Average is an innovative and highly effective indicator in Pine Script for TradingView. Its sophisticated design delivers an exceptionally smooth and responsive line, making it a valuable tool for accurate trend identification and dynamic signal generation. By understanding T3's unique calculation, intelligently tuning its parameters, and integrating it strategically within your comprehensive trading approach, you can leverage its power to gain a clearer and more precise perspective on market movements and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

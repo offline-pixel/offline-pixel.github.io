@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align candles at the top */
+            gap: 15px; /* Reduced gap for three candles */
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 90%; /* For illustration, show one combined SVG */
+            max-width: 90%; 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 300px; /* Wider for three candles */
+            height: 150px; 
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        /* Specific colors for candle bodies and wicks for clarity */
+        .candle-body-red { fill: #F44336; } 
+        .wick-red { stroke: #F44336; }
+        
+        /* Positioning not needed with absolute X coordinates in SVG */
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Three Black Crows Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Three Black Crows candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for strong bearish reversals and trend continuations.">
+    <meta name="keywords" content="pine script, three black crows, bearish reversal, trend continuation, candlestick patterns, tradingview indicator, technical analysis, price action, three-candle pattern">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Three Black Crows Candlestick Patterns - Complete Guide">
+    <meta property="og:description" content="Advanced tutorial on implementing Three Black Crows patterns in Pine Script for bearish reversal and trend continuation strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-three-black-crows.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Three Black Crows Candlestick Patterns - Complete Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-three-black-crows.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Three Black Crows Candlestick Patterns - Complete Guide",
+      "description": "Master the Three Black Crows candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for strong bearish reversals and trend continuations.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-three-black-crows.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Three Black Crows Candlestick Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-three-black-crows.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Three Black Crows Candlestick Pattern</h1>
+      <p class="blog-subtitle">Unlock powerful bearish trend reversal and continuation signals with this comprehensive guide to detecting and strategizing with Three Black Crows patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Three Black Crows Candlestick Patterns</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why the Three Black Crows Pattern Matters in Pine Script</h2>
+    <p>The <b>Three Black Crows candlestick pattern</b> is a strong three-candle bearish reversal or continuation pattern. It indicates a clear shift in market sentiment from buying to strong selling pressure. This pattern is characterized by three consecutive long bearish (red) candles that open within the body of the previous candle and close lower than the previous candle's close, ideally with small or no upper shadows. This demonstrates consistent bearish strength and makes Three Black Crows patterns invaluable for:</p>
+    <ul>
+      <li>Identifying potential strong bearish trend reversals, especially after an uptrend.</li>
+      <li>Confirming the strength and continuation of an existing downtrend.</li>
+      <li>Generating high-conviction entry signals for short positions.</li>
+    </ul>
+
+    <h2>Understanding the Three Black Crows Candlestick Pattern</h2>
+    <p>A Three Black Crows pattern consists of three specific, consecutive bearish candles:</p>
+    <ol>
+        <li><b>First Candle (Bearish):</b> A long bearish (red) candle, ideally closing near its low, indicating initial selling strength.</li>
+        <li><b>Second Candle (Bearish):</b> A long bearish (red) candle that opens within the body of the first candle and closes lower than the first candle's close, ideally with little to no upper shadow.</li>
+        <li><b>Third Candle (Bearish):</b> Another long bearish (red) candle that opens within the body of the second candle and closes lower than the second candle's close, also ideally with little to no upper shadow.</li>
+    </ol>
+    <p>This sequence demonstrates a sustained and powerful surge in selling activity, overcoming previous buying pressure.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Three Black Crows Pattern</h3>
+            <svg viewBox="0 0 300 150">
+                <!-- Candle 1 (leftmost) -->
+                <!-- Body (open to close) -->
+                <rect x="50" y="40" width="10" height="60" fill="#F44336" class="candle-body-red"/>
+                <!-- Wicks (high to low) -->
+                <line x1="55" y1="30" x2="55" y2="110" stroke="#F44336" stroke-width="2" class="wick-red"/>
+
+                <!-- Candle 2 (middle) -->
+                <!-- Body. Open (y=60) is higher than previous close (y=100), but within body. Close (y=110) is lower than previous close (y=100). -->
+                <rect x="120" y="60" width="10" height="50" fill="#F44336" class="candle-body-red"/>
+                <!-- Wicks -->
+                <line x1="125" y1="50" x2="125" y2="120" stroke="#F44336" stroke-width="2" class="wick-red"/>
+
+                <!-- Candle 3 (rightmost) -->
+                <!-- Body. Open (y=80) is higher than previous close (y=110), but within body. Close (y=130) is lower than previous close (y=110). -->
+                <rect x="190" y="80" width="10" height="50" fill="#F44336" class="candle-body-red"/>
+                <!-- Wicks -->
+                <line x1="195" y1="70" x2="195" y2="140" stroke="#F44336" stroke-width="2" class="wick-red"/>
+            </svg>
+            <p>Three consecutive long red candles, each opening within the previous body and closing lower, with small upper shadows.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Three Consecutive Bearish Candles:</b> All three must be red.</li>
+        <li><b>Long Bodies:</b> Each candle should have a significant body, showing strong selling pressure.</li>
+        <li><b>Lower Closes:</b> Each candle's close must be lower than the previous candle's close.</li>
+        <li><b>Open within Previous Body:</b> The open of the second candle should be within the real body of the first; the open of the third should be within the real body of the second.</li>
+        <li><b>Small/No Upper Shadows:</b> Ideally, little to no upper shadow on each candle, indicating selling pressure throughout the period.</li>
+        <li><b>Context:</b> Most significant when appearing after a clear uptrend or during a pullback in a downtrend.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Three Black Crows Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect Three Black Crows patterns in Pine Script v5:</p>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Three Black Crows Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// User input for minimum body size (as a percentage of ATR)</span>
+minBodySize = <span class="keyword">input</span>.float(<span class="number">0.4</span>, title=<span class="string">"Min Body Size (ATR multiple)"</span>, minval=<span class="number">0.1</span>, maxval=<span class="number">2.0</span>)
+<span class="comment">// User input for maximum upper shadow size (as a percentage of body)</span>
+maxUpperShadowRatio = <span class="keyword">input</span>.float(<span class="number">0.2</span>, title=<span class="string">"Max Upper Shadow Ratio (of Body)"</span>, minval=<span class="number">0.01</span>, maxval=<span class="number">0.5</span>)
+
+<span class="comment">// Helper function to check if a candle is a strong bearish candle with small upper shadow</span>
+isStrongBearish(idx) =>
+    body = open[idx] - close[idx]
+    upperShadow = high[idx] - <span class="builtin">math.max</span>(open[idx], close[idx])
+    
+    body > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[idx] * minBodySize <span class="keyword">and</span> <span class="comment">// Body is significant</span>
+    close[idx] &lt; open[idx] <span class="keyword">and</span> <span class="comment">// It's a bearish candle</span>
+    upperShadow &lt; body * maxUpperShadowRatio <span class="comment">// Small upper shadow</span>
+
+<span class="comment">// Check individual candle properties</span>
+isC1StrongBearish = isStrongBearish(<span class="number">2</span>)
+isC2StrongBearish = isStrongBearish(<span class="number">1</span>)
+isC3StrongBearish = isStrongBearish(<span class="number">0</span>) <span class="comment">// Current bar</span>
+
+<span class="comment">// Check opening conditions</span>
+<span class="comment">// open[1] should be lower than open[2] but higher than close[2]</span>
+isC2OpensInC1Body = open[<span class="number">1</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] > close[<span class="number">2</span>]
+<span class="comment">// open[0] should be lower than open[1] but higher than close[1]</span>
+isC3OpensInC2Body = open[<span class="number">0</span>] &lt; open[<span class="number">1</span>] <span class="keyword">and</span> open[<span class="number">0</span>] > close[<span class="number">1</span>] <span class="comment">// open[0] is current `open`</span>
+
+<span class="comment">// Check lower closes</span>
+isC2ClosesLowerThanC1 = close[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3ClosesLowerThanC2 = close[<span class="number">0</span>] &lt; close[<span class="number">1</span>] <span class="comment">// close[0] is current `close`</span>
+
+<span class="comment">// Combine all criteria for Three Black Crows</span>
+isThreeBlackCrows = isC1StrongBearish <span class="keyword">and</span> isC2StrongBearish <span class="keyword">and</span> isC3StrongBearish <span class="keyword">and</span> \
+                    isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                    isC2ClosesLowerThanC1 <span class="keyword">and</span> isC3ClosesLowerThanC2
+
+<span class="comment">// Plot signal on the chart</span>
+<span class="builtin">plotshape</span>(isThreeBlackCrows, title=<span class="string">"Three Black Crows"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.maroon, <span class="number">0</span>), style=shape.triangledown, size=size.normal)
+
+<span class="comment">// Alert condition (optional)</span>
+<span class="builtin">alertcondition</span>(isThreeBlackCrows, title=<span class="string">"Three Black Crows Detected"</span>, message=<span class="string">"Three Black Crows Pattern Detected!"</span>)
+</code></pre>
+
+    <h2>Advanced Three Black Crows Strategies</h2>
+    <p>Combining Three Black Crows patterns with other indicators and market context provides stronger, more reliable signals for potential bearish moves.</p>
+    
+    <h3>1. Three Black Crows with Uptrend Reversal Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Three Black Crows (Trend Reversal)"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length (for trend detection)</span>
+maLength = <span class="keyword">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+ma = <span class="builtin">ta.ema</span>(close, maLength) 
+
+<span class="comment">// Three Black Crows Pattern Detection (from basic example - simplified for brevity)</span>
+isC1StrongBearish = close[<span class="number">2</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> (open[<span class="number">2</span>] - close[<span class="number">2</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">2</span>] * <span class="number">0.4</span> 
+isC2StrongBearish = close[<span class="number">1</span>] &lt; open[<span class="number">1</span>] <span class="keyword">and</span> (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.4</span>
+isC3StrongBearish = close > open <span class="keyword">and</span> (open - close) > <span class="builtin">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.4</span>
+
+isC2OpensInC1Body = open[<span class="number">1</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3OpensInC2Body = open > open[<span class="number">1</span>] <span class="keyword">and</span> open &lt; close[<span class="number">1</span>] <span class="comment">// open[0] is current `open`</span>
+
+isC2ClosesLowerThanC1 = close[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3ClosesLowerThanC2 = close > close[<span class="number">1</span>] <span class="comment">// close[0] is current `close`</span>
+
+<span class="comment">// Additional check for small upper shadows for robustness</span>
+isSmallUpperShadowC1 = (high[<span class="number">2</span>] - <span class="builtin">math.max</span>(open[<span class="number">2</span>], close[<span class="number">2</span>])) &lt; (<span class="builtin">math.abs</span>(open[<span class="number">2</span>] - close[<span class="number">2</span>]) * <span class="number">0.2</span>)
+isSmallUpperShadowC2 = (high[<span class="number">1</span>] - <span class="builtin">math.max</span>(open[<span class="number">1</span>], close[<span class="number">1</span>])) &lt; (<span class="builtin">math.abs</span>(open[<span class="number">1</span>] - close[<span class="number">1</span>]) * <span class="number">0.2</span>)
+isSmallUpperShadowC3 = (high - <span class="builtin">math.max</span>(open, close)) &lt; (<span class="builtin">math.abs</span>(open - close) * <span class="number">0.2</span>) <span class="comment">// Current bar's upper shadow</span>
+
+isThreeBlackCrows = isC1StrongBearish <span class="keyword">and</span> isC2StrongBearish <span class="keyword">and</span> isC3StrongBearish <span class="keyword">and</span> \
+                    isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                    isC2ClosesLowerThanC1 <span class="keyword">and</span> isC3ClosesLowerThanC2 <span class="keyword">and</span> \
+                    isSmallUpperShadowC1 <span class="keyword">and</span> isSmallUpperShadowC2 <span class="keyword">and</span> isSmallUpperShadowC3
+
+<span class="comment">// Trend Confirmation: Pattern appears after a clear uptrend (price above MA)</span>
+isUptrend = close[<span class="number">3</span>] > ma[<span class="number">3</span>] <span class="keyword">and</span> close[<span class="number">2</span>] > ma[<span class="number">2</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > ma[<span class="number">1</span>] <span class="comment">// Check prior bars for uptrend context</span>
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+shortSignal = isThreeBlackCrows <span class="keyword">and</span> isUptrend
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+    
+<span class="comment">// Plot MA</span>
+<span class="builtin">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="builtin">color</span>.blue)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="builtin">plotshape</span>(shortSignal, title=<span class="string">"Confirmed 3 Black Crows (Reversal)"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.fuchsia, <span class="number">0</span>), style=shape.arrowdown, size=size.normal)
+</code></pre>
+
+    <h3>2. Three Black Crows with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Three Black Crows with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Three Black Crows Pattern Detection (from basic example - simplified)</span>
+isC1StrongBearish = close[<span class="number">2</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> (open[<span class="number">2</span>] - close[<span class="number">2</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">2</span>] * <span class="number">0.4</span> 
+isC2StrongBearish = close[<span class="number">1</span>] &lt; open[<span class="number">1</span>] <span class="keyword">and</span> (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.4</span>
+isC3StrongBearish = close &lt; open <span class="keyword">and</span> (open - close) > <span class="builtin">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.4</span>
+
+isC2OpensInC1Body = open[<span class="number">1</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3OpensInC2Body = open &lt; open[<span class="number">1</span>] <span class="keyword">and</span> open > close[<span class="number">1</span>]
+
+isC2ClosesLowerThanC1 = close[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3ClosesLowerThanC2 = close &lt; close[<span class="number">1</span>]
+
+isThreeBlackCrows = isC1StrongBearish <span class="keyword">and</span> isC2StrongBearish <span class="keyword">and</span> isC3StrongBearish <span class="keyword">and</span> \
+                    isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                    isC2ClosesLowerThanC1 <span class="keyword">and</span> isC3ClosesLowerThanC2
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Each bearish candle should have equal or increasing volume,</span>
+<span class="comment">// and the third candle's volume should be significantly higher than average volume.</span>
+avgVolume = <span class="builtin">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// 20-period Simple Moving Average of Volume</span>
+isVolumeConsistent = volume[<span class="number">2</span>] &lt;= volume[<span class="number">1</span>] <span class="keyword">and</span> volume[<span class="number">1</span>] &lt;= volume <span class="comment">// Volume equal or increasing</span>
+isVolumeConfirmed = volume > avgVolume * <span class="number">1.2</span> <span class="comment">// Current volume is 1.2x average</span>
+
+<span class="comment">// Combined signal</span>
+confirmedThreeBlackCrows = isThreeBlackCrows <span class="keyword">and</span> isVolumeConsistent <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="builtin">barcolor</span>(confirmedThreeBlackCrows ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.purple, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="builtin">plotshape</span>(confirmedThreeBlackCrows, title=<span class="string">"3 Black Crows (Vol Confirmed)"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.red, <span class="number">0</span>), style=shape.labeldown, size=size.small, text=<span class="string">"3BC Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="builtin">plot</span>(volume, title=<span class="string">"Volume"</span>, color=<span class="builtin">color</span>.gray, style=plot.style_columns)
+<span class="builtin">plot</span>(avgVolume, title=<span class="string">"Avg Volume"</span>, color=<span class="builtin">color</span>.orange, style=plot.style_line)
+</code></pre>
+
+    <h3>3. Three Black Crows with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Three Black Crows with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+rsiLength = <span class="keyword">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+overbought = <span class="keyword">input</span>(<span class="number">70</span>, <span class="string">"RSI Overbought Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="builtin">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Three Black Crows Pattern Detection (simplified)</span>
+isC1StrongBearish = close[<span class="number">2</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> (open[<span class="number">2</span>] - close[<span class="number">2</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">2</span>] * <span class="number">0.4</span> 
+isC2StrongBearish = close[<span class="number">1</span>] &lt; open[<span class="number">1</span>] <span class="keyword">and</span> (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.4</span>
+isC3StrongBearish = close &lt; open <span class="keyword">and</span> (open - close) > <span class="builtin">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.4</span>
+
+isC2OpensInC1Body = open[<span class="number">1</span>] &lt; open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3OpensInC2Body = open &lt; open[<span class="number">1</span>] <span class="keyword">and</span> open > close[<span class="number">1</span>]
+
+isC2ClosesLowerThanC1 = close[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3ClosesLowerThanC2 = close &lt; close[<span class="number">1</span>]
+
+isThreeBlackCrows = isC1StrongBearish <span class="keyword">and</span> isC2StrongBearish <span class="keyword">and</span> isC3StrongBearish <span class="keyword">and</span> \
+                    isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                    isC2ClosesLowerThanC1 <span class="keyword">and</span> isC3ClosesLowerThanC2
+
+<span class="comment">// RSI Confirmation: RSI falling from overbought territory or showing bearish divergence</span>
+rsiConfirmation = rsiValue &lt; rsiValue[<span class="number">1</span>] <span class="keyword">and</span> rsiValue[<span class="number">1</span>] &lt; rsiValue[<span class="number">2</span>] <span class="keyword">and</span> rsiValue[<span class="number">2</span>] >= overbought <span class="comment">// RSI falling from overbought</span>
+<span class="comment">// Or simpler: rsiValue <= overbought and rsiValue < rsiValue[1]</span>
+
+<span class="comment">// Combined signal</span>
+signalThreeBlackCrows = isThreeBlackCrows <span class="keyword">and</span> rsiConfirmation
+
+<span class="comment">// Plot signals</span>
+<span class="builtin">plotshape</span>(signalThreeBlackCrows, title=<span class="string">"3 Black Crows (RSI Confirmed)"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.orange, <span class="number">0</span>), style=shape.arrowdown, size=size.normal)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="builtin">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>, display=display.pane)
+<span class="builtin">hline</span>(overbought, <span class="string">"Overbought"</span>, <span class="builtin">color</span>.red)
+</code></pre>
+
+    <h2>Optimizing Three Black Crows Pattern Performance</h2>
+    <p>To maximize the effectiveness of Three Black Crows patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Context is King:</b> This pattern is most powerful when it appears after a clear uptrend (signaling a reversal) or during a minor pullback within an established downtrend (signaling continuation). Avoid it in choppy or ranging markets.</li>
+      <li><b>Volume Confirmation:</b> Look for increasing or consistently high volume accompanying the three bearish candles. Strong volume adds conviction to the selling pressure.</li>
+      <li><b>Candle Sizes:</b> While all three should be "long," watch for diminishing candle sizes, which could indicate weakening momentum. Ideally, they maintain or increase in size slightly.</li>
+      <li><b>Small Shadows:</b> Minimal upper shadows indicate that sellers held control throughout the session, with little rejection of lower prices.</li>
+      <li><b>Resistance Levels:</b> When the pattern forms at a significant resistance level (e.g., a previous high, moving average, Fibonacci retracement), its reliability as a reversal signal increases.</li>
+      <li><b>Timeframe:</b> Signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are more reliable for sustained moves than those on lower timeframes.</li>
+    </ul>
+
+    <h2>Common Three Black Crows Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not every sequence of three red candles constitutes a valid "Three Black Crows" pattern. Strict adherence to criteria and contextual analysis are essential.
+    </div>
+    <ul>
+      <li><b>Ignoring Body Size:</b> If the bodies are too small, they don't indicate strong selling pressure. Ensure they are substantial relative to the average candle size.</li>
+      <li><b>Overlapping Bodies:</b> If the second or third candle's open is above the previous candle's close (i.e., a gap down), it's a stronger signal, but the pattern allows for opens *within* the previous body. However, if the open is above the previous candle's high, it's not a Three Black Crows.</li>
+      <li><b>Large Upper Shadows:</b> Significant upper shadows on any of the three candles can indicate underlying buying pressure, weakening the bearish signal.</li>
+      <li><b>Lack of Lower Closes:</b> If any of the candles fail to close lower than the previous one, the bearish momentum is broken, and it's not a valid pattern.</li>
+      <li><b>Trading Against the Trend:</b> Using this pattern as a reversal signal when the broader trend is strongly bullish can lead to false signals. Always confirm the context.</li>
+      <li><b>Over-reliance:</b> Relying solely on this pattern without confirmation from other indicators or broader market analysis can lead to whipsaws or missed opportunities.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Three Black Crows candlestick pattern</b> is a powerful and visually clear signal for robust bearish price action. By understanding its precise three-candle formation, its contextual importance (especially after an uptrend), and integrating it with other technical confirmations like volume and momentum oscillators, you can leverage it effectively in your trading. Implementing Three Black Crows detection in Pine Script allows you to automate signal generation, combine it with complementary indicators for higher probability trades, and enhance your price action analysis to make more informed trading decisions on TradingView.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Camarilla Pivots - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Camarilla Pivots in Pine Script for TradingView - a unique set of intraday support and resistance levels known for identifying mean reversion and breakout opportunities.">
+    <meta name="keywords" content="pine script strategies, Camarilla Pivots, tradingview indicator, technical analysis, support resistance, intraday trading, mean reversion, breakout trading, range trading">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Camarilla Pivots - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Camarilla Pivots in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Camarilla Pivots - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-CamarillaPivots.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<!-- In <head> section, replace existing JSON-LD with: -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script Camarilla Pivots - Complete TradingView Guide",
+  "description": "Master Camarilla Pivots in Pine Script for TradingView - unique intraday support/resistance levels for mean reversion and breakout trading.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-CamarillaPivots.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Camarilla Pivots",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-CamarillaPivots.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Camarilla Pivots </h1>
+      <p class="blog-subtitle">Master this highly popular intraday pivot point system in TradingView's Pine Script, known for identifying potential reversals and breakout opportunities, particularly in mean-reverting markets.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Camarilla Pivots</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What are Camarilla Pivots?</h2>
+    <p> <b>Camarilla Pivots</b> are a unique set of intraday support and resistance levels that are typically used by short-term traders to identify potential reversal points or breakout opportunities. Unlike Classic Pivot Points, which are designed to project relatively wide ranges, Camarilla Pivots emphasize price action near the previous day's close. This results in tighter support and resistance levels that are particularly effective in capturing mean-reverting price action, where price tends to return to a central point.</p>
+
+    <p>Developed by Nick Stott, Camarilla Pivots are calculated using the previous day's (or chosen period's) High, Low, and Closing prices. They consist of four resistance levels (H1, H2, H3, H4) and four support levels (L1, L2, L3, L4), along with a central Pivot Point (PP), though the PP is less emphasized than the H3/L3 levels.</p>
+
+    <p>Traders primarily use Camarilla Pivots for:</p>
+    <ul>
+      <li> <b>Mean Reversion (Reversals):</b> Price often bounces off L3 (for buying) or H3 (for selling), aiming for a return to the previous day's close or H1/L1.</li>
+      <li> <b>Breakout Trading:</b> A decisive break above H4 or below L4 can signal a strong continuation or trending day.</li>
+      <li> <b>Setting Entry/Exit Points:</b> Providing clear reference points for order placement.</li>
+    </ul>
+
+    <p>In Pine Script, Camarilla Pivots are a powerful tool for short-term trading strategies, providing precise levels based on the previous period's volatility and closing dynamics.</p>
+
+    <h2>Components and Calculation (Camarilla Pivots)</h2>
+    <p>Camarilla Pivots are calculated using the previous period's High, Low, and Close prices. The formulas place more weight on the previous day's close, resulting in levels that are closer to the closing price. The pivot range is primarily derived from the previous day's range `(High - Low)`.</p>
+    <br>
+    Let `H`, `L`, `C` be the previous period's High, Low, and Close.
+    Let `Range = H - L`.
+
+    <ol>
+      <li> <b>Pivot Point (PP):</b>
+        <br>
+        `PP = (H + L + C) / 3` (Same as Classic Pivot Point, but less focused)
+      </li>
+      <li> <b>Resistance Levels (H1 to H4):</b>
+        <br>
+        `H1 = C + (Range * 1.1 / 12)`
+        <br>
+        `H2 = C + (Range * 1.1 / 6)`
+        <br>
+        `H3 = C + (Range * 1.1 / 4)`
+        <br>
+        `H4 = C + (Range * 1.1 / 2)`
+      </li>
+      <li> <b>Support Levels (L1 to L4):</b>
+        <br>
+        `L1 = C - (Range * 1.1 / 12)`
+        <br>
+        `L2 = C - (Range * 1.1 / 6)`
+        <br>
+        `L3 = C - (Range * 1.1 / 4)`
+        <br>
+        `L4 = C - (Range * 1.1 / 2)`
+      </li>
+    </ol>
+    <p>These levels remain constant throughout the current trading day and are recalculated at the start of the next trading day (or chosen period, e.g., week, month).</p>
+
+    <h2>Basic Camarilla Pivots Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.pivotpoints()` that can calculate various pivot types, including "Camarilla". This simplifies the implementation significantly.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Camarilla Pivots"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">500</span>) <span class="comment">// overlay=true to plot on price chart.</span>
+
+<span class="comment">// Input for the Pivot Point calculation timeframe</span>
+<span class="comment">// Camarilla pivots are predominantly used for intraday trading, so "D" (Daily) is most common.</span>
+pivotTimeframe = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+
+<span class="comment">// Get the Pivot Points values using ta.pivotpoints() with "Camarilla" type</span>
+<span class="comment">// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]</span>
+<span class="comment">// Note: For Camarilla, these usually map to H1-H4 and L1-L4 for Pine Script's built-in.</span>
+<span class="comment">// Specifically, for Camarilla, the ta.pivotpoints function typically returns:</span>
+<span class="comment">// pp (Pivot Point)</span>
+<span class="comment">// r1 (H1), r2 (H2), r3 (H3), r4 (H4 - not directly in the 3 R/S outputs, but calculated)</span>
+<span class="comment">// s1 (L1), s2 (L2), s3 (L3), s4 (L4 - not directly in the 3 R/S outputs, but calculated)</span>
+
+<span class="comment">// Let's manually get H1-H4 and L1-L4 since ta.pivotpoints only gives R1-R3 and S1-S3.</span>
+<span class="comment">// We'll calculate them based on the previous bar's HLC.</span>
+<span class="comment">// We need to fetch previous day's HLC.</span>
+prevHigh = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, high[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevLow = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, low[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevClose = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, close[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+
+<span class="comment">// Ensure we have valid previous day data</span>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevHigh) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevLow) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevClose)
+    range = prevHigh - prevLow
+    
+    <span class="comment">// Calculate Camarilla Levels</span>
+    cam_h4 = (prevClose + range * <span class="number">1.1</span> / <span class="number">2</span>)
+    cam_h3 = (prevClose + range * <span class="number">1.1</span> / <span class="number">4</span>)
+    cam_h2 = (prevClose + range * <span class="number">1.1</span> / <span class="number">6</span>)
+    cam_h1 = (prevClose + range * <span class="number">1.1</span> / <span class="number">12</span>)
+    
+    cam_l1 = (prevClose - range * <span class="number">1.1</span> / <span class="number">12</span>)
+    cam_l2 = (prevClose - range * <span class="number">1.1</span> / <span class="number">6</span>)
+    cam_l3 = (prevClose - range * <span class="number">1.1</span> / <span class="number">4</span>)
+    cam_l4 = (prevClose - range * <span class="number">1.1</span> / <span class="number">2</span>)
+
+    <span class="comment">// Plotting the Camarilla Levels</span>
+    <span class="function">plot</span>(cam_h4, <span class="keyword">title</span>=<span class="string">"H4"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    <span class="function">plot</span>(cam_h3, <span class="keyword">title</span>=<span class="string">"H3"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    <span class="function">plot</span>(cam_h2, <span class="keyword">title</span>=<span class="string">"H2"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    <span class="function">plot</span>(cam_h1, <span class="keyword">title</span>=<span class="string">"H1"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    
+    <span class="function">plot</span>(cam_l1, <span class="keyword">title</span>=<span class="string">"L1"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    <span class="function">plot</span>(cam_l2, <span class="keyword">title</span>=<span class="string">"L2"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    <span class="function">plot</span>(cam_l3, <span class="keyword">title</span>=<span class="string">"L3"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+    <span class="function">plot</span>(cam_l4, <span class="keyword">title</span>=<span class="string">"L4"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+
+    <span class="comment">// Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> h4_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> h3_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> h2_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> h1_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> l1_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> l2_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> l3_label = <span class="keyword">na</span>
+    <span class="keyword">var</span> <span class="keyword">label</span> l4_label = <span class="keyword">na</span>
+
+    <span class="comment">// Check if it's the first bar of the new period (e.g., new day)</span>
+    isNewPeriod = <span class="function">ta.change</span>(<span class="function">time</span>(pivotTimeframe))
+
+    <span class="keyword">if</span> isNewPeriod
+        <span class="function">label.delete</span>(h4_label)
+        <span class="function">label.delete</span>(h3_label)
+        <span class="function">label.delete</span>(h2_label)
+        <span class="function">label.delete</span>(h1_label)
+        <span class="function">label.delete</span>(l1_label)
+        <span class="function">label.delete</span>(l2_label)
+        <span class="function">label.delete</span>(l3_label)
+        <span class="function">label.delete</span>(l4_label)
+
+        h4_label := <span class="function">label.new</span>(bar_index, cam_h4, <span class="keyword">text</span>=<span class="string">"H4"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        h3_label := <span class="function">label.new</span>(bar_index, cam_h3, <span class="keyword">text</span>=<span class="string">"H3"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        h2_label := <span class="function">label.new</span>(bar_index, cam_h2, <span class="keyword">text</span>=<span class="string">"H2"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        h1_label := <span class="function">label.new</span>(bar_index, cam_h1, <span class="keyword">text</span>=<span class="string">"H1"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        l1_label := <span class="function">label.new</span>(bar_index, cam_l1, <span class="keyword">text</span>=<span class="string">"L1"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        l2_label := <span class="function">label.new</span>(bar_index, cam_l2, <span class="keyword">text</span>=<span class="string">"L2"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        l3_label := <span class="function">label.new</span>(bar_index, cam_l3, <span class="keyword">text</span>=<span class="string">"L3"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+        l4_label := <span class="function">label.new</span>(bar_index, cam_l4, <span class="keyword">text</span>=<span class="string">"L4"</span>, <span class="keyword">style</span>=<span class="keyword">label.style_label_left</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>)
+    
+    <span class="comment">// Extend labels horizontally</span>
+    <span class="function">label.set_x</span>(h4_label, bar_index)
+    <span class="function">label.set_x</span>(h3_label, bar_index)
+    <span class="function">label.set_x</span>(h2_label, bar_index)
+    <span class="function">label.set_x</span>(h1_label, bar_index)
+    <span class="function">label.set_x</span>(l1_label, bar_index)
+    <span class="function">label.set_x</span>(l2_label, bar_index)
+    <span class="function">label.set_x</span>(l3_label, bar_index)
+    <span class="function">label.set_x</span>(l4_label, bar_index)
+</code>
+</pre>
+
+
+    <div class="tip">
+     <b>Mean Reversion Focus:</b> Camarilla Pivots are often favored for mean reversion strategies, particularly the L3 and H3 levels, as price tends to revert towards the central ranges.
+    </div>
+
+    <h2>Practical Camarilla Pivots <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Mean Reversion / Reversal Trading (L3 & H3)</h3>
+    <p>This is the most popular strategy with Camarilla Pivots. Traders look for price to test and then reverse from the L3 and H3 levels, aiming for a return to the previous day's close or the H1/L1 levels.</p>
+    <ul>
+      <li> <b>Buy Signal (Reversal):</b> Price declines and touches or briefly penetrates <b>L3</b>, then shows signs of reversal (e.g., bullish candlestick, strong bounce, or closes back above L3). Entry around L3, with targets at L2, L1, or even the previous day's close. Stop loss just below L4.</li>
+      <li> <b>Sell Signal (Reversal):</b> Price rallies and touches or briefly penetrates <b>H3</b>, then shows signs of reversal (e.g., bearish candlestick, strong rejection, or closes back below H3). Entry around H3, with targets at H2, H1, or the previous day's close. Stop loss just above H4.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Camarilla Reversal Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+pivotTimeframe = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+
+<span class="comment">// Request previous day's data</span>
+prevHigh = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, high[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevLow = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, low[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevClose = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, close[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+
+<span class="comment">// Calculate Camarilla Levels</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_h3 = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_l3 = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_h1 = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_l1 = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_h4 = <span class="keyword">na</span> <span class="comment">// For stop loss</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_l4 = <span class="keyword">na</span> <span class="comment">// For stop loss</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevHigh) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevLow) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevClose)
+    range = prevHigh - prevLow
+    cam_h3 := (prevClose + range * <span class="number">1.1</span> / <span class="number">4</span>)
+    cam_l3 := (prevClose - range * <span class="number">1.1</span> / <span class="number">4</span>)
+    cam_h1 := (prevClose + range * <span class="number">1.1</span> / <span class="number">12</span>)
+    cam_l1 := (prevClose - range * <span class="number">1.1</span> / <span class="number">12</span>)
+    cam_h4 := (prevClose + range * <span class="number">1.1</span> / <span class="number">2</span>) <span class="comment">// For stop loss</span>
+    cam_l4 := (prevClose - range * <span class="number">1.1</span> / <span class="number">2</span>) <span class="comment">// For stop loss</span>
+
+<span class="comment">// Plotting (simplified for strategy example)</span>
+<span class="function">plot</span>(cam_h3, <span class="keyword">title</span>=<span class="string">"H3"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+<span class="function">plot</span>(cam_l3, <span class="keyword">title</span>=<span class="string">"L3"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+
+<span class="comment">// Long Entry: Price crosses below L3 and immediately closes back above L3.</span>
+longCondition = close > cam_l3 <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= cam_l3[<span class="number">1</span>]
+
+<span class="comment">// Short Entry: Price crosses above H3 and immediately closes back below H3.</span>
+shortCondition = close &lt; cam_h3 <span class="keyword">and</span> close[<span class="number">1</span>] >= cam_h3[<span class="number">1</span>]
+
+<span class="comment">// Only trigger if a new pivot period has started and levels are available</span>
+isNewPeriod = <span class="function">ta.change</span>(<span class="function">time</span>(pivotTimeframe)) <span class="comment">// This helps avoid recalculation issues</span>
+
+<span class="keyword">if</span> longCondition <span class="keyword">and</span> <span class="keyword">not</span> isNewPeriod <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(cam_l4) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(cam_l1)
+    <span class="function">strategy.entry</span>(<span class="string">"Long L3 Reversal"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> shortCondition <span class="keyword">and</span> <span class="keyword">not</span> isNewPeriod <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(cam_h4) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(cam_h1)
+    <span class="function">strategy.entry</span>(<span class="string">"Short H3 Reversal"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Exit logic for reversals</span>
+<span class="comment">// Target: L1 for short, H1 for long</span>
+<span class="comment">// Stop Loss: L4 for long, H4 for short</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long L3 Reversal Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long L3 Reversal"</span>, <span class="keyword">profit</span>=cam_h1, <span class="keyword">stop</span>=cam_l4)
+<span class="function">strategy.exit</span>(<span class="string">"Short H3 Reversal Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short H3 Reversal"</span>, <span class="keyword">profit</span>=cam_l1, <span class="keyword">stop</span>=cam_h4)
+</code>
+</pre>
+
+    <h3>2. Breakout Trading (H4 & L4)</h3>
+    <p>While often used for mean reversion, Camarilla Pivots also offer robust levels for breakout trading. A decisive break beyond H4 or L4 indicates strong momentum and a potential trending day.</p>
+    <ul>
+      <li> <b>Buy Signal (Breakout):</b> Price decisively breaks and holds <b>above H4</b>, often with high volume. This suggests a strong continuation of the uptrend. Target profit levels are often set at fixed risk-reward ratios or by using Fibonacci extensions.</li>
+      <li> <b>Sell Signal (Breakout):</b> Price decisively breaks and holds <b>below L4</b>, often with high volume. This suggests a strong continuation of the downtrend.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Camarilla Breakout Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+pivotTimeframe = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+
+<span class="comment">// Request previous day's data</span>
+prevHigh = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, high[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevLow = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, low[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevClose = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, close[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+
+<span class="comment">// Calculate Camarilla Levels</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_h4 = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_l4 = <span class="keyword">na</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevHigh) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevLow) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevClose)
+    range = prevHigh - prevLow
+    cam_h4 := (prevClose + range * <span class="number">1.1</span> / <span class="number">2</span>)
+    cam_l4 := (prevClose - range * <span class="number">1.1</span> / <span class="number">2</span>)
+
+<span class="comment">// Plotting (simplified for strategy example)</span>
+<span class="function">plot</span>(cam_h4, <span class="keyword">title</span>=<span class="string">"H4"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+<span class="function">plot</span>(cam_l4, <span class="keyword">title</span>=<span class="string">"L4"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+
+<span class="comment">// Breakout logic: Price closes decisively above H4 or below L4</span>
+longBreakoutCondition = close > cam_h4 <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= cam_h4[<span class="number">1</span>] <span class="comment">// Ensure it's a fresh break</span>
+shortBreakoutCondition = close &lt; cam_l4 <span class="keyword">and</span> close[<span class="number">1</span>] >= cam_l4[<span class="number">1</span>] <span class="comment">// Ensure it's a fresh break</span>
+
+<span class="comment">// Optional: Add volume confirmation for breakouts</span>
+<span class="keyword">volumeFactor</span> = <span class="function">input.float</span>(<span class="number">1.5</span>, <span class="keyword">title</span>=<span class="string">"Volume Confirmation Factor"</span>, <span class="keyword">minval</span>=<span class="number">1.0</span>, <span class="keyword">step</span>=<span class="number">0.1</span>)
+<span class="keyword">avgVolume</span> = <span class="function">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// Simple average volume for comparison</span>
+isHighVolume = volume > avgVolume * volumeFactor
+
+<span class="keyword">if</span> (longBreakoutCondition <span class="keyword">and</span> isHighVolume)
+    <span class="function">strategy.entry</span>(<span class="string">"Long H4 Breakout"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortBreakoutCondition <span class="keyword">and</span> isHighVolume)
+    <span class="function">strategy.entry</span>(<span class="string">"Short L4 Breakout"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Exit: Fixed profit/loss or target a fixed number of ATRs</span>
+<span class="comment">// (Using ATR for dynamic targets/stops since further Camarilla levels are not standard beyond H4/L4)</span>
+<span class="keyword">atrLength</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"ATR Length for Exits"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">atrValue</span> = <span class="function">ta.atr</span>(atrLength)
+
+<span class="comment">// Profit target: e.g., 1.5 * ATR from entry</span>
+<span class="comment">// Stop loss: e.g., 1.0 * ATR from entry</span>
+<span class="keyword">profitMultiplier</span> = <span class="function">input.float</span>(<span class="number">2.0</span>, <span class="keyword">title</span>=<span class="string">"Profit Target (ATR)"</span>, <span class="keyword">minval</span>=<span class="number">0.5</span>, <span class="keyword">step</span>=<span class="number">0.1</span>)
+<span class="keyword">stopLossMultiplier</span> = <span class="function">input.float</span>(<span class="number">1.0</span>, <span class="keyword">title</span>=<span class="string">"Stop Loss (ATR)"</span>, <span class="keyword">minval</span>=<span class="number">0.1</span>, <span class="keyword">step</span>=<span class="number">0.1</span>)
+
+<span class="function">strategy.exit</span>(<span class="string">"Long H4 Breakout Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long H4 Breakout"</span>,
+             <span class="keyword">profit</span>=strategy.position_avg_price + atrValue * profitMultiplier,
+             <span class="keyword">stop</span>=strategy.position_avg_price - atrValue * stopLossMultiplier)
+
+<span class="function">strategy.exit</span>(<span class="string">"Short L4 Breakout Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short L4 Breakout"</span>,
+             <span class="keyword">profit</span>=strategy.position_avg_price - atrValue * profitMultiplier,
+             <span class="keyword">stop</span>=strategy.position_avg_price + atrValue * stopLossMultiplier)
+</code>
+</pre>
+
+
+    <h3>3. Range Trading (Between H1 & L1, or H2 & L2)</h3>
+    <p>The inner Camarilla levels (H1, H2, L1, L2) often define a normal trading range. Price tends to fluctuate within these levels on non-trending days.</p>
+    <ul>
+      <li> <b>Sideways Market Indication:</b> If price is trading consistently between L1 and H1 (or L2 and H2), it indicates a consolidation or low-volatility day.</li>
+      <li> <b>Strategy:</b> Traders might look for very short-term scalping opportunities within these ranges, buying near L1/L2 and selling near H1/H2, or simply avoid trading altogether until a clear break occurs.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Camarilla Range Detector"</span>, overlay=<span class="keyword">true</span>)
+
+pivotTimeframe = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+
+<span class="comment">// Request previous day's data</span>
+prevHigh = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, high[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevLow = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, low[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+prevClose = <span class="function">request.security</span>(syminfo.tickerid, pivotTimeframe, close[<span class="number">1</span>], <span class="keyword">lookahead</span>=<span class="keyword">barmerge.lookahead_on</span>)
+
+<span class="comment">// Calculate Camarilla Levels (H1, L1)</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_h1 = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> cam_l1 = <span class="keyword">na</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevHigh) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevLow) <span class="keyword">and</span> <span class="keyword">not</span> <span class="keyword">na</span>(prevClose)
+    range = prevHigh - prevLow
+    cam_h1 := (prevClose + range * <span class="number">1.1</span> / <span class="number">12</span>)
+    cam_l1 := (prevClose - range * <span class="number">1.1</span> / <span class="number">12</span>)
+
+<span class="comment">// Plotting (simplified for detector)</span>
+<span class="function">plot</span>(cam_h1, <span class="keyword">title</span>=<span class="string">"H1"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+<span class="function">plot</span>(cam_l1, <span class="keyword">title</span>=<span class="string">"L1"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_stepline</span>)
+
+<span class="comment">// Determine if price is trading within the H1-L1 range</span>
+<span class="keyword">isTradingInRange</span> = close &lt; cam_h1 <span class="keyword">and</span> close > cam_l1 <span class="keyword">and</span>
+                   open > cam_l1 <span class="keyword">and</span> open &lt; cam_h1 <span class="comment">// Ensure open was also within range for confirmation</span>
+
+<span class="comment">// Color background to easily visualize range-bound periods</span>
+<span class="function">bgcolor</span>(isTradingInRange ? <span class="keyword">color.new</span>(<span class="keyword">color.yellow</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Range-Bound Zone"</span>)
+
+<span class="comment">// Alert if price enters or exits the range</span>
+<span class="function">alertcondition</span>(<span class="function">ta.crossover</span>(close, cam_h1) <span class="keyword">or</span> <span class="function">ta.crossunder</span>(close, cam_l1),
+               <span class="string">"Price Exiting Camarilla Range"</span>, <span class="string">"Price is breaking out of the H1-L1 Camarilla range."</span>)
+<span class="function">alertcondition</span>(isTradingInRange[<span class="number">1</span>] == <span class="keyword">false</span> <span class="keyword">and</span> isTradingInRange,
+               <span class="string">"Price Entering Camarilla Range"</span>, <span class="string">"Price is entering the H1-L1 Camarilla range."</span>)
+</code>
+</pre>
+
+    <h2>Optimizing Camarilla Pivots Performance</h2>
+    <p>To get the most from Camarilla Pivots in Pine Script:</p>
+    <ul>
+      <li> <b>Timeframe Selection:</b> Camarilla Pivots are designed for <b>intraday trading</b>. Using them on daily or weekly charts might provide less relevant signals as their calculation emphasizes short-term volatility. Ensure your chart timeframe is lower (e.g., 5-min, 15-min, 1-hour) than the pivot calculation timeframe (typically "D").</li>
+      <li> <b>Confirmation is Key:</b> Never rely solely on Camarilla Pivots. Combine them with other indicators (e.g., volume, momentum oscillators like RSI, MACD, or candlestick patterns) to confirm reversals or breakouts.</li>
+      <li> <b>Open Interest (for Futures):</b> For futures markets, observe open interest. A breakout above H4/below L4 on increasing open interest would be a stronger signal.</li>
+      <li> <b>Volatility Context:</b> Camarilla pivots work well in normal to moderately volatile markets. In extremely high-volatility markets, price might blow through all levels quickly. In very low-volatility markets, ranges might be too tight to be actionable.</li>
+      <li> <b>Trade Entry/Exit Zones:</b> Don't expect exact bounces. Think of Camarilla levels as <b>zones</b> where price action is likely to react. Look for price to consolidate around these levels or form clear reversal/continuation patterns.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Tight Levels for Intraday:</b> Camarilla's unique formulas place its levels closer to the previous close, making them more sensitive and ideal for short-term price swings and reversals within the trading day.
+    </div>
+
+    <h2>Common Camarilla Pivots Pitfalls</h2>
+    <ul>
+      <li> <b>Timeframe Misuse:</b> Using Camarilla Pivots on daily or higher timeframes, or trying to trade them on very low liquidity assets, will likely yield poor results.</li>
+      <li> <b>False Signals/Whipsaws:</b> In very choppy markets or during strong news events, price can repeatedly cross Camarilla levels, leading to whipsaws and false signals.</li>
+      <li> <b>Over-Reliance:</b> Using Camarilla Pivots as the sole decision-making tool without additional confirmation can lead to significant losses.</li>
+      <li> <b>Gap Risk:</b> Large overnight gaps can make the previous day's Camarilla levels less relevant for the current day's trading, especially if the gap opens far beyond H4 or L4.</li>
+      <li> <b>Limited Beyond H4/L4:</b> There are no standard levels beyond H4 and L4. Once price breaks these, it's considered to be in a strong trend, and other tools (e.g., trend lines, dynamic moving averages) might be more appropriate for targets.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Camarilla Pivots are a powerful and widely utilized set of intraday support and resistance levels in Pine Script for TradingView. By emphasizing price action near the previous period's close, they offer precise levels for identifying potential <b>mean reversion (reversal)</b> opportunities around H3/L3 and <b>breakout</b> opportunities beyond H4/L4. While primarily suited for short-term and intraday trading, their effectiveness is significantly enhanced when combined with other confirming indicators, such as candlestick patterns, volume, or momentum oscillators. By understanding their calculation, applying them to appropriate timeframes, and integrating them strategically into your <b>pine script strategies</b>, you can leverage Camarilla Pivots to improve your entry/exit timing and manage risk in dynamic markets.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

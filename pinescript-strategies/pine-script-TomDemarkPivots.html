@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Tom DeMark Pivots - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Tom DeMark Pivots in Pine Script for TradingView - a unique pivot point system known for identifying precise potential turning points based on current and previous bar relationships.">
+    <meta name="keywords" content="pine script strategies, Tom DeMark Pivots, TD Pivots, tradingview indicator, technical analysis, support resistance, reversal points, intraday trading, pivot levels">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Tom DeMark Pivots - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Tom DeMark Pivots in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Tom DeMark Pivots - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-TomDemarkPivots.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon"><script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Tom DeMark Pivots - Complete TradingView Guide",
+      "description": "Master Tom DeMark Pivots in Pine Script for TradingView - a unique pivot point system known for identifying precise potential turning points based on current and previous bar relationships.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-TomDemarkPivots.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Tom DeMark Pivots",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-TomDemarkPivots.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Tom DeMark Pivots </h1>
+      <p class="blog-subtitle">Master this unique pivot point system in TradingView's Pine Script, known for identifying precise potential turning points and trend exhaustion based on specific price relationships.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Tom DeMark Pivots</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What are Tom DeMark Pivots?</h2>
+    <p> <b>Tom DeMark Pivots</b>, often referred to as TD Pivots or DeMark Points, are a distinct set of support and resistance levels that aim to predict price reversals. Unlike traditional pivot points (Classic, Woodie, Camarilla) that use a fixed formula for their central pivot, DeMark's methodology employs a conditional approach based on the relationship between the previous period's open, high, low, and close. This makes DeMark Pivots highly adaptive and often results in levels that are more precise and dynamic, frequently indicating potential turning points with higher accuracy.</p>
+
+    <p>The core philosophy of DeMark Pivots is that price tends to find support or resistance at specific levels derived from previous price action, especially in relation to where the market closed relative to its open and high/low. These pivots are not just static levels but are signals for potential reversals or exhaustion points.</p>
+
+    <p>DeMark Pivots typically consist of a calculated "X" value which forms the basis for the central pivot (referred to as "TD Price Flip") and subsequent support (S1, S2) and resistance (R1, R2) levels. They are primarily used by traders to:</p>
+    <ul>
+      <li> <b>Identify precise turning points:</b> DeMark levels are often seen as more predictive of exact reversal zones.</li>
+      <li> <b>Anticipate trend exhaustion:</b> Price reaching certain DeMark levels might signal that the current trend is overextended.</li>
+      <li> <b>Set entry and exit points:</b> Providing clear, actionable levels for trades.</li>
+    </ul>
+
+    <p>In Pine Script, implementing Tom DeMark Pivots involves understanding their unique conditional calculation, making them a powerful tool for sophisticated <b>pine script strategies</b> focused on timing reversals.</p>
+
+    <h2>Components and Calculation (Tom DeMark Pivots)</h2>
+    <p>The calculation of Tom DeMark Pivots is highly conditional. It starts by determining an intermediate value, "X", based on the comparison of the previous period's closing price (`C`) to its opening price (`O`) and high (`H`) or low (`L`).</p>
+    <br>
+    Let `H`, `L`, `C`, `O` be the previous period's High, Low, Close, and Open.
+
+    <ol>
+      <li> <b>Calculate 'X':</b> This is the core difference in DeMark's methodology.
+        <ul>
+          <li>If `C < O` (previous close was lower than previous open):
+            `X = H + (L * 2) + C`
+          </li>
+          <li>If `C > O` (previous close was higher than previous open):
+            `X = (H * 2) + L + C`
+          </li>
+          <li>If `C == O` (previous close was equal to previous open):
+            `X = H + L + (C * 2)`
+          </li>
+        </ul>
+      </li>
+      <li> <b>Central Pivot (TD Price Flip or Setup Reference Point):</b>
+        <br>
+        `PP = X / 4`
+      </li>
+      <li> <b>First Resistance (R1):</b>
+        <br>
+        `R1 = X / 2 - L`
+      </li>
+      <li> <b>First Support (S1):</b>
+        <br>
+        `S1 = X / 2 - H`
+      </li>
+      <li> <b>Second Resistance (R2):</b>
+        <br>
+        `R2 = PP + (R1 - S1)` (This is less common, DeMark usually focuses on R1, S1 and the PP as primary levels)
+      </li>
+      <li> <b>Second Support (S2):</b>
+        <br>
+        `S2 = PP - (R1 - S1)`
+      </li>
+    </ol>
+    <p>Similar to other pivot points, these levels are fixed for the current trading period (usually daily) and are recalculated at the start of the next period.</p>
+
+    <h2>Basic Tom DeMark Pivots Implementation in Pine Script</h2>
+    <p>Pine Script v5 makes implementing DeMark Pivots straightforward using its built-in `ta.pivotpoints()` function with the "Demark" type. This function correctly handles the conditional 'X' calculation.</p>
+
+    <pre><code><span class="comment">//@version=5</span> <span class="function">indicator</span>(<span class="string">"My Tom DeMark Pivots"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">500</span>) <span class="comment">// overlay=true to plot on price chart.</span> <span class="comment">// Input for the Pivot Point calculation timeframe</span> <span class="comment">// DeMark pivots are predominantly used for intraday trading, so "D" (Daily) is most common.</span> pivotTimeframe = <span class="builtin">input.string</span>(<span class="string">"D"</span>, title=<span class="string">"Pivot Timeframe"</span>, options=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>]) <span class="comment">// Get the Pivot Points values using ta.pivotpoints() with "Demark" type</span> <span class="comment">// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]</span> [pp, r1, r2, r3, s1, s2, s3] = <span class="builtin">ta.pivotpoints</span>(<span class="string">"Demark"</span>, pivotTimeframe, high, low, close, <span class="number">1</span>, open) <span class="comment">// Pass 'open' as well</span> <span class="comment">// Plotting the DeMark Levels</span> <span class="builtin">plot</span>(pp, title=<span class="string">"TD Price Flip"</span>, color=<span class="builtin">color.purple</span>, linewidth=<span class="number">2</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="builtin">plot</span>(r1, title=<span class="string">"TD Resistance 1"</span>, color=<span class="builtin">color.red</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="builtin">plot</span>(s1, title=<span class="string">"TD Support 1"</span>, color=<span class="builtin">color.green</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="comment">// For DeMark, R2/R3 and S2/S3 are less commonly focused on or directly derived.</span> <span class="builtin">plot</span>(r2, title=<span class="string">"TD Resistance 2"</span>, color=<span class="builtin">color.red</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="builtin">plot</span>(r3, title=<span class="string">"TD Resistance 3"</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.red</span>, <span class="number">50</span>), linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="comment">// Lighter for less focus</span> <span class="builtin">plot</span>(s2, title=<span class="string">"TD Support 2"</span>, color=<span class="builtin">color.green</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="builtin">plot</span>(s3, title=<span class="string">"TD Support 3"</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.green</span>, <span class="number">50</span>), linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="comment">// Lighter for less focus</span> <span class="comment">// Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)</span> <span class="keyword">var</span> label pp_label = na <span class="keyword">var</span> label r1_label = na <span class="keyword">var</span> label r2_label = na <span class="keyword">var</span> label r3_label = na <span class="keyword">var</span> label s1_label = na <span class="keyword">var</span> label s2_label = na <span class="keyword">var</span> label s3_label = na <span class="comment">// Check if it's the first bar of the new period (e.g., new day)</span> isNewPeriod = <span class="builtin">ta.change</span>(<span class="builtin">time</span>(pivotTimeframe)) <span class="keyword">if</span> isNewPeriod <span class="builtin">label.delete</span>(pp_label) <span class="builtin">label.delete</span>(r1_label) <span class="builtin">label.delete</span>(r2_label) <span class="builtin">label.delete</span>(r3_label) <span class="builtin">label.delete</span>(s1_label) <span class="builtin">label.delete</span>(s2_label) <span class="builtin">label.delete</span>(s3_label) pp_label := <span class="builtin">label.new</span>(bar_index, pp, text=<span class="string">"TD PP"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.purple</span>, <span class="number">70</span>), textcolor=<span class="builtin">color.white</span>) r1_label := <span class="builtin">label.new</span>(bar_index, r1, text=<span class="string">"TD R1"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.red</span>, <span class="number">70</span>), textcolor=<span class="builtin">color.white</span>) s1_label := <span class="builtin">label.new</span>(bar_index, s1, text=<span class="string">"TD S1"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.green</span>, <span class="number">70</span>), textcolor=<span class="builtin">color.white</span>) <span class="comment">// Only plot labels for R2/R3/S2/S3 if they are meaningfully calculated (not NA)</span> <span class="keyword">if</span> <span class="keyword">not</span> <span class="builtin">na</span>(r2) r2_label := <span class="builtin">label.new</span>(bar_index, r2, text=<span class="string">"TD R2"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.red</span>, <span class="number">80</span>), textcolor=<span class="builtin">color.white</span>) <span class="keyword">if</span> <span class="keyword">not</span> <span class="builtin">na</span>(r3) r3_label := <span class="builtin">label.new</span>(bar_index, r3, text=<span class="string">"TD R3"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.red</span>, <span class="number">90</span>), textcolor=<span class="builtin">color.white</span>) <span class="keyword">if</span> <span class="keyword">not</span> <span class="builtin">na</span>(s2) s2_label := <span class="builtin">label.new</span>(bar_index, s2, text=<span class="string">"TD S2"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.green</span>, <span class="number">80</span>), textcolor=<span class="builtin">color.white</span>) <span class="keyword">if</span> <span class="keyword">not</span> <span class="builtin">na</span>(s3) s3_label := <span class="builtin">label.new</span>(bar_index, s3, text=<span class="string">"TD S3"</span>, style=<span class="builtin">label.style_label_left</span>, color=<span class="builtin">color.new</span>(<span class="builtin">color.green</span>, <span class="number">90</span>), textcolor=<span class="builtin">color.white</span>) <span class="comment">// Extend labels horizontally</span> <span class="builtin">label.set_x</span>(pp_label, bar_index) <span class="builtin">label.set_x</span>(r1_label, bar_index) <span class="builtin">label.set_x</span>(r2_label, bar_index) <span class="builtin">label.set_x</span>(r3_label, bar_index) <span class="builtin">label.set_x</span>(s1_label, bar_index) <span class="builtin">label.set_x</span>(s2_label, bar_index) <span class="builtin">label.set_x</span>(s3_label, bar_index) </code></pre>
+
+    <div class="tip">
+     <b>Predictive Edge:</b> DeMark Pivots are known for their conditional calculation, which can make them more predictive of exact turning points and trend exhaustion than other static pivot methods.
+    </div>
+
+    <h2>Practical Tom DeMark Pivots <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Reversal Trading at TD S1/R1</h3>
+    <p>DeMark's S1 and R1 are often used for potential reversals. Traders look for price to react to these levels, signaling a bounce or rejection.</p>
+    <ul>
+      <li> <b>Buy Signal (Reversal):</b> Price declines and approaches <b>TD S1</b>, then shows signs of reversal (e.g., bullish candlestick, bounce off S1, or closes back above S1). This suggests S1 is acting as support.</li>
+      <li> <b>Sell Signal (Reversal):</b> Price rallies and approaches <b>TD R1</b>, then shows signs of reversal (e.g., bearish candlestick, rejection from R1, or closes back below R1). This suggests R1 is acting as resistance.</li>
+      <li> <b>Confluence:</b> These signals are strengthened when S1/R1 align with other support/resistance zones (e.g., trendlines, moving averages).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span> <span class="function">strategy</span>(<span class="string">"TD Pivots Reversal Strategy"</span>, overlay=<span class="keyword">true</span>) pivotTimeframe = <span class="builtin">input.string</span>(<span class="string">"D"</span>, title=<span class="string">"Pivot Timeframe"</span>, options=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>]) [pp, r1, r2, r3, s1, s2, s3] = <span class="builtin">ta.pivotpoints</span>(<span class="string">"Demark"</span>, pivotTimeframe, high, low, close, <span class="number">1</span>, open) <span class="comment">// Plotting (simplified for strategy example)</span> <span class="builtin">plot</span>(r1, title=<span class="string">"TD R1"</span>, color=<span class="builtin">color.red</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="builtin">plot</span>(s1, title=<span class="string">"TD S1"</span>, color=<span class="builtin">color.green</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="comment">// Long entry: Price bounces from TD S1</span> longCondition = close > s1 <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= s1[<span class="number">1</span>] <span class="comment">// Short entry: Price rejects from TD R1</span> shortCondition = close &lt; r1 <span class="keyword">and</span> close[<span class="number">1</span>] >= r1[<span class="number">1</span>] <span class="keyword">if</span> (longCondition) <span class="builtin">strategy.entry</span>(<span class="string">"Long TD S1"</span>, <span class="builtin">strategy.long</span>) <span class="keyword">if</span> (shortCondition) <span class="builtin">strategy.entry</span>(<span class="string">"Short TD R1"</span>, <span class="builtin">strategy.short</span>) <span class="comment">// Basic exit: fixed profit/loss or target PP</span> profitTargetFactor = <span class="builtin">input.float</span>(<span class="number">0.5</span>, title=<span class="string">"Profit Target (Ratio to S/R)"</span>, minval=<span class="number">0.1</span>, maxval=<span class="number">1.0</span>, step=<span class="number">0.1</span>) stopLossFactor = <span class="builtin">input.float</span>(<span class="number">0.5</span>, title=<span class="string">"Stop Loss (Ratio to S/R)"</span>, minval=<span class="number">0.1</span>, maxval=<span class="number">1.0</span>, step=<span class="number">0.1</span>) <span class="comment">// Calculate dynamic profit/stop targets</span> longProfitTarget = pp longStopLoss = s2 shortProfitTarget = pp shortStopLoss = r2 <span class="builtin">strategy.exit</span>(<span class="string">"Long TD S1 Exit"</span>, from_entry=<span class="string">"Long TD S1"</span>, profit=longProfitTarget, stop=longStopLoss) <span class="builtin">strategy.exit</span>(<span class="string">"Short TD R1 Exit"</span>, from_entry=<span class="string">"Short TD R1"</span>, profit=shortProfitTarget, stop=shortStopLoss) </code></pre>
+
+    <h3>2. Trend Continuation / Breakout (Beyond R1 or S1)</h3>
+    <p>While often used for reversals, DeMark levels can also indicate strong trend continuation if price decisively breaks beyond R1 or S1.</p>
+    <ul>
+      <li> <b>Buy Signal (Breakout):</b> Price breaks decisively <b>above TD R1</b> with strong momentum and ideally, increased volume. This suggests the trend has enough strength to continue.</li>
+      <li> <b>Sell Signal (Breakout):</b> Price breaks decisively <b>below TD S1</b> with strong momentum and ideally, increased volume. This suggests the downtrend has strong conviction.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"TD Pivots Breakout Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+pivotTimeframe = <span class="builtin">input.string</span>(<span class="string">"D"</span>, title=<span class="string">"Pivot Timeframe"</span>, options=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+[pp, r1, r2, r3, s1, s2, s3] = <span class="builtin">ta.pivotpoints</span>(<span class="string">"Demark"</span>, pivotTimeframe, high, low, close, <span class="number">1</span>, open)
+
+<span class="comment">// Plotting (simplified for strategy example)</span>
+<span class="builtin">plot</span>(r1, title=<span class="string">"TD R1"</span>, color=<span class="builtin">color.red</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>)
+<span class="builtin">plot</span>(s1, title=<span class="string">"TD S1"</span>, color=<span class="builtin">color.green</span>, linewidth=<span class="number">1</span>, style=<span class="builtin">plot.style_stepline</span>)
+
+<span class="comment">// Breakout logic: Price closes decisively above/below R1 or S1</span>
+longBreakoutCondition = close > r1 <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= r1[<span class="number">1</span>]
+shortBreakoutCondition = close &lt; s1 <span class="keyword">and</span> close[<span class="number">1</span>] >= s1[<span class="number">1</span>]
+
+<span class="comment">// Optional: Add volume confirmation for breakouts</span>
+volumeFactor = <span class="builtin">input.float</span>(<span class="number">1.5</span>, title=<span class="string">"Volume Confirmation Factor"</span>, minval=<span class="number">1.0</span>, step=<span class="number">0.1</span>)
+avgVolume = <span class="builtin">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// Simple average volume for comparison</span>
+isHighVolume = volume > avgVolume * volumeFactor
+
+<span class="keyword">if</span> (longBreakoutCondition <span class="keyword">and</span> isHighVolume)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Long TD R1 Breakout"</span>, <span class="builtin">strategy.long</span>)
+
+<span class="keyword">if</span> (shortBreakoutCondition <span class="keyword">and</span> isHighVolume)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Short TD S1 Breakout"</span>, <span class="builtin">strategy.short</span>)
+
+<span class="comment">// Exit: Fixed profit/loss or target next potential levels (e.g., R2/S2 if valid)</span>
+atrLength = <span class="builtin">input.int</span>(<span class="number">14</span>, title=<span class="string">"ATR Length for Exits"</span>, minval=<span class="number">1</span>)
+atrValue = <span class="builtin">ta.atr</span>(atrLength)
+profitMultiplier = <span class="builtin">input.float</span>(<span class="number">1.5</span>, title=<span class="string">"Profit Target (ATR)"</span>, minval=<span class="number">0.5</span>, step=<span class="number">0.1</span>)
+stopLossMultiplier = <span class="builtin">input.float</span>(<span class="number">0.75</span>, title=<span class="string">"Stop Loss (ATR)"</span>, minval=<span class="number">0.1</span>, step=<span class="number">0.1</span>)
+
+<span class="builtin">strategy.exit</span>(<span class="string">"Long TD R1 Breakout Exit"</span>, from_entry=<span class="string">"Long TD R1 Breakout"</span>, 
+             profit=<span class="builtin">strategy.position_avg_price</span> + atrValue * profitMultiplier, 
+             stop=<span class="builtin">strategy.position_avg_price</span> - atrValue * stopLossMultiplier)
+
+<span class="builtin">strategy.exit</span>(<span class="string">"Short TD S1 Breakout Exit"</span>, from_entry=<span class="string">"Short TD S1 Breakout"</span>, 
+             profit=<span class="builtin">strategy.position_avg_price</span> - atrValue * profitMultiplier, 
+             stop=<span class="builtin">strategy.position_avg_price</span> + atrValue * stopLossMultiplier)
+</code></pre>
+
+    <h3>3. TD Price Flip as Trend Gauge</h3>
+    <p>The central TD Price Flip (PP) can act as a crucial reference for the prevailing short-term bias. Its calculation adapts to recent price action, making it more dynamic than a simple average.</p>
+    <ul>
+      <li> <b>Bullish Bias:</b> If the current price is consistently trading <b>above the TD Price Flip (PP)</b>, it suggests a bullish short-term bias.</li>
+      <li> <b>Bearish Bias:</b> If the current price is consistently trading <b>below the TD Price Flip (PP)</b>, it suggests a bearish short-term bias.</li>
+      <li> <b>Flip Signal:</b> A crossover of the current price over/under the TD Price Flip can indicate a shift in the immediate trend bias.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span> <span class="function">indicator</span>(<span class="string">"TD Price Flip Trend Gauge"</span>, overlay=<span class="keyword">true</span>) pivotTimeframe = <span class="builtin">input.string</span>(<span class="string">"D"</span>, title=<span class="string">"Pivot Timeframe"</span>, options=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>]) [pp, r1, r2, r3, s1, s2, s3] = <span class="builtin">ta.pivotpoints</span>(<span class="string">"Demark"</span>, pivotTimeframe, high, low, close, <span class="number">1</span>, open) <span class="comment">// Plotting (simplified for trend gauge example)</span> <span class="builtin">plot</span>(pp, title=<span class="string">"TD Price Flip"</span>, color=<span class="builtin">color.purple</span>, linewidth=<span class="number">2</span>, style=<span class="builtin">plot.style_stepline</span>) <span class="comment">// Determine intraday bias based on price relative to TD Price Flip</span> isBullishBias = close > pp isBearishBias = close &lt; pp <span class="comment">// Color background to easily visualize bias</span> <span class="builtin">bgcolor</span>(isBullishBias ? <span class="builtin">color.new</span>(<span class="builtin">color.teal</span>, <span class="number">95</span>) : na, title=<span class="string">"Bullish TD Bias"</span>) <span class="builtin">bgcolor</span>(isBearishBias ? <span class="builtin">color.new</span>(<span class="builtin">color.maroon</span>, <span class="number">95</span>) : na, title=<span class="string">"Bearish TD Bias"</span>) <span class="comment">// Plot arrows on price crossing PP to show bias shift</span> <span class="builtin">plotarrow</span>(<span class="builtin">ta.crossover</span>(close, pp) ? close : na, title=<span class="string">"Bias Shift Up"</span>, colorarrow=<span class="builtin">color.new</span>(<span class="builtin">color.aqua</span>, <span class="number">0</span>), style=<span class="builtin">plot.style_circles</span>, offset=-bar_index+bar_index[<span class="number">1</span>]) <span class="builtin">plotarrow</span>(<span class="builtin">ta.crossunder</span>(close, pp) ? close : na, title=<span class="string">"Bias Shift Down"</span>, colorarrow=<span class="builtin">color.new</span>(<span class="builtin">color.orange</span>, <span class="number">0</span>), style=<span class="builtin">plot.style_circles</span>, offset=-bar_index+bar_index[<span class="number">1</span>]) </code></pre>
+
+    <h2>Optimizing Tom DeMark Pivots Performance</h2>
+    <p>To get the most from Tom DeMark Pivots in Pine Script:</p>
+    <ul>
+      <li> <b>Timeframe Alignment:</b> DeMark Pivots are most effective for <b>intraday trading</b> or short-term swing trading. Using them on daily or weekly charts might provide less relevant signals as their precision on smaller timeframes is key. Ensure your chart timeframe is lower (e.g., 5-min, 15-min, 1-hour) than the pivot calculation timeframe (typically "D").</li>
+      <li> <b>Confirmation is Paramount:</b> DeMark levels offer potential turning points, but always seek confirmation. This could be from:
+        <ul>
+          <li> <b>Candlestick patterns:</b> Bullish/bearish reversal patterns forming at the levels.</li>
+          <li> <b>Volume:</b> Increased volume on a breakout or rejection.</li>
+          <li> <b>Other indicators:</b> Confluence with momentum oscillators (RSI, Stochastic) or trend indicators (Moving Averages).</li>
+        </ul>
+      </li>
+      <li> <b>Price Action Interaction:</b> Observe how price reacts to the DeMark levels. Does it stall, consolidate, or reverse? Is it a quick spike and retreat, or a sustained breakout?</li>
+      <li> <b>Context Matters:</b> Understand the broader market trend. In a strong uptrend, bullish signals at S1 are higher probability than bearish signals at R1.</li>
+      <li> <b>Adaptive Nature:</b> Recognize that the "X" value, and thus the levels, adjust dynamically based on the previous bar's open/close relationship. This is a strength but means the levels are not as static as Classic Pivots.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Dynamic Precision:</b> DeMark Pivots adjust their calculation based on the prior bar's open-close relationship, offering a dynamic and often more precise identification of potential turning points.
+    </div>
+
+    <h2>Common Tom DeMark Pivots Pitfalls</h2>
+    <ul>
+      <li> <b>Complexity:</b> The conditional calculation of DeMark Pivots can be more complex to grasp initially compared to simpler pivot methods.</li>
+      <li> <b>False Signals/Whipsaws:</b> Like any indicator, DeMark Pivots can generate false signals in choppy or non-trending markets, or during periods of high volatility.</li>
+      <li> <b>Over-Reliance:</b> Using DeMark Pivots as the sole decision-making tool without additional confirmation can lead to significant losses. They are best used as part of a comprehensive strategy.</li>
+      <li> <b>Gap Risk:</b> Large overnight gaps can cause the current day's trading to occur far away from the calculated DeMark levels, making them less immediately relevant.</li>
+      <li> <b>Limited Levels:</b> While TD Price Flip, R1, and S1 are primary, higher R2/S2/R3/S3 levels might not always be consistently generated or as reliable as in other pivot systems.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Tom DeMark Pivots are a sophisticated and highly dynamic set of potential support and resistance levels available in Pine Script for TradingView. By employing a unique conditional calculation based on the previous period's price relationships, they aim to provide more precise and often more predictive turning points than traditional pivot systems. While requiring a deeper understanding of their underlying logic and diligent confirmation from other technical analysis tools, mastering Tom DeMark Pivots can significantly enhance your <b>pine script strategies</b>. By understanding their calculation, applying them to appropriate timeframes, and integrating them strategically into your overall trading plan, you can leverage these powerful levels to improve your entry/exit timing and better capitalize on market opportunities, particularly in identifying potential trend reversals.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

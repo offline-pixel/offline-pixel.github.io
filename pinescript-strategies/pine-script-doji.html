@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: calc(33% - 20px); /* Three columns with gap */
+            max-width: calc(33% - 20px); 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        /* Adjust flex-basis for smaller screens */
+        @media (max-width: 768px) {
+            .single-candle-container {
+                flex-basis: calc(50% - 20px); /* Two columns */
+                max-width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .single-candle-container {
+                flex-basis: 90%; /* Single column */
+                max-width: 90%;
+            }
+        }
+
+        .single-candle-container svg {
+            width: 100px; /* Consistent width for all Doji types */
+            height: 150px; /* Adjusted height for full candle */
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        /* Specific colors for candle bodies and wicks for clarity */
+        /* Doji bodies are typically thin, so often color doesn't matter much or they are grey/transparent */
+        .doji-body { fill: #9E9E9E; } /* Grey for doji body */
+        .doji-wick { stroke: #9E9E9E; } 
+
+        /* Specific styles for each Doji type if needed */
+        .dragonfly-doji-body { fill: #4CAF50; } /* Often green if close > open */
+        .dragonfly-doji-wick { stroke: #4CAF50; }
+        .gravestone-doji-body { fill: #F44336; } /* Often red if close < open */
+        .gravestone-doji-wick { stroke: #F44336; }
+
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Doji Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master various Doji candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for market indecision and potential reversals.">
+    <meta name="keywords" content="pine script, doji, candlestick patterns, standard doji, long-legged doji, gravestone doji, dragonfly doji, four price doji, tradingview indicator, technical analysis, market indecision, trend reversal, price action">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Doji Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Doji patterns in Pine Script for market indecision and reversal strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-doji.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Doji Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-doji.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Doji Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master various Doji candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for market indecision and potential reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-doji.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Doji Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-doji.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Master Doji Candlestick Patterns</h1>
+      <p class="blog-subtitle">Decode market indecision and potential reversals with this comprehensive guide to detecting and strategizing with Doji patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Doji Patterns</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why Doji Patterns Matter in Pine Script</h2>
+    <p>A <b>Doji candlestick pattern</b> is a crucial signal in technical analysis, characterized by a very small or non-existent real body, meaning the opening and closing prices are virtually the same. This indicates market indecision, where buyers and sellers are in a state of balance. While a single Doji candle alone may not be a definitive reversal signal, its appearance, especially after a prolonged trend or at key support/resistance levels, can indicate potential exhaustion of the current trend and a possible reversal. This makes Doji patterns invaluable for:</p>
+    <ul>
+      <li>Signaling market indecision and a pause in momentum.</li>
+      <li>Indicating potential trend reversals when combined with context.</li>
+      <li>Highlighting periods of balance between supply and demand.</li>
+    </ul>
+
+    <h2>Understanding Various Doji Candlestick Patterns</h2>
+    <p>While all Doji share the characteristic of a small body, their wick lengths and positions create different variations, each conveying a slightly different message:</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Standard Doji</h3>
+            <svg viewBox="0 0 100 100">
+                <line x1="50" y1="20" x2="50" y2="80" stroke="#9E9E9E" stroke-width="2" class="doji-wick"/>
+                <rect x="48" y="49" width="4" height="2" fill="#9E9E9E" class="doji-body"/>
+            </svg>
+            <p>A cross shape, indicating perfect balance between buyers and sellers. Common in sideways markets.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Long-Legged Doji</h3>
+            <svg viewBox="0 0 100 100">
+                <line x1="50" y1="10" x2="50" y2="90" stroke="#9E9E9E" stroke-width="2" class="doji-wick"/>
+                <rect x="48" y="49" width="4" height="2" fill="#9E9E9E" class="doji-body"/>
+            </svg>
+            <p>Long upper and lower wicks, signifying strong indecision and volatility, but no clear direction.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Dragonfly Doji</h3>
+            <svg viewBox="0 0 100 100">
+                <line x1="50" y1="50" x2="50" y2="90" stroke="#4CAF50" stroke-width="2" class="dragonfly-doji-wick"/>
+                <rect x="48" y="49" width="4" height="2" fill="#4CAF50" class="dragonfly-doji-body"/>
+            </svg>
+            <p>Long lower wick, no upper wick. Price rejected lower levels. Bullish reversal signal if after downtrend.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Gravestone Doji</h3>
+            <svg viewBox="0 0 100 100">
+                <line x1="50" y1="10" x2="50" y2="50" stroke="#F44336" stroke-width="2" class="gravestone-doji-wick"/>
+                <rect x="48" y="49" width="4" height="2" fill="#F44336" class="gravestone-doji-body"/>
+            </svg>
+            <p>Long upper wick, no lower wick. Price rejected higher levels. Bearish reversal signal if after uptrend.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Four Price Doji</h3>
+            <svg viewBox="0 0 100 100">
+                <rect x="48" y="49" width="4" height="2" fill="#9E9E9E" class="doji-body"/>
+                <!-- No wicks, as open, high, low, close are all the same -->
+            </svg>
+            <p>Open, high, low, and close are all the same. Extremely rare, indicating extreme indecision or very low liquidity.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics of ALL Doji:</strong>
+      <ul>
+        <li><b>Small/Non-existent Real Body:</b> Open and close prices are very close, often at the same level.</li>
+        <li><b>Indecision:</b> Represents a balance between buying and selling forces.</li>
+        <li><b>Context is Crucial:</b> A Doji's significance increases dramatically when it appears after a strong trend or at key support/resistance levels.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Doji Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect a standard Doji pattern in Pine Script v5. We'll define a "small body" as a percentage of the total candle range:</p>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Doji Pattern Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// User input for threshold to define a "small body"</span>
+<span class="keyword">bodyRatioThreshold</span> = <span class="function">input.float</span>(<span class="number">0.1</span>, <span class="keyword">title</span>=<span class="string">"Doji Body Ratio Threshold (e.g., 0.1 for 10%)"</span>, <span class="keyword">minval</span>=<span class="number">0.01</span>, <span class="keyword">maxval</span>=<span class="number">0.5</span>)
+
+<span class="comment">// Calculate candle body size</span>
+<span class="keyword">bodySize</span> = <span class="function">math.abs</span>(close - open)
+
+<span class="comment">// Calculate total candle range</span>
+<span class="keyword">candleRange</span> = high - low
+
+<span class="comment">// Check if it's a Doji (body size is very small relative to the candle's total range)</span>
+<span class="comment">// Avoid division by zero if candleRange is 0 (occurs with Four Price Doji)</span>
+<span class="keyword">isDoji</span> = <span class="keyword">if</span> candleRange > <span class="number">0</span>
+    bodySize / candleRange <= bodyRatioThreshold
+<span class="keyword">else</span> <span class="comment">// Handle Four Price Doji case (open==high==low==close)</span>
+    <span class="keyword">true</span>
+
+<span class="comment">// Plot signal on the chart</span>
+<span class="function">plotshape</span>(isDoji, <span class="keyword">title</span>=<span class="string">"Doji Detected"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">silver</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">circle</span>, <span class="keyword">size</span>=size.small)
+
+<span class="comment">// Alert condition (optional)</span>
+<span class="function">alertcondition</span>(isDoji, <span class="keyword">title</span>=<span class="string">"Doji Detected"</span>, <span class="keyword">message</span>=<span class="string">"Doji Candlestick Pattern Detected!"</span>)
+</code>
+</pre>
+
+
+    <h3>Detecting Specific Doji Types</h3>
+    <p>We can refine the detection to identify specific Doji variations:</p>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Specific Doji Patterns"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for threshold to define a "small body"</span>
+<span class="keyword">bodyRatioThreshold</span> = <span class="function">input.float</span>(<span class="number">0.1</span>, <span class="keyword">title</span>=<span class="string">"Doji Body Ratio Threshold (e.g., 0.1 for 10%)"</span>, <span class="keyword">minval</span>=<span class="number">0.01</span>, <span class="keyword">maxval</span>=<span class="number">0.5</span>)
+<span class="comment">// Input for wick ratio to define "long" or "short" wicks</span>
+<span class="keyword">wickRatioThreshold</span> = <span class="function">input.float</span>(<span class="number">0.4</span>, <span class="keyword">title</span>=<span class="string">"Long Wick Ratio Threshold (e.g., 0.4 for 40%)"</span>, <span class="keyword">minval</span>=<span class="number">0.1</span>, <span class="keyword">maxval</span>=<span class="number">0.9</span>)
+
+
+<span class="comment">// Helper function to check for small body</span>
+isSmallBody(open_val, close_val, high_val, low_val) =>
+    <span class="keyword">bodySize</span> = <span class="function">math.abs</span>(close_val - open_val)
+    <span class="keyword">candleRange</span> = high_val - low_val
+    candleRange > <span class="number">0</span> ? (bodySize / candleRange <= bodyRatioThreshold) : <span class="keyword">true</span> <span class="comment">// Handles Four Price Doji</span>
+
+<span class="comment">// Calculate wick lengths</span>
+upperShadow = high - <span class="function">math.max</span>(open, close)
+lowerShadow = <span class="function">math.min</span>(open, close) - low
+totalRange = high - low
+
+<span class="comment">// --- Standard Doji ---</span>
+<span class="comment">// Small body, relatively balanced upper and lower shadows (or overall short wicks)</span>
+isStandardDoji = <span class="function">isSmallBody</span>(open, close, high, low) <span class="keyword">and</span>
+                 (upperShadow / totalRange > <span class="number">0.1</span> <span class="keyword">and</span> lowerShadow / totalRange > <span class="number">0.1</span>) <span class="comment">// Some wicks</span>
+                 <span class="comment">// More balanced wick check: math.abs(upperShadow - lowerShadow) / totalRange < 0.2</span>
+
+<span class="comment">// --- Long-Legged Doji ---</span>
+<span class="comment">// Small body, very long upper and lower shadows</span>
+isLongLeggedDoji = <span class="function">isSmallBody</span>(open, close, high, low) <span class="keyword">and</span>
+                   upperShadow / totalRange >= wickRatioThreshold <span class="keyword">and</span>
+                   lowerShadow / totalRange >= wickRatioThreshold
+
+<span class="comment">// --- Dragonfly Doji ---</span>
+<span class="comment">// Small body (or non-existent) at the top of the candle, long lower shadow, little to no upper shadow</span>
+isDragonflyDoji = <span class="function">isSmallBody</span>(open, close, high, low) <span class="keyword">and</span>
+                  lowerShadow / totalRange >= wickRatioThreshold <span class="keyword">and</span>
+                  upperShadow / totalRange < bodyRatioThreshold * <span class="number">0.5</span> <span class="comment">// Upper shadow is tiny</span>
+
+<span class="comment">// --- Gravestone Doji ---</span>
+<span class="comment">// Small body (or non-existent) at the bottom of the candle, long upper shadow, little to no lower shadow</span>
+isGravestoneDoji = <span class="function">isSmallBody</span>(open, close, high, low) <span class="keyword">and</span>
+                   upperShadow / totalRange >= wickRatioThreshold <span class="keyword">and</span>
+                   lowerShadow / totalRange < bodyRatioThreshold * <span class="number">0.5</span> <span class="comment">// Lower shadow is tiny</span>
+
+<span class="comment">// --- Four Price Doji ---</span>
+<span class="comment">// Open, high, low, close are all the same</span>
+isFourPriceDoji = (open == high) <span class="keyword">and</span> (high == low) <span class="keyword">and</span> (low == close)
+
+<span class="comment">// Plot shapes for detected patterns</span>
+<span class="function">plotshape</span>(isStandardDoji,     <span class="keyword">title</span>=<span class="string">"Standard Doji"</span>,    <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">gray</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">circle</span>, <span class="keyword">size</span>=size.small, <span class="keyword">text</span>=<span class="string">"SD"</span>)
+<span class="function">plotshape</span>(isLongLeggedDoji,   <span class="keyword">title</span>=<span class="string">"Long-Legged Doji"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">circle</span>, <span class="keyword">size</span>=size.normal, <span class="keyword">text</span>=<span class="string">"LLD"</span>)
+<span class="function">plotshape</span>(isDragonflyDoji,    <span class="keyword">title</span>=<span class="string">"Dragonfly Doji"</span>,   <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.normal, <span class="keyword">text</span>=<span class="string">"DFD"</span>)
+<span class="function">plotshape</span>(isGravestoneDoji,   <span class="keyword">title</span>=<span class="string">"Gravestone Doji"</span>,  <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.normal, <span class="keyword">text</span>=<span class="string">"GSD"</span>)
+<span class="function">plotshape</span>(isFourPriceDoji,    <span class="keyword">title</span>=<span class="string">"Four Price Doji"</span>,  <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">diamond</span>, <span class="keyword">size</span>=size.small, <span class="keyword">text</span>=<span class="string">"4PD"</span>)
+
+<span class="comment">// Alerts (optional)</span>
+<span class="function">alertcondition</span>(isLongLeggedDoji, <span class="keyword">title</span>=<span class="string">"Long-Legged Doji Alert"</span>, <span class="keyword">message</span>=<span class="string">"Long-Legged Doji Detected!"</span>)
+<span class="function">alertcondition</span>(isDragonflyDoji, <span class="keyword">title</span>=<span class="string">"Dragonfly Doji Alert"</span>, <span class="keyword">message</span>=<span class="string">"Dragonfly Doji Detected!"</span>)
+<span class="function">alertcondition</span>(isGravestoneDoji, <span class="keyword">title</span>=<span class="string">"Gravestone Doji Alert"</span>, <span class="keyword">message</span>=<span class="string">"Gravestone Doji Detected!"</span>)
+</code>
+</pre>
+
+    <h2>Advanced Doji Strategies</h2>
+    <p>Doji patterns are powerful signals of indecision, but their true predictive value shines when combined with other indicators and market context. They act as "warnings" that a trend might be losing momentum, rather than direct entry signals.</p>
+    
+    <h3>1. Doji with Trend Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Doji with Trend Reversal Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length</span>
+<span class="keyword">maLength</span> = <span class="function">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+<span class="keyword">ma</span> = <span class="function">ta.ema</span>(close, maLength) <span class="comment">// Using EMA for trend detection</span>
+
+<span class="comment">// Doji Pattern Detection (using a general Doji definition for simplicity)</span>
+<span class="keyword">bodyRatioThreshold</span> = <span class="number">0.1</span>
+<span class="keyword">bodySize</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">candleRange</span> = high - low
+<span class="keyword">isDoji</span> = <span class="keyword">if</span> candleRange > <span class="number">0</span>
+    bodySize / candleRange <= bodyRatioThreshold
+<span class="keyword">else</span>
+    <span class="keyword">true</span>
+
+<span class="comment">// Trend Context:</span>
+<span class="comment">// Potential Bullish Reversal: Doji after a downtrend AND near MA support</span>
+isPotentialBullishReversal = isDoji <span class="keyword">and</span> close < ma <span class="keyword">and</span> close[<span class="number">1</span>] < ma[<span class="number">1</span>] <span class="keyword">and</span> ma > ma[<span class="number">1</span>] <span class="comment">// price below MA, MA sloping down</span>
+<span class="comment">// Potential Bearish Reversal: Doji after an uptrend AND near MA resistance</span>
+isPotentialBearishReversal = isDoji <span class="keyword">and</span> close > ma <span class="keyword">and</span> close[<span class="number">1</span>] > ma[<span class="number">1</span>] <span class="keyword">and</span> ma < ma[<span class="number">1</span>] <span class="comment">// price above MA, MA sloping up</span>
+
+<span class="comment">// Plot signals</span>
+<span class="function">plotshape</span>(isPotentialBullishReversal, <span class="keyword">title</span>=<span class="string">"Doji (Bullish Reversal Context)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=size.normal)
+<span class="function">plotshape</span>(isPotentialBearishReversal, <span class="keyword">title</span>=<span class="string">"Doji (Bearish Reversal Context)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowdown</span>, <span class="keyword">size</span>=size.normal)
+
+<span class="comment">// Plot MA</span>
+<span class="function">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+</code>
+</pre>
+
+    <h3>2. Doji with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Doji with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Doji Pattern Detection (from basic example)</span>
+<span class="keyword">bodyRatioThreshold</span> = <span class="function">input.float</span>(<span class="number">0.1</span>, <span class="keyword">title</span>=<span class="string">"Doji Body Ratio Threshold"</span>, <span class="keyword">minval</span>=<span class="number">0.01</span>, <span class="keyword">maxval</span>=<span class="number">0.5</span>)
+<span class="keyword">bodySize</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">candleRange</span> = high - low
+<span class="keyword">isDoji</span> = <span class="keyword">if</span> candleRange > <span class="number">0</span>
+    bodySize / candleRange <= bodyRatioThreshold
+<span class="keyword">else</span>
+    <span class="keyword">true</span>
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Volume on the Doji candle should be higher than average volume, indicating significant indecision.</span>
+<span class="keyword">avgVolume</span> = <span class="function">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// 20-period Simple Moving Average of Volume</span>
+isVolumeConfirmed = volume > avgVolume * <span class="number">1.5</span> <span class="comment">// Volume is 1.5x average</span>
+
+<span class="comment">// Combined signal</span>
+confirmedDoji = isDoji <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">barcolor</span>(confirmedDoji ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">teal</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="function">plotshape</span>(confirmedDoji, <span class="keyword">title</span>=<span class="string">"Doji (Vol Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">yellow</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labeldown</span>, <span class="keyword">size</span>=size.small, <span class="keyword">text</span>=<span class="string">"Doji Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="function">plot</span>(volume, <span class="keyword">title</span>=<span class="string">"Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_columns</span>)
+<span class="function">plot</span>(avgVolume, <span class="keyword">title</span>=<span class="string">"Avg Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_line</span>)
+</code>
+</pre>
+
+    <h3>3. Doji at Support/Resistance Zones</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Doji at S/R Zones"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// User input for threshold to define a "small body"</span>
+<span class="keyword">bodyRatioThreshold</span> = <span class="function">input.float</span>(<span class="number">0.1</span>, <span class="keyword">title</span>=<span class="string">"Doji Body Ratio Threshold"</span>, <span class="keyword">minval</span>=<span class="number">0.01</span>, <span class="keyword">maxval</span>=<span class="number">0.5</span>)
+
+<span class="comment">// Define sensitivity for S/R zone detection</span>
+<span class="keyword">srTolerance</span> = <span class="function">input.float</span>(<span class="number">0.005</span>, <span class="keyword">title</span>=<span class="string">"S/R Zone Tolerance (as % of price)"</span>, <span class="keyword">minval</span>=<span class="number">0.001</span>, <span class="keyword">maxval</span>=<span class="number">0.02</span>)
+
+<span class="comment">// Calculate candle body size</span>
+<span class="keyword">bodySize</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">candleRange</span> = high - low
+<span class="keyword">isDoji</span> = <span class="keyword">if</span> candleRange > <span class="number">0</span>
+    bodySize / candleRange <= bodyRatioThreshold
+<span class="keyword">else</span>
+    <span class="keyword">true</span>
+
+<span class="comment">// Simple S/R line detection (e.g., using previous swing highs/lows)</span>
+<span class="comment">// This is a simplified example; real S/R can be complex.</span>
+<span class="keyword">lookback</span> = <span class="function">input</span>(<span class="number">20</span>, <span class="string">"S/R Lookback Periods"</span>)
+<span class="keyword">prevHigh</span> = <span class="function">ta.highest</span>(high[<span class="number">1</span>], lookback)
+<span class="keyword">prevLow</span> = <span class="function">ta.lowest</span>(low[<span class="number">1</span>], lookback)
+
+<span class="comment">// Check if Doji is near Resistance</span>
+isNearResistance = isDoji <span class="keyword">and</span> <span class="function">math.abs</span>(high - prevHigh) / high <= srTolerance <span class="keyword">and</span> close > open <span class="comment">// Bullish close might be a breakout failure or test</span>
+<span class="comment">// Check if Doji is near Support</span>
+isNearSupport = isDoji <span class="keyword">and</span> <span class="function">math.abs</span>(low - prevLow) / low <= srTolerance <span class="keyword">and</span> close < open <span class="comment">// Bearish close might be a breakdown failure or test</span>
+
+<span class="comment">// Plot signals</span>
+<span class="function">plotshape</span>(isNearResistance, <span class="keyword">title</span>=<span class="string">"Doji at Resistance"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">square</span>, <span class="keyword">size</span>=size.normal, <span class="keyword">text</span>=<span class="string">"R-Doji"</span>)
+<span class="function">plotshape</span>(isNearSupport, <span class="keyword">title</span>=<span class="string">"Doji at Support"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">square</span>, <span class="keyword">size</span>=size.normal, <span class="keyword">text</span>=<span class="string">"S-Doji"</span>)
+
+<span class="comment">// Plot S/R lines (for visual confirmation)</span>
+<span class="function">plot</span>(prevHigh, <span class="string">"Previous High (Resistance)"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(prevLow, <span class="string">"Previous Low (Support)"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+</code>
+</pre>
+
+    <h2>Optimizing Doji Pattern Performance</h2>
+    <p>To maximize the effectiveness of Doji patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Context is Paramount:</b> A Doji's meaning is highly dependent on the preceding price action and where it forms on the chart. A Doji after a strong trend is more significant than one in a choppy market.</li>
+      <li><b>Confirmation:</b> Always wait for confirmation from the next candle or other indicators. A Doji merely signals indecision; the subsequent candle confirms who won the battle between buyers and sellers.</li>
+      <li><b>Volume Analysis:</b> A Doji accompanied by high volume can indicate a significant battle between bulls and bears, suggesting a stronger potential reversal than a low-volume Doji.</li>
+      <li><b>Support & Resistance:</b> Doji patterns that form exactly at key support or resistance levels (or pivot points) are generally more reliable reversal signals.</li>
+      <li><b>Timeframe:</b> Doji on higher timeframes (e.g., daily, weekly) carry more weight and are more reliable for signaling significant shifts than those on lower timeframes.</li>
+    </ul>
+
+    <h2>Common Doji Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Doji patterns are about *indecision*, not necessarily direct reversal signals. Trading them in isolation or without proper context is a common mistake.
+    </div>
+    <ul>
+      <li><b>Trading in Isolation:</b> Never trade solely based on a Doji. Always combine it with other technical analysis tools (trendlines, moving averages, volume, oscillators) for confirmation.</li>
+      <li><b>Ignoring Trend:</b> A Doji has little significance in a sideways or ranging market where indecision is common. Its power comes from appearing after a sustained trend.</li>
+      <li><b>Misinterpreting Small Body:</b> A small body is essential, but the overall range and wick lengths distinguish between different Doji types and their implications.</li>
+      <li><b>Assuming Reversal:</b> A Doji signals indecision, but it doesn't guarantee a reversal. Price could consolidate before continuing in the original direction. Always wait for confirmation from the following candle.</li>
+      <li><b>Over-Optimization:</b> Don't try to create overly complex Doji detection rules that might fit historical data but fail in live trading. Keep rules simple and robust.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Doji candlestick pattern</b> is a foundational concept in technical analysis, offering invaluable insights into market indecision and potential turning points. While simple in appearance, its various forms (Standard, Long-Legged, Dragonfly, Gravestone, Four Price) each convey nuanced messages when interpreted within the correct market context. By implementing Doji detection in Pine Script, you can automate the identification of these critical moments, integrate them into broader trading strategies with confirmation from other indicators, and enhance your ability to anticipate shifts in market sentiment on TradingView. Remember, the Doji is a signal of pause; the subsequent price action confirms the new direction.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

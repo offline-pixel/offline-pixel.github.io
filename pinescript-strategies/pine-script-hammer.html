@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align candles at the bottom of their wicks */
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 45%; /* Adjust for two columns */
+            max-width: 45%; /* Adjust for two columns */
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 120px; /* Slightly smaller width for single candle */
+            height: 150px; /* Adjusted height for full candle */
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .candle-body-green { fill: #4CAF50; } /* Green for bullish */
+        .candle-body-red { fill: #F44336; } /* Red for bearish */
+        .wick-green { stroke: #4CAF50; }
+        .wick-red { stroke: #F44336; }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Hammer Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Hammer candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bullish reversals.">
+    <meta name="keywords" content="pine script, hammer pattern, bullish hammer, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Hammer Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Hammer patterns in Pine Script for bullish reversal strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-hammer.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Hammer Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-hammer.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Hammer Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master the Hammer candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bullish reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-hammer.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Hammer Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-hammer.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Hammer Candlestick Pattern</h1>
+      <p class="blog-subtitle">Unlock powerful bullish reversal signals with this comprehensive guide to detecting and strategizing with Hammer patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+  <article class="fullscreen">
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Hammer Patterns</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why the Hammer Pattern Matters in Pine Script</h2>
+    <p>The <b>Hammer candlestick pattern</b> is a single-candle bullish reversal pattern that typically forms after a downtrend. It signals a potential bottom and a shift in momentum from sellers to buyers. The Hammer's unique shape indicates that despite selling pressure during the trading period, buyers stepped in strongly to push prices back up, often near the opening price. This makes Hammer patterns invaluable for:</p>
+    <ul>
+      <li>Identifying potential bullish trend reversals.</li>
+      <li>Signaling a rejection of lower prices (support).</li>
+      <li>Generating entry signals in long strategies.</li>
+    </ul>
+
+    <h2>Understanding the Hammer Candlestick Pattern</h2>
+    <p>A Hammer candle has a small real body (the difference between open and close) and a long lower shadow (wick) that is typically at least twice the length of the real body. It has little or no upper shadow. The color of the body (bullish or bearish) is less important than its shape and location after a downtrend.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Hammer (Bullish Body)</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Bullish body (green) -->
+                <rect x="45" y="40" width="10" height="10" fill="#4CAF50" class="candle-body-green"/>
+                <!-- Long lower wick -->
+                <line x1="50" y1="50" x2="50" y2="90" stroke="#4CAF50" stroke-width="2" class="wick-green"/>
+                <!-- Small/no upper wick -->
+                <line x1="50" y1="40" x2="50" y2="38" stroke="#4CAF50" stroke-width="1" class="wick-green"/>
+            </svg>
+            <p>Open below close, indicating buying strength from the low.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Hammer (Bearish Body)</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Bearish body (red) -->
+                <rect x="45" y="40" width="10" height="10" fill="#F44336" class="candle-body-red"/>
+                <!-- Long lower wick -->
+                <line x1="50" y1="50" x2="50" y2="90" stroke="#F44336" stroke-width="2" class="wick-red"/>
+                <!-- Small/no upper wick -->
+                <line x1="50" y1="40" x2="50" y2="38" stroke="#F44336" stroke-width="1" class="wick-red"/>
+            </svg>
+            <p>Open above close, but still shows strong rejection of lower prices.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Small Real Body:</b> The distance between the open and close is small.</li>
+        <li><b>Long Lower Shadow:</b> The lower wick is at least twice the length of the real body.</li>
+        <li><b>Little or No Upper Shadow:</b> Ideally, there should be no upper wick, or it should be very short.</li>
+        <li><b>Context:</b> Most significant when appearing after a clear downtrend.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Hammer Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect Hammer patterns in Pine Script v5:</p>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Hammer Pattern Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Calculate candle body and wick lengths</span>
+<span class="keyword">realBody</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">upperShadow</span> = <span class="function">math.max</span>(open, close) - high
+<span class="keyword">lowerShadow</span> = low - <span class="function">math.min</span>(open, close) <span class="comment">// Corrected calculation for lower shadow length</span>
+
+<span class="comment">// Define Hammer criteria</span>
+<span class="comment">// 1. Small real body</span>
+isSmallBody = realBody <= (high - low) * <span class="number">0.3</span> <span class="comment">// Body is at most 30% of total candle range</span>
+
+<span class="comment">// 2. Long lower shadow (at least 2x or 3x the body size, or total range)</span>
+<span class="comment">// Using 2x body size as a common heuristic</span>
+isLongLowerShadow = lowerShadow >= realBody * <span class="number">2</span>
+
+<span class="comment">// 3. Little to no upper shadow (upper shadow is less than 10-20% of real body or total range)</span>
+isSmallUpperShadow = upperShadow <= realBody * <span class="number">0.5</span> <span class="comment">// Upper shadow is at most 50% of body, or less than 10% of total range</span>
+<span class="comment">// Alternative for upper shadow: upperShadow < (high - low) * 0.1</span>
+
+<span class="comment">// Combine criteria for Hammer</span>
+isHammer = isSmallBody <span class="keyword">and</span> isLongLowerShadow <span class="keyword">and</span> isSmallUpperShadow
+
+<span class="comment">// Plot signal on the chart</span>
+<span class="function">plotshape</span>(isHammer, <span class="keyword">title</span>=<span class="string">"Hammer"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="comment">// Alert condition (optional)</span>
+<span class="function">alertcondition</span>(isHammer, <span class="keyword">title</span>=<span class="string">"Hammer Detected"</span>, <span class="keyword">message</span>=<span class="string">"Hammer Candlestick Pattern Detected!"</span>)
+</span></code>
+</pre>
+
+
+    <h2>Advanced Hammer Strategies</h2>
+    <p>While basic detection is useful, combining Hammer patterns with other indicators and market context provides stronger, more reliable signals for potential reversals.</p>
+    
+    <h3>1. Hammer with Downtrend Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Hammer with Trend Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length</span>
+<span class="keyword">maLength</span> = <span class="function">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+<span class="keyword">ma</span> = <span class="function">ta.ema</span>(close, maLength) <span class="comment">// Using EMA for downtrend detection</span>
+
+<span class="comment">// Hammer Pattern Detection (from basic example)</span>
+<span class="keyword">realBody</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">upperShadow</span> = <span class="function">math.max</span>(open, close) - high
+<span class="keyword">lowerShadow</span> = low - <span class="function">math.min</span>(open, close)
+
+isSmallBody = realBody <= (high - low) * <span class="number">0.3</span>
+isLongLowerShadow = lowerShadow >= realBody * <span class="number">2</span>
+isSmallUpperShadow = upperShadow <= realBody * <span class="number">0.5</span>
+
+isHammer = isSmallBody <span class="keyword">and</span> isLongLowerShadow <span class="keyword">and</span> isSmallUpperShadow
+
+<span class="comment">// Trend Confirmation: Price should be below the MA (downtrend)</span>
+<span class="comment">// AND the MA itself should be sloping downwards (optional, but stronger)</span>
+<span class="keyword">isDowntrend</span> = close < ma <span class="keyword">and</span> ma < ma[<span class="number">1</span>]
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+longSignal = isHammer <span class="keyword">and</span> isDowntrend
+
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    
+<span class="comment">// Plot MA</span>
+<span class="function">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">plotshape</span>(longSignal, <span class="keyword">title</span>=<span class="string">"Confirmed Hammer"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">navy</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+</code>
+</pre>
+
+    <h3>2. Hammer with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Hammer with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Hammer Pattern Detection (from basic example)</span>
+<span class="keyword">realBody</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">upperShadow</span> = <span class="function">math.max</span>(open, close) - high
+<span class="keyword">lowerShadow</span> = low - <span class="function">math.min</span>(open, close)
+
+isSmallBody = realBody <= (high - low) * <span class="number">0.3</span>
+isLongLowerShadow = lowerShadow >= realBody * <span class="number">2</span>
+isSmallUpperShadow = upperShadow <= realBody * <span class="number">0.5</span>
+
+isHammer = isSmallBody <span class="keyword">and</span> isLongLowerShadow <span class="keyword">and</span> isSmallUpperShadow
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Hammer candle's volume should be significantly higher than average volume</span>
+<span class="keyword">avgVolume</span> = <span class="function">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// 20-period Simple Moving Average of Volume</span>
+isVolumeConfirmed = volume > avgVolume * <span class="number">1.5</span> <span class="comment">// Volume is 1.5x average</span>
+
+<span class="comment">// Combined signal</span>
+confirmedHammer = isHammer <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">barcolor</span>(confirmedHammer ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">aqua</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="function">plotshape</span>(confirmedHammer, <span class="keyword">title</span>=<span class="string">"Hammer (Vol Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labelup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>, <span class="keyword">text</span>=<span class="string">"Hammer Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="function">plot</span>(volume, <span class="keyword">title</span>=<span class="string">"Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_columns</span>)
+<span class="function">plot</span>(avgVolume, <span class="keyword">title</span>=<span class="string">"Avg Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_line</span>)
+</code>
+</pre>
+
+
+    <h3>3. Hammer with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Hammer with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+<span class="keyword">rsiLength</span> = <span class="function">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+<span class="keyword">oversold</span> = <span class="function">input</span>(<span class="number">30</span>, <span class="string">"RSI Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Hammer Pattern Detection</span>
+<span class="keyword">realBody</span> = <span class="function">math.abs</span>(close - open)
+<span class="keyword">upperShadow</span> = <span class="function">math.max</span>(open, close) - high
+<span class="keyword">lowerShadow</span> = low - <span class="function">math.min</span>(open, close)
+
+isSmallBody = realBody <= (high - low) * <span class="number">0.3</span>
+isLongLowerShadow = lowerShadow >= realBody * <span class="number">2</span>
+isSmallUpperShadow = upperShadow <= realBody * <span class="number">0.5</span>
+
+isHammer = isSmallBody <span class="keyword">and</span> isLongLowerShadow <span class="keyword">and</span> isSmallUpperShadow
+
+<span class="comment">// RSI Confirmation: RSI should be in oversold territory or rising from it</span>
+rsiConfirmation = rsiValue <= oversold <span class="keyword">or</span> (rsiValue[<span class="number">1</span>] <= oversold <span class="keyword">and</span> rsiValue > rsiValue[<span class="number">1</span>])
+
+<span class="comment">// Combined signal</span>
+signalHammer = isHammer <span class="keyword">and</span> rsiConfirmation
+
+<span class="comment">// Plot signals</span>
+<span class="function">plotshape</span>(signalHammer, <span class="keyword">title</span>=<span class="string">"Hammer (RSI Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">fuchsia</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="function">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane</span>)
+<span class="function">hline</span>(oversold, <span class="string">"Oversold"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing Hammer Pattern Performance</h2>
+    <p>To maximize the effectiveness of Hammer patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Confirm Downtrend:</b> The Hammer is a reversal pattern, so it's most reliable when it appears after a clear downtrend. Trading a Hammer in an uptrend or sideways market is usually less effective.</li>
+      <li><b>Volume Confirmation:</b> A Hammer candle formed with higher than average volume indicates stronger conviction from buyers and increases the reliability of the signal.</li>
+      <li><b>Support Levels:</b> Hammers that form at significant support levels (e.g., previous lows, moving averages, Fibonacci levels) are more powerful.</li>
+      <li><b>Subsequent Candle Confirmation:</b> A strong bullish candle after the Hammer further confirms the reversal. Some traders wait for this confirmation before entering.</li>
+      <li><b>Timeframe:</b> While visible on all timeframes, Hammer signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are more reliable than those on lower timeframes.</li>
+    </ul>
+
+    <h2>Common Hammer Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not all Hammer-shaped candles are valid Hammer patterns. Context and confirmation are crucial. A Hammer in an uptrend is known as a "Hanging Man" and indicates a bearish reversal.
+    </div>
+    <ul>
+      <li><b>Ignoring Trend Context:</b> A Hammer pattern is a *bullish reversal* signal. If it appears in an uptrend, it is NOT a Hammer and likely a Hanging Man, indicating potential bearishness.</li>
+      <li><b>Insufficient Lower Shadow:</b> A lower shadow that is not at least twice the real body's length might not indicate strong enough rejection of lower prices.</li>
+      <li><b>Large Real Body:</b> If the real body is too large, it suggests less indecision and less of a "hammering out" of a bottom.</li>
+      <li><b>Lack of Confirmation:</b> Relying solely on the Hammer pattern without other indicators (volume, support/resistance, follow-through candles) can lead to false signals.</li>
+      <li><b>Trading in Choppy Markets:</b> In ranging or sideways markets, Hammer patterns are less reliable as there's no clear trend to reverse.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Hammer candlestick pattern</b> is a strong and visually intuitive signal for bullish reversals. By understanding its precise characteristics and, more importantly, its contextual significance within a downtrend, you can leverage it effectively in your trading. Implementing Hammer detection in Pine Script allows you to automate signal generation, combine it with other technical indicators for higher probability trades, and refine your price action analysis to make more informed trading decisions on TradingView.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

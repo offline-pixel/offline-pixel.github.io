@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script ROC (Rate of Change) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Rate of Change (ROC) in Pine Script for TradingView - a momentum oscillator for identifying trend strength, reversals, and divergence.">
+    <meta name="keywords" content="pine script strategies, ROC, Rate of Change, tradingview indicator, technical analysis, momentum oscillator, trend strength, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script ROC (Rate of Change) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Rate of Change (ROC) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script ROC (Rate of Change) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-ROC.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script ROC (Rate of Change) - Complete TradingView Guide",
+      "description": "Master the Rate of Change (ROC) in Pine Script for TradingView - a momentum oscillator for identifying trend strength, reversals, and divergence.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ROC.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "ROC (Rate of Change)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ROC.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script ROC (Rate of Change) </h1>
+      <p class="blog-subtitle">Master this fundamental momentum indicator in TradingView's Pine Script for identifying trend strength, overbought/oversold conditions, and divergence.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">ROC (Rate of Change)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Rate of Change (ROC)?</h2>
+    <p>The <b>Rate of Change (ROC)</b> is a pure momentum oscillator that measures the percentage change in price over a specified period. It indicates the speed and direction of price movement, helping traders identify trend strength and potential reversals. Unlike bounded oscillators (like RSI or Stochastic), ROC oscillates around a zero line and has no upper or lower limits, allowing it to reflect the full extent of price surges or drops.</p>
+
+    <p>In Pine Script, ROC is a straightforward yet powerful tool for assessing how quickly price is accelerating or decelerating, providing insights into momentum shifts and trend conviction.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of ROC is simple:</p>
+    <ol>
+      <li><strong>Current Close (C)</strong>: The most recent closing price.</li>
+      <li><strong>Previous Close (C_n)</strong>: The closing price `N` periods ago.</li>
+      <li><strong>ROC Formula</strong>:
+        <br>
+        `ROC = ((Current Close - Close N periods ago) / Close N periods ago) * 100`
+        <br>
+        A positive ROC value indicates that the current price is higher than `N` periods ago, signaling bullish momentum. A negative ROC value indicates the current price is lower, signaling bearish momentum. The further away from zero, the stronger the momentum.
+      </li>
+    </ol>
+
+    <h2>Basic Rate of Change (ROC) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a straightforward built-in function `ta.roc()` for calculating the Rate of Change.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Rate of Change Indicator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for ROC length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate ROC value using the built-in function</span>
+rocValue = <span class="function">ta.roc</span>(close, length)
+
+<span class="comment">// Plot the ROC line</span>
+<span class="function">plot</span>(rocValue, <span class="keyword">title</span>=<span class="string">"ROC"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Zero Line</span>
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Optional: Add typical extreme levels for visual reference (adjust based on asset)</span>
+<span class="function">hline</span>(<span class="number">10</span>, <span class="string">"Upper Reference (+10)"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(<span class="number">-10</span>, <span class="string">"Lower Reference (-10)"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Zero Line is Key:</strong> The <b>zero line</b> is the most important level for ROC. Values above zero indicate upward momentum, values below zero indicate downward momentum.
+    </div>
+
+    <h2>Practical ROC <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Zero Line Crossover (Momentum Shift)</h3>
+    <p>The crossover of the zero line is a primary signal from ROC, indicating a shift in momentum from bullish to bearish or vice versa. This can be used to identify new trends or confirm a change in the prevailing bias.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: ROC crosses above the zero line. This suggests bullish momentum is taking over.</li>
+      <li><strong>Sell Signal</strong>: ROC crosses below the zero line. This suggests bearish momentum is taking over.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"ROC Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for ROC length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">zeroLine</span> = <span class="number">0.0</span>
+
+<span class="comment">// Calculate ROC</span>
+rocValue = <span class="function">ta.roc</span>(close, length)
+
+<span class="comment">// Plot ROC in a separate pane</span>
+<span class="function">plot</span>(rocValue, <span class="string">"ROC"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(zeroLine, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(rocValue, zeroLine)
+shortSignal = <span class="function">ta.crossunder</span>(rocValue, zeroLine)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code></pre>
+
+
+    <h3>2. Extreme Readings (Overbought/Oversold)</h3>
+    <p>Although ROC has no fixed upper/lower bounds, historically extreme positive or negative values can indicate overbought or oversold conditions, respectively. These extreme levels need to be determined by analyzing an asset's historical ROC behavior, as they vary widely.</p>
+    <ul>
+      <li><strong>Potential Reversal (Bearish)</strong>: ROC reaches an unusually high positive value (e.g., +20, +30 depending on asset/timeframe) and then begins to turn down.</li>
+      <li><strong>Potential Reversal (Bullish)</strong>: ROC reaches an unusually low negative value (e.g., -20, -30) and then begins to turn up.</li>
+    </ul>
+
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"ROC Extreme Readings Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for ROC length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Define custom overbought/oversold levels based on asset's historical behavior</span>
+<span class="comment">// Adjust these values after observing your chosen asset's ROC range</span>
+customOverbought = <span class="function">input.float</span>(<span class="number">15.0</span>, <span class="keyword">title</span>=<span class="string">"Custom Overbought Level"</span>)
+customOversold = <span class="function">input.float</span>(<span class="number">-15.0</span>, <span class="keyword">title</span>=<span class="string">"Custom Oversold Level"</span>)
+
+<span class="comment">// Calculate ROC</span>
+rocValue = <span class="function">ta.roc</span>(close, length)
+
+<span class="comment">// Plot ROC in a separate pane</span>
+<span class="function">plot</span>(rocValue, <span class="string">"ROC"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+<span class="function">hline</span>(customOverbought, <span class="string">"Custom Overbought"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(customOversold, <span class="string">"Custom Oversold"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+
+<span class="comment">// Signals for potential reversals from extremes</span>
+<span class="function">alertcondition</span>(<span class="function">ta.crossunder</span>(rocValue, customOverbought), <span class="string">"ROC Overbought Exit"</span>, <span class="string">"ROC moved below custom overbought level."</span>)
+<span class="function">alertcondition</span>(<span class="function">ta.crossover</span>(rocValue, customOversold), <span class="string">"ROC Oversold Exit"</span>, <span class="string">"ROC moved above custom oversold level."</span>)
+
+<span class="function">plotshape</span>(<span class="function">ta.crossunder</span>(rocValue, customOverbought) <span class="keyword">and</span> rocValue[<span class="number">1</span>] > customOverbought, <span class="keyword">title</span>=<span class="string">"Overbought Reversal"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(<span class="function">ta.crossover</span>(rocValue, customOversold) <span class="keyword">and</span> rocValue[<span class="number">1</span>] &lt; customOversold, <span class="keyword">title</span>=<span class="string">"Oversold Reversal"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+</code></pre>
+
+
+    <h3>3. ROC Divergence Strategy</h3>
+    <p>Divergence between price and ROC is a strong signal for a potential trend reversal, as it indicates a weakening of the underlying momentum.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but ROC makes a higher low. This indicates weakening bearish momentum and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but ROC makes a lower high. This indicates weakening bullish momentum and a potential downward reversal.</li>
+    </ul>
+
+   <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"ROC Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for ROC length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate ROC</span>
+rocValue = <span class="function">ta.roc</span>(close, length)
+
+<span class="comment">// Plot ROC in a separate pane</span>
+<span class="function">plot</span>(rocValue, <span class="string">"ROC"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example focusing on price vs ROC divergence.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, ROC higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] &gt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &gt; close <span class="keyword">and</span> rocValue[<span class="number">2</span>] &lt; rocValue[<span class="number">1</span>] <span class="keyword">and</span> rocValue[<span class="number">1</span>] &lt; rocValue
+
+<span class="comment">// Bearish Divergence (Price higher high, ROC lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close <span class="keyword">and</span> rocValue[<span class="number">2</span>] &gt; rocValue[<span class="number">1</span>] <span class="keyword">and</span> rocValue[<span class="number">1</span>] &gt; rocValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish ROC Divergence"</span>, <span class="string">"Potential bullish reversal based on ROC divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish ROC Divergence"</span>, <span class="string">"Potential bearish reversal based on ROC divergence."</span>)
+</code></pre>
+
+
+    <h2>Optimizing ROC Performance</h2>
+    <p>To get the most from the Rate of Change in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. Shorter lengths (e.g., 5-10) make ROC more sensitive and suitable for short-term momentum shifts, while longer lengths (e.g., 20-30) provide smoother signals for longer-term trends. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Combine with Trend Filters:</strong> ROC is a momentum indicator and can be noisy in sideways markets. Use a trend-following indicator (like a moving average) on the price chart to confirm the underlying trend direction before acting on ROC signals.</li>
+      <li><strong>Identify Custom Levels:</strong> Since ROC is unbounded, observe its historical behavior for the asset you are trading to identify typical "extreme" overbought/oversold zones. These might not be fixed percentages but rather visual areas where price has historically reversed.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm ROC signals on a higher timeframe for added reliability. A strong ROC signal on a 4-hour chart, confirmed by a similar signal or trend on a daily chart, adds conviction.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for ROC signals to be confirmed by price action, such as candlestick patterns, breaks of support/resistance, or chart patterns.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Relative Power:</strong> ROC tells you not just *if* price is changing, but *how fast* that change is occurring relative to a past point, giving a sense of the momentum's power.
+    </div>
+
+    <h2>Common ROC Pitfalls</h2>
+    <ul>
+      <li> <b>Whipsaws in Ranging Markets:</b> In choppy or consolidating markets, ROC can oscillate frequently around the zero line, leading to many false signals.</li>
+      <li> <b>No Fixed Overbought/Oversold Levels:</b> The unbounded nature of ROC means there are no universal overbought/oversold lines like 70/30 for RSI. This requires more subjective analysis or historical tuning.</li>
+      <li> <b>Lag:</b> Despite being a momentum indicator, ROC still has some inherent lag as it compares current price to a past price.</li>
+      <li> <b>Divergence Can Be Early:</b> While divergence is powerful, it can appear early, and the trend might continue for some time after the divergence appears, leading to premature entries.</li>
+      <li> <b>Not a Standalone Indicator:</b> ROC should always be used as part of a broader trading system, combined with other indicators and price action analysis for confirmation.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Rate of Change (ROC) is a fundamental and insightful momentum oscillator in Pine Script for TradingView. Its straightforward calculation provides a clear measure of price acceleration and deceleration, making it valuable for identifying shifts in momentum, confirming trend strength, and spotting potential reversals through divergence. By understanding its mechanics, thoughtfully tuning its parameters, and integrating it strategically with other technical analysis tools, you can leverage the ROC to gain a deeper understanding of market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

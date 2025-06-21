@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Market Profile - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Market Profile concepts in Pine Script for TradingView - analyze price distribution over time, identify key value areas, and leverage auction theory for advanced trading strategies.">
+    <meta name="keywords" content="pine script strategies, Market Profile, TPO, Point of Control, Value Area, Initial Balance, single prints, imbalance, balance, auction theory, intraday trading, supply demand">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Market Profile - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing Market Profile concepts and strategies in Pine Script for TradingView.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Market Profile - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Market Profile - Complete TradingView Guide",
+      "description": "Master Market Profile concepts in Pine Script for TradingView - analyze price distribution over time, identify key value areas, and leverage auction theory for advanced trading strategies.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Market Profile",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Market Profile </h1>
+      <p class="blog-subtitle">Master the core concepts of Market Profile in TradingView's Pine Script, a time-based distribution tool that reveals where the market spends its time and identifies key value areas for highly effective trading strategies.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Market Profile</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Market Profile?</h2>
+    <p> <b>Market Profile</b> is an advanced charting technique developed by J. Peter Steidlmayer that organizes price and time information into a distribution. Unlike traditional bar or candlestick charts that focus on price over a set time, Market Profile displays <b>where and for how long</b> price traded at specific levels during a session. It helps traders understand market participants' value perception and discover areas of balance (where price spends a lot of time) and imbalance (where price moves quickly).</p>
+
+    <p>Market Profile is based on <b>auction theory</b>, viewing the market as an auction process. Key components include:</p>
+    <ul>
+      <li> <b>Time Price Opportunities (TPOs):</b> These are the fundamental building blocks. Each time interval (e.g., 30 minutes) spent at a particular price level during a session is represented by a "TPO" (often a letter or a block).</li>
+      <li> <b>Point of Control (POC):</b> The price level within a session with the most TPOs. It represents the price where the market spent the most time, indicating the fairest value for that session.</li>
+      <li> <b>Value Area (VA):</b> The price range that contains a specified percentage (typically 70%) of the total TPOs for a session. It signifies the range where the majority of trading activity (in terms of time) occurred. The upper boundary is VAH (Value Area High) and the lower is VAL (Value Area Low).</li>
+      <li> <b>Initial Balance (IB):</b> The range established by price during the first hour (or a defined initial period) of the trading session. It provides early clues about the intraday volatility and potential trend.</li>
+      <li> <b>Single Prints (TPO Gaps):</b> Price levels where only a single TPO occurred, indicating rapid price movement through that level. These often act as weak support/resistance or areas to be revisited.</li>
+      <li> <b>Tails / Extremes:</b> Single TPOs at the very top or bottom of a profile, indicating rejection of higher or lower prices.</li>
+    </ul>
+
+    <p>Market Profile provides a powerful visual framework for understanding market structure, participant conviction, and potential turning points, making it a favorite among professional intraday traders for developing robust <b>pine script strategies</b>.</p>
+
+    <h2>Implementing Market Profile Concepts in Pine Script (Conceptual & Practical)</h2>
+    <p>A full, visually accurate representation of TPO-based Market Profile (with letters and complex horizontal stacking) is generally <b>not directly feasible or practical</b> to build efficiently using native Pine Script drawing objects (`box.new`, `label.new`, `line.new`) due to the sheer number of objects required and performance limitations. Pine Script is optimized for plotting lines, shapes, and columns, not complex horizontal histograms that adapt to letter counts across many bars/sessions.</p>
+
+    <p>However, Pine Script v5 does offer a robust `volume.profile_session` function, which creates a <b>Volume Profile</b> (volume at price, not time at price). Many traders use Volume Profile as a close proxy or in conjunction with Market Profile concepts. We can also manually calculate elements like the Initial Balance.</p>
+
+    <p>Below, we will demonstrate how you *could* conceptually build a simplified "Market Profile-like" visual (by drawing boxes based on TPO counts), and more importantly, how to derive and use key Market Profile <b>concepts</b> like Initial Balance, Point of Control, and Value Area in your <b>pine script strategies</b>, which are often better calculated or taken from the built-in Volume Profile functionality.</p>
+
+    <h3>Conceptual TPO Profile Visualization (with Disclaimers)</h3>
+    <p>This code attempts to visualize TPOs by counting bars within price bins. It will plot boxes, but it won't be a classic TPO chart with letters. It's for conceptual understanding of the logic rather than a production-ready Market Profile visual.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Conceptual Market Profile (TPOs)"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">500</span>) <span class="comment">// overlay=true for visual on chart</span>
+
+<span class="comment">// --- User Inputs ---</span>
+<span class="keyword">sessionTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="keyword">title</span>=<span class="string">"Session Timeframe"</span>, <span class="keyword">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>], <span class="keyword">tooltip</span>=<span class="string">"Defines the period for each profile (e.g., Daily, Weekly)."</span>)
+<span class="keyword">tpoPeriodMinutes</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"TPO Period (Minutes)"</span>, <span class="keyword">minval</span>=<span class="number">1</span>, <span class="keyword">maxval</span>=<span class="number">60</span>, <span class="keyword">tooltip</span>=<span class="string">"Duration of each Time Price Opportunity (TPO) block."</span>)
+<span class="keyword">priceTickSize</span> = <span class="function">input.float</span>(<span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Price Tick Size (optional)"</span>, <span class="keyword">minval</span>=<span class="number">0.000001</span>, <span class="keyword">tooltip</span>=<span class="string">"Manually set the smallest price increment for bins. Leave 'na' to auto-detect."</span>)
+<span class="keyword">maxProfileWidth</span> = <span class="function">input.float</span>(<span class="number">100</span>, <span class="keyword">title</span>=<span class="string">"Max Profile Width (px)"</span>, <span class="keyword">minval</span>=<span class="number">10</span>, <span class="keyword">maxval</span>=<span class="number">300</span>, <span class="keyword">tooltip</span>=<span class="string">"Max width of the TPO histogram for scaling."</span>)
+<span class="keyword">profileOffsetBars</span> = <span class="function">input.int</span>(<span class="number">5</span>, <span class="keyword">title</span>=<span class="string">"Profile Offset (Bars)"</span>, <span class="keyword">minval</span>=<span class="number">0</span>, <span class="keyword">maxval</span>=<span class="number">50</span>, <span class="keyword">tooltip</span>=<span class="string">"Horizontal offset from current bar for plotting profile."</span>)
+
+<span class="comment">// --- Global Variables for current session profile ---</span>
+<span class="keyword">var</span> <span class="keyword">int</span>   currentSessionStartBar = <span class="keyword">na</span> <span class="comment">// Bar index where the current session started</span>
+<span class="keyword">var</span> <span class="keyword">float</span> sessionHigh = <span class="keyword">na</span>          <span class="comment">// High of current session</span>
+<span class="keyword">var</span> <span class="keyword">float</span> sessionLow = <span class="keyword">na</span>           <span class="comment">// Low of current session</span>
+<span class="keyword">var</span> <span class="keyword">int</span>   lastBarTime = <span class="keyword">na</span>          <span class="comment">// Timestamp of the last bar in the previous session</span>
+
+<span class="comment">// Initialize or reset session data at the start of a new session</span>
+isNewSession = <span class="function">ta.change</span>(<span class="function">time</span>(sessionTimeframe))
+
+<span class="keyword">if</span> isNewSession
+    <span class="comment">// Reset values for the new session</span>
+    currentSessionStartBar := bar_index
+    sessionHigh := high
+    sessionLow := low
+    lastBarTime := <span class="function">time</span>[<span class="number">1</span>] <span class="comment">// Store time of the *previous* session's last bar</span>
+<span class="keyword">else</span> <span class="keyword">if</span> barstate.isfirst
+    <span class="comment">// Initialize on first bar</span>
+    currentSessionStartBar := bar_index
+    sessionHigh := high
+    sessionLow := low
+    lastBarTime := <span class="keyword">time</span> <span class="comment">// On first bar, there's no previous session, so initialize</span>
+
+<span class="comment">// Update session high/low for current session</span>
+sessionHigh := <span class="function">math.max</span>(sessionHigh, high)
+sessionLow := <span class="function">math.min</span>(sessionLow, low)
+
+<span class="comment">// --- Dynamic Price Bin Calculation ---</span>
+<span class="comment">// Determine price tick size if not manually set</span>
+actualPriceTick = <span class="function">nz</span>(priceTickSize, syminfo.mintick)
+
+<span class="comment">// Store TPO counts for the current session in a map</span>
+<span class="comment">// Map: [price_bin_start_level] => TPO_count_for_this_bin</span>
+<span class="keyword">var</span> sessionTPOCounts = <span class="function">array.new_int</span>(<span class="number">0</span>)
+<span class="keyword">var</span> sessionPriceBins = <span class="function">array.new_float</span>(<span class="number">0</span>)
+
+<span class="comment">// Reset TPO counts for new session</span>
+<span class="keyword">if</span> isNewSession
+    <span class="function">array.clear</span>(sessionTPOCounts)
+    <span class="function">array.clear</span>(sessionPriceBins)
+
+<span class="comment">// Calculate TPO for current bar</span>
+<span class="comment">// The bar's midpoint defines which price bin it belongs to</span>
+currentBarMid = (high + low) / <span class="number">2</span>
+currentBarTPOPriceLevel = <span class="function">math.round</span>(currentBarMid / actualPriceTick) * actualPriceTick
+
+<span class="comment">// Logic to determine if it's a new TPO period for the current bar</span>
+<span class="comment">// This is done by checking if the time crosses a `tpoPeriodMinutes` boundary.</span>
+<span class="keyword">var</span> <span class="keyword">int</span> lastTPOBlockTime = <span class="keyword">na</span>
+<span class="keyword">if</span> barstate.isfirst <span class="keyword">or</span> isNewSession
+    lastTPOBlockTime := <span class="keyword">time</span>
+<span class="keyword">else</span>
+    <span class="comment">// Determine the start time of the current 30-minute block</span>
+    currBlockStartTime = <span class="function">timestamp.new</span>(<span class="function">year</span>(<span class="keyword">time</span>), <span class="function">month</span>(<span class="keyword">time</span>), <span class="function">day</span>(<span class="keyword">time</span>), <span class="function">hour</span>(<span class="keyword">time</span>), <span class="function">minute</span>(<span class="keyword">time</span>) / tpoPeriodMinutes * tpoPeriodMinutes)
+    prevBlockStartTime = <span class="function">timestamp.new</span>(<span class="function">year</span>(<span class="function">time</span>[<span class="number">1</span>]), <span class="function">month</span>(<span class="function">time</span>[<span class="number">1</span>]), <span class="function">day</span>(<span class="function">time</span>[<span class="number">1</span>]), <span class="function">hour</span>(<span class="function">time</span>[<span class="number">1</span>]), <span class="function">minute</span>(<span class="function">time</span>[<span class="number">1</span>]) / tpoPeriodMinutes * tpoPeriodMinutes)
+
+    <span class="keyword">if</span> currBlockStartTime > prevBlockStartTime <span class="comment">// New TPO block</span>
+        <span class="comment">// Increment TPO count for this price level</span>
+        <span class="comment">// Find existing bin or add new one</span>
+        binIndex = <span class="function">array.indexof</span>(sessionPriceBins, currentBarTPOPriceLevel)
+        <span class="keyword">if</span> binIndex == -<span class="number">1</span> <span class="comment">// New price level for this session</span>
+            <span class="function">array.push</span>(sessionPriceBins, currentBarTPOPriceLevel)
+            <span class="function">array.push</span>(sessionTPOCounts, <span class="number">1</span>)
+        <span class="keyword">else</span> <span class="comment">// Existing price level, increment TPO count</span>
+            <span class="function">array.set</span>(sessionTPOCounts, binIndex, <span class="function">array.get</span>(sessionTPOCounts, binIndex) + <span class="number">1</span>)
+        lastTPOBlockTime := <span class="keyword">time</span>
+    <span class="keyword">else</span> <span class="keyword">if</span> <span class="keyword">not</span> isNewSession <span class="comment">// Still in the same TPO block, update high/low for this block</span>
+        <span class="comment">// This is where real TPO profiles update the "letter" for the block.</span>
+        <span class="comment">// For simple TPO count, we just increment.</span>
+        binIndex = <span class="function">array.indexof</span>(sessionPriceBins, currentBarTPOPriceLevel)
+        <span class="keyword">if</span> binIndex == -<span class="number">1</span>
+            <span class="function">array.push</span>(sessionPriceBins, currentBarTPOPriceLevel)
+            <span class="function">array.push</span>(sessionTPOCounts, <span class="number">1</span>)
+        <span class="keyword">else</span>
+            <span class="function">array.set</span>(sessionTPOCounts, binIndex, <span class="function">array.get</span>(sessionTPOCounts, binIndex) + <span class="number">1</span>)
+
+<span class="comment">// --- Plotting the Conceptual Market Profile (TPO Histogram) ---</span>
+<span class="comment">// This part plots for the *current* session only, and is highly simplified.</span>
+<span class="comment">// Drawing full historical Market Profiles is not performant with `box.new` for many sessions.</span>
+<span class="keyword">if</span> barstate.islast <span class="keyword">and</span> <span class="function">array.size</span>(sessionTPOCounts) > <span class="number">0</span>
+
+    <span class="comment">// Get max TPO count for scaling the histogram width</span>
+    maxTpoCount = <span class="number">0</span>
+    <span class="keyword">for</span> i = <span class="number">0</span> <span class="keyword">to</span> <span class="function">array.size</span>(sessionTPOCounts) - <span class="number">1</span>
+        maxTpoCount := <span class="function">math.max</span>(maxTpoCount, <span class="function">array.get</span>(sessionTPOCounts, i))
+
+    <span class="comment">// Determine the x-coordinates for the profile</span>
+    leftX = bar_index + profileOffsetBars
+    rightXBase = leftX + maxProfileWidth
+
+    <span class="keyword">for</span> i = <span class="number">0</span> <span class="keyword">to</span> <span class="function">array.size</span>(sessionTPOCounts) - <span class="number">1</span>
+        priceLevel = <span class="function">array.get</span>(sessionPriceBins, i)
+        tpoCount = <span class="function">array.get</span>(sessionTPOCounts, i)
+
+        <span class="comment">// Calculate box width based on TPO count relative to max</span>
+        boxWidth = (<span class="keyword">float</span>(tpoCount) / maxTpoCount) * maxProfileWidth
+
+        <span class="comment">// Define colors (e.g., darker for more TPOs)</span>
+        boxColor = <span class="keyword">color</span>.<span class="function">rgb</span>(<span class="number">0</span>, <span class="number">150</span>, <span class="number">136</span>, <span class="number">100</span> - (tpoCount * <span class="number">100</span> / maxTpoCount) * <span class="number">0.5</span>) <span class="comment">// Greenish, lighter for less TPO</span>
+
+        <span class="comment">// Draw a box for each TPO price level</span>
+        <span class="function">box.new</span>(leftX, priceLevel + actualPriceTick/<span class="number">2</span>, leftX + boxWidth, priceLevel - actualPriceTick/<span class="number">2</span>,
+                 <span class="keyword">border_color</span>=<span class="keyword">na</span>, <span class="keyword">bgcolor</span>=boxColor, <span class="keyword">xloc</span>=xloc.bar_index)
+        
+        <span class="comment">// Add TPO count as label (optional)</span>
+        <span class="keyword">if</span> showLabels
+            <span class="function">label.new</span>(leftX + boxWidth, priceLevel, <span class="keyword">text</span>=<span class="function">str.tostring</span>(tpoCount), <span class="keyword">xloc</span>=xloc.bar_index, <span class="keyword">yloc</span>=yloc.price,
+                      <span class="keyword">style</span>=<span class="keyword">label</span>.<span class="function">style_label_right</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">black</span>, <span class="number">100</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.tiny)
+
+<span class="comment">// --- Strategy Section (Market Profile Concepts) ---</span>
+<span class="comment">// This section demonstrates strategies using Market Profile concepts.</span>
+<span class="comment">// For robust strategies, often the built-in `volume.profile_session` (Volume Profile) is used</span>
+<span class="comment">// to get POC/VAH/VAL, as it's efficient and accurate. Initial Balance can be calculated manually.</span>
+
+<span class="function">strategy</span>(<span class="string">"Market Profile Concepts Strategy"</span>, overlay=<span class="keyword">true</span>, initial_capital=<span class="number">10000</span>, default_qty_type=strategy.percent_of_equity, default_qty_value=<span class="number">10</span>)
+
+<span class="comment">// --- Get previous session's profile data (using Volume Profile as proxy for market structure) ---</span>
+<span class="comment">// Note: This fetches previous session's Volume Profile, which is a good proxy for Market Profile's POC/VA.</span>
+<span class="comment">// A true Market Profile would require custom TPO calculations for historical data.</span>
+sessionProfile = <span class="function">volume.profile_session</span>(<span class="number">50</span>, <span class="number">70</span>) <span class="comment">// 50 rows, 70% Value Area</span>
+
+<span class="keyword">var</span> <span class="keyword">float</span> prevSessionPOC = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> prevSessionVAH = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> prevSessionVAL = <span class="keyword">na</span>
+
+<span class="comment">// Update previous session's key levels at the start of a new session</span>
+isNewDailySession = <span class="function">ta.change</span>(<span class="function">time</span>(<span class="string">"D"</span>))
+<span class="keyword">if</span> isNewDailySession[<span class="number">1</span>] <span class="keyword">and</span> <span class="keyword">not</span> <span class="function">na</span>(sessionProfile[<span class="number">1</span>]) <span class="comment">// Previous session closed and profile available</span>
+    prevSessionPOC := sessionProfile[<span class="number">1</span>].poc_price
+    prevSessionVAH := sessionProfile[<span class="number">1</span>].value_area_high
+    prevSessionVAL := sessionProfile[<span class="number">1</span>].value_area_low
+
+<span class="comment">// Use nz() to carry forward values across bars</span>
+prevSessionPOC := <span class="function">nz</span>(prevSessionPOC[<span class="number">1</span>], prevSessionPOC)
+prevSessionVAH := <span class="function">nz</span>(prevSessionVAH[<span class="number">1</span>], prevSessionVAH)
+prevSessionVAL := <span class="function">nz</span>(prevSessionVAL[<span class="number">1</span>], prevSessionVAL)
+
+<span class="comment">// --- Calculate Initial Balance (IB) for the current session ---</span>
+<span class="comment">// IB is typically the high/low of the first 60 minutes or a set number of bars.</span>
+ibPeriodMinutes = <span class="function">input.int</span>(<span class="number">60</span>, <span class="keyword">title</span>=<span class="string">"Initial Balance Period (Minutes)"</span>, <span class="keyword">minval</span>=<span class="number">15</span>, <span class="keyword">maxval</span>=<span class="number">120</span>)
+<span class="keyword">var</span> <span class="keyword">float</span> ibHigh = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> ibLow = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">bool</span> ibDefined = <span class="keyword">false</span> <span class="comment">// Flag to ensure IB is defined only once per session</span>
+
+<span class="keyword">if</span> isNewDailySession
+    ibHigh := high
+    ibLow := low
+    ibDefined := <span class="keyword">false</span> <span class="comment">// Reset for new session</span>
+
+<span class="comment">// Check if current bar is within the IB period</span>
+isWithinIBPeriod = <span class="function">time_close</span> - <span class="keyword">time</span> < (ibPeriodMinutes * <span class="number">60</span> * <span class="number">1000</span>) <span class="comment">// Time since session open < IB duration</span>
+
+<span class="keyword">if</span> isWithinIBPeriod
+    ibHigh := <span class="function">math.max</span>(ibHigh, high)
+    ibLow := <span class="function">math.min</span>(ibLow, low)
+    ibDefined := <span class="keyword">true</span>
+<span class="keyword">else</span> <span class="keyword">if</span> ibDefined[<span class="number">1</span>] <span class="keyword">and</span> <span class="keyword">not</span> ibDefined <span class="comment">// Just exited IB period, lock IB values</span>
+    ibHigh := <span class="function">nz</span>(ibHigh[<span class="number">1</span>])
+    ibLow := <span class="function">nz</span>(ibLow[<span class="number">1</span>])
+    ibDefined := <span class="keyword">false</span> <span class="comment">// Mark as defined</span>
+
+<span class="comment">// Plotting IB for visual confirmation</span>
+<span class="function">plot</span>(ibHigh, <span class="keyword">title</span>=<span class="string">"Initial Balance High"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+<span class="function">plot</span>(ibLow, <span class="keyword">title</span>=<span class="string">"Initial Balance Low"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>)
+
+
+<span class="comment">// --- Strategy 1: Initial Balance (IB) Breakouts ---</span>
+<span class="comment">// Trade breakouts of the IB range, signaling potential trending days.</span>
+<span class="comment">// Only consider trading if IB is defined and price is outside it.</span>
+
+<span class="keyword">if</span> ibDefined[<span class="number">1</span>] <span class="comment">// If IB was defined in the previous bar</span>
+    <span class="comment">// Long Entry: Price breaks above IB High with conviction</span>
+    longIBBreakout = close > ibHigh[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= ibHigh[<span class="number">1</span>] <span class="keyword">and</span> volume > <span class="function">ta.sma</span>(volume, <span class="number">20</span>) * <span class="number">1.5</span>
+
+    <span class="comment">// Short Entry: Price breaks below IB Low with conviction</span>
+    shortIBBreakout = close &lt; ibLow[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] >= ibLow[<span class="number">1</span>] <span class="keyword">and</span> volume > <span class="function">ta.sma</span>(volume, <span class="number">20</span>) * <span class="number">1.5</span>
+
+    <span class="keyword">if</span> longIBBreakout
+        <span class="function">strategy.entry</span>(<span class="string">"Long IB Break"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+        <span class="function">strategy.exit</span>(<span class="string">"Long IB Break Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long IB Break"</span>, <span class="keyword">profit</span>=strategy.position_avg_price * <span class="number">1.02</span>, <span class="keyword">stop</span>=ibHigh[<span class="number">1</span>]) <span class="comment">// Target 2% profit, stop at IB High</span>
+
+    <span class="keyword">if</span> shortIBBreakout
+        <span class="function">strategy.entry</span>(<span class="string">"Short IB Break"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+        <span class="function">strategy.exit</span>(<span class="string">"Short IB Break Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short IB Break"</span>, <span class="keyword">profit</span>=strategy.position_avg_price * <span class="number">0.98</span>, <span class="keyword">stop</span>=ibLow[<span class="number">1</span>]) <span class="comment">// Target 2% profit, stop at IB Low</span>
+
+
+<span class="comment">// --- Strategy 2: Previous Session Value Area (VA) Rejection/Acceptance ---</span>
+<span class="comment">// Trading reactions to the previous day's value area boundaries (VAH, VAL).</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(prevSessionVAH) <span class="keyword">and</span> <span class="keyword">not</span> <span class="function">na</span>(prevSessionVAL) <span class="keyword">and</span> <span class="keyword">not</span> isNewDailySession <span class="comment">// Only trade if previous VA is known and not on first bar of new session</span>
+    <span class="comment">// Long Entry: Price opens below previous VAL and closes back above it (Absorption)</span>
+    longVARejection = open &lt; prevSessionVAL <span class="keyword">and</span> close > prevSessionVAL <span class="keyword">and</span> open[<span class="number">1</span>] &lt; prevSessionVAL[<span class="number">1</span>]
+
+    <span class="comment">// Short Entry: Price opens above previous VAH and closes back below it (Absorption)</span>
+    shortVARejection = open > prevSessionVAH <span class="keyword">and</span> close &lt; prevSessionVAH <span class="keyword">and</span> open[<span class="number">1</span>] > prevSessionVAH[<span class="number">1</span>]
+
+    <span class="comment">// Long Entry: Price opens within previous VA, moves to VAL and bounces (Value Area Support)</span>
+    longVASupport = open > prevSessionVAL <span class="keyword">and</span> open &lt; prevSessionVAH <span class="keyword">and</span> low &lt; prevSessionVAL <span class="keyword">and</span> close > prevSessionVAL
+
+    <span class="comment">// Short Entry: Price opens within previous VA, moves to VAH and rejects (Value Area Resistance)</span>
+    shortVAResistance = open > prevSessionVAL <span class="keyword">and</span> open &lt; prevSessionVAH <span class="keyword">and</span> high > prevSessionVAH <span class="keyword">and</span> close &lt; prevSessionVAH
+
+    <span class="keyword">if</span> longVARejection <span class="keyword">or</span> longVASupport
+        <span class="function">strategy.entry</span>(<span class="string">"Long VA Rejection"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+        <span class="function">strategy.exit</span>(<span class="string">"Long VA Rejection Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long VA Rejection"</span>, <span class="keyword">profit</span>=prevSessionVAH, <span class="keyword">stop</span>=prevSessionVAL - syminfo.mintick * <span class="number">10</span>)
+
+    <span class="keyword">if</span> shortVARejection <span class="keyword">or</span> shortVAResistance
+        <span class="function">strategy.entry</span>(<span class="string">"Short VA Rejection"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+        <span class="function">strategy.exit</span>(<span class="string">"Short VA Rejection Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short VA Rejection"</span>, <span class="keyword">profit</span>=prevSessionVAL, <span class="keyword">stop</span>=prevSessionVAH + syminfo.mintick * <span class="number">10</span>)
+
+
+<span class="comment">// --- Strategy 3: Point of Control (POC) Breakout/Rejection ---</span>
+<span class="comment">// Trading reactions around the most traded price level.</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(prevSessionPOC) <span class="keyword">and</span> <span class="keyword">not</span> isNewDailySession
+    <span class="comment">// Long Entry: Price crosses above previous POC with strength</span>
+    longPOCBreak = <span class="function">ta.crossover</span>(close, prevSessionPOC) <span class="keyword">and</span> volume > <span class="function">ta.sma</span>(volume, <span class="number">20</span>) * <span class="number">1.2</span>
+
+    <span class="comment">// Short Entry: Price crosses below previous POC with strength</span>
+    shortPOCBreak = <span class="function">ta.crossunder</span>(close, prevSessionPOC) <span class="keyword">and</span> volume > <span class="function">ta.sma</span>(volume, <span class="number">20</span>) * <span class="number">1.2</span>
+
+    <span class="keyword">if</span> longPOCBreak
+        <span class="function">strategy.entry</span>(<span class="string">"Long POC Break"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+        <span class="function">strategy.exit</span>(<span class="string">"Long POC Break Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long POC Break"</span>, <span class="keyword">profit</span>=prevSessionPOC + (prevSessionVAH - prevSessionPOC), <span class="keyword">stop</span>=prevSessionPOC - (prevSessionPOC - prevSessionVAL)) <span class="comment">// Target next VA boundary, stop at other side</span>
+
+    <span class="keyword">if</span> shortPOCBreak
+        <span class="function">strategy.entry</span>(<span class="string">"Short POC Break"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+        <span class="function">strategy.exit</span>(<span class="string">"Short POC Break Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short POC Break"</span>, <span class="keyword">profit</span>=prevSessionPOC - (prevSessionPOC - prevSessionVAL), <span class="keyword">stop</span>=prevSessionPOC + (prevSessionVAH - prevSessionPOC)) <span class="comment">// Target next VA boundary, stop at other side</span>
+</code>
+</pre>
+
+
+    <h2>Optimizing Market Profile Strategies</h2>
+    <p>To get the most from Market Profile concepts in Pine Script:</p>
+    <ul>
+      <li> <b>Understanding Market Structure:</b> Market Profile is about understanding whether the market is in a state of <b>balance (consolidation)</b> or <b>imbalance (trending)</b>. Strategies should align with this understanding.</li>
+      <li> <b>Context is King:</b> Always consider the broader market context (higher timeframe trend, fundamental news) when interpreting Market Profile levels.</li>
+      <li> <b>Timeframe Alignment:</b> Market Profile is primarily an <b>intraday tool</b>. Ensure your chart's timeframe (e.g., 5-min, 15-min, 30-min) aligns with the `sessionTimeframe` you choose for profile calculation (typically "D" for daily profiles).</li>
+      <li> <b>Initial Balance (IB) Analysis:</b> The IB provides early clues. A narrow IB suggests potential for a breakout or trend day. A wide IB suggests possible range-bound trading for the rest of the session. Look for IB extensions for strong trend days.</li>
+      <li> <b>Value Area (VA) Dynamics:</b>
+        <ul>
+          <li> <b>Open within VA:</b> Often leads to a rotational day. Look for mean reversion trades.</li>
+          <li> <b>Open outside VA but returns:</b> Absorption, price returns to previous value, indicating rejection of extremes.</li>
+          <li> <b>Open outside VA and stays out:</b> Strong trend day, market accepting new value.</li>
+        </ul>
+      </li>
+      <li> <b>Single Prints / Tails:</b> These indicate areas of rapid price movement and usually act as weak support/resistance zones that might be revisited. Trading against single prints can be risky; trading *with* a sustained move through them can be profitable.</li>
+      <li> <b>POC as a Magnet:</b> The POC often acts as a price magnet. Price tends to revert to the POC if it strays too far, especially on balance days. A break and hold of POC can signal conviction.</li>
+      <li> <b>Combined Analysis:</b> Market Profile should be combined with other technical analysis tools (e.g., candlestick patterns, momentum oscillators, traditional support/resistance lines) for confirmation.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Auction Theory Framework:</strong> Market Profile provides a powerful framework for understanding market behavior as an auction process, revealing areas of fair value and imbalance through time and price.
+    </div>
+
+    <h2>Common Market Profile Pitfalls</h2>
+    <ul>
+      <li> <b>Visual Complexity in Pine Script:</b> Replicating the full, interactive graphical TPO Market Profile (with letters) in Pine Script is highly challenging due to drawing limitations and performance. Pine Script's built-in `volume.profile_session` is for Volume Profile (volume at price), which is often used as a proxy but isn't identical.</li>
+      <li> <b>Subjectivity:</b> Interpreting Market Profile patterns (e.g., P-shaped, b-shaped, D-shaped profiles) and single prints can be subjective.</li>
+      <li> <b>Over-Reliance:</b> Using Market Profile as the sole decision-making tool without considering the broader market context, fundamental news, or other technical analysis can lead to poor trading decisions.</li>
+      <li> <b>Lagging Element:</b> Market Profile shows where price *has been* and for how long. While it reveals areas of past activity, it's not a pure predictive tool for future movements.</li>
+      <li> <b>False Breakouts:</b> Markets can often "fake out" around key Market Profile levels (IB, VAH/VAL, POC), leading to whipsaws if confirmation is not sought.</li>
+      <li> <b>Misinterpreting Range vs. Trend:</b> Misjudging whether the market is in a balance or imbalance phase can lead to applying the wrong strategy (e.g., mean reversion on a strong trend day).</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Market Profile is an advanced and insightful technical analysis methodology that provides a unique time-based perspective on market activity. While a complete graphical TPO Market Profile is computationally challenging to render perfectly in Pine Script, understanding its core concepts like <b>Time Price Opportunities (TPOs)</b>, <b>Point of Control (POC)</b>, <b>Value Area (VA)</b>, <b>Initial Balance (IB)</b>, and <b>Single Prints</b> is invaluable. Pine Script allows traders to programmatically calculate and leverage these concepts (often using the built-in Volume Profile as a strong proxy for price-volume distribution and custom IB calculation) to build sophisticated <b>pine script strategies</b>. By combining the wisdom of Market Profile with other confirming indicators and a robust understanding of market structure, you can gain a significant edge in identifying high-probability trading opportunities and navigating dynamic market conditions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

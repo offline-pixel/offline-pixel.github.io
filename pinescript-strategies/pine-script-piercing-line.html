@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align candles at the bottom of their wicks */
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 60%; /* Adjusted for two candles side-by-side */
+            max-width: 60%; 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 200px; /* Wider for two candles */
+            height: 150px; 
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        /* Specific colors for candle bodies and wicks for clarity */
+        .candle-body-green { fill: #4CAF50; } 
+        .candle-body-red { fill: #F44336; } 
+        .wick-green { stroke: #4CAF50; }
+        .wick-red { stroke: #F44336; }
+
+        /* Specific positioning for the 2-candle pattern */
+        .piercing-line-candle-1 { transform: translateX(-40px); }
+        .piercing-line-candle-2 { transform: translateX(40px); }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Piercing Line Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Piercing Line candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bullish reversals after a downtrend.">
+    <meta name="keywords" content="pine script, piercing line, bullish piercing line, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action, two-candle pattern">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Piercing Line Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Piercing Line patterns in Pine Script for bullish reversal strategies after a downtrend.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-piercing-line.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Piercing Line Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-piercing-line.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Piercing Line Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master the Piercing Line candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bullish reversals after a downtrend.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-piercing-line.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Piercing Line Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-piercing-line.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Piercing Line Candlestick Pattern</h1>
+      <p class="blog-subtitle">Unlock powerful bullish reversal signals with this comprehensive guide to detecting and strategizing with Piercing Line patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Piercing Line Patterns</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why the Piercing Line Pattern Matters in Pine Script</h2>
+    <p>The <b>Piercing Line candlestick pattern</b> is a two-candle bullish reversal pattern that typically forms after a downtrend. It signals a potential bottom and a strong shift in momentum from sellers to buyers. This pattern indicates that despite initial selling pressure, buyers stepped in decisively, pushing prices significantly higher to "pierce" deep into the body of the previous bearish candle. This makes Piercing Line patterns invaluable for:</p>
+    <ul>
+      <li>Identifying potential bullish trend reversals at key support levels.</li>
+      <li>Signaling a potential exhaustion of selling pressure.</li>
+      <li>Generating entry signals for long positions, often with good risk-reward.</li>
+    </ul>
+
+    <h2>Understanding the Piercing Line Candlestick Pattern</h2>
+    <p>A Piercing Line pattern consists of two specific candles:</p>
+    <ol>
+        <li><b>First Candle (Bearish):</b> A long bearish (red) candle, indicating strong selling pressure and a continuation of the downtrend.</li>
+        <li><b>Second Candle (Bullish):</b> A long bullish (green) candle that opens <b>below the low</b> of the first bearish candle (a significant gap down) and then closes <b>above the midpoint</b> of the first bearish candle's body, but *below* its open.</li>
+    </ol>
+    <p>The pattern demonstrates an initial bearish momentum followed by a strong bullish rejection of lower prices, "piercing" the previous bearish sentiment.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Piercing Line Pattern</h3>
+            <svg viewBox="0 0 200 150">
+                <!-- Previous Bearish Candle (Long) -->
+                <line x1="60" y1="20" x2="60" y2="120" stroke="#F44336" stroke-width="2" class="wick-red piercing-line-candle-1"/>
+                <rect x="55" y="20" width="10" height="100" fill="#F44336" class="candle-body-red piercing-line-candle-1"/>
+
+                <!-- Current Bullish Candle (Long, Gaps Down, Pierces into Previous) -->
+                <line x1="140" y1="30" x2="140" y2="130" stroke="#4CAF50" stroke-width="2" class="wick-green piercing-line-candle-2"/>
+                <rect x="135" y="30" width="10" height="100" fill="#4CAF50" class="candle-body-green piercing-line-candle-2"/>
+                
+                <!-- Midpoint line for visual reference -->
+                <line x1="50" y1="70" x2="150" y2="70" stroke="#A9A9A9" stroke-dasharray="4" stroke-width="1"/>
+                <text x="170" y="70" fill="#A9A9A9" font-size="10">Midpoint of previous candle</text>
+            </svg>
+            <p>A long red candle, followed by a green candle that gaps down, but then rallies to close above the midpoint of the red candle's body.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Candle 1:</b> Long bearish candle.</li>
+        <li><b>Candle 2:</b> Long bullish candle that opens below the low of Candle 1.</li>
+        <li><b>Candle 2's Close:</b> Must close above the midpoint of Candle 1's real body, but below its open.</li>
+        <li><b>Context:</b> Most significant when appearing at the <b>bottom of a clear downtrend</b>.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Piercing Line Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect Piercing Line patterns in Pine Script v5:</p>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Piercing Line Pattern Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Candle 1 (previous bar) - Long Bearish</span>
+isC1Bearish = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+<span class="comment">// The length of the first candle's body should be significant (e.g., > 0.5 ATR)</span>
+isC1Long = (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.5</span>
+
+<span class="comment">// Candle 2 (current bar) - Long Bullish with Specific Open/Close conditions</span>
+isC2Bullish = close > open
+<span class="comment">// The length of the second candle's body should also be significant</span>
+isC2Long = (close - open) > <span class="function">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.5</span>
+
+<span class="comment">// Condition 1: Second candle opens below the low of the first candle</span>
+opensBelowPrevLow = open < low[<span class="number">1</span>]
+
+<span class="comment">// Condition 2: Second candle closes above the midpoint of the first candle's body</span>
+midpointPrevBody = open[<span class="number">1</span>] - ((open[<span class="number">1</span>] - close[<span class="number">1</span>]) / <span class="number">2</span>) <span class="comment">// Calculate midpoint of previous bearish body</span>
+closesAboveMidpoint = close > midpointPrevBody
+
+<span class="comment">// Condition 3: Second candle closes below the open of the first candle</span>
+closesBelowPrevOpen = close < open[<span class="number">1</span>]
+
+<span class="comment">// Combine all criteria for Piercing Line</span>
+isPiercingLine = isC1Bearish <span class="keyword">and</span> isC1Long <span class="keyword">and</span> isC2Bullish <span class="keyword">and</span> isC2Long <span class="keyword">and</span> opensBelowPrevLow <span class="keyword">and</span> closesAboveMidpoint <span class="keyword">and</span> closesBelowPrevOpen
+
+<span class="comment">// Plot signal on the chart</span>
+<span class="function">plotshape</span>(isPiercingLine, <span class="keyword">title</span>=<span class="string">"Piercing Line"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">fuchsia</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+
+<span class="comment">// Alert condition (optional)</span>
+<span class="function">alertcondition</span>(isPiercingLine, <span class="keyword">title</span>=<span class="string">"Piercing Line Detected"</span>, <span class="keyword">message</span>=<span class="string">"Piercing Line Candlestick Pattern Detected!"</span>)
+</code></pre>
+
+
+    <h2>Advanced Piercing Line Strategies</h2>
+    <p>While basic detection is useful, combining Piercing Line patterns with other indicators and market context provides stronger, more reliable signals for potential bullish reversals.</p>
+    
+    <h3>1. Piercing Line with Downtrend Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Piercing Line with Trend Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length</span>
+<span class="keyword">maLength</span> = <span class="function">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+<span class="keyword">ma</span> = <span class="function">ta.ema</span>(close, maLength) <span class="comment">// Using EMA for downtrend detection</span>
+
+<span class="comment">// Piercing Line Pattern Detection (from basic example)</span>
+isC1Bearish = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+isC1Long = (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.5</span>
+
+isC2Bullish = close > open
+isC2Long = (close - open) > <span class="function">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.5</span>
+
+opensBelowPrevLow = open < low[<span class="number">1</span>]
+midpointPrevBody = open[<span class="number">1</span>] - ((open[<span class="number">1</span>] - close[<span class="number">1</span>]) / <span class="number">2</span>)
+closesAboveMidpoint = close > midpointPrevBody
+closesBelowPrevOpen = close < open[<span class="number">1</span>]
+
+isPiercingLine = isC1Bearish <span class="keyword">and</span> isC1Long <span class="keyword">and</span> isC2Bullish <span class="keyword">and</span> isC2Long <span class="keyword">and</span> opensBelowPrevLow <span class="keyword">and</span> closesAboveMidpoint <span class="keyword">and</span> closesBelowPrevOpen
+
+<span class="comment">// Trend Confirmation: Price should be below the MA (downtrend)</span>
+<span class="comment">// AND the MA itself should be sloping downwards (optional, but stronger)</span>
+<span class="keyword">isDowntrend</span> = close < ma <span class="keyword">and</span> ma < ma[<span class="number">1</span>]
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+longSignal = isPiercingLine <span class="keyword">and</span> isDowntrend
+
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="comment">// Plot MA</span>
+<span class="function">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">plotshape</span>(longSignal, <span class="keyword">title</span>=<span class="string">"Confirmed Piercing Line"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">navy</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+</code></pre>
+
+    <h3>2. Piercing Line with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Piercing Line with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Piercing Line Pattern Detection (from basic example)</span>
+isC1Bearish = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+isC1Long = (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.5</span>
+
+isC2Bullish = close > open
+isC2Long = (close - open) > <span class="function">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.5</span>
+
+opensBelowPrevLow = open < low[<span class="number">1</span>]
+midpointPrevBody = open[<span class="number">1</span>] - ((open[<span class="number">1</span>] - close[<span class="number">1</span>]) / <span class="number">2</span>)
+closesAboveMidpoint = close > midpointPrevBody
+closesBelowPrevOpen = close < open[<span class="number">1</span>]
+
+isPiercingLine = isC1Bearish <span class="keyword">and</span> isC1Long <span class="keyword">and</span> isC2Bullish <span class="keyword">and</span> isC2Long <span class="keyword">and</span> opensBelowPrevLow <span class="keyword">and</span> closesAboveMidpoint <span class="keyword">and</span> closesBelowPrevOpen
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Volume on the second bullish candle should be higher than average volume</span>
+avgVolume = <span class="function">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// 20-period Simple Moving Average of Volume</span>
+isVolumeConfirmed = volume > avgVolume * <span class="number">1.5</span> <span class="comment">// Volume is 1.5x average</span>
+
+<span class="comment">// Combined signal</span>
+confirmedPiercingLine = isPiercingLine <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">barcolor</span>(confirmedPiercingLine ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">aqua</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="function">plotshape</span>(confirmedPiercingLine, <span class="keyword">title</span>=<span class="string">"Piercing Line (Vol Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labelup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>, <span class="keyword">text</span>=<span class="string">"PL Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="function">plot</span>(volume, <span class="keyword">title</span>=<span class="string">"Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_columns</span>)
+<span class="function">plot</span>(avgVolume, <span class="keyword">title</span>=<span class="string">"Avg Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_line</span>)
+</code></pre>
+
+
+    <h3>3. Piercing Line with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Piercing Line with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+<span class="keyword">rsiLength</span> = <span class="function">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+<span class="keyword">oversold</span> = <span class="function">input</span>(<span class="number">30</span>, <span class="string">"RSI Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Piercing Line Pattern Detection</span>
+isC1Bearish = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+isC1Long = (open[<span class="number">1</span>] - close[<span class="number">1</span>]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.5</span>
+
+isC2Bullish = close > open
+isC2Long = (close - open) > <span class="function">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.5</span>
+
+opensBelowPrevLow = open < low[<span class="number">1</span>]
+midpointPrevBody = open[<span class="number">1</span>] - ((open[<span class="number">1</span>] - close[<span class="number">1</span>]) / <span class="number">2</span>)
+closesAboveMidpoint = close > midpointPrevBody
+closesBelowPrevOpen = close < open[<span class="number">1</span>]
+
+isPiercingLine = isC1Bearish <span class="keyword">and</span> isC1Long <span class="keyword">and</span> isC2Bullish <span class="keyword">and</span> isC2Long <span class="keyword">and</span> opensBelowPrevLow <span class="keyword">and</span> closesAboveMidpoint <span class="keyword">and</span> closesBelowPrevOpen
+
+<span class="comment">// RSI Confirmation: RSI should be in oversold territory or rising from it</span>
+rsiConfirmation = rsiValue <= oversold <span class="keyword">or</span> (rsiValue[<span class="number">1</span>] <= oversold <span class="keyword">and</span> rsiValue > rsiValue[<span class="number">1</span>])
+
+<span class="comment">// Combined signal</span>
+signalPiercingLine = isPiercingLine <span class="keyword">and</span> rsiConfirmation
+
+<span class="comment">// Plot signals</span>
+<span class="function">plotshape</span>(signalPiercingLine, <span class="keyword">title</span>=<span class="string">"Piercing Line (RSI Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="function">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane</span>)
+<span class="function">hline</span>(oversold, <span class="string">"Oversold"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
+</code></pre>
+
+
+    <h2>Optimizing Piercing Line Pattern Performance</h2>
+    <p>To maximize the effectiveness of Piercing Line patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Confirm Downtrend:</b> The Piercing Line is a <b>bullish reversal</b> pattern, so it's most reliable when it appears after a clear downtrend. Avoid trading it in an uptrend or sideways market.</li>
+      <li><b>Volume Confirmation:</b> Look for higher volume on the second bullish candle compared to the first, as it indicates strong buying interest and adds conviction to the reversal signal.</li>
+      <li><b>Support Levels:</b> Piercing Line patterns that form at significant support levels (e.g., previous lows, strong moving averages, Fibonacci retracement levels) tend to be more powerful and reliable.</li>
+      <li><b>The "Piercing" Depth:</b> The deeper the second candle penetrates the body of the first (ideally well above the 50% mark), the stronger the signal.</li>
+      <li><b>Timeframe:</b> While visible on all timeframes, signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are considered more reliable for sustained reversals.</li>
+    </ul>
+
+    <h2>Common Piercing Line Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not every two-candle sequence that superficially resembles a Piercing Line is a valid pattern. Strict adherence to criteria and contextual analysis are essential.
+    </div>
+    <ul>
+      <li><b>Ignoring Trend Context:</b> A Piercing Line is a reversal pattern; if it appears in an uptrend or ranging market, its predictive power is significantly diminished.</li>
+      <li><b>Insufficient Penetration:</b> If the second bullish candle fails to close above the midpoint of the first bearish candle's body, the pattern is weak or invalid.</li>
+      <li><b>Lack of Gap Down:</b> While sometimes less strict in certain markets, a clear gap down at the open of the second candle adds significant strength to the pattern.</li>
+      <li><b>Small Candles:</b> Patterns formed by very small first or second candles might not carry enough conviction. Both should ideally have substantial bodies.</li>
+      <li><b>Over-reliance:</b> Using the Piercing Line pattern in isolation without confirmation from other indicators, support levels, or broader market analysis can lead to false signals.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Piercing Line candlestick pattern</b> is a robust and visually clear signal for bullish reversals. By understanding its precise two-candle formation, its contextual importance within a downtrend, and integrating it with other technical confirmations, you can leverage it effectively in your trading. Implementing Piercing Line detection in Pine Script allows you to automate signal generation, combine it with complementary indicators for higher probability trades, and enhance your price action analysis to make more informed trading decisions on TradingView.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

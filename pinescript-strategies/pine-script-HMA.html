@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Hull Moving Average (HMA) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Hull Moving Average (HMA) in Pine Script for TradingView - a low-lag, smooth indicator for identifying trends and reversals.">
+    <meta name="keywords" content="pine script strategies, Hull Moving Average, HMA, TradingView indicator, technical analysis, low lag, trend following, smoothing">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Hull Moving Average (HMA) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Hull Moving Average (HMA) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Hull Moving Average (HMA) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-HMA.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Hull Moving Average (HMA) - Complete TradingView Guide",
+      "description": "Master the Hull Moving Average (HMA) in Pine Script for TradingView - a low-lag, smooth indicator for identifying trends and reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HMA.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Hull Moving Average (HMA)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HMA.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Hull Moving Average (HMA) </h1>
+      <p class="blog-subtitle">Master this remarkably smooth and low-lagging moving average in TradingView's Pine Script for precise trend identification and reversal signals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Hull Moving Average (HMA)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Hull Moving Average (HMA)?</h2>
+    <p>The <b>Hull Moving Average (HMA)</b>, created by Alan Hull, is a unique and powerful moving average designed to be extremely smooth while simultaneously having very little lag. Traditional moving averages often suffer from either being too laggy (smoothing out noise but delaying signals) or too noisy (responsive but prone to whipsaws). The HMA aims to address this dilemma by using a sophisticated weighting method to achieve both responsiveness and smoothness.</p>
+
+    <p>In Pine Script, the HMA stands out as a superior tool for discerning trend direction early and filtering out market noise effectively, making it a favorite among traders looking for cleaner signals.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The HMA is calculated in three steps, involving Weighted Moving Averages (WMAs):</p>
+    <ol>
+      <li><strong>Step 1: Calculate a WMA with period `n/2`</strong>: First, a Weighted Moving Average of the input price (typically `close`) is calculated over half the HMA's specified length (`n/2`).</li>
+      <li><strong>Step 2: Calculate a WMA with period `n`</strong>: Next, another Weighted Moving Average of the input price is calculated over the full HMA length (`n`).</li>
+      <li><strong>Step 3: Combine and smooth</strong>: Subtract the WMA from Step 2 from twice the WMA from Step 1. Then, calculate a WMA of this result, using a period equal to the square root of `n` (`sqrt(n)`). This final WMA is the Hull Moving Average.</li>
+    </ol>
+    <p>This triple-smoothing process, particularly the square root part, is what gives HMA its unique low-lag and smoothing characteristics.</p>
+
+    <h2>Basic HMA Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.hma()` that greatly simplifies its implementation.</p>
+
+   <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Hull Moving Average"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for HMA length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HMA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate HMA using the built-in function</span>
+hmaValue = <span class="function">ta.hma</span>(close, length)
+
+<span class="comment">// Plot the HMA line</span>
+<span class="function">plot</span>(hmaValue, <span class="keyword">title</span>=<span class="string">"HMA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+</code>
+</pre>
+
+
+    <div class="tip">
+      <strong>Key Advantage:</strong> HMA minimizes lag by giving more weight to recent prices and smoothing the result, making it highly effective for trend identification.
+    </div>
+
+    <h2>Practical HMA Strategies</h2>
+
+    <h3>1. HMA as a Trend Direction Filter (Color Change)</h3>
+    <p>HMA's smoothness makes it excellent for identifying the prevailing trend direction. A popular visual strategy involves coloring the HMA based on its slope or its relation to the previous bar's value.</p>
+    <ul>
+      <li><strong>Uptrend</strong>: HMA is rising (current HMA &gt; previous HMA).</li>
+      <li><strong>Downtrend</strong>: HMA is falling (current HMA &lt; previous HMA).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"HMA Trend Color Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for HMA length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HMA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate HMA</span>
+hmaValue = <span class="function">ta.hma</span>(close, length)
+
+<span class="comment">// Determine HMA color based on its direction</span>
+hmaColor = hmaValue > hmaValue[<span class="number">1</span>] ? <span class="keyword">color</span>.<span class="function">green</span> : <span class="keyword">color</span>.<span class="function">red</span>
+
+<span class="comment">// Plot the HMA line with dynamic color</span>
+<span class="function">plot</span>(hmaValue, <span class="keyword">title</span>=<span class="string">"HMA"</span>, <span class="keyword">color</span>=hmaColor, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Example entry logic: buy when HMA turns green, sell when HMA turns red</span>
+longCondition = hmaValue > hmaValue[<span class="number">1</span>] <span class="keyword">and</span> hmaValue[<span class="number">1</span>] &lt;= hmaValue[<span class="number">2</span>] <span class="comment">// HMA turns up</span>
+shortCondition = hmaValue &lt; hmaValue[<span class="number">1</span>] <span class="keyword">and</span> hmaValue[<span class="number">1</span>] >= hmaValue[<span class="number">2</span>] <span class="comment">// HMA turns down</span>
+
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code>
+</pre>
+
+
+    <h3>2. HMA Crossover Strategy (with Price or another HMA)</h3>
+    <p>Crossovers between price and HMA, or between two HMAs of different lengths, can generate powerful trading signals.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"HMA Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for HMA lengths</span>
+<span class="keyword">fastHmaLength</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"Fast HMA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">slowHmaLength</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"Slow HMA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate HMAs</span>
+fastHma = <span class="function">ta.hma</span>(close, fastHmaLength)
+slowHma = <span class="function">ta.hma</span>(close, slowHmaLength)
+
+<span class="comment">// Plot the HMAs</span>
+<span class="function">plot</span>(fastHma, <span class="keyword">title</span>=<span class="string">"Fast HMA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+<span class="function">plot</span>(slowHma, <span class="keyword">title</span>=<span class="string">"Slow HMA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Crossover conditions (Fast HMA crossing Slow HMA)</span>
+longCondition = <span class="function">ta.crossover</span>(fastHma, slowHma)
+shortCondition = <span class="function">ta.crossunder</span>(fastHma, slowHma)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code>
+</pre>
+
+
+    <h3>3. HMA for Support and Resistance</h3>
+    <p>Due to its smooth nature, HMA can often act as dynamic support or resistance. Price bouncing off a rising HMA indicates support, while rejection from a falling HMA indicates resistance.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"HMA Support/Resistance"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HMA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+hmaValue = <span class="function">ta.hma</span>(close, length)
+
+<span class="function">plot</span>(hmaValue, <span class="keyword">title</span>=<span class="string">"HMA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Highlight potential support/resistance touches (conceptual - adjust thresholds)</span>
+isSupportTouch = hmaValue > close <span class="keyword">and</span> hmaValue[<span class="number">1</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close > hmaValue * <span class="number">0.995</span> <span class="keyword">and</span> close &lt; hmaValue * <span class="number">1.005</span> <span class="comment">// Price nearing HMA from below and bouncing</span>
+isResistanceTouch = hmaValue &lt; close <span class="keyword">and</span> hmaValue[<span class="number">1</span>] > close[<span class="number">1</span>] <span class="keyword">and</span> close &lt; hmaValue * <span class="number">1.005</span> <span class="keyword">and</span> close > hmaValue * <span class="number">0.995</span> <span class="comment">// Price nearing HMA from above and bouncing</span>
+
+<span class="function">plotshape</span>(isSupportTouch, <span class="keyword">title</span>=<span class="string">"Potential Support"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">circle</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">tiny</span>)
+<span class="function">plotshape</span>(isResistanceTouch, <span class="keyword">title</span>=<span class="string">"Potential Resistance"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">circle</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">tiny</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing HMA Performance</h2>
+    <p>To get the most from the Hull Moving Average in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is the most critical. Experiment with different lengths (e.g., 9, 20, 50, 200) to find what works best for your chosen asset and timeframe. Shorter lengths are more responsive, while longer lengths provide more smoothing for longer-term trends.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Use HMA on higher timeframes to confirm the overall trend and on lower timeframes for precise entries and exits. For example, a 200-period HMA on a daily chart for long-term bias, and a 20-period HMA on an hourly chart for trade timing.</li>
+      <li><strong>Combine with Other Indicators:</strong> While HMA is designed to reduce noise, it's not a standalone indicator. Pair it with volume indicators, oscillators (like RSI for overbought/oversold, or MACD for momentum confirmation), or price action analysis.</li>
+      <li><strong>Avoid Choppy Markets:</strong> Despite its smoothing, HMA can still produce false signals in prolonged sideways or non-trending markets. Use a trend strength indicator (e.g., ADX) to confirm a trend is present before relying heavily on HMA signals.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Smoothness vs. Lag:</strong> HMA is a balance. While it reduces lag significantly, it's not entirely lag-free. Always be aware of the trade-off, especially on very short timeframes.
+    </div>
+
+    <h2>Common HMA Pitfalls</h2>
+    <ul>
+      <li> <b>Whipsaws in Extreme Choppiness:</b> In extremely flat or highly volatile, non-trending markets, HMA can still generate false signals or become less reliable.</li>
+      <li> <b>Not a Substitute for Price Action:</b> While HMA can show trend direction, it doesn't provide insight into the underlying supply and demand dynamics that candlestick patterns or chart structures reveal.</li>
+      <li> <b>Over-Optimization:</b> Tuning HMA parameters too precisely to historical data can lead to curve-fitting and poor performance in live trading.</li>
+      <li> <b>Lack of Overbought/Oversold Information:</b> HMA is a trend-following indicator and does not inherently provide information on overbought or oversold market conditions, unlike oscillators.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Hull Moving Average (HMA) is a remarkable advancement in the world of technical indicators in Pine Script for TradingView. Its innovative calculation method provides a uniquely smooth line with minimal lag, making it an excellent tool for accurate trend identification and dynamic signal generation. By understanding its construction, applying it thoughtfully within comprehensive trading strategies, and combining it with other analytical tools, you can leverage the HMA to gain a clearer perspective on market direction and improve your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script RSI (Relative Strength Index) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Relative Strength Index (RSI) in Pine Script for TradingView - a comprehensive guide to momentum, overbought/oversold conditions, and divergence.">
+    <meta name="keywords" content="pine script strategies, RSI, Relative Strength Index, tradingview indicator, technical analysis, momentum oscillator, overbought, oversold, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script RSI (Relative Strength Index) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Relative Strength Index (RSI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script RSI (Relative Strength Index) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-RSI.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script RSI (Relative Strength Index) - Complete TradingView Guide",
+      "description": "Master the Relative Strength Index (RSI) in Pine Script for TradingView - a comprehensive guide to momentum, overbought/oversold conditions, and divergence.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-RSI.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "RSI (Relative Strength Index)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-RSI.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script RSI (Relative Strength Index) </h1>
+      <p class="blog-subtitle">Master this essential momentum oscillator in TradingView's Pine Script for identifying overbought/oversold conditions, trend strength, and reversals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">RSI (Relative Strength Index)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Relative Strength Index (RSI)?</h2>
+    <p>The <b>Relative Strength Index (RSI)</b>, developed by J. Welles Wilder Jr., is one of the most widely used momentum oscillators in technical analysis. It measures the speed and change of price movements over a specified period, typically 14 bars. RSI oscillates between 0 and 100, providing insights into whether an asset is overbought or oversold, and helping traders identify potential trend reversals or continuations.</p>
+
+    <p>In Pine Script, the RSI is an indispensable tool for gauging the strength of price action and anticipating market turns, making it a cornerstone for many trading strategies.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The RSI calculation involves several steps, primarily focusing on the average gains and losses over the look-back period:</p>
+    <ol>
+      <li><strong>Calculate Price Changes</strong>: For each bar, determine the upward price change (gain) and downward price change (loss).
+      <ul>
+        <li>`gain = current_close - previous_close` (if positive, else 0)</li>
+        <li>`loss = previous_close - current_close` (if positive, else 0)</li>
+      </ul>
+      </li>
+      <li><strong>Calculate Average Gains and Average Losses</strong>: Compute the smoothed moving average (typically an Exponential Moving Average, EMA) of the gains and losses over the RSI period (e.g., 14 periods).</li>
+      <li><strong>Calculate Relative Strength (RS)</strong>: `RS = Average Gain / Average Loss`.</li>
+      <li><strong>Calculate RSI</strong>: `RSI = 100 - (100 / (1 + RS))`</li>
+    </ol>
+    <p>When there are no average losses in the period, the RS value becomes infinite, and the RSI will be 100. Conversely, if there are no average gains, the RS value will be zero, and the RSI will be 0.</p>
+
+    <h2>Basic RSI Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a straightforward built-in function `ta.rsi()` for calculating the Relative Strength Index.</p>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My RSI Indicator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for RSI length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RSI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate RSI value using the built-in function</span>
+rsiValue = <span class="function">ta.rsi</span>(close, length)
+
+<span class="comment">// Plot the RSI line</span>
+<span class="function">plot</span>(rsiValue, <span class="keyword">title</span>=<span class="string">"RSI"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">purple</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot horizontal lines for overbought and oversold levels</span>
+h_overbought = <span class="function">hline</span>(<span class="number">70</span>, <span class="string">"Overbought"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>)
+h_oversold = <span class="function">hline</span>(<span class="number">30</span>, <span class="string">"Oversold"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>)
+
+<span class="comment">// Fill background between RSI and levels for visual clarity</span>
+<span class="function">fill</span>(h_overbought, h_oversold, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">gray</span>, <span class="number">90</span>))
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Standard Levels:</strong> The conventional overbought level is 70 (or 80 for strong trends) and the oversold level is 30 (or 20 for strong trends).
+    </div>
+
+    <h2>Practical RSI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Overbought and Oversold Conditions</h3>
+    <p>This is the most common use of RSI. When RSI crosses above 70, the asset is considered overbought, suggesting a potential pullback or reversal. When RSI crosses below 30, it's considered oversold, indicating a potential bounce or reversal.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: RSI crosses below 30 and then crosses back above it.</li>
+      <li><strong>Sell Signal</strong>: RSI crosses above 70 and then crosses back below it.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"RSI Overbought/Oversold Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for RSI</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RSI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">overboughtLevel</span> = <span class="function">input.int</span>(<span class="number">70</span>, <span class="keyword">title</span>=<span class="string">"Overbought Level"</span>)
+<span class="keyword">oversoldLevel</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, length)
+
+<span class="comment">// Define conditions for entries and exits</span>
+longCondition = <span class="function">ta.crossunder</span>(rsiValue, oversoldLevel) <span class="comment">// RSI goes oversold</span>
+longExitCondition = <span class="function">ta.crossover</span>(rsiValue, oversoldLevel) <span class="comment">// RSI exits oversold (potential buy) - corrected typo 'oversledLevel' to 'oversoldLevel'</span>
+
+shortCondition = <span class="function">ta.crossover</span>(rsiValue, overboughtLevel) <span class="comment">// RSI goes overbought</span>
+shortExitCondition = <span class="function">ta.crossunder</span>(rsiValue, overboughtLevel) <span class="comment">// RSI exits overbought (potential sell)</span>
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longExitCondition) <span class="comment">// Using exit of oversold as buy signal</span>
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortExitCondition) <span class="comment">// Using exit of overbought as sell signal</span>
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Optional: Plot RSI in a separate pane for visualization</span>
+<span class="comment">// plot(rsiValue, "RSI", color.purple)</span>
+<span class="comment">// hline(overboughtLevel, "Overbought", color.red)</span>
+<span class="comment">// hline(oversoldLevel, "Oversold", color.green)</span>
+</code></pre>
+
+
+    <h3>2. RSI Centerline Crossover</h3>
+    <p>The 50-level on the RSI often acts as a centerline, indicating a shift in momentum bias. Crossing above 50 suggests bullish momentum, while crossing below suggests bearish momentum.</p>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"RSI Centerline Crossover"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for RSI</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RSI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">centerLine</span> = <span class="function">input.int</span>(<span class="number">50</span>, <span class="keyword">title</span>=<span class="string">"Centerline"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, length)
+
+<span class="comment">// Define conditions for entries and exits</span>
+longCondition = <span class="function">ta.crossover</span>(rsiValue, centerLine)
+shortCondition = <span class="function">ta.crossunder</span>(rsiValue, centerLine)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Optional: Plot RSI in a separate pane</span>
+<span class="comment">// plot(rsiValue, "RSI", color.purple)</span>
+<span class="comment">// hline(centerLine, "Centerline", color.gray)</span>
+</code></pre>
+
+
+    <h3>3. RSI Divergence Strategy</h3>
+    <p>Divergence occurs when price and RSI move in opposite directions, often signaling a potential trend reversal. It suggests that the current trend is weakening.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but RSI makes a higher low. This indicates weakening bearish momentum and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but RSI makes a lower high. This indicates weakening bullish momentum and a potential downward reversal.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"RSI Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for RSI</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RSI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">overboughtLevel</span> = <span class="function">input.int</span>(<span class="number">70</span>, <span class="keyword">title</span>=<span class="string">"Overbought Level"</span>)
+<span class="keyword">oversoldLevel</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, length)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="function">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="keyword">color</span>.<span class="function">purple</span>)
+<span class="function">hline</span>(overboughtLevel, <span class="string">"Overbought"</span>, <span class="keyword">color</span>.<span class="function">red</span>)
+<span class="function">hline</span>(oversoldLevel, <span class="string">"Oversold"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
+<span class="function">hline</span>(<span class="number">50</span>, <span class="string">"Centerline"</span>, <span class="keyword">color</span>.<span class="function">gray</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example and might need refinement for actual trading.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, RSI higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] &gt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &gt; close <span class="keyword">and</span> rsiValue[<span class="number">2</span>] &lt; rsiValue[<span class="number">1</span>] <span class="keyword">and</span> rsiValue[<span class="number">1</span>] &lt; rsiValue
+
+<span class="comment">// Bearish Divergence (Price higher high, RSI lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close <span class="keyword">and</span> rsiValue[<span class="number">2</span>] &gt; rsiValue[<span class="number">1</span>] <span class="keyword">and</span> rsiValue[<span class="number">1</span>] &gt; rsiValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish RSI Divergence"</span>, <span class="string">"Potential bullish reversal based on RSI divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish RSI Divergence"</span>, <span class="string">"Potential bearish reversal based on RSI divergence."</span>)
+</code></pre>
+
+
+    <h2>Optimizing RSI Performance</h2>
+    <p>To get the most from the Relative Strength Index in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. While 14 is standard, shorter lengths (e.g., 7 or 9) make RSI more sensitive but prone to noise, while longer lengths (e.g., 21 or 28) smooth it more but add lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Adjust Levels:</strong> In highly volatile or strongly trending markets, you might consider adjusting the overbought/oversold levels (e.g., 80/20 instead of 70/30) to filter out less significant signals.</li>
+      <li><strong>Combine with Trend Filters:</strong> RSI performs best in trending markets. In choppy or sideways markets, it can generate numerous false overbought/oversold signals. Use a trend filter (like a moving average or ADX) to confirm a clear trend before relying on RSI signals.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm RSI signals on a higher timeframe before acting on signals from a lower timeframe. For example, if the daily RSI is oversold, a 4-hour RSI oversold signal might be more reliable.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for RSI signals to be confirmed by price action, such as candlestick patterns, breaks of support/resistance, or chart patterns.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>RSI in Strong Trends:</strong> In a strong uptrend, RSI can remain overbought for extended periods, and in a strong downtrend, it can remain oversold. Do not blindly fade strong trends based solely on overbought/oversold RSI readings.
+    </div>
+
+    <h2>Common RSI Pitfalls</h2>
+    <ul>
+      <li> <b>False Overbought/Oversold Signals:</b> As mentioned, RSI can stay at extreme levels in strong trends, making simple overbought/oversold crossovers unreliable without other confirmations.</li>
+      <li> <b>Whipsaws in Ranging Markets:</b> In choppy markets, RSI can oscillate frequently between 30 and 70, leading to many false signals.</li>
+      <li> <b>Divergence Can Be Early:</b> While divergence is powerful, it can appear early and a trend might continue for some time after the divergence signal.</li>
+      <li> <b>Not a Standalone Indicator:</b> RSI should always be used as part of a broader trading system, combined with other indicators and price action analysis.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Relative Strength Index (RSI) is a fundamental and highly versatile momentum oscillator in Pine Script for TradingView. Its ability to quantify the speed and change of price movements makes it invaluable for identifying overbought and oversold conditions, assessing trend strength, and spotting potential reversals through divergence. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with other technical analysis tools, you can leverage the RSI to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

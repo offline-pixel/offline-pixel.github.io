@@ -4,224 +4,1784 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Animated Favicon -->
-<link rel="icon" href="favicon.gif" type="image/gif">
+  <meta name="description" content=" IT Professionals on Hire. MVP-ready product development using AI tooling in 4-7 weeks.">
+  <meta name="keywords" content="MVP development, AI product builder, gumroad pine script, Medium blog, npm packages, Deepak Ranolia">
+  <meta name="author" content="Deepak Ranolia">
+  <!-- <link rel="stylesheet" href="styles/styles.css"> -->
+  <!-- <link rel="stylesheet" href="styles/main.css"> -->
+  <link rel="stylesheet" href="styles/section-hero.css">
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0MM8039GLD'); 
+  </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <title>AI Product Builder - Real Humans on Hire</title>
-  <style>
-    /* General reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f3f3f3;
-      /* overflow: hidden; */
-      /* height: 100vh; */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      color: #333;
-      padding: 50px 10px 0;
-      margin-top: 40px;
-    } 
-    p {
-      margin-bottom: 0px;
-      line-height: 1.6;
-      text-align: center;
-    }
-    p.title {
-        margin-top: 20px;        
-      font-size: 24px;
-      /* font-weight: 500; */
-      color: #323232;
-    }
-    p.description {
-      font-size: 16px;
-      color: #666;
-        margin-bottom: 20px;
-
-    }
-    .cta-button {
-        margin-top: 20px;
-        display: inline-block;
-      background-color: #ff6f61;
-      text-decoration: none;
-      color: white;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: background-color 0.3s ease;
-    }
-    .cta-button:hover {
-      background-color: #e45548;
-    }
-
-    /* Floating particles animation */
-    .particle {
-      position: absolute;
-      background-color: rgba(210, 210, 210, 0.8);
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      animation: float 3s infinite;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-50px) rotate(180deg);
-      }
-      100% {
-        transform: translateY(0) rotate(360deg);
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "AI Product Builder - Real Humans on Hire",
+      "description": "IT Professionals on Hire. MVP-ready product development using AI tooling in 4-7 weeks. From vision to MVP, we provide real engineers, AI-powered engineering, and scalable architecture with transparent startup pricing.",
+      "url": "https://offline-pixel.github.io/pinescript-strategies.html",
+      "serviceType": "Software Development",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Global"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "url": "https://offline-pixel.github.io/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png",
+          "width": 100,
+          "height": 100
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "minPrice": 200,
+          "priceType": "hourly",
+          "unitText": "6 hours"
+        },
+        "description": "MVP development and IT professional hiring services for startups, priced transparently.",
+        "areaServed": {
+          "@type": "Place",
+          "name": "Global"
+        }
+      },
+      "keywords": "MVP development, AI product builder, IT professionals on hire, AI engineering, ML Ops, full-stack development, startup pricing, custom software development, offshore talent, Deepak Ranolia",
+      "hasServiceChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform",
+        "serviceType": "web"
       }
     }
-
-    /* USP Section */
-    .usp {
-      text-align: center;
-      /* background-color: #282c34; */
-      color: #333;
-      padding: 20px 20px;
-      /* margin-top: 40px; */
-    } 
-
-    /* Client Reviews Section */
-    .reviews {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    .review-slider {
-      display: flex;
-      overflow: hidden;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .review {
-      display: none;
-      font-size: 14px;
-      color: #777;
-      margin: 0 15px;
-      max-width: 400px;
-      line-height: 1.6;
-    }
-
-    .review.active {
-      display: block;
-    }
-
-    /* Footer */
-    footer {
-        position: fixed; 
-        bottom: 0;  
-        left: 0; 
-        right: 0;
-        background: white;  
-        padding: 10px;
-        text-align: center;
-        color: #777;
-        z-index: 100;  
-    }
-
-    footer p {
-        font-size: 11px;
-        margin: 0;
-    }
-  </style>
+    </script>
 </head>
 <body>
+  <!-- <div class="desktop">We are coming soon on mobile...Please check desktop version</div> -->
+  <div>
+    <section class="section">
+      <style>
 
-  <!-- Main Content Section -->
-  <div class="content">
-     <p class="title">Real Humans on Hire</p>
-    <p class="description">ShipNode: Automate MVP Development in 4-7 Weeks<br>  
-       Hire elite developers using smart AI tooling & a decade of experience.<br>  
-       <strong>$200 / 6hrs • MVP-ready in 4-7 weeks • Team setup</strong>
-    </p>
-  </div>
-  <!-- <img src="me.png?s" /> -->
+      .something-slider {
+        display: flex;
+        text-align: left;
+        max-width: 100%;
+        margin-top: 80px;
+        margin-bottom: 80px;
+        width: 100%;
+            justify-content: center;
+            position: relative;
+            z-index: 0;
+      } 
+        .left-panel {
+            width: 40%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            background-color: #fff;
+            justify-content: center;
+            z-index: 1;
+        }
 
-  <!-- USP Section -->
-  <div class="usp">
-    <p class="title">Tech Stack:</p>
-    <p class="description"> HTML, SCSS, Angular, React, Next.js,<br />Ruby on Rails, Node.js,<br />Python, C++, Hybrid Apps (Ionic, SwiftUI), Automation.., etc.</p>
-    <!-- <button class="cta-button">Get in Touch →</button> -->
-    <a href="mailto:d.ranolia92@gmail.com?subject=Inquiry%20About%20MVP%20Development" class="cta-button">Get in Touch →</a>
-  </div>
+        .tab {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            /* border-radius: 0.5rem; */
+            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .tab:first-child {
+          border-top:none;
+        }
+        .tab:last-child {
+          border-bottom:none;
+        }
+        .tab.active {
+            background-color: #fafafa;
+        }
 
-  <!-- Floating Particle Animation -->
-  <div id="particles"></div>
+        .tab-number {
+            transition: all 150ms ease-in-out;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            position: relative;
+            background-color: #e2e8f0;
+            color: #64748b;
+        }
 
-  <!-- Client Reviews Section -->
-  <div class="reviews">
-    <p class="title">Client Reviews</p>
-    <div class="review-slider">
-      <div class="review active">
-        "Working with this team has been a game-changer for us. Their speed and quality are unmatched. MVP delivered in just 4 weeks!"
-        <br>- Startup Founder
-      </div>
-      <div class="review">
-        "I was able to save on costs while still getting high-quality results. Highly recommend them for rapid MVP development."
-        <br>- Tech Entrepreneur
-      </div>
-      <div class="review">
-        "The team was responsive, professional, and incredibly skilled. They truly brought our vision to life in record time."
-        <br>- Product Manager
-      </div>
+        .tab.active .tab-number {
+            transition: all 150ms ease-in-out;
+            /* background-color: #3b82f6; */
+            /* color: white; */
+        }
+
+        .loader {
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 3px solid transparent;
+            border-top-color: #d2d8e0;
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+        }
+
+        .tab-content {
+            width: 75%;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .payment-term {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .tooltip {
+            position: relative;
+            border-bottom: 1px dashed #64748b;
+            cursor: help;
+        }
+        .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #1e293b;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tab-title {
+            transition: all 150ms ease-in-out;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .tab.active .tab-title {
+            transition: all 150ms ease-in-out;
+            color: #1e40af;
+        }
+
+        .pointers {
+            transition: all 150ms ease-in-out;
+            display: none;
+            margin-top: 0.5rem;
+            /* padding-left: 1.5rem; */
+        }
+
+        .tab.active .pointers {
+            transition: all 150ms ease-in-out;
+            display: block;
+        }
+
+        .pointer {
+            margin-bottom: 0.25rem;
+            color: #475569;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .pointer:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .right-panel {
+            /* display: none !important; */
+            width: 60%;
+            z-index: 0;
+            /* background-color: #ffffff; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .svg-container {
+            transition: all 150ms ease-in-out;
+            width: 80%;
+            height: 80%;
+            display: none;
+        }
+
+        .svg-container.active {
+            transition: all 150ms ease-in-out;
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        @media (max-width: 768px) {
+          .left-panel {
+            width: 90%;
+            margin: auto;
+          }
+}
+    </style>
+<!-- </head>
+<body> -->
+    <div class="something-slider">
+    <div class="left-panel">
+        <div class="tab active" data-tab="1">
+            <div class="tab-number">
+                1
+                <div class="loader"></div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-title">Client Engagement</div>
+                <div class="pointers">
+                    <div class="pointer">Client initiates request at offline-pixel</div>
+                    <div class="pointer"><strong class="payment-term">Payment terms set:</strong> 
+                        <span class="tooltip">Under $500: Direct payment
+                            <span class="tooltiptext">1-week max, 1-2 free buffer days</span>
+                        </span> | 
+                        <span class="tooltip">$500-$2200: Escrow
+                            <span class="tooltiptext">2-3 weeks, 2-5 buffer days</span>
+                        </span> | 
+                        <span class="tooltip">$2000+: 3-phase
+                            <span class="tooltiptext">3-4 weeks, 5-12 buffer days</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab" data-tab="2">
+            <div class="tab-number">2</div>
+            <div class="tab-content">
+                <div class="tab-title">Project Analysis</div>
+                <div class="pointers">
+                    <div class="pointer">Technical & cost assessment</div>
+                    <div class="pointer"><strong class="payment-term">Non-refundable hours</strong> policy confirmed</div>
+                    <div class="pointer">Buffer time allocated (see phase 1 terms)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab" data-tab="3">
+            <div class="tab-number">3</div>
+            <div class="tab-content">
+                <div class="tab-title">Financial Setup</div>
+                <div class="pointers">
+                    <div class="pointer"><strong class="payment-term">Escrow created</strong> for projects</div>
+                    <div class="pointer">First payment processed (handshake agreement)</div>
+                    <div class="pointer">Compliance docs signed</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab" data-tab="4">
+            <div class="tab-number">4</div>
+            <div class="tab-content">
+                <div class="tab-title">Development Phase</div>
+                <div class="pointers">
+                    <div class="pointer">Code development begins post-payment</div>
+                    <div class="pointer">Included buffer period utilization</div>
+                    <div class="pointer">Milestone reviews with client</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab" data-tab="5">
+            <div class="tab-number">5</div>
+            <div class="tab-content">
+                  <div class="tab-title">Delivery & Closure</div>
+                <div class="pointers">
+                  <div class="pointer">Final payment release and code handover</div>
+                  <div class="pointer">Post-delivery support initiation</div>
+                  <div class="pointer">Data purging per retention policies</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="right-panel" style="padding: 0;position: absolute;opacity: 0.7;width: 100%;top: -75px;height: 100vh;"> 
+      <!-- <div class="svg-container" data-tab=""></div> -->
+
+        <div class="svg-container" style="display: block;width: 100%;height: 100%;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 819" preserveAspectRatio="xMidYMid" width="1440" height="819" style="shape-rendering: auto; display: block; background: rgb(210, 211, 212);">
+
+<animate id="masterLoop" attributeName="visibility" from="visible" to="visible" dur="5s" repeatCount="indefinite" />
+
+    <!-- Define a filter for the dynamic drop shadow -->
+    <defs>
+        <filter id="dynamicShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="3" dy="3" stdDeviation="2" flood-color="#333" flood-opacity="0.8">
+                <animate attributeName="stdDeviation" values="2;4;2" dur="4s" 
+                         begin="masterLoop.begin" repeatCount="indefinite"
+                         keyTimes="0;0.5;1" calcMode="spline" 
+                         keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"/>
+                <animate attributeName="flood-opacity" values="0.6;0.8;0.6" dur="4s" 
+                         begin="masterLoop.begin + 0.5s" repeatCount="indefinite"
+                         keyTimes="0;0.5;1" calcMode="spline"
+                         keySplines="0.42 0 0.58 1; 0.42 0 0.58 1"/>
+            </feDropShadow>
+        </filter>
+    </defs>
+
+               <g data-idx="1">
+              <g data-idx="2" transform="matrix(1,0,0,1,-10.17326545715332,0)">
+                <!-- <animateTransform attributeName="transform" type="translate" additive="sum"
+                              values="0 0; 50 0; 0 0; -50 0; 0 0"
+                              keyTimes="0;0.25;0.5;0.75;1" dur="4s" begin="masterLoop.begin" repeatCount="indefinite" /> -->
+                              <rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="800" x="-100" data-idx="4"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="600" x="-100" data-idx="5"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="650" x="-50" data-idx="6"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="700" x="-50" data-idx="7"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="700" x="0" data-idx="8"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="750" x="0" data-idx="9"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="750" x="50" data-idx="10"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="800" x="50" data-idx="11"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="800" x="100" data-idx="12"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="400" x="-100" data-idx="13"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="450" x="-50" data-idx="14"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="500" x="-50" data-idx="15"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="500" x="0" data-idx="16"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="550" x="0" data-idx="17"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="550" x="50" data-idx="18"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="600" x="50" data-idx="19"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="600" x="100" data-idx="20"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="650" x="100" data-idx="21"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="650" x="150" data-idx="22"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="700" x="150" data-idx="23"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="700" x="200" data-idx="24"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="750" x="200" data-idx="25"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="750" x="250" data-idx="26"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="800" x="250" data-idx="27"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="800" x="300" data-idx="28"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="200" x="-100" data-idx="29"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="250" x="-50" data-idx="30"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="300" x="-50" data-idx="31"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="300" x="0" data-idx="32"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="350" x="0" data-idx="33"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="350" x="50" data-idx="34"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="400" x="50" data-idx="35"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="400" x="100" data-idx="36"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="450" x="100" data-idx="37"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="450" x="150" data-idx="38"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="500" x="150" data-idx="39"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="500" x="200" data-idx="40"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="550" x="200" data-idx="41"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="550" x="250" data-idx="42"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="600" x="250" data-idx="43"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="600" x="300" data-idx="44"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="650" x="300" data-idx="45"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="650" x="350" data-idx="46"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="700" x="350" data-idx="47"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="700" x="400" data-idx="48"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="750" x="400" data-idx="49"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="750" x="450" data-idx="50"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="800" x="450" data-idx="51"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="800" x="500" data-idx="52"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="0" x="-100" data-idx="53"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="50" x="-50" data-idx="54"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="100" x="-50" data-idx="55"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="100" x="0" data-idx="56"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="150" x="0" data-idx="57"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="150" x="50" data-idx="58"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="200" x="50" data-idx="59"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="200" x="100" data-idx="60"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="250" x="100" data-idx="61"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="250" x="150" data-idx="62"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="300" x="150" data-idx="63"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="300" x="200" data-idx="64"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="350" x="200" data-idx="65"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="350" x="250" data-idx="66"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="400" x="250" data-idx="67"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="400" x="300" data-idx="68"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="450" x="300" data-idx="69"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="450" x="350" data-idx="70"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="500" x="350" data-idx="71"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="500" x="400" data-idx="72"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="550" x="400" data-idx="73"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="550" x="450" data-idx="74"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="600" x="450" data-idx="75"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="600" x="500" data-idx="76"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="650" x="500" data-idx="77"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="650" x="550" data-idx="78"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="700" x="550" data-idx="79"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="700" x="600" data-idx="80"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="750" x="600" data-idx="81"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="750" x="650" data-idx="82"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="800" x="650" data-idx="83"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="800" x="700" data-idx="84"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="-50" x="0" data-idx="85"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="0" x="50" data-idx="86"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="0" x="100" data-idx="87"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="50" x="100" data-idx="88"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="50" x="150" data-idx="89"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="100" x="150" data-idx="90"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="100" x="200" data-idx="91"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="150" x="200" data-idx="92"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="150" x="250" data-idx="93"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="200" x="250" data-idx="94"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="200" x="300" data-idx="95"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="250" x="300" data-idx="96"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="250" x="350" data-idx="97"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="300" x="350" data-idx="98"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="300" x="400" data-idx="99"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="350" x="400" data-idx="100"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="350" x="450" data-idx="101"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="400" x="450" data-idx="102"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="400" x="500" data-idx="103"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="450" x="500" data-idx="104"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="450" x="550" data-idx="105"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="500" x="550" data-idx="106"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="500" x="600" data-idx="107"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="550" x="600" data-idx="108"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="550" x="650" data-idx="109"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="600" x="650" data-idx="110"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="600" x="700" data-idx="111"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="650" x="700" data-idx="112"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="650" x="750" data-idx="113"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="700" x="750" data-idx="114"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="700" x="800" data-idx="115"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="750" x="800" data-idx="116"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="750" x="850" data-idx="117"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="800" x="850" data-idx="118"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="800" x="900" data-idx="119"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="-50" x="200" data-idx="120"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="0" x="250" data-idx="121"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="0" x="300" data-idx="122"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="50" x="300" data-idx="123"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="50" x="350" data-idx="124"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="100" x="350" data-idx="125"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="100" x="400" data-idx="126"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="150" x="400" data-idx="127"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="150" x="450" data-idx="128"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="200" x="450" data-idx="129"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="200" x="500" data-idx="130"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="250" x="500" data-idx="131"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="250" x="550" data-idx="132"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="300" x="550" data-idx="133"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="300" x="600" data-idx="134"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="350" x="600" data-idx="135"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="350" x="650" data-idx="136"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="400" x="650" data-idx="137"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="400" x="700" data-idx="138"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="450" x="700" data-idx="139"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="450" x="750" data-idx="140"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="500" x="750" data-idx="141"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="500" x="800" data-idx="142"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="550" x="800" data-idx="143"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="550" x="850" data-idx="144"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="600" x="850" data-idx="145"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="600" x="900" data-idx="146"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="650" x="900" data-idx="147"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="650" x="950" data-idx="148"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="700" x="950" data-idx="149"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="700" x="1000" data-idx="150"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="750" x="1000" data-idx="151"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="750" x="1050" data-idx="152"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="800" x="1050" data-idx="153"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="800" x="1100" data-idx="154"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="-50" x="400" data-idx="155"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="0" x="450" data-idx="156"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="0" x="500" data-idx="157"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="50" x="500" data-idx="158"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="50" x="550" data-idx="159"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="100" x="550" data-idx="160"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="100" x="600" data-idx="161"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="150" x="600" data-idx="162"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="150" x="650" data-idx="163"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="200" x="650" data-idx="164"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="200" x="700" data-idx="165"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="250" x="700" data-idx="166"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="250" x="750" data-idx="167"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="300" x="750" data-idx="168"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="300" x="800" data-idx="169"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="350" x="800" data-idx="170"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="350" x="850" data-idx="171"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="400" x="850" data-idx="172"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="400" x="900" data-idx="173"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="450" x="900" data-idx="174"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="450" x="950" data-idx="175"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="500" x="950" data-idx="176"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="500" x="1000" data-idx="177"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="550" x="1000" data-idx="178"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="550" x="1050" data-idx="179"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="600" x="1050" data-idx="180"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="600" x="1100" data-idx="181"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="650" x="1100" data-idx="182"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="650" x="1150" data-idx="183"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="700" x="1150" data-idx="184"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="700" x="1200" data-idx="185"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="750" x="1200" data-idx="186"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="750" x="1250" data-idx="187"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="800" x="1250" data-idx="188"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="800" x="1300" data-idx="189"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="-50" x="600" data-idx="190"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="0" x="650" data-idx="191"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="0" x="700" data-idx="192"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="50" x="700" data-idx="193"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="50" x="750" data-idx="194"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="100" x="750" data-idx="195"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="100" x="800" data-idx="196"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="150" x="800" data-idx="197"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="150" x="850" data-idx="198"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="200" x="850" data-idx="199"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="200" x="900" data-idx="200"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="250" x="900" data-idx="201"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="250" x="950" data-idx="202"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="300" x="950" data-idx="203"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="300" x="1000" data-idx="204"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="350" x="1000" data-idx="205"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="350" x="1050" data-idx="206"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="400" x="1050" data-idx="207"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="400" x="1100" data-idx="208"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="450" x="1100" data-idx="209"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="450" x="1150" data-idx="210"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="500" x="1150" data-idx="211"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="500" x="1200" data-idx="212"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="550" x="1200" data-idx="213"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="550" x="1250" data-idx="214"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="600" x="1250" data-idx="215"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="600" x="1300" data-idx="216"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="650" x="1300" data-idx="217"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="650" x="1350" data-idx="218"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="700" x="1350" data-idx="219"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="700" x="1400" data-idx="220"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="750" x="1400" data-idx="221"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="750" x="1450" data-idx="222"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="800" x="1450" data-idx="223"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="-50" x="800" data-idx="224"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="0" x="850" data-idx="225"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="0" x="900" data-idx="226"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="50" x="900" data-idx="227"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="50" x="950" data-idx="228"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="100" x="950" data-idx="229"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="100" x="1000" data-idx="230"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="150" x="1000" data-idx="231"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="150" x="1050" data-idx="232"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="200" x="1050" data-idx="233"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="200" x="1100" data-idx="234"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="250" x="1100" data-idx="235"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="250" x="1150" data-idx="236"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="300" x="1150" data-idx="237"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="300" x="1200" data-idx="238"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="350" x="1200" data-idx="239"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="350" x="1250" data-idx="240"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="400" x="1250" data-idx="241"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="400" x="1300" data-idx="242"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="450" x="1300" data-idx="243"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="450" x="1350" data-idx="244"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="500" x="1350" data-idx="245"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="500" x="1400" data-idx="246"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="550" x="1400" data-idx="247"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="550" x="1450" data-idx="248"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="600" x="1450" data-idx="249"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="-50" x="1000" data-idx="250"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="0" x="1050" data-idx="251"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="0" x="1100" data-idx="252"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="50" x="1100" data-idx="253"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="50" x="1150" data-idx="254"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="100" x="1150" data-idx="255"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="100" x="1200" data-idx="256"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="150" x="1200" data-idx="257"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="150" x="1250" data-idx="258"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="200" x="1250" data-idx="259"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="200" x="1300" data-idx="260"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="250" x="1300" data-idx="261"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="250" x="1350" data-idx="262"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="300" x="1350" data-idx="263"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="300" x="1400" data-idx="264"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="350" x="1400" data-idx="265"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="350" x="1450" data-idx="266"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="400" x="1450" data-idx="267"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="-50" x="1200" data-idx="268"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="0" x="1250" data-idx="269"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="0" x="1300" data-idx="270"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="50" x="1300" data-idx="271"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="50" width="100" y="50" x="1350" data-idx="272"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="100" width="50" y="100" x="1350" data-idx="273"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="50" width="100" y="100" x="1400" data-idx="274"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="150" x="1400" data-idx="275"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f0f3f8" height="50" width="100" y="150" x="1450" data-idx="276"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="200" x="1450" data-idx="277"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f6f6" height="100" width="50" y="-50" x="1400" data-idx="278"></rect>
+<rect stroke-width="0.5" stroke="#d2d3d4" fill="#f6f9fc" height="100" width="50" y="0" x="1450" data-idx="279"></rect></g>
+<g data-idx="280"></g></g>
+<script>
+// Optimized shadow application
+const svg = document.querySelector('svg');
+const rectsGroup = svg.querySelector('g[data-idx="2"]');
+const allRects = Array.from(rectsGroup.querySelectorAll('rect'));
+
+// Cache shadow URL
+const shadowURL = 'url(#dynamicShadow)';
+
+// Improved random selection (performance optimized)
+function applyRandomShadows() {
+    // 1. Clear all filters first (fastest method)
+    allRects.forEach(rect => rect.style.filter = '');
+    
+    // 2. Select ~5% of rectangles randomly
+    const sampleSize = Math.max(100, Math.floor(allRects.length * 0.05));
+    const shuffled = [...allRects].sort(() => 0.5 - Math.random());
+    
+    // 3. Apply to selection
+    for(let i = 0; i < sampleSize; i++) {
+        shuffled[i].style.filter = shadowURL;
+    }
+}
+
+// Sync with animation loop
+document.getElementById('masterLoop').addEventListener('beginEvent', applyRandomShadows);
+applyRandomShadows(); // Initial call
+
+// Fallback for older browsers
+setInterval(applyRandomShadows, 1000);
+</script>
+</svg>
+
+        </div>
+ 
+</div>
+
+
+        <!-- <style>
+            .svg-container {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            #handover:hover, #support:hover, #data-purging:hover {
+                filter: brightness(1.05);
+                cursor: pointer;
+            }
+            
+            .pointer {
+                margin: 8px 0;
+            }
+        </style>
+    </div> -->
+
+    <script>
+        let currentTab = 1;
+        const totalTabs = 5;
+        let intervalId;
+
+        function activateTab(tabNumber) {
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+                const number = tab.querySelector('.tab-number');
+                const loader = number.querySelector('.loader');
+                if (loader) loader.remove();
+            });
+            
+            document.querySelectorAll('.svg-container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Activate selected tab
+            const activeTab = document.querySelector(`.tab[data-tab="${tabNumber}"]`);
+            const activeSvg = document.querySelector(`.svg-container[data-tab="${tabNumber}"]`);
+            
+            if (activeTab) {
+                activeTab.classList.add('active');
+                const number = activeTab.querySelector('.tab-number');
+                const loader = document.createElement('div');
+                loader.className = 'loader';
+                number.appendChild(loader);
+            }
+            
+            if (activeSvg) {
+                activeSvg.classList.add('active');
+            }
+        }
+
+        function startRotation() {
+            intervalId = setInterval(() => {
+                currentTab = currentTab % totalTabs + 1;
+                activateTab(currentTab);
+            }, 5000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            activateTab(1);
+            startRotation();
+
+            // Add click handlers for manual tab selection
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    clearInterval(intervalId);
+                    currentTab = parseInt(tab.getAttribute('data-tab'));
+                    activateTab(currentTab);
+                    startRotation();
+                });
+            });
+        });
+    </script>
+    </div>
+<!-- </body>
+</html> -->
+    </section>
+
+<!-- Enhanced Tech Stack Section with AI/ML Focus -->
+<section class="section section-tech" style="--bg-color: #3949AB;">
+  <div class="tech-slide active">
+    <div class="left">
+      <h1 class="hero-title">AI-Augmented Development</h1>
+      <p class="hero-subtitle">Where Engineering Meets Machine Intelligence</p>
+    </div>
+    <div class="right">
+      <p class="hero-description">We integrate cutting-edge AI/ML into every layer of development - from code generation to predictive analytics, 
+        giving your product a competitive edge.
+      </p>
+      <ul class="hero-benefitss">
+        <li>✔️ <a class="default" href="https://offline-pixel.github.io/aiml/ai-engineering.html"><strong>AI Engineering</strong>: RAG architectures, LLM fine-tuning (GPT-4, Claude, Mistral)</a></li>
+        <li>✔️ <a class="default" href="https://offline-pixel.github.io/aiml/mlops.html"><strong>ML Ops</strong>: PyTorch, TensorFlow, HuggingFace pipelines</a></li>
+        <li>✔️ <a class="default" href="https://offline-pixel.github.io/aiml/data-intelligence.html"><strong>Data Intelligence</strong>: Time-series forecasting (Prophet, ARIMA), NLP (spaCy, NLTK)</a></li>
+        <li>✔️ <a class="default" href="https://offline-pixel.github.io/aiml/ai-automation.html"><strong>AI Automation</strong>: Playwright + ML testing, CI/CD with AI quality gates</a></li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform?usp=header" class="cta-button">Get in Touch →</a>
     </div>
   </div>
+</section>
 
-  <!-- Footer with copyright -->
-  <footer>
-    <p>&copy; 2025 Offline-Pixel</p>
-  </footer>
-
-  <script>
-    // Particle animation for background
-    function createParticles() {
-      const particleCount = 50; // Number of particles to generate
-      const particlesContainer = document.getElementById('particles');
-
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-
-        // Randomize initial positions and animation durations
-        const size = Math.random() * 5 + 5; // Random size between 5px and 10px
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-        particle.style.top = `${Math.random() * 100}vh`; // Random vertical position
-        particle.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration
-
-        particlesContainer.appendChild(particle);
+    <section class="section"  style="
+    position: relative;
+    height: 100vh;
+">
+      <div class="section-hero">
+    <div class="hero-slider" >
+      <div class="hero-slide active slide1">
+        <div class="left">
+          <h1 class="hero-title">From Vision to MVP in Weeks</h1>
+          <p class="hero-subtitle">You have an idea. We help you ship it.</p>
+        </div>
+        <div class="right">
+          <p class="hero-description">
+            Every startup dies in the gap between idea and execution. Our team bridges that gap with AI, automation, and industry-tested processes—fast.
+          </p>
+          <ul class="hero-benefits">
+            <li>✔️ MVP in 4–6 Weeks</li>
+            <li>✔️ Startup-Aligned Dev Stack</li>
+            <li>✔️ Scalable Architecture</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="hero-slide slide2">
+        <div class="left">
+          <h1 class="hero-title">Real Engineers. Not Just Coders.</h1>
+          <p class="hero-subtitle">No fluff. Only senior devs, no juniors.</p>
+        </div>
+        <div class="right">
+          <p class="hero-description">
+            We don’t just deliver code—we help you build sustainable tech foundations. Vetted by experience, aligned with your startup goals.
+          </p>
+          <ul class="hero-benefits">
+            <li>✔️ Top 1% Engineers</li>
+            <li>✔️ Full-Stack Specialization</li>
+            <li>✔️ Design Thinking Built-In</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="hero-slide slide3">
+        <div class="left">
+          <h1 class="hero-title">AI-Powered Engineering</h1>
+          <p class="hero-subtitle">Build smarter. Ship faster.</p>
+        </div>
+        <div class="right">
+          <p class="hero-description">
+            We infuse AI across the development cycle—automating grunt work so your budget stretches further and you launch sooner.
+          </p>
+          <ul class="hero-benefits">
+            <li>✔️ AI Tooling & Testing</li>
+            <li>✔️ ML-Driven Optimization</li>
+            <li>✔️ DevOps as Standard</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="hero-slide slide4">
+        <div class="left">
+          <h1 class="hero-title">We Write Code That Endures</h1>
+          <p class="hero-subtitle">Clean, modular, battle-tested systems.</p>
+        </div>
+        <div class="right">
+          <p class="hero-description">
+            You deserve codebases you can build on for years. We follow the best practices and patterns to ensure long-term maintainability.
+          </p>
+          <ul class="hero-benefits">
+            <li>✔️ Reusable Modules</li>
+            <li>✔️ Test-Driven Development</li>
+            <li>✔️ Enterprise-Grade Patterns</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="hero-slide slide5">
+        <div class="left">
+          <h1 class="hero-title">Startup Pricing. No Catch.</h1>
+          <p class="hero-subtitle">Built for founders who bootstrap.</p>
+        </div>
+        <div class="right">
+          <p class="hero-description">
+            Our pricing is honest, transparent, and built around your growth—not investor fantasies. Let’s grow lean and fast.
+          </p>
+          <ul class="hero-benefits">
+            <li>✔️ $200 / 6 Hours</li>
+            <li>✔️ No Lock-Ins</li>
+            <li>✔️ Weekly Progress Demos</li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="hero-nav">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+        <span class="dot" data-index="3"></span>
+        <span class="dot" data-index="4"></span>
+      </div>
+    </div>
+    </div>
+  </section>
+  <style>
+    /* styles/featured-blogs.css or integrate into your main.css */
+    .section-featured-blogs {
+      padding: 60px 0;
+      background-color: #f0f2f5;
+      margin: auto;
+      /* max-width: 1200px; */
+      box-sizing: border-box;
+    }
+    
+    .featured-blogs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+    
+    .featured-blogs-header h2 {
+      font-size: 2.2rem;
+      color: #1a1a1a;
+      margin: 0;
+    }
+    
+    .view-all-link {
+      font-size: 1.1rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    
+    .view-all-link:hover {
+      color: #155bb5;
+    }
+    
+    /* Main container for the scrollable cards */
+    .blog-carousel-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding-bottom: 20px;
+    }
+    
+    /* Hide scrollbar */
+    .blog-carousel-container::-webkit-scrollbar {
+      display: none;
+    }
+    .blog-carousel-container {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    /* Cards container */
+    .blog-carousel {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 25px;
+      padding: 0 20px;
+      width: max-content; /* Allow container to expand with content */
+    }
+    
+    /* Individual card styles */
+    .blog-card {
+      flex: 0 0 auto;
+      width: 320px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+    }
+    
+    .blog-card-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .blog-card-content {
+      padding: 18px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .blog-card-title {
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .blog-card-description {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+      flex-grow: 1;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+    }
+    
+    .blog-card-author {
+      font-size: 0.85rem;
+      color: #333;
+      font-weight: 600;
+      margin-top: auto;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .blog-carousel {
+        padding: 0 15px;
+      }
+      
+      .blog-card {
+        width: 280px;
+      }
+      
+      .section-featured-blogs {
+        padding: 40px 0;
+      }
+      
+      .featured-blogs-header {
+        padding: 0 15px;
       }
     }
-
-    createParticles();
-
-    // Review Slider functionality
-    let currentReviewIndex = 0;
-    const reviews = document.querySelectorAll('.review');
-    const totalReviews = reviews.length;
-
-    function showNextReview() {
-      reviews[currentReviewIndex].classList.remove('active');
-      currentReviewIndex = (currentReviewIndex + 1) % totalReviews;
-      reviews[currentReviewIndex].classList.add('active');
+    
+    @media (max-width: 480px) {
+      .featured-blogs-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .view-all-link {
+        font-size: 1rem;
+      }
+      
+      .blog-card-title {
+        font-size: 1.1rem;
+      }
+      
+      .blog-card-description {
+        font-size: 0.9rem;
+      }
+      
+      .blog-card {
+        width: 260px;
+      }
     }
+    </style>
+    
+    <section class="section section-featured-blogs">
+      <div class="featured-blogs-header">
+        <h2>Latest Insights</h2>
+        <!-- <a href="tech-blogs.html" class="view-all-link">View All Posts &rarr;</a> -->
+      </div>
+    
+      <div class="blog-carousel-container">
+        <div class="blog-carousel">
+          
+          <a href="whats-your-ceiling.html" class="blog-card">
+            <img src="assets/03.gif" alt="Earning Ceiling" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">$30K vs $5K: Breaking Your Earnings Ceiling as a Developer</h3>
+              <p class="blog-card-description">Discover the strategies to transition from $5K/month to $30K+ projects by targeting high-value global clients...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="5000dollar-as-a-freelancer.html" class="blog-card">
+            <img src="assets/05.webp" alt="Freelancing Income" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">$5000 paycheck a month in Freelancing</h3>
+              <p class="blog-card-description">Unlock the secrets to consistently earning a $5000 monthly paycheck in freelancing...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="why-working-yourself-is-not-good-idea.html" class="blog-card">
+            <img src="assets/04.webp" alt="Outsourcing Cost Savings" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">Doing Everything Yourself Costs $20,000 More: How I Learned to Work Less, Earn More...</h3>
+              <p class="blog-card-description">Learn the surprising financial truth about solo freelancing and how strategic outsourcing can save you thousands...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+          <a href="10000dollar-Application-Can-5X-10X-Your-Income.html" class="blog-card">
+            <img src="assets/10000.gif" alt="Freelancing Income" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">$10,000 Application Can 5X-10X Your Income</h3>
+              <p class="blog-card-description">Why Build a $10K Forecasting App With Offshore Talent (Instead of Hiring Silicon Valley Devs)...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+    
+          <a href="work-smart-from-anywhere.html" class="blog-card">
+            <img src="assets/01.webp" alt="AI Agent Revolution" class="blog-card-image">
+            <div class="blog-card-content">
+              <h3 class="blog-card-title">The $15,000 Global AI Agent Revolution: How Offshore Talent & FastAPI Let You Work Smart From Anywhere</h3>
+              <p class="blog-card-description">Discover how offshore talent and FastAPI can power AI agents for passive income and geographic freedom...</p>
+              <span class="blog-card-author">By offline-pixel</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    setInterval(showNextReview, 4000); // Change review every 4 seconds
-  </script>
+<style>
+  /* ===== SKILLS SECTION ===== */
+  .section-skills {
+    padding: 80px 5%;
+    background: #f8faff;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-skills::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #3949AB, #00ACC1);
+  }
+  
+  .section-skills h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    color: #2c3e50;
+    position: relative;
+  }
+  
+  .section-skills h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #3949AB;
+    margin: 15px auto 0;
+    border-radius: 2px;
+  }
+  
+  /* Skills Matrix Grid */
+  .skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .skill-category {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(57, 73, 171, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 4px solid #3949AB;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(57, 73, 171, 0.15);
+  }
+  
+  .skill-category:nth-child(2) {
+    border-top-color: #00ACC1;
+  }
+  
+  .skill-category:nth-child(3) {
+    border-top-color: #5C6BC0;
+  }
+  
+  .skill-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .skill-category h3::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: currentColor;
+  }
+  
+  .skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .skill-category li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 25px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  
+  .skill-category li:last-child {
+    border-bottom: none;
+  }
+  
+  .skill-category li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: #3949AB;
+    font-size: 1.2rem;
+  }
+  
+  .skill-category:nth-child(2) li::before {
+    color: #00ACC1;
+  }
+  
+  /* Decorative Elements */
+  .skill-category::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: rgba(57, 73, 171, 0.05);
+    border-radius: 50%;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .skills-matrix {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-skills h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .skill-category {
+      padding: 20px;
+    }
+  }
+</style>
+<!-- Technical Skills Matrix -->
+<section class="section section-skills">
+  <h2>Technical Mastery</h2>
+  <div class="skills-matrix">
+    <div class="skill-category">
+      <h3>Core Engineering</h3>
+      <ul>
+        <li><a class="default" href="https://offline-pixel.github.io/tech/javascript-typescript.html" >JavaScript/TypeScript (ES5-ES13)</a></li>
+        <li><a class="default" href="https://offline-pixel.github.io/tech/angular-blogs.html" >Angular</a> /
+          <a class="default" href="https://offline-pixel.github.io/tech/reactjs-blogs.html" >React</a> /
+          <a class="default" href="https://offline-pixel.github.io/tech/vuejs-blogs.html" >Vue</a>
+        </li>
+        <li><a class="default" href="https://offline-pixel.github.io/tech/nodejs-blogs.html" >Node.js</a>,
+          <a class="default" href="https://offline-pixel.github.io/tech/python-fastapi-aiml.html">Python</a>,
+          <a class="default" href="https://offline-pixel.github.io/tech/cpp-blogs.html">C++</a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="skill-category">
+      <h3>AI/ML Specialization</h3>
+      <ul>
+        <li><a class="default" href="https://offline-pixel.github.io/aiml.html" >LLM Integration (RAG, Fine-tuning)</a></li>
+        <li><a class="default" href="https://offline-pixel.github.io/aiml/nlp-sentiment-ner.html" >NLP (Sentiment Analysis, NER)</a></li>
+        <li><a class="default" href="https://offline-pixel.github.io/aiml/time-series-forecasting.html" >Time-series Forecasting</a></li>
+      </ul>
+    </div>
+    
+    <div class="skill-category">
+      <h3>DevOps & Data</h3>
+      <ul>
+        <li><a class="default" href="https://offline-pixel.github.io/tech/docker-kubernetes-blogs.html" >Docker/Kubernetes</a></li>
+        <li>
+          <a class="default" href="https://offline-pixel.github.io/tech/mongodb-blogs.html" >MongoDB</a>
+          /
+          <a class="default" href="https://offline-pixel.github.io/tech/redis-blogs.html" >Redis</a>
+        </li>
+        <li>
+          <a class="default" href="https://offline-pixel.github.io/tech/ci-cd-pipelines-blogs.html" >CI/CD Pipelines</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</section>
+    <style>
+      .tech-slide {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+  background: linear-gradient(to right, var(--bg-color) 0%, #ffffff 35%);
+  color: var(--color-light);
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.hero-benefitss {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 40px 20px; /* Adjust row and column spacing */
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+}
+@media (max-width: 600px) {
+  .hero-benefitss {
+    grid-template-columns: 1fr;
+  }
+}
 
+.tech-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-slide .left, .tech-slide .right {
+  flex: 0.5;
+  padding: 40px;
+}
+
+.tech-slide .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #3b3b3b;
+}
+
+.tech-slide .right {
+  background-color: #fff;
+  color: #333;
+}
+
+.cta-button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #f8f8f8;
+  color: #303F9F;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e3e3e3;
+}
+
+    </style>
+  <!-- <section class="section section-tech" style="--bg-color: #3949AB;">
+    <div class="tech-slide active">
+      <div class="left">
+        <h1 class="hero-title">Our Tech Arsenal</h1>
+        <p class="hero-subtitle">Battle-tested stack. Designed to scale.</p>
+      </div>
+      <div class="right">
+        <p class="hero-description">
+          We handpick every tool we use—based on performance, scalability, and ecosystem maturity. No fads, just serious technology.
+        </p>
+        <ul class="hero-benefitss">
+          <li>✔️ Frontend: Angular, React, Next.js, vanilla, HTML5, SCSS</li>
+          <li>✔️ Backend: Node.js, NestJS, Ruby on Rails, Python, C++</li>
+          <li>✔️ Databases & more: MongoDB, Redis, Ios Plugins, Automation: Playwright, Selenium</li>
+          <li>✔️ Infra: Docker, Heroku, Azure, Kubernetes, AWS, Vercel, GIT, Bash, CI/CD</li>
+        </ul>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform?usp=header" class="cta-button">Get in Touch →</a>
+      </div>
+    </div>
+  </section> -->
+  
+  
+    <!-- <section class="section section-cards">
+      <div class="card-container">
+        <div class="card">
+          <h3>Medium Blog</h3>
+          <p>Articles on AI, trading, dev philosophy</p>
+          <a href="https://dranolia.medium.com/" target="_blank">Read Now →</a>
+        </div>
+        <div class="card">
+          <h3>Pine Script Strategies</h3>
+          <p>Smart Money Detection & Scalping Logics</p>
+          <a href="https://offlinepixel.gumroad.com/l/sttvoo" target="_blank">Access Now →</a>
+        </div>
+        <div class="card">
+          <h3>NPM Packages</h3>
+          <p>Reusable tools for devs & analysts</p>
+          <a href="https://www.npmjs.com/~deepak-ranolia" target="_blank">Explore Now →</a>
+        </div>
+      </div>
+    </section>
+  
+    <section class="section section-reviews">
+      <p class="title">Client Reviews</p>
+      <div class="review-slider">
+        <div class="review active">"This team delivered our MVP in record time!" – Jane D.</div>
+        <div class="review">"Professional, fast, and effective – highly recommend!" – Startup CTO</div>
+        <div class="review">"Their AI tooling gave us an edge in product dev." – Alex G.</div>
+      </div>
+    </section> -->
+    
+  <style>/* --- NEW: Coming Soon / Our Products Section Styles --- */
+  .section-innovation-preview {
+  background: radial-gradient(circle at 10% 20%, #f0f7ff, #e5f2ff, #d9ebff); /* Ultra soft, expansive blue gradient */
+  color: #2c3e50; /* Darker, more sophisticated text color */
+  text-align: center;
+  /* margin: 200px auto; */
+  }
+
+.innovation-content {
+  max-width: 1300px; /* Wider content area */
+  margin: 0 auto;
+  position: relative; /* Ensure content is above pseudo-elements */
+  z-index: 1;
+}
+
+.innovation-title {
+  font-size: 4.5rem; /* Massive, impactful title */
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  font-weight: 800; /* Extra bold */
+  line-height: 1.1;
+  letter-spacing: -0.03em; /* Tighten for impact */
+  /* Text shadow for subtle depth */
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.innovation-subtitle {
+  font-size: 1.8rem; /* Large, readable subtitle */
+  color: #5f6a7d; /* Softer dark gray */
+  margin-bottom: 90px; /* More breathing room */
+  line-height: 1.6;
+  max-width: 900px; /* Constrain width for readability */
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 300; /* Lighter weight for lifestyle feel */
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Responsive grid */
+  gap: 60px; /* Increased gap */
+  max-width: 1200px;
+  margin: 0 auto 100px auto; /* More space before footer */
+}
+
+.product-item {
+  background: #ffffff;
+  border-radius: 25px; /* Even more rounded */
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.07); /* Softer, larger shadow */
+  padding: 50px; /* More internal padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.6s ease; /* Smoother, more natural transition */
+  position: relative;
+  overflow: hidden;
+  border: none;
+  border-bottom: 6px solid transparent; /* Prepare for dynamic border */
+  
+  /* Initial state for GSAP/ScrollTrigger animation */
+  opacity: 0;
+  /* transform: translateY(50px); */
+}
+
+/* On-scroll animation effect (simulated with CSS for now) */
+/* In a real implementation, you'd use GSAP/ScrollTrigger to add a class like 'is-revealed' */
+/* For demonstration, I'll just set it to its final state */
+.product-item {
+  opacity: 1; /* Make visible by default for CSS only */
+  transform: translateY(0);
+}
+
+
+.product-item:hover {
+  /* transform: translateY(-15px) scale(1.02); More pronounced lift and scale */
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+  /* Dynamic border color on hover */
+  border-bottom-color: #3949AB; /* Primary accent color */
+}
+
+/* Specific border colors for each product */
+/* .product-item:nth-child(1):hover { border-bottom-color: #00ACC1; } 
+.product-item:nth-child(2):hover { border-bottom-color: #f39c12; }  
+.product-item:nth-child(3):hover { border-bottom-color: #9b59b6; }  */
+
+
+.item-icon {
+  width: 80px; /* Larger icon */
+  height: 80px;
+  background: linear-gradient(45deg, #00ACC1, #3949AB); /* Gradient background for icon */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(57, 73, 171, 0.2); /* Deeper shadow for depth */
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.product-item:nth-child(2) .item-icon { background: linear-gradient(45deg, #f39c12, #e67e22); } /* MarketMoot icon */
+.product-item:nth-child(3) .item-icon { background: linear-gradient(45deg, #9b59b6, #8e44ad); } /* ventaBlackAI icon */
+
+.item-icon svg {
+  width: 40px; /* Adjust SVG size */
+  height: 40px;
+}
+
+.item-name {
+  font-size: 2.5rem; /* Larger, bolder name */
+  color: #1a1a1a; /* Darker for impact */
+  margin-top: 15px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.item-description {
+  font-size: 1.25rem; /* Larger description text */
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  flex-grow: 1;
+  font-weight: 400;
+}
+
+.item-status {
+  display: inline-block;
+  padding: 12px 22px; /* Larger badge */
+  border-radius: 30px; /* More rounded */
+  font-size: 0.95em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: auto; /* Push to bottom */
+}
+
+.status-live {
+  background-color: #8BC34A; /* Green for live */
+  color: #fff;
+}
+
+.status-coming-soon {
+  background-color: #FFEB3B; /* Soft yellow for coming soon */
+  color: #333;
+}
+
+.innovation-footer {
+  font-size: 1.4rem; /* Even larger footer text */
+  color: #777;
+  margin-top: 80px; /* More spacing */
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  /* .right-panel {
+    display: none;
+  } */
+  .innovation-title {
+    font-size: 3.8rem;
+  }
+  .innovation-subtitle {
+    font-size: 1.6rem;
+  }
+  .product-grid {
+    gap: 40px;
+  }
+  .product-item {
+    padding: 40px;
+  }
+  .item-name {
+    font-size: 2.2rem;
+  }
+  .item-description {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .innovation-title {
+    font-size: 3.2rem;
+  }
+  .innovation-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 70px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .product-item {
+    padding: 35px;
+  }
+  .item-name {
+    font-size: 2rem;
+  }
+  .item-description {
+    font-size: 1.05rem;
+  }
+  .item-icon {
+    width: 70px;
+    height: 70px;
+  }
+  .item-icon svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slide, .tech-slide {
+    display: initial;
+  }
+  .section-innovation-preview {
+    margin-bottom: 320px;
+  }
+  .blog-card-image {
+    height: 120px;
+  }
+  .section-innovation-preview {
+    padding: 80px 4%;
+  }
+  .innovation-title {
+    font-size: 2.8rem;
+  }
+  .innovation-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 60px;
+  }
+  .product-grid {
+    grid-template-columns: 1fr; /* Stack on mobile */
+    max-width: 380px; /* Constrain width for single column */
+    margin: 0 auto 80px auto;
+  }
+  .product-item {
+    padding: 30px;
+  }
+  .item-name {
+    font-size: 1.8rem;
+  }
+  .item-description {
+    font-size: 0.95rem;
+  }
+  .item-status {
+    padding: 10px 18px;
+    font-size: 0.85em;
+  }
+  .innovation-footer {
+    font-size: 1.2rem;
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-innovation-preview {
+    padding: 60px 3%;
+  }
+  .innovation-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+  .innovation-subtitle {
+    font-size: 1rem;
+    margin-bottom: 50px;
+  }
+  .item-icon {
+    width: 60px;
+    height: 60px;
+  }
+  .item-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .item-name {
+    font-size: 1.6rem;
+  }
+}
+    </style>
+    
+    <section class="section section-innovation-preview">
+      <div class="innovation-content">
+        <h2 class="innovation-title">Innovate. Simplify. Thrive.</h2>
+        <p class="innovation-subtitle">
+          Crafting intelligent tools that transform challenges into seamless experiences. Elevate your potential, effortlessly.
+        </p>
+
+        <div class="product-grid">
+          <a href="https://www.producthunt.com/products/nfsrambo" target="_blank" class="product-item">
+            <div class="item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354l-4.697 2.812c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.006Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="item-name">nfsRambo: Cloud Clarity</h3>
+            <p class="item-description">
+              <b>Effortless cloud cost optimization.</b>Transform complex bills into transparent insights, ensuring you manage spending with complete confidence.
+            </p>
+            <span class="item-status status-live">Live on Product Hunt</span>
+          </a>
+
+          <a href="https://www.producthunt.com/products/marketmoot" target="_blank" class="product-item">
+            <div class="item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10.957 3.692a1.5 1.5 0 0 0-1.914 0l-5.316 4.316A1.5 1.5 0 0 0 3 9.748V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V9.748a1.5 1.5 0 0 0-.742-1.24l-5.316-4.316a1.5 1.5 0 0 0-1.914 0Z" />
+              </svg>
+            </div>
+            <h3 class="item-name">MarketMoot: Intelligent Discourse</h3>
+            <p class="item-description">
+              A digital agora for <b>developers & investors</b>. Uncover smarter market insights by leveraging historical data and informed community discussions.
+            </p>
+            <span class="item-status status-coming-soon">Launching Soon</span>
+          </a>
+
+          <a href="https://www.producthunt.com/products/ventablackai" target="_blank" class="product-item">
+            <div class="item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <h3 class="item-name">ventaBlackAI: Expert Pairing</h3>
+            <p class="item-description">
+              <b>Instant access to top 1% vetted experts.</b>Our AI precision matches you with the perfect talent, saving you time and ensuring optimal results.
+            </p>
+            <span class="item-status status-coming-soon">Launching Soon</span>
+          </a>
+        </div>
+
+        <p class="innovation-footer">Your future, simplified. Explore the edge of what's possible with our growing suite of intelligent solutions.</p>
+      </div>
+    </section>
+
+    <script src="scripts/slider.js"></script>
+    <!-- <script src="scripts/gsapAnimations.js"></script> -->
+    <script src="scripts/scripts.js" defer></script>
+    <!-- <script src="scripts/geolocationCheck.js"></script> -->
+    </div>
 </body>
 </html>

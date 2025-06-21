@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script VWAP (Daily) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Volume Weighted Average Price (VWAP) in Pine Script for TradingView - a crucial intraday indicator used by institutional traders to measure fair value and identify significant support/resistance levels.">
+    <meta name="keywords" content="pine script strategies, VWAP, Volume Weighted Average Price, daily VWAP, tradingview indicator, technical analysis, intraday trading, institutional trading, fair value, mean reversion, volume, anchor VWAP">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script VWAP (Daily) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Daily VWAP in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script VWAP (Daily) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VWAP-Daily.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script VWAP (Daily) - Complete TradingView Guide",
+      "description": "Master Volume Weighted Average Price (VWAP) in Pine Script for TradingView - a crucial intraday indicator used by institutional traders to measure fair value and identify significant support/resistance levels.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VWAP-Daily.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "VWAP (Daily)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VWAP-Daily.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script VWAP (Daily) </h1>
+      <p class="blog-subtitle">Master this indispensable intraday indicator in TradingView's Pine Script, relied upon by institutional traders for identifying fair value, optimal entry/exit points, and measuring market strength.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">VWAP (Daily)</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is VWAP (Daily)?</h2>
+    <p> <b>VWAP (Volume Weighted Average Price)</b> is a crucial benchmark used by institutional traders and market makers to determine the average price of an asset, adjusted for its trading volume, throughout the trading day. Unlike a simple moving average, VWAP gives more weight to prices at which more volume was traded, making it a more accurate representation of the true average price participants paid for the asset.</p>
+
+    <p>The "Daily" aspect is critical: <b>VWAP resets at the beginning of each trading session</b>, accumulating data only for that specific day. This makes it an intraday indicator, primarily used for:</p>
+    <ul>
+      <li> <b>Fair Value Assessment:</b> Price trading around VWAP is considered "fair value" for the day.</li>
+      <li> <b>Execution Benchmark:</b> Institutional traders often aim to execute their orders at or better than VWAP to demonstrate efficient trading.</li>
+      <li> <b>Support/Resistance:</b> VWAP frequently acts as a dynamic support or resistance level.</li>
+      <li> <b>Trend Confirmation:</b> Price staying above VWAP often indicates an intraday uptrend, while price staying below indicates a downtrend.</li>
+    </ul>
+
+    <p>In Pine Script, the daily VWAP is a highly utilized tool for short-term trading strategies, providing actionable insights into market sentiment and price efficiency.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of VWAP is cumulative throughout the trading day and resets at the start of each new day:</p>
+    <ol>
+      <li> <b>Typical Price (TP):</b> For each bar (e.g., each minute, 5-minute, or 15-minute bar within the day), calculate its typical price:
+        <br>
+        `TP = (High + Low + Close) / 3`
+      </li>
+      <li> <b>TP * Volume (TPV):</b> Multiply the typical price of the bar by its volume:
+        <br>
+        `TPV = TP * Volume`
+      </li>
+      <li> <b>Cumulative TPV:</b> Sum the `TPV` values from the beginning of the trading day up to the current bar.
+        <br>
+        `Cumulative TPV = Sum(TPV) for the day`
+      </li>
+      <li> <b>Cumulative Volume:</b> Sum the `Volume` values from the beginning of the trading day up to the current bar.
+        <br>
+        `Cumulative Volume = Sum(Volume) for the day`
+      </li>
+      <li> <b>VWAP Formula:</b> Divide the Cumulative TPV by the Cumulative Volume.
+        <br>
+        `VWAP = Cumulative TPV / Cumulative Volume`
+      </li>
+    </ol>
+    <p>Crucially, all these cumulative sums reset to zero at the start of every new trading day, making VWAP a powerful intraday tool.</p>
+
+    <h2>Basic Daily VWAP Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.vwap()` for calculating VWAP. It automatically handles the daily reset when used on intraday timeframes.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Daily VWAP"</span>, <span class="property">overlay</span>=<span class="literal">true</span>, <span class="property">timeframe</span>=<span class="string">"D"</span>) <span class="comment">// overlay=true to plot on price chart. timeframe="D" is key for daily reset.</span>
+
+<span class="comment">// Calculate Daily VWAP using the built-in function</span>
+<span class="comment">// ta.vwap() automatically handles the typical price (hlc3) and volume, and resets daily.</span>
+<span class="variable">dailyVwap</span> = <span class="function">ta.vwap</span>(<span class="variable">close</span>, <span class="variable">volume</span>) <span class="comment">// By default, `ta.vwap` uses `hlc3` for the source if not specified.</span>
+
+<span class="comment">// Plot the VWAP line</span>
+<span class="function">plot</span>(<span class="variable">dailyVwap</span>, <span class="property">title</span>=<span class="string">"Daily VWAP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add Standard Deviation Bands around VWAP (similar to Bollinger Bands)</span>
+<span class="comment">// These are often called VWAP Bands or Standard Deviation Bands.</span>
+<span class="comment">// They help identify significant deviations from the daily average price.</span>
+<span class="variable">stdDevLength</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="property">title</span>=<span class="string">"StdDev Lookback (for VWAP Bands)"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">stdDevMultiplier1</span> = <span class="function">input.float</span>(<span class="number">1.0</span>, <span class="property">title</span>=<span class="string">"StdDev Multiplier 1"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+<span class="variable">stdDevMultiplier2</span> = <span class="function">input.float</span>(<span class="number">2.0</span>, <span class="property">title</span>=<span class="string">"StdDev Multiplier 2"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+
+<span class="comment">// Custom VWAP logic with daily reset</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_tp_volume</span> = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_volume</span> = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_sq_diff_volume</span> = <span class="number">0.0</span>
+
+<span class="keyword">if</span> <span class="function">ta.change</span>(<span class="function">time</span>(<span class="string">"D"</span>))
+    <span class="variable">sum_tp_volume</span> := <span class="number">0.0</span>
+    <span class="variable">sum_volume</span> := <span class="number">0.0</span>
+    <span class="variable">sum_sq_diff_volume</span> := <span class="number">0.0</span>
+
+<span class="variable">tp</span> = (<span class="variable">high</span> + <span class="variable">low</span> + <span class="variable">close</span>) / <span class="number">3</span>
+<span class="variable">sum_tp_volume</span> := <span class="variable">sum_tp_volume</span> + (<span class="variable">tp</span> * <span class="variable">volume</span>)
+<span class="variable">sum_volume</span> := <span class="variable">sum_volume</span> + <span class="variable">volume</span>
+
+<span class="variable">currentDailyVwap</span> = <span class="variable">sum_volume</span> != <span class="number">0</span> ? <span class="variable">sum_tp_volume</span> / <span class="variable">sum_volume</span> : <span class="variable">dailyVwap</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(<span class="variable">currentDailyVwap</span>) <span class="keyword">and</span> <span class="variable">volume</span> > <span class="number">0</span>
+    <span class="variable">sum_sq_diff_volume</span> := <span class="variable">sum_sq_diff_volume</span> + (<span class="function">math.pow</span>(<span class="variable">tp</span> - <span class="variable">currentDailyVwap</span>, <span class="number">2</span>) * <span class="variable">volume</span>)
+
+<span class="variable">stdDevVwap</span> = <span class="variable">sum_volume</span> != <span class="number">0</span> ? <span class="function">math.sqrt</span>(<span class="variable">sum_sq_diff_volume</span> / <span class="variable">sum_volume</span>) : <span class="number">0.0</span>
+
+<span class="variable">upperBand1</span> = <span class="variable">currentDailyVwap</span> + (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplier1</span>)
+<span class="variable">lowerBand1</span> = <span class="variable">currentDailyVwap</span> - (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplier1</span>)
+<span class="variable">upperBand2</span> = <span class="variable">currentDailyVwap</span> + (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplier2</span>)
+<span class="variable">lowerBand2</span> = <span class="variable">currentDailyVwap</span> - (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplier2</span>)
+
+<span class="comment">// Plot VWAP Bands</span>
+<span class="function">plot</span>(<span class="variable">upperBand1</span>, <span class="property">title</span>=<span class="string">"Upper Band 1"</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.blue</span>, <span class="number">50</span>), <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="variable">lowerBand1</span>, <span class="property">title</span>=<span class="string">"Lower Band 1"</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.blue</span>, <span class="number">50</span>), <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="variable">upperBand2</span>, <span class="property">title</span>=<span class="string">"Upper Band 2"</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.navy</span>, <span class="number">70</span>), <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="variable">lowerBand2</span>, <span class="property">title</span>=<span class="string">"Lower Band 2"</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.navy</span>, <span class="number">70</span>), <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Fill between bands for visual clarity</span>
+<span class="function">fill</span>(<span class="variable">upperBand1</span>, <span class="variable">lowerBand1</span>, <span class="function">color.new</span>(<span class="property">color.blue</span>, <span class="number">95</span>))
+<span class="function">fill</span>(<span class="variable">upperBand2</span>, <span class="variable">lowerBand1</span>, <span class="function">color.new</span>(<span class="property">color.navy</span>, <span class="number">98</span>))
+</code></pre>
+
+
+    <div class="tip">
+     <b>Intraday Focus:</b> Remember, Daily VWAP resets each session. It's a key tool for understanding price performance relative to volume for *that specific day*.
+    </div>
+
+    <h2>Practical Daily VWAP <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Mean Reversion to VWAP</h3>
+    <p>Price often tends to revert to the VWAP, especially in range-bound or consolidating intraday markets. Traders can fade moves away from VWAP, expecting a return to the average.</p>
+    <ul>
+      <li> <b>Buy Signal:</b> Price pulls back and touches or briefly penetrates <b>below VWAP</b>, especially if accompanied by signs of support (e.g., bullish candlestick patterns, volume spikes). Target the VWAP or upper band.</li>
+      <li> <b>Sell Signal:</b> Price rallies and touches or briefly penetrates <b>above VWAP</b>, especially if accompanied by signs of resistance (e.g., bearish candlestick patterns, low volume on rally). Target the VWAP or lower band.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"VWAP Mean Reversion Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>, <span class="property">initial_capital</span>=<span class="number">10000</span>)
+
+<span class="comment">// Daily VWAP (auto-resets)</span>
+<span class="variable">dailyVwap</span> = <span class="function">ta.vwap</span>(<span class="variable">close</span>, <span class="variable">volume</span>)
+<span class="function">plot</span>(<span class="variable">dailyVwap</span>, <span class="string">"Daily VWAP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// VWAP Bands for mean reversion zones (manual daily reset logic)</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_tp_volume</span> = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_volume</span> = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_sq_diff_volume</span> = <span class="number">0.0</span>
+
+<span class="keyword">if</span> <span class="function">ta.change</span>(<span class="function">time</span>(<span class="string">"D"</span>))
+    <span class="variable">sum_tp_volume</span> := <span class="number">0.0</span>
+    <span class="variable">sum_volume</span> := <span class="number">0.0</span>
+    <span class="variable">sum_sq_diff_volume</span> := <span class="number">0.0</span>
+
+<span class="variable">tp</span> = (<span class="variable">high</span> + <span class="variable">low</span> + <span class="variable">close</span>) / <span class="number">3</span>
+<span class="variable">sum_tp_volume</span> := <span class="variable">sum_tp_volume</span> + (<span class="variable">tp</span> * <span class="variable">volume</span>)
+<span class="variable">sum_volume</span> := <span class="variable">sum_volume</span> + <span class="variable">volume</span>
+<span class="variable">currentDailyVwap</span> = <span class="variable">sum_volume</span> != <span class="number">0</span> ? <span class="variable">sum_tp_volume</span> / <span class="variable">sum_volume</span> : <span class="variable">dailyVwap</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(<span class="variable">currentDailyVwap</span>) <span class="keyword">and</span> <span class="variable">volume</span> > <span class="number">0</span>
+    <span class="variable">sum_sq_diff_volume</span> := <span class="variable">sum_sq_diff_volume</span> + (<span class="function">math.pow</span>(<span class="variable">tp</span> - <span class="variable">currentDailyVwap</span>, <span class="number">2</span>) * <span class="variable">volume</span>)
+
+<span class="variable">stdDevVwap</span> = <span class="variable">sum_volume</span> != <span class="number">0</span> ? <span class="function">math.sqrt</span>(<span class="variable">sum_sq_diff_volume</span> / <span class="variable">sum_volume</span>) : <span class="number">0.0</span>
+
+<span class="comment">// Inputs for band multipliers</span>
+<span class="variable">stdDevMultiplierEntry</span> = <span class="function">input.float</span>(<span class="number">1.0</span>, <span class="string">"Entry Band Multiplier"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+<span class="variable">stdDevMultiplierExit</span> = <span class="function">input.float</span>(<span class="number">0.5</span>, <span class="string">"Exit Band Multiplier (Target)"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+<span class="variable">stopLossMultiplier</span> = <span class="function">input.float</span>(<span class="number">2.5</span>, <span class="string">"Stop Loss Multiplier (relative to StdDev)"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+
+<span class="variable">lowerBandEntry</span> = <span class="variable">currentDailyVwap</span> - (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplierEntry</span>)
+<span class="variable">upperBandEntry</span> = <span class="variable">currentDailyVwap</span> + (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplierEntry</span>)
+<span class="variable">lowerBandTarget</span> = <span class="variable">currentDailyVwap</span> + (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplierExit</span>)
+<span class="variable">upperBandTarget</span> = <span class="variable">currentDailyVwap</span> - (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplierExit</span>)
+
+<span class="comment">// Plot bands for visualization</span>
+<span class="function">plot</span>(<span class="variable">lowerBandEntry</span>, <span class="string">"Lower Entry Band"</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="variable">upperBandEntry</span>, <span class="string">"Upper Entry Band"</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Long Entry Condition</span>
+<span class="variable">longCondition</span> = <span class="variable">close</span> > <span class="variable">lowerBandEntry</span> <span class="keyword">and</span> <span class="variable">close[1]</span> &lt;= <span class="variable">lowerBandEntry[1]</span> <span class="keyword">and</span> <span class="variable">close</span> > <span class="variable">open</span>
+<span class="keyword">if</span> (<span class="variable">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Reversion"</span>, <span class="property">strategy.long</span>)
+
+<span class="comment">// Short Entry Condition</span>
+<span class="variable">shortCondition</span> = <span class="variable">close</span> &lt; <span class="variable">upperBandEntry</span> <span class="keyword">and</span> <span class="variable">close[1]</span> >= <span class="variable">upperBandEntry[1]</span> <span class="keyword">and</span> <span class="variable">close</span> &lt; <span class="variable">open</span>
+<span class="keyword">if</span> (<span class="variable">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Reversion"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Long Exit</span>
+<span class="variable">longStopPrice</span> = <span class="variable">strategy.position_avg_price</span> - (<span class="variable">stdDevVwap</span> * <span class="variable">stopLossMultiplier</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Long Reversion Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Long Reversion"</span>, <span class="property">profit</span>=<span class="variable">upperBandTarget</span>, <span class="property">stop</span>=<span class="variable">longStopPrice</span>)
+
+<span class="comment">// Short Exit</span>
+<span class="variable">shortStopPrice</span> = <span class="variable">strategy.position_avg_price</span> + (<span class="variable">stdDevVwap</span> * <span class="variable">stopLossMultiplier</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Short Reversion Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Short Reversion"</span>, <span class="property">profit</span>=<span class="variable">lowerBandTarget</span>, <span class="property">stop</span>=<span class="variable">shortStopPrice</span>)
+</code></pre>
+
+
+    <h3>2. VWAP Trend Confirmation</h3>
+    <p>In a strong intraday trend, price will consistently stay on one side of the VWAP. VWAP itself will also be sloping in the direction of the trend.</p>
+    <ul>
+      <li> <b>Uptrend Confirmation:</b> Price is consistently trading <b>above VWAP</b>, and VWAP is sloping upwards. Pullbacks to VWAP can be considered buying opportunities.</li>
+      <li> <b>Downtrend Confirmation:</b> Price is consistently trading <b>below VWAP</b>, and VWAP is sloping downwards. Rallies to VWAP can be considered selling opportunities.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"VWAP Trend Following Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">dailyVwap</span> = <span class="function">ta.vwap</span>(<span class="variable">close</span>, <span class="variable">volume</span>)
+<span class="function">plot</span>(<span class="variable">dailyVwap</span>, <span class="string">"Daily VWAP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Define bullish and bearish VWAP slopes for trend confirmation</span>
+<span class="variable">vwapSlopePeriod</span> = <span class="function">input.int</span>(<span class="number">5</span>, <span class="string">"VWAP Slope Lookback"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">isVwapUptrend</span> = <span class="variable">dailyVwap</span> > <span class="variable">dailyVwap</span>[<span class="variable">vwapSlopePeriod</span>]
+<span class="variable">isVwapDowntrend</span> = <span class="variable">dailyVwap</span> &lt; <span class="variable">dailyVwap</span>[<span class="variable">vwapSlopePeriod</span>]
+
+<span class="comment">// Long Entry: Price crosses above VWAP, and VWAP is trending up</span>
+<span class="variable">longCondition</span> = <span class="function">ta.crossover</span>(<span class="variable">close</span>, <span class="variable">dailyVwap</span>) <span class="keyword">and</span> <span class="variable">isVwapUptrend</span>
+
+<span class="comment">// Short Entry: Price crosses below VWAP, and VWAP is trending down</span>
+<span class="variable">shortCondition</span> = <span class="function">ta.crossunder</span>(<span class="variable">close</span>, <span class="variable">dailyVwap</span>) <span class="keyword">and</span> <span class="variable">isVwapDowntrend</span>
+
+<span class="keyword">if</span> (<span class="variable">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Trend"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Trend"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Exit: Price crosses back over VWAP, indicating trend weakness</span>
+<span class="function">strategy.close</span>(<span class="string">"Long Trend"</span>, <span class="property">when</span>=<span class="function">ta.crossunder</span>(<span class="variable">close</span>, <span class="variable">dailyVwap</span>))
+<span class="function">strategy.close</span>(<span class="string">"Short Trend"</span>, <span class="property">when</span>=<span class="function">ta.crossover</span>(<span class="variable">close</span>, <span class="variable">dailyVwap</span>))
+</code></pre>
+
+
+    <h3>3. VWAP Anchor Points / Breakouts</h3>
+    <p>VWAP can act as a crucial anchor point for breakouts. A decisive break from VWAP, especially on higher volume, can signal the start of a strong directional move.</p>
+    <ul>
+      <li> <b>Bullish Breakout:</b> Price rallies significantly <b>above VWAP</b> from a consolidation below it, accompanied by a notable increase in volume.</li>
+      <li> <b>Bearish Breakout:</b> Price declines significantly <b>below VWAP</b> from a consolidation above it, accompanied by a notable increase in volume.</li>
+      <li> <b>Failed Breakout / Rejection:</b> Price approaches VWAP but is rejected with high volume, indicating strong institutional defense of that level.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"VWAP Breakout Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">dailyVwap</span> = <span class="function">ta.vwap</span>(<span class="variable">close</span>, <span class="variable">volume</span>)
+<span class="function">plot</span>(<span class="variable">dailyVwap</span>, <span class="string">"Daily VWAP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Using VWAP Bands to define breakout zones</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_tp_volume</span> = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_volume</span> = <span class="number">0.0</span>
+<span class="keyword">var</span> <span class="type">float</span> <span class="variable">sum_sq_diff_volume</span> = <span class="number">0.0</span>
+
+<span class="keyword">if</span> <span class="function">ta.change</span>(<span class="function">time</span>(<span class="string">"D"</span>))
+    <span class="variable">sum_tp_volume</span> := <span class="number">0.0</span>
+    <span class="variable">sum_volume</span> := <span class="number">0.0</span>
+    <span class="variable">sum_sq_diff_volume</span> := <span class="number">0.0</span>
+
+<span class="variable">tp</span> = (<span class="variable">high</span> + <span class="variable">low</span> + <span class="variable">close</span>) / <span class="number">3</span>
+<span class="variable">sum_tp_volume</span> := <span class="variable">sum_tp_volume</span> + (<span class="variable">tp</span> * <span class="variable">volume</span>)
+<span class="variable">sum_volume</span> := <span class="variable">sum_volume</span> + <span class="variable">volume</span>
+<span class="variable">currentDailyVwap</span> = <span class="variable">sum_volume</span> != <span class="number">0</span> ? <span class="variable">sum_tp_volume</span> / <span class="variable">sum_volume</span> : <span class="variable">dailyVwap</span>
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(<span class="variable">currentDailyVwap</span>) <span class="keyword">and</span> <span class="variable">volume</span> > <span class="number">0</span>
+    <span class="variable">sum_sq_diff_volume</span> := <span class="variable">sum_sq_diff_volume</span> + (<span class="function">math.pow</span>(<span class="variable">tp</span> - <span class="variable">currentDailyVwap</span>, <span class="number">2</span>) * <span class="variable">volume</span>)
+
+<span class="variable">stdDevVwap</span> = <span class="variable">sum_volume</span> != <span class="number">0</span> ? <span class="function">math.sqrt</span>(<span class="variable">sum_sq_diff_volume</span> / <span class="variable">sum_volume</span>) : <span class="number">0.0</span>
+
+<span class="variable">stdDevMultiplierBreakout</span> = <span class="function">input.float</span>(<span class="number">1.5</span>, <span class="string">"Breakout Band Multiplier"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+<span class="variable">minVolumeMultiplier</span> = <span class="function">input.float</span>(<span class="number">1.5</span>, <span class="string">"Min Volume Multiplier for Breakout"</span>, <span class="property">minval</span>=<span class="number">1.0</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+
+<span class="variable">upperBandBreakout</span> = <span class="variable">currentDailyVwap</span> + (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplierBreakout</span>)
+<span class="variable">lowerBandBreakout</span> = <span class="variable">currentDailyVwap</span> - (<span class="variable">stdDevVwap</span> * <span class="variable">stdDevMultiplierBreakout</span>)
+
+<span class="function">plot</span>(<span class="variable">upperBandBreakout</span>, <span class="string">"Upper Breakout Band"</span>, <span class="property">color</span>=<span class="property">color.gray</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="variable">lowerBandBreakout</span>, <span class="string">"Lower Breakout Band"</span>, <span class="property">color</span>=<span class="property">color.gray</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Calculate average volume for confirmation</span>
+<span class="variable">avgVolume</span> = <span class="function">ta.sma</span>(<span class="variable">volume</span>, <span class="number">20</span>)
+<span class="variable">isHighVolume</span> = <span class="variable">volume</span> > <span class="variable">avgVolume</span> * <span class="variable">minVolumeMultiplier</span>
+
+<span class="comment">// Long Breakout: Price crosses above upper breakout band with high volume</span>
+<span class="variable">longBreakoutCondition</span> = <span class="variable">close</span> > <span class="variable">upperBandBreakout</span> <span class="keyword">and</span> <span class="variable">close</span>[<span class="number">1</span>] &lt;= <span class="variable">upperBandBreakout</span>[<span class="number">1</span>] <span class="keyword">and</span> <span class="variable">isHighVolume</span>
+
+<span class="comment">// Short Breakout: Price crosses below lower breakout band with high volume</span>
+<span class="variable">shortBreakoutCondition</span> = <span class="variable">close</span> &lt; <span class="variable">lowerBandBreakout</span> <span class="keyword">and</span> <span class="variable">close</span>[<span class="number">1</span>] >= <span class="variable">lowerBandBreakout</span>[<span class="number">1</span>] <span class="keyword">and</span> <span class="variable">isHighVolume</span>
+
+<span class="keyword">if</span> (<span class="variable">longBreakoutCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Breakout"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">shortBreakoutCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Breakout"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Basic exit: Price crosses back over VWAP, or hits opposite band</span>
+<span class="function">strategy.close</span>(<span class="string">"Long Breakout"</span>, <span class="property">when</span>=<span class="variable">close</span> &lt; <span class="variable">dailyVwap</span> <span class="keyword">or</span> <span class="variable">close</span> &lt; <span class="variable">lowerBandBreakout</span>)
+<span class="function">strategy.close</span>(<span class="string">"Short Breakout"</span>, <span class="property">when</span>=<span class="variable">close</span> > <span class="variable">dailyVwap</span> <span class="keyword">or</span> <span class="variable">close</span> > <span class="variable">upperBandBreakout</span>)
+</code></pre>
+
+
+    <h2>Optimizing Daily VWAP Performance</h2>
+    <p>To get the most from Daily VWAP in Pine Script:</p>
+    <ul>
+      <li><strong>Timeframe Alignment:</strong> VWAP is an intraday indicator. It works best on intraday charts (e.g., 1-minute, 5-minute, 15-minute). On daily charts, it simply represents `hlc3` for the day and isn't typically used for dynamic signals.</li>
+      <li><strong>Combine with Volume Analysis:</strong> Since VWAP is volume-weighted, its signals are highly enhanced by confirming volume. High volume on a breakout from VWAP or a bounce off VWAP adds conviction.</li>
+      <li><strong>VWAP Bands:</strong> Utilize standard deviation bands around VWAP (as implemented in the examples) to identify overextended price levels relative to the volume-weighted average. Prices outside the ±1 or ±2 standard deviation bands can signal overbought/oversold conditions or strong momentum.</li>
+      <li><strong>Multi-Timeframe Context:</strong> Although VWAP is intraday, consider the broader trend from a higher timeframe. If the daily trend is bullish, favor long setups around VWAP bounces or breakouts.</li>
+      <li><strong>Institutional Levels:</strong> Be aware that large institutional players often use VWAP to evaluate their execution quality. This means their buying/selling activity can be concentrated around VWAP, making it a self-fulfilling prophecy.</li>
+      <li><strong>Anchor VWAP (Advanced):</strong> For multi-day analysis, consider implementing "Anchor VWAP" starting from a specific event (e.g., quarterly earnings, significant low/high) which *doesn't* reset daily. This is a more advanced concept not covered by the `ta.vwap()` built-in.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Fair Value & Institutional Flow:</b> VWAP is considered the "true" average price for the day. Institutional traders often target closing positions near VWAP, making it a magnet for price.
+    </div>
+
+    <h2>Common Daily VWAP Pitfalls</h2>
+    <ul>
+      <li> <b>Not for Long-Term Analysis:</b> VWAP resets daily, making it unsuitable for analyzing long-term trends or positions held overnight. It's strictly an intraday tool.</li>
+      <li> <b>Lagging Indicator:</b> VWAP is a lagging indicator, as it is an average of past price and volume. It doesn't predict future prices but confirms current market sentiment.</li>
+      <li> <b>Choppy Market Whipsaws:</b> In very low volume or choppy markets, price can oscillate rapidly around VWAP, leading to frequent false signals and whipsaws.</li>
+      <li> <b>Lack of Direction:</b> VWAP itself doesn't tell you the trend direction. It indicates fair value. You need to combine it with price action (e.g., price above/below VWAP) and other trend tools.</li>
+      <li> <b>Volume Dependency:</b> If volume data is inaccurate or very low for an asset, VWAP's reliability can be compromised.</li>
+      <li> <b>Over-Reliance:</b> Using VWAP as the sole decision-making tool is risky. It's best used as a confirmation tool alongside other technical analysis methods.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Daily Volume Weighted Average Price (VWAP) is an indispensable technical indicator in Pine Script for TradingView, offering unique insights into intraday market dynamics. By providing a volume-weighted average price for the current trading session, it serves as a critical benchmark for institutional traders, a dynamic support/resistance level, and a powerful confirmation tool for short-term trends. While its daily reset makes it exclusively an intraday indicator, mastering its application for mean reversion, trend confirmation, and identifying breakouts, ideally in conjunction with VWAP bands and other volume analysis, can significantly enhance your intraday trading strategies and provide a clearer understanding of the market's true fair value.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+</body>
+</html>

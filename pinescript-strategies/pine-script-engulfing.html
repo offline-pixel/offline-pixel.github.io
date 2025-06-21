@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 45%; /* Adjust for two columns */
+            max-width: 45%; /* Adjust for two columns */
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .bullish .candle-body { fill: #4CAF50; } /* Green for bullish */
+        .bullish .wick { stroke: #4CAF50; }
+        .bearish .candle-body { fill: #F44336; } /* Red for bearish */
+        .bearish .wick { stroke: #F44336; }
+        .engulfing-body { opacity: 0.7; } /* Slightly transparent for the engulfing candle */
+        .previous-body { opacity: 1; }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Engulfing Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Bullish and Bearish Engulfing candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for trend reversals.">
+    <meta name="keywords" content="pine script, engulfing pattern, bullish engulfing, bearish engulfing, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Engulfing Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Bullish and Bearish Engulfing patterns in Pine Script for price action and reversal strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing.html"> <!-- Updated URL -->
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Engulfing Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing.html" /> <!-- Updated URL -->
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Engulfing Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master Bullish and Bearish Engulfing candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for trend reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Engulfing Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Master Engulfing Candlestick Patterns (Bullish & Bearish)</h1>
+      <p class="blog-subtitle">Unlock powerful reversal signals with this comprehensive guide to detecting and strategizing with Engulfing patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Engulfing Patterns</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why Engulfing Patterns Matter in Pine Script</h2>
+    <p>The <b> Engulfing candlestick pattern</b> is one of the most powerful and widely recognized reversal signals in technical analysis. It consists of two candles, where the second candle's body completely "engulfs" the first candle's body. These patterns often indicate a strong shift in market sentiment, making them invaluable for:</p>
+    <ul>
+      <li>Identifying potential trend reversals (top for bearish, bottom for bullish).</li>
+      <li>Confirming existing trend strength or weakness.</li>
+      <li>Generating entry and exit signals in trading strategies.</li>
+    </ul>
+
+    <h2>Understanding Engulfing Candlestick Patterns</h2>
+    <p>An engulfing pattern provides a strong visual clue about who's in control—buyers or sellers. The larger the engulfing candle relative to the previous one, and the larger its body, the stronger the signal. Importantly, the colors of the two candles must be opposite.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Bullish Engulfing Pattern</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Previous Bearish Candle -->
+                <line x1="25" y1="60" x2="25" y2="70" stroke="#F44336" stroke-width="2" class="wick"/>
+                <rect x="20" y="50" width="10" height="20" fill="#F44336" class="previous-body candle-body"/>
+                <line x1="25" y1="50" x2="25" y2="40" stroke="#F44336" stroke-width="2" class="wick"/>
+
+                <!-- Engulfing Bullish Candle -->
+                <line x1="75" y1="30" x2="75" y2="80" stroke="#4CAF50" stroke-width="2" class="wick"/>
+                <rect x="70" y="30" width="10" height="50" fill="#4CAF50" class="engulfing-body candle-body"/>
+            </svg>
+            <p>A small bearish candle is completely covered by a large bullish candle, often after a downtrend.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Bearish Engulfing Pattern</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Previous Bullish Candle -->
+                <line x1="25" y1="30" x2="25" y2="40" stroke="#4CAF50" stroke-width="2" class="wick"/>
+                <rect x="20" y="40" width="10" height="20" fill="#4CAF50" class="previous-body candle-body"/>
+                <line x1="25" y1="60" x2="25" y2="70" stroke="#4CAF50" stroke-width="2" class="wick"/>
+
+                <!-- Engulfing Bearish Candle -->
+                <line x1="75" y1="20" x2="75" y2="70" stroke="#F44336" stroke-width="2" class="wick"/>
+                <rect x="70" y="20" width="10" height="50" fill="#F44336" class="engulfing-body candle-body"/>
+            </svg>
+            <p>A small bullish candle is completely covered by a large bearish candle, often after an uptrend.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristic:</strong> The engulfing candle's <b> body</b> (the solid part between open and close) must completely overlap the previous candle's <b> body</b>. Wicks (shadows) are not considered for the engulfing criteria, although wider engulfing wicks can add to conviction.
+    </div>
+
+    <h2>Basic Engulfing Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect both Bullish and Bearish Engulfing patterns in Pine Script v5:</p>
+    
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Engulfing Pattern Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Get candle properties for current and previous bar</span>
+<span class="keyword">prevOpen</span> = open[<span class="number">1</span>]
+<span class="keyword">prevClose</span> = close[<span class="number">1</span>]
+<span class="keyword">prevHigh</span> = high[<span class="number">1</span>]
+<span class="keyword">prevLow</span> = low[<span class="number">1</span>]
+
+<span class="comment">// Check if previous candle was bullish (green) or bearish (red)</span>
+<span class="keyword">isPrevBullish</span> = prevClose > prevOpen
+<span class="keyword">isPrevBearish</span> = prevClose < prevOpen
+
+<span class="comment">// Define Bullish Engulfing criteria</span>
+<span class="comment">// 1. Previous candle is bearish</span>
+<span class="comment">// 2. Current candle is bullish</span>
+<span class="comment">// 3. Current candle's body completely engulfs previous candle's body</span>
+isBullishEngulfing = isPrevBearish <span class="keyword">and</span> (close > open) <span class="keyword">and</span> (close > prevHigh) <span class="keyword">and</span> (open < prevLow)
+
+<span class="comment">// Define Bearish Engulfing criteria</span>
+<span class="comment">// 1. Previous candle is bullish</span>
+<span class="comment">// 2. Current candle is bearish</span>
+<span class="comment">// 3. Current candle's body completely engulfs previous candle's body</span>
+isBearishEngulfing = isPrevBullish <span class="keyword">and</span> (close < open) <span class="keyword">and</span> (open > prevHigh) <span class="keyword">and</span> (close < prevLow)
+
+<span class="comment">// Plot signals on the chart</span>
+<span class="function">plotshape</span>(isBullishEngulfing, <span class="keyword">title</span>=<span class="string">"Bullish Engulfing"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
+<span class="function">plotshape</span>(isBearishEngulfing, <span class="keyword">title</span>=<span class="string">"Bearish Engulfing"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
+
+<span class="comment">// Alert conditions (optional)</span>
+<span class="function">alertcondition</span>(isBullishEngulfing, <span class="keyword">title</span>=<span class="string">"Bullish Engulfing Alert"</span>, <span class="keyword">message</span>=<span class="string">"Bullish Engulfing Pattern Detected!"</span>)
+<span class="function">alertcondition</span>(isBearishEngulfing, <span class="keyword">title</span>=<span class="string">"Bearish Engulfing Alert"</span>, <span class="keyword">message</span>=<span class="string">"Bearish Engulfing Pattern Detected!"</span>)
+</code>
+</pre>
+
+
+    <h2>Advanced Engulfing Strategies</h2>
+    <p>While basic detection is useful, combining engulfing patterns with other indicators provides stronger, more reliable signals.</p>
+    
+    <h3>1. Engulfing with Trend Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Engulfing with Trend Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length</span>
+<span class="keyword">maLength</span> = <span class="function">input</span>(<span class="number">20</span>, <span class="string">"MA Length"</span>)
+<span class="keyword">ma</span> = <span class="function">ta.ema</span>(close, maLength) <span class="comment">// Using EMA for trend detection</span>
+
+<span class="comment">// Engulfing Pattern Detection (from basic example)</span>
+<span class="keyword">isPrevBullish</span> = close[<span class="number">1</span>] > open[<span class="number">1</span>]
+<span class="keyword">isPrevBearish</span> = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+isBullishEngulfing = isPrevBearish <span class="keyword">and</span> (close > open) <span class="keyword">and</span> (close > high[<span class="number">1</span>]) <span class="keyword">and</span> (open < low[<span class="number">1</span>])
+isBearishEngulfing = isPrevBullish <span class="keyword">and</span> (close < open) <span class="keyword">and</span> (open > high[<span class="number">1</span>]) <span class="keyword">and</span> (close < low[<span class="number">1</span>])
+
+<span class="comment">// Trend Confirmation:</span>
+<span class="comment">// For Bullish Engulfing: Price should be below MA (downtrend)</span>
+<span class="comment">// For Bearish Engulfing: Price should be above MA (uptrend)</span>
+<span class="keyword">isDowntrend</span> = close < ma
+<span class="keyword">isUptrend</span> = close > ma
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+longSignal = isBullishEngulfing <span class="keyword">and</span> isDowntrend
+shortSignal = isBearishEngulfing <span class="keyword">and</span> isUptrend
+
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Plot MA</span>
+<span class="function">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">plotshape</span>(longSignal, <span class="keyword">title</span>=<span class="string">"Confirmed Bullish Engulfing"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">navy</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=size.normal)
+<span class="function">plotshape</span>(shortSignal, <span class="keyword">title</span>=<span class="string">"Confirmed Bearish Engulfing"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">fuchsia</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowdown</span>, <span class="keyword">size</span>=size.normal)
+</code>
+</pre>
+
+    <h3>2. Engulfing with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Engulfing with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Engulfing Pattern Detection (from basic example)</span>
+<span class="keyword">isPrevBullish</span> = close[<span class="number">1</span>] > open[<span class="number">1</span>]
+<span class="keyword">isPrevBearish</span> = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+isBullishEngulfing = isPrevBearish <span class="keyword">and</span> (close > open) <span class="keyword">and</span> (close > high[<span class="number">1</span>]) <span class="keyword">and</span> (open < low[<span class="number">1</span>])
+isBearishEngulfing = isPrevBullish <span class="keyword">and</span> (close < open) <span class="keyword">and</span> (open > high[<span class="number">1</span>]) <span class="keyword">and</span> (close < low[<span class="number">1</span>])
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Engulfing candle's volume should be higher than previous candle's volume</span>
+isVolumeConfirmed = volume > volume[<span class="number">1</span>]
+
+<span class="comment">// Combined signals</span>
+confirmedBullish = isBullishEngulfing <span class="keyword">and</span> isVolumeConfirmed
+confirmedBearish = isBearishEngulfing <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">barcolor</span>(confirmedBullish ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">teal</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+<span class="function">barcolor</span>(confirmedBearish ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">maroon</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="function">plotshape</span>(confirmedBullish, <span class="keyword">title</span>=<span class="string">"Bullish Engulfing (Vol Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labelup</span>, <span class="keyword">size</span>=size.small, <span class="keyword">text</span>=<span class="string">"Bull Vol"</span>)
+<span class="function">plotshape</span>(confirmedBearish, <span class="keyword">title</span>=<span class="string">"Bearish Engulfing (Vol Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labeldown</span>, <span class="keyword">size</span>=size.small, <span class="keyword">text</span>=<span class="string">"Bear Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="function">plot</span>(volume, <span class="keyword">title</span>=<span class="string">"Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_columns</span>)
+</code>
+</pre>
+
+
+    <h3>3. Engulfing with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Engulfing with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+<span class="keyword">rsiLength</span> = <span class="function">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+<span class="keyword">overbought</span> = <span class="function">input</span>(<span class="number">70</span>, <span class="string">"RSI Overbought Level"</span>)
+<span class="keyword">oversold</span> = <span class="function">input</span>(<span class="number">30</span>, <span class="string">"RSI Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Engulfing Pattern Detection</span>
+isPrevBullish = close[<span class="number">1</span>] > open[<span class="number">1</span>]
+isPrevBearish = close[<span class="number">1</span>] < open[<span class="number">1</span>]
+isBullishEngulfing = isPrevBearish <span class="keyword">and</span> (close > open) <span class="keyword">and</span> (close > high[<span class="number">1</span>]) <span class="keyword">and</span> (open < low[<span class="number">1</span>])
+isBearishEngulfing = isPrevBullish <span class="keyword">and</span> (close < open) <span class="keyword">and</span> (open > high[<span class="number">1</span>]) <span class="keyword">and</span> (close < low[<span class="number">1</span>])
+
+<span class="comment">// RSI Confirmation:</span>
+<span class="comment">// Bullish Engulfing: RSI below oversold level (or rising from it)</span>
+<span class="comment">// Bearish Engulfing: RSI above overbought level (or falling from it)</span>
+rsiBullishConfirm = rsiValue < oversold
+rsiBearishConfirm = rsiValue > overbought
+
+<span class="comment">// Combined signals</span>
+signalBullish = isBullishEngulfing <span class="keyword">and</span> rsiBullishConfirm
+signalBearish = isBearishEngulfing <span class="keyword">and</span> rsiBearishConfirm
+
+<span class="comment">// Plot signals</span>
+<span class="function">plotshape</span>(signalBullish, <span class="keyword">title</span>=<span class="string">"Bullish Engulfing (RSI Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">aqua</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=size.normal)
+<span class="function">plotshape</span>(signalBearish, <span class="keyword">title</span>=<span class="string">"Bearish Engulfing (RSI Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowdown</span>, <span class="keyword">size</span>=size.normal)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="function">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane</span>)
+<span class="function">hline</span>(overbought, <span class="string">"Overbought"</span>, <span class="keyword">color</span>.<span class="function">red</span>)
+<span class="function">hline</span>(oversold, <span class="string">"Oversold"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
+    </code>
+</pre>
+
+    <h2>Optimizing Engulfing Pattern Performance</h2>
+    <p>To maximize the effectiveness of Engulfing patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><strong>Context is King:</strong> Always consider the larger trend. Bullish engulfing patterns are strongest after a downtrend, and bearish engulfing patterns are strongest after an uptrend.</li>
+      <li><strong>Volume Confirmation:</strong> Look for higher volume on the engulfing candle compared to the previous one, indicating stronger conviction behind the move.</li>
+      <li><strong>Support & Resistance:</strong> Engulfing patterns that occur at significant support or resistance levels tend to be more reliable.</li>
+      <li><strong>Timeframe:</strong> While visible on all timeframes, signals on higher timeframes (e.g., daily, weekly) generally carry more weight than those on lower timeframes.</li>
+      <li><strong>Confirmation from Other Indicators:</strong> Combine with momentum oscillators (RSI, Stochastic), trend indicators (Moving Averages, ADX), or volatility tools (Bollinger Bands) for higher probability trades.</li>
+    </ul>
+
+    <h2>Common Engulfing Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not all engulfing patterns are strong reversal signals. Avoid trading them in choppy or ranging markets without additional confirmation, as they can lead to false signals.
+    </div>
+    <ul>
+      <li><b> Ignoring Trend:</b> An engulfing pattern against the primary trend is usually a weaker signal.</li>
+      <li><b> Small Candles:</b> Patterns involving very small candles (dojis, spinning tops) might not carry enough conviction.</li>
+      <li><b> Lack of Volume:</b> A weak volume on the engulfing candle can indicate a lack of true buying/selling pressure.</li>
+      <li><b> Over-reliance:</b> Using engulfing patterns alone without other forms of analysis (e.g., support/resistance, market structure) can lead to whipsaws.</li>
+      <li><b> Mistaking Gaps:</b> Ensure the engulfing candle truly opens below/above the previous candle's close, not just engulfs the body due to a large gap.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b> Engulfing candlestick pattern</b> is a foundational element of price action analysis and a powerful tool in a trader's arsenal. When properly understood and combined with other technical indicators and market context, it can provide high-probability signals for trend reversals. By implementing these patterns in Pine Script, you can automate their detection, integrate them into sophisticated trading strategies, and enhance your ability to read the market's pulse, ultimately improving your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

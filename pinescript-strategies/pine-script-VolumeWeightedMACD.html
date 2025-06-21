@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Volume-Weighted MACD - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Volume-Weighted MACD in Pine Script for TradingView - an enhanced MACD indicator that incorporates volume to provide more reliable trend and momentum signals.">
+    <meta name="keywords" content="pine script strategies, Volume-Weighted MACD, VW-MACD, tradingview indicator, technical analysis, momentum, trend following, divergence, volume analysis, VWMA">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Volume-Weighted MACD - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Volume-Weighted MACD in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Volume-Weighted MACD - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeWeightedMACD.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Volume-Weighted MACD - Complete TradingView Guide",
+      "description": "Master Volume-Weighted MACD in Pine Script for TradingView - an enhanced MACD indicator that incorporates volume to provide more reliable trend and momentum signals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeWeightedMACD.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Volume-Weighted MACD",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeWeightedMACD.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Volume-Weighted MACD </h1>
+      <p class="blog-subtitle">Master this advanced momentum indicator in TradingView's Pine Script that integrates volume into its core calculation, providing more robust trend and momentum signals for enhanced trading strategies.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Volume-Weighted MACD</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Volume-Weighted MACD?</h2>
+    <p> <b>Volume-Weighted Moving Average Convergence Divergence (VW-MACD)</b> is an advanced variation of the traditional MACD indicator. While the standard MACD uses Exponential Moving Averages (EMAs) of price, the VW-MACD replaces these with <b>Volume-Weighted Moving Averages (VWMAs)</b>. By incorporating volume into the calculation of its underlying moving averages, VW-MACD aims to provide more reliable and conviction-based signals.</p>
+
+    <p>The core philosophy behind VW-MACD is that significant price movements should be accompanied by significant volume. If volume is low, a price move might lack conviction. By weighting price averages by volume, VW-MACD prioritizes price action that occurs on higher trading activity, theoretically filtering out "noise" that happens on lower volume.</p>
+
+    <p>VW-MACD is primarily used to:</p>
+    <ul>
+      <li> <b>Confirm price trends:</b> A rising VW-MACD line above its signal line confirms a strong uptrend supported by volume.</li>
+      <li> <b>Identify momentum shifts:</b> Crossovers of the VW-MACD line and its signal line indicate shifts in volume-weighted momentum.</li>
+      <li> <b>Spot divergences:</b> Divergences between price and VW-MACD can provide early warnings of potential trend reversals, emphasizing the lack of volume conviction behind price movements.</li>
+      <li> <b>Filter out weak signals:</b> Signals generated by VW-MACD might be considered more robust than those from standard MACD, as they are confirmed by volume.</li>
+    </ul>
+
+    <p>In Pine Script, implementing VW-MACD involves leveraging the `ta.vwma()` function and applying it in a similar structure to the traditional MACD.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Volume-Weighted MACD closely mirrors that of the standard MACD, but with a critical difference: the use of Volume-Weighted Moving Averages (VWMAs) instead of Exponential Moving Averages (EMAs) for the main MACD line components.</p>
+    <ol>
+      <li> <b>Volume-Weighted Fast Length Moving Average (VWMA_Fast):</b>
+        <br>
+        `VWMA_Fast = ta.vwma(close, Fast_Length)`
+        (Typically 12 periods)
+      </li>
+      <li> <b>Volume-Weighted Slow Length Moving Average (VWMA_Slow):</b>
+        <br>
+        `VWMA_Slow = ta.vwma(close, Slow_Length)`
+        (Typically 26 periods)
+      </li>
+      <li> <b>VW-MACD Line:</b> The difference between the VWMA_Fast and VWMA_Slow.
+        <br>
+        `VW_MACD_Line = VWMA_Fast - VWMA_Slow`
+      </li>
+      <li> <b>VW-MACD Signal Line:</b> An Exponential Moving Average (EMA) of the VW-MACD Line. Note that this is a *standard EMA*, not volume-weighted, applied to the VW-MACD Line itself.
+        <br>
+        `VW_Signal_Line = ta.ema(VW_MACD_Line, Signal_Length)`
+        (Typically 9 periods)
+      </li>
+      <li> <b>VW-MACD Histogram:</b> The difference between the VW-MACD Line and the VW-MACD Signal Line.
+        <br>
+        `VW_Histogram = VW_MACD_Line - VW_Signal_Line`
+    </ol>
+    <p>The default lengths for VW-MACD are commonly 12, 26, and 9, consistent with the standard MACD.</p>
+
+    <h2>Basic Volume-Weighted MACD Implementation in Pine Script</h2>
+    <p>Pine Script v5 makes this relatively straightforward using `ta.vwma()` and `ta.ema()`.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Volume-Weighted MACD"</span>, <span class="property">overlay</span>=<span class="literal">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Inputs for VW-MACD lengths</span>
+<span class="variable">fastLength</span> = <span class="function">input.int</span>(<span class="number">12</span>, <span class="property">title</span>=<span class="string">"Fast Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">slowLength</span> = <span class="function">input.int</span>(<span class="number">26</span>, <span class="property">title</span>=<span class="string">"Slow Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="property">title</span>=<span class="string">"Signal Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Volume-Weighted Fast and Slow Moving Averages</span>
+<span class="variable">vwmaFast</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">fastLength</span>)
+<span class="variable">vwmaSlow</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">slowLength</span>)
+
+<span class="comment">// Calculate VW-MACD Line</span>
+<span class="variable">vwMacdLine</span> = <span class="variable">vwmaFast</span> - <span class="variable">vwmaSlow</span>
+
+<span class="comment">// Calculate VW-MACD Signal Line (EMA of VW-MACD Line)</span>
+<span class="variable">vwSignalLine</span> = <span class="function">ta.ema</span>(<span class="variable">vwMacdLine</span>, <span class="variable">signalLength</span>)
+
+<span class="comment">// Calculate VW-MACD Histogram</span>
+<span class="variable">vwHistogram</span> = <span class="variable">vwMacdLine</span> - <span class="variable">vwSignalLine</span>
+
+<span class="comment">// Plotting the VW-MACD components</span>
+<span class="function">plot</span>(<span class="variable">vwMacdLine</span>, <span class="property">title</span>=<span class="string">"VW-MACD Line"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+<span class="function">plot</span>(<span class="variable">vwSignalLine</span>, <span class="property">title</span>=<span class="string">"VW-MACD Signal"</span>, <span class="property">color</span>=<span class="constant">color.orange</span>, <span class="property">linewidth</span>=<span class="number">1</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="constant">hline.style_dotted</span>)
+
+<span class="comment">// Plotting the Histogram with color logic</span>
+<span class="comment">// Colors for histogram: green for rising, red for falling</span>
+<span class="variable">histColor</span> = <span class="variable">vwHistogram</span> &gt;= <span class="number">0</span> ? (<span class="variable">vwHistogram</span> &gt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] ? <span class="function">color.new</span>(<span class="constant">color.teal</span>, <span class="number">20</span>) : <span class="function">color.new</span>(<span class="constant">color.blue</span>, <span class="number">20</span>)) : (<span class="variable">vwHistogram</span> &lt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] ? <span class="function">color.new</span>(<span class="constant">color.red</span>, <span class="number">20</span>) : <span class="function">color.new</span>(<span class="constant">color.maroon</span>, <span class="number">20</span>))
+
+<span class="function">plot</span>(<span class="variable">vwHistogram</span>, <span class="property">title</span>=<span class="string">"VW-MACD Histogram"</span>, <span class="property">style</span>=<span class="constant">plot.style_columns</span>, <span class="property">color</span>=<span class="variable">histColor</span>)
+</code></pre>
+
+
+    <div class="tip">
+     <b>Conviction Filter:</b> VW-MACD implicitly filters out weak price moves that aren't supported by significant volume, making its signals potentially more reliable than standard MACD.
+    </div>
+
+    <h2>Practical Volume-Weighted MACD <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Crossovers (Trend & Momentum Shifts)</h3>
+    <p>The most common strategy involves crossovers between the VW-MACD Line and its Signal Line. These indicate shifts in volume-weighted momentum and can be used for trend confirmation or early entry/exit signals.</p>
+    <ul>
+      <li><strong>Bullish Crossover</strong>: VW-MACD Line crosses <b>above</b> the VW-MACD Signal Line. This indicates increasing positive volume-weighted momentum, suggesting a potential uptrend or continuation.</li>
+      <li><strong>Bearish Crossover</strong>: VW-MACD Line crosses <b>below</b> the VW-MACD Signal Line. This indicates increasing negative volume-weighted momentum, suggesting a potential downtrend or continuation.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"VW-MACD Crossover Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">fastLength</span> = <span class="function">input.int</span>(<span class="number">12</span>, <span class="property">title</span>=<span class="string">"Fast Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">slowLength</span> = <span class="function">input.int</span>(<span class="number">26</span>, <span class="property">title</span>=<span class="string">"Slow Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="property">title</span>=<span class="string">"Signal Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="variable">vwmaFast</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">fastLength</span>)
+<span class="variable">vwmaSlow</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">slowLength</span>)
+<span class="variable">vwMacdLine</span> = <span class="variable">vwmaFast</span> - <span class="variable">vwmaSlow</span>
+<span class="variable">vwSignalLine</span> = <span class="function">ta.ema</span>(<span class="variable">vwMacdLine</span>, <span class="variable">signalLength</span>)
+<span class="variable">vwHistogram</span> = <span class="variable">vwMacdLine</span> - <span class="variable">vwSignalLine</span>
+
+<span class="comment">// Plot for visualization (display=display.pane_only plots in a separate sub-window)</span>
+<span class="function">plot</span>(<span class="variable">vwMacdLine</span>, <span class="string">"VW-MACD Line"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">plot</span>(<span class="variable">vwSignalLine</span>, <span class="string">"VW-MACD Signal"</span>, <span class="property">color</span>=<span class="constant">color.orange</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="constant">hline.style_dotted</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="variable">histColor</span> = <span class="variable">vwHistogram</span> &gt;= <span class="number">0</span> ? (<span class="variable">vwHistogram</span> &gt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] ? <span class="function">color.new</span>(<span class="constant">color.teal</span>, <span class="number">20</span>) : <span class="function">color.new</span>(<span class="constant">color.blue</span>, <span class="number">20</span>)) : (<span class="variable">vwHistogram</span> &lt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] ? <span class="function">color.new</span>(<span class="constant">color.red</span>, <span class="number">20</span>) : <span class="function">color.new</span>(<span class="constant">color.maroon</span>, <span class="number">20</span>))
+
+<span class="function">plot</span>(<span class="variable">vwHistogram</span>, <span class="string">"VW-MACD Histogram"</span>, <span class="property">style</span>=<span class="constant">plot.style_columns</span>, <span class="property">color</span>=<span class="variable">histColor</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="comment">// Long entry: VW-MACD Line crosses above Signal Line</span>
+<span class="variable">longCondition</span> = <span class="function">ta.crossover</span>(<span class="variable">vwMacdLine</span>, <span class="variable">vwSignalLine</span>)
+
+<span class="comment">// Short entry: VW-MACD Line crosses below Signal Line</span>
+<span class="variable">shortCondition</span> = <span class="function">ta.crossunder</span>(<span class="variable">vwMacdLine</span>, <span class="variable">vwSignalLine</span>)
+
+<span class="keyword">if</span> (<span class="variable">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long VW-MACD"</span>, <span class="constant">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short VW-MACD"</span>, <span class="constant">strategy.short</span>)
+
+<span class="comment">// Basic exit: opposite signal</span>
+<span class="function">strategy.close</span>(<span class="string">"Long VW-MACD"</span>, <span class="property">when</span>=<span class="variable">shortCondition</span>)
+<span class="function">strategy.close</span>(<span class="string">"Short VW-MACD"</span>, <span class="property">when</span>=<span class="variable">longCondition</span>)
+</code></pre>
+
+    <h3>2. Divergence (Key Reversal Signal with Volume Confirmation)</h3>
+    <p>Divergence between price and the VW-MACD is a highly regarded signal, suggesting a weakening trend and potential reversal, with the added conviction that volume is not supporting the price action.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but VW-MACD makes a <b>higher low</b> (or fails to make a significantly lower low). This indicates that despite falling prices, volume-weighted buying momentum is increasing, hinting at a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but VW-MACD makes a <b>lower high</b> (or fails to make a significantly higher high). This indicates that despite rising prices, volume-weighted selling momentum is increasing, hinting at a potential downward reversal.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"VW-MACD Divergence Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">fastLength</span> = <span class="function">input.int</span>(<span class="number">12</span>, <span class="property">title</span>=<span class="string">"Fast Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">slowLength</span> = <span class="function">input.int</span>(<span class="number">26</span>, <span class="property">title</span>=<span class="string">"Slow Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="property">title</span>=<span class="string">"Signal Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="variable">vwmaFast</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">fastLength</span>)
+<span class="variable">vwmaSlow</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">slowLength</span>)
+<span class="variable">vwMacdLine</span> = <span class="variable">vwmaFast</span> - <span class="variable">vwmaSlow</span>
+<span class="variable">vwSignalLine</span> = <span class="function">ta.ema</span>(<span class="variable">vwMacdLine</span>, <span class="variable">signalLength</span>)
+<span class="variable">vwHistogram</span> = <span class="variable">vwMacdLine</span> - <span class="variable">vwSignalLine</span>
+
+<span class="comment">// Plot for visualization</span>
+<span class="function">plot</span>(<span class="variable">vwMacdLine</span>, <span class="string">"VW-MACD Line"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">plot</span>(<span class="variable">vwSignalLine</span>, <span class="string">"VW-MACD Signal"</span>, <span class="property">color</span>=<span class="constant">color.orange</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="constant">hline.style_dotted</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="variable">histColor</span> = <span class="variable">vwHistogram</span> &gt;= <span class="number">0</span>
+    ? (<span class="variable">vwHistogram</span> &gt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] 
+        ? <span class="function">color.new</span>(<span class="constant">color.teal</span>, <span class="number">20</span>) 
+        : <span class="function">color.new</span>(<span class="constant">color.blue</span>, <span class="number">20</span>)) 
+    : (<span class="variable">vwHistogram</span> &lt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] 
+        ? <span class="function">color.new</span>(<span class="constant">color.red</span>, <span class="number">20</span>) 
+        : <span class="function">color.new</span>(<span class="constant">color.maroon</span>, <span class="number">20</span>))
+
+<span class="function">plot</span>(<span class="variable">vwHistogram</span>, <span class="string">"VW-MACD Histogram"</span>, <span class="property">style</span>=<span class="constant">plot.style_columns</span>, <span class="property">color</span>=<span class="variable">histColor</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="comment">// Simple divergence detection (conceptual)</span>
+<span class="comment">// Bullish Divergence: Price lower low, VW-MACD higher low</span>
+<span class="variable">bullishDiv</span> = <span class="variable">close</span> &lt; <span class="variable">close</span>[<span class="number">1</span>] and <span class="variable">close</span>[<span class="number">1</span>] &lt; <span class="variable">close</span>[<span class="number">2</span>] 
+    and <span class="variable">vwMacdLine</span> &gt; <span class="variable">vwMacdLine</span>[<span class="number">1</span>] and <span class="variable">vwMacdLine</span>[<span class="number">1</span>] &gt; <span class="variable">vwMacdLine</span>[<span class="number">2</span>]
+
+<span class="comment">// Bearish Divergence: Price higher high, VW-MACD lower high</span>
+<span class="variable">bearishDiv</span> = <span class="variable">close</span> &gt; <span class="variable">close</span>[<span class="number">1</span>] and <span class="variable">close</span>[<span class="number">1</span>] &gt; <span class="variable">close</span>[<span class="number">2</span>] 
+    and <span class="variable">vwMacdLine</span> &lt; <span class="variable">vwMacdLine</span>[<span class="number">1</span>] and <span class="variable">vwMacdLine</span>[<span class="number">1</span>] &lt; <span class="variable">vwMacdLine</span>[<span class="number">2</span>]
+
+<span class="function">plotshape</span>(<span class="variable">bullishDiv</span>, <span class="property">title</span>=<span class="string">"Bullish VW-MACD Divergence"</span>, <span class="property">location</span>=<span class="constant">location.belowbar</span>, <span class="property">color</span>=<span class="constant">color.green</span>, <span class="property">style</span>=<span class="constant">shape.triangleup</span>, <span class="property">size</span>=<span class="constant">size.small</span>)
+<span class="function">plotshape</span>(<span class="variable">bearishDiv</span>, <span class="property">title</span>=<span class="string">"Bearish VW-MACD Divergence"</span>, <span class="property">location</span>=<span class="constant">location.abovebar</span>, <span class="property">color</span>=<span class="constant">color.red</span>, <span class="property">style</span>=<span class="constant">shape.triangledown</span>, <span class="property">size</span>=<span class="constant">size.small</span>)
+
+<span class="keyword">if</span> (<span class="variable">bullishDiv</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Divergence"</span>, <span class="constant">strategy.long</span>)
+<span class="keyword">if</span> (<span class="variable">bearishDiv</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Divergence"</span>, <span class="constant">strategy.short</span>)
+
+<span class="comment">// Basic exit after a few bars or on opposite signal</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Divergence Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Long Divergence"</span>, <span class="property">profit</span>=<span class="variable">close</span>*<span class="number">0.02</span>, <span class="property">loss</span>=<span class="variable">close</span>*<span class="number">0.01</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Short Divergence Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Short Divergence"</span>, <span class="property">profit</span>=<span class="variable">close</span>*<span class="number">0.02</span>, <span class="property">loss</span>=<span class="variable">close</span>*<span class="number">0.01</span>)
+</code></pre>
+
+
+    <h3>3. Histogram Analysis (Momentum Strength)</h3>
+    <p>The histogram component of VW-MACD provides insights into the strength of the volume-weighted momentum. Expanding histogram bars in the direction of the trend indicate increasing momentum, while contracting bars suggest weakening momentum.</p>
+    <ul>
+      <li><strong>Increasing Bullish Momentum</strong>: VW-MACD Line is above Signal Line (positive histogram), and histogram bars are growing taller (i.e., `vwHistogram > vwHistogram[1]`).</li>
+      <li><strong>Decreasing Bullish Momentum</strong>: VW-MACD Line is above Signal Line (positive histogram), but histogram bars are shrinking (i.e., `vwHistogram &lt; vwHistogram[1]`). This can signal a weakening uptrend or a potential reversal.</li>
+      <li><strong>Increasing Bearish Momentum</strong>: VW-MACD Line is below Signal Line (negative histogram), and histogram bars are growing deeper (i.e., `vwHistogram &lt; vwHistogram[1]`).</li>
+      <li><strong>Decreasing Bearish Momentum</strong>: VW-MACD Line is below Signal Line (negative histogram), but histogram bars are becoming shallower (i.e., `vwHistogram > vwHistogram[1]`). This can signal a weakening downtrend or a potential reversal.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"VW-MACD Histogram Analysis"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">fastLength</span> = <span class="function">input.int</span>(<span class="number">12</span>, <span class="property">title</span>=<span class="string">"Fast Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">slowLength</span> = <span class="function">input.int</span>(<span class="number">26</span>, <span class="property">title</span>=<span class="string">"Slow Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="property">title</span>=<span class="string">"Signal Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="variable">vwmaFast</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">fastLength</span>)
+<span class="variable">vwmaSlow</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">slowLength</span>)
+<span class="variable">vwMacdLine</span> = <span class="variable">vwmaFast</span> - <span class="variable">vwmaSlow</span>
+<span class="variable">vwSignalLine</span> = <span class="function">ta.ema</span>(<span class="variable">vwMacdLine</span>, <span class="variable">signalLength</span>)
+<span class="variable">vwHistogram</span> = <span class="variable">vwMacdLine</span> - <span class="variable">vwSignalLine</span>
+
+<span class="comment">// Plot for visualization</span>
+<span class="function">plot</span>(<span class="variable">vwMacdLine</span>, <span class="string">"VW-MACD Line"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">plot</span>(<span class="variable">vwSignalLine</span>, <span class="string">"VW-MACD Signal"</span>, <span class="property">color</span>=<span class="constant">color.orange</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="constant">hline.style_dotted</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="variable">histColor</span> = <span class="variable">vwHistogram</span> &gt;= <span class="number">0</span>
+    ? (<span class="variable">vwHistogram</span> &gt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] 
+        ? <span class="function">color.new</span>(<span class="constant">color.teal</span>, <span class="number">20</span>) 
+        : <span class="function">color.new</span>(<span class="constant">color.blue</span>, <span class="number">20</span>)) 
+    : (<span class="variable">vwHistogram</span> &lt; <span class="variable">vwHistogram</span>[<span class="number">1</span>] 
+        ? <span class="function">color.new</span>(<span class="constant">color.red</span>, <span class="number">20</span>) 
+        : <span class="function">color.new</span>(<span class="constant">color.maroon</span>, <span class="number">20</span>))
+
+<span class="function">plot</span>(<span class="variable">vwHistogram</span>, <span class="string">"VW-MACD Histogram"</span>, <span class="property">style</span>=<span class="constant">plot.style_columns</span>, <span class="property">color</span>=<span class="variable">histColor</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="comment">// Conditions for histogram momentum</span>
+<span class="variable">increasingBullishMomentum</span> = <span class="variable">vwHistogram</span> &gt; <span class="number">0</span> and <span class="variable">vwHistogram</span> &gt; <span class="variable">vwHistogram</span>[<span class="number">1</span>]
+<span class="variable">decreasingBullishMomentum</span> = <span class="variable">vwHistogram</span> &gt; <span class="number">0</span> and <span class="variable">vwHistogram</span> &lt; <span class="variable">vwHistogram</span>[<span class="number">1</span>]
+<span class="variable">increasingBearishMomentum</span> = <span class="variable">vwHistogram</span> &lt; <span class="number">0</span> and <span class="variable">vwHistogram</span> &lt; <span class="variable">vwHistogram</span>[<span class="number">1</span>]
+<span class="variable">decreasingBearishMomentum</span> = <span class="variable">vwHistogram</span> &lt; <span class="number">0</span> and <span class="variable">vwHistogram</span> &gt; <span class="variable">vwHistogram</span>[<span class="number">1</span>]
+
+<span class="comment">// Example strategy using histogram signals</span>
+<span class="comment">// Entry on increasing momentum, exit on decreasing momentum</span>
+<span class="keyword">if</span> (<span class="variable">increasingBullishMomentum</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Hist Inc"</span>, <span class="constant">strategy.long</span>)
+<span class="keyword">if</span> (<span class="variable">increasingBearishMomentum</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Hist Inc"</span>, <span class="constant">strategy.short</span>)
+
+<span class="keyword">if</span> (<span class="variable">decreasingBullishMomentum</span>)
+    <span class="function">strategy.close</span>(<span class="string">"Long Hist Inc"</span>)
+<span class="keyword">if</span> (<span class="variable">decreasingBearishMomentum</span>)
+    <span class="function">strategy.close</span>(<span class="string">"Short Hist Inc"</span>)
+</code></pre>
+
+
+    <h2>Optimizing Volume-Weighted MACD Performance</h2>
+    <p>To get the most from Volume-Weighted MACD in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> Experiment with the `fastLength`, `slowLength`, and `signalLength` inputs. While 12, 26, 9 are standard, different assets or timeframes might benefit from slightly adjusted values.</li>
+      <li><strong>Focus on Divergence:</strong> Like the traditional MACD, divergences between price and VW-MACD are often the most reliable signals for anticipating reversals. Pay close attention to these.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm VW-MACD signals with <b>price action</b>. A bullish crossover is stronger if it aligns with a break of resistance or a bullish candlestick pattern.</li>
+      <li><strong>Trend Context:</strong> Use VW-MACD in the context of the larger trend. In a strong uptrend, focus on bullish crossovers and bounces from the zero line. In a downtrend, look for bearish crossovers.</li>
+      <li><strong>Volume Data Quality:</strong> Since VW-MACD heavily relies on volume, ensure the asset you are trading has reliable and consistent volume data.</li>
+      <li><strong>Filtering with Zero Line:</strong> Signals occurring closer to or crossing the zero line often indicate stronger momentum shifts. Signals far from the zero line might indicate overextended conditions.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Enhanced Reliability:</b> By factoring in volume, VW-MACD aims to reduce false signals and provide more robust indications of momentum and trend shifts compared to its price-only counterpart.
+    </div>
+
+    <h2>Common Volume-Weighted MACD Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Despite being volume-weighted, VW-MACD is still a lagging indicator. It will confirm trends after they have already begun.</li>
+      <li> <b>Whipsaws in Choppy Markets:</b> In highly volatile and non-trending (choppy) markets, VW-MACD can generate frequent crossovers and false signals, leading to whipsaws.</li>
+      <li> <b>Over-Optimization:</b> Excessive parameter tuning for historical data can lead to an indicator that performs poorly in live trading (curve fitting).</li>
+      <li> <b>Volume Data Quality:</b> Inaccurate or inconsistent volume data can significantly distort the VW-MACD's readings and make it unreliable.</li>
+      <li> <b>Not a Standalone Indicator:</b> VW-MACD provides valuable insights but should never be used in isolation. It works best as a confirming or filtering indicator within a broader trading strategy.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Volume-Weighted MACD is an enhanced and insightful momentum indicator available in Pine Script for TradingView. By integrating <b>Volume-Weighted Moving Averages</b> into its core calculation, it aims to provide more robust and conviction-based signals compared to the traditional MACD. While it still operates as a lagging indicator, its ability to filter out price moves not supported by significant volume makes its <b>crossovers, divergences, and histogram analysis</b> potentially more reliable. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with price action and other technical analysis tools, you can leverage Volume-Weighted MACD to enhance your <b>pine script strategies</b> and gain a clearer understanding of market momentum backed by underlying volume conviction.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Positive Volume Index (PVI) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Positive Volume Index (PVI) in Pine Script for TradingView - a unique volume-based indicator that tracks 'uninformed money' activity primarily on high-volume days, to confirm trends and spot divergence.">
+    <meta name="keywords" content="pine script strategies, Positive Volume Index, PVI, tradingview indicator, technical analysis, volume analysis, uninformed money, trend confirmation, divergence, public participation">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Positive Volume Index (PVI) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Positive Volume Index (PVI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Positive Volume Index (PVI) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-PositiveVolumeIndex.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Positive Volume Index (PVI) - Complete TradingView Guide",
+      "description": "Master the Positive Volume Index (PVI) in Pine Script for TradingView - a unique volume-based indicator that tracks 'uninformed money' activity primarily on high-volume days, to confirm trends and spot divergence.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-PositiveVolumeIndex.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Positive Volume Index (PVI)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-PositiveVolumeIndex.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Positive Volume Index (PVI) </h1>
+      <p class="blog-subtitle">Master this unique volume-based indicator in TradingView's Pine Script, designed to track "uninformed money" activity, particularly on high-volume days, to confirm trends and anticipate price movements.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Positive Volume Index (PVI)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Positive Volume Index (PVI)?</h2>
+    <p>The <b>Positive Volume Index (PVI)</b> is a cumulative momentum indicator that focuses on periods of <b>increasing volume</b>. Developed by Paul Dysart and popularized by Norman Fosback, the underlying theory behind PVI is that "uninformed money" or the general public tends to be most active and influence price changes on high-volume days, reacting to news or trends. Therefore, changes in price action on high-volume days are considered significant.</p>
+
+    <p>The PVI essentially tracks a cumulative sum that is adjusted only when volume increases from the previous day. If volume increases, the PVI is adjusted by the percentage change in price. If volume decreases or stays the same, the PVI remains unchanged. A rising PVI suggests that public participation (high volume) is pushing the price higher, often confirming an uptrend. A falling PVI suggests public distribution. PVI is primarily used to:</p>
+    <ul>
+      <li> <b>Identify divergences:</b> When price and PVI move in opposite directions, it can signal an impending trend reversal, particularly from the perspective of public interest.</li>
+      <li> <b>Confirm price trends:</b> PVI's trend confirms the underlying strength of a price trend, especially on high-volume days.</li>
+      <li> <b>Gauge long-term sentiment:</b> It's often used as a long-term indicator for the overall market or individual stocks.</li>
+    </ul>
+
+    <p>In Pine Script, PVI offers a distinctive way to analyze market sentiment by focusing on periods of high trading activity, providing insight into the conviction of broader market participation.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Positive Volume Index is cumulative and depends on the relationship between current and previous volume:</p>
+    <ol>
+      <li> <b>Initialize PVI:</b> The starting value of PVI is usually set to 1000 (or some other arbitrary base value) to provide a convenient reference point.</li>
+      <li> <b>Conditional Update:</b> For each period:
+        <ul>
+          <li>If <b>Current Volume > Previous Volume:</b>
+            `PVI = Previous PVI + (Previous PVI * ((Close - Previous Close) / Previous Close))`
+            Essentially, `PVI = Previous PVI * (1 + Price Percentage Change)`
+            * Handle `Previous Close == 0` to avoid division by zero.
+          </li>
+          <li>If <b>Current Volume <= Previous Volume:</b>
+            `PVI = Previous PVI` (PVI remains unchanged)
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>PVI is often smoothed with an Exponential Moving Average (EMA) (e.g., 255-period EMA for annual trend) to reduce noise and identify its long-term trend.</p>
+
+    <h2>Basic Positive Volume Index (PVI) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.pvi()` for calculating the Positive Volume Index.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Positive Volume Index (PVI)"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for PVI starting value (arbitrary, but common to start at 1000)</span>
+<span class="keyword">pviStartValue</span> = <span class="function">input.float</span>(<span class="number">1000</span>, <span class="keyword">title</span>=<span class="string">"PVI Start Value"</span>)
+
+<span class="comment">// Calculate PVI using the built-in function</span>
+<span class="comment">// ta.pvi() uses 'close' for price comparison and 'volume' for volume comparison</span>
+pviValue = <span class="function">ta.pvi</span>(pviStartValue, close, volume)
+
+<span class="comment">// Plot the PVI line</span>
+<span class="function">plot</span>(pviValue, <span class="keyword">title</span>=<span class="string">"PVI"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add a Moving Average of PVI (often a long-term EMA) as a signal line</span>
+<span class="comment">// A common length for the PVI MA is 255 (representing roughly a year of trading days)</span>
+pviMALength = <span class="function">input.int</span>(<span class="number">255</span>, <span class="keyword">title</span>=<span class="string">"PVI MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+pviMA = <span class="function">ta.ema</span>(pviValue, pviMALength)
+
+<span class="comment">// Plot the PVI Moving Average</span>
+<span class="function">plot</span>(pviMA, <span class="keyword">title</span>=<span class="string">"PVI MA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
+</code></pre>
+
+
+    <div class="tip">
+     <b>Public Participation:</b> PVI focuses on high-volume days, theorizing that these are driven by the broader, often less informed, public responding to market moves.
+    </div>
+
+    <h2>Practical PVI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. PVI and Moving Average Crossovers (Trend Confirmation)</h3>
+    <p>The most common strategy with PVI involves comparing it to its own moving average (often a long-term EMA like a 255-period). This helps confirm the direction of the "public money" trend and potential market direction.</p>
+    <ul>
+      <li><strong>Bullish Signal</strong>: PVI crosses <b>above its moving average</b>. This suggests that public participation is growing and pushing prices higher, confirming a long-term uptrend in price.</li>
+      <li><strong>Bearish Signal</strong>: PVI crosses <b>below its moving average</b>. This suggests public participation is decreasing or turning negative, confirming a long-term downtrend in price.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"PVI Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">pviStartValue</span> = <span class="function">input.float</span>(<span class="number">1000</span>, <span class="keyword">title</span>=<span class="string">"PVI Start Value"</span>)
+<span class="keyword">pviMALength</span> = <span class="function">input.int</span>(<span class="number">255</span>, <span class="keyword">title</span>=<span class="string">"PVI MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>) <span class="comment">// Long-term MA</span>
+
+<span class="keyword">pviValue</span> = <span class="function">ta.pvi</span>(pviStartValue, close, volume)
+<span class="keyword">pviMA</span> = <span class="function">ta.ema</span>(pviValue, pviMALength)
+
+<span class="function">plot</span>(pviValue, <span class="string">"PVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">plot</span>(pviMA, <span class="string">"PVI MA"</span>, <span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Long entry: PVI crosses above its MA</span>
+longCondition = <span class="function">ta.crossover</span>(pviValue, pviMA)
+
+<span class="comment">// Short entry: PVI crosses below its MA</span>
+shortCondition = <span class="function">ta.crossunder</span>(pviValue, pviMA)
+
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long PVI"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short PVI"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Basic exit: opposite signal</span>
+<span class="function">strategy.close</span>(<span class="string">"Long PVI"</span>, <span class="keyword">when</span>=shortCondition)
+<span class="function">strategy.close</span>(<span class="string">"Short PVI"</span>, <span class="keyword">when</span>=longCondition)
+</code></pre>
+
+
+    <h3>2. PVI Divergence (Key Reversal Signal)</h3>
+    <p>Divergence between price and PVI can be a powerful signal, suggesting a weakening trend and potential reversal, as public money's actions are not confirming the current price trend.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but PVI makes a <b>higher low</b>. This indicates that despite falling prices, public interest (volume participation on up days) is increasing, hinting at a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but PVI makes a <b>lower high</b>. This indicates that despite rising prices, public interest (volume participation on up days) is decreasing, hinting at a potential downward reversal.</li>
+    </ul>
+
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"PVI Divergence Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">pviStartValue</span> = <span class="function">input.float</span>(<span class="number">1000</span>, <span class="keyword">title</span>=<span class="string">"PVI Start Value"</span>)
+<span class="keyword">pviValue</span> = <span class="function">ta.pvi</span>(pviStartValue, close, volume)
+<span class="keyword">pviMALength</span> = <span class="function">input.int</span>(<span class="number">255</span>, <span class="keyword">title</span>=<span class="string">"PVI MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">pviMA</span> = <span class="function">ta.ema</span>(pviValue, pviMALength)
+
+<span class="function">plot</span>(pviValue, <span class="string">"PVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">plot</span>(pviMA, <span class="string">"PVI MA"</span>, <span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This example looks for recent higher/lower swings in price and PVI.</span>
+
+<span class="comment">// Bullish Divergence: Price lower low, PVI higher low</span>
+bullishDiv = close &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close[<span class="number">2</span>] <span class="keyword">and</span> pviValue > pviValue[<span class="number">1</span>] <span class="keyword">and</span> pviValue[<span class="number">1</span>] > pviValue[<span class="number">2</span>]
+
+<span class="comment">// Bearish Divergence: Price higher high, PVI lower high</span>
+bearishDiv = close > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close[<span class="number">2</span>] <span class="keyword">and</span> pviValue &lt; pviValue[<span class="number">1</span>] <span class="keyword">and</span> pviValue[<span class="number">1</span>] &lt; pviValue[<span class="number">2</span>]
+
+<span class="comment">// Plot shapes on the chart to indicate divergence</span>
+<span class="function">plotshape</span>(bullishDiv, <span class="keyword">title</span>=<span class="string">"Bullish PVI Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(bearishDiv, <span class="keyword">title</span>=<span class="string">"Bearish PVI Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="keyword">if</span> (bullishDiv)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Divergence"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+<span class="keyword">if</span> (bearishDiv)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Divergence"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Basic exit after a few bars or on opposite signal</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Divergence Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long Divergence"</span>, <span class="keyword">profit</span>=close*<span class="number">0.02</span>, <span class="keyword">loss</span>=close*<span class="number">0.01</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Short Divergence Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short Divergence"</span>, <span class="keyword">profit</span>=close*<span class="number">0.02</span>, <span class="keyword">loss</span>=close*<span class="number">0.01</span>)
+</code></pre>
+
+
+    <h3>3. PVI as a Long-Term Trend Filter (Opposite of NVI)</h3>
+    <p>Given PVI's focus on public participation and its typically long-term smoothing, it can act as a filter for other trading strategies, particularly for confirming periods when the broader market is actively supporting a trend.</p>
+    <ul>
+      <li><strong>Long-Term Bullish Filter</strong>: Only take long trades from your primary strategy when PVI is above its long-term moving average. This suggests widespread bullish participation.</li>
+      <li><strong>Long-Term Bearish Filter</strong>: Only take short trades from your primary strategy when PVI is below its long-term moving average. This suggests widespread bearish participation or lack of buying interest.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"PVI Trend Filter Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">pviStartValue</span> = <span class="function">input.float</span>(<span class="number">1000</span>, <span class="keyword">title</span>=<span class="string">"PVI Start Value"</span>)
+<span class="keyword">pviMALength</span> = <span class="function">input.int</span>(<span class="number">255</span>, <span class="keyword">title</span>=<span class="string">"PVI MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>) <span class="comment">// Long-term MA filter</span>
+
+<span class="keyword">pviValue</span> = <span class="function">ta.pvi</span>(pviStartValue, close, volume)
+<span class="keyword">pviMA</span> = <span class="function">ta.ema</span>(pviValue, pviMALength)
+
+<span class="function">plot</span>(pviValue, <span class="string">"PVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">plot</span>(pviMA, <span class="string">"PVI MA"</span>, <span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define PVI trend direction</span>
+<span class="keyword">isPviUptrend</span> = pviValue > pviMA
+<span class="keyword">isPviDowntrend</span> = pviValue &lt; pviMA
+
+<span class="comment">// Example: Combine with a simple price EMA crossover strategy</span>
+<span class="keyword">fastPriceMALength</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"Fast Price MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">slowPriceMALength</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"Slow Price MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="keyword">fastPriceMA</span> = <span class="function">ta.ema</span>(close, fastPriceMALength)
+<span class="keyword">slowPriceMA</span> = <span class="function">ta.ema</span>(close, slowPriceMALength)
+
+longEntrySignal = <span class="function">ta.crossover</span>(fastPriceMA, slowPriceMA)
+shortEntrySignal = <span class="function">ta.crossunder</span>(fastPriceMA, slowPriceMALength) <span class="comment">// Typo in original: slowPriceMALength should be slowPriceMA</span>
+
+<span class="comment">// Only take long entries if PVI confirms a bullish trend</span>
+<span class="keyword">if</span> (longEntrySignal <span class="keyword">and</span> isPviUptrend)
+    <span class="function">strategy.entry</span>(<span class="string">"Filtered Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="comment">// Only take short entries if PVI confirms a bearish trend</span>
+<span class="keyword">if</span> (shortEntrySignal <span class="keyword">and</span> isPviDowntrend)
+    <span class="function">strategy.entry</span>(<span class="string">"Filtered Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Exit on opposite price MA crossover, regardless of PVI filter for simplicity</span>
+<span class="function">strategy.close</span>(<span class="string">"Filtered Long"</span>, <span class="keyword">when</span>=<span class="function">ta.crossunder</span>(fastPriceMA, slowPriceMA))
+<span class="function">strategy.close</span>(<span class="string">"Filtered Short"</span>, <span class="keyword">when</span>=<span class="function">ta.crossover</span>(fastPriceMA, slowPriceMA))
+
+<span class="comment">// Optional: Color background based on PVI trend</span>
+<span class="function">bgcolor</span>(isPviUptrend ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"PVI Bullish Bias"</span>)
+<span class="function">bgcolor</span>(isPviDowntrend ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">maroon</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"PVI Bearish Bias"</span>)
+</code></pre>
+
+
+    <h2>Optimizing Positive Volume Index (PVI) Performance</h2>
+    <p>To get the most from the Positive Volume Index in Pine Script:</p>
+    <ul>
+      <li> <b>Smoothing is Crucial:</b> PVI can be quite volatile, especially on lower timeframes. Applying a long-term moving average (e.g., 255-period EMA for daily charts) is essential to smooth out noise and identify its underlying trend, which is often considered more reliable.</li>
+      <li> <b>Focus on Divergence:</b> PVI's most powerful signals often come from <b>divergences</b> with price. These can provide early warnings of trend reversals as general market participation either confirms or contradicts the price action.</li>
+      <li> <b>Timeframe Consideration:</b> PVI, like NVI, is generally more suited for <b>longer-term analysis</b> (daily, weekly charts) due to its theory focusing on the activity of the broader market responding to trends. It might be less effective or generate more noise on very short intraday timeframes.</li>
+      <li> <b>Combine with Price Action:</b> Always confirm PVI signals with <b>price action</b>. A PVI signal is more reliable if supported by clear candlestick patterns, breaks of support/resistance, or other price-based confirmations.</li>
+      <li> <b>Context is Key:</b> Interpret PVI in the context of the overall market or asset. Its absolute value (e.g., starting at 1000) is not important; what matters is its trend relative to its moving average, and its divergence from price.</li>
+      <li> <b>Use with NVI:</b> Consider using PVI in conjunction with the Negative Volume Index (NVI) for a more complete picture of market conviction, distinguishing between "smart money" (NVI) and "uninformed money" (PVI) activity.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Uninformed Money Insights:</b> PVI helps you analyze how the broader market (often reacting to established trends or news) is influencing price, giving insight into public sentiment.
+    </div>
+
+    <h2>Common PVI Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> As a cumulative indicator smoothed by a moving average, PVI inherently lags price action. Its signals are often for confirmation or long-term trend shifts rather than immediate entries.</li>
+      <li> <b>False Signals:</b> Like any indicator, it can generate false signals, especially in markets with erratic volume patterns or during periods of very low liquidity where volume changes might not truly reflect public sentiment.</li>
+      <li> <b>Absolute Value Meaningless:</b> The raw PVI value (e.g., starting at 1000) has no intrinsic meaning other than its relation to its past values and its moving average.</li>
+      <li> <b>Limited on Low Volume Days:</b> By design, PVI ignores price action on low-volume days. This means it misses significant information, and should always be used alongside other indicators (like NVI) that capture low-volume moves.</li>
+      <li> <b>Not a Standalone Indicator:</b> PVI provides crucial insights but should never be used in isolation. It works best as a confirming or filtering indicator within a broader trading strategy.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Positive Volume Index (PVI) is a distinct and insightful technical indicator available in Pine Script for TradingView. By specifically focusing on <b>price movements on high-volume days</b>, it attempts to track the activity of the broader market participation ("uninformed money") and provide a unique perspective on underlying market sentiment. While its greatest strengths lie in confirming long-term trends and identifying powerful <b>divergences</b> with price (signaling potential trend reversals), it is most effective when smoothed with a moving average and integrated strategically with price action and other technical analysis tools. By understanding its calculation and thoughtfully utilizing its signals, you can leverage PVI to enhance your <b>pine script strategies</b> and gain a clearer understanding of market conviction, particularly from the perspective of widespread public activity.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

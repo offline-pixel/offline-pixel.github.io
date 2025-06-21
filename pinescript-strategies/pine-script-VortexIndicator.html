@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Vortex Indicator - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Vortex Indicator in Pine Script for TradingView - a comprehensive guide to identifying new trends and trend reversals.">
+    <meta name="keywords" content="pine script strategies, Vortex Indicator, VI, tradingview indicator, technical analysis, trend identification, trend reversals, momentum trading">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Vortex Indicator - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Vortex Indicator in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Vortex Indicator - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VortexIndicator.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Vortex Indicator - Complete TradingView Guide",
+      "description": "Master the Vortex Indicator in Pine Script for TradingView - a comprehensive guide to identifying new trends and trend reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VortexIndicator.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Vortex Indicator",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VortexIndicator.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Vortex Indicator - Complete TradingView Guide</h1>
+      <p class="blog-subtitle">Master this powerful trend and reversal identification tool in TradingView's Pine Script for enhanced market analysis.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Vortex Indicator</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Vortex Indicator?</h2>
+    <p>The <b>Vortex Indicator (VI)</b>, developed by Etienne Botes and Douglas Siepman, is a trend-following indicator designed to identify the start of a new trend and reversals within existing trends. It's based on two oscillating lines, +VI and -VI, which reflect positive and negative price movement respectively. The core concept behind the Vortex Indicator is to quantify the strength of directional movement by relating the current range to the previous ranges, inspired by the natural phenomenon of vortices in water.</p>
+
+    <p>In Pine Script, the Vortex Indicator provides a clear visual representation of whether bullish or bearish pressure is dominating the market, making it a valuable tool for swing traders and trend followers alike.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The Vortex Indicator consists of two main lines: <b>+VI (positive trend movement)</b> and <b>-VI (negative trend movement)</b>. Both lines oscillate around a central value, typically between 0 and 1.</p>
+    <p>The calculation involves several steps, generally over a look-back period (e.g., 14 periods):</p>
+    <ol>
+      <li><strong>True Range (TR)</strong>: A measure of volatility, calculated as `max(high - low, abs(high - close[1]), abs(low - close[1]))`.</li>
+      <li><strong>Positive Vortex Movement (+VM)</strong>: Measures bullish movement: `abs(high - low[1])`.</li>
+      <li><strong>Negative Vortex Movement (-VM)</strong>: Measures bearish movement: `abs(low - high[1])`.</li>
+      <li><strong>Sum of True Range (SumTR)</strong>: Sum of TR over the specified period.</li>
+      <li><strong>Sum of +VM (Sum+VM)</strong>: Sum of +VM over the specified period.</li>
+      <li><strong>Sum of -VM (Sum-VM)</strong>: Sum of -VM over the specified period.</li>
+      <li><strong>+VI</strong>: `Sum+VM / SumTR`</li>
+      <li><strong>-VI</strong>: `Sum-VM / SumTR`</li>
+    </ol>
+
+    <h2>Basic Vortex Indicator Implementation in Pine Script</h2>
+    <p>Pine Script v5 offers a built-in function `ta.vi()` to easily calculate the Vortex Indicator.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Vortex Indicator"</span>, <span class="property">overlay</span>=<span class="literal">false</span>)
+
+<span class="comment">// User input for the look-back period</span>
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"VI Length"</span>, <span class="property">minval</span>=<span class="number">2</span>)
+
+<span class="comment">// Calculate Vortex Indicator components using the built-in function</span>
+<span class="comment">// Returns: +VI, -VI</span>
+[<span class="variable">plusVI</span>, <span class="variable">minusVI</span>] = <span class="function">ta.vi</span>(<span class="variable">length</span>)
+
+<span class="comment">// Plot the +VI line (typically green)</span>
+<span class="function">plot</span>(<span class="variable">plusVI</span>, <span class="property">title</span>=<span class="string">"+VI"</span>, <span class="property">color</span>=<span class="constant">color.green</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the -VI line (typically red)</span>
+<span class="function">plot</span>(<span class="variable">minusVI</span>, <span class="property">title</span>=<span class="string">"-VI"</span>, <span class="property">color</span>=<span class="constant">color.red</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Optional: Plot a horizontal line at 1.0 for reference (often used as a threshold)</span>
+<span class="comment">// hline(1.0, "Threshold", color=color.gray, linestyle=hline.style_dotted)</span>
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Interpretation:</strong> When the `+VI` line is above the `-VI` line, it indicates a dominant uptrend. When the `-VI` line is above the `+VI` line, it indicates a dominant downtrend.
+    </div>
+
+    <h2>Practical Vortex Indicator Strategies</h2>
+
+    <h3>1. Vortex Crossover Strategy (Entry/Exit Signals)</h3>
+    <p>The primary signal generated by the Vortex Indicator is a crossover between the +VI and -VI lines. This suggests a shift in the prevailing trend.</p>
+    <ul>
+      <li><strong>Bullish Crossover / Buy Signal</strong>: When `+VI` crosses above `-VI`. This indicates that positive momentum is gaining strength.</li>
+      <li><strong>Bearish Crossover / Sell Signal</strong>: When `-VI` crosses above `+VI`. This indicates that negative momentum is gaining strength.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Vortex Crossover Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Inputs for Vortex Indicator length</span>
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"VI Length"</span>, <span class="property">minval</span>=<span class="number">2</span>)
+
+<span class="comment">// Calculate Vortex Indicator components</span>
+[<span class="variable">plusVI</span>, <span class="variable">minusVI</span>] = <span class="function">ta.vi</span>(<span class="variable">length</span>)
+
+<span class="comment">// Define conditions for long and short entries</span>
+<span class="variable">longCondition</span> = <span class="function">ta.crossover</span>(<span class="variable">plusVI</span>, <span class="variable">minusVI</span>)
+<span class="variable">shortCondition</span> = <span class="function">ta.crossunder</span>(<span class="variable">plusVI</span>, <span class="variable">minusVI</span>)
+
+<span class="comment">// Strategy entries</span>
+<span class="keyword">if</span> (<span class="variable">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Buy"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Sell"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Optional: Plot the VI lines in a separate pane for visualization</span>
+<span class="comment">// plot(plusVI, "+VI", color.green)</span>
+<span class="comment">// plot(minusVI, "-VI", color.red)</span>
+<span class="comment">// hline(1.0, "Threshold", color.gray)</span>
+</code></pre>
+
+
+    <h3>2. Trend Confirmation and Strength</h3>
+    <p>Beyond simple crossovers, the Vortex Indicator can be used to confirm trends and assess their strength:</p>
+    <ul>
+      <li><strong>Strong Uptrend</strong>: `+VI` is significantly above `-VI`. The wider the spread, the stronger the bullish trend.</li>
+      <li><strong>Strong Downtrend</strong>: `-VI` is significantly above `+VI`. The wider the spread, the stronger the bearish trend.</li>
+      <li><strong>Weak/Ranging Market</strong>: When the two lines are close to each other, or frequently crossing, it suggests a lack of clear trend or a choppy market.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Vortex Trend Strength"</span>, <span class="property">overlay</span>=<span class="literal">false</span>)
+
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"VI Length"</span>, <span class="property">minval</span>=<span class="number">2</span>)
+[<span class="variable">plusVI</span>, <span class="variable">minusVI</span>] = <span class="function">ta.vi</span>(<span class="variable">length</span>)
+
+<span class="function">plot</span>(<span class="variable">plusVI</span>, <span class="string">"+VI"</span>, <span class="property">color.green</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+<span class="function">plot</span>(<span class="variable">minusVI</span>, <span class="string">"-VI"</span>, <span class="property">color.red</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Highlight trend strength with background colors</span>
+<span class="variable">uptrendStrong</span> = <span class="variable">plusVI</span> <span class="operator">&gt;</span> <span class="variable">minusVI</span> <span class="keyword">and</span> <span class="variable">plusVI</span> <span class="operator">&gt;</span> <span class="number">1.1</span>
+<span class="variable">downtrendStrong</span> = <span class="variable">minusVI</span> <span class="operator">&gt;</span> <span class="variable">plusVI</span> <span class="keyword">and</span> <span class="variable">minusVI</span> <span class="operator">&gt;</span> <span class="number">1.1</span>
+
+<span class="function">bgcolor</span>(<span class="variable">uptrendStrong</span> <span class="operator">?</span> <span class="function">color.new</span>(<span class="property">color.green</span>, <span class="number">90</span>) <span class="operator">:</span> <span class="literal">na</span>)
+<span class="function">bgcolor</span>(<span class="variable">downtrendStrong</span> <span class="operator">?</span> <span class="function">color.new</span>(<span class="property">color.red</span>, <span class="number">90</span>) <span class="operator">:</span> <span class="literal">na</span>)
+
+<span class="comment">// Plot lines at specific levels for easy visualization of strength zones</span>
+<span class="function">hline</span>(<span class="number">1.1</span>, <span class="string">"Strong Trend Zone"</span>, <span class="property">color</span>=<span class="property">color.gray</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dotted</span>)
+<span class="function">hline</span>(<span class="number">0.9</span>, <span class="string">"Weak Trend Zone"</span>, <span class="property">color</span>=<span class="property">color.gray</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dotted</span>)
+</code></pre>
+
+    <h2>Optimizing Vortex Indicator Performance</h2>
+    <p>To enhance the effectiveness of the Vortex Indicator in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. A shorter length makes the indicator more responsive to price changes but can increase whipsaws. A longer length provides smoother signals but with more lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm Vortex signals with actual price action. Look for strong candle closes, support/resistance breaks, or chart patterns.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Use the Vortex Indicator on a higher timeframe to confirm the overall trend direction before taking trades based on lower timeframe signals.</li>
+      <li><strong>Use with Other Indicators:</strong> Pair the Vortex Indicator with other trend filters (e.g., ADX for trend strength) or oscillators (e.g., RSI for overbought/oversold conditions) to filter out false signals and improve signal quality.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Avoid Ranging Markets:</strong> The Vortex Indicator performs best in trending markets. Its signals can be unreliable and generate whipsaws in sideways or choppy market conditions.
+    </div>
+
+    <h2>Common Vortex Indicator Pitfalls</h2>
+    <ul>
+      <li> <b>Whipsaws:</b> In consolidation phases or choppy markets, the +VI and -VI lines may cross frequently, generating numerous false signals.</li>
+      <li> <b>Lagging:</b> While it aims to identify early trends, being based on past price data means it's still a lagging indicator. Signals might appear after a trend has already established itself.</li>
+      <li> <b>Over-Reliance:</b> Using the Vortex Indicator in isolation without confluence from other technical analysis tools or fundamental factors can lead to poor trading decisions.</li>
+      <li> <b>Misinterpretation of Flat Lines:</b> When both +VI and -VI are low and flat, it indicates a lack of trend. Mistaking these periods for consolidation before a strong move can be costly.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Vortex Indicator is a valuable addition to any technical analyst's toolkit in Pine Script. Its unique approach to quantifying positive and negative price movement provides clear insights into trend initiation, direction, and strength. By understanding its underlying calculations and implementing it thoughtfully, especially when combined with other confirming indicators and careful market analysis, you can leverage the Vortex Indicator to improve your trend identification and trading strategies on TradingView.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

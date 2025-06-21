@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script SMA (Simple Moving Average) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how to use Simple Moving Average (SMA) in Pine Script for TradingView - complete beginner's guide with examples">
+    <meta name="keywords" content="pine script, SMA, simple moving average, tradingview indicator, technical analysis">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script SMA (Simple Moving Average) ">
+    <meta property="og:description" content="Master the Simple Moving Average indicator in Pine Script with practical examples">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script SMA (Simple Moving Average) ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-SMA.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script SMA (Simple Moving Average) - Complete TradingView Guide",
+      "description": "Learn how to use Simple Moving Average (SMA) in Pine Script for TradingView - complete beginner's guide with examples",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-SMA.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "SMA (Simple Moving Average)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-SMA.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script SMA (Simple Moving Average) </h1>
+      <p class="blog-subtitle">A comprehensive guide for TradingView's Pine Script, explaining how this fundamental indicator helps traders identify trends by smoothing price data.</p>
+        <!-- <div class="job-meta">
+        <span class="job-posted-time">Updated: June 2025</span>
+        <span class="job-location">Capital Required: $20,000+</span>
+      </div> -->
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Medium </span>
+        </p>
+    </div>
+</header>
+
+    <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">SMA (Simple Moving Average)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <h1>Pine Script SMA (Simple Moving Average) </h1>
+        
+        <p>If you're new to technical analysis or TradingView's Pine Script, the Simple Moving Average (SMA) is the perfect starting point. This fundamental indicator helps traders identify trends by smoothing price data over a specified period.</p>
+        
+        <h2>What is SMA in Pine Script?</h2>
+        <p>The Simple Moving Average calculates the average price over a defined number of bars. In Pine Script, you can create SMA indicators with just a few lines of code:</p>
+        
+        <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My SMA Indicator"</span>, overlay=<span class="keyword">true</span>)
+length = <span class="keyword">input</span>(<span class="number">14</span>, title=<span class="string">"SMA Length"</span>)
+sma = <span class="builtin">ta.sma</span>(close, length)
+<span class="builtin">plot</span>(sma, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)</code></pre>
+        
+        <div class="tip">
+            <strong>Pro Tip:</strong> The <code>ta.sma()</code> function is built into Pine Script v5, making SMA implementation effortless.
+        </div>
+        
+        <h2>How SMA Works</h2>
+        <p>The SMA formula is straightforward:</p>
+        <p><strong>SMA = (Sum of Closing Prices) / (Number of Periods)</strong></p>
+        
+        <p>For example, a 14-day SMA adds up the closing prices over 14 days and divides by 14. This value plots as a line on your chart.</p>
+        
+        <h2>Practical SMA Strategies</h2>
+        <p>Here are three common SMA uses in Pine Script:</p>
+        
+        <h3>1. Basic Trend Identification</h3>
+        
+        <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"SMA Trend"</span>, overlay=<span class="keyword">true</span>)
+sma50 = <span class="builtin">ta.sma</span>(close, <span class="number">50</span>)
+sma200 = <span class="builtin">ta.sma</span>(close, <span class="number">200</span>)
+<span class="builtin">plot</span>(sma50, color=<span class="builtin">color</span>.blue)
+<span class="builtin">plot</span>(sma200, color=<span class="builtin">color</span>.red)</code></pre>
+        
+        <h3>2. Price Crossovers</h3>
+        
+        <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"SMA Crossover"</span>, overlay=<span class="keyword">true</span>)
+fastSMA = <span class="builtin">ta.sma</span>(close, <span class="number">9</span>)
+slowSMA = <span class="builtin">ta.sma</span>(close, <span class="number">21</span>)
+<span class="builtin">plot</span>(fastSMA, color=<span class="builtin">color</span>.green)
+<span class="builtin">plot</span>(slowSMA, color=<span class="builtin">color</span>.orange)</code></pre>
+        
+        <h2>Optimizing Your SMA</h2>
+        <p>Consider these Pine Script best practices:</p>
+        <ul>
+            <li>Use <code>input()</code> for customizable lengths</li>
+            <li>Combine with other indicators like RSI</li>
+            <li>Add alerts with <code>alertcondition()</code></li>
+        </ul>
+        
+        <p>Whether you're building your first Pine Script indicator or enhancing your trading strategy, mastering SMA is essential for any TradingView developer.</p>
+    </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+    <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

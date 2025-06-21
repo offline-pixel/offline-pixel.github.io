@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Parabolic SAR - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Parabolic SAR (Stop and Reverse) indicator in Pine Script for TradingView - a comprehensive guide to trend following and dynamic stop-loss.">
+    <meta name="keywords" content="pine script, Parabolic SAR, PSAR, stop and reverse, tradingview indicator, technical analysis, trend following, dynamic stop loss">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Parabolic SAR - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Parabolic SAR indicator in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Parabolic SAR - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-ParabolicSAR.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Parabolic SAR - Complete TradingView Guide",
+      "description": "Master the Parabolic SAR (Stop and Reverse) indicator in Pine Script for TradingView - a comprehensive guide to trend following and dynamic stop-loss.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ParabolicSAR.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Parabolic SAR",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ParabolicSAR.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Parabolic SAR (Stop and Reverse) </h1>
+      <p class="blog-subtitle">Master this powerful trend-following indicator in TradingView's Pine Script for dynamic stop-loss placement and trend reversal identification.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Parabolic SAR</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Parabolic SAR?</h2>
+    <p>The <b>Parabolic Stop and Reverse (SAR)</b> indicator, developed by J. Welles Wilder Jr., is a time and price based trading tool used to determine the direction of an asset's momentum and the point at which to place a stop-loss or take profit. It's often visualized as a series of dots, either above or below the price bars, indicating the current trend direction.</p>
+
+    <p>A primary strength of the Parabolic SAR is its ability to adapt to accelerating trends. As a trend develops, the SAR dots accelerate towards the price, tightening the stop-loss level and locking in more profits. When the trend reverses, the dots "stop and reverse" to the other side of the price, signaling a potential new trend.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The Parabolic SAR calculation involves several key elements:</p>
+    <ul>
+      <li><strong>Start (Initial) Acceleration Factor (AF)</strong>: Typically 0.02.</li>
+      <li><strong>Increment</strong>: The amount by which the AF increases with each new high/low (e.g., 0.02).</li>
+      <li><strong>Maximum Acceleration Factor (Max AF)</strong>: The upper limit for the AF (e.g., 0.20).</li>
+      <li><strong>Extreme Point (EP)</strong>: The highest high during an uptrend or the lowest low during a downtrend.</li>
+    </ul>
+    <p>The SAR calculation is complex and recursive, but essentially, it determines the SAR value for the current bar based on the previous SAR value, the Extreme Point of the current trend, and the Acceleration Factor. The AF increases as the trend progresses, making the SAR line accelerate towards the price.</p>
+
+    <h2>Basic Parabolic SAR Implementation in Pine Script</h2>
+    <p>Pine Script v5 makes implementing Parabolic SAR very straightforward with the built-in `ta.sar()` function.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Parabolic SAR Indicator"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Parabolic SAR parameters</span>
+<span class="keyword">start</span> = <span class="function">input.float</span>(<span class="number">0.02</span>, <span class="keyword">title</span>=<span class="string">"Start AF"</span>)
+<span class="keyword">increment</span> = <span class="function">input.float</span>(<span class="number">0.02</span>, <span class="keyword">title</span>=<span class="string">"Increment"</span>)
+<span class="keyword">maximum</span> = <span class="function">input.float</span>(<span class="number">0.20</span>, <span class="keyword">title</span>=<span class="string">"Maximum AF"</span>)
+
+<span class="comment">// Calculate Parabolic SAR using the built-in function</span>
+sarValue = <span class="function">ta.sar</span>(start, increment, maximum)
+
+<span class="comment">// Plot the Parabolic SAR dots</span>
+<span class="comment">// Color dots based on whether SAR is below (uptrend) or above (downtrend) the price</span>
+<span class="function">plot</span>(sarValue, <span class="string">"SAR"</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_circles</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">color</span>=sarValue &lt; close ? <span class="keyword">color</span>.<span class="function">green</span> : <span class="keyword">color</span>.<span class="function">red</span>)
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Key Interpretation:</strong> When the dots are below the price bars, it signals an uptrend. When the dots are above the price bars, it signals a downtrend. A dot switching sides indicates a trend reversal.
+    </div>
+
+    <h2>Practical Parabolic SAR Strategies</h2>
+
+    <h3>1. Trend Following and Reversal Signals</h3>
+    <p>The most direct application of Parabolic SAR is for trend identification and reversal signals. It's a stop-and-reverse system by design:</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: When the SAR dots flip from being above the price to below the price.</li>
+      <li><strong>Sell Signal</strong>: When the SAR dots flip from being below the price to above the price.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Parabolic SAR Trend Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">start</span> = <span class="function">input.float</span>(<span class="number">0.02</span>, <span class="keyword">title</span>=<span class="string">"Start AF"</span>)
+<span class="keyword">increment</span> = <span class="function">input.float</span>(<span class="number">0.02</span>, <span class="keyword">title</span>=<span class="string">"Increment"</span>)
+<span class="keyword">maximum</span> = <span class="function">input.float</span>(<span class="number">0.20</span>, <span class="keyword">title</span>=<span class="string">"Maximum AF"</span>)
+
+<span class="comment">// Calculate Parabolic SAR</span>
+sarValue = <span class="function">ta.sar</span>(start, increment, maximum)
+
+<span class="comment">// Determine if SAR has flipped (trend reversal)</span>
+longCondition = <span class="function">ta.crossover</span>(close, sarValue)
+shortCondition = <span class="function">ta.crossunder</span>(close, sarValue)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Plot SAR</span>
+<span class="function">plot</span>(sarValue, <span class="string">"SAR"</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_circles</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">color</span>=sarValue &lt; close ? <span class="keyword">color</span>.<span class="function">green</span> : <span class="keyword">color</span>.<span class="function">red</span>)
+</code></pre>
+
+
+    <h3>2. Parabolic SAR as a Dynamic Stop-Loss / Trailing Stop</h3>
+    <p>Parabolic SAR is an excellent tool for placing dynamic stop-loss orders. As the trend progresses, the SAR dots move closer to the price, effectively trailing the market. This helps protect profits while still allowing the trade to run.</p>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Parabolic SAR Dynamic Stop-Loss"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Parabolic SAR</span>
+<span class="keyword">start</span> = <span class="function">input.float</span>(<span class="number">0.02</span>, <span class="keyword">title</span>=<span class="string">"Start AF"</span>)
+<span class="keyword">increment</span> = <span class="function">input.float</span>(<span class="number">0.02</span>, <span class="keyword">title</span>=<span class="string">"Increment"</span>)
+<span class="keyword">maximum</span> = <span class="function">input.float</span>(<span class="number">0.20</span>, <span class="keyword">title</span>=<span class="string">"Maximum AF"</span>)
+
+<span class="comment">// Calculate Parabolic SAR</span>
+sarValue = <span class="function">ta.sar</span>(start, increment, maximum)
+
+<span class="comment">// Example entry logic (e.g., simple moving average crossover)</span>
+fastMA = <span class="function">ta.ema</span>(close, <span class="number">20</span>)
+slowMA = <span class="function">ta.ema</span>(close, <span class="number">50</span>)
+longEntry = <span class="function">ta.crossover</span>(fastMA, slowMA)
+shortEntry = <span class="function">ta.crossunder</span>(fastMA, slowMA)
+
+<span class="comment">// Long strategy with SAR as stop-loss</span>
+<span class="keyword">if</span> (longEntry)
+    <span class="function">strategy.entry</span>(<span class="string">"Buy"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    <span class="function">strategy.exit</span>(<span class="string">"Long Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Buy"</span>, <span class="keyword">stop</span>=sarValue) <span class="comment">// SAR as trailing stop</span>
+
+<span class="comment">// Short strategy with SAR as stop-loss</span>
+<span class="keyword">if</span> (shortEntry)
+    <span class="function">strategy.entry</span>(<span class="string">"Sell"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+    <span class="function">strategy.exit</span>(<span class="string">"Short Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Sell"</span>, <span class="keyword">stop</span>=sarValue) <span class="comment">// SAR as trailing stop</span>
+
+<span class="comment">// Plot SAR</span>
+<span class="function">plot</span>(sarValue, <span class="string">"SAR"</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_circles</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">color</span>=sarValue &lt; close ? <span class="keyword">color</span>.<span class="function">green</span> : <span class="keyword">color</span>.<span class="function">red</span>)
+</code></pre>
+
+
+    <h2>Optimizing Parabolic SAR Performance</h2>
+    <p>To get the most out of Parabolic SAR in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> Adjust `start`, `increment`, and `maximum` AF values. A smaller increment results in a smoother SAR that's further from price, while a larger increment makes it more sensitive and closer to price.</li>
+      <li><strong>Combine with Other Indicators:</strong> Parabolic SAR is best used as a trend-confirming or stop-loss tool. Combine it with trend strength indicators (like ADX) or oscillators (like RSI, MACD) to filter false signals.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm SAR signals on a higher timeframe before acting on signals from a lower timeframe.</li>
+      <li><strong>Filter Ranging Markets:</strong> Avoid using Parabolic SAR alone in choppy or sideways markets, as it can generate frequent false signals (whipsaws).</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Caution:</strong> Parabolic SAR is a trend-following indicator. It performs poorly in sideways or range-bound markets, where it can generate frequent false signals. Always use it with a trend filter.
+    </div>
+
+    <h2>Common Parabolic SAR Pitfalls</h2>
+    <ul>
+      <li> <b>Whipsaws:</b> In non-trending or highly volatile, non-directional markets, SAR can produce many premature stop-and-reverse signals, leading to multiple small losses.</li>
+      <li> <b>Lagging:</b> While it accelerates towards price, it is still a lagging indicator. Signals may sometimes come after a significant portion of the move has already occurred.</li>
+      <li> <b>Not a standalone entry signal:</b> It's more effective as a trailing stop or exit signal rather than a primary entry signal, especially without confluence from other indicators.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Parabolic SAR is a unique and effective indicator in Pine Script for identifying trends and managing trades with dynamic stop-loss levels. Its ability to accelerate towards price makes it excellent for capturing profits in strong trends. By understanding its calculation and combining it judiciously with other indicators and market analysis, you can leverage Parabolic SAR to enhance your TradingView strategies and improve your trade management.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

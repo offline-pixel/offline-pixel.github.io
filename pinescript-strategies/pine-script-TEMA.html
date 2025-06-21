@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Triple EMA (TEMA) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Triple Exponential Moving Average (TEMA) in Pine Script for TradingView - a highly responsive, ultra-low lag indicator for trend identification and reversals.">
+    <meta name="keywords" content="pine script strategies, Triple EMA, TEMA, tradingview indicator, technical analysis, ultra-low lag, trend following, reversal signals">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Triple EMA (TEMA) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Triple Exponential Moving Average (TEMA) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Triple EMA (TEMA) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-TEMA.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Stochastic %K and %D - Complete TradingView Guide",
+      "description": "Master the Stochastic Oscillator (%K and %D) in Pine Script for TradingView - a comprehensive guide to momentum, overbought/oversold conditions, and divergence.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-Stochastic.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Stochastic %K and %D",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-Stochastic.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Triple EMA (TEMA) </h1>
+      <p class="blog-subtitle">Master this ultra-responsive and virtually lag-free moving average in TradingView's Pine Script for razor-sharp trend identification and powerful reversal signals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Stochastic %K and %D</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Triple Exponential Moving Average (TEMA)?</h2>
+    <p>The <b>Triple Exponential Moving Average (TEMA)</b>, introduced by Patrick Mulloy, is an advanced moving average that builds upon the concept of DEMA to reduce lag even further. It's designed to provide an even faster and smoother response to price changes than traditional EMAs and even DEMAs, aiming to get closer to the current price without sacrificing too much smoothing.</p>
+
+    <p>In Pine Script, TEMA is a powerful tool for traders who demand highly responsive trend-following indicators for quick market analysis and agile trade execution, especially in fast-moving markets.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of TEMA involves three EMAs of the same specified `length`:</p>
+    <ol>
+      <li><strong>EMA1</strong>: Calculate a standard Exponential Moving Average of the `source` (typically `close`) over a specified `length`.</li>
+      <li><strong>EMA2</strong>: Calculate an EMA of `EMA1` (the first EMA) over the *same* `length`.</li>
+      <li><strong>EMA3</strong>: Calculate an EMA of `EMA2` (the second EMA) over the *same* `length`.</li>
+      <li><strong>TEMA Formula</strong>: `TEMA = (3 * EMA1) - (3 * EMA2) + EMA3`</li>
+    </ol>
+    <p>This formula cleverly combines the three EMAs to effectively remove even more lag than DEMA, providing an extremely smooth and responsive moving average. It attempts to project the current trend more accurately by minimizing the distorting effect of lag.</p>
+
+    <h2>Basic TEMA Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.tema()` that greatly simplifies its implementation.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Triple EMA Indicator"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for TEMA length</span>
+length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"TEMA Length"</span>, minval=<span class="number">1</span>)
+
+<span class="comment">// Calculate TEMA using the built-in function</span>
+temaValue = <span class="builtin">ta.tema</span>(close, length)
+
+<span class="comment">// Plot the TEMA line</span>
+<span class="builtin">plot</span>(temaValue, title=<span class="string">"TEMA"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+</code></pre>
+    <div class="tip">
+      <strong>Ultra-Responsive:</strong> TEMA is celebrated for its ability to reduce lag significantly, making it one of the most responsive moving averages available.
+    </div>
+
+    <h2>Practical TEMA Strategies</h2>
+
+    <h3>1. TEMA as a Trend Direction Filter (Color Change)</h3>
+    <p>TEMA's superior responsiveness makes it an excellent indicator for quickly identifying and staying with the prevailing trend direction. Coloring the TEMA based on its slope is a highly effective visual strategy.</p>
+    <ul>
+      <li><strong>Uptrend</strong>: TEMA is rising (current TEMA &gt; previous TEMA).</li>
+      <li><strong>Downtrend</strong>: TEMA is falling (current TEMA &lt; previous TEMA).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"TEMA Trend Color Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for TEMA length</span>
+length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"TEMA Length"</span>, minval=<span class="number">1</span>)
+
+<span class="comment">// Calculate TEMA</span>
+temaValue = <span class="builtin">ta.tema</span>(close, length)
+
+<span class="comment">// Determine TEMA color based on its direction</span>
+temaColor = temaValue > temaValue[<span class="number">1</span>] ? <span class="builtin">color</span>.green : <span class="builtin">color</span>.red
+
+<span class="comment">// Plot the TEMA line with dynamic color</span>
+<span class="builtin">plot</span>(temaValue, title=<span class="string">"TEMA"</span>, color=temaColor, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Example entry logic: buy when TEMA turns green, sell when TEMA turns red</span>
+longCondition = temaValue > temaValue[<span class="number">1</span>] <span class="keyword">and</span> temaValue[<span class="number">1</span>] &lt;= temaValue[<span class="number">2</span>] <span class="comment">// TEMA turns up</span>
+shortCondition = temaValue &lt; temaValue[<span class="number">1</span>] <span class="keyword">and</span> temaValue[<span class="number">1</span>] >= temaValue[<span class="number">2</span>] <span class="comment">// TEMA turns down</span>
+
+<span class="keyword">if</span> (longCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+</code></pre>
+
+    <h3>2. TEMA Crossover Strategy (with Price or another TEMA)</h3>
+    <p>Crossovers involving TEMA generate extremely fast signals due to its minimal lag. This can be price crossing TEMA, or two TEMAs of different lengths crossing each other for a more refined signal.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"TEMA Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for TEMA lengths</span>
+fastTemaLength = <span class="keyword">input</span>.int(<span class="number">10</span>, title=<span class="string">"Fast TEMA Length"</span>, minval=<span class="number">1</span>)
+slowTemaLength = <span class="keyword">input</span>.int(<span class="number">30</span>, title=<span class="string">"Slow TEMA Length"</span>, minval=<span class="number">1</span>)
+
+<span class="comment">// Calculate TEMAs</span>
+fastTema = <span class="builtin">ta.tema</span>(close, fastTemaLength)
+slowTema = <span class="builtin">ta.tema</span>(close, slowTemaLength)
+
+<span class="comment">// Plot the TEMAs</span>
+<span class="builtin">plot</span>(fastTema, title=<span class="string">"Fast TEMA"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+<span class="builtin">plot</span>(slowTema, title=<span class="string">"Slow TEMA"</span>, color=<span class="builtin">color</span>.orange, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Crossover conditions (Fast TEMA crossing Slow TEMA)</span>
+longCondition = <span class="builtin">ta.crossover</span>(fastTema, slowTema)
+shortCondition = <span class="builtin">ta.crossunder</span>(fastTema, slowTema)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+</code></pre>
+    <h3>3. TEMA for Dynamic Support and Resistance</h3>
+    <p>TEMA's ability to hug price closely makes it an excellent candidate for identifying dynamic support in uptrends and dynamic resistance in downtrends. Interactions between price and the TEMA line can offer insights into trend strength and potential areas of interest.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"TEMA Support/Resistance"</span>, overlay=<span class="keyword">true</span>)
+
+length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"TEMA Length"</span>, minval=<span class="number">1</span>)
+temaValue = <span class="builtin">ta.tema</span>(close, length)
+
+<span class="builtin">plot</span>(temaValue, title=<span class="string">"TEMA"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Highlight potential support/resistance interactions (conceptual - adjust thresholds)</span>
+<span class="comment">// These conditions check for price being very close to TEMA, implying a touch or test</span>
+isSupportTouch = close > temaValue * <span class="number">0.995</span> <span class="keyword">and</span> close &lt; temaValue * <span class="number">1.005</span> <span class="keyword">and</span> temaValue[<span class="number">1</span>] &lt; close[<span class="number">1</span>] <span class="comment">// Price touches TEMA from below or just above</span>
+isResistanceTouch = close &lt; temaValue * <span class="number">1.005</span> <span class="keyword">and</span> close > temaValue * <span class="number">0.995</span> <span class="keyword">and</span> temaValue[<span class="number">1</span>] > close[<span class="number">1</span>] <span class="comment">// Price touches TEMA from above or just below</span>
+
+<span class="builtin">plotshape</span>(isSupportTouch, title=<span class="string">"Potential Support"</span>, location=location.belowbar, color=<span class="builtin">color</span>.green, style=shape.circle, size=size.tiny)
+<span class="builtin">plotshape</span>(isResistanceTouch, title=<span class="string">"Potential Resistance"</span>, location=location.abovebar, color=<span class="builtin">color</span>.red, style=shape.circle, size=size.tiny)
+</code></pre>
+
+    <h2>Optimizing TEMA Performance</h2>
+    <p>To get the most from the Triple Exponential Moving Average in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. While TEMA is inherently low-lag, adjusting the length can fine-tune its responsiveness to different market conditions. Shorter lengths for very aggressive trading, longer lengths for smoother signals.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Despite its speed, always confirm TEMA signals with a higher timeframe's trend. This helps filter out noise and ensures you're trading in the direction of the larger market movement.</li>
+      <li><strong>Combine with Other Indicators:</strong> TEMA excels at trend following and identifying reversals, but it's not a standalone indicator. Pair it with volume indicators, momentum oscillators (e.g., RSI for overbought/oversold confirmation), or price action analysis for stronger confluence.</li>
+      <li><strong>Avoid Choppy Markets:</strong> While TEMA's smoothing is superior, no moving average can eliminate all whipsaws in prolonged sideways or non-trending markets. Use a trend strength indicator (e.g., ADX) to confirm a clear trend before relying heavily on TEMA signals.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Speed vs. Noise:</strong> TEMA is designed for speed. This means it might still produce more signals than a heavily smoothed average. Always confirm signals to avoid overtrading.
+    </div>
+
+    <h2>Common TEMA Pitfalls</h2>
+    <ul>
+      <li> <b>Whipsaws in Extreme Consolidation:</b> Even with triple smoothing, TEMA can still generate false signals in very flat or extremely volatile, non-trending markets.</li>
+      <li> <b>Requires Strong Trend:</b> TEMA performs optimally in clear, trending markets. Its signals become less reliable in choppy or range-bound conditions.</li>
+      <li> <b>Over-Optimization:</b> As with any indicator, excessive tuning of TEMA's `length` to past data can lead to curve-fitting, where the strategy performs well historically but fails in live trading.</li>
+      <li> <b>Not an Overbought/Oversold Indicator:</b> TEMA is a trend-following tool. It does not provide insights into overbought or oversold conditions, which should be assessed using dedicated oscillators.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Triple Exponential Moving Average (TEMA) represents a significant leap forward in reducing lag in moving averages within Pine Script for TradingView. Its sophisticated calculation provides an exceptionally responsive and smooth line, making it ideal for traders who prioritize timely trend identification and dynamic signal generation. By understanding TEMA's unique characteristics, intelligently tuning its parameters, and integrating it strategically with other analytical tools, you can leverage its power to gain a sharper perspective on market movements and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

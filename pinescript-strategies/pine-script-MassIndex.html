@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Mass Index - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Mass Index in Pine Script for TradingView - an indicator that identifies potential trend reversals based on the narrowing or widening of the price range.">
+    <meta name="keywords" content="pine script strategies, Mass Index, MI, tradingview indicator, technical analysis, reversal signals, trend reversal, volatility, range expansion, range contraction">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Mass Index - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Mass Index in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Mass Index - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-MassIndex.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Mass Index - Complete TradingView Guide",
+      "description": "Master the Mass Index in Pine Script for TradingView - an indicator that identifies potential trend reversals based on the narrowing or widening of the price range.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MassIndex.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Mass Index",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MassIndex.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Mass Index </h1>
+      <p class="blog-subtitle">Master this unique indicator in TradingView's Pine Script that identifies potential trend reversals by measuring the widening and narrowing of the trading range.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Mass Index</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Mass Index?</h2>
+    <p>The <b>Mass Index</b>, developed by Donald Dorsey, is a technical indicator that aims to predict trend reversals by measuring the expanding and contracting trading range (high-low difference) over a specific period. Unlike momentum indicators that focus on price speed or direction, the Mass Index focuses on <b>volatility compression and expansion</b>. It signals an impending trend reversal when the trading range widens significantly, often referred to as the "reversal bulge." The indicator sums up a series of Exponential Moving Averages (EMAs) of the high-low range.</p>
+
+    <p>In Pine Script, the Mass Index is a valuable tool for traders who believe that significant shifts in price range often precede a change in the prevailing trend, allowing them to anticipate potential reversals.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Mass Index involves several steps:</p>
+    <ol>
+      <li><strong>Single Period High-Low Range</strong>: `Range = High - Low`</li>
+      <li><strong>Exponential Moving Average (EMA) of the Range</strong>: Calculate an EMA of the `Range` over a specified `emaPeriod` (e.g., 9 periods).
+        <br>
+        `EMA_Range = ta.ema(Range, emaPeriod)`
+      </li>
+      <li><strong>Double EMA of the Range</strong>: Calculate another EMA of the `EMA_Range` (smoothed EMA_Range) over the same `emaPeriod`.
+        <br>
+        `Double_EMA_Range = ta.ema(EMA_Range, emaPeriod)`
+      </li>
+      <li><strong>Ratio</strong>: Divide the `EMA_Range` by the `Double_EMA_Range`.
+        <br>
+        `Ratio = EMA_Range / Double_EMA_Range`
+      </li>
+      <li><strong>Mass Index Formula</strong>: Sum the `Ratio` over a longer `sumPeriod` (e.g., 25 periods).
+        <br>
+        `Mass Index = sum(Ratio, sumPeriod)`
+      </li>
+    </ol>
+    <p>The standard parameters are 9 periods for the EMA (`emaPeriod`) and 25 periods for the summation (`sumPeriod`).</p>
+
+    <h2>Basic Mass Index Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.massindex()` for calculating the Mass Index.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Mass Index"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Inputs for Mass Index lengths</span>
+<span class="keyword">emaPeriod</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"EMA Period"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sumPeriod</span> = <span class="function">input.int</span>(<span class="number">25</span>, <span class="keyword">title</span>=<span class="string">"Summation Period"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Mass Index using the built-in function</span>
+massIndexValue = <span class="function">ta.massindex</span>(emaPeriod, sumPeriod)
+
+<span class="comment">// Plot the Mass Index line</span>
+<span class="function">plot</span>(massIndexValue, <span class="keyword">title</span>=<span class="string">"Mass Index"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot critical trigger lines</span>
+<span class="comment">// The 27 level is the "reversal bulge" threshold</span>
+<span class="function">hline</span>(<span class="number">27</span>, <span class="string">"Reversal Threshold (27)"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="comment">// The 26.5 level is a confirmation line, often watched for downside breach after 27 is hit</span>
+<span class="function">hline</span>(<span class="number">26.5</span>, <span class="string">"Confirmation Line (26.5)"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+</code></pre>
+
+
+    <div class="tip">
+      <strong>"Reversal Bulge":</strong> The core signal of the Mass Index is when it rises above 27 and then falls back below 26.5. This pattern suggests an imminent trend reversal.
+    </div>
+
+    <h2>Practical Mass Index <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. The Reversal Bulge (Primary Strategy)</h3>
+    <p>This is the most widely recognized and crucial strategy for the Mass Index. It signals that the current trend, regardless of its direction, is likely to reverse.</p>
+    <ul>
+      <li><strong>Signal</strong>:
+        <ol>
+          <li>The Mass Index first rises above 27. This indicates a significant widening of the high-low range.</li>
+          <li>Then, the Mass Index falls back below 26.5. This confirms that the range has contracted after the expansion, signaling the impending reversal.</li>
+        </ol>
+      </li>
+      <li><strong>Trade Action</strong>: Once the "reversal bulge" pattern is confirmed (crossing below 26.5 after touching 27), prepare for a reversal of the current trend. If the price was trending up, expect a reversal down. If the price was trending down, expect a reversal up.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Mass Index Reversal Bulge Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">emaPeriod</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"EMA Period"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sumPeriod</span> = <span class="function">input.int</span>(<span class="number">25</span>, <span class="keyword">title</span>=<span class="string">"Summation Period"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+massIndexValue = <span class="function">ta.massindex</span>(emaPeriod, sumPeriod)
+
+<span class="function">plot</span>(massIndexValue, <span class="string">"Mass Index"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">27</span>, <span class="string">"Reversal Threshold"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">26.5</span>, <span class="string">"Confirmation Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for the reversal bulge</span>
+<span class="comment">// Mass Index touches 27 (or higher)</span>
+hits27 = massIndexValue >= <span class="number">27</span>
+<span class="comment">// Mass Index falls back below 26.5 AFTER hitting 27</span>
+<span class="comment">// We need to keep track if 27 was hit recently</span>
+<span class="keyword">var</span> <span class="keyword">bool</span> hit27Recently = <span class="keyword">false</span>
+<span class="keyword">if</span> (hits27)
+    hit27Recently := <span class="keyword">true</span>
+<span class="keyword">if</span> (massIndexValue[<span class="number">1</span>] > <span class="number">26.5</span> <span class="keyword">and</span> massIndexValue &lt;= <span class="number">26.5</span> <span class="keyword">and</span> hit27Recently) <span class="comment">// Crosses down 26.5</span>
+    hit27Recently := <span class="keyword">false</span> <span class="comment">// Reset after signal</span>
+
+<span class="comment">// The strategy assumes you are in a trend and this signal indicates reversal of that trend.</span>
+<span class="comment">// For practical use, you'd combine this with a trend identification method.</span>
+<span class="comment">// Here, we'll use a simple moving average for trend direction for example purposes.</span>
+<span class="keyword">trendLength</span> = <span class="function">input.int</span>(<span class="number">200</span>, <span class="keyword">title</span>=<span class="string">"Trend EMA Length"</span>, <span class="keyword">minval</span>=<span class="number">10</span>)
+<span class="keyword">trendEMA</span> = <span class="function">ta.ema</span>(close, trendLength)
+
+<span class="comment">// Reversal signal is active when Mass Index falls below 26.5 after hitting 27</span>
+reversalSignal = massIndexValue[<span class="number">1</span>] > <span class="number">26.5</span> <span class="keyword">and</span> massIndexValue &lt;= <span class="number">26.5</span> <span class="keyword">and</span> (massIndexValue[<span class="number">2</span>] >= <span class="number">27</span> <span class="keyword">or</span> massIndexValue[<span class="number">3</span>] >= <span class="number">27</span> <span class="keyword">or</span> massIndexValue[<span class="number">4</span>] >= <span class="number">27</span>) <span class="comment">// Check if 27 was hit recently</span>
+
+<span class="comment">// If price is above long-term EMA, it's an uptrend, so reversal means short.</span>
+<span class="comment">// If price is below long-term EMA, it's a downtrend, so reversal means long.</span>
+<span class="keyword">if</span> (reversalSignal)
+    <span class="keyword">if</span> (close > trendEMA) <span class="comment">// Was in uptrend, now expecting reversal down</span>
+        <span class="function">strategy.entry</span>(<span class="string">"Short Reversal"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+    <span class="keyword">else</span> <span class="keyword">if</span> (close &lt; trendEMA) <span class="comment">// Was in downtrend, now expecting reversal up</span>
+        <span class="function">strategy.entry</span>(<span class="string">"Long Reversal"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="comment">// Add exits based on time or profit target/stop loss for robust strategy</span>
+<span class="comment">// strategy.close_all() after X bars or at profit target/stop loss</span>
+</code></pre>
+
+
+    <h3>2. Confirmation of Strength/Weakness (Less Common)</h3>
+    <p>While the "reversal bulge" is the primary use, some traders might also look at the Mass Index as an indicator of general volatility. When it's below 26.5, it suggests price ranges are relatively narrow, often indicative of consolidating markets. When it's rising towards 27, it means volatility is increasing, which can precede strong moves in either direction.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Mass Index Volatility State"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">emaPeriod</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"EMA Period"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sumPeriod</span> = <span class="function">input.int</span>(<span class="number">25</span>, <span class="keyword">title</span>=<span class="string">"Summation Period"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+massIndexValue = <span class="function">ta.massindex</span>(emaPeriod, sumPeriod)
+
+<span class="function">plot</span>(massIndexValue, <span class="string">"Mass Index"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">27</span>, <span class="string">"Reversal Threshold"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(<span class="number">26.5</span>, <span class="string">"Confirmation Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+
+<span class="comment">// Highlight periods of volatility expansion (approaching 27)</span>
+<span class="keyword">var</span> <span class="keyword">bool</span> approaching27 = <span class="keyword">false</span>
+<span class="keyword">if</span> (massIndexValue >= <span class="number">26</span> <span class="keyword">and</span> massIndexValue &lt; <span class="number">27</span>)
+    approaching27 := <span class="keyword">true</span>
+<span class="keyword">else</span>
+    approaching27 := <span class="keyword">false</span>
+
+<span class="comment">// Highlight periods of range contraction (below 26.5)</span>
+<span class="keyword">var</span> <span class="keyword">bool</span> below26_5 = <span class="keyword">false</span>
+<span class="keyword">if</span> (massIndexValue &lt; <span class="number">26.5</span>)
+    below26_5 := <span class="keyword">true</span>
+<span class="keyword">else</span>
+    below26_5 := <span class="keyword">false</span>
+
+<span class="function">bgcolor</span>(approaching27 ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">yellow</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Volatility Expanding"</span>)
+<span class="function">bgcolor</span>(below26_5 ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Range Contracting"</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing Mass Index Performance</h2>
+    <p>To get the most from the Mass Index in Pine Script:</p>
+    <ul>
+      <li><strong>Focus on the "Reversal Bulge":</strong> This is its primary and most reliable signal. Don't try to force other interpretations, as they might not be as robust.</li>
+      <li><strong>Combine with Trend Identification:</strong> The Mass Index tells you *when* a reversal might occur, but it doesn't tell you *what the current trend is*. Always use it in conjunction with a trend-following indicator (e.g., moving averages, ADX) to understand the trend that is being reversed. This allows you to apply the reversal signal correctly (e.g., a bullish reversal if the prior trend was down).</li>
+      <li><strong>Confirm with Price Action:</strong> After the Mass Index signals a reversal, wait for confirmation from price action (e.g., a candlestick reversal pattern, a break of a short-term support/resistance level, or a shift in market structure).</li>
+      <li><strong>Standard Parameters:</strong> The default lengths (9, 25) are widely used and recommended. Experimenting with other values might lead to less reliable signals as these parameters are tuned for the "reversal bulge" phenomenon.</li>
+      <li><strong>Volume Analysis:</strong> Often, significant range expansions (leading to the Mass Index bulge) are accompanied by high volume, which can add confirmation to the potential reversal.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Not a Directional Indicator:</strong> The Mass Index is not a directional indicator. It doesn't tell you *which way* the price will go, only *that a reversal is likely*. The direction must be inferred from the preceding trend or other indicators.
+    </div>
+
+    <h2>Common Mass Index Pitfalls</h2>
+    <ul>
+      <li> <b>False Signals:</b> Like all indicators, the Mass Index can generate false signals. The "reversal bulge" doesn't guarantee a reversal; it only indicates a higher probability. Confirmation is key.</li>
+      <li> <b>Lag:</b> The Mass Index is a lagging indicator due to its reliance on multiple moving averages. Signals will not occur at the exact top or bottom of a trend.</li>
+      <li> <b>Not for All Market Conditions:</b> It performs best in trending markets where a clear reversal can be identified. In prolonged sideways or extremely choppy markets, the signals might be less clear or more frequent, leading to whipsaws.</li>
+      <li> <b>Interpretation Complexity:</b> Understanding the precise "reversal bulge" pattern (crossing 27, then falling below 26.5) requires careful observation. Missing these specific nuances can lead to misinterpretation.</li>
+      <li> <b>Requires Volume Data:</b> Although not directly using `volume` in its calculation in `ta.massindex`, the concept of range expansion/contraction is implicitly related to market activity. However, unlike MFI or FI, it doesn't directly leverage the `volume` variable.</li>
+      <li> <b>Not a Standalone Indicator:</b> Mass Index is a specialized tool best used in conjunction with a complete trading plan that includes trend identification, risk management, and confirmation from other analysis methods.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Mass Index is a unique and insightful technical indicator in Pine Script for TradingView. Its primary strength lies in its ability to predict potential trend reversals by analyzing the expansion and contraction of an asset's trading range, specifically through the "reversal bulge" pattern. By understanding its calculation and focusing on its key signal (rising above 27 then falling below 26.5), and by combining it with robust trend identification and price action confirmation, traders can leverage the Mass Index to anticipate significant market turns. While it requires careful interpretation and integration into a broader strategy, the Mass Index offers a powerful edge for identifying high-probability reversal opportunities.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

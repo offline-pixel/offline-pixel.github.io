@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Volume-Adjusted RSI (VARSI) in Pine Script for TradingView - an enhanced RSI that incorporates volume to provide more reliable overbought/oversold and divergence signals.">
+    <meta name="keywords" content="pine script strategies, Volume-Adjusted RSI, VARSI, tradingview indicator, technical analysis, momentum, overbought oversold, divergence, volume analysis, RSI">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Volume-Adjusted RSI (VARSI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeAdjustedRSI.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Volume-Adjusted RSI (VARSI) - Complete TradingView Guide",
+      "description": "Master Volume-Adjusted RSI (VARSI) in Pine Script for TradingView - an enhanced RSI that incorporates volume to provide more reliable overbought/oversold and divergence signals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeAdjustedRSI.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Volume-Adjusted RSI (VARSI)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeAdjustedRSI.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Volume-Adjusted RSI (VARSI) </h1>
+      <p class="blog-subtitle">Master this enhanced momentum oscillator in TradingView's Pine Script that incorporates volume into its calculation, providing more reliable overbought/oversold levels and stronger divergence signals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Volume-Adjusted RSI (VARSI)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Volume-Adjusted RSI (VARSI)?</h2>
+    <p> <b>Volume-Adjusted RSI (VARSI)</b> is an adaptation of the popular Relative Strength Index (RSI) that aims to improve its reliability by incorporating volume. While the traditional RSI only considers the magnitude of price changes, VARSI weights these price changes by their associated trading volume. The core idea is that price movements backed by higher volume are more significant and should have a greater impact on the momentum calculation than price movements on lower volume.</p>
+
+    <p>By integrating volume, VARSI seeks to filter out "weak" momentum signals that occur on low trading activity and to emphasize "strong" momentum signals that are supported by substantial market participation. This can lead to:</p>
+    <ul>
+      <li> <b>More robust overbought/oversold readings:</b> VARSI might stay in overbought/oversold territory longer or reach it more decisively when volume confirms the move.</li>
+      <li> <b>Stronger divergence signals:</b> Divergences between price and VARSI gain more credibility when the volume component underscores the lack of conviction.</li>
+      <li> <b>Enhanced trend confirmation:</b> Momentum supported by volume is considered more sustainable.</li>
+    </ul>
+
+    <p>In Pine Script, implementing VARSI requires a custom calculation, as it's not a built-in indicator, but it leverages Pine Script's powerful functions for RSI-like smoothing and volume data.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Volume-Adjusted RSI builds upon the traditional RSI formula by introducing a volume weighting step. Here's a breakdown:</p>
+    <ol>
+      <li> <b>Price Change Calculation:</b>
+        * `Up_Change = max(close - close[1], 0)` (positive price difference, 0 if negative)
+        * `Down_Change = max(close[1] - close, 0)` (positive price difference on down days, 0 if up)
+      </li>
+      <li> <b>Volume-Adjusted Price Change:</b> Each price change is multiplied by the current bar's volume.
+        * `Volume_Adj_Up = Up_Change * volume`
+        * `Volume_Adj_Down = Down_Change * volume`
+      </li>
+      <li> <b>Average Volume-Adjusted Gains and Losses:</b> These volume-adjusted changes are smoothed using a Reinforced Moving Average (`ta.rma`), similar to how RSI smooths its gains and losses.
+        * `Avg_Gain_Vol_Adj = ta.rma(Volume_Adj_Up, Length)`
+        * `Avg_Loss_Vol_Adj = ta.rma(Volume_Adj_Down, Length)`
+        (Where `Length` is the RSI period, typically 14)
+      </li>
+      <li> <b>Volume-Adjusted Relative Strength (VARS):</b> This is the ratio of the average volume-adjusted gain to the average volume-adjusted loss.
+        * `VARS = Avg_Gain_Vol_Adj / Avg_Loss_Vol_Adj`
+        * <b>Important:</b> Handle division by zero. If `Avg_Loss_Vol_Adj` is 0:
+            * If `Avg_Gain_Vol_Adj` is also 0, `VARS` is indeterminate (can default to 0 or 1).
+            * If `Avg_Gain_Vol_Adj` is > 0, `VARS` is considered infinite (leading to VARSI = 100).
+      </li>
+      <li> <b>Volume-Adjusted RSI (VARSI):</b> The final VARSI value is calculated using the standard RSI formula:
+        <br>
+        `VARSI = 100 - (100 / (1 + VARS))`
+    </ol>
+    <p>The `Length` parameter is typically 14, mirroring the default RSI period.</p>
+
+    <h2>Basic Volume-Adjusted RSI (VARSI) Implementation in Pine Script</h2>
+    <p>Implementing VARSI in Pine Script involves a custom calculation leveraging `ta.rma()` and careful handling of potential division by zero.</p>
+
+    <pre>
+<code>
+<span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Volume-Adjusted RSI (VARSI)"</span>, <span class="builtin">overlay</span>=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for VARSI length (smoothing period, similar to standard RSI)</span>
+<span class="keyword">length</span> = <span class="builtin">input.int</span>(<span class="number">14</span>, <span class="builtin">title</span>=<span class="string">"VARSI Length"</span>, <span class="builtin">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate price changes</span>
+<span class="keyword">up_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span> - <span class="builtin">close</span>[<span class="number">1</span>], <span class="number">0</span>)
+<span class="keyword">down_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span>[<span class="number">1</span>] - <span class="builtin">close</span>, <span class="number">0</span>)
+
+<span class="comment">// Calculate volume-adjusted price changes</span>
+<span class="keyword">volume_adj_up</span> = <span class="keyword">up_change</span> * <span class="builtin">volume</span>
+<span class="keyword">volume_adj_down</span> = <span class="keyword">down_change</span> * <span class="builtin">volume</span>
+
+<span class="comment">// Calculate average volume-adjusted gains and losses using RMA (Wilder's smoothing)</span>
+<span class="keyword">avg_gain_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_up</span>, <span class="keyword">length</span>)
+<span class="keyword">avg_loss_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_down</span>, <span class="keyword">length</span>)
+
+<span class="comment">// Calculate Volume-Adjusted Relative Strength (VARS)</span>
+<span class="comment">// Handle division by zero for avg_loss_vol_adj</span>
+<span class="keyword">vars</span> = <span class="keyword">if</span> <span class="keyword">avg_loss_vol_adj</span> != <span class="number">0</span>
+    <span class="keyword">avg_gain_vol_adj</span> / <span class="keyword">avg_loss_vol_adj</span>
+<span class="keyword">else</span>
+    <span class="keyword">if</span> <span class="keyword">avg_gain_vol_adj</span> &gt; <span class="number">0</span>
+        <span class="number">1000000000.0</span>
+    <span class="keyword">else</span>
+        <span class="number">1.0</span>
+
+<span class="comment">// Calculate Volume-Adjusted RSI (VARSI)</span>
+<span class="keyword">v_rsi</span> = <span class="number">100</span> - (<span class="number">100</span> / (<span class="number">1</span> + <span class="keyword">vars</span>))
+
+<span class="comment">// Plot the VARSI line</span>
+<span class="builtin">plot</span>(<span class="keyword">v_rsi</span>, <span class="builtin">title</span>=<span class="string">"Volume-Adjusted RSI"</span>, <span class="builtin">color</span>=<span class="builtin">color.blue</span>, <span class="builtin">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot standard RSI levels</span>
+<span class="builtin">hline</span>(<span class="number">70</span>, <span class="string">"Overbought"</span>, <span class="builtin">color</span>=<span class="builtin">color.red</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dashed</span>)
+<span class="builtin">hline</span>(<span class="number">30</span>, <span class="string">"Oversold"</span>, <span class="builtin">color</span>=<span class="builtin">color.green</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dashed</span>)
+<span class="builtin">hline</span>(<span class="number">50</span>, <span class="string">"Mid-Line"</span>, <span class="builtin">color</span>=<span class="builtin">color.gray</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dotted</span>)
+
+<span class="comment">// Highlight overbought/oversold zones for clarity</span>
+<span class="builtin">bgcolor</span>(<span class="keyword">v_rsi</span> &gt; <span class="number">70</span> ? <span class="builtin">color.new</span>(<span class="builtin">color.red</span>, <span class="number">90</span>) : <span class="builtin">na</span>, <span class="builtin">title</span>=<span class="string">"Overbought Zone"</span>)
+<span class="builtin">bgcolor</span>(<span class="keyword">v_rsi</span> &lt; <span class="number">30</span> ? <span class="builtin">color.new</span>(<span class="builtin">color.green</span>, <span class="number">90</span>) : <span class="builtin">na</span>, <span class="builtin">title</span>=<span class="string">"Oversold Zone"</span>)
+</code>
+</pre>
+
+    <div class="tip">
+      <strong>Volume Power:</strong> VARSI's key advantage is that it gives more weight to price movements that are supported by higher volume, potentially making its signals for overbought/oversold conditions and divergences more reliable.
+    </div>
+
+    <h2>Practical Volume-Adjusted RSI (VARSI) <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Overbought/Oversold Signals with Volume Conviction</h3>
+    <p>VARSI can be used in a similar way to traditional RSI for identifying potential reversal points, but with the added confidence that the extreme readings are backed by significant volume.</p>
+    <ul>
+      <li><strong>Sell Signal (Overbought)</strong>: VARSI moves into overbought territory (e.g., above 70) and then turns down. This suggests that the buying pressure, even when volume-adjusted, is becoming unsustainable.</li>
+      <li><strong>Buy Signal (Oversold)</strong>: VARSI moves into oversold territory (e.g., below 30) and then turns up. This suggests that the selling pressure, even when volume-adjusted, is exhausting.</li>
+    </ul>
+<pre>
+<code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"VARSI Overbought/Oversold Strategy"</span>, <span class="builtin">overlay</span>=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="builtin">input.int</span>(<span class="number">14</span>, <span class="builtin">title</span>=<span class="string">"VARSI Length"</span>, <span class="builtin">minval</span>=<span class="number">1</span>)
+<span class="keyword">obLevel</span> = <span class="builtin">input.int</span>(<span class="number">70</span>, <span class="builtin">title</span>=<span class="string">"Overbought Level"</span>, <span class="builtin">minval</span>=<span class="number">50</span>, <span class="builtin">maxval</span>=<span class="number">90</span>)
+<span class="keyword">osLevel</span> = <span class="builtin">input.int</span>(<span class="number">30</span>, <span class="builtin">title</span>=<span class="string">"Oversold Level"</span>, <span class="builtin">minval</span>=<span class="number">10</span>, <span class="builtin">maxval</span>=<span class="number">50</span>)
+
+<span class="keyword">up_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span> - <span class="builtin">close</span>[<span class="number">1</span>], <span class="number">0</span>)
+<span class="keyword">down_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span>[<span class="number">1</span>] - <span class="builtin">close</span>, <span class="number">0</span>)
+<span class="keyword">volume_adj_up</span> = <span class="keyword">up_change</span> * <span class="builtin">volume</span>
+<span class="keyword">volume_adj_down</span> = <span class="keyword">down_change</span> * <span class="builtin">volume</span>
+<span class="keyword">avg_gain_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_up</span>, <span class="keyword">length</span>)
+<span class="keyword">avg_loss_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_down</span>, <span class="keyword">length</span>)
+
+<span class="keyword">vars</span> = <span class="keyword">if</span> <span class="keyword">avg_loss_vol_adj</span> != <span class="number">0</span>
+    <span class="keyword">avg_gain_vol_adj</span> / <span class="keyword">avg_loss_vol_adj</span>
+<span class="keyword">else if</span> <span class="keyword">avg_gain_vol_adj</span> &gt; <span class="number">0</span>
+    <span class="number">1000000000.0</span>
+<span class="keyword">else</span>
+    <span class="number">1.0</span>
+
+<span class="keyword">v_rsi</span> = <span class="number">100</span> - (<span class="number">100</span> / (<span class="number">1</span> + <span class="keyword">vars</span>))
+
+<span class="builtin">plot</span>(<span class="keyword">v_rsi</span>, <span class="string">"VARSI"</span>, <span class="builtin">color</span>=<span class="builtin">color.blue</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+<span class="builtin">hline</span>(<span class="keyword">obLevel</span>, <span class="string">"Overbought"</span>, <span class="builtin">color</span>=<span class="builtin">color.red</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dashed</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+<span class="builtin">hline</span>(<span class="keyword">osLevel</span>, <span class="string">"Oversold"</span>, <span class="builtin">color</span>=<span class="builtin">color.green</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dashed</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+
+<span class="comment">// Long entry: VARSI crosses above oversold level</span>
+<span class="keyword">longCondition</span> = <span class="builtin">ta.crossover</span>(<span class="keyword">v_rsi</span>, <span class="keyword">osLevel</span>)
+
+<span class="comment">// Short entry: VARSI crosses below overbought level</span>
+<span class="keyword">shortCondition</span> = <span class="builtin">ta.crossunder</span>(<span class="keyword">v_rsi</span>, <span class="keyword">obLevel</span>)
+
+<span class="keyword">if</span> (<span class="keyword">longCondition</span>)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Long VARSI"</span>, <span class="builtin">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortCondition</span>)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Short VARSI"</span>, <span class="builtin">strategy.short</span>)
+
+<span class="comment">// Basic exit: opposite signal</span>
+<span class="builtin">strategy.close</span>(<span class="string">"Long VARSI"</span>, <span class="builtin">when</span>=<span class="keyword">shortCondition</span>)
+<span class="builtin">strategy.close</span>(<span class="string">"Short VARSI"</span>, <span class="builtin">when</span>=<span class="keyword">longCondition</span>)
+</code>
+</pre>
+
+    <h3>2. Divergence (Enhanced Reversal Signal)</h3>
+    <p>Divergence between price and VARSI is a particularly strong signal, as it indicates a disconnect between price action and the underlying volume-weighted momentum. This adds conviction to the potential for a trend reversal.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but VARSI makes a <b>higher low</b> (or fails to make a significantly lower low). This implies that despite falling prices, the volume-adjusted selling momentum is weakening, hinting at an upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but VARSI makes a <b>lower high</b> (or fails to make a significantly higher high). This implies that despite rising prices, the volume-adjusted buying momentum is weakening, hinting at a downward reversal.</li>
+    </ul>
+
+    <pre>
+<code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"VARSI Divergence Strategy"</span>, <span class="builtin">overlay</span>=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="builtin">input.int</span>(<span class="number">14</span>, <span class="builtin">title</span>=<span class="string">"VARSI Length"</span>, <span class="builtin">minval</span>=<span class="number">1</span>)
+
+<span class="keyword">up_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span> - <span class="builtin">close</span>[<span class="number">1</span>], <span class="number">0</span>)
+<span class="keyword">down_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span>[<span class="number">1</span>] - <span class="builtin">close</span>, <span class="number">0</span>)
+<span class="keyword">volume_adj_up</span> = <span class="keyword">up_change</span> * <span class="builtin">volume</span>
+<span class="keyword">volume_adj_down</span> = <span class="keyword">down_change</span> * <span class="builtin">volume</span>
+<span class="keyword">avg_gain_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_up</span>, <span class="keyword">length</span>)
+<span class="keyword">avg_loss_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_down</span>, <span class="keyword">length</span>)
+
+<span class="keyword">vars</span> = <span class="keyword">if</span> <span class="keyword">avg_loss_vol_adj</span> != <span class="number">0</span>
+    <span class="keyword">avg_gain_vol_adj</span> / <span class="keyword">avg_loss_vol_adj</span>
+<span class="keyword">else if</span> <span class="keyword">avg_gain_vol_adj</span> &gt; <span class="number">0</span>
+    <span class="number">1000000000.0</span>
+<span class="keyword">else</span>
+    <span class="number">1.0</span>
+
+<span class="keyword">v_rsi</span> = <span class="number">100</span> - (<span class="number">100</span> / (<span class="number">1</span> + <span class="keyword">vars</span>))
+
+<span class="builtin">plot</span>(<span class="keyword">v_rsi</span>, <span class="string">"VARSI"</span>, <span class="builtin">color</span>=<span class="builtin">color.blue</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+<span class="builtin">hline</span>(<span class="number">70</span>, <span class="string">"Overbought"</span>, <span class="builtin">color</span>=<span class="builtin">color.red</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dashed</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+<span class="builtin">hline</span>(<span class="number">30</span>, <span class="string">"Oversold"</span>, <span class="builtin">color</span>=<span class="builtin">color.green</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dashed</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This example looks for recent higher/lower swings in price and VARSI.</span>
+
+<span class="comment">// Bullish Divergence: Price lower low, VARSI higher low</span>
+<span class="keyword">bullishDiv</span> = <span class="builtin">close</span> &lt; <span class="builtin">close</span>[<span class="number">1</span>] and <span class="builtin">close</span>[<span class="number">1</span>] &lt; <span class="builtin">close</span>[<span class="number">2</span>] and <span class="keyword">v_rsi</span> &gt; <span class="keyword">v_rsi</span>[<span class="number">1</span>] and <span class="keyword">v_rsi</span>[<span class="number">1</span>] &gt; <span class="keyword">v_rsi</span>[<span class="number">2</span>]
+
+<span class="comment">// Bearish Divergence: Price higher high, VARSI lower high</span>
+<span class="keyword">bearishDiv</span> = <span class="builtin">close</span> &gt; <span class="builtin">close</span>[<span class="number">1</span>] and <span class="builtin">close</span>[<span class="number">1</span>] &gt; <span class="builtin">close</span>[<span class="number">2</span>] and <span class="keyword">v_rsi</span> &lt; <span class="keyword">v_rsi</span>[<span class="number">1</span>] and <span class="keyword">v_rsi</span>[<span class="number">1</span>] &lt; <span class="keyword">v_rsi</span>[<span class="number">2</span>]
+
+<span class="comment">// Plot shapes on the chart to indicate divergence</span>
+<span class="builtin">plotshape</span>(<span class="keyword">bullishDiv</span>, <span class="builtin">title</span>=<span class="string">"Bullish VARSI Divergence"</span>, <span class="builtin">location</span>=<span class="builtin">location.belowbar</span>, <span class="builtin">color</span>=<span class="builtin">color.green</span>, <span class="builtin">style</span>=<span class="builtin">shape.triangleup</span>, <span class="builtin">size</span>=<span class="builtin">size.small</span>)
+<span class="builtin">plotshape</span>(<span class="keyword">bearishDiv</span>, <span class="builtin">title</span>=<span class="string">"Bearish VARSI Divergence"</span>, <span class="builtin">location</span>=<span class="builtin">location.abovebar</span>, <span class="builtin">color</span>=<span class="builtin">color.red</span>, <span class="builtin">style</span>=<span class="builtin">shape.triangledown</span>, <span class="builtin">size</span>=<span class="builtin">size.small</span>)
+
+<span class="keyword">if</span> (<span class="keyword">bullishDiv</span>)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Long Divergence"</span>, <span class="builtin">strategy.long</span>)
+<span class="keyword">if</span> (<span class="keyword">bearishDiv</span>)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Short Divergence"</span>, <span class="builtin">strategy.short</span>)
+
+<span class="comment">// Basic exit after a few bars or on opposite signal</span>
+<span class="builtin">strategy.exit</span>(<span class="string">"Long Divergence Exit"</span>, <span class="builtin">from_entry</span>=<span class="string">"Long Divergence"</span>, <span class="builtin">profit</span>=<span class="builtin">close</span>*<span class="number">0.02</span>, <span class="builtin">loss</span>=<span class="builtin">close</span>*<span class="number">0.01</span>)
+<span class="builtin">strategy.exit</span>(<span class="string">"Short Divergence Exit"</span>, <span class="builtin">from_entry</span>=<span class="string">"Short Divergence"</span>, <span class="builtin">profit</span>=<span class="builtin">close</span>*<span class="number">0.02</span>, <span class="builtin">loss</span>=<span class="builtin">close</span>*<span class="number">0.01</span>)
+</code>
+</pre>
+
+
+    <h3>3. Trend Confirmation with VARSI's Mid-Line</h3>
+    <p>Similar to standard RSI, VARSI can be used to confirm the prevailing trend. Its mid-line (50 level) acts as a key separator between bullish and bearish momentum backed by volume.</p>
+    <ul>
+      <li><strong>Uptrend Confirmation</strong>: VARSI consistently stays <b>above the 50 level</b>. This suggests that volume-adjusted buying momentum is dominant, confirming an uptrend.</li>
+      <li><strong>Downtrend Confirmation</strong>: VARSI consistently stays <b>below the 50 level</b>. This suggests that volume-adjusted selling momentum is dominant, confirming a downtrend.</li>
+      <li><strong>Mid-Line Crossover</strong>: A crossover of the 50 level can signal a shift in the prevailing volume-adjusted momentum bias.</li>
+    </ul>
+<pre>
+<code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"VARSI Mid-Line Trend Strategy"</span>, <span class="builtin">overlay</span>=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="builtin">input.int</span>(<span class="number">14</span>, <span class="builtin">title</span>=<span class="string">"VARSI Length"</span>, <span class="builtin">minval</span>=<span class="number">1</span>)
+
+<span class="keyword">up_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span> - <span class="builtin">close</span>[<span class="number">1</span>], <span class="number">0</span>)
+<span class="keyword">down_change</span> = <span class="builtin">math.max</span>(<span class="builtin">close</span>[<span class="number">1</span>] - <span class="builtin">close</span>, <span class="number">0</span>)
+<span class="keyword">volume_adj_up</span> = <span class="keyword">up_change</span> * <span class="builtin">volume</span>
+<span class="keyword">volume_adj_down</span> = <span class="keyword">down_change</span> * <span class="builtin">volume</span>
+<span class="keyword">avg_gain_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_up</span>, <span class="keyword">length</span>)
+<span class="keyword">avg_loss_vol_adj</span> = <span class="builtin">ta.rma</span>(<span class="keyword">volume_adj_down</span>, <span class="keyword">length</span>)
+
+<span class="keyword">vars</span> = <span class="keyword">if</span> <span class="keyword">avg_loss_vol_adj</span> != <span class="number">0</span>
+    <span class="keyword">avg_gain_vol_adj</span> / <span class="keyword">avg_loss_vol_adj</span>
+<span class="keyword">else if</span> <span class="keyword">avg_gain_vol_adj</span> &gt; <span class="number">0</span>
+    <span class="number">1000000000.0</span>
+<span class="keyword">else</span>
+    <span class="number">1.0</span>
+
+<span class="keyword">v_rsi</span> = <span class="number">100</span> - (<span class="number">100</span> / (<span class="number">1</span> + <span class="keyword">vars</span>))
+
+<span class="builtin">plot</span>(<span class="keyword">v_rsi</span>, <span class="string">"VARSI"</span>, <span class="builtin">color</span>=<span class="builtin">color.blue</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+<span class="builtin">hline</span>(<span class="number">50</span>, <span class="string">"Mid-Line"</span>, <span class="builtin">color</span>=<span class="builtin">color.gray</span>, <span class="builtin">linestyle</span>=<span class="builtin">hline.style_dotted</span>, <span class="builtin">linewidth</span>=<span class="number">2</span>, <span class="builtin">display</span>=<span class="builtin">display.pane_only</span>)
+
+<span class="comment">// Long entry: VARSI crosses above 50</span>
+<span class="keyword">longCondition</span> = <span class="builtin">ta.crossover</span>(<span class="keyword">v_rsi</span>, <span class="number">50</span>)
+
+<span class="comment">// Short entry: VARSI crosses below 50</span>
+<span class="keyword">shortCondition</span> = <span class="builtin">ta.crossunder</span>(<span class="keyword">v_rsi</span>, <span class="number">50</span>)
+
+<span class="keyword">if</span> (<span class="keyword">longCondition</span>)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Long Mid-Line"</span>, <span class="builtin">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortCondition</span>)
+    <span class="builtin">strategy.entry</span>(<span class="string">"Short Mid-Line"</span>, <span class="builtin">strategy.short</span>)
+
+<span class="comment">// Basic exit: opposite signal</span>
+<span class="builtin">strategy.close</span>(<span class="string">"Long Mid-Line"</span>, <span class="builtin">when</span>=<span class="keyword">shortCondition</span>)
+<span class="builtin">strategy.close</span>(<span class="string">"Short Mid-Line"</span>, <span class="builtin">when</span>=<span class="keyword">longCondition</span>)
+
+<span class="comment">// Color background based on VARSI's position relative to 50</span>
+<span class="builtin">bgcolor</span>(<span class="keyword">v_rsi</span> &gt; <span class="number">50</span> ? <span class="builtin">color.new</span>(<span class="builtin">color.lime</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="builtin">title</span>=<span class="string">"Bullish Momentum"</span>)
+<span class="builtin">bgcolor</span>(<span class="keyword">v_rsi</span> &lt; <span class="number">50</span> ? <span class="builtin">color.new</span>(<span class="builtin">color.maroon</span>, <span class="number">95</span>) : <span class="keyword">na</span>, <span class="builtin">title</span>=<span class="string">"Bearish Momentum"</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing Volume-Adjusted RSI (VARSI) Performance</h2>
+    <p>To get the most from Volume-Adjusted RSI in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter (commonly 14) directly impacts VARSI's sensitivity. Shorter lengths make it more reactive but potentially noisy. Longer lengths provide a smoother reading but with more lag. Experiment to find a balance for your asset and timeframe.</li>
+      <li><strong>Focus on Divergence:</strong> VARSI's key strength lies in its ability to confirm divergences with price due to the added volume component. These are often the most powerful and actionable signals.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm VARSI signals with <b>price action</b>. An overbought VARSI signal is stronger if price also forms a bearish reversal candlestick pattern or hits a resistance level.</li>
+      <li><strong>Volume Data Quality:</strong> VARSI's effectiveness is highly dependent on accurate and reliable volume data. Ensure the asset you are trading has consistent volume reporting.</li>
+      <li><strong>Adaptive Levels:</strong> While 70/30 are standard for RSI, the "overbought" and "oversold" levels for VARSI might need slight adjustment based on the asset's typical behavior and the impact of volume.</li>
+      <li><strong>Use as a Filter:</strong> VARSI can be used as a filter for other strategies. For example, only take long entries if VARSI is above 50 or showing bullish divergence.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Conviction Check:</b> VARSI acts as a "conviction check" for momentum. Is the price movement genuinely supported by significant volume, or is it just noise? VARSI helps answer that.
+    </div>
+
+    <h2>Common Volume-Adjusted RSI (VARSI) Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Despite being volume-adjusted, VARSI is still a lagging indicator. It will confirm momentum shifts after they have already begun.</li>
+      <li> <b>Whipsaws in Choppy Markets:</b> In highly volatile and non-trending (choppy) markets, VARSI can generate frequent crossovers and enter/exit overbought/oversold zones frequently, leading to false signals.</li>
+      <li> <b>Volume Data Consistency:</b> If volume data for an asset is inconsistent, sparse, or manipulated, VARSI's readings will be unreliable.</li>
+      <li> <b>Not a Standalone Indicator:</b> VARSI provides valuable insights but should never be used in isolation. It works best as a confirming or filtering indicator within a broader trading strategy.</li>
+      <li> <b>Interpretation Complexity:</b> For beginners, understanding the nuances of volume-adjusted momentum might be more challenging than a simple price-based RSI.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Volume-Adjusted RSI (VARSI) is a powerful and insightful momentum oscillator for Pine Script in TradingView. By integrating <b>volume weighting</b> into the traditional RSI calculation, it provides a more robust measure of overbought/oversold conditions, enhances the reliability of <b>divergence signals</b>, and offers a clearer confirmation of price trend conviction. While requiring a custom implementation and careful attention to its unique interpretation, VARSI serves as an excellent tool for traders seeking to validate momentum with underlying volume strength. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with price action and other technical analysis tools, you can leverage VARSI to significantly enhance your <b>pine script strategies</b> and gain a deeper understanding of true market strength.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Williams %R - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Williams %R (Williams Percent Range) in Pine Script for TradingView - a momentum oscillator for identifying overbought/oversold conditions and trend reversals.">
+    <meta name="keywords" content="pine script strategies, Williams %R, Williams Percent Range, tradingview indicator, technical analysis, momentum oscillator, overbought, oversold, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Williams %R - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Williams %R in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Williams %R - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-WilliamsR.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Williams %R - Complete TradingView Guide",
+      "description": "Master Williams %R (Williams Percent Range) in Pine Script for TradingView - a momentum oscillator for identifying overbought/oversold conditions and trend reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-WilliamsR.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Williams %R",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-WilliamsR.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Williams %R </h1>
+      <p class="blog-subtitle">Master this essential momentum oscillator in TradingView's Pine Script for identifying overbought/oversold conditions, potential reversals, and trend strength.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Williams %R</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Williams %R?</h2>
+    <p> <b>Williams %R</b> (often shortened to Williams Percent Range), developed by Larry Williams, is a momentum oscillator that measures the current closing price relative to the high-low range over a specified number of past periods. It's similar to the Stochastic Oscillator but is inverted, typically ranging from 0 to -100. Williams %R is primarily used to identify overbought and oversold conditions, helping traders spot potential turning points in price action.</p>
+
+    <p>In Pine Script, Williams %R is a popular tool for gauging the strength of price momentum and anticipating market reversals, offering insights into whether price is closing near the top or bottom of its recent range.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Williams %R involves the following components over a look-back period (e.g., 14 bars):</p>
+    <ol>
+      <li><strong>Highest High (HH)</strong>: The highest price recorded over the look-back period.</li>
+      <li><strong>Lowest Low (LL)</strong>: The lowest price recorded over the look-back period.</li>
+      <li><strong>Current Close (C)</strong>: The most recent closing price.</li>
+      <li><strong>Williams %R Formula</strong>:
+        <br>
+        `%R = ((Highest High - Current Close) / (Highest High - Lowest Low)) * -100`
+        <br>
+        This formula means that when price closes near the high of the range, %R will be close to 0 (overbought). When price closes near the low of the range, %R will be close to -100 (oversold).
+      </li>
+    </ol>
+    <p>While some platforms may scale it from 0 to 100, the original Williams %R calculation typically results in values between 0 and -100.</p>
+
+    <h2>Basic Williams %R Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a straightforward built-in function `ta.williamsR()` for calculating Williams %R.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Williams %R Indicator"</span>, <span class="property">overlay</span>=<span class="literal">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for Williams %R length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="title">title</span>=<span class="string">"%R Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Williams %R value using the built-in function</span>
+<span class="keyword">williamsRValue</span> = <span class="function">ta.williamsR</span>(<span class="keyword">length</span>)
+
+<span class="comment">// Plot the Williams %R line</span>
+<span class="function">plot</span>(<span class="keyword">williamsRValue</span>, <span class="title">title</span>=<span class="string">"%R"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot horizontal lines for overbought and oversold levels</span>
+<span class="comment">// Note: Overbought is near 0, Oversold is near -100</span>
+<span class="keyword">h_overbought</span> = <span class="function">hline</span>(<span class="number">-20</span>, <span class="string">"Overbought (-20)"</span>, <span class="property">color</span>=<span class="property">color.red</span>)
+<span class="keyword">h_oversold</span> = <span class="function">hline</span>(<span class="number">-80</span>, <span class="string">"Oversold (-80)"</span>, <span class="property">color</span>=<span class="property">color.green</span>)
+
+<span class="comment">// Fill background between Williams %R and levels for visual clarity</span>
+<span class="function">fill</span>(<span class="keyword">h_overbought</span>, <span class="keyword">h_oversold</span>, <span class="function">color.new</span>(<span class="property">color.gray</span>, <span class="number">90</span>))
+</code></pre>
+
+    <div class="tip">
+      <strong>Standard Levels:</strong> The conventional overbought level is -20 and the oversold level is -80.
+    </div>
+
+    <h2>Practical Williams %R <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Overbought and Oversold Conditions</h3>
+    <p>This is the primary use of Williams %R. When %R crosses above -20, it's considered overbought, suggesting a potential pullback or reversal. When %R crosses below -80, it's considered oversold, indicating a potential bounce or reversal.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: %R moves below -80 (oversold) and then crosses back above -80. This suggests bearish pressure is easing.</li>
+      <li><strong>Sell Signal</strong>: %R moves above -20 (overbought) and then crosses back below -20. This suggests bullish pressure is easing.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Williams %R Overbought/Oversold Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Inputs for Williams %R</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="title">title</span>=<span class="string">"%R Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="keyword">overboughtLevel</span> = <span class="function">input.int</span>(<span class="number">-20</span>, <span class="title">title</span>=<span class="string">"Overbought Level"</span>)
+<span class="keyword">oversoldLevel</span> = <span class="function">input.int</span>(<span class="number">-80</span>, <span class="title">title</span>=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate Williams %R</span>
+<span class="keyword">williamsRValue</span> = <span class="function">ta.williamsR</span>(<span class="keyword">length</span>)
+
+<span class="comment">// Define conditions for entries and exits</span>
+<span class="comment">// Buy when %R crosses above oversold level</span>
+<span class="keyword">longEntry</span> = <span class="function">ta.crossover</span>(<span class="keyword">williamsRValue</span>, <span class="keyword">oversoldLevel</span>)
+
+<span class="comment">// Sell when %R crosses below overbought level</span>
+<span class="keyword">shortEntry</span> = <span class="function">ta.crossunder</span>(<span class="keyword">williamsRValue</span>, <span class="keyword">overboughtLevel</span>)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (<span class="keyword">longEntry</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortEntry</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Optional: Plot Williams %R in a separate pane for visualization</span>
+<span class="comment">// plot(williamsRValue, "%R", color.purple)</span>
+<span class="comment">// hline(overboughtLevel, "Overbought", color.red)</span>
+<span class="comment">// hline(oversoldLevel, "Oversold", color.green)</span>
+</code></pre>
+
+    <h3>2. Williams %R Centerline (-50) Crossover</h3>
+    <p>The -50 level can act as a centerline for momentum shifts. Crossing above -50 indicates increasing bullish momentum, while crossing below -50 suggests increasing bearish momentum.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Williams %R Centerline Crossover"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Inputs for Williams %R</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="title">title</span>=<span class="string">"%R Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="keyword">centerLine</span> = <span class="function">input.int</span>(<span class="number">-50</span>, <span class="title">title</span>=<span class="string">"Centerline"</span>)
+
+<span class="comment">// Calculate Williams %R</span>
+<span class="keyword">williamsRValue</span> = <span class="function">ta.williamsR</span>(<span class="keyword">length</span>)
+
+<span class="comment">// Define conditions for entries</span>
+<span class="keyword">longSignal</span> = <span class="function">ta.crossover</span>(<span class="keyword">williamsRValue</span>, <span class="keyword">centerLine</span>)
+<span class="keyword">shortSignal</span> = <span class="function">ta.crossunder</span>(<span class="keyword">williamsRValue</span>, <span class="keyword">centerLine</span>)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (<span class="keyword">longSignal</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortSignal</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Optional: Plot Williams %R in a separate pane</span>
+<span class="comment">// plot(williamsRValue, "%R", color.purple)</span>
+<span class="comment">// hline(centerLine, "Centerline", color.gray)</span>
+</code></pre>
+
+
+    <h3>3. Williams %R Divergence Strategy</h3>
+    <p>Divergence occurs when price and Williams %R move in opposite directions, often signaling a potential trend reversal. This suggests that the current trend is losing conviction.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but Williams %R makes a higher low. This indicates weakening bearish momentum and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but Williams %R makes a lower high. This indicates weakening bullish momentum and a potential downward reversal.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Williams %R Divergence Scanner"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Inputs for Williams %R</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="title">title</span>=<span class="string">"%R Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="keyword">overboughtLevel</span> = <span class="function">input.int</span>(<span class="number">-20</span>, <span class="title">title</span>=<span class="string">"Overbought Level"</span>)
+<span class="keyword">oversoldLevel</span> = <span class="function">input.int</span>(<span class="number">-80</span>, <span class="title">title</span>=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate Williams %R</span>
+<span class="keyword">williamsRValue</span> = <span class="function">ta.williamsR</span>(<span class="keyword">length</span>)
+
+<span class="comment">// Plot Williams %R in a separate pane</span>
+<span class="function">plot</span>(<span class="keyword">williamsRValue</span>, <span class="string">"%R"</span>, <span class="property">color</span>=<span class="property">color.purple</span>)
+<span class="function">hline</span>(<span class="keyword">overboughtLevel</span>, <span class="string">"Overbought (-20)"</span>, <span class="property">color</span>=<span class="property">color.red</span>)
+<span class="function">hline</span>(<span class="keyword">oversoldLevel</span>, <span class="string">"Oversold (-80)"</span>, <span class="property">color</span>=<span class="property">color.green</span>)
+<span class="function">hline</span>(<span class="number">-50</span>, <span class="string">"Centerline"</span>, <span class="property">color</span>=<span class="property">color.gray</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example and might need refinement for actual trading.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, %R higher low)</span>
+<span class="keyword">bullishDivergence</span> = close[<span class="number">2</span>] > close[<span class="number">1</span>] and close[<span class="number">1</span>] > close and williamsRValue[<span class="number">2</span>] &lt; williamsRValue[<span class="number">1</span>] and williamsRValue[<span class="number">1</span>] &lt; williamsRValue
+
+<span class="comment">// Bearish Divergence (Price higher high, %R lower high)</span>
+<span class="keyword">bearishDivergence</span> = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] and close[<span class="number">1</span>] &lt; close and williamsRValue[<span class="number">2</span>] > williamsRValue[<span class="number">1</span>] and williamsRValue[<span class="number">1</span>] > williamsRValue
+
+<span class="function">plotshape</span>(<span class="keyword">bullishDivergence</span>, <span class="title">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="property">location</span>=<span class="property">location.belowbar</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">style</span>=<span class="property">shape.triangleup</span>, <span class="property">size</span>=<span class="property">size.small</span>)
+<span class="function">plotshape</span>(<span class="keyword">bearishDivergence</span>, <span class="title">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="property">location</span>=<span class="property">location.abovebar</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">style</span>=<span class="property">shape.triangledown</span>, <span class="property">size</span>=<span class="property">size.small</span>)
+
+<span class="function">alertcondition</span>(<span class="keyword">bullishDivergence</span>, <span class="string">"Bullish %R Divergence"</span>, <span class="string">"Potential bullish reversal based on Williams %R divergence."</span>)
+<span class="function">alertcondition</span>(<span class="keyword">bearishDivergence</span>, <span class="string">"Bearish %R Divergence"</span>, <span class="string">"Potential bearish reversal based on Williams %R divergence."</span>)
+</code></pre>
+
+    <h2>Optimizing Williams %R Performance</h2>
+    <p>To get the most from Williams %R in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. While 14 is standard, shorter lengths (e.g., 7 or 9) make %R more sensitive but prone to noise, while longer lengths (e.g., 21 or 28) smooth it more but add lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Adjust Levels:</strong> For very volatile assets or shorter timeframes, you might consider adjusting the overbought/oversold levels (e.g., -10/-90 instead of -20/-80) to filter out less significant signals.</li>
+      <li><strong>Combine with Trend Filters:</strong> Williams %R performs best in trending markets or within range-bound markets where price reverses predictably from boundaries. In choppy markets, it can generate numerous false signals. Use a trend filter (like a moving average or ADX) to confirm a clear trend before relying on %R signals.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm Williams %R signals on a higher timeframe before acting on signals from a lower timeframe for added reliability. For example, if the daily %R is oversold, a 4-hour %R oversold signal might be more reliable.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for %R signals to be confirmed by price action, such as candlestick patterns, breaks of support/resistance, or chart patterns.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Williams %R vs. Stochastic:</strong> Williams %R is very similar to Stochastic, but it measures the close relative to the high-low range on an inverted scale. Some traders prefer its visual representation for overbought/oversold conditions.
+    </div>
+
+    <h2>Common Williams %R Pitfalls</h2>
+    <ul>
+      <li> <b>False Overbought/Oversold Signals:</b> In strong, sustained trends, Williams %R can remain at extreme overbought (near 0) or oversold (near -100) levels for extended periods. Blindly fading these extremes can lead to significant losses.</li>
+      <li> <b>Whipsaws in Ranging Markets:</b> In choppy or consolidating markets, %R can oscillate frequently between -20 and -80, leading to many false signals.</li>
+      <li> <b>Divergence Can Be Early:</b> While divergence is powerful, it can appear early, and a trend might continue for some time after the divergence signal, leading to premature entries.</li>
+      <li> <b>Not a Standalone Indicator:</b> Williams %R should always be used as part of a broader trading system, combined with other indicators (e.g., volume, trend-following indicators) and price action analysis.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Williams %R (Williams Percent Range) is a fundamental and highly versatile momentum oscillator in Pine Script for TradingView. Its ability to show the current closing price relative to its recent range makes it invaluable for identifying overbought and oversold conditions, assessing momentum, and spotting potential reversals through divergence. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with other technical analysis tools, you can leverage Williams %R to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+</body>
+</html>

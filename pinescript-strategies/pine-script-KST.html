@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Know Sure Thing (KST) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Know Sure Thing (KST) in Pine Script for TradingView - a comprehensive momentum indicator that smooths multiple Rates of Change to identify long-term trends and reversals.">
+    <meta name="keywords" content="pine script strategies, Know Sure Thing, KST, tradingview indicator, technical analysis, momentum oscillator, long-term trends, reversals, rate of change, smoothing">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Know Sure Thing (KST) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Know Sure Thing (KST) indicator in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Know Sure Thing (KST) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-KST.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Know Sure Thing (KST) - Complete TradingView Guide",
+      "description": "Master the Know Sure Thing (KST) in Pine Script for TradingView - a comprehensive momentum indicator that smooths multiple Rates of Change to identify long-term trends and reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-KST.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Know Sure Thing (KST)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-KST.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Know Sure Thing (KST) </h1>
+      <p class="blog-subtitle">Master this unique long-term momentum oscillator in TradingView's Pine Script that smooths multiple Rates of Change to identify significant trends and reversals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Know Sure Thing (KST)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Know Sure Thing (KST)?</h2>
+    <p>The <b>Know Sure Thing (KST)</b>, developed by Martin Pring, is a momentum indicator that effectively smooths and combines four different Rates of Change (ROC) from varying timeframes. This unique construction aims to provide a reliable measure of long-term momentum, filtering out short-term noise and giving clearer signals for major trend reversals. KST typically oscillates around a zero line and also includes a signal line (a smoothed version of KST itself).</p>
+
+    <p>In Pine Script, KST is a powerful tool for traders seeking a nuanced and smoothed view of market momentum, making it excellent for identifying significant shifts in trend direction and confirming price action over longer periods.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of KST is quite involved, combining four different ROC values, each smoothed by an SMA, and then adding them together. Finally, the KST line itself is smoothed to create a signal line.</p>
+    <ol>
+      <li><strong>Four Rates of Change (ROC)</strong>:
+        <ul>
+          <li>`ROC1 = ROC(close, 10)`</li>
+          <li>`ROC2 = ROC(close, 15)`</li>
+          <li>`ROC3 = ROC(close, 20)`</li>
+          <li>`ROC4 = ROC(close, 30)`</li>
+        </ul>
+      </li>
+      <li><strong>Four Smoothed Rates of Change (SMA)</strong>: Each ROC is then smoothed with a Simple Moving Average.
+        <ul>
+          <li>`SMAROC1 = SMA(ROC1, 10)`</li>
+          <li>`SMAROC2 = SMA(ROC2, 10)`</li>
+          <li>`SMAROC3 = SMA(ROC3, 10)`</li>
+          <li>`SMAROC4 = SMA(ROC4, 15)`</li>
+        </ul>
+      </li>
+      <li><strong>KST Line Calculation</strong>: The KST line is the sum of these four smoothed ROCs.
+        <br>
+        `KST = (SMAROC1 * 1) + (SMAROC2 * 2) + (SMAROC3 * 3) + (SMAROC4 * 4)`
+        <br>
+        (Note: The weights 1, 2, 3, 4 are standard, but sometimes different weights are used depending on the source or specific implementation of Pring's methods.)
+      </li>
+      <li><strong>KST Signal Line</strong>: A Simple Moving Average of the KST line.
+        <br>
+        `Signal Line = SMA(KST, SignalLength)` (e.g., 9 periods)
+      </li>
+    </ol>
+    <p>This multi-faceted approach makes KST a highly reliable trend-following oscillator.</p>
+
+    <h2>Basic Know Sure Thing (KST) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.kst()` for calculating the Know Sure Thing, simplifying its complex formula.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Know Sure Thing (KST) Indicator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Inputs for KST lengths (standard parameters by Martin Pring)</span>
+<span class="keyword">roc1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"ROC1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc2Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"ROC2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma2Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc3Length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"ROC3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma3Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc4Length</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"ROC4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma4Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"SMA4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"Signal Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate KST and its signal line using the built-in function</span>
+<span class="comment">// ta.kst takes all the specific lengths for its internal calculation</span>
+[kstValue, signalValue] = <span class="function">ta.kst</span>(close, roc1Length, sma1Length, roc2Length, sma2Length, roc3Length, sma3Length, roc4Length, sma4Length, signalLength)
+
+<span class="comment">// Plot the KST line</span>
+<span class="function">plot</span>(kstValue, <span class="keyword">title</span>=<span class="string">"KST"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Signal Line</span>
+<span class="function">plot</span>(signalValue, <span class="keyword">title</span>=<span class="string">"Signal"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Zero Line</span>
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+</code>
+</pre>
+
+    <div class="tip">
+      <strong>Smoothed Momentum:</strong> KST is designed to give a smoother, less noisy signal than individual ROCs, making it suitable for identifying significant, longer-term momentum.
+    </div>
+
+    <h2>Practical KST <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. KST and Signal Line Crossover</h3>
+    <p>This is the primary way to generate trading signals with KST. A crossover between the KST line and its signal line indicates a shift in momentum, confirming trend direction.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: KST line crosses above its signal line. This indicates a strengthening of bullish momentum.</li>
+      <li><strong>Sell Signal</strong>: KST line crosses below its signal line. This indicates a strengthening of bearish momentum.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"KST Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for KST lengths (standard parameters by Martin Pring)</span>
+<span class="keyword">roc1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"ROC1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc2Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"ROC2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma2Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc3Length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"ROC3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma3Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc4Length</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"ROC4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma4Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"SMA4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"Signal Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate KST and its signal line</span>
+[kstValue, signalValue] = <span class="function">ta.kst</span>(close, roc1Length, sma1Length, roc2Length, sma2Length, roc3Length, sma3Length, roc4Length, sma4Length, signalLength)
+
+<span class="comment">// Plot KST and Signal in a separate pane for visualization</span>
+<span class="function">plot</span>(kstValue, <span class="string">"KST"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">plot</span>(signalValue, <span class="string">"Signal"</span>, <span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(kstValue, signalValue)
+shortSignal = <span class="function">ta.crossunder</span>(kstValue, signalValue)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code>
+</pre>
+
+
+    <h3>2. KST Zero Line Crossover (Trend Confirmation)</h3>
+    <p>The zero line provides a confirmation of the overall market bias. Crossing above zero indicates bullish momentum, and crossing below zero indicates bearish momentum.</p>
+    <ul>
+      <li><strong>Bullish Trend Confirmation</strong>: KST crosses above the zero line. This suggests a shift to positive long-term momentum.</li>
+      <li><strong>Bearish Trend Confirmation</strong>: KST crosses below the zero line. This suggests a shift to negative long-term momentum.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"KST Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for KST lengths</span>
+<span class="keyword">roc1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"ROC1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc2Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"ROC2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma2Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc3Length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"ROC3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma3Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc4Length</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"ROC4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma4Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"SMA4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"Signal Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>) <span class="comment">// Signal not used for this strategy</span>
+
+<span class="comment">// Calculate KST (signal line is not relevant for this zero-line strategy, but calculated by ta.kst)</span>
+[kstValue, signalValue] = <span class="function">ta.kst</span>(close, roc1Length, sma1Length, roc2Length, sma2Length, roc3Length, sma3Length, roc4Length, sma4Length, signalLength)
+
+<span class="comment">// Plot KST in a separate pane</span>
+<span class="function">plot</span>(kstValue, <span class="string">"KST"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(kstValue, <span class="number">0</span>)
+shortSignal = <span class="function">ta.crossunder</span>(kstValue, <span class="number">0</span>)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code></pre>
+
+
+    <h3>3. KST Divergence Strategy</h3>
+    <p>Divergence between price and KST is a highly reliable signal for significant trend reversals. Because KST is so heavily smoothed, its divergence signals are often less frequent but more powerful.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but KST makes a higher low. This indicates weakening bearish momentum and a strong potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but KST makes a lower high. This indicates weakening bullish momentum and a strong potential downward reversal.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"KST Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for KST lengths</span>
+<span class="keyword">roc1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"ROC1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma1Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA1 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc2Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"ROC2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma2Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA2 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc3Length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"ROC3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma3Length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"SMA3 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">roc4Length</span> = <span class="function">input.int</span>(<span class="number">30</span>, <span class="keyword">title</span>=<span class="string">"ROC4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">sma4Length</span> = <span class="function">input.int</span>(<span class="number">15</span>, <span class="keyword">title</span>=<span class="string">"SMA4 Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">9</span>, <span class="keyword">title</span>=<span class="string">"Signal Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate KST and its signal line</span>
+[kstValue, signalValue] = <span class="function">ta.kst</span>(close, roc1Length, sma1Length, roc2Length, sma2Length, roc3Length, sma3Length, roc4Length, sma4Length, signalLength)
+
+<span class="comment">// Plot KST and Signal in a separate pane</span>
+<span class="function">plot</span>(kstValue, <span class="string">"KST"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">plot</span>(signalValue, <span class="string">"Signal"</span>, <span class="keyword">color</span>.<span class="function">orange</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example focusing on price vs KST divergence.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, KST higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close <span class="keyword">and</span> kstValue[<span class="number">2</span>] &lt; kstValue[<span class="number">1</span>] <span class="keyword">and</span> kstValue[<span class="number">1</span>] &lt; kstValue
+
+<span class="comment">// Bearish Divergence (Price higher high, KST lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close <span class="keyword">and</span> kstValue[<span class="number">2</span>] > kstValue[<span class="number">1</span>] <span class="keyword">and</span> kstValue[<span class="number">1</span>] > kstValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish KST Divergence"</span>, <span class="string">"Potential bullish reversal based on KST divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish KST Divergence"</span>, <span class="string">"Potential bearish reversal based on KST divergence."</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing KST Performance</h2>
+    <p>To get the most from the Know Sure Thing (KST) in Pine Script:</p>
+    <ul>
+      <li><strong>Standard Parameters are Recommended:</strong> Martin Pring developed KST with specific default lengths (10,15,20,30 for ROCs and 10,10,10,15 for SMAs, plus 9 for the signal line). These parameters are generally well-tuned for identifying longer-term trends and are a good starting point. Adjusting them too much can alter the indicator's intended behavior.</li>
+      <li><strong>Focus on Crossovers and Divergence:</strong> KST is particularly effective for KST/Signal line crossovers as trend confirmation and for divergence signals, which are often more reliable due to the indicator's smoothing.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> KST is inherently designed for longer-term analysis due to its multiple ROC components. It's best used on higher timeframes (daily, weekly) for identifying dominant trends and then confirmed by price action or other indicators on lower timeframes for entry/exit timing.</li>
+      <li><strong>Combine with Price Action:</strong> Always seek confirmation from price action. A KST signal gains credibility if it aligns with a break of support/resistance, a strong candlestick pattern, or a significant volume spike.</li>
+      <li><strong>Not for Short-Term Noise:</strong> KST is designed to filter noise. It is less suited for very short-term or scalping strategies, as its signals will inherently lag more than faster oscillators.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>The "Sure Thing":</strong> The name "Know Sure Thing" reflects Pring's belief that by combining different ROCs, the indicator provides a more "certain" and reliable signal of the underlying trend compared to simpler momentum indicators.
+    </div>
+
+    <h2>Common KST Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Despite its complexity, KST is still a lagging indicator due to its multiple smoothing layers. It will not pick tops and bottoms precisely.</li>
+      <li> <b>Not for Sideways Markets:</b> In prolonged choppy or range-bound markets, KST can still generate false signals or hover around the zero line, providing little actionable insight. It performs best in trending environments.</li>
+      <li> <b>Complex Calculation:</b> While Pine Script simplifies it, understanding the multi-layered calculation is important for proper interpretation and advanced customization.</li>
+      <li> <b>Divergence Can Be Early:</b> As with most divergence signals, KST divergence can appear before a reversal fully takes hold, requiring patience and additional confirmation.</li>
+      <li> <b>Not a Standalone Indicator:</b> KST should always be used as part of a broader trading system, complementing other technical analysis tools for trend confirmation and risk management.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Know Sure Thing (KST) is a sophisticated and highly insightful momentum indicator in Pine Script for TradingView. Its unique construction, which combines and smooths multiple Rates of Change, makes it particularly effective at identifying long-term trend shifts and reliable reversal signals through its crossovers and divergence patterns. By understanding its calculation, thoughtfully utilizing its standard parameters, and integrating it strategically within your comprehensive trading approach, you can leverage the KST to gain a deeper, noise-filtered understanding of market dynamics and enhance your trading decisions, especially for position or swing trading.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

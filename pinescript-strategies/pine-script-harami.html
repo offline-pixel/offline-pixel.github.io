@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 45%; /* Adjusted for two candles side-by-side */
+            max-width: 45%; 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 200px; /* Wider for two candles */
+            height: 150px; 
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        /* Specific colors for candle bodies and wicks for clarity */
+        .candle-body-green { fill: #4CAF50; } 
+        .candle-body-red { fill: #F44336; } 
+        .wick-green { stroke: #4CAF50; }
+        .wick-red { stroke: #F44336; }
+
+        /* Specific positioning for the 2-candle pattern */
+        /* Candle 1 (previous) and Candle 2 (current) are positioned relative to each other */
+        /* No specific transforms needed if defined by absolute x coordinates in SVG viewBox */
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Harami Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Bullish and Bearish Harami candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for potential trend reversals.">
+    <meta name="keywords" content="pine script, harami pattern, bullish harami, bearish harami, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action, two-candle pattern, inside bar">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Harami Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Bullish and Bearish Harami patterns in Pine Script for market indecision and potential reversal strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-harami.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Harami Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-harami.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Harami Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master Bullish and Bearish Harami candlestick patterns in Pine Script for TradingView - advanced guide with practical examples and strategies for potential trend reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-harami.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Harami Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-harami.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Master Harami Candlestick Patterns (Bullish & Bearish)</h1>
+      <p class="blog-subtitle">Decode market indecision and potential reversals with this comprehensive guide to detecting and strategizing with Harami patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Harami Patterns</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why Harami Patterns Matter in Pine Script</h2>
+    <p>The <b>Harami candlestick pattern</b> is a two-candle reversal pattern that signals market indecision and a potential shift in momentum. The word "Harami" means "pregnant" in Japanese, referring to the pattern's appearance where a small second candle is "pregnant" within the larger body of the first candle. Unlike engulfing patterns which show aggression, Harami patterns indicate a slowdown or exhaustion of the previous trend, making them valuable for:</p>
+    <ul>
+      <li>Identifying potential trend reversals, especially after a prolonged move.</li>
+      <li>Signaling market indecision and a pause in current momentum.</li>
+      <li>Providing an early warning of a possible trend change.</li>
+    </ul>
+
+    <h2>Understanding Bullish and Bearish Harami Patterns</h2>
+    <p>A Harami pattern consists of two candles with distinct characteristics:</p>
+    <ol>
+        <li><b>First Candle (Large Body):</b> A large candle (bullish or bearish, depending on the preceding trend) indicating strong directional movement.</li>
+        <li><b>Second Candle (Small Body/Inside Bar):</b> A small-bodied candle (can be bullish or bearish) that opens and closes *completely within the real body* of the first candle. The second candle is often referred to as an "inside bar."</li>
+    </ol>
+    <p>The color of the second candle is generally opposite to the first, but the key is that its body is contained within the first. The overall pattern suggests that the strong directional move of the first candle was followed by a period of consolidation or indecision, indicating a loss of momentum.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Bullish Harami Pattern</h3>
+            <svg viewBox="0 0 200 150">
+                <!-- Previous Bearish Candle (Large) -->
+                <line x1="60" y1="20" x2="60" y2="120" stroke="#F44336" stroke-width="2"/>
+                <rect x="55" y="20" width="10" height="100" fill="#F44336"/>
+
+                <!-- Current Bullish Candle (Small, inside previous body) -->
+                <line x1="140" y1="50" x2="140" y2="90" stroke="#4CAF50" stroke-width="2"/>
+                <rect x="135" y="60" width="10" height="20" fill="#4CAF50"/>
+                
+                <!-- Helper lines for visual clarity -->
+                <line x1="50" y1="30" x2="150" y2="30" stroke="#A9A9A9" stroke-dasharray="2" stroke-width="0.5"/>
+                <line x1="50" y1="110" x2="150" y2="110" stroke="#A9A9A9" stroke-dasharray="2" stroke-width="0.5"/>
+                <text x="170" y="75" fill="#A9A9A9" font-size="10">Inside Bar</text>
+            </svg>
+            <p>A large bearish candle followed by a small bullish candle whose entire body is contained within the body of the first. Often after a downtrend.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Bearish Harami Pattern</h3>
+            <svg viewBox="0 0 200 150">
+                <!-- Previous Bullish Candle (Large) -->
+                <line x1="60" y1="30" x2="60" y2="130" stroke="#4CAF50" stroke-width="2"/>
+                <rect x="55" y="30" width="10" height="100" fill="#4CAF50"/>
+
+                <!-- Current Bearish Candle (Small, inside previous body) -->
+                <line x1="140" y1="60" x2="140" y2="100" stroke="#F44336" stroke-width="2"/>
+                <rect x="135" y="70" width="10" height="20" fill="#F44336"/>
+
+                <!-- Helper lines for visual clarity -->
+                <line x1="50" y1="40" x2="150" y2="40" stroke="#A9A9A9" stroke-dasharray="2" stroke-width="0.5"/>
+                <line x1="50" y1="120" x2="150" y2="120" stroke="#A9A9A9" stroke-dasharray="2" stroke-width="0.5"/>
+                <text x="170" y="75" fill="#A9A9A9" font-size="10">Inside Bar</text>
+            </svg>
+            <p>A large bullish candle followed by a small bearish candle whose entire body is contained within the body of the first. Often after an uptrend.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Candle 1:</b> Large real body, reflecting the preceding trend.</li>
+        <li><b>Candle 2:</b> Small real body, completely contained within the real body of Candle 1.</li>
+        <li><b>Opposite Colors (Ideal):</b> Ideally, the colors of the first and second candles are opposite, indicating a struggle.</li>
+        <li><b>Context:</b> Most significant when appearing after a clear trend (downtrend for bullish, uptrend for bearish).</li>
+      </ul>
+    </div>
+
+    <h2>Basic Harami Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect both Bullish and Bearish Harami patterns in Pine Script v5:</p>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Harami Pattern Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// User input for body size thresholds</span>
+<span class="keyword">largeBodyMinRatio</span> = <span class="function">input.float</span>(<span class="number">0.5</span>, <span class="keyword">title</span>=<span class="string">"Large Body Min Ratio (of ATR)"</span>, <span class="keyword">minval</span>=<span class="number">0.1</span>, <span class="keyword">maxval</span>=<span class="number">1.0</span>)
+<span class="keyword">smallBodyMaxRatio</span> = <span class="function">input.float</span>(<span class="number">0.3</span>, <span class="keyword">title</span>=<span class="string">"Small Body Max Ratio (of ATR)"</span>, <span class="keyword">minval</span>=<span class="number">0.01</span>, <span class="keyword">maxval</span>=<span class="number">0.5</span>)
+
+<span class="comment">// Helper function to check if a candle's body is large relative to ATR</span>
+<span class="function">isLargeBody</span>(idx) =>
+    <span class="function">math.abs</span>(close[idx] - open[idx]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * largeBodyMinRatio
+
+<span class="comment">// Helper function to check if a candle's body is small relative to ATR</span>
+<span class="function">isSmallBody</span>(idx) =>
+    <span class="function">math.abs</span>(close[idx] - open[idx]) < <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * smallBodyMaxRatio
+
+<span class="comment">// --- Bullish Harami Criteria ---</span>
+<span class="comment">// 1. Previous candle is a large bearish candle</span>
+isC1BearishLarge = close[<span class="number">1</span>] < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+
+<span class="comment">// 2. Current candle is a small bullish candle</span>
+isC2BullishSmall = close > open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>) <span class="comment">// 0 for current bar</span>
+
+<span class="comment">// 3. Current candle's body is completely contained within the previous candle's body</span>
+<span class="comment">// This means current high is below prev open (for bearish C1), and current low is above prev close (for bearish C1)</span>
+isC2InsideC1Body = <span class="function">math.max</span>(open, close) < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > close[<span class="number">1</span>]
+
+<span class="comment">// Combine for Bullish Harami</span>
+isBullishHarami = isC1BearishLarge <span class="keyword">and</span> isC2BullishSmall <span class="keyword">and</span> isC2InsideC1Body
+
+<span class="comment">// --- Bearish Harami Criteria ---</span>
+<span class="comment">// 1. Previous candle is a large bullish candle</span>
+isC1BullishLarge = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+
+<span class="comment">// 2. Current candle is a small bearish candle</span>
+isC2BearishSmall = close < open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>) <span class="comment">// 0 for current bar</span>
+
+<span class="comment">// 3. Current candle's body is completely contained within the previous candle's body</span>
+<span class="comment">// This means current high is below prev close (for bullish C1), and current low is above prev open (for bullish C1)</span>
+isC2InsideC1BodyBearish = <span class="function">math.max</span>(open, close) < close[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > open[<span class="number">1</span>]
+
+<span class="comment">// Combine for Bearish Harami</span>
+isBearishHarami = isC1BullishLarge <span class="keyword">and</span> isC2BearishSmall <span class="keyword">and</span> isC2InsideC1BodyBearish
+
+<span class="comment">// Plot signals on the chart</span>
+<span class="function">plotshape</span>(isBullishHarami, <span class="keyword">title</span>=<span class="string">"Bullish Harami"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(isBearishHarami, <span class="keyword">title</span>=<span class="string">"Bearish Harami"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="comment">// Alert conditions (optional)</span>
+<span class="function">alertcondition</span>(isBullishHarami, <span class="keyword">title</span>=<span class="string">"Bullish Harami Alert"</span>, <span class="keyword">message</span>=<span class="string">"Bullish Harami Pattern Detected!"</span>)
+<span class="function">alertcondition</span>(isBearishHarami, <span class="keyword">title</span>=<span class="string">"Bearish Harami Alert"</span>, <span class="keyword">message</span>=<span class="string">"Bearish Harami Pattern Detected!"</span>)
+</code></pre>
+
+
+    <h2>Advanced Harami Strategies</h2>
+    <p>Harami patterns signal indecision, but their true power emerges when confirmed by the market context and other indicators. They act as "warnings" that the trend might be losing steam.</p>
+    
+    <h3>1. Harami with Trend Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Harami with Trend Reversal Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length</span>
+<span class="keyword">maLength</span> = <span class="function">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+<span class="keyword">ma</span> = <span class="function">ta.ema</span>(close, maLength) <span class="comment">// Using EMA for trend detection</span>
+
+<span class="comment">// Harami Pattern Detection (simplified from basic example)</span>
+<span class="keyword">largeBodyMinRatio</span> = <span class="number">0.5</span>
+<span class="keyword">smallBodyMaxRatio</span> = <span class="number">0.3</span>
+
+<span class="function">isLargeBody</span>(idx) => <span class="function">math.abs</span>(close[idx] - open[idx]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * largeBodyMinRatio
+<span class="function">isSmallBody</span>(idx) => <span class="function">math.abs</span>(close[idx] - open[idx]) < <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * smallBodyMaxRatio
+
+<span class="comment">// Bullish Harami</span>
+isC1BearishLarge = close[<span class="number">1</span>] < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+isC2BullishSmall = close > open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>)
+isC2InsideC1Body = <span class="function">math.max</span>(open, close) < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > close[<span class="number">1</span>]
+isBullishHarami = isC1BearishLarge <span class="keyword">and</span> isC2BullishSmall <span class="keyword">and</span> isC2InsideC1Body
+
+<span class="comment">// Bearish Harami</span>
+isC1BullishLarge = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+isC2BearishSmall = close < open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>)
+isC2InsideC1BodyBearish = <span class="function">math.max</span>(open, close) < close[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > open[<span class="number">1</span>]
+isBearishHarami = isC1BullishLarge <span class="keyword">and</span> isC2BearishSmall <span class="keyword">and</span> isC2InsideC1BodyBearish
+
+<span class="comment">// Trend Context:</span>
+<span class="comment">// Bullish Harami is more significant after a downtrend (price below MA)</span>
+<span class="keyword">isDowntrend</span> = close < ma <span class="keyword">and</span> ma < ma[<span class="number">1</span>]
+<span class="comment">// Bearish Harami is more significant after an uptrend (price above MA)</span>
+<span class="keyword">isUptrend</span> = close > ma <span class="keyword">and</span> ma > ma[<span class="number">1</span>]
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+longSignal = isBullishHarami <span class="keyword">and</span> isDowntrend
+shortSignal = isBearishHarami <span class="keyword">and</span> isUptrend <span class="comment">// Corrected typo from `isBearamiHarami`</span>
+
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Plot MA</span>
+<span class="function">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">plotshape</span>(longSignal, <span class="keyword">title</span>=<span class="string">"Confirmed Bullish Harami"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">navy</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+<span class="function">plotshape</span>(shortSignal, <span class="keyword">title</span>=<span class="string">"Confirmed Bearish Harami"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">fuchsia</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowdown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+</code>
+</pre>
+
+
+    <h3>2. Harami with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Harami with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Harami Pattern Detection (simplified)</span>
+<span class="keyword">largeBodyMinRatio</span> = <span class="number">0.5</span>
+<span class="keyword">smallBodyMaxRatio</span> = <span class="number">0.3</span>
+
+<span class="function">isLargeBody</span>(idx) => <span class="function">math.abs</span>(close[idx] - open[idx]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * largeBodyMinRatio
+<span class="function">isSmallBody</span>(idx) => <span class="function">math.abs</span>(close[idx] - open[idx]) < <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * smallBodyMaxRatio
+
+isC1BearishLarge = close[<span class="number">1</span>] < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+isC2BullishSmall = close > open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>)
+isC2InsideC1Body = <span class="function">math.max</span>(open, close) < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > close[<span class="number">1</span>]
+isBullishHarami = isC1BearishLarge <span class="keyword">and</span> isC2BullishSmall <span class="keyword">and</span> isC2InsideC1Body
+
+isC1BullishLarge = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+isC2BearishSmall = close < open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>)
+isC2InsideC1BodyBearish = <span class="function">math.max</span>(open, close) < close[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > open[<span class="number">1</span>]
+isBearishHarami = isC1BullishLarge <span class="keyword">and</span> isC2BearishSmall <span class="keyword">and</span> isC2InsideC1BodyBearish
+
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Volume on the second (smaller) candle should be lower than the first, indicating reduced momentum.</span>
+<span class="comment">// Or, if it's a "Harami Cross" (second candle is a Doji), volume might be significant.</span>
+<span class="comment">// For general Harami, reduced volume on the second candle emphasizes indecision.</span>
+isVolumeReduced = volume < volume[<span class="number">1</span>] * <span class="number">0.8</span> <span class="comment">// Current volume is less than 80% of previous</span>
+
+<span class="comment">// Combined signals</span>
+confirmedBullishHarami = isBullishHarami <span class="keyword">and</span> isVolumeReduced
+confirmedBearishHarami = isBearishHarami <span class="keyword">and</span> isVolumeReduced
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="function">barcolor</span>(confirmedBullishHarami ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">aqua</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+<span class="function">barcolor</span>(confirmedBearishHarami ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="function">plotshape</span>(confirmedBullishHarami, <span class="keyword">title</span>=<span class="string">"Bullish Harami (Vol Reduced)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labelup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>, <span class="keyword">text</span>=<span class="string">"BH Vol"</span>)
+<span class="function">plotshape</span>(confirmedBearishHarami, <span class="keyword">title</span>=<span class="string">"Bearish Harami (Vol Reduced)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">labeldown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>, <span class="keyword">text</span>=<span class="string">"BB Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="function">plot</span>(volume, <span class="keyword">title</span>=<span class="string">"Volume"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_columns</span>)
+</code>
+</pre>
+
+
+    <h3>3. Harami with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Harami with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+<span class="keyword">rsiLength</span> = <span class="function">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+<span class="keyword">overbought</span> = <span class="function">input</span>(<span class="number">70</span>, <span class="string">"RSI Overbought Level"</span>)
+<span class="keyword">oversold</span> = <span class="function">input</span>(<span class="number">30</span>, <span class="string">"RSI Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="function">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Harami Pattern Detection (simplified)</span>
+<span class="keyword">largeBodyMinRatio</span> = <span class="number">0.5</span>
+<span class="keyword">smallBodyMaxRatio</span> = <span class="number">0.3</span>
+
+<span class="function">isLargeBody</span>(idx) => <span class="function">math.abs</span>(close[idx] - open[idx]) > <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * largeBodyMinRatio
+<span class="function">isSmallBody</span>(idx) => <span class="function">math.abs</span>(close[idx] - open[idx]) < <span class="function">ta.atr</span>(<span class="number">14</span>)[idx] * smallBodyMaxRatio
+
+isC1BearishLarge = close[<span class="number">1</span>] < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+isC2BullishSmall = close > open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>)
+isC2InsideC1Body = <span class="function">math.max</span>(open, close) < open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > close[<span class="number">1</span>]
+isBullishHarami = isC1BearishLarge <span class="keyword">and</span> isC2BullishSmall <span class="keyword">and</span> isC2InsideC1Body
+
+isC1BullishLarge = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">isLargeBody</span>(<span class="number">1</span>)
+isC2BearishSmall = close < open <span class="keyword">and</span> <span class="function">isSmallBody</span>(<span class="number">0</span>)
+isC2InsideC1BodyBearish = <span class="function">math.max</span>(open, close) < close[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">math.min</span>(open, close) > open[<span class="number">1</span>]
+isBearishHarami = isC1BullishLarge <span class="keyword">and</span> isC2BearishSmall <span class="keyword">and</span> isC2InsideC1BodyBearish
+
+<span class="comment">// RSI Confirmation:</span>
+<span class="comment">// Bullish Harami: RSI in oversold territory or showing bullish divergence</span>
+rsiBullishConfirm = rsiValue <= oversold <span class="keyword">or</span> (rsiValue[<span class="number">1</span>] < oversold <span class="keyword">and</span> rsiValue > rsiValue[<span class="number">1</span>])
+<span class="comment">// Bearish Harami: RSI in overbought territory or showing bearish divergence</span>
+rsiBearishConfirm = rsiValue >= overbought <span class="keyword">or</span> (rsiValue[<span class="number">1</span>] > overbought <span class="keyword">and</span> rsiValue < rsiValue[<span class="number">1</span>])
+
+<span class="comment">// Combined signals</span>
+signalBullishHarami = isBullishHarami <span class="keyword">and</span> rsiBullishConfirm
+signalBearishHarami = isBearishHarami <span class="keyword">and</span> rsiBearishConfirm
+
+<span class="comment">// Plot signals</span>
+<span class="function">plotshape</span>(signalBullishHarami, <span class="keyword">title</span>=<span class="string">"Bullish Harami (RSI Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+<span class="function">plotshape</span>(signalBearishHarami, <span class="keyword">title</span>=<span class="string">"Bearish Harami (RSI Confirmed)"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowdown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">normal</span>)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="function">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane</span>)
+<span class="function">hline</span>(overbought, <span class="string">"Overbought"</span>, <span class="keyword">color</span>.<span class="function">red</span>)
+<span class="function">hline</span>(oversold, <span class="string">"Oversold"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
+</code></pre>
+
+    <h2>Optimizing Harami Pattern Performance</h2>
+    <p>To maximize the effectiveness of Harami patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Context is Crucial:</b> A Harami pattern gains significance when it appears after a prolonged trend (downtrend for bullish, uptrend for bearish). It signifies a loss of momentum in the existing trend.</li>
+      <li><b>Confirmation is Key:</b> Harami patterns are more about indecision than strong reversals. Always wait for a confirming candle (e.g., a strong bullish candle after a bullish Harami) before acting on the signal.</li>
+      <li><b>Volume Analysis:</b> A decrease in volume on the second, smaller Harami candle can strengthen the signal of indecision or exhaustion, especially after a high-volume trend.</li>
+      <li><b>Support & Resistance:</b> When a Harami forms at a significant support or resistance level, its reliability as a potential reversal signal increases.</li>
+      <li><b>Harami Cross:</b> A particularly strong variation is the "Harami Cross," where the second candle is a Doji. This indicates extreme indecision and a higher probability of reversal.</li>
+      <li><b>Timeframe:</b> While visible on all timeframes, signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are considered more reliable for sustained reversals.</li>
+    </ul>
+
+    <h2>Common Harami Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> The Harami is a pattern of indecision. Do not interpret it as an immediate strong reversal signal without further confirmation and contextual analysis.
+    </div>
+    <ul>
+      <li><b>Ignoring Body Containment:</b> The absolute most critical rule is that the *entire body* of the second candle must be within the *entire body* of the first candle. Wicks can extend outside, but the body must be contained.</li>
+      <li><b>Lack of Prior Trend:</b> A Harami in a choppy or ranging market has little to no predictive power. It needs a clear preceding trend to signal potential reversal.</li>
+      <li><b>Small First Candle:</b> If the first candle is not substantially larger than the second, the "pregnant" analogy doesn't hold, and the pattern loses significance.</li>
+      <li><b>Trading in Isolation:</b> Relying solely on the Harami pattern without confirmation from subsequent price action, volume, or other indicators can lead to false signals or premature entries.</li>
+      <li><b>Confusing with Engulfing:</b> While both are two-candle patterns, an engulfing pattern shows aggression, while a Harami shows indecision. Do not confuse them.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Harami candlestick pattern</b> is a subtle yet powerful signal of market indecision and potential trend exhaustion. By understanding its precise two-candle formation—where the second candle's body is contained within the first's—and its contextual importance after a clear trend, you can leverage it effectively in your trading. Implementing Harami detection in Pine Script allows you to automate signal generation, combine it with complementary indicators like volume and oscillators for higher probability trades, and enhance your price action analysis to make more informed trading decisions on TradingView. Remember, the Harami is a yellow light, signaling caution and the need for confirmation before a potential shift in direction.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

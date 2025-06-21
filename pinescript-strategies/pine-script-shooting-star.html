@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align candles at the top of their wicks */
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 45%; /* Adjust for two columns */
+            max-width: 45%; /* Adjust for two columns */
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 120px; /* Slightly smaller width for single candle */
+            height: 150px; /* Adjusted height for full candle */
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        .candle-body-green { fill: #4CAF50; } /* Green for bullish */
+        .candle-body-red { fill: #F44336; } /* Red for bearish */
+        .wick-green { stroke: #4CAF50; }
+        .wick-red { stroke: #F44336; }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Shooting Star Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Shooting Star candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bearish reversals.">
+    <meta name="keywords" content="pine script, shooting star, bearish shooting star, candlestick patterns, tradingview indicator, technical analysis, trend reversal, price action">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Shooting Star Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Shooting Star patterns in Pine Script for bearish reversal strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-shooting-star.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Shooting Star Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-shooting-star.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Shooting Star Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master the Shooting Star candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for bearish reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2023-11-15",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-shooting-star.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Shooting Star Candlestick Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-shooting-star.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Shooting Star Candlestick Pattern</h1>
+      <p class="blog-subtitle">Unlock powerful bearish reversal signals with this comprehensive guide to detecting and strategizing with Shooting Star patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Shooting Star Candlestick Patterns</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why the Shooting Star Pattern Matters in Pine Script</h2>
+    <p>The <b>Shooting Star candlestick pattern</b> is a single-candle bearish reversal pattern that typically forms after an uptrend. It signals a potential top and a shift in momentum from buyers to sellers. The Shooting Star's unique shape indicates that despite initial buying pressure during the trading period, prices could not be sustained at their highs, and sellers pushed them back down, often near the opening price. This shows that the market struggles to maintain higher prices, making Shooting Star patterns invaluable for:</p>
+    <ul>
+      <li>Identifying potential bearish trend reversals.</li>
+      <li>Signaling a rejection of higher prices (resistance).</li>
+      <li>Generating entry signals in short strategies.</li>
+    </ul>
+
+    <h2>Understanding the Shooting Star Candlestick Pattern</h2>
+    <p>A Shooting Star candle has a small real body (the difference between open and close) and a long upper shadow (wick) that is typically at least twice the length of the real body. It has little or no lower shadow. The color of the body (bullish or bearish) is less important than its shape and location after an uptrend.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Shooting Star (Bullish Body)</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Bullish body (green) -->
+                <rect x="45" y="60" width="10" height="10" fill="#4CAF50" class="candle-body-green"/>
+                <!-- Long upper wick -->
+                <line x1="50" y1="20" x2="50" y2="60" stroke="#4CAF50" stroke-width="2" class="wick-green"/>
+                <!-- Small/no lower wick -->
+                <line x1="50" y1="70" x2="50" y2="72" stroke="#4CAF50" stroke-width="1" class="wick-green"/>
+            </svg>
+            <p>Open below close. Even with a green body, the long upper wick shows rejection of higher prices.</p>
+        </div>
+
+        <div class="single-candle-container">
+            <h3>Shooting Star (Bearish Body)</h3>
+            <svg viewBox="0 0 100 100">
+                <!-- Bearish body (red) -->
+                <rect x="45" y="60" width="10" height="10" fill="#F44336" class="candle-body-red"/>
+                <!-- Long upper wick -->
+                <line x1="50" y1="20" x2="50" y2="60" stroke="#F44336" stroke-width="2" class="wick-red"/>
+                <!-- Small/no lower wick -->
+                <line x1="50" y1="70" x2="50" y2="72" stroke="#F44336" stroke-width="1" class="wick-red"/>
+            </svg>
+            <p>Open above close. A red body reinforces the bearish sentiment.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Small Real Body:</b> The distance between the open and close is small.</li>
+        <li><b>Long Upper Shadow:</b> The upper wick is at least twice the length of the real body.</li>
+        <li><b>Little or No Lower Shadow:</b> Ideally, there should be no lower wick, or it should be very short.</li>
+        <li><b>Context is Critical:</b> Most significant when appearing at the <b>top of a clear uptrend</b>.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Shooting Star Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect Shooting Star patterns in Pine Script v5:</p>
+    
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Shooting Star Pattern Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Calculate candle body and wick lengths</span>
+realBody = <span class="builtin">math.abs</span>(close - open)
+upperShadow = high - <span class="builtin">math.max</span>(open, close) <span class="comment">// Corrected calculation for upper shadow length</span>
+lowerShadow = <span class="builtin">math.min</span>(open, close) - low
+
+<span class="comment">// Define Shooting Star criteria</span>
+<span class="comment">// 1. Small real body</span>
+isSmallBody = realBody &lt;= (high - low) * <span class="number">0.3</span> <span class="comment">// Body is at most 30% of total candle range</span>
+
+<span class="comment">// 2. Long upper shadow (at least 2x the body size)</span>
+isLongUpperShadow = upperShadow >= realBody * <span class="number">2</span>
+
+<span class="comment">// 3. Little to no lower shadow (lower shadow is at most 50% of body)</span>
+isSmallLowerShadow = lowerShadow &lt;= realBody * <span class="number">0.5</span> 
+<span class="comment">// Alternative for lower shadow: lowerShadow < (high - low) * 0.1</span>
+
+<span class="comment">// Combine criteria for Shooting Star</span>
+isShootingStar = isSmallBody <span class="keyword">and</span> isLongUpperShadow <span class="keyword">and</span> isSmallLowerShadow
+
+<span class="comment">// Plot signal on the chart (above the bar for bearish reversal)</span>
+<span class="builtin">plotshape</span>(isShootingStar, title=<span class="string">"Shooting Star"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.blue, <span class="number">0</span>), style=shape.triangledown, size=size.normal)
+
+<span class="comment">// Alert condition (optional)</span>
+<span class="builtin">alertcondition</span>(isShootingStar, title=<span class="string">"Shooting Star Detected"</span>, message=<span class="string">"Shooting Star Candlestick Pattern Detected!"</span>)
+</code></pre>
+
+    <h2>Advanced Shooting Star Strategies</h2>
+    <p>While basic detection is useful, combining Shooting Star patterns with other indicators and market context provides stronger, more reliable signals for potential reversals.</p>
+    
+    <h3>1. Shooting Star with Uptrend Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Shooting Star with Trend Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length</span>
+maLength = <span class="keyword">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+ma = <span class="builtin">ta.ema</span>(close, maLength) <span class="comment">// Using EMA for uptrend detection</span>
+
+<span class="comment">// Shooting Star Pattern Detection (from basic example)</span>
+realBody = <span class="builtin">math.abs</span>(close - open)
+upperShadow = high - <span class="builtin">math.max</span>(open, close)
+lowerShadow = <span class="builtin">math.min</span>(open, close) - low 
+
+isSmallBody = realBody &lt;= (high - low) * <span class="number">0.3</span>
+isLongUpperShadow = upperShadow >= realBody * <span class="number">2</span>
+isSmallLowerShadow = lowerShadow &lt;= realBody * <span class="number">0.5</span>
+
+isShootingStar = isSmallBody <span class="keyword">and</span> isLongUpperShadow <span class="keyword">and</span> isSmallLowerShadow
+
+<span class="comment">// Trend Confirmation: Price should be above the MA (uptrend)</span>
+<span class="comment">// AND the MA itself should be sloping upwards (optional, but stronger)</span>
+isUptrend = close > ma <span class="keyword">and</span> ma > ma[<span class="number">1</span>] 
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+shortSignal = isShootingStar <span class="keyword">and</span> isUptrend
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+    
+<span class="comment">// Plot MA</span>
+<span class="builtin">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="builtin">color</span>.blue)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="builtin">plotshape</span>(shortSignal, title=<span class="string">"Confirmed Shooting Star"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.fuchsia, <span class="number">0</span>), style=shape.arrowdown, size=size.normal)
+</code></pre>
+
+    <h3>2. Shooting Star with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Shooting Star with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Shooting Star Pattern Detection (from basic example)</span>
+realBody = <span class="builtin">math.abs</span>(close - open)
+upperShadow = high - <span class="builtin">math.max</span>(open, close)
+lowerShadow = <span class="builtin">math.min</span>(open, close) - low 
+
+isSmallBody = realBody &lt;= (high - low) * <span class="number">0.3</span>
+isLongUpperShadow = upperShadow >= realBody * <span class="number">2</span>
+isSmallLowerShadow = lowerShadow &lt;= realBody * <span class="number">0.5</span>
+
+isShootingStar = isSmallBody <span class="keyword">and</span> isLongUpperShadow <span class="keyword">and</span> isSmallLowerShadow
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Shooting Star candle's volume should be significantly higher than average volume</span>
+avgVolume = <span class="builtin">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// 20-period Simple Moving Average of Volume</span>
+isVolumeConfirmed = volume > avgVolume * <span class="number">1.5</span> <span class="comment">// Volume is 1.5x average</span>
+
+<span class="comment">// Combined signal</span>
+confirmedShootingStar = isShootingStar <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="builtin">barcolor</span>(confirmedShootingStar ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.purple, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="builtin">plotshape</span>(confirmedShootingStar, title=<span class="string">"Shooting Star (Vol Confirmed)"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.red, <span class="number">0</span>), style=shape.labeldown, size=size.small, text=<span class="string">"SS Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="builtin">plot</span>(volume, title=<span class="string">"Volume"</span>, color=<span class="builtin">color</span>.gray, style=plot.style_columns)
+<span class="builtin">plot</span>(avgVolume, title=<span class="string">"Avg Volume"</span>, color=<span class="builtin">color</span>.orange, style=plot.style_line)
+</code></pre>
+
+    <h3>3. Shooting Star with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Shooting Star with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+rsiLength = <span class="keyword">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+overbought = <span class="keyword">input</span>(<span class="number">70</span>, <span class="string">"RSI Overbought Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="builtin">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Shooting Star Pattern Detection</span>
+realBody = <span class="builtin">math.abs</span>(close - open)
+upperShadow = high - <span class="builtin">math.max</span>(open, close)
+lowerShadow = <span class="builtin">math.min</span>(open, close) - low 
+
+isSmallBody = realBody &lt;= (high - low) * <span class="number">0.3</span>
+isLongUpperShadow = upperShadow >= realBody * <span class="number">2</span>
+isSmallLowerShadow = lowerShadow &lt;= realBody * <span class="number">0.5</span>
+
+isShootingStar = isSmallBody <span class="keyword">and</span> isLongUpperShadow <span class="keyword">and</span> isSmallLowerShadow
+
+<span class="comment">// RSI Confirmation: RSI should be in overbought territory or falling from it</span>
+rsiConfirmation = rsiValue >= overbought <span class="keyword">or</span> (rsiValue[<span class="number">1</span>] >= overbought <span class="keyword">and</span> rsiValue &lt; rsiValue[<span class="number">1</span>])
+
+<span class="comment">// Combined signal</span>
+signalShootingStar = isShootingStar <span class="keyword">and</span> rsiConfirmation
+
+<span class="comment">// Plot signals</span>
+<span class="builtin">plotshape</span>(signalShootingStar, title=<span class="string">"Shooting Star (RSI Confirmed)"</span>, location=location.abovebar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.orange, <span class="number">0</span>), style=shape.arrowdown, size=size.normal)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="builtin">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>, display=display.pane)
+<span class="builtin">hline</span>(overbought, <span class="string">"Overbought"</span>, <span class="builtin">color</span>.red)
+</code></pre>
+
+    <h2>Optimizing Shooting Star Pattern Performance</h2>
+    <p>To maximize the effectiveness of Shooting Star patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Confirm Uptrend:</b> The Shooting Star is a <b>bearish reversal</b> pattern, so it's most reliable when it appears after a clear uptrend. Avoid trading it in a downtrend or sideways market.</li>
+      <li><b>Volume Confirmation:</b> A Shooting Star candle formed with higher than average volume indicates stronger conviction from sellers and increases the reliability of the signal.</li>
+      <li><b>Resistance Levels:</b> Shooting Stars that form at significant resistance levels (e.g., previous highs, strong moving averages, Fibonacci levels) are more powerful.</li>
+      <li><b>Subsequent Candle Confirmation:</b> A strong bearish candle after the Shooting Star further confirms the reversal. Some traders wait for this confirmation before entering a short position.</li>
+      <li><b>Timeframe:</b> While visible on all timeframes, Shooting Star signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are more reliable for sustained moves than those on lower timeframes.</li>
+    </ul>
+
+    <h2>Common Shooting Star Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not all Shooting Star-shaped candles are valid Shooting Star patterns. Context and confirmation are crucial. A Shooting Star in a downtrend is known as an "Inverted Hammer" and indicates a bullish reversal.
+    </div>
+    <ul>
+      <li><b>Ignoring Trend Context:</b> A Shooting Star pattern is a *bearish reversal* signal. If it appears in a downtrend, it is NOT a Shooting Star and is actually an Inverted Hammer, indicating potential bullishness.</li>
+      <li><b>Insufficient Upper Shadow:</b> An upper shadow that is not at least twice the real body's length might not indicate strong enough rejection of higher prices.</li>
+      <li><b>Large Real Body:</b> If the real body is too large, it suggests less indecision and less of a "top-out" scenario.</li>
+      <li><b>Lack of Confirmation:</b> Relying solely on the Shooting Star pattern without other indicators (volume, resistance, follow-through candles) can lead to false signals.</li>
+      <li><b>Trading in Choppy Markets:</b> In ranging or sideways markets, Shooting Star patterns are less reliable as there's no clear trend to reverse.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Shooting Star candlestick pattern</b> is a strong and visually intuitive signal for bearish reversals. By understanding its precise characteristics and, more importantly, its contextual significance within an uptrend, you can leverage it effectively in your trading. Implementing Shooting Star detection in Pine Script allows you to automate signal generation, combine it with other technical indicators for higher probability trades, and refine your price action analysis to make more informed trading decisions on TradingView.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

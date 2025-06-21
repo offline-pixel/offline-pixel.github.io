@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Accumulation/Distribution Line - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Accumulation/Distribution Line (A/D Line) in Pine Script for TradingView - a volume-based indicator revealing underlying buying and selling pressure to confirm trends and spot divergence.">
+    <meta name="keywords" content="pine script strategies, Accumulation Distribution Line, A/D Line, tradingview indicator, technical analysis, volume analysis, accumulation, distribution, divergence, trend confirmation, money flow">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Accumulation/Distribution Line - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Accumulation/Distribution Line in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Accumulation/Distribution Line - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-AccumulationDistributionLine.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script Accumulation/Distribution Line - Complete TradingView Guide",
+  "description": "Master the Accumulation/Distribution Line (A/D Line) in Pine Script for TradingView - a volume-based indicator revealing underlying buying and selling pressure.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-AccumulationDistributionLine.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Accumulation/Distribution Line",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-AccumulationDistributionLine.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Accumulation/Distribution Line </h1>
+      <p class="blog-subtitle">Master this powerful volume-based indicator in TradingView's Pine Script that reveals hidden buying (accumulation) and selling (distribution) pressure to confirm trends and anticipate price movements.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  
+  <article class="fullscreen">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://offline-pixel.github.io/">Home</a> >
+    <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+    <span aria-current="page">Accumulation/Distribution Line</span>
+  </nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Accumulation/Distribution Line?</h2>
+    <p>The <b>Accumulation/Distribution Line (A/D Line)</b> is a volume-based momentum indicator that attempts to gauge the cumulative flow of money into and out of an asset. Developed by Marc Chaikin, it is a running total of each period's Money Flow Volume (MFV), which considers the closing price's relation to the high-low range of the period, multiplied by volume. The core idea is that the closer the closing price is to the period's high, the more buying (accumulation) occurred, and the closer to the low, the more selling (distribution).</p>
+
+    <p>A rising A/D Line indicates strong buying pressure (accumulation), suggesting that buyers are willing to push the price higher. A falling A/D Line indicates strong selling pressure (distribution), suggesting that sellers are in control. The A/D Line is primarily used to:</p>
+    <ul>
+      <li> <b>Confirm price trends</b>: A rising A/D Line confirms an uptrend, and a falling A/D Line confirms a downtrend.</li>
+      <li> <b>Identify divergences</b>: When price and A/D Line move in opposite directions, it can signal an impending trend reversal.</li>
+      <li> <b>Predict future price movements</b>: Changes in the A/D Line can sometimes precede changes in price, indicating underlying shifts in supply and demand.</li>
+    </ul>
+
+    <p>In Pine Script, the A/D Line is a valuable tool for understanding the underlying conviction behind price moves and anticipating future trends by observing money flow.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Accumulation/Distribution Line is cumulative and involves two main steps for each period:</p>
+    <ol>
+      <li><strong>Money Flow Multiplier (MFM)</strong>: This component determines the degree of buying or selling pressure within the bar's range. It is a value between -1 and +1.
+        <br>
+        `MFM = ((Close - Low) - (High - Close)) / (High - Low)`
+        <br>
+        * If `High - Low` is zero (a doji or zero-range bar), MFM is typically zero.
+        * If `Close == High`, MFM = 1 (strong accumulation).
+        * If `Close == Low`, MFM = -1 (strong distribution).
+      </li>
+      <li><strong>Money Flow Volume (MFV)</strong>: This multiplies the MFM by the period's volume.
+        <br>
+        `MFV = MFM * Volume`
+      </li>
+      <li><strong>Accumulation/Distribution Line (A/D Line)</strong>: This is a running, cumulative total of the MFV.
+        <br>
+        `A/D Line = Previous A/D Line + Current MFV`
+    </ol>
+    <p>The initial value of the A/D Line is usually zero for the first bar.</p>
+
+    <h2>Basic Accumulation/Distribution Line Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.ad()` for calculating the Accumulation/Distribution Line.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Accumulation/Distribution Line"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Calculate A/D Line using the built-in function</span>
+<span class="comment">// ta.ad() implicitly uses 'high', 'low', 'close', and 'volume' for its calculation</span>
+adLineValue = <span class="builtin">ta.ad</span>(high, low, close, volume)
+
+<span class="comment">// Plot the A/D Line</span>
+<span class="builtin">plot</span>(adLineValue, title=<span class="string">"Accumulation/Distribution Line"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add a Moving Average of the A/D Line to act as a signal line</span>
+<span class="comment">// Common lengths for A/D MA are 10, 20, or 30</span>
+adMALength = <span class="keyword">input</span>.int(<span class="number">21</span>, title=<span class="string">"A/D Line MA Length"</span>, minval=<span class="number">1</span>)
+adMA = <span class="builtin">ta.sma</span>(adLineValue, adMALength)
+
+<span class="comment">// Plot the A/D Line Moving Average (signal line)</span>
+<span class="builtin">plot</span>(adMA, title=<span class="string">"A/D Line MA"</span>, color=<span class="builtin">color</span>.orange, linewidth=<span class="number">1</span>)</code></pre>
+
+    <div class="tip">
+      <strong>Money Flow, Not Just Volume:</strong> The A/D Line goes beyond raw volume by incorporating where the price closed within the bar's range, providing a more nuanced view of buying vs. selling pressure.
+    </div>
+
+    <h2>Practical Accumulation/Distribution Line <a href="https://offline-pixel.github.io/pinescript-strategies.html"></a>Trading Strategies</a></h2>
+
+    <h3>1. Divergence (Key Strategy)</h3>
+    <p>Divergence between price and the A/D Line is one of the most powerful signals, suggesting a weakening trend and potential reversal, as the volume flow is not confirming the price action.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but the A/D Line makes a higher low. This indicates that despite falling prices, buying pressure (accumulation) is increasing, hinting at a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but the A/D Line makes a lower high. This indicates that despite rising prices, selling pressure (distribution) is increasing, hinting at a potential downward reversal.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"A/D Line Divergence Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+adLineValue = <span class="builtin">ta.ad</span>(high, low, close, volume)
+
+<span class="comment">// Plot A/D Line in a separate pane</span>
+<span class="builtin">plot</span>(adLineValue, <span class="string">"A/D Line"</span>, color=<span class="builtin">color</span>.blue, display=<span class="builtin">display</span>.pane_only)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This example looks for recent higher/lower swings in price and A/D Line.</span>
+
+<span class="comment">// Bullish Divergence: Price makes a lower low, A/D makes a higher low</span>
+bullishDiv = close &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close[<span class="number">2</span>] <span class="keyword">and</span> adLineValue > adLineValue[<span class="number">1</span>] <span class="keyword">and</span> adLineValue[<span class="number">1</span>] > adLineValue[<span class="number">2</span>]
+
+<span class="comment">// Bearish Divergence: Price makes a higher high, A/D makes a lower high</span>
+bearishDiv = close > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close[<span class="number">2</span>] <span class="keyword">and</span> adLineValue &lt; adLineValue[<span class="number">1</span>] <span class="keyword">and</span> adLineValue[<span class="number">1</span>] &lt; adLineValue[<span class="number">2</span>]
+
+<span class="comment">// Plot shapes on the chart to indicate divergence</span>
+<span class="builtin">plotshape</span>(bullishDiv, title=<span class="string">"Bullish A/D Divergence"</span>, location=location.belowbar, color=<span class="builtin">color</span>.green, style=shape.triangleup, size=size.small)
+<span class="builtin">plotshape</span>(bearishDiv, title=<span class="string">"Bearish A/D Divergence"</span>, location=location.abovebar, color=<span class="builtin">color</span>.red, style=shape.triangledown, size=size.small)
+
+<span class="keyword">if</span> (bullishDiv)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long Divergence"</span>, <span class="builtin">strategy</span>.long)
+<span class="keyword">if</span> (bearishDiv)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short Divergence"</span>, <span class="builtin">strategy</span>.short)
+
+<span class="comment">// Basic exit after a few bars or on opposite signal</span>
+<span class="builtin">strategy</span>.exit(<span class="string">"Long Divergence Exit"</span>, from_entry=<span class="string">"Long Divergence"</span>, profit=close*<span class="number">0.02</span>, loss=close*<span class="number">0.01</span>)
+<span class="builtin">strategy</span>.exit(<span class="string">"Short Divergence Exit"</span>, from_entry=<span class="string">"Short Divergence"</span>, profit=close*<span class="number">0.02</span>, loss=close*<span class="number">0.01</span>)
+</code></pre>
+
+    <h3>2. Trend Confirmation</h3>
+    <p>The A/D Line is an excellent tool for confirming the strength and validity of a price trend. Ideally, price and the A/D Line should move in the same direction.</p>
+    <ul>
+      <li><strong>Uptrend Confirmation</strong>: Price is making higher highs and higher lows, and the A/D Line is also rising (making higher highs and higher lows). This confirms strong buying pressure supporting the uptrend.</li>
+      <li><strong>Downtrend Confirmation</strong>: Price is making lower highs and lower lows, and the A/D Line is also falling (making lower highs and lower lows). This confirms strong selling pressure supporting the downtrend.</li>
+      <li><strong>Lack of Confirmation</strong>: If price is moving up but the A/D Line is flat or falling, it suggests the uptrend lacks conviction and might be vulnerable.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"A/D Line Trend Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+adLineValue = <span class="builtin">ta.ad</span>(high, low, close, volume)
+adMALength = <span class="keyword">input</span>.int(<span class="number">21</span>, title=<span class="string">"A/D MA Length"</span>, minval=<span class="number">1</span>)
+adMA = <span class="builtin">ta.sma</span>(adLineValue, adMALength) <span class="comment">// Moving Average of A/D Line</span>
+
+<span class="builtin">plot</span>(adLineValue, <span class="string">"A/D Line"</span>, color=<span class="builtin">color</span>.blue, display=<span class="builtin">display</span>.pane_only)
+<span class="builtin">plot</span>(adMA, <span class="string">"A/D Line MA"</span>, color=<span class="builtin">color</span>.orange, display=<span class="builtin">display</span>.pane_only)
+
+<span class="comment">// Price trend filter (e.g., using a long-term EMA)</span>
+priceMALength = <span class="keyword">input</span>.int(<span class="number">50</span>, title=<span class="string">"Price MA Length"</span>, minval=<span class="number">1</span>)
+priceMA = <span class="builtin">ta.ema</span>(close, priceMALength)
+
+<span class="comment">// Conditions for trend confirmation based on A/D and Price</span>
+<span class="comment">// Long: Price above MA AND A/D Line above its MA (or rising)</span>
+longConfirm = close > priceMA <span class="keyword">and</span> adLineValue > adMA <span class="keyword">and</span> adLineValue > adLineValue[<span class="number">1</span>]
+
+<span class="comment">// Short: Price below MA AND A/D Line below its MA (or falling)</span>
+shortConfirm = close &lt; priceMA <span class="keyword">and</span> adLineValue &lt; adMA <span class="keyword">and</span> adLineValue &lt; adLineValue[<span class="number">1</span>]
+
+<span class="keyword">if</span> (longConfirm)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long Confirm"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortConfirm)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short Confirm"</span>, <span class="builtin">strategy</span>.short)
+
+<span class="comment">// Basic exit: Price crosses back over price MA OR A/D Line crosses its MA</span>
+<span class="builtin">strategy</span>.close(<span class="string">"Long Confirm"</span>, when=close &lt; priceMA <span class="keyword">or</span> adLineValue &lt; adMA)
+<span class="builtin">strategy</span>.close(<span class="string">"Short Confirm"</span>, when=close > priceMA <span class="keyword">or</span> adLineValue > adMA)
+</code></pre>
+
+    <h3>3. Support and Resistance Breaks (on the A/D Line)</h3>
+    <p>Just like price, the A/D Line can form its own support and resistance levels, and breaking these can be an early signal of price movement.</p>
+    <ul>
+      <li><strong>Bullish Breakout</strong>: The A/D Line breaks above its own established resistance level (e.g., a horizontal line, a trendline) before price does. This signals accumulation is strengthening.</li>
+      <li><strong>Bearish Breakdown</strong>: The A/D Line breaks below its own established support level before price does. This signals distribution is strengthening.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"A/D Line S/R Breakouts"</span>, overlay=<span class="keyword">true</span>)
+
+adLineValue = <span class="builtin">ta.ad</span>(high, low, close, volume)
+
+<span class="builtin">plot</span>(adLineValue, <span class="string">"A/D Line"</span>, color=<span class="builtin">color</span>.blue, display=<span class="builtin">display</span>.pane_only)
+
+<span class="comment">// A simple way to detect A/D Line S/R breaks (conceptually)</span>
+<span class="comment">// This will require more complex pivot detection for robust S/R lines.</span>
+<span class="comment">// For illustration, let's use a very simple high/low breakdown.</span>
+
+<span class="comment">// Define recent high/low on A/D Line</span>
+adHighest = <span class="builtin">ta.highest</span>(adLineValue, <span class="number">20</span>) <span class="comment">// 20-period highest A/D</span>
+adLowest = <span class="builtin">ta.lowest</span>(adLineValue, <span class="number">20</span>)   <span class="comment">// 20-period lowest A/D</span>
+
+<span class="comment">// Bullish A/D Line breakout: A/D crosses above its recent high</span>
+bullishAdBreakout = adLineValue > adHighest[<span class="number">1</span>] <span class="keyword">and</span> adLineValue[<span class="number">1</span>] &lt;= adHighest[<span class="number">1</span>]
+
+<span class="comment">// Bearish A/D Line breakdown: A/D crosses below its recent low</span>
+bearishAdBreakdown = adLineValue &lt; adLowest[<span class="number">1</span>] <span class="keyword">and</span> adLineValue[<span class="number">1</span>] >= adLowest[<span class="number">1</span>]
+
+<span class="comment">// Plot shapes on the price chart to indicate A/D Line signals</span>
+<span class="builtin">plotshape</span>(bullishAdBreakout, title=<span class="string">"Bullish A/D Breakout"</span>, location=location.belowbar, color=<span class="builtin">color</span>.lime, style=shape.arrowup, size=size.small)
+<span class="builtin">plotshape</span>(bearishAdBreakdown, title=<span class="string">"Bearish A/D Breakdown"</span>, location=location.abovebar, color=<span class="builtin">color</span>.maroon, style=shape.arrowdown, size=size.small)
+
+<span class="builtin">alertcondition</span>(bullishAdBreakout, <span class="string">"A/D Line Bullish Breakout"</span>, <span class="string">"A/D Line has broken out upwards, anticipate price move."</span>)
+<span class="builtin">alertcondition</span>(bearishAdBreakdown, <span class="string">"A/D Line Bearish Breakdown"</span>, <span class="string">"A/D Line has broken down, anticipate price move."</span>)
+</code></pre>
+
+    <h2>Optimizing Accumulation/Distribution Line Performance</h2>
+    <p>To get the most from the Accumulation/Distribution Line in Pine Script:</p>
+    <ul>
+      <li><strong>Prioritize Divergence:</strong> The A/D Line's strongest signals come from divergences with price. These often provide early warnings of trend reversals.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm A/D Line signals with price action. A bullish A/D divergence is much stronger if it coincides with a bullish candlestick pattern or a break of a local resistance level.</li>
+      <li><strong>Smooth with Moving Averages:</strong> Applying a moving average to the A/D Line (as a signal line) can help smooth out noise and make crossovers more reliable for trend confirmation or signal generation.</li>
+      <li><strong>Volume Context:</strong> While the A/D Line incorporates volume, also consider the raw volume itself. Very low volume periods might make A/D Line signals less reliable.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm A/D Line signals on a lower timeframe with the broader trend confirmed by the A/D Line on a higher timeframe.</li>
+      <li><strong>Chaikin Oscillator:</strong> The Chaikin Oscillator is an indicator derived directly from the A/D Line (it's an EMA of the A/D Line minus another slower EMA of the A/D Line). It's designed to provide more timely signals from A/D.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Underlying Conviction:</strong> The A/D Line helps you see if institutional money (or significant volume) is genuinely supporting a price move, or if the move is happening on thin volume and might be a "fakeout."
+    </div>
+
+    <h2>Common Accumulation/Distribution Line Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> As a cumulative indicator, the A/D Line can exhibit lag, especially during sharp, fast-moving reversals. Divergence helps to address this to some extent.</li>
+      <li> <b>False Signals:</b> Like any indicator, it can generate false signals, particularly in choppy or range-bound markets where price fluctuates without a clear trend.</li>
+      <li> <b>Scalability Issues:</b> The absolute value of the A/D Line varies wildly between assets and can be very large. Its absolute level doesn't matter; what matters is its trend, slope, and divergence from price.</li>
+      <li> <b>Doesn't Predict Magnitude:</b> While it predicts potential direction, it doesn't quantify the potential magnitude of the future price move.</li>
+      <li> <b>Volume Data Quality:</b> The accuracy of the A/D Line is highly dependent on reliable volume data. Issues with volume data (e.g., OTC markets, highly illiquid assets) can impact its effectiveness.</li>
+      <li> <b>Not a Standalone Indicator:</b> The A/D Line provides crucial insights but should never be used in isolation. It works best as a confirming indicator within a broader trading strategy.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Accumulation/Distribution Line (A/D Line) is a fundamental and powerful volume-based technical indicator available in Pine Script for TradingView. By quantifying money flow through the relationship between closing price, high/low range, and volume, it provides traders with invaluable insights into the underlying buying (accumulation) and selling (distribution) pressure in the market. While its greatest strength lies in identifying <b>divergences</b> with price (signaling potential trend reversals), it is also highly effective at confirming existing trends and identifying early shifts in market conviction. By understanding its calculation, thoughtfully utilizing its signals, and integrating it strategically with price action and other technical analysis tools, you can leverage the A/D Line to enhance your trading decisions and gain a clearer understanding of smart money activity.</p>
+  </article>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+</body>
+</html>

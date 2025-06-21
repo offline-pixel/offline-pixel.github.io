@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        } 
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            border-radius: 8px; /* Added rounded corners */
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        /* Styles for candle illustrations */
+        .candle-illustration {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align candles at the bottom */
+            gap: 15px; /* Reduced gap for three candles */
+            margin: 30px 0;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        .single-candle-container {
+            text-align: center;
+            flex-basis: 90%; /* For illustration, show one combined SVG */
+            max-width: 90%; 
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .single-candle-container svg {
+            width: 300px; /* Wider for three candles */
+            height: 150px; 
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        /* Specific colors for candle bodies and wicks for clarity */
+        .candle-body-green { fill: #4CAF50; } 
+        .wick-green { stroke: #4CAF50; }
+        
+        /* Positioning for the 3-candle pattern */
+        .soldier-candle-1 { transform: translateX(-80px); }
+        .soldier-candle-2 { transform: translateX(0); } /* Center */
+        .soldier-candle-3 { transform: translateX(80px); }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD'); 
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    
+    <title>Pine Script Three White Soldiers Candlestick Patterns - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Three White Soldiers candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for strong bullish reversals and trend continuations.">
+    <meta name="keywords" content="pine script, three white soldiers, bullish reversal, trend continuation, candlestick patterns, tradingview indicator, technical analysis, price action, three-candle pattern">
+    
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Three White Soldiers Candlestick Patterns ">
+    <meta property="og:description" content="Advanced tutorial on implementing Three White Soldiers patterns in Pine Script for bullish reversal and trend continuation strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-three-white-soldiers.html" /> 
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Three White Soldiers Candlestick Patterns ">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-three-white-soldiers.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Three White Soldiers Candlestick Patterns - Complete TradingView Guide",
+      "description": "Master the Three White Soldiers candlestick pattern in Pine Script for TradingView - advanced guide with practical examples and strategies for strong bullish reversals and trend continuations.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-three-white-soldiers.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Three White Soldiers Candlestick Patterns",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-three-white-soldiers.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body> 
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script: Three White Soldiers Candlestick Pattern</h1>
+      <p class="blog-subtitle">Unlock powerful bullish trend reversal and continuation signals with this comprehensive guide to detecting and strategizing with Three White Soldiers patterns in TradingView's Pine Script.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Three White Soldiers Candlestick Patterns</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>Why the Three White Soldiers Pattern Matters in Pine Script</h2>
+    <p>The <b>Three White Soldiers candlestick pattern</b> is a strong three-candle bullish reversal or continuation pattern. It indicates a clear shift in market sentiment from selling to strong buying pressure. This pattern is characterized by three consecutive long bullish (green) candles that open within the body of the previous candle and close higher than the previous candle's close, ideally with small or no lower shadows. This demonstrates consistent bullish strength and makes Three White Soldiers patterns invaluable for:</p>
+    <ul>
+      <li>Identifying potential strong bullish trend reversals, especially after a downtrend.</li>
+      <li>Confirming the strength and continuation of an existing uptrend.</li>
+      <li>Generating high-conviction entry signals for long positions.</li>
+    </ul>
+
+    <h2>Understanding the Three White Soldiers Candlestick Pattern</h2>
+    <p>A Three White Soldiers pattern consists of three specific, consecutive bullish candles:</p>
+    <ol>
+        <li><b>First Candle (Bullish):</b> A long bullish (green) candle, ideally closing near its high, indicating initial buying strength.</li>
+        <li><b>Second Candle (Bullish):</b> A long bullish (green) candle that opens within the body of the first candle and closes higher than the first candle's close, ideally with little to no lower shadow.</li>
+        <li><b>Third Candle (Bullish):</b> Another long bullish (green) candle that opens within the body of the second candle and closes higher than the second candle's close, also ideally with little to no lower shadow.</li>
+    </ol>
+    <p>This sequence demonstrates a sustained and powerful surge in buying activity, overcoming previous selling pressure.</p>
+
+    <div class="candle-illustration">
+        <div class="single-candle-container">
+            <h3>Three White Soldiers Pattern</h3>
+            <svg viewBox="0 0 300 150">
+                <!-- Candle 1 -->
+                <line x1="80" y1="50" x2="80" y2="120" stroke="#4CAF50" stroke-width="2" class="wick-green soldier-candle-1"/>
+                <rect x="75" y="50" width="10" height="70" fill="#4CAF50" class="candle-body-green soldier-candle-1"/>
+
+                <!-- Candle 2 -->
+                <line x1="150" y1="30" x2="150" y2="100" stroke="#4CAF50" stroke-width="2" class="wick-green soldier-candle-2"/>
+                <rect x="145" y="30" width="10" height="70" fill="#4CAF50" class="candle-body-green soldier-candle-2"/>
+
+                <!-- Candle 3 -->
+                <line x1="220" y1="10" x2="220" y2="80" stroke="#4CAF50" stroke-width="2" class="wick-green soldier-candle-3"/>
+                <rect x="215" y="10" width="10" height="70" fill="#4CAF50" class="candle-body-green soldier-candle-3"/>
+            </svg>
+            <p>Three consecutive long green candles, each opening within the previous body and closing higher, with small lower shadows.</p>
+        </div>
+    </div>
+
+    <div class="tip">
+      <strong>Key Characteristics:</strong>
+      <ul>
+        <li><b>Three Consecutive Bullish Candles:</b> All three must be green.</li>
+        <li><b>Long Bodies:</b> Each candle should have a significant body, showing strong buying pressure.</li>
+        <li><b>Higher Closes:</b> Each candle's close must be higher than the previous candle's close.</li>
+        <li><b>Open within Previous Body:</b> The open of the second candle should be within the real body of the first; the open of the third should be within the real body of the second.</li>
+        <li><b>Small/No Lower Shadows:</b> Ideally, little to no lower shadow on each candle, indicating buying pressure throughout the period.</li>
+        <li><b>Context:</b> Most significant when appearing after a clear downtrend or during a pullback in an uptrend.</li>
+      </ul>
+    </div>
+
+    <h2>Basic Three White Soldiers Pattern Detection in Pine Script</h2>
+    <p>Here's how to create a basic indicator to detect Three White Soldiers patterns in Pine Script v5:</p>
+    
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Three White Soldiers Detector"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// User input for minimum body size (as a percentage of ATR)</span>
+minBodySize = <span class="keyword">input</span>.float(<span class="number">0.4</span>, title=<span class="string">"Min Body Size (ATR multiple)"</span>, minval=<span class="number">0.1</span>, maxval=<span class="number">2.0</span>)
+<span class="comment">// User input for maximum lower shadow size (as a percentage of body)</span>
+maxLowerShadowRatio = <span class="keyword">input</span>.float(<span class="number">0.2</span>, title=<span class="string">"Max Lower Shadow Ratio (of Body)"</span>, minval=<span class="number">0.01</span>, maxval=<span class="number">0.5</span>)
+
+<span class="comment">// Helper function to check if a candle is a strong bullish candle with small lower shadow</span>
+isStrongBullish(idx) =>
+    body = close[idx] - open[idx]
+    lowerShadow = <span class="builtin">math.min</span>(open[idx], close[idx]) - low[idx]
+    
+    body > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[idx] * minBodySize <span class="keyword">and</span> <span class="comment">// Body is significant</span>
+    close[idx] > open[idx] <span class="keyword">and</span> <span class="comment">// It's a bullish candle</span>
+    lowerShadow &lt; body * maxLowerShadowRatio <span class="comment">// Small lower shadow</span>
+
+<span class="comment">// Check individual candle properties</span>
+isC1StrongBullish = isStrongBullish(<span class="number">2</span>)
+isC2StrongBullish = isStrongBullish(<span class="number">1</span>)
+isC3StrongBullish = isStrongBullish(<span class="number">0</span>) <span class="comment">// Current bar</span>
+
+<span class="comment">// Check opening conditions</span>
+isC2OpensInC1Body = open[<span class="number">1</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3OpensInC2Body = open[<span class="number">0</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> open[<span class="number">0</span>] &lt; close[<span class="number">1</span>] <span class="comment">// open[0] is current `open`</span>
+
+<span class="comment">// Check higher closes</span>
+isC2ClosesHigherThanC1 = close[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3ClosesHigherThanC2 = close[<span class="number">0</span>] > close[<span class="number">1</span>] <span class="comment">// close[0] is current `close`</span>
+
+<span class="comment">// Combine all criteria for Three White Soldiers</span>
+isThreeWhiteSoldiers = isC1StrongBullish <span class="keyword">and</span> isC2StrongBullish <span class="keyword">and</span> isC3StrongBullish <span class="keyword">and</span> \
+                       isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                       isC2ClosesHigherThanC1 <span class="keyword">and</span> isC3ClosesHigherThanC2
+
+<span class="comment">// Plot signal on the chart</span>
+<span class="builtin">plotshape</span>(isThreeWhiteSoldiers, title=<span class="string">"Three White Soldiers"</span>, location=location.belowbar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.lime, <span class="number">0</span>), style=shape.triangleup, size=size.normal)
+
+<span class="comment">// Alert condition (optional)</span>
+<span class="builtin">alertcondition</span>(isThreeWhiteSoldiers, title=<span class="string">"Three White Soldiers Detected"</span>, message=<span class="string">"Three White Soldiers Pattern Detected!"</span>)
+</code></pre>
+
+    <h2>Advanced Three White Soldiers Strategies</h2>
+    <p>Combining Three White Soldiers patterns with other indicators and market context provides stronger, more reliable signals for potential bullish moves.</p>
+    
+    <h3>1. Three White Soldiers with Downtrend Reversal Confirmation (Using Moving Average)</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Three White Soldiers (Trend Reversal)"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for Moving Average length (for trend detection)</span>
+maLength = <span class="keyword">input</span>(<span class="number">50</span>, <span class="string">"MA Length (for trend)"</span>)
+ma = <span class="builtin">ta.ema</span>(close, maLength) 
+
+<span class="comment">// Three White Soldiers Pattern Detection (from basic example - simplified for brevity)</span>
+isC1StrongBullish = close[<span class="number">2</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> (close[<span class="number">2</span>] - open[<span class="number">2</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">2</span>] * <span class="number">0.4</span> 
+isC2StrongBullish = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> (close[<span class="number">1</span>] - open[<span class="number">1</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.4</span>
+isC3StrongBullish = close > open <span class="keyword">and</span> (close - open) > <span class="builtin">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.4</span>
+
+isC2OpensInC1Body = open[<span class="number">1</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3OpensInC2Body = open > open[<span class="number">1</span>] <span class="keyword">and</span> open &lt; close[<span class="number">1</span>]
+
+isC2ClosesHigherThanC1 = close[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3ClosesHigherThanC2 = close > close[<span class="number">1</span>]
+
+<span class="comment">// Additional check for small lower shadows for robustness</span>
+isSmallLowerShadowC1 = (<span class="builtin">math.min</span>(open[<span class="number">2</span>], close[<span class="number">2</span>]) - low[<span class="number">2</span>]) &lt; (<span class="builtin">math.abs</span>(open[<span class="number">2</span>] - close[<span class="number">2</span>]) * <span class="number">0.2</span>)
+isSmallLowerShadowC2 = (<span class="builtin">math.min</span>(open[<span class="number">1</span>], close[<span class="number">1</span>]) - low[<span class="number">1</span>]) &lt; (<span class="builtin">math.abs</span>(open[<span class="number">1</span>] - close[<span class="number">1</span>]) * <span class="number">0.2</span>)
+isSmallLowerShadowC3 = (<span class="builtin">math.min</span>(open, close) - low) &lt; (<span class="builtin">math.abs</span>(open - close) * <span class="number">0.2</span>)
+
+isThreeWhiteSoldiers = isC1StrongBullish <span class="keyword">and</span> isC2StrongBullish <span class="keyword">and</span> isC3StrongBullish <span class="keyword">and</span> \
+                       isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                       isC2ClosesHigherThanC1 <span class="keyword">and</span> isC3ClosesHigherThanC2 <span class="keyword">and</span> \
+                       isSmallLowerShadowC1 <span class="keyword">and</span> isSmallLowerShadowC2 <span class="keyword">and</span> isSmallLowerShadowC3
+
+<span class="comment">// Trend Confirmation: Pattern appears after a clear downtrend (price below MA)</span>
+isDowntrend = close[<span class="number">3</span>] &lt; ma[<span class="number">3</span>] <span class="keyword">and</span> close[<span class="number">2</span>] &lt; ma[<span class="number">2</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; ma[<span class="number">1</span>] <span class="comment">// Check prior bars for downtrend context</span>
+
+<span class="comment">// Strategy Logic with Trend Confirmation</span>
+longSignal = isThreeWhiteSoldiers <span class="keyword">and</span> isDowntrend
+
+<span class="keyword">if</span> (longSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
+    
+<span class="comment">// Plot MA</span>
+<span class="builtin">plot</span>(ma, <span class="string">"Trend MA"</span>, <span class="builtin">color</span>.blue)
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="builtin">plotshape</span>(longSignal, title=<span class="string">"Confirmed 3 White Soldiers (Reversal)"</span>, location=location.belowbar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.navy, <span class="number">0</span>), style=shape.arrowup, size=size.normal)
+</code></pre>
+
+    <h3>2. Three White Soldiers with Volume Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Three White Soldiers with Volume Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Three White Soldiers Pattern Detection (from basic example - simplified)</span>
+isC1StrongBullish = close[<span class="number">2</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> (close[<span class="number">2</span>] - open[<span class="number">2</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">2</span>] * <span class="number">0.4</span> 
+isC2StrongBullish = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> (close[<span class="number">1</span>] - open[<span class="number">1</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.4</span>
+isC3StrongBullish = close > open <span class="keyword">and</span> (close - open) > <span class="builtin">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.4</span>
+
+isC2OpensInC1Body = open[<span class="number">1</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3OpensInC2Body = open > open[<span class="number">1</span>] <span class="keyword">and</span> open &lt; close[<span class="number">1</span>]
+
+isC2ClosesHigherThanC1 = close[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3ClosesHigherThanC2 = close > close[<span class="number">1</span>]
+
+isThreeWhiteSoldiers = isC1StrongBullish <span class="keyword">and</span> isC2StrongBullish <span class="keyword">and</span> isC3StrongBullish <span class="keyword">and</span> \
+                       isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                       isC2ClosesHigherThanC1 <span class="keyword">and</span> isC3ClosesHigherThanC2
+
+<span class="comment">// Volume Confirmation:</span>
+<span class="comment">// Each bullish candle should have equal or increasing volume,</span>
+<span class="comment">// and the third candle's volume should be significantly higher than average volume.</span>
+avgVolume = <span class="builtin">ta.sma</span>(volume, <span class="number">20</span>) <span class="comment">// 20-period Simple Moving Average of Volume</span>
+isVolumeConsistent = volume[<span class="number">2</span>] &lt;= volume[<span class="number">1</span>] <span class="keyword">and</span> volume[<span class="number">1</span>] &lt;= volume <span class="comment">// Volume equal or increasing</span>
+isVolumeConfirmed = volume > avgVolume * <span class="number">1.2</span> <span class="comment">// Current volume is 1.2x average</span>
+
+<span class="comment">// Combined signal</span>
+confirmedThreeWhiteSoldiers = isThreeWhiteSoldiers <span class="keyword">and</span> isVolumeConsistent <span class="keyword">and</span> isVolumeConfirmed
+
+<span class="comment">// Plot confirmed signals</span>
+<span class="builtin">barcolor</span>(confirmedThreeWhiteSoldiers ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.aqua, <span class="number">60</span>) : <span class="keyword">na</span>)
+
+<span class="builtin">plotshape</span>(confirmedThreeWhiteSoldiers, title=<span class="string">"3 White Soldiers (Vol Confirmed)"</span>, location=location.belowbar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.green, <span class="number">0</span>), style=shape.labelup, size=size.small, text=<span class="string">"3WS Vol"</span>)
+
+<span class="comment">// Optional: Plot volume for visual check</span>
+<span class="builtin">plot</span>(volume, title=<span class="string">"Volume"</span>, color=<span class="builtin">color</span>.gray, style=plot.style_columns)
+<span class="builtin">plot</span>(avgVolume, title=<span class="string">"Avg Volume"</span>, color=<span class="builtin">color</span>.orange, style=plot.style_line)
+</code></pre>
+
+    <h3>3. Three White Soldiers with RSI Confirmation</h3>
+    <pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Three White Soldiers with RSI Confirmation"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// RSI Inputs</span>
+rsiLength = <span class="keyword">input</span>(<span class="number">14</span>, <span class="string">"RSI Length"</span>)
+oversold = <span class="keyword">input</span>(<span class="number">30</span>, <span class="string">"RSI Oversold Level"</span>)
+
+<span class="comment">// Calculate RSI</span>
+rsiValue = <span class="builtin">ta.rsi</span>(close, rsiLength)
+
+<span class="comment">// Three White Soldiers Pattern Detection (simplified)</span>
+isC1StrongBullish = close[<span class="number">2</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> (close[<span class="number">2</span>] - open[<span class="number">2</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">2</span>] * <span class="number">0.4</span> 
+isC2StrongBullish = close[<span class="number">1</span>] > open[<span class="number">1</span>] <span class="keyword">and</span> (close[<span class="number">1</span>] - open[<span class="number">1</span>]) > <span class="builtin">ta.atr</span>(<span class="number">14</span>)[<span class="number">1</span>] * <span class="number">0.4</span>
+isC3StrongBullish = close > open <span class="keyword">and</span> (close - open) > <span class="builtin">ta.atr</span>(<span class="number">14</span>) * <span class="number">0.4</span>
+
+isC2OpensInC1Body = open[<span class="number">1</span>] > open[<span class="number">2</span>] <span class="keyword">and</span> open[<span class="number">1</span>] &lt; close[<span class="number">2</span>]
+isC3OpensInC2Body = open > open[<span class="number">1</span>] <span class="keyword">and</span> open &lt; close[<span class="number">1</span>]
+
+isC2ClosesHigherThanC1 = close[<span class="number">1</span>] > close[<span class="number">2</span>]
+isC3ClosesHigherThanC2 = close > close[<span class="number">1</span>]
+
+isThreeWhiteSoldiers = isC1StrongBullish <span class="keyword">and</span> isC2StrongBullish <span class="keyword">and</span> isC3StrongBullish <span class="keyword">and</span> \
+                       isC2OpensInC1Body <span class="keyword">and</span> isC3OpensInC2Body <span class="keyword">and</span> \
+                       isC2ClosesHigherThanC1 <span class="keyword">and</span> isC3ClosesHigherThanC2
+
+<span class="comment">// RSI Confirmation: RSI rising from oversold territory or showing bullish divergence</span>
+rsiConfirmation = rsiValue > rsiValue[<span class="number">1</span>] <span class="keyword">and</span> rsiValue[<span class="number">1</span>] > rsiValue[<span class="number">2</span>] <span class="keyword">and</span> rsiValue[<span class="number">2</span>] &lt;= oversold <span class="comment">// RSI rising from oversold</span>
+<span class="comment">// Or simpler: rsiValue >= oversold and rsiValue > rsiValue[1]</span>
+
+<span class="comment">// Combined signal</span>
+signalThreeWhiteSoldiers = isThreeWhiteSoldiers <span class="keyword">and</span> rsiConfirmation
+
+<span class="comment">// Plot signals</span>
+<span class="builtin">plotshape</span>(signalThreeWhiteSoldiers, title=<span class="string">"3 White Soldiers (RSI Confirmed)"</span>, location=location.belowbar, color=<span class="builtin">color.new</span>(<span class="builtin">color</span>.blue, <span class="number">0</span>), style=shape.arrowup, size=size.normal)
+
+<span class="comment">// Plot RSI in a separate pane</span>
+<span class="builtin">plot</span>(rsiValue, <span class="string">"RSI"</span>, <span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>, display=display.pane)
+<span class="builtin">hline</span>(oversold, <span class="string">"Oversold"</span>, <span class="builtin">color</span>.green)
+</code></pre>
+
+    <h2>Optimizing Three White Soldiers Pattern Performance</h2>
+    <p>To maximize the effectiveness of Three White Soldiers patterns in your Pine Script strategies:</p>
+    <ul>
+      <li><b>Context is King:</b> This pattern is most powerful when it appears after a clear downtrend (signaling a reversal) or during a minor pullback within an established uptrend (signaling continuation). Avoid it in choppy or ranging markets.</li>
+      <li><b>Volume Confirmation:</b> Look for increasing or consistently high volume accompanying the three bullish candles. Strong volume adds conviction to the buying pressure.</li>
+      <li><b>Candle Sizes:</b> While all three should be "long," watch for diminishing candle sizes, which could indicate weakening momentum. Ideally, they maintain or increase in size slightly.</li>
+      <li><b>Small Shadows:</b> Minimal lower shadows indicate that buyers held control throughout the session, with little rejection of higher prices.</li>
+      <li><b>Support Levels:</b> When the pattern forms at a significant support level (e.g., a previous low, moving average, Fibonacci retracement), its reliability as a reversal signal increases.</li>
+      <li><b>Timeframe:</b> Signals on higher timeframes (e.g., daily, weekly) generally carry more weight and are more reliable for sustained moves than those on lower timeframes.</li>
+    </ul>
+
+    <h2>Common Three White Soldiers Pattern Pitfalls to Avoid</h2>
+    <div class="tip">
+      <strong>Warning:</strong> Not every sequence of three green candles constitutes a valid "Three White Soldiers" pattern. Strict adherence to criteria and contextual analysis are essential.
+    </div>
+    <ul>
+      <li><b>Ignoring Body Size:</b> If the bodies are too small, they don't indicate strong buying pressure. Ensure they are substantial relative to the average candle size.</li>
+      <li><b>Overlapping Bodies:</b> If the second or third candle's open is below the previous candle's close (i.e., a gap up), it's a stronger signal, but the pattern allows for opens *within* the previous body. However, if the open is below the previous candle's low, it's not a Three White Soldiers.</li>
+      <li><b>Large Lower Shadows:</b> Significant lower shadows on any of the three candles can indicate underlying selling pressure, weakening the bullish signal.</li>
+      <li><b>Lack of Higher Closes:</b> If any of the candles fail to close higher than the previous one, the bullish momentum is broken, and it's not a valid pattern.</li>
+      <li><b>Trading Against the Trend:</b> Using this pattern as a reversal signal when the broader trend is strongly bearish can lead to false signals. Always confirm the context.</li>
+      <li><b>Over-reliance:</b> Relying solely on this pattern without confirmation from other indicators or broader market analysis can lead to whipsaws or missed opportunities.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <b>Three White Soldiers candlestick pattern</b> is a powerful and visually clear signal for robust bullish price action. By understanding its precise three-candle formation, its contextual importance (especially after a downtrend), and integrating it with other technical confirmations like volume and momentum oscillators, you can leverage it effectively in your trading. Implementing Three White Soldiers detection in Pine Script allows you to automate signal generation, combine it with complementary indicators for higher probability trades, and enhance your price action analysis to make more informed trading decisions on TradingView.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

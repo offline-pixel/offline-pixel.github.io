@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | Offline Pixel Computers - Manufacturing Tech & Industry Solutions</title>
+    <meta name="description" content="⚙️ Offline Pixel is launching soon! We enhance manufacturing with IoT integration, predictive maintenance, and quality control systems for auto, heavy, and general production.">
+    <meta name="keywords" content="coming soon, offline pixel, manufacturing tech, IoT manufacturing, predictive maintenance, quality control systems, auto industry software, heavy industry solutions, production optimization, smart factory, industry 4.0, manufacturing automation">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/industries/manufacturing.html"> <!-- Canonical URL for this specific industry page -->
+    <meta property="og:title" content="Coming Soon | Offline Pixel Computers - Manufacturing Tech & Industry Solutions">
+    <meta property="og:description" content="⚙️ Offline Pixel is launching soon! We enhance manufacturing with IoT integration, predictive maintenance, and quality control systems for auto, heavy, and general production.">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://offline-pixel.github.io/industries/manufacturing.html"> <!-- Canonical URL for this specific industry page -->
+    <meta name="twitter:title" content="Coming Soon | Offline Pixel Computers - Manufacturing Tech & Industry Solutions">
+    <meta name="twitter:description" content="⚙️ Offline Pixel is launching soon! We enhance manufacturing with IoT integration, predictive maintenance, and quality control systems for auto, heavy, and general production.">
+    <meta name="twitter:image" content="https://offline-pixel.github.io/assets/logo2.png">
+
+    <link rel="canonical" href="https://offline-pixel.github.io/industries/manufacturing.html" /> <!-- Canonical URL for this specific industry page -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8; /* Light gray background */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        h1 {
+            font-size: 2.5rem; /* Larger heading */
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .email-signup {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 350px;
+            margin: 20px auto 0;
+        }
+        .email-signup input[type="email"] {
+            padding: 12px 15px;
+            border: 2px solid #cbd5e0;
+            border-radius: 8px; /* Rounded input */
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .email-signup input[type="email"]:focus {
+            border-color: #616A6B; /* Steel grey/industrial color for Manufacturing theme */
+        }
+        .email-signup button {
+            background-color: #616A6B; /* Steel grey/industrial color */
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px; /* Rounded button */
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .email-signup button:hover {
+            background-color: #4A5152; /* Darker shade on hover */
+        }
+        .message-box {
+            background-color: #d1e7dd; /* Light green for success */
+            color: #0f5132; /* Dark green text */
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none; /* Hidden by default */
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enhancing Production for the Manufacturing Sector!</h1>
+        <p class="text-xl font-medium text-gray-700 mb-4">Offline Pixel is launching soon with transformative solutions for:</p>
+        <p class="text-2xl font-bold text-gray-700 mb-6">⚙️ Manufacturing (Auto, heavy, production)</p>
+        <p>We enhance <b>manufacturing</b> with <b>IoT integration</b>, <b>predictive maintenance</b>, and <b>quality control systems</b>.</p>
+        <p class="mt-8 text-lg">Be the first to know when we launch!</p>
+
+        <div class="email-signup">
+            <input type="email" id="emailInput" placeholder="Enter your email address" required disabled>
+            <button id="subscribeButton">Stay Updated</button>
+            <div id="messageBox" class="message-box"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('subscribeButton').addEventListener('click', function() {
+            const emailInput = document.getElementById('emailInput');
+            const messageBox = document.getElementById('messageBox');
+            const email = emailInput.value;
+
+            if (email) {
+                // In a real application, you would send this email to your server
+                // For this "coming soon" page, we'll just simulate a success message
+                messageBox.textContent = 'Thank you for subscribing! We\'ll keep you informed.';
+                messageBox.style.backgroundColor = '#d1e7dd';
+                messageBox.style.color = '#0f5132';
+                messageBox.style.display = 'block';
+                emailInput.value = ''; // Clear the input
+            } else {
+                messageBox.textContent = 'Please enter a valid email address.';
+                messageBox.style.backgroundColor = '#f8d7da'; /* Light red for error */
+                messageBox.style.color = '#721c24'; /* Dark red text */
+                messageBox.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="../scripts/scripts.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Detrended Price Oscillator (DPO) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Detrended Price Oscillator (DPO) in Pine Script for TradingView - an indicator designed to remove trend from price to highlight cycles and identify clear peaks and troughs.">
+    <meta name="keywords" content="pine script strategies, Detrended Price Oscillator, DPO, tradingview indicator, technical analysis, cycles, market cycles, overbought, oversold, peaks and troughs">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Detrended Price Oscillator (DPO) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Detrended Price Oscillator (DPO) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Detrended Price Oscillator (DPO) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-DPO.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Detrended Price Oscillator (DPO) - Complete TradingView Guide",
+      "description": "Master the Detrended Price Oscillator (DPO) in Pine Script for TradingView - an indicator designed to remove trend from price to highlight cycles and identify clear peaks and troughs.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-DPO.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Detrended Price Oscillator (DPO)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-DPO.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Detrended Price Oscillator (DPO) </h1>
+      <p class="blog-subtitle">Master this unique oscillator in TradingView's Pine Script that removes trend, allowing you to clearly identify price cycles and potential reversals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Detrended Price Oscillator (DPO)</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Detrended Price Oscillator (DPO)?</h2>
+    <p>The <b>Detrended Price Oscillator (DPO)</b> is a technical indicator that attempts to remove the influence of trend from price action, making it easier to identify <b>cycles and clear peaks and troughs</b>. Unlike many oscillators that measure momentum (speed of price change), DPO focuses on the <b>length</b> of price movements relative to a past moving average, thereby isolating cyclical patterns. It oscillates around a zero line. When price is above its detrended moving average, DPO is positive; when it's below, DPO is negative.</p>
+
+    <p>In Pine Script, DPO is a valuable tool for traders looking to spot turning points within existing trends or to confirm cyclical patterns that might be obscured by a strong trend, enabling better timing for entries and exits.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Detrended Price Oscillator involves a Simple Moving Average (SMA) and a specific shifting mechanism:</p>
+    <ol>
+      <li><strong>SMA Calculation</strong>: Calculate a Simple Moving Average of the closing price over a specified `length` (e.g., 20 periods).
+        <br>
+        `SMA_Value = ta.sma(close, length)`
+      </li>
+      <li><strong>Midpoint Shift</strong>: Determine the midpoint of the SMA period. This is `(length / 2) + 1` periods ago.</li>
+      <li><strong>DPO Formula</strong>: Subtract the SMA value from the closing price *`midpoint` periods ago*.
+        <br>
+        `DPO = Current Close - SMA_Value[midpoint]`
+        <br>
+        (Where `midpoint` is the number of bars to look back for the SMA value. For a 20-period SMA, the midpoint is `(20 / 2) + 1 = 11` bars ago.)
+      </li>
+    </ol>
+    <p>By subtracting a shifted moving average, DPO effectively "detrends" the price, allowing the cyclical components to stand out.</p>
+
+    <h2>Basic Detrended Price Oscillator (DPO) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.dpo()` for calculating the Detrended Price Oscillator, simplifying its implementation.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Detrended Price Oscillator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for DPO length (period for the SMA)</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"DPO Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate DPO value using the built-in function</span>
+<span class="comment">// ta.dpo takes the source (close) and the length</span>
+dpoValue = <span class="function">ta.dpo</span>(close, length)
+
+<span class="comment">// Plot the DPO line</span>
+<span class="function">plot</span>(dpoValue, <span class="keyword">title</span>=<span class="string">"DPO"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Zero Line</span>
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_solid</span>)
+
+<span class="comment">// Optional: Add reference levels for visual clarity (these are not fixed like RSI)</span>
+<span class="function">hline</span>(strategy.opentrades.size > <span class="number">0</span> ? <span class="number">0</span> : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Buy Level"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>) <span class="comment">// Example placeholder</span>
+<span class="function">hline</span>(strategy.opentrades.size &lt; <span class="number">0</span> ? <span class="number">0</span> : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Sell Level"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>) <span class="comment">// Example placeholder</span>
+</code>
+</pre>
+
+
+    <div class="tip">
+      <strong>Trend-Free View:</strong> DPO's main advantage is that it removes the overall trend, allowing you to focus purely on shorter-term cyclical patterns and overbought/oversold conditions within that cycle.
+    </div>
+
+    <h2>Practical DPO <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Peak and Trough Identification</h3>
+    <p>DPO excels at pinpointing significant peaks and troughs in price cycles once the trend is removed. These can be used to anticipate turning points for entries and exits.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: DPO forms a clear trough (a local minimum) and then turns upwards from below the zero line. This suggests the cyclical downside is exhausted.</li>
+      <li><strong>Sell Signal</strong>: DPO forms a clear peak (a local maximum) and then turns downwards from above the zero line. This suggests the cyclical upside is exhausted.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"DPO Peak/Trough Signals"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"DPO Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+dpoValue = <span class="function">ta.dpo</span>(close, length)
+
+<span class="function">plot</span>(dpoValue, <span class="string">"DPO"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_solid</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Detect potential troughs (local minimums)</span>
+<span class="comment">// DPO is lower than previous two bars, then current DPO is higher than previous</span>
+isTrough = dpoValue[<span class="number">2</span>] > dpoValue[<span class="number">1</span>] <span class="keyword">and</span> dpoValue[<span class="number">1</span>] &lt; dpoValue <span class="keyword">and</span> dpoValue[<span class="number">1</span>] &lt; <span class="number">0</span> <span class="comment">// And below zero line</span>
+
+<span class="comment">// Detect potential peaks (local maximums)</span>
+<span class="comment">// DPO is higher than previous two bars, then current DPO is lower than previous</span>
+isPeak = dpoValue[<span class="number">2</span>] &lt; dpoValue[<span class="number">1</span>] <span class="keyword">and</span> dpoValue[<span class="number">1</span>] > dpoValue <span class="keyword">and</span> dpoValue[<span class="number">1</span>] > <span class="number">0</span> <span class="comment">// And above zero line</span>
+
+<span class="function">plotshape</span>(isTrough, <span class="keyword">title</span>=<span class="string">"Cyclical Bottom"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
+<span class="function">plotshape</span>(isPeak, <span class="keyword">title</span>=<span class="string">"Cyclical Top"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
+
+<span class="function">alertcondition</span>(isTrough, <span class="string">"DPO Bullish Turn"</span>, <span class="string">"DPO detected a cyclical bottom and turned up."</span>)
+<span class="function">alertcondition</span>(isPeak, <span class="string">"DPO Bearish Turn"</span>, <span class="string">"DPO detected a cyclical top and turned down."</span>)
+</code>
+</pre>
+
+
+    <h3>2. DPO Zero Line Crossover</h3>
+    <p>The zero line in DPO represents the long-term trend. Crossovers indicate that the price has crossed above or below its shifted moving average, signifying a shift in the short-term cycle's direction relative to the removed trend.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: DPO crosses above the zero line. This means current price is above its detrended average.</li>
+      <li><strong>Sell Signal</strong>: DPO crosses below the zero line. This means current price is below its detrended average.</li>
+    </ul>
+    <p>These signals can be effective when the market is in a clear cycle but less reliable in strong, sustained trends without pullbacks.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"DPO Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"DPO Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+dpoValue = <span class="function">ta.dpo</span>(close, length)
+
+<span class="function">plot</span>(dpoValue, <span class="string">"DPO"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_solid</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+longSignal = <span class="function">ta.crossover</span>(dpoValue, <span class="number">0</span>)
+shortSignal = <span class="function">ta.crossunder</span>(dpoValue, <span class="number">0</span>)
+
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code>
+</pre>
+
+
+    <h3>3. DPO Divergence Strategy</h3>
+    <p>Although DPO is designed to remove trend, divergence can still be observed between price and DPO, signaling potential reversals of the underlying cycle or a larger trend shift that DPO is beginning to pick up.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but DPO makes a higher low. This indicates weakening bearish cyclical momentum.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but DPO makes a lower high. This indicates weakening bullish cyclical momentum.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"DPO Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"DPO Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+dpoValue = <span class="function">ta.dpo</span>(close, length)
+
+<span class="function">plot</span>(dpoValue, <span class="string">"DPO"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_solid</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example focusing on price vs DPO divergence.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, DPO higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close <span class="keyword">and</span> dpoValue[<span class="number">2</span>] &lt; dpoValue[<span class="number">1</span>] <span class="keyword">and</span> dpoValue[<span class="number">1</span>] &lt; dpoValue
+
+<span class="comment">// Bearish Divergence (Price higher high, DPO lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] < close <span class="keyword">and</span> dpoValue[<span class="number">2</span>] > dpoValue[<span class="number">1</span>] <span class="keyword">and</span> dpoValue[<span class="number">1</span>] > dpoValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish DPO Divergence"</span>, <span class="string">"Potential bullish reversal based on DPO divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish DPO Divergence"</span>, <span class="string">"Potential bearish reversal based on DPO divergence."</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing DPO Performance</h2>
+    <p>To get the most from the Detrended Price Oscillator in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. It determines the cycle length you are isolating. A shorter length (e.g., 10-period) will highlight shorter cycles, while a longer length (e.g., 40-period) will highlight longer cycles. Experiment to match the `length` to the dominant cycle of the asset you are trading.</li>
+      <li><strong>Identify Cycle Lengths:</strong> Before using DPO, it's often helpful to visually identify recurring price cycles on your chart and then set the DPO `length` to approximately half of that cycle's length. This will position peaks/troughs at corresponding points in the cycle.</li>
+      <li><strong>Combine with Trend-Following Indicators:</strong> While DPO removes trend, it's generally not used for defining the main trend. It's best used in conjunction with a separate trend-following indicator (like an EMA or ADX) on the price chart to understand the broader context. Use DPO to time entries/exits *within* that confirmed trend.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for DPO signals to be confirmed by price action, such as candlestick patterns, breaks of short-term support/resistance, or volume spikes.</li>
+      <li><strong>Overbought/Oversold Zones:</strong> DPO doesn't have fixed overbought/oversold levels. You'll need to visually identify historical extreme highs and lows on the DPO for the asset you are trading to determine potential reversal zones.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Focus on Cycles:</strong> DPO is specifically designed to make market cycles more apparent by eliminating the linear trend. This can be very useful for swing trading.
+    </div>
+
+    <h2>Common DPO Pitfalls</h2>
+    <ul>
+      <li> <b>Not a Trend Indicator:</b> DPO explicitly removes trend. Do not use it to determine the primary trend direction of an asset.</li>
+      <li> <b>Lag:</b> Despite its detrending nature, DPO still uses a moving average, which introduces some lag. Signals will not be at the exact top or bottom of a cycle.</li>
+      <li> <b>Subjective Interpretation of Peaks/Troughs:</b> Identifying "clear" peaks and troughs can sometimes be subjective, especially in choppy markets.</li>
+      <li> <b>False Signals in Strong Trends:</b> While it removes trend, in extremely strong, parabolic trends, DPO might give premature reversal signals if not used with a proper trend filter.</li>
+      <li> <b>Not a Standalone Indicator:</b> DPO should always be used as part of a broader trading system, complementing other indicators and price action analysis.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Detrended Price Oscillator (DPO) is a unique and insightful technical indicator in Pine Script for TradingView. By effectively removing the influence of trend from price, it allows traders to clearly identify and analyze underlying market cycles, making it particularly valuable for pinpointing potential peaks and troughs within price swings. Whether used for identifying cyclical turning points, recognizing zero-line crossovers for short-term momentum shifts, or spotting divergence, the DPO offers a distinct perspective on market dynamics. By understanding its calculation, thoughtfully tuning its parameters to match specific cycle lengths, and integrating it strategically with other technical analysis tools, you can leverage the DPO to enhance your trading decisions and better time your entries and exits.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

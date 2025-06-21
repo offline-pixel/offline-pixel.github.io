@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Fibonacci Retracements - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Fibonacci Retracements in Pine Script for TradingView - a powerful tool for identifying potential support and resistance levels during price pullbacks within a trend.">
+    <meta name="keywords" content="pine script strategies, Fibonacci Retracements, Fibo levels, tradingview indicator, technical analysis, support resistance, trend continuation, reversal points, Fibonacci ratios, swing trading">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Fibonacci Retracements - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Fibonacci Retracements in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Fibonacci Retracements - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-FibonacciRetracements.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Fibonacci Retracements - Complete TradingView Guide",
+      "description": "Master Fibonacci Retracements in Pine Script for TradingView - a powerful tool for identifying potential support and resistance levels during price pullbacks within a trend.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-FibonacciRetracements.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Fibonacci Retracements",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-FibonacciRetracements.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Fibonacci Retracements </h1>
+      <p class="blog-subtitle">Master this powerful technical analysis tool in TradingView's Pine Script that identifies key potential support and resistance levels during price pullbacks within a trend, based on mathematical ratios.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Fibonacci Retracements</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What are Fibonacci Retracements?</h2>
+    <p> <b>Fibonacci Retracements</b> are horizontal lines used in technical analysis that indicate potential support and resistance levels. They are derived from the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...) where each number is the sum of the two preceding ones. The key ratios used in retracements are obtained by dividing a number in the sequence by the number that follows it (e.g., 34/55 ≈ 0.618 or 61.8%), or by two numbers after it (e.g., 34/89 ≈ 0.382 or 38.2%).</p>
+
+    <p>These levels are drawn by taking two extreme points (a swing high and a swing low) on a chart and then drawing horizontal lines at the classic Fibonacci ratios: <b>23.6%, 38.2%, 50% (not a Fibonacci ratio, but commonly included), 61.8%, and 78.6% (sometimes 76.4%)</b>. The idea is that after a significant price move (impulse wave), price will often retrace a portion of that move to one of these Fibonacci levels before continuing in its original direction.</p>
+
+    <p>Fibonacci Retracements are primarily used to:</p>
+    <ul>
+      <li> <b>Identify potential entry points:</b> During a pullback, price might find support/resistance at a Fibonacci level, offering an entry opportunity for trend continuation.</li>
+      <li> <b>Set profit targets:</b> Traders might use these levels as areas to take partial or full profits on existing positions.</li>
+      <li> <b>Place stop-loss orders:</b> A stop-loss could be placed just beyond a critical Fibonacci level.</li>
+      <li> <b>Confirm trend strength:</b> A strong bounce from a key Fibonacci level (e.g., 50% or 61.8%) can confirm the underlying trend.</li>
+    </ul>
+
+    <p>In Pine Script, implementing Fibonacci Retracements involves identifying the swing points and then drawing dynamic lines based on these calculated ratios.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>To calculate Fibonacci Retracement levels, you first need to identify a <b>significant price swing</b>, which means a distinct high and a distinct low. Once these are defined, the levels are calculated as follows:</p>
+    <br>
+   <b>For an Uptrend (Price retracing downwards from a high):</b>
+    * `Retracement Level = High_Price - (High_Price - Low_Price) * Fibonacci_Ratio`
+    <br>
+   <b>For a Downtrend (Price retracing upwards from a low):</b>
+    * `Retracement Level = Low_Price + (High_Price - Low_Price) * Fibonacci_Ratio`
+    <br>
+    Common Fibonacci Ratios:
+    * <b>0.236 (23.6%)</b>
+    * <b>0.382 (38.2%)</b>
+    * <b>0.500 (50%)</b> - Often called the "mid-point" or "half-back"
+    * <b>0.618 (61.8%)</b> - Known as the "Golden Ratio"
+    * <b>0.786 (78.6%)</b> - Square root of 0.618, also commonly used.
+
+    <p>To implement this dynamically in Pine Script, we often use `ta.highest()` and `ta.lowest()` to find a significant swing within a specified lookback period.</p>
+
+    <h2>Basic Fibonacci Retracements Implementation in Pine Script</h2>
+    <p>Since Pine Script doesn't have a direct `ta.fibonacciRetracements()` function that automatically draws these levels in the way users might manually, we'll create a custom indicator that finds the highest high and lowest low within a user-defined lookback period and then plots the Fibonacci levels dynamically from those points.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Fibonacci Retracements"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">500</span>) <span class="comment">// overlay=true to plot on price chart.</span>
+
+<span class="comment">// --- User Inputs ---</span>
+<span class="keyword">lookbackPeriod</span> = <span class="function">input.int</span>(<span class="number">50</span>, <span class="keyword">title</span>=<span class="string">"Lookback Period for Swing"</span>, <span class="keyword">minval</span>=<span class="number">10</span>, <span class="keyword">maxval</span>=<span class="number">500</span>)
+<span class="keyword">showLevels</span> = <span class="function">input.bool</span>(<span class="keyword">true</span>, <span class="keyword">title</span>=<span class="string">"Show Fibonacci Levels"</span>)
+<span class="keyword">showLabels</span> = <span class="function">input.bool</span>(<span class="keyword">true</span>, <span class="keyword">title</span>=<span class="string">"Show Level Labels"</span>)
+
+<span class="comment">// --- Define Fibonacci Ratios ---</span>
+<span class="keyword">fib0</span> = <span class="number">0.0</span>
+<span class="keyword">fib236</span> = <span class="number">0.236</span>
+<span class="keyword">fib382</span> = <span class="number">0.382</span>
+<span class="keyword">fib500</span> = <span class="number">0.500</span>
+<span class="keyword">fib618</span> = <span class="number">0.618</span>
+<span class="keyword">fib786</span> = <span class="number">0.786</span>
+<span class="keyword">fib100</span> = <span class="number">1.0</span>
+
+<span class="comment">// --- Identify Swing High and Swing Low within the lookback period ---</span>
+<span class="comment">// Find the highest high and lowest low within the last 'lookbackPeriod' bars</span>
+<span class="keyword">hh</span> = <span class="function">ta.highest</span>(high, lookbackPeriod)
+<span class="keyword">ll</span> = <span class="function">ta.lowest</span>(low, lookbackPeriod)
+
+<span class="comment">// Find the bar_index where the highest high and lowest low occurred</span>
+<span class="keyword">hh_idx</span> = <span class="function">ta.highestbars</span>(high, lookbackPeriod) <span class="comment">// Returns negative offset from current bar</span>
+<span class="keyword">ll_idx</span> = <span class="function">ta.lowestbars</span>(low, lookbackPeriod)   <span class="comment">// Returns negative offset from current bar</span>
+
+<span class="comment">// Get the actual high and low values at those specific bar indices</span>
+<span class="keyword">current_hh_val</span> = hh
+<span class="keyword">current_ll_val</span> = ll
+
+<span class="comment">// Determine the direction of the main swing for drawing retracements</span>
+<span class="comment">// If the highest high occurred AFTER the lowest low within the period, it's an UP swing.</span>
+<span class="comment">// If the lowest low occurred AFTER the highest high within the period, it's a DOWN swing.</span>
+<span class="comment">// This logic is crucial to draw retracements correctly.</span>
+
+<span class="comment">// Using `nz()` for historical reference and `time` to check if a new swing has started</span>
+<span class="keyword">var</span> <span class="keyword">float</span> swingHighPrice = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> swingLowPrice = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">int</span> swingHighBarIndex = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">int</span> swingLowBarIndex = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">string</span> swingDirection = <span class="keyword">na</span> <span class="comment">// "up" or "down"</span>
+
+<span class="comment">// Logic to identify a new significant swing based on the highest/lowest within lookback</span>
+<span class="comment">// This is a simplified approach. More robust pivot detection can be used.</span>
+
+<span class="comment">// Check if a new swing high has formed and it's higher than the previous one</span>
+<span class="keyword">if</span> (high == hh <span class="keyword">and</span> bar_index == bar_index[lookbackPeriod - <span class="function">math.abs</span>(hh_idx)]) <span class="comment">// hh_idx is negative offset, so subtract</span>
+    swingHighPrice := high
+    swingHighBarIndex := bar_index
+    <span class="comment">// If the swing high is identified, reset swing low to find new low relative to this high</span>
+    <span class="comment">// or if this is the start of a new swing entirely</span>
+    <span class="keyword">if</span> <span class="function">na</span>(swingLowPrice) <span class="keyword">or</span> (swingHighPrice > swingLowPrice <span class="keyword">and</span> swingLowBarIndex &lt; swingHighBarIndex) <span class="comment">// ensure proper sequence</span>
+        swingDirection := <span class="string">"up"</span>
+        swingLowPrice := <span class="function">ta.lowest</span>(low, bar_index - swingHighBarIndex + lookbackPeriod) <span class="comment">// Find lowest AFTER this high</span>
+        swingLowBarIndex := bar_index - <span class="function">ta.lowestbars</span>(low, bar_index - swingHighBarIndex + lookbackPeriod)
+
+<span class="comment">// Check if a new swing low has formed and it's lower than the previous one</span>
+<span class="keyword">if</span> (low == ll <span class="keyword">and</span> bar_index == bar_index[lookbackPeriod - <span class="function">math.abs</span>(ll_idx)])
+    swingLowPrice := low
+    swingLowBarIndex := bar_index
+    <span class="comment">// If the swing low is identified, reset swing high to find new high relative to this low</span>
+    <span class="keyword">if</span> <span class="function">na</span>(swingHighPrice) <span class="keyword">or</span> (swingLowPrice &lt; swingHighPrice <span class="keyword">and</span> swingHighBarIndex &lt; swingLowBarIndex)
+        swingDirection := <span class="string">"down"</span>
+        swingHighPrice := <span class="function">ta.highest</span>(high, bar_index - swingLowBarIndex + lookbackPeriod) <span class="comment">// Find highest AFTER this low</span>
+        swingHighBarIndex := bar_index - <span class="function">ta.highestbars</span>(high, bar_index - swingLowBarIndex + lookbackPeriod)
+
+
+<span class="comment">// More practical way to determine current swing points for dynamic plotting:</span>
+<span class="comment">// Use `fixnan` to carry forward the last detected swing high/low</span>
+<span class="keyword">var</span> <span class="keyword">float</span> currentSwingHigh = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">float</span> currentSwingLow = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">int</span> currentSwingHighIdx = <span class="keyword">na</span>
+<span class="keyword">var</span> <span class="keyword">int</span> currentSwingLowIdx = <span class="keyword">na</span>
+
+<span class="comment">// Detect new pivot high/low using `ta.pivothigh` and `ta.pivotlow` for more robust swing detection</span>
+<span class="comment">// Needs a left and right bar strength.</span>
+<span class="keyword">leftBars</span> = <span class="number">5</span> <span class="comment">// Look this many bars to the left</span>
+<span class="keyword">rightBars</span> = <span class="number">5</span> <span class="comment">// Look this many bars to the right</span>
+
+<span class="keyword">pivotHigh</span> = <span class="function">ta.pivothigh</span>(high, leftBars, rightBars)
+<span class="keyword">pivotLow</span> = <span class="function">ta.pivotlow</span>(low, leftBars, rightBars)
+
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(pivotHigh)
+    currentSwingHigh := pivotHigh
+    currentSwingHighIdx := bar_index[rightBars] <span class="comment">// pivot high is at `bar_index - rightBars`</span>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(pivotLow)
+    currentSwingLow := pivotLow
+    currentSwingLowIdx := bar_index[rightBars] <span class="comment">// pivot low is at `bar_index - rightBars`</span>
+
+<span class="comment">// Ensure we have at least one high and one low detected</span>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(currentSwingHigh) <span class="keyword">and</span> <span class="keyword">not</span> <span class="function">na</span>(currentSwingLow)
+    <span class="comment">// Determine the active swing based on which pivot is more recent or if price is trending</span>
+    <span class="keyword">float</span> range = <span class="function">math.abs</span>(currentSwingHigh - currentSwingLow)
+    <span class="keyword">if</span> range > <span class="number">0</span> <span class="comment">// Avoid division by zero later</span>
+
+        <span class="comment">// Calculate Fibonacci Retracement Levels dynamically</span>
+        <span class="keyword">float</span> fib236_level = <span class="keyword">na</span>
+        <span class="keyword">float</span> fib382_level = <span class="keyword">na</span>
+        <span class="keyword">float</span> fib500_level = <span class="keyword">na</span>
+        <span class="keyword">float</span> fib618_level = <span class="keyword">na</span>
+        <span class="keyword">float</span> fib786_level = <span class="keyword">na</span>
+
+        <span class="comment">// Determine if it's an uptrend swing (Low to High) or downtrend swing (High to Low)</span>
+        <span class="comment">// More robust: check if the high occurred after the low or vice versa</span>
+        <span class="keyword">isUptrendSwing</span> = currentSwingHighIdx > currentSwingLowIdx <span class="comment">// High is more recent</span>
+        <span class="keyword">isDowntrendSwing</span> = currentSwingLowIdx > currentSwingHighIdx <span class="comment">// Low is more recent</span>
+
+        <span class="comment">// If the current bar is past both pivot points,</span>
+        <span class="comment">// determine the direction of the swing that just completed</span>
+        <span class="keyword">if</span> isUptrendSwing
+            <span class="comment">// Calculate retracement from currentSwingHigh down to currentSwingLow</span>
+            fib236_level := currentSwingHigh - (range * fib236)
+            fib382_level := currentSwingHigh - (range * fib382)
+            fib500_level := currentSwingHigh - (range * fib500)
+            fib618_level := currentSwingHigh - (range * fib618)
+            fib786_level := currentSwingHigh - (range * fib786)
+        <span class="keyword">else</span> <span class="keyword">if</span> isDowntrendSwing
+            <span class="comment">// Calculate retracement from currentSwingLow up to currentSwingHigh</span>
+            fib236_level := currentSwingLow + (range * fib236)
+            fib382_level := currentSwingLow + (range * fib382)
+            fib500_level := currentSwingLow + (range * fib500)
+            fib618_level := currentSwingLow + (range * fib618)
+            fib786_level := currentSwingLow + (range * fib786)
+
+        <span class="comment">// --- Plotting Fibonacci Levels ---</span>
+        <span class="keyword">if</span> showLevels
+            <span class="function">plot</span>(fib236_level, <span class="keyword">title</span>=<span class="string">"23.6%"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
+            <span class="function">plot</span>(fib382_level, <span class="keyword">title</span>=<span class="string">"38.2%"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
+            <span class="function">plot</span>(fib500_level, <span class="keyword">title</span>=<span class="string">"50.0%"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
+            <span class="function">plot</span>(fib618_level, <span class="keyword">title</span>=<span class="string">"61.8%"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
+            <span class="function">plot</span>(fib786_level, <span class="keyword">title</span>=<span class="string">"78.6%"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
+            <span class="function">plot</span>(currentSwingHigh, <span class="keyword">title</span>=<span class="string">"0% / Swing High"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>) <span class="comment">// 0% or 100% depending on swing</span>
+            <span class="function">plot</span>(currentSwingLow, <span class="keyword">title</span>=<span class="string">"100% / Swing Low"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_stepline</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>) <span class="comment">// 100% or 0% depending on swing</span>
+
+        <span class="comment">// --- Plotting Labels ---</span>
+        <span class="keyword">if</span> showLabels
+            <span class="comment">// Labels for the actual swing high/low points</span>
+            <span class="comment">// Note: Pine Script's `plot` function draws at current `bar_index`.</span>
+            <span class="comment">// To show the labels at the correct historical pivot points for clarity:</span>
+            <span class="comment">// We would need to use `line.new` for fixed lines or `label.new` for fixed labels.</span>
+            <span class="comment">// For dynamic plotting, we'll plot the levels on the current bar, and their labels.</span>
+
+            <span class="comment">// Labels for the levels, assuming the plots extend</span>
+            <span class="keyword">var</span> <span class="function">label</span> label236 = <span class="keyword">na</span>
+            <span class="keyword">var</span> <span class="function">label</span> label382 = <span class="keyword">na</span>
+            <span class="keyword">var</span> <span class="function">label</span> label500 = <span class="keyword">na</span>
+            <span class="keyword">var</span> <span class="function">label</span> label618 = <span class="keyword">na</span>
+            <span class="keyword">var</span> <span class="function">label</span> label786 = <span class="keyword">na</span>
+            <span class="keyword">var</span> <span class="function">label</span> label0 = <span class="keyword">na</span>
+            <span class="keyword">var</span> <span class="function">label</span> label100 = <span class="keyword">na</span>
+
+            <span class="comment">// Only update labels when a new swing is confirmed (or on the first bar)</span>
+            <span class="comment">// This is a simplified check. More robust pivot detection would signal label update.</span>
+            <span class="keyword">if</span> <span class="function">ta.bar_index</span> == leftBars + rightBars + <span class="number">1</span> <span class="keyword">or</span> <span class="keyword">not</span> <span class="function">na</span>(pivotHigh) <span class="keyword">or</span> <span class="keyword">not</span> <span class="function">na</span>(pivotLow)
+                <span class="function">label.delete</span>(label236)
+                <span class="function">label.delete</span>(label382)
+                <span class="function">label.delete</span>(label500)
+                <span class="function">label.delete</span>(label618)
+                <span class="function">label.delete</span>(label786)
+                <span class="function">label.delete</span>(label0)
+                <span class="function">label.delete</span>(label100)
+
+                label236 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=fib236_level, <span class="keyword">text</span>=<span class="string">"23.6%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+                label382 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=fib382_level, <span class="keyword">text</span>=<span class="string">"38.2%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+                label500 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=fib500_level, <span class="keyword">text</span>=<span class="string">"50.0%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+                label618 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=fib618_level, <span class="keyword">text</span>=<span class="string">"61.8%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+                label786 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=fib786_level, <span class="keyword">text</span>=<span class="string">"78.6%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+                label0 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=currentSwingHigh, <span class="keyword">text</span>=<span class="string">"0%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">gray</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+                label100 := <span class="function">label.new</span>(<span class="keyword">x</span>=bar_index, <span class="keyword">y</span>=currentSwingLow, <span class="keyword">text</span>=<span class="string">"100%"</span>, <span class="keyword">style</span>=label.style_label_right, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">gray</span>, <span class="number">70</span>), <span class="keyword">textcolor</span>=<span class="keyword">color</span>.<span class="function">white</span>, <span class="keyword">size</span>=size.small)
+
+            <span class="comment">// Keep labels extending to the right</span>
+            <span class="function">label.set_x</span>(label236, bar_index)
+            <span class="function">label.set_x</span>(label382, bar_index)
+            <span class="function">label.set_x</span>(label500, bar_index)
+            <span class="function">label.set_x</span>(label618, bar_index)
+            <span class="function">label.set_x</span>(label786, bar_index)
+            <span class="function">label.set_x</span>(label0, bar_index)
+            <span class="function">label.set_x</span>(label100, bar_index)
+
+<span class="comment">// --- Simple Strategy Example (Conceptual) ---</span>
+<span class="comment">// This strategy demonstrates how you might react to Fibonacci levels.</span>
+<span class="comment">// It is highly simplified and for educational purposes only.</span>
+<span class="comment">// Real trading strategies require more complex confirmation.</span>
+
+<span class="function">strategy</span>(<span class="string">"Fibonacci Retracement Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Re-calculate the current fib levels for strategy logic based on the most recent identified swing</span>
+<span class="comment">// This uses the same logic for currentSwingHigh/Low as above</span>
+<span class="comment">// For a strategy, you'd typically want to lock in the swing high/low once it's confirmed</span>
+<span class="comment">// and use that for subsequent bars until a new, valid swing forms.</span>
+<span class="comment">// This example uses the `ta.pivothigh`/`ta.pivotlow` detection directly.</span>
+
+<span class="comment">// Check if we have valid pivots to trade against</span>
+<span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(currentSwingHigh) <span class="keyword">and</span> <span class="keyword">not</span> <span class="function">na</span>(currentSwingLow)
+
+    <span class="comment">// Example 1: Buy on bounce from 61.8% retracement in an uptrend</span>
+    <span class="comment">// Assumption: We are in an uptrend, so we're looking for a pullback to buy.</span>
+    <span class="comment">// This requires `currentSwingHigh` to be from a recent high and `currentSwingLow` from a recent low.</span>
+    <span class="comment">// A more robust strategy would verify the overall trend of the market.</span>
+    <span class="keyword">isCurrentlyUptrendSwing</span> = currentSwingHighIdx > currentSwingLowIdx <span class="comment">// More recent high means an UP swing completed</span>
+    
+    <span class="comment">// Calculate relevant levels for this strategy</span>
+    <span class="keyword">float</span> fib618BuyLevel = <span class="keyword">na</span>
+    <span class="keyword">float</span> fib382ProfitTarget = <span class="keyword">na</span>
+
+    <span class="keyword">if</span> isCurrentlyUptrendSwing
+        <span class="keyword">range</span> = <span class="function">math.abs</span>(currentSwingHigh - currentSwingLow)
+        <span class="keyword">if</span> range > <span class="number">0</span>
+            fib618BuyLevel := currentSwingHigh - (range * fib618)
+            fib382ProfitTarget := currentSwingHigh - (range * fib382) <span class="comment">// Target 38.2% retracement for profit</span>
+
+            <span class="comment">// Long entry: Price closes above 61.8% level after touching it</span>
+            <span class="comment">// Add a filter that price should be generally above the swing low</span>
+            longCondition = close > fib618BuyLevel <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= fib618BuyLevel[<span class="number">1</span>] <span class="keyword">and</span> close > currentSwingLow <span class="comment">// ensure not too far down</span>
+
+            <span class="comment">// Exit: Price reaches 38.2% level or stop loss below 78.6%</span>
+            <span class="keyword">stopLossLevel</span> = currentSwingHigh - (range * fib786) <span class="comment">// Stop below 78.6%</span>
+            
+            <span class="keyword">if</span> (longCondition)
+                <span class="function">strategy.entry</span>(<span class="string">"Long Fib 61.8"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+            
+            <span class="comment">// For exit, we use the profit target and stop loss. Ensure the levels are valid.</span>
+            <span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(fib382ProfitTarget) <span class="keyword">and</span> <span class="keyword">not</span> <span class="function">na</span>(stopLossLevel)
+                <span class="function">strategy.exit</span>(<span class="string">"Long Fib 61.8 Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long Fib 61.8"</span>, <span class="keyword">profit</span>=fib382ProfitTarget, <span class="keyword">stop</span>=stopLossLevel)
+
+
+    <span class="comment">// Example 2: Sell on bounce from 61.8% retracement in a downtrend</span>
+    <span class="comment">// Assumption: We are in a downtrend, looking for a rally to sell.</span>
+    <span class="keyword">isCurrentlyDowntrendSwing</span> = currentSwingLowIdx > currentSwingHighIdx <span class="comment">// More recent low means a DOWN swing completed</span>
+
+    <span class="keyword">float</span> fib618SellLevel = <span class="keyword">na</span>
+    <span class="keyword">float</span> fib382ProfitTargetSell = <span class="keyword">na</span>
+
+    <span class="keyword">if</span> isCurrentlyDowntrendSwing
+        <span class="keyword">range</span> = <span class="function">math.abs</span>(currentSwingHigh - currentSwingLow)
+        <span class="keyword">if</span> range > <span class="number">0</span>
+            fib618SellLevel := currentSwingLow + (range * fib618)
+            fib382ProfitTargetSell := currentSwingLow + (range * fib382) <span class="comment">// Target 38.2% retracement for profit</span>
+
+            <span class="comment">// Short entry: Price closes below 61.8% level after touching it</span>
+            shortCondition = close &lt; fib618SellLevel <span class="keyword">and</span> close[<span class="number">1</span>] >= fib618SellLevel[<span class="number">1</span>] <span class="keyword">and</span> close &lt; currentSwingHigh <span class="comment">// ensure not too far up</span>
+
+            <span class="comment">// Exit: Price reaches 38.2% level or stop loss above 78.6%</span>
+            <span class="keyword">stopLossLevelSell</span> = currentSwingLow + (range * fib786) <span class="comment">// Stop above 78.6%</span>
+
+            <span class="keyword">if</span> (shortCondition)
+                <span class="function">strategy.entry</span>(<span class="string">"Short Fib 61.8"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+            <span class="keyword">if</span> <span class="keyword">not</span> <span class="function">na</span>(fib382ProfitTargetSell) <span class="keyword">and</span> <span class="keyword">not</span> <span class="function">na</span>(stopLossLevelSell)
+                <span class="function">strategy.exit</span>(<span class="string">"Short Fib 61.8 Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short Fib 61.8"</span>, <span class="keyword">profit</span>=fib382ProfitTargetSell, <span class="keyword">stop</span>=stopLossLevelSell)
+</code>
+</pre>
+
+
+    <h2>Optimizing Fibonacci Retracements Performance</h2>
+    <p>To get the most from Fibonacci Retracements in Pine Script:</p>
+    <ul>
+      <li><strong>Accurate Swing Point Selection:</strong> The most crucial aspect is correctly identifying the significant swing high and swing low from which to draw the retracements. This can be subjective manually, but programmatically, using robust pivot detection (e.g., `ta.pivothigh()` and `ta.pivotlow()` with appropriate left/right bar strength) is essential.</li>
+      <li><strong>Confluence is Key:</strong> Fibonacci levels are rarely strong enough to act as standalone support/resistance. They become much more powerful when they align (show "confluence") with other technical levels, such as:
+        <ul>
+          <li>Previous significant highs/lows</li>
+          <li>Moving averages</li>
+          <li>Trendlines</li>
+          <li>Psychological whole numbers</li>
+          <li>Pivot Points</li>
+        </ul>
+      </li>
+      <li><strong>Volume Confirmation:</strong> Look for volume to confirm bounces or breaks of Fibonacci levels. A bounce off a level with strong buying volume suggests strong support. A break of a level with strong selling volume suggests resistance is giving way.</li>
+      <li><strong>Candlestick Patterns:</strong> Confirm reactions at Fibonacci levels with bullish or bearish candlestick patterns (e.g., hammer, engulfing, pin bar) for higher probability trades.</li>
+      <li><strong>Trend Context:</strong> Use Fibonacci retracements primarily for <b>trend continuation</b> strategies. In an uptrend, look for buying opportunities at retracement levels. In a downtrend, look for selling opportunities at retracement levels. Avoid using them in sideways or choppy markets.</li>
+      <li><strong>Multiple Timeframes:</strong> Fibonacci levels on higher timeframes (e.g., daily) can provide stronger support/resistance than those on lower timeframes. Use higher timeframe levels to confirm lower timeframe trades.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>The Golden Ratio:</strong> The 61.8% (and its inverse 38.2%) Fibonacci ratio is often considered the most significant for reversals. Price frequently finds strong support/resistance at or around this level.
+    </div>
+
+    <h2>Common Fibonacci Retracements Pitfalls</h2>
+    <ul>
+      <li> <b>Subjectivity in Swing Point Selection:</b> Manually selecting swing highs and lows can be subjective and lead to different interpretations among traders. Automated detection can help but requires careful parameter tuning.</li>
+      <li> <b>Self-Fulfilling Prophecy:</b> Because many traders use Fibonacci levels, they can become self-fulfilling prophecies. However, this also means they are widely watched and can generate valid reactions.</li>
+      <li> <b>Not Guaranteed Support/Resistance:</b> Fibonacci levels are potential zones, not guaranteed levels. Price can overshoot, undershoot, or ignore them completely.</li>
+      <li> <b>Whipsaws in Choppy Markets:</b> In ranging or consolidating markets, price might move back and forth across multiple Fibonacci levels without a clear reaction, leading to false signals.</li>
+      <li> <b>Over-Reliance:</b> Relying solely on Fibonacci retracements without additional confirmation (price action, volume, other indicators) can lead to poor trading decisions.</li>
+      <li> <b>Too Many Levels:</b> Plotting too many levels or using irrelevant swing points can clutter the chart and lead to analysis paralysis. Focus on the most significant levels and swings.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Fibonacci Retracements are a deeply ingrained and widely used technical analysis tool available in Pine Script for TradingView. By providing mathematically derived potential support and resistance levels during price pullbacks, they offer traders a valuable framework for anticipating market reactions, identifying entry/exit points, and managing risk within a trending market. While requiring careful selection of swing points and confirmation from other indicators like candlestick patterns and volume, mastering Fibonacci Retracements can significantly enhance your <b>pine script strategies</b>. By understanding their calculation, thoughtfully applying them to clear price swings, and integrating them strategically into your overall trading plan, you can leverage these powerful levels to improve your decision-making and better capitalize on market opportunities.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

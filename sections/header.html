@@ -1,0 +1,548 @@
+
+<style>
+    /* General Reset for navigation */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header Section */
+header {
+  background-color: #fff; /* Professional dark color */
+  /* color: #fff; */
+  /* padding: 5px 0; */
+  position: fixed;
+  width: 100%;
+  max-height: 52px;
+  min-height: 52px;
+  top: 0;
+  z-index: 999;
+}
+
+/* Navigation Styling */
+nav {
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #666;
+  font-size: 0.95rem;
+  margin: 0 15px;
+  padding: 8px 0px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effects */
+nav a:hover {
+  background-color: #eaeaea;
+  /* color: #fff; */
+  border-radius: 8px;
+}
+
+nav a.active {
+  color: #ff5f57;
+  font-weight: bold;
+}
+
+body {
+  padding-top: 52px; 
+}
+.usp-strip {
+  display: flex;
+  align-items: center;
+  /* background-color: #f6f6f6; */
+  color: #2d3e50;
+  padding: 7px 20px;
+  border-top: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
+  /* margin-top: 10px; */
+  font-size: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.usp-label {
+  flex-shrink: 0;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.usp-marquee {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+.usp-content {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-left 25s linear infinite;
+  font-size: 13px;
+}
+.usp-content span {
+  padding: 0 17px;
+  border-right: 1px solid #e1e1e1;
+  border-left: 1px solid #fff;
+  /* border-radius: 10px 10px 0 0; */
+}
+.usp-content span:hover {
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+  color: #101010;
+  border-right: 1px solid #999;
+  /* border-left: 1px solid #fff; */
+}
+.usp-content span:last-child {
+  border-right: none;
+}
+.usp-content span:first-child {
+  border-left: none;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-10%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.industries-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.industries-wrapper:hover .industries-dropdown {
+  display: block;
+}
+
+.industries-link {
+  position: relative;
+}
+
+.industries-dropdown {
+  display: none;
+  transition: all 0.3s ease;
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  min-width: 990px;
+  padding: 20px;
+  top: 46px;
+  max-height: 600px;
+  overflow: auto;
+  right: -10%;
+  transform: translateX(10%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  z-index: 999;
+}
+
+nav {
+  position: relative;
+}
+
+/* .industries-link:hover + .industries-dropdown,
+.industries-dropdown:hover {
+  display: block;
+  transition: all 0.3s ease;
+
+} */
+
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.industry-item {
+  font-size: 13px;
+  padding: 12px;
+  /* background: #f9f9f9; */
+  /* border-radius: 8px; */
+  transition: all 0.3s ease;
+  text-align: center;
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); */
+}
+
+.industry-item:hover {
+  /* background: #ff5f57; */
+  color: #000000;
+}
+
+.industry-item span {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+  color: #777;
+}
+
+.contact-box a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin-top: 5px;
+  background-color: #2d3e50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+/* .contact-box a:hover {
+  background-color: #ff5f57;
+} */
+/* #usp-strip {
+    display: none;
+} */
+
+    sup.trending {
+      color: red;
+      display: inline-block;
+      transition: all 150ms ease-in-out;
+      animation: trending-color 1.5s ease-in-out infinite alternate; /* Use direct value, no var */
+    }
+
+
+@keyframes trending-color {
+    0% {
+      /* transform: rotate(0deg); */
+      transform: scale(0.8);
+      color: rgb(244, 77, 77);
+      opacity: 0.8;
+    }
+    50% {
+      /* transform: rotate(45deg); */
+      transform: scale(1);
+      color: red;
+      opacity: 1;
+    }
+    100% {
+      /* transform: rotate(0deg); */
+      transform: scale(0.8);
+      color: rgb(250, 96, 96);
+      opacity: 0.8;
+    }
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100vw;
+  padding: 0 16px;
+  height: 52px;
+  position: relative;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+a.nav-logo:hover  {
+  background-color: transparent; padding: 0;
+}
+.nav-logo img {
+  display: block;
+  max-width: 120px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 12px;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  width: 26px;
+  height: 3px;
+  background-color: #333;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-wrap: nowrap;
+    padding: 0 8px;
+    height: 52px;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    background: #fff;
+    position: absolute;
+    top: 52px;
+    left: 0;
+    width: 100vw;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+    padding: 18px 0 14px 0;
+    display: none;
+    z-index: 1000;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .nav-links a,
+  .nav-links .industries-wrapper {
+    margin: 10px 24px 0 24px;
+    font-size: 1.1rem;
+    display: block;
+  }
+  .industries-dropdown {
+    position: static;
+    min-width: unset;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 10px 0;
+    background: #f9f9f9;
+    margin-top: 10px;
+  }
+  .industry-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+a.default, a {
+  text-decoration: none;
+  color: rgb(11, 97, 115);
+  transition: all 50ms ease-in-out;
+  background-color: transparent;
+  padding: 0;
+  font-size: 14px;
+  margin: 0;
+}
+a.default:hover, a:hover {
+  transition: all 50ms ease-in-out;
+  color: rgb(3, 69, 139);
+  background-color: transparent;
+  padding: none;
+}
+
+.teams-button, .zoom-button, 
+.whatsapp-button, .google-meet {
+  display: flex;
+  align-items: center;
+  /* margin: auto; */
+  /* border: 1px solid; */
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  /* padding: 5px 10px; */
+  justify-content: center;
+  font-size: 13px;
+  /* margin-bottom: 25px !important; */
+}
+
+.teams-button {
+  /* border-color: #464eb6; */
+  width: 134px;
+  color: #464eb6;
+}
+
+.zoom-button {
+  /* border-color: #2589ff; */
+  width: 150px;
+  color: #2589ff;
+}    
+
+.whatsapp-button {
+  /* border-color: #54cd61; */
+  width: 158px;
+  color: #54cd61;
+}
+
+.google-meet {
+  /* border-color: #2d7e31; */
+  width: 150px;
+  color: #2d7e31;
+}
+
+.teams-button:hover, .zoom-button:hover, .whatsapp-button:hover, .google-meet:hover {
+  background-color: #f8f8f8;
+  transform: translateY(-2px);
+}
+
+
+/* Hide hamburger on desktop */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+  .nav-links {
+    display: flex !important;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+.cta-section li {
+  text-align: justify;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  font-size: inherit;
+}
+
+        .breadcrumb {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 50px;
+  margin: 0 auto;
+  max-width: 70%;
+}
+.breadcrumb a {
+  color: #0066cc;
+  text-decoration: none;
+}
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+.breadcrumb a:hover {
+  background-color: transparent;
+}
+</style>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+<header>
+    <nav  class="main-nav">
+       <div class="nav-left">
+      <a href="https://offline-pixel.github.io/index.html" class="nav-logo">
+        <img src="https://offline-pixel.github.io/assets/logo2.png" alt="Offline Pixel Logo" style="max-width:100px; height:auto;">
+      </a>
+    </div>
+    <div class="nav-links" id="navLinks">
+
+      <a href="https://offline-pixel.github.io/index.html">Home</a> |
+      <a href="https://offline-pixel.github.io/about.html">About</a> |
+      <a href="https://offline-pixel.github.io/it-services/hire-software-engineers.html">IT Services<sup class="trending">👨🏻‍💻</sup></a> |
+      <a href="https://offline-pixel.github.io/pinescript-strategies.html">Pinescripts<sup class="trending">🫧</sup></a> |
+      <a href="https://offline-pixel.github.io/aiml.html">AI/ML<sup class="trending">🪄</sup></a> |
+      <!-- <a href="technology.html">Technology</a> | -->
+      <!-- <a href="https://offline-pixel.github.io/side-income.html">Side Income</a> | -->
+      <!-- <a href="cities-blogs.html">Non Tech Blogs</a> | -->
+      <!-- <a href="#" class="industries-link">Industries</a> |  -->
+      <div class="industries-wrapper">
+        <a href="#" class="industries-link">Industries</a>
+        <div class="industries-dropdown">
+          <div class="industry-grid">
+            <div class="industry-item"><strong>💻 <a class="default" href="https://offline-pixel.github.io/industries/IT.html" target="_blank">IT <small>( Tech, software, digital ) </small></a></strong><br />We streamline IT operations with scalable architecture, secure code, and real-time analytics.</div>
+            <div class="industry-item"><strong>🚚 <a class="default" href="https://offline-pixel.github.io/industries/logistics.html" target="_blank">Logistics <small>( Transport, supply chain ) </small></a></strong><br />We optimize logistics with predictive insights, route intelligence, and warehouse automation tools.</div>
+            <div class="industry-item"><strong>🏥 <a class="default" href="https://offline-pixel.github.io/industries/healthcare.html" target="_blank">Healthcare <small>( Hospitals, biotech, pharma ) </small></a></strong><br />We empower healthcare providers with smart diagnostics, real-time data tracking, and compliance tools.</div>
+            <div class="industry-item"><strong>💰 <a class="default" href="https://offline-pixel.github.io/industries/finance.html" target="_blank">Finance <small>( Banking, fintech, insurance ) </small></a></strong><br />We build fintech systems with fraud detection, smart contracts, and customer-centric APIs.</div>
+            <div class="industry-item"><strong>🏗️ <a class="default" href="https://offline-pixel.github.io/industries/construction.html" target="_blank">Construction <small>( Infra, real estate, projects ) </small></a></strong><br />We support construction through real-time project tracking, cost estimation, and safety compliance.</div>
+            <div class="industry-item"><strong>🛒 <a class="default" href="https://offline-pixel.github.io/industries/retail.html" target="_blank">Retail <small>( Shops, ecommerce, chains ) </small></a></strong><br />We elevate retail with omnichannel dashboards, inventory intelligence, and customer behavior analytics.</div>
+            <div class="industry-item"><strong>⚙️ <a class="default" href="https://offline-pixel.github.io/industries/manufacturing.html" target="_blank">Manufacturing <small>( Auto, heavy, production ) </small></a></strong><br />We enhance manufacturing with IoT integration, predictive maintenance, and quality control systems.</div>
+            <div class="industry-item"><strong>📦 <a class="default" href="https://offline-pixel.github.io/industries/supply-chain.html" target="_blank">Supply Chain <small>( Warehouse, inventory, ops ) </small></a></strong><br />We digitize supply chains with real-time visibility, demand forecasting, and inventory optimization.</div>
+            <div class="industry-item"><strong>✈️ <a class="default" href="https://offline-pixel.github.io/industries/travel.html" target="_blank">Travel <small>( Airlines, hotels, tourism ) </small></a></strong><br />We help travel businesses personalize experiences and automate bookings, loyalty, and feedback systems.</div>
+            <div class="industry-item"><strong>🎬 <a class="default" href="https://offline-pixel.github.io/industries/media.html" target="_blank">Media <small>( Film, news, entertainment ) </small></a></strong><br />We enable media growth through content automation, audience insights, and monetization tools.</div>
+            <div class="industry-item"><strong>🏦 <a class="default" href="https://offline-pixel.github.io/industries/government.html" target="_blank">Government <small>( Public sector, admin ) </small></a></strong><br />We support governments with citizen service platforms, data governance, and e-Governance portals.</div>
+            <div class="industry-item"><strong>🌾 <a class="default" href="https://offline-pixel.github.io/industries/agriculture.html" target="_blank">Agriculture <small>( Farming, agro-tech, food ) </small></a></strong><br />We modernize agriculture with IoT-based monitoring, agri-fintech tools, and farm analytics dashboards.</div>
+            <div class="industry-item"><strong>🏫 <a class="default" href="https://offline-pixel.github.io/industries/education.html" target="_blank">Education <small>( Schools, e-learning, tools ) </small></a></strong><br />We advance education via custom LMS platforms, live class tools, and student performance analytics.</div>
+            <div class="industry-item"><strong>🎮 <a class="default" href="https://offline-pixel.github.io/industries/gaming.html" target="_blank">Gaming <small>( Esports, game dev, XR ) </small></a></strong><br />We empower game studios with real-time infra scaling, engagement analytics, and XR toolkits.</div>
+            <div class="industry-item"><strong>🔋 <a class="default" href="https://offline-pixel.github.io/industries/energy.html" target="_blank">Energy <small>( Oil, solar, renewables ) </small></a></strong><br />We enable energy firms to monitor grids, forecast demand, and improve efficiency with AI tools.</div>
+            <div class="industry-item"><strong>📡 <a class="default" href="https://offline-pixel.github.io/industries/telecom.html" target="_blank">Telecom <small>( 5G, broadband, fiber ) </small></a></strong><br />We assist telecoms with real-time network monitoring, usage analytics, and customer retention platforms.</div>
+            <div class="industry-item"><strong>🏛 <a class="default" href="https://offline-pixel.github.io/industries/legal.html" target="_blank">Legal <small>( Law firms, compliance ) </small></a></strong><br />We help legal teams manage compliance, automate case workflows, and leverage secure document storage.</div>
+            <div class="industry-item"><strong>📚 <a class="default" href="https://offline-pixel.github.io/industries/publishing.html" target="_blank">Publishing <small>( Books, magazines, edu ) </small></a></strong><br />We digitize publishing with subscription models, CMS integrations, and content distribution systems.</div>
+            <div class="industry-item"><strong>🛠 <a class="default" href="https://offline-pixel.github.io/industries/maintenance.html" target="_blank">Maintenance <small>( Repair, AMC, support ) </small></a></strong><br />We enable maintenance businesses to track assets, schedule AMCs, and automate support tickets.</div>
+            <div class="industry-item contact-box">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSegT3Wftn-ooCT8zG1M8i0lZrMYAAfQw54b7tNg0Vg7Dgw8fg/viewform?usp=header" class="cta-button">Contact Us →</a>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+      | <a href="https://offline-pixel.github.io/contact.html">Contact</a>
+          </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
+      <!-- SVG Hamburger Icon -->
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    </nav>
+  </header>
+
+  <div class="usp-strip" id="usp-strip">
+    <!-- <div class="usp-label">Online Presence:</div> -->
+    <div class="usp-marquee">
+      <div class="usp-content">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span>🇰🇼 Kuwait</span>
+        <span>🇧🇭 Bahrain</span>
+        <span>🇴🇲 Oman</span>
+        <span>🇯🇴 Jordan</span>
+        <span>🇬🇧 United Kingdom</span>
+        <span>🇰🇾 Cayman Islands</span>
+        <span>🇬🇮 Gibraltar</span>
+        <span>🇪🇺 European Union</span>
+        <span>🇨🇭 Switzerland</span>
+        <span>🇺🇸 United States</span>
+        <span>🇨🇦 Canada</span>
+        <span>🇦🇺 Australia</span>
+        <span>🇳🇿 New Zealand</span>
+        <span>🇸🇬 Singapore</span>
+        <span>🇧🇳 Brunei</span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function() {
+    navLinks.classList.toggle('show');
+    // For accessibility
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', !expanded);
+  });
+  // Optional: close menu when clicking outside (mobile)
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+</script>

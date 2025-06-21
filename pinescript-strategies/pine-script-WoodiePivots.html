@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Woodie Pivots - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Woodie Pivots in Pine Script for TradingView - a type of pivot point emphasizing the closing price for identifying potential intraday support, resistance, and trading ranges.">
+    <meta name="keywords" content="pine script strategies, Woodie Pivots, tradingview indicator, technical analysis, support resistance, intraday trading, pivot levels, range trading, breakout trading">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Woodie Pivots - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Woodie Pivots in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Woodie Pivots - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-WoodiePivots.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Woodie Pivots - Complete TradingView Guide",
+      "description": "Master Woodie Pivots in Pine Script for TradingView - a type of pivot point emphasizing the closing price for identifying potential intraday support, resistance, and trading ranges.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-WoodiePivots.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Woodie Pivots",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-WoodiePivots.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Woodie Pivots </h1>
+      <p class="blog-subtitle">Master this unique pivot point system in TradingView's Pine Script that emphasizes the previous day's closing price, making it particularly reactive for identifying intraday trading opportunities and trends.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Woodie Pivots</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What are Woodie Pivots?</h2>
+    <p> <b>Woodie Pivots</b> are a set of support and resistance levels primarily used by short-term traders, particularly intraday traders. They are distinct from Classic Pivots because their central Pivot Point calculation places a much heavier emphasis on the previous period's closing price. This makes Woodie Pivots highly reactive to recent market sentiment and momentum, as opposed to the broader average used in Classic Pivots.</p>
+
+    <p>Developed by Ken Wood, Woodie Pivots derive their levels from the previous day's (or chosen period's) High, Low, and Closing prices. They typically consist of a central Pivot Point (PP), two resistance levels (R1, R2), and two support levels (S1, S2). Some variations also include R3 and S3.</p>
+
+    <p>Traders primarily use Woodie Pivots for:</p>
+    <ul>
+      <li> <b>Intraday Trend Confirmation:</b> If price opens above PP and holds, it signals a bullish bias.</li>
+      <li> <b>Breakout Trading:</b> A decisive break of R1/S1 or R2/S2 can indicate strong continuation.</li>
+      <li> <b>Reversal Trading:</b> Identifying potential bounces off support or rejections from resistance.</li>
+      <li> <b>Setting Entry/Exit Points:</b> Providing clear reference points for order placement, especially for volatile assets.</li>
+    </ul>
+
+    <p>In Pine Script, Woodie Pivots offer a dynamic and responsive set of levels for short-term trading <b>pine script strategies</b>, particularly for those focusing on momentum and reactive trading.</p>
+
+    <h2>Components and Calculation (Woodie Pivots)</h2>
+    <p>Woodie Pivots are calculated using the previous period's High, Low, and Close prices, with the most significant difference being in the Pivot Point (PP) formula:</p>
+    <br>
+    Let `H`, `L`, `C` be the previous period's High, Low, and Close.
+
+    <ol>
+      <li> <b>Pivot Point (PP):</b> Woodie's PP strongly emphasizes the previous close.
+        <br>
+        `PP = (C * 2 + H + L) / 4`
+      </li>
+      <li> <b>First Resistance (R1):</b>
+        <br>
+        `R1 = (2 * PP) - Low`
+      </li>
+      <li> <b>First Support (S1):</b>
+        <br>
+        `S1 = (2 * PP) - High`
+      </li>
+      <li> <b>Second Resistance (R2):</b>
+        <br>
+        `R2 = PP + (High - Low)`
+        `R2 = PP + (R1 - PP)` (Alternative, based on PP and R1 distance)
+      </li>
+      <li> <b>Second Support (S2):</b>
+        <br>
+        `S2 = PP - (High - Low)`
+        `S2 = PP - (PP - S1)` (Alternative, based on PP and S1 distance)
+      </li>
+      <li> <b>Third Resistance (R3):</b>
+        <br>
+        `R3 = R2 + (High - Low)` (Often derived from R2 and Range)
+      </li>
+      <li> <b>Third Support (S3):</b>
+        <br>
+        `S3 = S2 - (High - Low)` (Often derived from S2 and Range)
+    </ol>
+    <p>These levels remain constant throughout the current trading day and are recalculated at the start of the next trading day (or chosen period).</p>
+
+    <h2>Basic Woodie Pivots Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.pivotpoints()` that can calculate various pivot types, including "Woodie". This simplifies the implementation significantly.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Woodie Pivots"</span>, <span class="property">overlay</span>=<span class="literal">true</span>, <span class="property">max_bars_back</span>=<span class="number">500</span>) <span class="comment">// overlay=true to plot on price chart.</span>
+
+<span class="comment">// Input for the Pivot Point calculation timeframe</span>
+<span class="comment">// Woodie pivots are predominantly used for intraday trading, so "D" (Daily) is most common.</span>
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="title">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="property">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+
+<span class="comment">// Get the Pivot Points values using ta.pivotpoints() with "Woodie" type</span>
+<span class="comment">// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]</span>
+[<span class="keyword">pp</span>, <span class="keyword">r1</span>, <span class="keyword">r2</span>, <span class="keyword">r3</span>, <span class="keyword">s1</span>, <span class="keyword">s2</span>, <span class="keyword">s3</span>] = <span class="function">ta.pivotpoints</span>(<span class="string">"Woodie"</span>, <span class="keyword">pivotTimeframe</span>, <span class="keyword">high</span>, <span class="keyword">low</span>, <span class="keyword">close</span>, <span class="number">1</span>) <span class="comment">// `1` indicates to look back 1 period for HLC</span>
+
+<span class="comment">// Plotting the Woodie Levels</span>
+<span class="function">plot</span>(<span class="keyword">pp</span>, <span class="title">title</span>=<span class="string">"Woodie PP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">r1</span>, <span class="title">title</span>=<span class="string">"Woodie R1"</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">r2</span>, <span class="title">title</span>=<span class="string">"Woodie R2"</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">r3</span>, <span class="title">title</span>=<span class="string">"Woodie R3"</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">s1</span>, <span class="title">title</span>=<span class="string">"Woodie S1"</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">s2</span>, <span class="title">title</span>=<span class="string">"Woodie S2"</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">s3</span>, <span class="title">title</span>=<span class="string">"Woodie S3"</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)</span>
+<span class="keyword">var</span> <span class="keyword">label</span> pp_label = <span class="literal">na</span>
+<span class="keyword">var</span> <span class="keyword">label</span> r1_label = <span class="literal">na</span>
+<span class="keyword">var</span> <span class="keyword">label</span> r2_label = <span class="literal">na</span>
+<span class="keyword">var</span> <span class="keyword">label</span> r3_label = <span class="literal">na</span>
+<span class="keyword">var</span> <span class="keyword">label</span> s1_label = <span class="literal">na</span>
+<span class="keyword">var</span> <span class="keyword">label</span> s2_label = <span class="literal">na</span>
+<span class="keyword">var</span> <span class="keyword">label</span> s3_label = <span class="literal">na</span>
+
+<span class="comment">// Check if it's the first bar of the new period (e.g., new day)</span>
+<span class="keyword">isNewPeriod</span> = <span class="function">ta.change</span>(<span class="function">time</span>(<span class="keyword">pivotTimeframe</span>))
+
+<span class="keyword">if</span> <span class="keyword">isNewPeriod</span>
+    <span class="function">label.delete</span>(pp_label)
+    <span class="function">label.delete</span>(r1_label)
+    <span class="function">label.delete</span>(r2_label)
+    <span class="function">label.delete</span>(r3_label)
+    <span class="function">label.delete</span>(s1_label)
+    <span class="function">label.delete</span>(s2_label)
+    <span class="function">label.delete</span>(s3_label)
+
+    pp_label := <span class="function">label.new</span>(bar_index, pp, <span class="title">text</span>=<span class="string">"PP"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.purple</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+    r1_label := <span class="function">label.new</span>(bar_index, r1, <span class="string">"R1"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.red</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+    r2_label := <span class="function">label.new</span>(bar_index, r2, <span class="string">"R2"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.red</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+    r3_label := <span class="function">label.new</span>(bar_index, r3, <span class="string">"R3"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.red</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+    s1_label := <span class="function">label.new</span>(bar_index, s1, <span class="string">"S1"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.green</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+    s2_label := <span class="function">label.new</span>(bar_index, s2, <span class="string">"S2"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.green</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+    s3_label := <span class="function">label.new</span>(bar_index, s3, <span class="string">"S3"</span>, <span class="property">style</span>=<span class="property">label.style_label_left</span>, <span class="property">color</span>=<span class="function">color.new</span>(<span class="property">color.green</span>, <span class="number">70</span>), <span class="property">textcolor</span>=<span class="property">color.white</span>)
+
+<span class="comment">// Extend labels horizontally</span>
+<span class="function">label.set_x</span>(pp_label, bar_index)
+<span class="function">label.set_x</span>(r1_label, bar_index)
+<span class="function">label.set_x</span>(r2_label, bar_index)
+<span class="function">label.set_x</span>(r3_label, bar_index)
+<span class="function">label.set_x</span>(s1_label, bar_index)
+<span class="function">label.set_x</span>(s2_label, bar_index)
+<span class="function">label.set_x</span>(s3_label, bar_index)
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Close Price Focus:</strong> Woodie Pivots' unique strength lies in their strong emphasis on the previous day's closing price in the Pivot Point calculation, making them very responsive to recent market sentiment.
+    </div>
+
+    <h2>Practical Woodie Pivots <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Pivot Point (PP) as Intraday Trend Bias</h3>
+    <p>The central Woodie Pivot Point (PP) is a crucial level. Price action relative to PP can strongly indicate the intraday trend bias.</p>
+    <ul>
+      <li> <b>Bullish Bias:</b> If price opens and holds <b>above the Woodie PP</b>, it suggests a bullish intraday bias. Traders would favor long opportunities at support levels or on pullbacks.</li>
+      <li> <b>Bearish Bias:</b> If price opens and holds <b>below the Woodie PP</b>, it suggests a bearish intraday bias. Traders would favor short opportunities at resistance levels or on rallies.</li>
+      <li> <b>PP Breakout:</b> A decisive break of the PP can signal a shift in the intraday trend.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Woodie PP Trend Bias Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="title">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="property">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+[<span class="keyword">pp</span>, <span class="keyword">r1</span>, <span class="keyword">r2</span>, <span class="keyword">r3</span>, <span class="keyword">s1</span>, <span class="keyword">s2</span>, <span class="keyword">s3</span>] = <span class="function">ta.pivotpoints</span>(<span class="string">"Woodie"</span>, <span class="keyword">pivotTimeframe</span>, <span class="keyword">high</span>, <span class="keyword">low</span>, <span class="keyword">close</span>, <span class="number">1</span>)
+
+<span class="comment">// Plotting (simplified for strategy example)</span>
+<span class="function">plot</span>(<span class="keyword">pp</span>, <span class="title">title</span>=<span class="string">"Woodie PP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Determine intraday bias based on price relative to PP</span>
+<span class="keyword">isBullishBias</span> = <span class="keyword">close</span> > <span class="keyword">pp</span>
+<span class="keyword">isBearishBias</span> = <span class="keyword">close</span> <span class="operator">&lt;</span> <span class="keyword">pp</span>
+
+<span class="comment">// Color background to easily visualize bias</span>
+<span class="function">bgcolor</span>(<span class="keyword">isBullishBias</span> ? <span class="function">color.new</span>(<span class="property">color.teal</span>, <span class="number">95</span>) : <span class="literal">na</span>, <span class="title">title</span>=<span class="string">"Bullish Intraday Bias"</span>)
+<span class="function">bgcolor</span>(<span class="keyword">isBearishBias</span> ? <span class="function">color.new</span>(<span class="property">color.maroon</span>, <span class="number">95</span>) : <span class="literal">na</span>, <span class="title">title</span>=<span class="string">"Bearish Intraday Bias"</span>)
+
+<span class="comment">// Simple entry/exit based on PP crossovers</span>
+<span class="keyword">longCondition</span> = <span class="function">ta.crossover</span>(<span class="keyword">close</span>, <span class="keyword">pp</span>)
+<span class="keyword">shortCondition</span> = <span class="function">ta.crossunder</span>(<span class="keyword">close</span>, <span class="keyword">pp</span>)
+
+<span class="keyword">if</span> (<span class="keyword">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long PP Cross"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short PP Cross"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Basic exit: opposite signal</span>
+<span class="function">strategy.close</span>(<span class="string">"Long PP Cross"</span>, <span class="title">when</span>=<span class="keyword">shortCondition</span>)
+<span class="function">strategy.close</span>(<span class="string">"Short PP Cross"</span>, <span class="title">when</span>=<span class="keyword">longCondition</span>)
+</code></pre>
+
+
+    <h3>2. Range Trading (Between S1 and R1)</h3>
+    <p>Woodie's R1 and S1 often define a narrow, high-probability range for mean-reverting strategies, especially if price opens within this range. The idea is that price is likely to revert towards the PP or the opposite level.</p>
+    <ul>
+      <li> <b>Buy Signal:</b> Price declines towards <b>S1</b> and shows bullish reversal patterns (e.g., hammer, engulfing, strong bounce). Aim for PP or R1. Stop loss just below S2.</li>
+      <li> <b>Sell Signal:</b> Price rallies towards <b>R1</b> and shows bearish reversal patterns (e.g., shooting star, engulfing, strong rejection). Aim for PP or S1. Stop loss just above R2.</li>
+      <li> <b>Consolidation:</b> If price frequently oscillates between S1 and R1, it indicates a range-bound market, suitable for mean reversion.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Woodie Range Trading Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="title">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="property">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+[<span class="keyword">pp</span>, <span class="keyword">r1</span>, <span class="keyword">r2</span>, <span class="keyword">r3</span>, <span class="keyword">s1</span>, <span class="keyword">s2</span>, <span class="keyword">s3</span>] = <span class="function">ta.pivotpoints</span>(<span class="string">"Woodie"</span>, <span class="keyword">pivotTimeframe</span>, <span class="keyword">high</span>, <span class="keyword">low</span>, <span class="keyword">close</span>, <span class="number">1</span>)
+
+<span class="comment">// Plotting (simplified for strategy example)</span>
+<span class="function">plot</span>(<span class="keyword">r1</span>, <span class="title">title</span>=<span class="string">"R1"</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">s1</span>, <span class="title">title</span>=<span class="string">"S1"</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">linewidth</span>=<span class="number">1</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">pp</span>, <span class="title">title</span>=<span class="string">"PP"</span>, <span class="property">color</span>=<span class="property">color.purple</span>, <span class="property">linewidth</span>=<span class="number">2</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Check if price is within R1/S1 range (or near it)</span>
+<span class="keyword">isPriceInInnerRange</span> = <span class="keyword">close</span> <span class="operator">&lt;</span> <span class="keyword">r1</span> and <span class="keyword">close</span> > <span class="keyword">s1</span>
+
+<span class="comment">// Long entry: Price bounces from S1 (or near it) and is currently in inner range.</span>
+<span class="comment">// (Simplified: Price closes above S1 after touching it)</span>
+<span class="keyword">longCondition</span> = <span class="keyword">close</span> > <span class="keyword">s1</span> and <span class="keyword">close[1]</span> <span class="operator">&lt;=</span> <span class="keyword">s1[1]</span> and <span class="keyword">isPriceInInnerRange[1]</span>
+
+<span class="comment">// Short entry: Price bounces from R1 (or near it) and is currently in inner range.</span>
+<span class="comment">// (Simplified: Price closes below R1 after touching it)</span>
+<span class="keyword">shortCondition</span> = <span class="keyword">close</span> <span class="operator">&lt;</span> <span class="keyword">r1</span> and <span class="keyword">close[1]</span> >= <span class="keyword">r1[1]</span> and <span class="keyword">isPriceInInnerRange[1]</span>
+
+<span class="keyword">if</span> (<span class="keyword">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long S1 Bounce"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short R1 Rejection"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Exit: Target PP or opposite pivot level. Stop loss beyond S2/R2.</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long S1 Bounce Exit"</span>, <span class="title">from_entry</span>=<span class="string">"Long S1 Bounce"</span>, <span class="title">profit</span>=<span class="keyword">r1</span>, <span class="title">stop</span>=<span class="keyword">s2</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Short R1 Rejection Exit"</span>, <span class="title">from_entry</span>=<span class="string">"Short R1 Rejection"</span>, <span class="title">profit</span>=<span class="keyword">s1</span>, <span class="title">stop</span>=<span class="keyword">r2</span>)
+</code></pre>
+
+    <h3>3. Breakout Trading (Beyond R2 and S2)</h3>
+    <p>While Woodie Pivots are great for ranges, a strong breakout beyond R2 or S2 (and potentially R3/S3) with high volume can signal a powerful trending day, indicating that the previous day's range is being decisively overcome.</p>
+    <ul>
+      <li> <b>Buy Signal (Breakout):</b> Price breaks decisively <b>above R2</b> (or R3) with strong momentum and volume. This indicates a strong bullish trend.</li>
+      <li> <b>Sell Signal (Breakout):</b> Price breaks decisively <b>below S2</b> (or S3) with strong momentum and volume. This indicates a strong bearish trend.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Woodie Breakout Strategy"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="keyword">pivotTimeframe</span> = <span class="function">input.string</span>(<span class="string">"D"</span>, <span class="title">title</span>=<span class="string">"Pivot Timeframe"</span>, <span class="property">options</span>=[<span class="string">"D"</span>, <span class="string">"W"</span>, <span class="string">"M"</span>])
+[<span class="keyword">pp</span>, <span class="keyword">r1</span>, <span class="keyword">r2</span>, <span class="keyword">r3</span>, <span class="keyword">s1</span>, <span class="keyword">s2</span>, <span class="keyword">s3</span>] = <span class="function">ta.pivotpoints</span>(<span class="string">"Woodie"</span>, <span class="keyword">pivotTimeframe</span>, <span class="keyword">high</span>, <span class="keyword">low</span>, <span class="keyword">close</span>, <span class="number">1</span>)
+
+<span class="comment">// Plotting (simplified for strategy example)</span>
+<span class="function">plot</span>(<span class="keyword">r2</span>, <span class="title">title</span>=<span class="string">"R2"</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">linewidth</span>=<span class="number">2</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+<span class="function">plot</span>(<span class="keyword">s2</span>, <span class="title">title</span>=<span class="string">"S2"</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">linewidth</span>=<span class="number">2</span>, <span class="property">style</span>=<span class="property">plot.style_stepline</span>)
+
+<span class="comment">// Breakout logic: Price closes decisively above/below R2 or S2</span>
+<span class="keyword">longBreakoutCondition</span> = <span class="keyword">close</span> > <span class="keyword">r2</span> and <span class="keyword">close[1]</span> <span class="operator">&lt;=</span> <span class="keyword">r2[1]</span>
+<span class="keyword">shortBreakoutCondition</span> = <span class="keyword">close</span> <span class="operator">&lt;</span> <span class="keyword">s2</span> and <span class="keyword">close[1]</span> >= <span class="keyword">s2[1]</span>
+
+<span class="comment">// Optional: Add volume confirmation for breakouts</span>
+<span class="keyword">volumeFactor</span> = <span class="function">input.float</span>(<span class="number">1.5</span>, <span class="title">title</span>=<span class="string">"Volume Confirmation Factor"</span>, <span class="property">minval</span>=<span class="number">1.0</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+<span class="keyword">avgVolume</span> = <span class="function">ta.sma</span>(<span class="keyword">volume</span>, <span class="number">20</span>)
+<span class="keyword">isHighVolume</span> = <span class="keyword">volume</span> > <span class="keyword">avgVolume</span> * <span class="keyword">volumeFactor</span>
+
+<span class="keyword">if</span> (<span class="keyword">longBreakoutCondition</span> and <span class="keyword">isHighVolume</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long R2 Breakout"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortBreakoutCondition</span> and <span class="keyword">isHighVolume</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short S2 Breakout"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Exit: Fixed profit/loss or target a fixed number of ATRs</span>
+<span class="keyword">atrLength</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="title">title</span>=<span class="string">"ATR Length for Exits"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="keyword">atrValue</span> = <span class="function">ta.atr</span>(<span class="keyword">atrLength</span>)
+<span class="keyword">profitMultiplier</span> = <span class="function">input.float</span>(<span class="number">2.0</span>, <span class="title">title</span>=<span class="string">"Profit Target (ATR)"</span>, <span class="property">minval</span>=<span class="number">0.5</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+<span class="keyword">stopLossMultiplier</span> = <span class="function">input.float</span>(<span class="number">1.0</span>, <span class="title">title</span>=<span class="string">"Stop Loss (ATR)"</span>, <span class="property">minval</span>=<span class="number">0.1</span>, <span class="property">step</span>=<span class="number">0.1</span>)
+
+<span class="function">strategy.exit</span>(<span class="string">"Long R2 Breakout Exit"</span>, <span class="title">from_entry</span>=<span class="string">"Long R2 Breakout"</span>, 
+             <span class="title">profit</span>=<span class="property">strategy.position_avg_price</span> + <span class="keyword">atrValue</span> * <span class="keyword">profitMultiplier</span>, 
+             <span class="title">stop</span>=<span class="property">strategy.position_avg_price</span> - <span class="keyword">atrValue</span> * <span class="keyword">stopLossMultiplier</span>)
+
+<span class="function">strategy.exit</span>(<span class="string">"Short S2 Breakout Exit"</span>, <span class="title">from_entry</span>=<span class="string">"Short S2 Breakout"</span>, 
+             <span class="title">profit</span>=<span class="property">strategy.position_avg_price</span> - <span class="keyword">atrValue</span> * <span class="keyword">profitMultiplier</span>, 
+             <span class="title">stop</span>=<span class="property">strategy.position_avg_price</span> + <span class="keyword">atrValue</span> * <span class="keyword">stopLossMultiplier</span>)
+</code></pre>
+
+
+    <h2>Optimizing Woodie Pivots Performance</h2>
+    <p>To get the most from Woodie Pivots in Pine Script:</p>
+    <ul>
+      <li> <b>Timeframe Selection:</b> Woodie Pivots are most effective for <b>intraday trading</b>. Using them on daily or weekly charts might provide less relevant signals as their responsiveness to the previous close is diluted over longer periods. Ensure your chart timeframe is lower (e.g., 5-min, 15-min, 1-hour) than the pivot calculation timeframe (typically "D").</li>
+      <li> <b>Confirmation is Key:</b> Never rely solely on Woodie Pivots. Always combine them with other indicators (e.g., candlestick patterns, volume, momentum oscillators like RSI, MACD) to confirm reversals or breakouts. High volume on a breakout from a pivot level adds significant credibility.</li>
+      <li> <b>Open and Close Relationship:</b> Pay attention to where the current bar opens and closes relative to the Woodie PP. An open above PP followed by a strong close above it further confirms bullish bias.</li>
+      <li> <b>Volatility Context:</b> Woodie Pivots are highly responsive. They work well in moderately volatile markets that tend to respect intraday levels. In extremely low-volatility markets, they might be too tight. In excessively high-volatility markets, price might blow through all levels quickly.</li>
+      <li> <b>Trade Entry/Exit Zones:</b> Think of Woodie levels as <b>zones</b> where price action is likely to react, rather than exact lines. Look for price to consolidate around these levels or form clear reversal/continuation patterns.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Reactive to Recent Price:</b> Woodie Pivots' emphasis on the previous close makes them highly reactive to the most recent significant price data, which is ideal for short-term and active traders.
+    </div>
+
+    <h2>Common Woodie Pivots Pitfalls</h2>
+    <ul>
+      <li> <b>Timeframe Misuse:</b> Using Woodie Pivots on daily or higher timeframes, or trying to trade them on very low liquidity assets, will likely yield suboptimal results.</li>
+      <li> <b>False Signals/Whipsaws:</b> In very choppy markets or during strong news events, price can repeatedly cross Woodie levels, leading to whipsaws and false signals, especially the central PP.</li>
+      <li> <b>Over-Reliance:</b> Using Woodie Pivots as the sole decision-making tool without additional confirmation can lead to significant losses.</li>
+      <li> <b>Gap Risk:</b> Large overnight gaps can cause the current day's trading to occur far away from the calculated Woodie levels, making them less immediately relevant until price approaches them.</li>
+      <li> <b>Limited Beyond R2/S2 (or R3/S3):</b> Once price breaks beyond R2/S2 with strong momentum, it's considered to be in a trending market, and other trend-following tools might be more effective for targets.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Woodie Pivots are a dynamic and highly reactive set of support and resistance levels available in Pine Script for TradingView. By uniquely emphasizing the <b>previous day's closing price</b> in their calculation, they provide a sensitive framework for navigating intraday price movements, confirming trend biases, and identifying potential reversal or breakout opportunities. While primarily suited for short-term and active traders, their effectiveness is significantly enhanced when combined with other confirming indicators like candlestick patterns, volume, and momentum oscillators. By understanding their calculation, applying them to appropriate timeframes, and integrating them strategically into your <b>pine script strategies</b>, you can leverage Woodie Pivots to improve your entry/exit timing and manage risk in dynamic markets.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+</body>
+</html>

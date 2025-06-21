@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Relative Vigor Index (RVI) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Relative Vigor Index (RVI) in Pine Script for TradingView - a momentum oscillator comparing closing price to trading range, often used for trend confirmation and divergence.">
+    <meta name="keywords" content="pine script strategies, Relative Vigor Index, RVI, tradingview indicator, technical analysis, momentum oscillator, divergence, trend strength, volume">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Relative Vigor Index (RVI) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Relative Vigor Index (RVI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Relative Vigor Index (RVI) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-RVI.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Relative Vigor Index (RVI) - Complete TradingView Guide",
+      "description": "Master the Relative Vigor Index (RVI) in Pine Script for TradingView - a momentum oscillator comparing closing price to trading range, often used for trend confirmation and divergence.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-RVI.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Relative Vigor Index (RVI)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-RVI.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Relative Vigor Index (RVI) </h1>
+      <p class="blog-subtitle">Master this unique momentum oscillator in TradingView's Pine Script that measures the vigor of a price move by comparing its closing price to its trading range.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Relative Vigor Index (RVI)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Relative Vigor Index (RVI)?</h2>
+    <p>The <b>Relative Vigor Index (RVI)</b>, developed by John Ehlers, is a momentum oscillator that measures the "vigor" or strength of a price move by comparing the closing price to the trading range of the bar. The underlying assumption is that in an uptrend, prices tend to close near the high of the daily range, while in a downtrend, they tend to close near the low. RVI oscillates around a zero line and typically includes a signal line, which is a smoothed version of the RVI itself.</p>
+
+    <p>In Pine Script, RVI is a valuable tool for traders seeking to confirm trend direction, identify potential reversals through crossovers, and spot divergence patterns, by assessing the conviction behind each price bar's movement.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the RVI involves smoothed numerators and denominators over a specified period:</p>
+    <ol>
+      <li><strong>Numerator</strong>: `Close - Open` (measures the strength of the move within the bar)</li>
+      <li><strong>Denominator</strong>: `High - Low` (measures the total range of the bar)</li>
+      <li><strong>Smoothed Numerator (SN)</strong>: A Simple Moving Average (SMA) of `(Close - Open)` over `length` periods (e.g., 10 periods). Often, a 4-period symmetrical weighted moving average is applied to a sum of (Close - Open) over 4 bars, but for simplicity, we'll refer to the common SMA approach or Pine Script's built-in.</li>
+      <li><strong>Smoothed Denominator (SD)</strong>: An SMA of `(High - Low)` over `length` periods. Similar smoothing logic as SN.</li>
+      <li><strong>RVI Line</strong>: `SN / SD`</li>
+      <li><strong>RVI Signal Line</strong>: A Simple Moving Average of the RVI Line over a shorter `signal_length` period (e.g., 4 periods).</li>
+    </ol>
+    <p>Positive RVI values indicate a stronger closing price relative to the opening, suggesting bullish vigor. Negative values suggest bearish vigor.</p>
+
+    <h2>Basic Relative Vigor Index (RVI) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.rvi()` for calculating the Relative Vigor Index and its signal line.</p>
+
+   <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Relative Vigor Index"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Inputs for RVI lengths</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">4</span>, <span class="keyword">title</span>=<span class="string">"Signal Line Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate RVI and its signal line using the built-in function</span>
+<span class="comment">// ta.rvi takes the length for RVI and the length for the signal line</span>
+[rviValue, signalValue] = <span class="function">ta.rvi</span>(length, signalLength)
+
+<span class="comment">// Plot the RVI line</span>
+<span class="function">plot</span>(rviValue, <span class="keyword">title</span>=<span class="string">"RVI"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Signal Line</span>
+<span class="function">plot</span>(signalValue, <span class="keyword">title</span>=<span class="string">"Signal"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Zero Line</span>
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+</code></pre>
+
+
+    <div class="tip">
+     <b>Conviction from Close:</b> RVI focuses on where the price closes within its bar's range. A close near the high indicates buying conviction, near the low indicates selling conviction.
+    </div>
+
+    <h2>Practical RVI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. RVI and Signal Line Crossover (Primary Signal)</h3>
+    <p>Crossovers between the RVI line and its signal line are the most common way to generate trading signals, indicating a shift in short-term momentum or a potential trend change.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: RVI line crosses above its signal line. This suggests bullish vigor is increasing.</li>
+      <li><strong>Sell Signal</strong>: RVI line crosses below its signal line. This suggests bearish vigor is increasing.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"RVI Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for RVI lengths</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">4</span>, <span class="keyword">title</span>=<span class="string">"Signal Line Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate RVI and its signal line</span>
+[rviValue, signalValue] = <span class="function">ta.rvi</span>(length, signalLength)
+
+<span class="comment">// Plot RVI and Signal in a separate pane for visualization</span>
+<span class="function">plot</span>(rviValue, <span class="string">"RVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">plot</span>(signalValue, <span class="string">"Signal"</span>, <span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(rviValue, signalValue)
+shortSignal = <span class="function">ta.crossunder</span>(rviValue, signalValue)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code></pre>
+
+
+    <h3>2. RVI Zero Line Crossover</h3>
+    <p>The zero line in RVI acts as a clear divider between bullish and bearish vigor. Crossovers can confirm the direction of the underlying momentum.</p>
+    <ul>
+      <li><strong>Bullish Momentum</strong>: RVI crosses above the zero line. This indicates that prices are, on average, closing higher than their open over the period.</li>
+      <li><strong>Bearish Momentum</strong>: RVI crosses below the zero line. This indicates that prices are, on average, closing lower than their open over the period.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"RVI Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for RVI length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">4</span>, <span class="keyword">title</span>=<span class="string">"Signal Line Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>) <span class="comment">// Signal not strictly needed for this strategy</span>
+
+<span class="comment">// Calculate RVI</span>
+[rviValue, signalValue] = <span class="function">ta.rvi</span>(length, signalLength) <span class="comment">// Signal value still calculated by ta.rvi</span>
+
+<span class="comment">// Plot RVI in a separate pane</span>
+<span class="function">plot</span>(rviValue, <span class="string">"RVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(rviValue, <span class="number">0</span>)
+shortSignal = <span class="function">ta.crossunder</span>(rviValue, <span class="number">0</span>)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code></pre>
+
+
+    <h3>3. RVI Divergence Strategy</h3>
+    <p>Divergence between price and RVI can signal a potential trend reversal, indicating that the vigor of the move is weakening even if price continues its existing trend.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but RVI makes a higher low. This indicates weakening bearish vigor and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but RVI makes a lower high. This indicates weakening bullish vigor and a potential downward reversal.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"RVI Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for RVI lengths</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">signalLength</span> = <span class="function">input.int</span>(<span class="number">4</span>, <span class="keyword">title</span>=<span class="string">"Signal Line Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate RVI and its signal line</span>
+[rviValue, signalValue] = <span class="function">ta.rvi</span>(length, signalLength)
+
+<span class="comment">// Plot RVI and Signal in a separate pane</span>
+<span class="function">plot</span>(rviValue, <span class="string">"RVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">plot</span>(signalValue, <span class="string">"Signal"</span>, <span class="keyword">color</span>.<span class="function">orange</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example focusing on price vs RVI divergence.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, RVI higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] &gt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &gt; close <span class="keyword">and</span> rviValue[<span class="number">2</span>] &lt; rviValue[<span class="number">1</span>] <span class="keyword">and</span> rviValue[<span class="number">1</span>] &lt; rviValue
+
+<span class="comment">// Bearish Divergence (Price higher high, RVI lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close <span class="keyword">and</span> rviValue[<span class="number">2</span>] &gt; rviValue[<span class="number">1</span>] <span class="keyword">and</span> rviValue[<span class="number">1</span>] &gt; rviValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish RVI Divergence"</span>, <span class="string">"Potential bullish reversal based on RVI divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish RVI Divergence"</span>, <span class="string">"Potential bearish reversal based on RVI divergence."</span>)
+</code></pre>
+
+
+    <h2>Optimizing RVI Performance</h2>
+    <p>To get the most from the Relative Vigor Index in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The standard `length` of 10 for RVI and 4 for the signal line are generally good starting points. Shorter lengths will make the indicator more reactive but also more prone to false signals (whipsaws). Longer lengths will smooth it out but introduce more lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Combine with Trend Filters:</strong> RVI, like many oscillators, can generate false signals in sideways markets. It's best used in conjunction with a trend-following indicator (e.g., a longer-period EMA or ADX) to confirm the underlying trend direction. Then use RVI to time entries/exits within that trend.</li>
+      <li><strong>Confirm with Price Action:</strong> Always look for RVI signals to be confirmed by price action, such as bullish/bearish candlestick patterns, breaks of support/resistance, or chart patterns.</li>
+      <li><strong>Divergence is Powerful:</strong> Pay special attention to divergence signals, as these often indicate a significant shift in underlying momentum or conviction, making them more reliable reversal signals.</li>
+      <li><strong>Consider Volume:</strong> While RVI inherently uses high-low range which can be related to volatility, it doesn't directly incorporate volume. Combining it with a volume indicator (like MFI or On-Balance Volume) can provide additional confirmation.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Relative to Range:</b> RVI's strength lies in its comparison of closing price to the bar's entire range, which offers a different perspective on momentum than just comparing close to open or close to previous close.
+    </div>
+
+    <h2>Common RVI Pitfalls</h2>
+    <ul>
+      <li> <b>Whipsaws in Sideways Markets:</b> In choppy or range-bound markets, RVI can generate frequent crossovers and zero-line crosses, leading to numerous false signals.</li>
+      <li> <b>Lag:</b> Despite being a momentum indicator, RVI still has some inherent lag due to its smoothing components. It will not perfectly pinpoint exact tops or bottoms.</li>
+      <li> <b>Subjectivity:</b> Interpreting the significance of crossovers or divergence can sometimes be subjective without clear rules or additional confirmation.</li>
+      <li> <b>Not a Standalone Indicator:</b> RVI should always be used as part of a broader trading system, complementing other indicators and price action analysis for better risk management.</li>
+      <li> <b>False Divergence:</b> Like all divergence signals, RVI divergence can sometimes appear early, and the trend might continue for some time after the divergence emerges.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Relative Vigor Index (RVI) is an insightful momentum oscillator in Pine Script for TradingView. By comparing the closing price to the trading range, it provides a unique measure of the "vigor" or conviction behind price movements. Whether used for identifying shifts in momentum through RVI/signal line crossovers, confirming trend direction via zero-line crosses, or spotting powerful reversals through divergence, the RVI offers valuable insights into market dynamics. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with other technical analysis tools, you can leverage the RVI to enhance your trading decisions and gain a clearer perspective on buying and selling pressure.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

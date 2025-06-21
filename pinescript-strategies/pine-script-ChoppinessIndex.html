@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Choppiness Index - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Choppiness Index (CI) in Pine Script for TradingView - an indicator that determines if the market is trending or ranging (choppy), based on fractal geometry.">
+    <meta name="keywords" content="pine script strategies, Choppiness Index, CI, tradingview indicator, technical analysis, trend detection, range trading, consolidation, fractal geometry">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Choppiness Index - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Choppiness Index (CI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Choppiness Index - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-ChoppinessIndex.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Choppiness Index - Complete TradingView Guide",
+      "description": "Master the Choppiness Index (CI) in Pine Script for TradingView - an indicator that determines if the market is trending or ranging (choppy), based on fractal geometry.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ChoppinessIndex.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Choppiness Index",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ChoppinessIndex.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Choppiness Index </h1>
+      <p class="blog-subtitle">Master this unique indicator in TradingView's Pine Script that quantifies the degree of market choppiness (ranging) versus trending behavior.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Choppiness Index</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Choppiness Index (CI)?</h2>
+    <p>The <b>Choppiness Index (CI)</b> is a technical indicator developed by Bill Williams, though often attributed to E.W. Dreiss. It measures whether a market is trending or ranging (choppy). The CI is designed to quantify the "choppiness" or "trendiness" of price action, based on fractal geometry. It oscillates between 0 and 100. High CI values indicate a choppy, non-trending market (sideways consolidation), while low CI values indicate a strong, trending market (directional movement).</p>
+
+    <p>In Pine Script, CI is a valuable tool for traders to decide which type of trading strategy to employ: trend-following strategies during low CI periods, and range-bound or breakout strategies during high CI periods. It essentially helps determine the market environment.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Choppiness Index is based on the summation of True Ranges and the highest high and lowest low over a specified period. The formula involves logarithmic functions to normalize the output between 0 and 100.</p>
+    <ol>
+      <li><strong>True Range (TR)</strong>: `max(high - low, abs(high - close[1]), abs(low - close[1]))`</li>
+      <li><strong>Sum of True Ranges (ATR)</strong>: Sum of TR over `length` periods. `sum(tr, length)`</li>
+      <li><strong>Highest High (HH)</strong>: Highest price over `length` periods. `ta.highest(high, length)`</li>
+      <li><strong>Lowest Low (LL)</strong>: Lowest price over `length` periods. `ta.lowest(low, length)`</li>
+      <li><strong>Choppiness Index Formula</strong>:
+        <br>
+        `CI = 100 * log10(sum(tr, length) / (ta.highest(high, length) - ta.lowest(low, length))) / log10(length)`
+        <br>
+        (There are slight variations in how CI is calculated, but this is the common form. Pine Script's built-in function handles the specifics.)
+      </li>
+    </ol>
+    <p>A common `length` for the Choppiness Index is 14 periods. The indicator is generally interpreted with thresholds around 61.8 (upper bound for choppiness) and 38.2 (lower bound for trending).</p>
+
+    <h2>Basic Choppiness Index (CI) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.ci()` for calculating the Choppiness Index.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Choppiness Index"</span>, overlay=<span class="keyword">false</span>, format=format.percent) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for CI length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"CI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Choppiness Index using the built-in function</span>
+ciValue = <span class="function">ta.ci</span>(length)
+
+<span class="comment">// Plot the CI line</span>
+<span class="function">plot</span>(ciValue, <span class="keyword">title</span>=<span class="string">"Choppiness Index"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot standard reference levels</span>
+<span class="function">hline</span>(<span class="number">61.8</span>, <span class="string">"Choppy Zone (61.8)"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(<span class="number">38.2</span>, <span class="string">"Trending Zone (38.2)"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+
+<span class="comment">// Highlight background zones for visual clarity</span>
+<span class="function">bgcolor</span>(ciValue > <span class="number">61.8</span> ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Highly Choppy"</span>)
+<span class="function">bgcolor</span>(ciValue < <span class="number">38.2</span> ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Highly Trending"</span>)
+</code>
+</pre>
+
+
+    <div class="tip">
+      <strong>Rule of Thumb:</strong> Above 61.8 (often 60-70 range) = choppy. Below 38.2 (often 30-40 range) = trending. Between these values = transition.
+    </div>
+
+    <h2>Practical CI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Identifying Market Environment (Primary Use)</h3>
+    <p>The fundamental use of the Choppiness Index is to determine whether the market is currently trending or ranging, which helps dictate the appropriate trading strategy.</p>
+    <ul>
+      <li><strong>High CI (above 61.8)</strong>: The market is choppy, consolidating, or trading sideways. Trend-following strategies are likely to fail. Consider range-bound strategies (buy low, sell high within a range) or avoid trading directional moves.</li>
+      <li><strong>Low CI (below 38.2)</strong>: The market is trending strongly. Trend-following strategies (e.g., breakout strategies, moving average crossovers) are likely to be effective.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"CI Market Environment Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"CI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">choppyThreshold</span> = <span class="function">input.float</span>(<span class="number">61.8</span>, <span class="keyword">title</span>=<span class="string">"Choppy Threshold"</span>)
+<span class="keyword">trendingThreshold</span> = <span class="function">input.float</span>(<span class="number">38.2</span>, <span class="keyword">title</span>=<span class="string">"Trending Threshold"</span>)
+
+ciValue = <span class="function">ta.ci</span>(length)
+
+<span class="function">plot</span>(ciValue, <span class="string">"CI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(choppyThreshold, <span class="string">"Choppy Line"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(trendingThreshold, <span class="string">"Trending Line"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define market states based on CI</span>
+<span class="keyword">isChoppy</span> = ciValue > choppyThreshold
+<span class="keyword">isTrending</span> = ciValue &lt; trendingThreshold
+<span class="keyword">isTransitioning</span> = <span class="keyword">not</span> isChoppy <span class="keyword">and</span> <span class="keyword">not</span> isTrending
+
+<span class="comment">// Example strategy based on market environment</span>
+<span class="comment">// You would combine this with actual entry/exit logic suitable for each environment.</span>
+<span class="comment">// For illustration, we'll just show entry signals.</span>
+
+<span class="comment">// If trending, attempt a simple MA crossover strategy</span>
+<span class="keyword">maLength</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"MA Length for Trend"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">maValue</span> = <span class="function">ta.sma</span>(close, maLength)
+
+<span class="keyword">if</span> (isTrending)
+    <span class="keyword">if</span> (close > maValue <span class="keyword">and</span> close[<span class="number">1</span>] &lt;= maValue[<span class="number">1</span>]) <span class="comment">// Simple bullish MA crossover during trending</span>
+        <span class="function">strategy.entry</span>(<span class="string">"TrendLong"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    <span class="keyword">if</span> (close &lt; maValue <span class="keyword">and</span> close[<span class="number">1</span>] >= maValue[<span class="number">1</span>]) <span class="comment">// Simple bearish MA crossover during trending</span>
+        <span class="function">strategy.entry</span>(<span class="string">"TrendShort"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// If choppy, maybe look for range-bound entries (e.g., at support/resistance levels)</span>
+<span class="comment">// This part is conceptual as it requires defining support/resistance.</span>
+<span class="keyword">if</span> (isChoppy)
+    <span class="comment">// strategy.entry("RangeBuy", strategy.long, when=isAtSupportAndRanging)</span>
+    <span class="comment">// strategy.entry("RangeSell", strategy.short, when=isAtResistanceAndRanging)</span>
+    <span class="comment">// For now, let's just close trending trades if market becomes choppy</span>
+    <span class="function">strategy.close</span>(<span class="string">"TrendLong"</span>, <span class="keyword">when</span>=isChoppy)
+    <span class="function">strategy.close</span>(<span class="string">"TrendShort"</span>, <span class="keyword">when</span>=isChoppy)
+</code>
+</pre>
+
+
+    <h3>2. Anticipating Trend Initiation (from high CI)</h3>
+    <p>A significant drop in CI from high levels (e.g., above 61.8) to low levels (below 38.2) can signal the initiation of a new trend, or the end of a long consolidation phase.</p>
+    <ul>
+      <li><strong>Breakout Signal</strong>: CI moves from a prolonged period above 61.8 (choppy) and then crosses below 38.2 (trending). This suggests a strong directional move is starting.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"CI Trend Initiation Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"CI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">choppyThreshold</span> = <span class="function">input.float</span>(<span class="number">61.8</span>, <span class="keyword">title</span>=<span class="string">"Choppy Threshold"</span>)
+<span class="keyword">trendingThreshold</span> = <span class="function">input.float</span>(<span class="number">38.2</span>, <span class="keyword">title</span>=<span class="string">"Trending Threshold"</span>)
+
+ciValue = <span class="function">ta.ci</span>(length)
+
+<span class="function">plot</span>(ciValue, <span class="string">"CI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(choppyThreshold, <span class="string">"Choppy Line"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(trendingThreshold, <span class="string">"Trending Line"</span>, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Detect transition from choppy to trending</span>
+fromChoppyToTrending = ciValue &lt; trendingThreshold <span class="keyword">and</span> ciValue[<span class="number">1</span>] > choppyThreshold
+
+<span class="function">plotshape</span>(fromChoppyToTrending, <span class="keyword">title</span>=<span class="string">"Trend Initiating"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">diamond</span>, <span class="keyword">size</span>=size.small)
+<span class="function">alertcondition</span>(fromChoppyToTrending, <span class="string">"CI Trend Initiation"</span>, <span class="string">"Choppiness Index indicating start of a new trend."</span>)
+
+<span class="comment">// Example: Enter long if market starts trending up after being choppy</span>
+<span class="comment">// Needs a directional filter on price</span>
+<span class="keyword">if</span> (fromChoppyToTrending)
+    <span class="keyword">if</span> (close > open) <span class="comment">// Simple bullish candle confirmation</span>
+        <span class="function">strategy.entry</span>(<span class="string">"BreakoutLong"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+    <span class="keyword">else</span> <span class="keyword">if</span> (close &lt; open) <span class="comment">// Simple bearish candle confirmation</span>
+        <span class="function">strategy.entry</span>(<span class="string">"BreakoutShort"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing Choppiness Index Performance</h2>
+    <p>To get the most from the Choppiness Index in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The default `length` of 14 is widely used. Shorter lengths will make the CI more sensitive to short-term fluctuations, potentially leading to more frequent shifts between "choppy" and "trending" states. Longer lengths will smooth the indicator, making it slower to react but providing a more reliable long-term view of market environment.</li>
+      <li><strong>Adjust Thresholds:</strong> The 61.8 and 38.2 levels are based on Fibonacci ratios, but you can adjust them (e.g., 60/40 or 70/30) based on the specific asset's behavior and your trading style. Some assets are inherently choppier than others.</li>
+      <li><strong>Combine with Directional Indicators:</strong> The CI tells you *if* the market is trending, but not *which way*. Always combine it with a directional indicator (e.g., moving averages, MACD, ADX) to determine the trend's direction.</li>
+      <li><strong>Confirm with Price Action:</strong> Use CI to confirm the market environment. If CI drops significantly, look for price action confirming a strong directional move (e.g., strong breakout candles, consistent higher highs/lower lows).</li>
+      <li><strong>Volume Analysis:</strong> Strong trends (low CI) are often accompanied by sustained high volume. Consolidation (high CI) might see declining or erratic volume. Integrating volume analysis can provide additional conviction.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Strategy Selection:</strong> The CI is primarily a filter for strategy selection. Don't try to trade the CI itself; rather, use it to decide *when* to use a trend-following strategy and *when* to use a range-bound strategy (or avoid trading).
+    </div>
+
+    <h2>Common Choppiness Index Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Like many indicators, CI has some inherent lag due to its calculation over a period. It will not identify the exact start or end of a trend instantly.</li>
+      <li> <b>False Signals:</b> Even though it's designed to filter, CI can still give false signals, especially in complex market environments or if thresholds are not well-tuned.</li>
+      <li> <b>Interpretation in Transition Zones:</b> When CI is between the "choppy" and "trending" thresholds, the market is in a transition phase, and signals might be ambiguous.</li>
+      <li> <b>Not a Directional Indicator:</b> The most common mistake is to interpret CI as a directional signal. It strictly quantifies choppiness, not bullishness or bearishness.</li>
+      <li> <b>Over-Optimization:</b> Excessive tuning of the `length` or thresholds can lead to overfitting and poor performance in live trading.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Choppiness Index (CI) is a valuable and often underutilized technical indicator in Pine Script for TradingView. Its primary strength lies in its ability to quantify the degree of trending versus ranging behavior in the market, allowing traders to adapt their strategies to the prevailing market environment. By understanding its calculation, thoughtfully tuning its parameters and thresholds, and integrating it strategically with directional indicators and price action analysis, you can leverage the CI to make more informed decisions about when to pursue trend-following opportunities and when to exercise caution or switch to range-bound approaches. It acts as an excellent "market filter" for a robust trading system.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

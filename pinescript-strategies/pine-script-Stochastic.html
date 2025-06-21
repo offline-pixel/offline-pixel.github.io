@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Stochastic %K and %D - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Stochastic Oscillator (%K and %D) in Pine Script for TradingView - a comprehensive guide to momentum, overbought/oversold conditions, and divergence.">
+    <meta name="keywords" content="pine script strategies, Stochastic Oscillator, Stochastic %K, Stochastic %D, tradingview indicator, technical analysis, momentum oscillator, overbought, oversold, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Stochastic %K and %D - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Stochastic Oscillator (%K and %D) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Stochastic %K and %D - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-Stochastic.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Stochastic %K and %D - Complete TradingView Guide",
+      "description": "Master the Stochastic Oscillator (%K and %D) in Pine Script for TradingView - a comprehensive guide to momentum, overbought/oversold conditions, and divergence.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-Stochastic.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Stochastic %K and %D",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-Stochastic.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Stochastic %K and %D </h1>
+      <p class="blog-subtitle">Master this essential momentum oscillator in TradingView's Pine Script for identifying overbought/oversold conditions, trend strength, and reversals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Stochastic %K and %D</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Stochastic Oscillator (%K and %D)?</h2>
+    <p>The <b>Stochastic Oscillator</b>, developed by George C. Lane, is a momentum indicator that shows the location of the closing price relative to the high-low range over a set number of periods. Unlike RSI, which measures the speed of price changes, Stochastic measures the *strength of a close* in relation to its price range. It consists of two lines: <b>%K</b> (the main line) and <b>%D</b> (the signal line, which is a smoothed version of %K).</p>
+
+    <p>Stochastic %K and %D oscillate between 0 and 100. They are particularly effective at identifying overbought and oversold conditions, as well as divergence from price, making them a crucial tool for anticipating reversals.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The Stochastic Oscillator's calculation involves a few key components:</p>
+    <ol>
+      <li><strong>%K Line (Fast Stochastic)</strong>:
+        <ul>
+          <li>`%K = ((Current Close - Lowest Low) / (Highest High - Lowest Low)) * 100`</li>
+          <li>Where `Lowest Low` is the lowest price over the look-back period (e.g., 14 bars) and `Highest High` is the highest price over the same period.</li>
+        </ul>
+      </li>
+      <li><strong>%D Line (Slow Stochastic / Signal Line)</strong>:
+        <ul>
+          <li>`%D = Simple Moving Average of %K` over a specified smoothing period (e.g., 3 periods).</li>
+        </ul>
+      </li>
+      <li><strong>Slow %D (Optional)</strong>: Sometimes, an additional smoothing is applied to the %D line, which is then often referred to as "Slow %D" or "%D of %D".</li>
+    </ol>
+    <p>The core idea is that in an uptrend, prices tend to close near their high, and in a downtrend, prices tend to close near their low.</p>
+
+    <h2>Basic Stochastic %K and %D Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a straightforward built-in function `ta.stoch()` for calculating the Stochastic Oscillator.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Stochastic Oscillator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Inputs for Stochastic parameters</span>
+kLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"%K Length"</span>, minval=<span class="number">1</span>)
+dLength = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%D Smoothing"</span>, minval=<span class="number">1</span>)
+smoothing = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%K Smoothing"</span>, minval=<span class="number">1</span>) <span class="comment">// This is the internal smoothing for %K</span>
+
+<span class="comment">// Calculate Stochastic %K and %D values using the built-in function</span>
+<span class="comment">// ta.stoch returns %K and %D based on the provided lengths and smoothing</span>
+[kValue, dValue] = <span class="builtin">ta.stoch</span>(close, high, low, kLength, smoothing, dLength)
+
+<span class="comment">// Plot the %K line</span>
+<span class="builtin">plot</span>(kValue, title=<span class="string">"%K"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Plot the %D line</span>
+<span class="builtin">plot</span>(dValue, title=<span class="string">"%D"</span>, color=<span class="builtin">color</span>.orange, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Plot horizontal lines for overbought and oversold levels</span>
+h_overbought = <span class="builtin">hline</span>(<span class="number">80</span>, <span class="string">"Overbought"</span>, color=<span class="builtin">color</span>.red)
+h_oversold = <span class="builtin">hline</span>(<span class="number">20</span>, <span class="string">"Oversold"</span>, color=<span class="builtin">color</span>.green)
+
+<span class="comment">// Fill background between Stochastic lines and levels for visual clarity</span>
+<span class="builtin">fill</span>(h_overbought, h_oversold, <span class="builtin">color.new</span>(<span class="builtin">color</span>.gray, <span class="number">90</span>))
+</code></pre>
+
+    <div class="tip">
+      <strong>Standard Levels:</strong> The conventional overbought level is 80 and the oversold level is 20 for Stochastic.
+    </div>
+
+    <h2>Practical Stochastic %K and %D <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Overbought and Oversold Conditions</h3>
+    <p>When %K and %D enter the overbought region (above 80) or oversold region (below 20), it signals potential turning points. Trading signals are often generated when the lines move *out* of these extreme regions.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: Both %K and %D are in the oversold region (below 20), and then %K crosses above %D from below the 20 level (or from within oversold zone).</li>
+      <li><strong>Sell Signal</strong>: Both %K and %D are in the overbought region (above 80), and then %K crosses below %D from above the 80 level (or from within overbought zone).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Stochastic Overbought/Oversold Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Stochastic</span>
+kLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"%K Length"</span>, minval=<span class="number">1</span>)
+dLength = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%D Smoothing"</span>, minval=<span class="number">1</span>)
+smoothing = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%K Smoothing"</span>, minval=<span class="number">1</span>)
+overboughtLevel = <span class="keyword">input</span>.int(<span class="number">80</span>, title=<span class="string">"Overbought Level"</span>)
+oversoldLevel = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate Stochastic</span>
+[kValue, dValue] = <span class="builtin">ta.stoch</span>(close, high, low, kLength, smoothing, dLength)
+
+<span class="comment">// Define conditions for entries and exits</span>
+<span class="comment">// Buy when K crosses above D in oversold zone, then D rises above oversold level</span>
+longCondition = <span class="builtin">ta.crossover</span>(kValue, dValue) <span class="keyword">and</span> dValue &lt; oversoldLevel
+
+<span class="comment">// Sell when K crosses below D in overbought zone, then D falls below overbought level</span>
+shortCondition = <span class="builtin">ta.crossunder</span>(kValue, dValue) <span class="keyword">and</span> dValue > overboughtLevel
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+
+<span class="comment">// Optional: Plot Stochastic in a separate pane for visualization</span>
+<span class="comment">// plot(kValue, "%K", color.blue)</span>
+<span class="comment">// plot(dValue, "%D", color.orange)</span>
+<span class="comment">// hline(overboughtLevel, "Overbought", color.red)</span>
+<span class="comment">// hline(oversoldLevel, "Oversold", color.green)</span>
+</code></pre>
+
+    <h3>2. Stochastic Crossover Strategy (%K and %D)</h3>
+    <p>Crossovers between the %K and %D lines are frequent signals, indicating shifts in momentum. These are often combined with overbought/oversold zones for higher probability trades.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Stochastic Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Stochastic</span>
+kLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"%K Length"</span>, minval=<span class="number">1</span>)
+dLength = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%D Smoothing"</span>, minval=<span class="number">1</span>)
+smoothing = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%K Smoothing"</span>, minval=<span class="number">1</span>)
+
+<span class="comment">// Calculate Stochastic</span>
+[kValue, dValue] = <span class="builtin">ta.stoch</span>(close, high, low, kLength, smoothing, dLength)
+
+<span class="comment">// Define conditions for entries and exits</span>
+longSignal = <span class="builtin">ta.crossover</span>(kValue, dValue) <span class="comment">// %K crosses above %D</span>
+shortSignal = <span class="builtin">ta.crossunder</span>(kValue, dValue) <span class="comment">// %K crosses below %D</span>
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+
+<span class="comment">// Optional: Plot Stochastic in a separate pane</span>
+<span class="comment">// plot(kValue, "%K", color.blue)</span>
+<span class="comment">// plot(dValue, "%D", color.orange)</span>
+<span class="comment">// hline(80, "Overbought", color.red)</span>
+<span class="comment">// hline(20, "Oversold", color.green)</span>
+</code></pre>
+
+    <h3>3. Stochastic Divergence Strategy</h3>
+    <p>Divergence occurs when price and Stochastic move in opposite directions, often signaling a strong potential trend reversal. It suggests that the current trend is weakening or losing conviction.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but Stochastic (%K or %D) makes a higher low. This indicates weakening bearish momentum and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but Stochastic (%K or %D) makes a lower high. This indicates weakening bullish momentum and a potential downward reversal.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"Stochastic Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Stochastic</span>
+kLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"%K Length"</span>, minval=<span class="number">1</span>)
+dLength = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%D Smoothing"</span>, minval=<span class="number">1</span>)
+smoothing = <span class="keyword">input</span>.int(<span class="number">3</span>, title=<span class="string">"%K Smoothing"</span>, minval=<span class="number">1</span>)
+overboughtLevel = <span class="keyword">input</span>.int(<span class="number">80</span>, title=<span class="string">"Overbought Level"</span>)
+oversoldLevel = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate Stochastic</span>
+[kValue, dValue] = <span class="builtin">ta.stoch</span>(close, high, low, kLength, smoothing, dLength)
+
+<span class="comment">// Plot Stochastic in a separate pane</span>
+<span class="builtin">plot</span>(kValue, <span class="string">"%K"</span>, color=<span class="builtin">color</span>.blue)
+<span class="builtin">plot</span>(dValue, <span class="string">"%D"</span>, color=<span class="builtin">color</span>.orange)
+<span class="builtin">hline</span>(overboughtLevel, <span class="string">"Overbought"</span>, color=<span class="builtin">color</span>.red)
+<span class="builtin">hline</span>(oversoldLevel, <span class="string">"Oversold"</span>, color=<span class="builtin">color</span>.green)
+<span class="builtin">hline</span>(<span class="number">50</span>, <span class="string">"Centerline"</span>, color=<span class="builtin">color</span>.gray)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example and might need refinement for actual trading.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, %D higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close <span class="keyword">and</span> dValue[<span class="number">2</span>] &lt; dValue[<span class="number">1</span>] <span class="keyword">and</span> dValue[<span class="number">1</span>] &lt; dValue
+
+<span class="comment">// Bearish Divergence (Price higher high, %D lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close <span class="keyword">and</span> dValue[<span class="number">2</span>] > dValue[<span class="number">1</span>] <span class="keyword">and</span> dValue[<span class="number">1</span>] > dValue
+
+<span class="builtin">plotshape</span>(bullishDivergence, title=<span class="string">"Bullish Divergence"</span>, location=location.belowbar, color=<span class="builtin">color</span>.green, style=shape.triangleup, size=size.small)
+<span class="builtin">plotshape</span>(bearishDivergence, title=<span class="string">"Bearish Divergence"</span>, location=location.abovebar, color=<span class="builtin">color</span>.red, style=shape.triangledown, size=size.small)
+
+<span class="builtin">alertcondition</span>(bullishDivergence, <span class="string">"Bullish Stochastic Divergence"</span>, <span class="string">"Potential bullish reversal based on Stochastic divergence."</span>)
+<span class="builtin">alertcondition</span>(bearishDivergence, <span class="string">"Bearish Stochastic Divergence"</span>, <span class="string">"Potential bearish reversal based on Stochastic divergence."</span>)
+</code></pre>
+
+    <h2>Optimizing Stochastic %K and %D Performance</h2>
+    <p>To get the most from the Stochastic Oscillator in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `kLength`, `dLength`, and `smoothing` parameters are crucial. While (14, 3, 3) are standard, shorter lengths make Stochastic more sensitive but prone to noise, while longer lengths smooth it more but add lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Combine with Trend Filters:</strong> Stochastic performs best in trending markets or within range-bound markets where price reverses predictably from boundaries. In choppy markets, it can generate numerous false signals. Use a trend filter (like a moving average or ADX) to confirm a clear trend before relying on Stochastic signals.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm Stochastic signals on a higher timeframe before acting on signals from a lower timeframe. For example, if the daily Stochastic is oversold, a 4-hour Stochastic oversold signal might be more reliable.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for Stochastic signals to be confirmed by price action, such as candlestick patterns (e.g., hammer at oversold), breaks of support/resistance, or chart patterns.</li>
+      <li><strong>Focus on Divergence in Trends:</strong> Divergence signals are often more powerful when they occur during an established trend, suggesting its exhaustion, rather than in range-bound markets.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Stochastic vs. RSI:</strong> While both are momentum oscillators, Stochastic focuses on the price's position relative to its recent range, whereas RSI focuses on the speed of price changes. They can complement each other well.
+    </div>
+
+    <h2>Common Stochastic %K and %D Pitfalls</h2>
+    <ul>
+      <li> <b>False Overbought/Oversold Signals:</b> In strong, sustained trends, Stochastic can remain at extreme overbought or oversold levels for extended periods. Blindly fading these extremes can lead to significant losses.</li>
+      <li> <b>Whipsaws in Ranging Markets:</b> In choppy or consolidating markets, %K and %D can cross frequently and fluctuate rapidly within the 20-80 range, leading to many false signals.</li>
+      <li> <b>Divergence Can Be Early:</b> While divergence is a powerful signal, it can appear early, and a trend might continue for some time after the divergence signal, leading to premature entries.</li>
+      <li> <b>Not a Standalone Indicator:</b> Stochastic should always be used as part of a broader trading system, combined with other indicators (e.g., volume, trend-following indicators) and price action analysis.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Stochastic Oscillator (%K and %D) is a fundamental and highly versatile momentum indicator in Pine Script for TradingView. Its ability to show the current closing price relative to its recent range makes it invaluable for identifying overbought and oversold conditions, assessing momentum, and spotting potential reversals through divergence. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with other technical analysis tools, you can leverage the Stochastic Oscillator to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

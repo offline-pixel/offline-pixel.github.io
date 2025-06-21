@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Coppock Curve - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Coppock Curve in Pine Script for TradingView - a momentum oscillator designed to identify long-term buying opportunities in downtrends and selling opportunities in uptrends.">
+    <meta name="keywords" content="pine script strategies, Coppock Curve, CCI, ROC, tradingview indicator, technical analysis, momentum oscillator, long-term trends, buy signals, sell signals">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Coppock Curve - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Coppock Curve in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Coppock Curve - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-CoppockCurve.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Coppock Curve - Complete TradingView Guide",
+      "description": "Master the Coppock Curve in Pine Script for TradingView - a momentum oscillator designed to identify long-term buying opportunities in downtrends and selling opportunities in uptrends.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-CoppockCurve.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Coppock Curve",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-CoppockCurve.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Coppock Curve </h1>
+      <p class="blog-subtitle">Master this long-term momentum oscillator in TradingView's Pine Script, specifically designed to identify significant buying opportunities in bear markets and selling opportunities in bull markets.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate/Advanced</span>
+      </p>
+    </div>
+  </header>
+
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Coppock Curve</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Coppock Curve?</h2>
+    <p>The <b>Coppock Curve</b>, developed by Edwin Coppock, is a momentum oscillator primarily designed to identify long-term buying opportunities in a bear market and, conversely, selling opportunities in a bull market. It typically uses monthly data to provide broad, reliable signals, though it can be applied to other timeframes. The indicator is calculated as a sum of two smoothed Rates of Change (ROC), which are then smoothed themselves using a Weighted Moving Average (WMA). Coppock created this indicator after observing that market bottoms are often preceded by a period of panic, followed by a period of calm (reflected in the ROCs), which is then smoothed to identify turning points.</p>
+
+    <p>In Pine Script, the Coppock Curve is a valuable tool for patient traders and investors looking for higher probability, longer-term trend reversal signals, especially after significant price movements.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Coppock Curve involves three main steps, using standard periods of 14, 11, and 10:</p>
+    <ol>
+      <li><strong>Long-Period Rate of Change (ROC_Long)</strong>: Calculate the `length1`-period Rate of Change of the closing price (e.g., 14 periods).
+        <br>
+        `ROC_Long = ((close - close[length1]) / close[length1]) * 100`
+      </li>
+      <li><strong>Short-Period Rate of Change (ROC_Short)</strong>: Calculate the `length2`-period Rate of Change of the closing price (e.g., 11 periods).
+        <br>
+        `ROC_Short = ((close - close[length2]) / close[length2]) * 100`
+      </li>
+      <li><strong>Sum of ROCs</strong>: Add the two ROC values together.
+        <br>
+        `Sum_ROCs = ROC_Long + ROC_Short`
+      </li>
+      <li><strong>Weighted Moving Average (WMA) of Sum_ROCs</strong>: Finally, apply a `length3`-period Weighted Moving Average to the `Sum_ROCs`. This is the Coppock Curve value.
+        <br>
+        `Coppock Curve = WMA(Sum_ROCs, length3)` (e.g., 10 periods)
+      </li>
+    </ol>
+    <p>The curve oscillates around a zero line and typically does not have fixed overbought/oversold levels like RSI, as its primary use is zero-line crossovers and directional changes.</p>
+
+    <h2>Basic Coppock Curve Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.cci()` for Commodity Channel Index and `ta.roc()` for Rate of Change, but for Coppock Curve, we'll need to combine these or custom implement the calculation steps as `ta.coppock` is not a direct built-in function.</p>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Coppock Curve"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Inputs for Coppock Curve lengths (standard parameters by Edwin Coppock)</span>
+<span class="keyword">rocLongLength</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"Long ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">rocShortLength</span> = <span class="function">input.int</span>(<span class="number">11</span>, <span class="keyword">title</span>=<span class="string">"Short ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">wmaLength</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"WMA Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate the two Rate of Change components</span>
+rocLong = <span class="function">ta.roc</span>(close, rocLongLength)
+rocShort = <span class="function">ta.roc</span>(close, rocShortLength)
+
+<span class="comment">// Sum the two ROCs</span>
+sumRocs = rocLong + rocShort
+
+<span class="comment">// Apply the Weighted Moving Average to the sum</span>
+coppockCurve = <span class="function">ta.wma</span>(sumRocs, wmaLength)
+
+<span class="comment">// Plot the Coppock Curve line</span>
+<span class="function">plot</span>(coppockCurve, <span class="keyword">title</span>=<span class="string">"Coppock Curve"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Zero Line</span>
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+</code>
+</pre>
+
+
+    <div class="tip">
+      <strong>Designed for Long-Term:</strong> Coppock Curve is specifically crafted for identifying major turns in long-term trends, making it ideal for monthly or weekly charts.
+    </div>
+
+    <h2>Practical Coppock Curve <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Zero Line Crossover (Primary Signal)</h3>
+    <p>The most important signal from the Coppock Curve is its crossover of the zero line. This indicates a significant shift in long-term momentum.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: Coppock Curve crosses above the zero line. This suggests a new long-term bullish trend is potentially beginning or an existing bear market is ending.</li>
+      <li><strong>Sell Signal</strong>: Coppock Curve crosses below the zero line. This suggests a new long-term bearish trend is potentially beginning or an existing bull market is ending.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"Coppock Curve Zero Line Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Coppock Curve lengths</span>
+<span class="keyword">rocLongLength</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"Long ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">rocShortLength</span> = <span class="function">input.int</span>(<span class="number">11</span>, <span class="keyword">title</span>=<span class="string">"Short ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">wmaLength</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"WMA Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Coppock Curve</span>
+rocLong = <span class="function">ta.roc</span>(close, rocLongLength)
+rocShort = <span class="function">ta.roc</span>(close, rocShortLength)
+sumRocs = rocLong + rocShort
+coppockCurve = <span class="function">ta.wma</span>(sumRocs, wmaLength)
+
+<span class="comment">// Plot Coppock Curve in a separate pane for visualization</span>
+<span class="function">plot</span>(coppockCurve, <span class="string">"Coppock Curve"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(coppockCurve, <span class="number">0</span>)
+shortSignal = <span class="function">ta.crossunder</span>(coppockCurve, <span class="number">0</span>)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code>
+</pre>
+
+
+    <h3>2. Coppock Curve Trough/Peak Reversals</h3>
+    <p>Beyond zero-line crossovers, a more nuanced signal involves the Coppock Curve turning upwards from a trough (especially while still below zero) or turning downwards from a peak (especially while still above zero). This can signal the very early stages of a reversal within an existing trend.</p>
+    <ul>
+      <li><strong>Buy Signal (Trough Turn)</strong>: Coppock Curve forms a trough (reaches a local minimum) and then turns upwards. If this happens while the curve is below the zero line, it's considered a strong long-term buying opportunity.</li>
+      <li><strong>Sell Signal (Peak Turn)</strong>: Coppock Curve forms a peak (reaches a local maximum) and then turns downwards. If this happens while the curve is above the zero line, it's considered a strong long-term selling opportunity.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Coppock Curve Trough/Peak Signals"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Coppock Curve lengths</span>
+<span class="keyword">rocLongLength</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"Long ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">rocShortLength</span> = <span class="function">input.int</span>(<span class="number">11</span>, <span class="keyword">title</span>=<span class="string">"Short ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">wmaLength</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"WMA Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Coppock Curve</span>
+rocLong = <span class="function">ta.roc</span>(close, rocLongLength)
+rocShort = <span class="function">ta.roc</span>(close, rocShortLength)
+sumRocs = rocLong + rocShort
+coppockCurve = <span class="function">ta.wma</span>(sumRocs, wmaLength)
+
+<span class="comment">// Plot Coppock Curve in a separate pane</span>
+<span class="function">plot</span>(coppockCurve, <span class="string">"Coppock Curve"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Detect upward turn from a trough (potential buy)</span>
+bullishTurn = coppockCurve > coppockCurve[<span class="number">1</span>] <span class="keyword">and</span> coppockCurve[<span class="number">1</span>] &lt; coppockCurve[<span class="number">2</span>]
+<span class="comment">// Detect downward turn from a peak (potential sell)</span>
+bearishTurn = coppockCurve &lt; coppockCurve[<span class="number">1</span>] <span class="keyword">and</span> coppockCurve[<span class="number">1</span>] > coppockCurve[<span class="number">2</span>]
+
+<span class="function">plotshape</span>(bullishTurn <span class="keyword">and</span> coppockCurve < <span class="number">0</span>, <span class="keyword">title</span>=<span class="string">"Bullish Turn Below Zero"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
+<span class="function">plotshape</span>(bearishTurn <span class="keyword">and</span> coppockCurve > <span class="number">0</span>, <span class="keyword">title</span>=<span class="string">"Bearish Turn Above Zero"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
+
+<span class="function">alertcondition</span>(bullishTurn <span class="keyword">and</span> coppockCurve < <span class="number">0</span>, <span class="string">"Coppock Bullish Turn"</span>, <span class="string">"Coppock Curve turning up from a trough below zero."</span>)
+<span class="function">alertcondition</span>(bearishTurn <span class="keyword">and</span> coppockCurve > <span class="number">0</span>, <span class="string">"Coppock Bearish Turn"</span>, <span class="string">"Coppock Curve turning down from a peak above zero."</span>)
+</code>
+</pre>
+
+
+    <h3>3. Divergence (Advanced Confirmation)</h3>
+    <p>As with many oscillators, divergence between price and the Coppock Curve can offer strong confirmation of a potential trend reversal, suggesting that the underlying momentum is not confirming the price action.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but Coppock Curve makes a higher low. This indicates weakening bearish momentum and a strong potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but Coppock Curve makes a lower high. This indicates weakening bullish momentum and a strong potential downward reversal.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Coppock Curve Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for Coppock Curve lengths</span>
+<span class="keyword">rocLongLength</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"Long ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">rocShortLength</span> = <span class="function">input.int</span>(<span class="number">11</span>, <span class="keyword">title</span>=<span class="string">"Short ROC Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">wmaLength</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"WMA Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Coppock Curve</span>
+rocLong = <span class="function">ta.roc</span>(close, rocLongLength)
+rocShort = <span class="function">ta.roc</span>(close, rocShortLength)
+sumRocs = rocLong + rocShort
+coppockCurve = <span class="function">ta.wma</span>(sumRocs, wmaLength)
+
+<span class="comment">// Plot Coppock Curve in a separate pane</span>
+<span class="function">plot</span>(coppockCurve, <span class="string">"Coppock Curve"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example focusing on price vs Coppock Curve divergence.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, Coppock Curve higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close <span class="keyword">and</span> coppockCurve[<span class="number">2</span>] &lt; coppockCurve[<span class="number">1</span>] <span class="keyword">and</span> coppockCurve[<span class="number">1</span>] &lt; coppockCurve
+
+<span class="comment">// Bearish Divergence (Price higher high, Coppock Curve lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] < close <span class="keyword">and</span> coppockCurve[<span class="number">2</span>] > coppockCurve[<span class="number">1</span>] <span class="keyword">and</span> coppockCurve[<span class="number">1</span>] > coppockCurve
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish Coppock Divergence"</span>, <span class="string">"Potential bullish reversal based on Coppock Curve divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish Coppock Divergence"</span>, <span class="string">"Potential bearish reversal based on Coppock Curve divergence."</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing Coppock Curve Performance</h2>
+    <p>To get the most from the Coppock Curve in Pine Script:</p>
+    <ul>
+      <li><strong>Timeframe Selection:</strong> The Coppock Curve was originally designed for *monthly* charts to catch major long-term market turns. While it can be applied to weekly or even daily charts, its effectiveness diminishes on shorter timeframes where noise increases.</li>
+      <li><strong>Standard Parameters are Recommended:</strong> The default lengths (14, 11, 10) are well-researched and generally provide reliable signals. Significant deviation from these can alter the indicator's behavior.</li>
+      <li><strong>Combine with Price Action:</strong> Coppock Curve signals are strongest when confirmed by actual price action. For a buy signal, look for price breaking resistance or forming bullish candlestick patterns. For a sell signal, look for price breaking support or bearish patterns.</li>
+      <li><strong>Volume Confirmation:</strong> For added conviction, observe volume. A strong buy signal (Coppock crossing zero from below) is more reliable if accompanied by increasing volume.</li>
+      <li><strong>Avoid Choppy Markets:</strong> While the WMA smooths the curve, it can still produce false signals in prolonged sideways or highly choppy markets. It performs best in environments where clear trends develop.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Contrarian Tool:</strong> Coppock Curve often functions as a contrarian indicator, signaling buying opportunities during market pessimism and selling opportunities during market euphoria.
+    </div>
+
+    <h2>Common Coppock Curve Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> Despite its aim to reduce lag, the Coppock Curve is still a lagging indicator due to its multiple smoothing components. It will not perfectly pinpoint exact tops or bottoms.</li>
+      <li> <b>Not for Short-Term Trading:</b> Using Coppock Curve for intraday or very short-term trading is generally not recommended due to its long-term nature and inherent lag.</li>
+      <li> <b>False Signals:</b> Even on longer timeframes, no indicator is foolproof. The Coppock Curve can produce false signals, especially if not confirmed by other technical analysis tools.</li>
+      <li> <b>No Fixed Overbought/Oversold Levels:</b> Unlike some oscillators, Coppock Curve doesn't typically rely on fixed overbought/oversold thresholds. Its primary signals are zero-line crossovers and directional changes.</li>
+      <li> <b>Requires Patience:</b> Signals from the Coppock Curve on long timeframes are infrequent, requiring patience to wait for high-conviction setups.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Coppock Curve is a sophisticated and highly valuable momentum oscillator in Pine Script for TradingView, particularly for long-term traders and investors. Its unique calculation, combining smoothed Rates of Change with a Weighted Moving Average, allows it to effectively filter out noise and identify significant, high-probability buying opportunities in bear markets and selling opportunities in bull markets. By understanding its construction, thoughtfully utilizing its standard parameters, and integrating its zero-line crossovers, directional turns, and divergence signals strategically with other forms of technical analysis, you can leverage the Coppock Curve to gain deeper insights into long-term market cycles and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

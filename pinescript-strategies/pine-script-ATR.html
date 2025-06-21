@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Average True Range (ATR) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Average True Range (ATR) in Pine Script for TradingView - a foundational volatility indicator used for setting stop losses, position sizing, and identifying market conditions.">
+    <meta name="keywords" content="pine script strategies, ATR, Average True Range, tradingview indicator, technical analysis, volatility, stop loss, position sizing, market volatility">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Average True Range (ATR) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Average True Range (ATR) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Average True Range (ATR) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-ATR.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script Average True Range (ATR) - Complete TradingView Guide",
+  "description": "Master the Average True Range (ATR) in Pine Script for TradingView - a foundational volatility indicator for stop losses, position sizing, and market analysis.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ATR.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Average True Range",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ATR.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Average True Range (ATR) </h1>
+      <p class="blog-subtitle">Master this essential volatility indicator in TradingView's Pine Script for dynamic stop-loss placement, position sizing, and understanding market conditions.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+  
+
+  <article class="fullscreen">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://offline-pixel.github.io/">Home</a> >
+    <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+    <span aria-current="page">Average True Range</span>
+  </nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Average True Range (ATR)?</h2>
+    <p>The <b>Average True Range (ATR)</b> is a widely used volatility indicator developed by J. Welles Wilder Jr. (also the creator of RSI, ADX, and Parabolic SAR). Unlike other indicators that measure price direction, ATR quantifies <b>market volatility</b> by calculating the average of true ranges over a specified period. The "true range" accounts for gaps and limits to capture the full extent of price movement within a given period. A high ATR value indicates high volatility, while a low ATR value suggests low volatility.</p>
+
+    <p>In Pine Script, ATR is an indispensable tool not for generating buy/sell signals directly, but for <b>risk management</b>, <b>position sizing</b>, and <b>adapting strategies</b> to changing market conditions. It helps traders set objective stop-loss and take-profit levels that are appropriate for the current market's swing.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of ATR begins with the <b>True Range (TR)</b> for each period. The True Range is the greatest of the following three values:</p>
+    <ol>
+      <li>The distance between the current high and the current low: `High - Low`</li>
+      <li>The absolute distance between the current high and the previous day's close: `abs(High - Close[1])`</li>
+      <li>The absolute distance between the current low and the previous day's close: `abs(Low - Close[1])`</li>
+    </ol>
+    <p>Once the True Range for each period is calculated, the <b>Average True Range (ATR)</b> is typically a Simple Moving Average (SMA) or, more commonly, an Exponential Moving Average (EMA) of these True Range values over a specified `length` (e.g., 14 periods).</p>
+    <br>
+    `ATR = SMA (or EMA) of True Range over 'length' periods`
+
+    <h2>Basic Average True Range (ATR) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.atr()` for calculating the Average True Range.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Average True Range (ATR)"</span>, overlay=<span class="keyword">false</span>, format=<span class="keyword">format</span>.price) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for ATR length</span>
+length = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"ATR Length"</span>, minval=<span class="number">1</span>)
+
+<span class="comment">// Calculate ATR value using the built-in function</span>
+<span class="comment">// ta.atr uses (high, low, close) implicitly and applies an RMA (smoothed moving average) for smoothing</span>
+atrValue = <span class="builtin">ta.atr</span>(length)
+
+<span class="comment">// Plot the ATR line</span>
+<span class="builtin">plot</span>(atrValue, title=<span class="string">"ATR"</span>, color=<span class="builtin">color</span>.purple, linewidth=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add moving average of ATR to identify volatility trends</span>
+atrMA = <span class="builtin">ta.sma</span>(atrValue, <span class="number">20</span>) <span class="comment">// 20-period SMA of ATR</span>
+<span class="builtin">plot</span>(atrMA, title=<span class="string">"ATR MA"</span>, color=<span class="builtin">color</span>.gray, linewidth=<span class="number">1</span>, style=<span class="builtin">plot</span>.style_line)
+
+<span class="comment">// Highlight background when ATR is significantly higher or lower than its average</span>
+<span class="builtin">bgcolor</span>(atrValue &gt; atrMA * <span class="number">1.5</span> ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.orange, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"High Volatility"</span>)
+<span class="builtin">bgcolor</span>(atrValue &lt; atrMA * <span class="number">0.7</span> ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.blue, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"Low Volatility"</span>)</code></pre>
+
+    <div class="tip">
+      <strong>Volatility, Not Direction:</strong> Remember that ATR measures *how much* price is moving, not *which direction* it's moving. A rising ATR means prices are swinging more, while a falling ATR means they are quiet.
+    </div>
+
+    <h2>Practical ATR <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Dynamic Stop Loss Placement (Primary Use)</h3>
+    <p>ATR is widely used to place stop-loss orders dynamically, adapting to current market volatility. This ensures your stop isn't too tight during volatile periods or too wide during quiet periods.</p>
+    <ul>
+      <li><strong>Long Position Stop Loss</strong>: `Entry Price - (ATR * Multiplier)`</li>
+      <li><strong>Short Position Stop Loss</strong>: `Entry Price + (ATR * Multiplier)`</li>
+      <li>A common multiplier is 2 or 3 (e.g., 2 * ATR from your entry).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"ATR Dynamic Stop Loss"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Input for ATR length and Stop Loss Multiplier</span>
+atrLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"ATR Length"</span>, minval=<span class="number">1</span>)
+stopLossMultiplier = <span class="keyword">input</span>.float(<span class="number">2.0</span>, title=<span class="string">"Stop Loss Multiplier"</span>, minval=<span class="number">0.1</span>, step=<span class="number">0.1</span>)
+
+<span class="comment">// Calculate ATR</span>
+atrValue = <span class="builtin">ta.atr</span>(atrLength)
+
+<span class="comment">// Simple example entry (e.g., crossing a 20-period SMA)</span>
+maLength = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"Entry MA Length"</span>, minval=<span class="number">1</span>)
+maValue = <span class="builtin">ta.sma</span>(close, maLength)
+
+longCondition = <span class="builtin">ta.crossover</span>(close, maValue)
+shortCondition = <span class="builtin">ta.crossunder</span>(close, maValue)
+
+<span class="comment">// Determine stop loss levels dynamically</span>
+longStopLoss = <span class="builtin">strategy</span>.position_avg_price - (atrValue * stopLossMultiplier)
+shortStopLoss = <span class="builtin">strategy</span>.position_avg_price + (atrValue * stopLossMultiplier)
+
+<span class="keyword">if</span> (longCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
+
+<span class="comment">// Apply dynamic stop losses</span>
+<span class="builtin">strategy</span>.exit(<span class="string">"Long Exit"</span>, from_entry=<span class="string">"Long"</span>, stop=longStopLoss)
+<span class="builtin">strategy</span>.exit(<span class="string">"Short Exit"</span>, from_entry=<span class="string">"Short"</span>, stop=shortStopLoss)
+
+<span class="comment">// Plot stop loss levels on chart (optional)</span>
+<span class="builtin">plot</span>(<span class="builtin">strategy</span>.position_avg_price &gt; <span class="number">0</span> ? longStopLoss : <span class="keyword">na</span>, <span class="string">"Long Stop Loss"</span>, color=<span class="builtin">color</span>.red, style=<span class="builtin">plot</span>.style_linebr, linewidth=<span class="number">1</span>)
+<span class="builtin">plot</span>(<span class="builtin">strategy</span>.position_avg_price &lt; <span class="number">0</span> ? shortStopLoss : <span class="keyword">na</span>, <span class="string">"Short Stop Loss"</span>, color=<span class="builtin">color</span>.red, style=<span class="builtin">plot</span>.style_linebr, linewidth=<span class="number">1</span>)</code></pre>
+
+    <h3>2. Position Sizing based on Volatility</h3>
+    <p>ATR can be used to size positions so that the monetary risk per trade is consistent, regardless of the asset's volatility. In higher volatility, you trade fewer shares; in lower volatility, you trade more shares.</p>
+    <ul>
+      <li><strong>Calculate Risk per Share (RPS)</strong>: `ATR * Multiplier`</li>
+      <li><strong>Calculate Number of Shares</strong>: `(Account Risk / RPS)` (Account Risk is your desired maximum dollar risk per trade).</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"ATR Position Sizing Example"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for ATR and risk management</span>
+atrLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"ATR Length"</span>, minval=<span class="number">1</span>)
+atrMultiplier = <span class="keyword">input</span>.float(<span class="number">2.0</span>, title=<span class="string">"ATR Risk Multiplier"</span>, minval=<span class="number">0.1</span>, step=<span class="number">0.1</span>)
+accountRiskPerTrade = <span class="keyword">input</span>.float(<span class="number">1000.0</span>, title=<span class="string">"Max $ Risk Per Trade"</span>, minval=<span class="number">10</span>) <span class="comment">// Example: $1000 risk</span>
+
+<span class="comment">// Calculate ATR</span>
+atrValue = <span class="builtin">ta.atr</span>(atrLength)
+
+<span class="comment">// Calculate Risk Per Share (RPS) based on ATR</span>
+riskPerShare = atrValue * atrMultiplier
+
+<span class="comment">// Calculate position size (number of shares)</span>
+<span class="comment">// Ensure riskPerShare is not zero to avoid division by zero</span>
+sharesToTrade = riskPerShare != <span class="number">0</span> ? <span class="builtin">math.floor</span>(accountRiskPerTrade / riskPerShare) : <span class="number">0</span>
+
+<span class="comment">// Simple example entry (e.g., crossing a 50-period SMA)</span>
+maLength = <span class="keyword">input</span>.int(<span class="number">50</span>, title=<span class="string">"Entry MA Length"</span>, minval=<span class="number">1</span>)
+maValue = <span class="builtin">ta.sma</span>(close, maLength)
+
+longCondition = <span class="builtin">ta.crossover</span>(close, maValue)
+shortCondition = <span class="builtin">ta.crossunder</span>(close, maValue)
+
+<span class="comment">// Enter trades with calculated position size</span>
+<span class="keyword">if</span> (longCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long (Sized)"</span>, <span class="builtin">strategy</span>.long, qty=sharesToTrade)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short (Sized)"</span>, <span class="builtin">strategy</span>.short, qty=sharesToTrade)
+
+<span class="comment">// Dynamic Stop Loss based on ATR (as previously shown)</span>
+longStopLoss = <span class="builtin">strategy</span>.position_avg_price - (atrValue * atrMultiplier)
+shortStopLoss = <span class="builtin">strategy</span>.position_avg_price + (atrValue * atrMultiplier)
+
+<span class="builtin">strategy</span>.exit(<span class="string">"Long Exit"</span>, from_entry=<span class="string">"Long (Sized)"</span>, stop=longStopLoss)
+<span class="builtin">strategy</span>.exit(<span class="string">"Short Exit"</span>, from_entry=<span class="string">"Short (Sized)"</span>, stop=shortStopLoss)
+
+<span class="comment">// Plot ATR in a separate pane for visualization</span>
+<span class="builtin">plot</span>(atrValue, <span class="string">"ATR"</span>, color=<span class="builtin">color</span>.purple, display=<span class="builtin">display</span>.pane_only)</code></pre>
+
+    <h3>3. Volatility Filter for Trend-Following Strategies</h3>
+    <p>ATR can help filter out choppy market conditions where trend-following strategies might struggle, or identify periods ripe for breakouts.</p>
+    <ul>
+      <li><strong>Strategy Enhancement</strong>: Only activate trend-following strategies (e.g., moving average crossovers) when ATR is rising or above a certain threshold, indicating a potentially strong trend.</li>
+      <li><strong>Consolidation Detection</strong>: When ATR is low and relatively flat, it signals a period of consolidation. This might be a good time for range-bound strategies or to prepare for a potential breakout once volatility expands.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"ATR Volatility Filter"</span>, overlay=<span class="keyword">true</span>)
+
+atrLength = <span class="keyword">input</span>.int(<span class="number">14</span>, title=<span class="string">"ATR Length"</span>, minval=<span class="number">1</span>)
+atrValue = <span class="builtin">ta.atr</span>(atrLength)
+
+<span class="comment">// Moving Average of ATR to smooth its readings</span>
+atrSMA = <span class="builtin">ta.sma</span>(atrValue, <span class="number">20</span>)
+atrThreshold = <span class="keyword">input</span>.float(<span class="number">1.2</span>, title=<span class="string">"ATR Multiplier for Trending Filter"</span>, minval=<span class="number">1.0</span>, step=<span class="number">0.1</span>)
+
+<span class="comment">// Define "trending" period when ATR is above its average, suggesting higher volatility</span>
+isTrendingVolatility = atrValue &gt; atrSMA * atrThreshold
+
+<span class="comment">// Simple trend-following entry (e.g., MA crossover)</span>
+fastMA = <span class="builtin">ta.ema</span>(close, <span class="number">10</span>)
+slowMA = <span class="builtin">ta.ema</span>(close, <span class="number">20</span>)
+
+longSignal = <span class="builtin">ta.crossover</span>(fastMA, slowMA) and isTrendingVolatility
+shortSignal = <span class="builtin">ta.crossunder</span>(fastMA, slowMA) and isTrendingVolatility
+
+<span class="keyword">if</span> (longSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Long Filtered"</span>, <span class="builtin">strategy</span>.long)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="builtin">strategy</span>.entry(<span class="string">"Short Filtered"</span>, <span class="builtin">strategy</span>.short)
+
+<span class="comment">// Plot indicators in separate panes</span>
+<span class="builtin">plot</span>(atrValue, <span class="string">"ATR"</span>, color=<span class="builtin">color</span>.purple, display=<span class="builtin">display</span>.pane_only)
+<span class="builtin">plot</span>(atrSMA, <span class="string">"ATR SMA"</span>, color=<span class="builtin">color</span>.gray, display=<span class="builtin">display</span>.pane_only)
+<span class="builtin">plot</span>(fastMA, <span class="string">"Fast MA"</span>, color=<span class="builtin">color</span>.green, overlay=<span class="keyword">true</span>)
+<span class="builtin">plot</span>(slowMA, <span class="string">"Slow MA"</span>, color=<span class="builtin">color</span>.red, overlay=<span class="keyword">true</span>)
+
+<span class="builtin">bgcolor</span>(isTrendingVolatility ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.aqua, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"Trending Volatility Zone"</span>)</code></pre>
+
+    <h2>Optimizing ATR Performance</h2>
+    <p>To get the most from the Average True Range in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The default `length` of 14 is a good starting point for daily charts, representing roughly two trading weeks. Shorter lengths (e.g., 7) will make ATR more reactive to recent volatility, while longer lengths (e.g., 20 or 26) will provide a smoother, less noisy measure of volatility.</li>
+      <li><strong>Multiplier Calibration:</strong> The `multiplier` used for stop-loss or profit target placement is critical. Backtest different multipliers (e.g., 1.5, 2.0, 2.5, 3.0) to find what works best for your specific asset, timeframe, and risk tolerance. More volatile assets might require larger multipliers.</li>
+      <li><strong>Timeframe Adaptability:</strong> ATR is timeframe-dependent. An ATR value on a daily chart will be vastly different from a 5-minute chart. Ensure your `length` and `multiplier` are calibrated for the timeframe you are using.</li>
+      <li><strong>Combine with Directional Indicators:</strong> ATR is not a directional indicator. Always use it in conjunction with other indicators (e.g., moving averages, MACD, RSI) that tell you *which way* the market is likely to move. ATR helps with *how much* it moves.</li>
+      <li><strong>Trailing Stop Loss:</strong> ATR can be used to create trailing stop losses, allowing you to capture more of a trend while still protecting against sharp reversals. As price moves in your favor, the ATR-based stop also moves.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Dynamic Risk Management:</b> ATR provides a dynamic way to manage risk, making your stops and targets more intelligent by adapting to current market conditions rather than using fixed price points.
+    </div>
+
+    <h2>Common ATR Pitfalls</h2>
+    <ul>
+      <li> <b>Not a Directional Signal:</b> The biggest mistake is trying to derive buy/sell signals directly from ATR. It tells you nothing about the future direction of price.</li>
+      <li> <b>Lag:</b> ATR is a lagging indicator. It measures *past* volatility, which may or may not continue into the future.</li>
+      <li> <b>Interpretation Subjectivity:</b> Deciding on the "correct" ATR multiplier or threshold for volatility filtering can be subjective and requires backtesting and experience.</li>
+      <li> <b>False Signals in Extreme Conditions:</b> Very sudden spikes in volatility (e.g., due to news events) can cause ATR to jump, leading to very wide stops that might be impractical. Conversely, extended periods of extremely low volatility can lead to very tight stops that get hit prematurely.</li>
+      <li> <b>Not a Standalone Indicator:</b> ATR is a risk management and market condition tool. It's not a complete trading system on its own and must be integrated into a comprehensive strategy.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Average True Range (ATR) is a fundamental and exceptionally useful technical indicator in Pine Script for TradingView. While it doesn't provide directional signals, its accurate measurement of market volatility is invaluable for intelligent risk management. By dynamically adjusting stop-loss levels, sizing positions appropriately, and filtering trading opportunities based on current market choppiness or trend strength, traders can significantly enhance the robustness of their strategies. By understanding its calculation, thoughtfully calibrating its parameters, and integrating it strategically with directional indicators and price action analysis, you can leverage the ATR to make more informed trading decisions and manage your risk effectively in varying market conditions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

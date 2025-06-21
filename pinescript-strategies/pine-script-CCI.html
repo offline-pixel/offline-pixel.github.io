@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script CCI (Commodity Channel Index) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Commodity Channel Index (CCI) in Pine Script for TradingView - a versatile momentum oscillator for identifying trends, reversals, and extreme conditions.">
+    <meta name="keywords" content="pine script strategies, CCI, Commodity Channel Index, tradingview indicator, technical analysis, momentum oscillator, overbought, oversold, trend strength, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script CCI (Commodity Channel Index) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Commodity Channel Index (CCI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script CCI (Commodity Channel Index) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-CCI.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script CCI (Commodity Channel Index) - Complete TradingView Guide",
+  "description": "Master the Commodity Channel Index (CCI) in Pine Script for TradingView - a versatile momentum oscillator for identifying trends and reversals.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-CCI.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "CCI",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-CCI.html"
+      }
+    ]
+  }
+}
+</script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script CCI (Commodity Channel Index) </h1>
+      <p class="blog-subtitle">Master this versatile momentum oscillator in TradingView's Pine Script for identifying overbought/oversold conditions, new trends, and reversals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">CCI</span>
+</nav>
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Commodity Channel Index (CCI)?</h2>
+    <p>The <b>Commodity Channel Index (CCI)</b>, developed by Donald Lambert, is a versatile momentum-based oscillator that measures the current price level relative to an average price level over a given period. It's designed to identify cyclical turns in commodities, but it can be applied to any financial instrument. CCI typically oscillates around a zero line and usually moves between -100 and +100, though it can move beyond these bounds during strong trends.</p>
+
+    <p>In Pine Script, CCI is a powerful tool for discerning new trends, extreme overbought/oversold conditions, and potential reversals by highlighting when price deviates significantly from its statistical mean.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of CCI involves several steps:</p>
+    <ol>
+      <li><strong>Typical Price (TP)</strong>: `(High + Low + Close) / 3`</li>
+      <li><strong>Simple Moving Average of Typical Price (SMATP)</strong>: `SMA(TP, length)`</li>
+      <li><strong>Mean Deviation</strong>: This is the average of the absolute deviations of the Typical Price from the SMATP over the `length` period.
+        <ul>
+          <li>For each bar, calculate `abs(TP - SMATP)`.</li>
+          <li>Sum these absolute deviations over the `length` period.</li>
+          <li>Divide the sum by `length`.</li>
+        </ul>
+      </li>
+      <li><strong>CCI Formula</strong>: `CCI = (TP - SMATP) / (0.015 * Mean Deviation)`</li>
+    </ol>
+    <p>The constant `0.015` is a scaling factor used to ensure that approximately 70% to 80% of CCI values fall within the +100 to -100 range.</p>
+
+    <h2>Basic CCI Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a straightforward built-in function `ta.cci()` for calculating the Commodity Channel Index.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My CCI Indicator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for CCI length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"CCI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate CCI value using the built-in function</span>
+<span class="comment">// ta.cci calculates based on Typical Price (TP = (high+low+close)/3) internally</span>
+cciValue = <span class="function">ta.cci</span>(hlc3, length) <span class="comment">// hlc3 refers to (high+low+close)/3</span>
+
+<span class="comment">// Plot the CCI line</span>
+<span class="function">plot</span>(cciValue, <span class="keyword">title</span>=<span class="string">"CCI"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">blue</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot horizontal lines for overbought and oversold levels</span>
+h_overbought = <span class="function">hline</span>(<span class="number">100</span>, <span class="string">"Overbought (+100)"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+h_oversold = <span class="function">hline</span>(-<span class="number">100</span>, <span class="string">"Oversold (-100)"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Fill background between CCI and levels for visual clarity</span>
+<span class="function">fill</span>(h_overbought, h_oversold, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">gray</span>, <span class="number">90</span>))
+</code>
+</pre>
+
+
+    <div class="tip">
+      <strong>Key Interpretation:</strong> Values above +100 suggest an uptrend, while values below -100 suggest a downtrend. Returns to the 0-line or crossovers can signal reversals.
+    </div>
+
+    <h2>Practical CCI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Overbought and Oversold Conditions (Trend Reversals)</h3>
+    <p>When CCI moves significantly above +100, it's considered overbought, indicating a strong upward move that might be unsustainable and due for a pullback. Conversely, a move significantly below -100 is oversold, suggesting a strong downward move that might be exhausted.</p>
+    <ul>
+      <li><strong>Buy Signal</strong>: CCI moves below -100 and then crosses back above -100. This suggests bearish momentum is fading.</li>
+      <li><strong>Sell Signal</strong>: CCI moves above +100 and then crosses back below +100. This suggests bullish momentum is fading.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"CCI Overbought/Oversold Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for CCI</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"CCI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">overboughtLevel</span> = <span class="function">input.int</span>(<span class="number">100</span>, <span class="keyword">title</span>=<span class="string">"Overbought Level"</span>)
+<span class="keyword">oversoldLevel</span> = <span class="function">input.int</span>(-<span class="number">100</span>, <span class="keyword">title</span>=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate CCI</span>
+cciValue = <span class="function">ta.cci</span>(hlc3, length)
+
+<span class="comment">// Define conditions for entries and exits</span>
+longCondition = <span class="function">ta.crossunder</span>(cciValue, oversoldLevel) <span class="comment">// CCI goes oversold</span>
+longExitCondition = <span class="function">ta.crossover</span>(cciValue, oversoldLevel) <span class="comment">// CCI exits oversold (potential buy)</span>
+
+shortCondition = <span class="function">ta.crossover</span>(cciValue, overboughtLevel) <span class="comment">// CCI goes overbought</span>
+shortExitCondition = <span class="function">ta.crossunder</span>(cciValue, overboughtLevel) <span class="comment">// CCI exits overbought (potential sell)</span>
+
+<span class="comment">// Strategy entries/exits (entry upon exiting extreme zones)</span>
+<span class="keyword">if</span> (longExitCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortExitCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Optional: Plot CCI in a separate pane for visualization</span>
+<span class="comment">// plot(cciValue, "CCI", color.blue)</span>
+<span class="comment">// hline(overboughtLevel, "Overbought", color.red)</span>
+<span class="comment">// hline(oversoldLevel, "Oversold", color.green)</span>
+<span class="comment">// hline(0, "Zero Line", color.gray)</span>
+</code>
+</pre>
+
+
+    <h3>2. CCI Zero Line Crossover (Trend Identification)</h3>
+    <p>The zero line can be used to identify new trends or a continuation of the current trend.</p>
+    <ul>
+      <li><strong>Bullish Trend</strong>: CCI crosses above the zero line. This suggests momentum is shifting to the upside.</li>
+      <li><strong>Bearish Trend</strong>: CCI crosses below the zero line. This suggests momentum is shifting to the downside.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"CCI Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for CCI</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"CCI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">zeroLine</span> = <span class="number">0</span>
+
+<span class="comment">// Calculate CCI</span>
+cciValue = <span class="function">ta.cci</span>(hlc3, length)
+
+<span class="comment">// Define conditions for entries</span>
+longSignal = <span class="function">ta.crossover</span>(cciValue, zeroLine)
+shortSignal = <span class="function">ta.crossunder</span>(cciValue, zeroLine)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Optional: Plot CCI in a separate pane</span>
+<span class="comment">// plot(cciValue, "CCI", color.blue)</span>
+<span class="comment">// hline(zeroLine, "Zero Line", color.gray)</span>
+</code>
+</pre>
+
+    <h3>3. CCI Divergence Strategy</h3>
+    <p>Divergence between price and CCI can signal potential trend reversals. This occurs when price makes a new high/low, but CCI fails to confirm it, creating an opposite extreme.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but CCI makes a higher low. This indicates weakening bearish momentum and a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but CCI makes a lower high. This indicates weakening bullish momentum and a potential downward reversal.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"CCI Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="comment">// Inputs for CCI</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"CCI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">overboughtLevel</span> = <span class="function">input.int</span>(<span class="number">100</span>, <span class="keyword">title</span>=<span class="string">"Overbought Level"</span>)
+<span class="keyword">oversoldLevel</span> = <span class="function">input.int</span>(-<span class="number">100</span>, <span class="keyword">title</span>=<span class="string">"Oversold Level"</span>)
+
+<span class="comment">// Calculate CCI</span>
+cciValue = <span class="function">ta.cci</span>(hlc3, length)
+
+<span class="comment">// Plot CCI in a separate pane</span>
+<span class="function">plot</span>(cciValue, <span class="string">"CCI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(overboughtLevel, <span class="string">"Overbought (+100)"</span>, <span class="keyword">color</span>.<span class="function">red</span>)
+<span class="function">hline</span>(oversoldLevel, <span class="string">"Oversold (-100)"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example and might need refinement for actual trading.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, CCI higher low)</span>
+bullishDivergence = close[<span class="number">2</span>] > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close <span class="keyword">and</span> cciValue[<span class="number">2</span>] &lt; cciValue[<span class="number">1</span>] <span class="keyword">and</span> cciValue[<span class="number">1</span>] &lt; cciValue
+
+<span class="comment">// Bearish Divergence (Price higher high, CCI lower high)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] < close <span class="keyword">and</span> cciValue[<span class="number">2</span>] > cciValue[<span class="number">1</span>] <span class="keyword">and</span> cciValue[<span class="number">1</span>] > cciValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish CCI Divergence"</span>, <span class="string">"Potential bullish reversal based on CCI divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish CCI Divergence"</span>, <span class="string">"Potential bearish reversal based on CCI divergence."</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing CCI Performance</h2>
+    <p>To get the most from the Commodity Channel Index in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. While 20 is a common setting, shorter lengths (e.g., 9-14) make CCI more sensitive, generating more signals but potentially more noise. Longer lengths (e.g., 30-50) provide smoother signals but with more lag. Experiment to find optimal settings for your specific asset and timeframe.</li>
+      <li><strong>Adjust Extreme Levels:</strong> For very volatile assets or shorter timeframes, you might consider adjusting the overbought/oversold levels beyond +100/-100 (e.g., +200/-200) to filter for only extreme moves.</li>
+      <li><strong>Combine with Trend Filters:</strong> CCI can be prone to whipsaws in choppy markets. Use a trend filter (like a moving average or ADX) to confirm a clear trend before relying solely on CCI signals.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Confirm CCI signals on a higher timeframe before acting on signals from a lower timeframe for added reliability.</li>
+      <li><strong>Confluence with Price Action:</strong> Always look for CCI signals to be confirmed by price action, such as candlestick patterns, breaks of support/resistance, or chart patterns.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Trend vs. Overbought/Oversold:</strong> Remember that CCI can be used both to identify overbought/oversold conditions *and* to confirm the strength of a trend (when it stays consistently above +100 or below -100).
+    </div>
+
+    <h2>Common CCI Pitfalls</h2>
+    <ul>
+      <li> <b>False Signals in Ranging Markets:</b> Like most oscillators, CCI can generate numerous false overbought/oversold signals when the market is consolidating sideways.</li>
+      <li> <b>Lag:</b> While CCI is designed to be responsive, it is still a lagging indicator. Signals might appear after a portion of the price move has already occurred.</li>
+      <li> <b>Divergence Can Be Early:</b> Divergence is powerful but can signal a potential reversal too early, and the trend might continue for some time after the divergence appears.</li>
+      <li> <b>Not a Standalone Indicator:</b> CCI should always be used as part of a broader trading system, combined with other indicators and price action analysis for confirmation.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Commodity Channel Index (CCI) is a highly versatile and valuable momentum oscillator in Pine Script for TradingView. Its ability to measure how far price has deviated from its average allows traders to identify overbought/oversold conditions, gauge trend strength, and spot potential reversals through divergence. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with other technical analysis tools, you can leverage the CCI to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

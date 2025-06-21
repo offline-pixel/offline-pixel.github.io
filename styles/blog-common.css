@@ -1,0 +1,469 @@
+/* General Blog Styles */
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary: #8b5cf6;
+    --light: #f8fafc;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --light-gray: #e2e8f0;
+    --success: #10b981;
+    /* Removed card-specific variables as they are not needed for blogs */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+    color: var(--dark);
+    overflow-x: hidden;
+    /* padding-bottom: 40px; Add some padding at the bottom */
+}
+
+/* Header for Blog Pages */
+header.blog-header {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    animation: header-bg 1.5s ease-in-out infinite alternate; /* Use direct value, no var */
+
+    position: static;
+    max-height: unset;
+
+}
+
+@keyframes header-bg {
+    0% {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        opacity: 0.8;
+    }
+    50% {
+        background: linear-gradient(to left, var(--primary), var(--secondary));
+        opacity: 1;
+    }
+    100% {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        opacity: 0.8;
+    }
+}
+/* 
+header.blog-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+    background-size: cover;
+    opacity: 0.3;
+} */
+
+.container {
+    max-width: 940px; /* Adjusted for typical blog content width */
+    margin: 0 auto;
+    padding: 0 20px;
+    font-size: 20px;
+    line-height: 32px;
+    color: #545454;
+}
+
+h1.blog-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    line-height: 64px;
+    color: white;
+}
+
+.blog-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
+.blog-content {
+    /* background: white; */
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: justify;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */
+}
+
+.blog-content h2 {
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--light-gray);
+    padding-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.blog-content p {
+    margin-bottom: 1rem;
+}
+
+.blog-content ul, .blog-content ol {
+    margin-bottom: 2rem;
+    padding-left: 25px;
+}
+
+.blog-content ul li, .blog-content ol li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-content a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.blog-content a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+.cta-section {
+    text-align: center;
+    margin: 3rem auto;
+    max-width: 700px;
+    padding: 2.5rem;
+    background: white;
+    border: 1px solid var(--primary);
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 1px solid var(--primary);
+    z-index: -1;
+    border-radius: 8px;
+}
+
+.cta-title {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+a.btn {
+    display: inline-block;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    padding: 14px 32px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-top: 24px;
+    border-radius: 4px;
+}
+
+a.btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.5s;
+}
+
+a.btn:hover {
+    color: white;
+    text-decoration: none;
+}
+a.btn:hover::after {
+    left: 100%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+    padding: 1.5rem;
+    border-top: 1px solid var(--light-gray);
+}
+
+        /* General styling for the landing page sections */
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+            line-height: 32px;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+        .section-separator {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 40px auto;
+            width: 80%;
+        }
+        .feature-list ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+        .feature-list li {
+            margin-bottom: 10px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+        .pricing-tier {
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .pricing-tier h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .pricing-tier p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+            color: #333;
+        }
+@media (max-width: 768px) {
+    h1.blog-title {
+        font-size: 2rem;
+    }
+    .blog-content {
+        padding: 1.5rem;
+    }
+    .cta-section {
+        padding: 1.5rem;
+    }
+    .cta-title {
+        font-size: 1.6rem;
+    }
+    /* General styling for the landing page sections */
+        .fullscreen {
+            padding: 10px 2.5% !important; 
+            max-width: 100% !important;
+            /* margin: auto; */
+            /* text-align: justify; */
+        }
+}
+
+.job-meta {
+    font-size: 12px;
+    color: white;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;    
+}
+.job-posted-time, .job-location {
+    padding: 5px 0;
+}
+
+ 
+/* --- Code Block Specific Styles (for good design in GUI) --- */
+pre {
+    background-color: #343434; /* Dark background for code block */
+    color: #f8f8f2; /* Light text color for contrast */
+    padding: 15px 20px;
+    border-radius: 8px;
+    overflow-x: auto; /* Enables horizontal scrolling for long lines */
+    margin: 25px 0;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Fira Code', 'Roboto Mono', 'Consolas', 'Monaco', monospace; /* Monospace font for code */
+    font-size: 0.95em;
+    line-height: 1.5;
+    tab-size: 4; /* Ensures consistent tab spacing */
+    -moz-tab-size: 4;
+}
+
+code {
+    display: block; /* Ensures code takes full width of pre and line breaks correctly */
+    white-space: pre; /* Preserves whitespace and line breaks */
+}
+.comment { color: #8e8e8e; } /* Grey for comments */
+.keyword { color: #569cd6; } /* Blue for keywords */
+.string { color: #d69d85; }  /* Orange for strings */
+.number { color: #b5cea8; }  /* Green for numbers */
+.function { color: #dcdcaa; } /* Yellow for functions */
+
+ 
+pre {
+    background-color: #1e1e1e; /* Darker background for better contrast */
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 25px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+    font-size: 0.95em;
+    line-height: 1.6;
+    tab-size: 4;
+    -moz-tab-size: 4;
+    position: relative;
+    border-left: 4px solid #6e45e2; /* Accent border */
+}
+
+/* Add a subtle gradient to the background */
+pre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(110, 69, 226, 0.05) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 8px;
+}
+
+/* Code styling */
+code {
+    display: block;
+    white-space: pre;
+    position: relative;
+}
+
+/* Language indicator */
+pre::after {
+    content: 'pinescript';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #777;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Syntax highlighting */
+.comment { color: #6A9955; font-style: italic; } /* Green for comments */
+.keyword { color: #569CD6; font-weight: 500; } /* Blue for keywords */
+.string { color: #CE9178; }  /* Orange for strings */
+.number { color: #B5CEA8; }  /* Green for numbers */
+.function { color: #DCDCAA; } /* Yellow for functions */
+.operator { color: #D4D4D4; } /* Light gray for operators */
+.builtin { color: #4EC9B0; } /* Teal for built-in functions */
+.variable { color: #e36209; }
+.property { color: #6f42c1; }
+.literal { color: #005cc5; } 
+
+/* .keyword { color: #d73a49; font-weight: bold; }
+.comment { color: #6a737d; font-style: italic; }
+.string { color: #032f62; }
+.function { color: #005cc5; }
+.constant { color: #22863a; }
+.number { color: #005cc5; }
+*/
+
+/* Scrollbar styling */
+pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 0 0 8px 8px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+    background: #6e45e2;
+}
+
+.optimal-settings {
+    width: 100%;
+}
+.optimal-settings td {
+    border-bottom: 1px solid #ccc; padding: 10px;
+}
+
+li {
+    list-style-position: inside;
+}

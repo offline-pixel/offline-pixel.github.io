@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script VWMA (Volume Weighted MA) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Volume Weighted Moving Average (VWMA) in Pine Script for TradingView - an indicator that prioritizes price action supported by strong volume.">
+    <meta name="keywords" content="pine script strategies, VWMA, Volume Weighted Moving Average, tradingview indicator, technical analysis, volume confirmation, trend following, market conviction">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script VWMA (Volume Weighted MA) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Volume Weighted Moving Average (VWMA) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script VWMA (Volume Weighted MA) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VWMA.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script VWMA (Volume Weighted MA) - Complete TradingView Guide",
+      "description": "Master the Volume Weighted Moving Average (VWMA) in Pine Script for TradingView - an indicator that prioritizes price action supported by strong volume.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VWMA.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "VWMA (Volume Weighted MA)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VWMA.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script VWMA (Volume Weighted MA) </h1>
+      <p class="blog-subtitle">Master this powerful moving average in TradingView's Pine Script that factors in volume for more reliable trend identification and conviction assessment.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Posted: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">VWMA (Volume Weighted MA)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Volume Weighted Moving Average (VWMA)?</h2>
+    <p>The <b>Volume Weighted Moving Average (VWMA)</b> is a technical indicator that gives more weight to prices associated with higher trading volume. Unlike Simple Moving Averages (SMAs) or Exponential Moving Averages (EMAs) which treat all price bars equally, the VWMA places a greater emphasis on prices where significant trading activity occurred. This means that price movements supported by higher volume will have a greater impact on the VWMA's value, reflecting stronger market conviction behind those moves.</p>
+
+    <p>In Pine Script, VWMA is an excellent tool for traders who want to confirm trend direction and identify key support/resistance levels based on where the "smart money" might be active.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the VWMA is straightforward, yet powerful:</p>
+    <ol>
+      <li><strong>Sum of (Price * Volume)</strong>: For each bar in the specified `length`, multiply the `source` price (typically `close`) by the `volume` for that bar. Sum these values over the entire `length`.</li>
+      <li><strong>Sum of Volume</strong>: Sum the `volume` for all bars over the same `length`.</li>
+      <li><strong>VWMA Formula</strong>: `VWMA = Sum of (Price * Volume) / Sum of Volume`</li>
+    </ol>
+    <p>This division ensures that bars with higher volume contribute proportionally more to the average, making the VWMA more responsive to high-conviction price moves and less susceptible to low-volume noise.</p>
+
+    <h2>Basic VWMA Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a convenient built-in function `ta.vwma()` that simplifies its implementation.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My VWMA Indicator"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Input for VWMA length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="title">title</span>=<span class="string">"VWMA Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate VWMA using the built-in function</span>
+<span class="variable">vwmaValue</span> = <span class="function">ta.vwma</span>(<span class="variable">close</span>, <span class="variable">length</span>)
+
+<span class="comment">// Plot the VWMA line</span>
+<span class="function">plot</span>(<span class="variable">vwmaValue</span>, <span class="title">title</span>=<span class="string">"VWMA"</span>, <span class="property">color</span>=<span class="property">color.blue</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Volume Confirmation:</strong> VWMA is unique in that it inherently includes volume in its calculation, making it a "self-confirming" moving average for trend validation.
+    </div>
+
+    <h2>Practical VWMA Strategies</h2>
+
+    <h3>1. VWMA as a Trend Confirmation Tool</h3>
+    <p>VWMA is excellent for confirming existing trends. A strong uptrend is confirmed when price remains above a rising VWMA, especially if the VWMA itself is rising steeply. A strong downtrend is confirmed when price stays below a falling VWMA.</p>
+    <ul>
+      <li><strong>Bullish Trend Confirmation</strong>: Price stays above VWMA, and VWMA is sloping upwards.</li>
+      <li><strong>Bearish Trend Confirmation</strong>: Price stays below VWMA, and VWMA is sloping downwards.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"VWMA Trend Confirmation"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Input for VWMA length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="title">title</span>=<span class="string">"VWMA Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate VWMA</span>
+<span class="keyword">vwmaValue</span> = <span class="function">ta.vwma</span>(<span class="keyword">close</span>, <span class="keyword">length</span>)
+
+<span class="comment">// Plot the VWMA line, coloring it based on its slope for visual trend confirmation</span>
+<span class="keyword">vwmaColor</span> = <span class="keyword">vwmaValue</span> &gt; <span class="keyword">vwmaValue</span>[<span class="number">1</span>] ? <span class="property">color.green</span> : <span class="property">color.red</span>
+<span class="function">plot</span>(<span class="keyword">vwmaValue</span>, <span class="title">title</span>=<span class="string">"VWMA"</span>, <span class="property">color</span>=<span class="keyword">vwmaColor</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Example entry logic based on VWMA direction and price relation</span>
+<span class="keyword">longCondition</span> = <span class="keyword">close</span> &gt; <span class="keyword">vwmaValue</span> and <span class="keyword">vwmaValue</span> &gt; <span class="keyword">vwmaValue</span>[<span class="number">1</span>]
+<span class="keyword">shortCondition</span> = <span class="keyword">close</span> &lt; <span class="keyword">vwmaValue</span> and <span class="keyword">vwmaValue</span> &lt; <span class="keyword">vwmaValue</span>[<span class="number">1</span>]
+
+<span class="keyword">if</span> (<span class="keyword">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="property">strategy.short</span>)
+</code></pre>
+
+
+    <h3>2. Price Crossover with VWMA</h3>
+    <p>Crossovers between price and VWMA can generate trading signals. A price crossing above VWMA suggests bullish momentum, while a cross below suggests bearish momentum. These signals are considered more significant when accompanied by higher volume.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"VWMA Price Crossover"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="comment">// Input for VWMA length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="title">title</span>=<span class="string">"VWMA Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate VWMA</span>
+<span class="keyword">vwmaValue</span> = <span class="function">ta.vwma</span>(<span class="keyword">close</span>, <span class="keyword">length</span>)
+
+<span class="comment">// Plot VWMA</span>
+<span class="function">plot</span>(<span class="keyword">vwmaValue</span>, <span class="title">title</span>=<span class="string">"VWMA"</span>, <span class="property">color</span>=<span class="property">color.blue</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Crossover conditions</span>
+<span class="keyword">longCondition</span> = <span class="function">ta.crossover</span>(<span class="keyword">close</span>, <span class="keyword">vwmaValue</span>)
+<span class="keyword">shortCondition</span> = <span class="function">ta.crossunder</span>(<span class="keyword">close</span>, <span class="keyword">vwmaValue</span>)
+
+<span class="comment">// Strategy entries/exits</span>
+<span class="keyword">if</span> (<span class="keyword">longCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Buy"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="keyword">shortCondition</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Sell"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Highlight crossovers</span>
+<span class="function">plotshape</span>(<span class="keyword">longCondition</span>, <span class="title">title</span>=<span class="string">"Buy Signal"</span>, <span class="property">location</span>=<span class="property">location.belowbar</span>, <span class="property">color</span>=<span class="property">color.green</span>, <span class="property">style</span>=<span class="property">shape.triangleup</span>, <span class="property">size</span>=<span class="property">size.small</span>)
+<span class="function">plotshape</span>(<span class="keyword">shortCondition</span>, <span class="title">title</span>=<span class="string">"Sell Signal"</span>, <span class="property">location</span>=<span class="property">location.abovebar</span>, <span class="property">color</span>=<span class="property">color.red</span>, <span class="property">style</span>=<span class="property">shape.triangledown</span>, <span class="property">size</span>=<span class="property">size.small</span>)
+</code></pre>
+
+
+    <h3>3. VWMA as Dynamic Support and Resistance</h3>
+    <p>VWMA can also act as dynamic support and resistance levels. When price pulls back to the VWMA in an uptrend and bounces, it confirms support. Similarly, in a downtrend, price rejecting a rally at the VWMA confirms resistance. Because VWMA considers volume, these levels can be particularly strong.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"VWMA Dynamic S/R"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="title">title</span>=<span class="string">"VWMA Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="keyword">vwmaValue</span> = <span class="function">ta.vwma</span>(<span class="keyword">close</span>, <span class="keyword">length</span>)
+
+<span class="function">plot</span>(<span class="keyword">vwmaValue</span>, <span class="title">title</span>=<span class="string">"VWMA"</span>, <span class="property">color</span>=<span class="property">color.blue</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Highlight potential support/resistance bounces (conceptual - adjust thresholds)</span>
+<span class="comment">// This example checks for price being very close to VWMA AND a directional change in price</span>
+<span class="keyword">isSupportBounce</span> = (<span class="keyword">close</span> &gt; <span class="keyword">vwmaValue</span> and <span class="keyword">close</span>[1] &lt;= <span class="keyword">vwmaValue</span>[1]) and (<span class="keyword">close</span> &gt; <span class="keyword">open</span>) <span class="comment">// Price crossed above VWMA and current bar is bullish</span>
+<span class="keyword">isResistanceBounce</span> = (<span class="keyword">close</span> &lt; <span class="keyword">vwmaValue</span> and <span class="keyword">close</span>[1] &gt;= <span class="keyword">vwmaValue</span>[1]) and (<span class="keyword">close</span> &lt; <span class="keyword">open</span>) <span class="comment">// Price crossed below VWMA and current bar is bearish</span>
+
+<span class="function">plotshape</span>(<span class="keyword">isSupportBounce</span>, <span class="title">title</span>=<span class="string">"Support Bounce"</span>, <span class="property">location</span>=<span class="property">location.belowbar</span>, <span class="property">color</span>=<span class="property">color.lime</span>, <span class="property">style</span>=<span class="property">shape.circle</span>, <span class="property">size</span>=<span class="property">size.tiny</span>)
+<span class="function">plotshape</span>(<span class="keyword">isResistanceBounce</span>, <span class="title">title</span>=<span class="string">"Resistance Bounce"</span>, <span class="property">location</span>=<span class="property">location.abovebar</span>, <span class="property">color</span>=<span class="property">color.fuchsia</span>, <span class="property">style</span>=<span class="property">shape.circle</span>, <span class="property">size</span>=<span class="property">size.tiny</span>)
+</code></pre>
+
+
+    <h2>Optimizing VWMA Performance</h2>
+    <p>To get the most from the Volume Weighted Moving Average in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter influences how responsive the VWMA is. Shorter lengths (e.g., 9-20) are more responsive to short-term volume-weighted moves, while longer lengths (e.g., 50-200) provide a smoother, longer-term view. Experiment to find what fits your trading style and the asset.</li>
+      <li><strong>Multi-Timeframe Analysis:</strong> Use VWMA on higher timeframes to determine the dominant trend (e.g., daily VWMA for long-term bias) and then look for signals on lower timeframes for entry/exit timing.</li>
+      <li><strong>Combine with Other Indicators:</strong> While VWMA integrates volume, it's beneficial to combine it with other indicators. For instance, using oscillators like RSI or MACD to confirm overbought/oversold conditions or momentum, or incorporating chart patterns for confluence.</li>
+      <li><strong>Context is Key:</strong> VWMA is particularly useful in identifying the "true" trend direction, as it filters out low-volume noise. Pay attention to how price interacts with VWMA after significant volume spikes.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Trusting Volume:</strong> VWMA emphasizes conviction. If price breaks a key level on high volume, and VWMA confirms it, the move is often more reliable.
+    </div>
+
+    <h2>Common VWMA Pitfalls</h2>
+    <ul>
+      <li> <b>Less Effective in Low Volume Periods:</b> In markets with consistently low or erratic volume, the "volume-weighted" aspect might not provide significant additional insight compared to a standard EMA.</li>
+      <li> <b>Lag is Still Present:</b> While it's more responsive to high-volume moves, VWMA is still a lagging indicator. It won't perfectly predict future price action.</li>
+      <li> <b>Not for Ranging Markets:</b> Like most trend-following indicators, VWMA can produce whipsaws in non-trending or highly choppy markets where volume is distributed erratically.</li>
+      <li> <b>Requires Volume Data:</b> Naturally, VWMA requires access to accurate volume data for its calculation, which might not be available for all assets or on all timeframes.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Volume Weighted Moving Average (VWMA) is a valuable and intuitive indicator in Pine Script for TradingView, offering a unique perspective on market trends by factoring in the conviction of volume. Its ability to give greater significance to price movements backed by strong trading activity makes it an excellent tool for confirming trends, identifying dynamic support/resistance, and spotting reliable signals. By understanding its calculation, tuning its parameters, and integrating it thoughtfully into your comprehensive trading strategies, you can leverage the VWMA to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+</body>
+</html>

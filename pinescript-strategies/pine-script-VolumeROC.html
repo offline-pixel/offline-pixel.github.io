@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Volume Rate of Change (Volume ROC) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Volume Rate of Change (Volume ROC) in Pine Script for TradingView - a momentum indicator that measures the percentage change in trading volume over a specified period, aiding in trend confirmation and breakout detection.">
+    <meta name="keywords" content="pine script strategies, Volume Rate of Change, Volume ROC, tradingview indicator, technical analysis, volume analysis, momentum, trend confirmation, breakout, divergence">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Volume Rate of Change (Volume ROC) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Volume Rate of Change (Volume ROC) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Volume Rate of Change (Volume ROC) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeROC.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Volume Rate of Change (Volume ROC) - Complete TradingView Guide",
+      "description": "Master Volume Rate of Change (Volume ROC) in Pine Script for TradingView - a momentum indicator that measures the percentage change in trading volume over a specified period, aiding in trend confirmation and breakout detection.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-16",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeROC.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Volume Rate of Change (Volume ROC)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-VolumeROC.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Volume Rate of Change (Volume ROC) </h1>
+      <p class="blog-subtitle">Master this unique volume-based indicator in TradingView's Pine Script that measures the percentage change in trading volume, providing insights into market participation and trend conviction.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Volume Rate of Change (Volume ROC)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Volume Rate of Change (Volume ROC)?</h2>
+    <p> <b>Volume Rate of Change (Volume ROC)</b> is a momentum oscillator that measures the percentage change in trading volume over a specified number of periods. Unlike indicators that calculate the rate of change of price, Volume ROC specifically focuses on <b>volume momentum</b>, indicating whether volume is increasing or decreasing relative to its past levels.</p>
+
+    <p>The core idea behind Volume ROC is that <b>volume often precedes price</b>, and changes in volume can provide early signals of shifts in market interest and trend strength. A positive Volume ROC indicates that current volume is higher than the volume `N` periods ago, suggesting increasing participation. A negative Volume ROC indicates current volume is lower, suggesting decreasing participation.</p>
+
+    <p>Volume ROC is primarily used to:</p>
+    <ul>
+      <li> <b>Confirm price trends:</b> Rising Volume ROC supports the current price trend, while falling Volume ROC suggests a lack of conviction.</li>
+      <li> <b>Spot breakouts:</b> A significant surge in Volume ROC often accompanies valid price breakouts.</li>
+      <li> <b>Identify divergences:</b> When price makes new highs/lows but Volume ROC does not, it can signal a weakening trend and potential reversal.</li>
+    </ul>
+
+    <p>In Pine Script, Volume ROC provides a clear way to quantify volume surges and contractions, adding another layer of analysis to trend and momentum strategies.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Volume Rate of Change is straightforward:</p>
+    <ol>
+      <li> <b>Volume</b> refers to the current bar's trading volume.</li>
+      <li> <b>Previous Volume</b> refers to the trading volume from `length` periods ago.</li>
+      <li> <b>Volume ROC Formula:</b>
+        <br>
+        `Volume ROC = ((Current Volume - Volume[length]) / Volume[length]) * 100`
+        <br>
+        * Handle `Volume[length] == 0` to avoid division by zero.
+    </ol>
+    <p>A common `length` for Volume ROC is 14 periods, but this can be adjusted.</p>
+
+    <h2>Basic Volume Rate of Change (Volume ROC) Implementation in Pine Script</h2>
+    <p>Pine Script v5 provides a built-in function `ta.roc()` that can be applied to `volume` to calculate Volume ROC.</p>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">indicator</span>(<span class="string">"My Volume Rate of Change (Volume ROC)"</span>, <span class="property">overlay</span>=<span class="literal">false</span>, <span class="property">format</span>=<span class="property">format.percent</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for Volume ROC length</span>
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"Volume ROC Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Volume ROC using ta.roc applied to volume</span>
+<span class="comment">// Add a check to prevent division by zero if volume[length] is 0</span>
+<span class="variable">volumeRocValue</span> = <span class="variable">volume</span>[<span class="variable">length</span>] != <span class="number">0</span> ? <span class="function">ta.roc</span>(<span class="variable">volume</span>, <span class="variable">length</span>) : <span class="number">0.0</span>
+
+<span class="comment">// Plot the Volume ROC line</span>
+<span class="function">plot</span>(<span class="variable">volumeRocValue</span>, <span class="property">title</span>=<span class="string">"Volume ROC"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Plot the Zero Line as a key reference point</span>
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dotted</span>)
+
+<span class="comment">// Optional: Add reference levels for visual clarity, e.g., +50% and -50%</span>
+<span class="comment">// These are subjective and depend on the asset and typical Volume ROC values.</span>
+<span class="function">hline</span>(<span class="number">50</span>, <span class="string">"Upper Ref (+50%)"</span>, <span class="property">color</span>=<span class="constant">color.green</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dashed</span>)
+<span class="function">hline</span>(<span class="number">-50</span>, <span class="string">"Lower Ref (-50%)"</span>, <span class="property">color</span>=<span class="constant">color.red</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dashed</span>)
+
+<span class="comment">// Highlight areas where Volume ROC is significantly high (volume surge)</span>
+<span class="function">bgcolor</span>(<span class="variable">volumeRocValue</span> > <span class="number">50</span> ? <span class="function">color.new</span>(<span class="constant">color.lime</span>, <span class="number">90</span>) : <span class="literal">na</span>, <span class="property">title</span>=<span class="string">"High Volume ROC"</span>)
+</code></pre>
+
+
+    <div class="tip">
+     <b>Volume Momentum:</b> Volume ROC measures the *rate of change* of volume, not just its absolute level. This helps identify accelerated or decelerated market participation.
+    </div>
+
+    <h2>Practical Volume ROC <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Trend Confirmation</h3>
+    <p>Volume ROC is excellent for confirming the conviction behind a price trend. Ideally, price and Volume ROC should move in the same direction.</p>
+    <ul>
+      <li><strong>Uptrend Confirmation</strong>: Price is in an uptrend, and Volume ROC is consistently positive (or making higher lows). This indicates that the uptrend is supported by increasing buying interest.</li>
+      <li><strong>Downtrend Confirmation</strong>: Price is in a downtrend, and Volume ROC is consistently negative (or making lower highs). This indicates that the downtrend is supported by increasing selling interest.</li>
+      <li> <b>Lack of Confirmation:</b> If price is trending but Volume ROC is flat or moving in the opposite direction, it suggests the trend lacks underlying conviction and may be vulnerable.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Volume ROC Trend Confirmation"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"Volume ROC Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">volumeRocValue</span> = <span class="variable">volume</span>[<span class="variable">length</span>] != <span class="number">0</span> ? <span class="function">ta.roc</span>(<span class="variable">volume</span>, <span class="variable">length</span>) : <span class="number">0.0</span>
+
+<span class="function">plot</span>(<span class="variable">volumeRocValue</span>, <span class="string">"Volume ROC"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">display</span>=<span class="property">display.pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dotted</span>, <span class="property">display</span>=<span class="property">display.pane_only</span>)
+
+<span class="comment">// Price trend filter (e.g., using a long-term EMA)</span>
+<span class="variable">priceMALength</span> = <span class="function">input.int</span>(<span class="number">50</span>, <span class="property">title</span>=<span class="string">"Price MA Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">priceMA</span> = <span class="function">ta.ema</span>(<span class="variable">close</span>, <span class="variable">priceMALength</span>)
+
+<span class="comment">// Conditions for trend confirmation</span>
+<span class="comment">// Long: Price above MA, and Volume ROC is positive and rising</span>
+<span class="variable">longConfirm</span> = <span class="variable">close</span> > <span class="variable">priceMA</span> and <span class="variable">volumeRocValue</span> > <span class="number">0</span> and <span class="variable">volumeRocValue</span> > <span class="variable">volumeRocValue</span>[<span class="number">1</span>]
+
+<span class="comment">// Short: Price below MA, and Volume ROC is negative and falling</span>
+<span class="variable">shortConfirm</span> = <span class="variable">close</span> &lt; <span class="variable">priceMA</span> and <span class="variable">volumeRocValue</span> &lt; <span class="number">0</span> and <span class="variable">volumeRocValue</span> &lt; <span class="variable">volumeRocValue</span>[<span class="number">1</span>]
+
+<span class="keyword">if</span> (<span class="variable">longConfirm</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Confirm"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">shortConfirm</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Confirm"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Basic exit: Price crosses back over price MA or Volume ROC weakens</span>
+<span class="function">strategy.close</span>(<span class="string">"Long Confirm"</span>, <span class="property">when</span>=<span class="variable">close</span> &lt; <span class="variable">priceMA</span> or <span class="variable">volumeRocValue</span> &lt; <span class="number">0</span>)
+<span class="function">strategy.close</span>(<span class="string">"Short Confirm"</span>, <span class="property">when</span>=<span class="variable">close</span> > <span class="variable">priceMA</span> or <span class="variable">volumeRocValue</span> > <span class="number">0</span>)
+</code></pre>
+
+
+    <h3>2. Breakout Confirmation</h3>
+    <p>A sudden surge in Volume ROC often provides strong confirmation for a price breakout. When price breaks out of a consolidation or a significant support/resistance level, a corresponding sharp increase in Volume ROC suggests the move has strong institutional backing.</p>
+    <ul>
+      <li><strong>Bullish Breakout Confirmation</strong>: Price breaks above resistance, and Volume ROC simultaneously surges to high positive levels (e.g., above 50% or 100%).</li>
+      <li><strong>Bearish Breakout Confirmation</strong>: Price breaks below support, and Volume ROC simultaneously drops to significant negative levels (e.g., below -50% or -100%).</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Volume ROC Breakout Confirmation"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"Volume ROC Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">volumeRocValue</span> = <span class="variable">volume</span>[<span class="variable">length</span>] != <span class="number">0</span> ? <span class="function">ta.roc</span>(<span class="variable">volume</span>, <span class="variable">length</span>) : <span class="number">0.0</span>
+
+<span class="function">plot</span>(<span class="variable">volumeRocValue</span>, <span class="string">"Volume ROC"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">display</span>=<span class="property">display.pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dotted</span>, <span class="property">display</span>=<span class="property">display.pane_only</span>)
+
+<span class="variable">bullishRocThreshold</span> = <span class="function">input.float</span>(<span class="number">75</span>, <span class="property">title</span>=<span class="string">"Bullish ROC Threshold (%)"</span>, <span class="property">minval</span>=<span class="number">10</span>, <span class="property">step</span>=<span class="number">5</span>)
+<span class="variable">bearishRocThreshold</span> = <span class="function">input.float</span>(<span class="number">-75</span>, <span class="property">title</span>=<span class="string">"Bearish ROC Threshold (%)"</span>, <span class="property">maxval</span>=<span class="number">-10</span>, <span class="property">step</span>=<span class="number">5</span>)
+
+<span class="function">hline</span>(<span class="variable">bullishRocThreshold</span>, <span class="string">"Bullish Threshold"</span>, <span class="property">color</span>=<span class="constant">color.green</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dashed</span>, <span class="property">display</span>=<span class="property">display.pane_only</span>)
+<span class="function">hline</span>(<span class="variable">bearishRocThreshold</span>, <span class="string">"Bearish Threshold"</span>, <span class="property">color</span>=<span class="constant">color.red</span>, <span class="property">linestyle</span>=<span class="property">hline.style_dashed</span>, <span class="property">display</span>=<span class="property">display.pane_only</span>)
+
+<span class="comment">// Price breakout conditions (simplified, use proper S/R or channel breaks in real strategy)</span>
+<span class="comment">// Here, we'll use a simple highest/lowest price breakout for demonstration</span>
+<span class="variable">priceLookback</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="property">title</span>=<span class="string">"Price Breakout Lookback"</span>, <span class="property">minval</span>=<span class="number">5</span>)
+<span class="variable">isBullishPriceBreakout</span> = <span class="variable">close</span> > <span class="function">ta.highest</span>(<span class="variable">high</span>, <span class="variable">priceLookback</span>)[<span class="number">1</span>]
+<span class="variable">isBearishPriceBreakout</span> = <span class="variable">close</span> &lt; <span class="function">ta.lowest</span>(<span class="variable">low</span>, <span class="variable">priceLookback</span>)[<span class="number">1</span>]
+
+<span class="comment">// Combined conditions for confirmed breakout</span>
+<span class="variable">longBreakoutConfirmed</span> = <span class="variable">isBullishPriceBreakout</span> and <span class="variable">volumeRocValue</span> > <span class="variable">bullishRocThreshold</span>
+<span class="variable">shortBreakoutConfirmed</span> = <span class="variable">isBearishPriceBreakout</span> and <span class="variable">volumeRocValue</span> &lt; <span class="variable">bearishRocThreshold</span>
+
+<span class="keyword">if</span> (<span class="variable">longBreakoutConfirmed</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Breakout"</span>, <span class="property">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">shortBreakoutConfirmed</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Breakout"</span>, <span class="property">strategy.short</span>)
+
+<span class="comment">// Basic exit: trend reversal or fixed percentage</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Breakout Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Long Breakout"</span>, <span class="property">profit</span>=<span class="variable">close</span>*<span class="number">0.03</span>, <span class="property">loss</span>=<span class="variable">close</span>*<span class="number">0.015</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Short Breakout Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Short Breakout"</span>, <span class="property">profit</span>=<span class="variable">close</span>*<span class="number">0.03</span>, <span class="property">loss</span>=<span class="variable">close</span>*<span class="number">0.015</span>)
+</code></pre>
+
+
+    <h3>3. Divergence (Key Reversal Signal)</h3>
+    <p>Divergence between price and Volume ROC suggests that the underlying volume momentum is not supporting the current price trend, often preceding a reversal.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but Volume ROC makes a <b>higher low</b> (or fails to make a significantly lower low). This implies selling exhaustion, hinting at a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but Volume ROC makes a <b>lower high</b> (or fails to make a significantly higher high). This implies buying exhaustion, hinting at a potential downward reversal.</li>
+    </ul>
+<pre><code>
+<span class="comment">//@version=5</span>
+<span class="keyword">strategy</span>(<span class="string">"Volume ROC Divergence"</span>, <span class="property">overlay</span>=<span class="literal">true</span>)
+
+<span class="variable">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="property">title</span>=<span class="string">"Volume ROC Length"</span>, <span class="property">minval</span>=<span class="number">1</span>)
+<span class="variable">volumeRocValue</span> = <span class="variable">volume</span>[<span class="variable">length</span>] != <span class="number">0</span> ? <span class="function">ta.roc</span>(<span class="variable">volume</span>, <span class="variable">length</span>) : <span class="number">0.0</span>
+
+<span class="function">plot</span>(<span class="variable">volumeRocValue</span>, <span class="string">"Volume ROC"</span>, <span class="property">color</span>=<span class="constant">color.blue</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="property">color</span>=<span class="constant">color.gray</span>, <span class="property">linestyle</span>=<span class="constant">hline.style_dotted</span>, <span class="property">display</span>=<span class="constant">display.pane_only</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This example looks for recent higher/lower swings in price and Volume ROC.</span>
+
+<span class="comment">// Bullish Divergence: Price lower low, Volume ROC higher low</span>
+<span class="variable">bullishDiv</span> = <span class="variable">close</span> &lt; <span class="variable">close</span>[<span class="number">1</span>] and <span class="variable">close</span>[<span class="number">1</span>] &lt; <span class="variable">close</span>[<span class="number">2</span>] and <span class="variable">volumeRocValue</span> > <span class="variable">volumeRocValue</span>[<span class="number">1</span>] and <span class="variable">volumeRocValue</span>[<span class="number">1</span>] > <span class="variable">volumeRocValue</span>[<span class="number">2</span>]
+
+<span class="comment">// Bearish Divergence: Price higher high, Volume ROC lower high</span>
+<span class="variable">bearishDiv</span> = <span class="variable">close</span> > <span class="variable">close</span>[<span class="number">1</span>] and <span class="variable">close</span>[<span class="number">1</span>] > <span class="variable">close</span>[<span class="number">2</span>] and <span class="variable">volumeRocValue</span> &lt; <span class="variable">volumeRocValue</span>[<span class="number">1</span>] and <span class="variable">volumeRocValue</span>[<span class="number">1</span>] &lt; <span class="variable">volumeRocValue</span>[<span class="number">2</span>]
+
+<span class="comment">// Plot shapes on the chart to indicate divergence</span>
+<span class="function">plotshape</span>(<span class="variable">bullishDiv</span>, <span class="property">title</span>=<span class="string">"Bullish Vol ROC Divergence"</span>, <span class="property">location</span>=<span class="constant">location.belowbar</span>, <span class="property">color</span>=<span class="constant">color.green</span>, <span class="property">style</span>=<span class="constant">shape.triangleup</span>, <span class="property">size</span>=<span class="constant">size.small</span>)
+<span class="function">plotshape</span>(<span class="variable">bearishDiv</span>, <span class="property">title</span>=<span class="string">"Bearish Vol ROC Divergence"</span>, <span class="property">location</span>=<span class="constant">location.abovebar</span>, <span class="property">color</span>=<span class="constant">color.red</span>, <span class="property">style</span>=<span class="constant">shape.triangledown</span>, <span class="property">size</span>=<span class="constant">size.small</span>)
+
+<span class="keyword">if</span> (<span class="variable">bullishDiv</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Divergence"</span>, <span class="constant">strategy.long</span>)
+
+<span class="keyword">if</span> (<span class="variable">bearishDiv</span>)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Divergence"</span>, <span class="constant">strategy.short</span>)
+
+<span class="comment">// Basic exit after a few bars or on opposite signal</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Divergence Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Long Divergence"</span>, <span class="property">profit</span>=<span class="variable">close</span>*<span class="number">0.02</span>, <span class="property">loss</span>=<span class="variable">close</span>*<span class="number">0.01</span>)
+<span class="function">strategy.exit</span>(<span class="string">"Short Divergence Exit"</span>, <span class="property">from_entry</span>=<span class="string">"Short Divergence"</span>, <span class="property">profit</span>=<span class="variable">close</span>*<span class="number">0.02</span>, <span class="property">loss</span>=<span class="variable">close</span>*<span class="number">0.01</span>)
+</code></pre>
+
+
+    <h2>Optimizing Volume Rate of Change (Volume ROC) Performance</h2>
+    <p>To get the most from Volume Rate of Change in Pine Script:</p>
+    <ul>
+      <li><strong>Focus on Divergence:</strong> Like other ROC indicators, Volume ROC's most reliable and actionable signals often come from <b>divergences</b> with price. These can provide early warnings of trend reversals.</li>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter (commonly 10 to 20 periods) influences the responsiveness of Volume ROC. Shorter lengths make it more sensitive to recent volume changes, potentially generating more signals. Longer lengths smooth the indicator, providing a broader view of volume momentum.</li>
+      <li><strong>Combine with Price Action:</strong> Always confirm Volume ROC signals with <b>price action</b>. A strong surge in Volume ROC is more meaningful if it aligns with a price breakout from a significant chart pattern (e.g., triangle, rectangle).</li>
+      <li><strong>Context is Key:</strong> Interpret Volume ROC in the context of the overall price trend. A positive Volume ROC in an uptrend confirms buying pressure, while a negative one in a downtrend confirms selling pressure.</li>
+      <li><strong>Thresholds:</strong> Experiment with positive and negative thresholds (e.g., +50% and -50%) to identify significant surges or contractions in volume momentum that are relevant to the asset you are trading.</li>
+      <li><strong>Volume Data Quality:</strong> Volume ROC is highly dependent on accurate and reliable volume data. Ensure the asset you are analyzing has consistent volume reporting.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Volume as a Leading Indicator:</b> Volume often changes before price. Volume ROC helps you spot these shifts in market participation, potentially giving you an edge.
+    </div>
+
+    <h2>Common Volume Rate of Change (Volume ROC) Pitfalls</h2>
+    <ul>
+      <li> <b>Lag:</b> As a momentum indicator derived from historical data, Volume ROC can still exhibit some lag, especially during sharp reversals.</li>
+      <li> <b>False Signals:</b> In very choppy or low-volume markets, Volume ROC can be erratic, generating ambiguous or false signals.</li>
+      <li> <b>No Fixed Overbought/Oversold Levels:</b> Unlike oscillators like RSI, Volume ROC does not have predefined overbought/oversold zones. Its interpretation relies on its trend, zero-line crossovers, and divergence from price.</li>
+      <li> <b>Sensitivity to Volume Spikes:</b> Isolated, large volume spikes (e.g., due to news releases) can cause extreme readings in Volume ROC that may not represent sustained changes in market participation.</li>
+      <li> <b>Division by Zero:</b> If `volume[length]` is zero, the calculation can result in a division by zero error. The provided Pine Script code includes a check for this.</li>
+      <li> <b>Not a Standalone Indicator:</b> Volume ROC is a powerful analytical tool but should never be used in isolation. It works best as a confirming indicator within a broader trading strategy.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Volume Rate of Change (Volume ROC) is an insightful technical indicator available in Pine Script for TradingView that focuses specifically on <b>volume momentum</b>. By quantifying the percentage change in trading volume over time, it provides traders with valuable insights into the underlying conviction behind price movements, aiding in trend confirmation, breakout detection, and identifying potential reversals through divergence. While it requires careful interpretation and combination with price action, mastering Volume ROC can significantly enhance your <b>pine script strategies</b> by providing a clearer understanding of market participation and the efficiency of price trends.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-924380332516617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Relative Volatility Index (RVI) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Relative Volatility Index (RVI) in Pine Script for TradingView - an indicator that quantifies the relative strength of upward volatility versus downward volatility to identify trend health and potential reversals.">
+    <meta name="keywords" content="pine script strategies, Relative Volatility Index, RVI, tradingview indicator, technical analysis, volatility, trend strength, divergence, price range, momentum">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Relative Volatility Index (RVI) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Relative Volatility Index (RVI) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Relative Volatility Index (RVI) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-RelativeVolatilityIndex.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Relative Volatility Index (RVI) - Complete TradingView Guide",
+      "description": "Master the Relative Volatility Index (RVI) in Pine Script for TradingView - an indicator that quantifies the relative strength of upward volatility versus downward volatility to identify trend health and potential reversals.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-RelativeVolatilityIndex.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Relative Volatility Index (RVI)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-RelativeVolatilityIndex.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Relative Volatility Index (RVI) </h1>
+      <p class="blog-subtitle">Master this unique volatility indicator in TradingView's Pine Script that measures the relative strength of upward price volatility against downward price volatility to assess trend health and potential reversals.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Relative Volatility Index (RVI)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Relative Volatility Index (RVI)?</h2>
+    <p>The <b>Relative Volatility Index (RVI)</b> is a technical indicator that quantifies the relative strength of upward price volatility versus downward price volatility over a specific period. It is distinct from the more commonly known Relative Vigor Index (also abbreviated RVI) and aims to show whether volatility during upward price moves is stronger than volatility during downward price moves, or vice-versa. This can provide insights into the underlying conviction of a trend and potential turning points.</p>
+
+    <p>RVI is an unbounded ratio, typically calculated by summing the True Range (TR) on "up" days and "down" days separately, and then taking a ratio of their smoothed values. A high RVI value suggests that upward volatility is dominant, indicating a healthy uptrend or potential for reversal upwards. A low RVI value indicates that downward volatility is dominant, suggesting a healthy downtrend or potential for reversal downwards.</p>
+
+    <p>In Pine Script, the Relative Volatility Index can be a valuable tool for advanced traders looking for nuanced signals regarding market strength and weakness beyond just price direction.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Relative Volatility Index (RVI) involves the following steps:</p>
+    <ol>
+      <li><strong>True Range (TR)</strong>: For each period, calculate the True Range, which is the greatest of:
+        <ul>
+          <li>`Current High - Current Low`</li>
+          <li>`Absolute value of Current High - Previous Close`</li>
+          <li>`Absolute value of Current Low - Previous Close`</li>
+        </ul>
+        `TR = ta.tr`
+      </li>
+      <li><strong>Up Day / Down Day True Range</strong>:
+        <ul>
+          <li>`Up TR Sum = TR` if `Current Close > Previous Close`, else `0`.</li>
+          <li>`Down TR Sum = TR` if `Current Close < Previous Close`, else `0`.</li>
+        </ul>
+      </li>
+      <li><strong>Smoothed Up / Down True Range</strong>: Calculate a Simple Moving Average (SMA) or other smoothing average of the `Up TR Sum` and `Down TR Sum` over a specified `length` (e.g., 14 periods).
+        <ul>
+          <li>`Avg Up TR = SMA(Up TR Sum, length)`</li>
+          <li>`Avg Down TR = SMA(Down TR Sum, length)`</li>
+        </ul>
+      </li>
+      <li><strong>RVI Formula</strong>: The ratio of `Avg Up TR` to `Avg Down TR`, often multiplied by 100 for scaling.
+        <br>
+        `RVI = (Avg Up TR / Avg Down TR) * 100` (ensure `Avg Down TR` is not zero to prevent division by zero errors).
+      </li>
+    </ol>
+    <p>A common `length` for RVI is 14 periods.</p>
+
+    <h2>Basic Relative Volatility Index (RVI) Implementation in Pine Script</h2>
+    <p>Pine Script v5 does not have a direct built-in function for the Relative Volatility Index (RVI), so we will implement it manually using `ta.tr` and `ta.sma`.</p>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Relative Volatility Index (RVI)"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for RVI length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate True Range (TR)</span>
+tr = <span class="function">ta.tr</span>
+
+<span class="comment">// Determine if it's an 'Up Day' or 'Down Day' based on close vs previous close</span>
+<span class="comment">// Use a small epsilon to avoid false signals on exact same close prices</span>
+isUpDay = close > close[<span class="number">1</span>]
+isDownDay = close &lt; close[<span class="number">1</span>]
+
+<span class="comment">// Accumulate True Range for Up Days and Down Days separately</span>
+<span class="comment">// If it's not an up/down day, the value is 0.0</span>
+upTrValue = isUpDay ? tr : <span class="number">0.0</span>
+downTrValue = isDownDay ? tr : <span class="number">0.0</span>
+
+<span class="comment">// Smooth the accumulated True Ranges using a Simple Moving Average (SMA)</span>
+avgUpTr = <span class="function">ta.sma</span>(upTrValue, length)
+avgDownTr = <span class="function">ta.sma</span>(downTrValue, length)
+
+<span class="comment">// Calculate Relative Volatility Index</span>
+<span class="comment">// Add a small epsilon to the denominator to prevent division by zero,</span>
+<span class="comment">// which can happen if there are no down days in the lookback period.</span>
+rviValue = avgDownTr != <span class="number">0</span> ? (avgUpTr / avgDownTr) * <span class="number">100</span> : <span class="number">0.0</span>
+
+<span class="comment">// Plot the RVI line</span>
+<span class="function">plot</span>(rviValue, <span class="keyword">title</span>=<span class="string">"Relative Volatility Index"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add reference levels. These are subjective and depend on the asset.</span>
+<span class="comment">// 100 means equal upward and downward volatility.</span>
+<span class="comment">// Values > 100 mean upward volatility is dominant.</span>
+<span class="comment">// Values < 100 mean downward volatility is dominant.</span>
+<span class="function">hline</span>(<span class="number">100</span>, <span class="string">"Equilibrium (100)"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+<span class="function">hline</span>(<span class="number">150</span>, <span class="string">"Bullish Bias Ref (150)"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(<span class="number">50</span>, <span class="string">"Bearish Bias Ref (50)"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+
+<span class="comment">// Highlight background zones for visual clarity</span>
+<span class="function">bgcolor</span>(rviValue > <span class="number">150</span> ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Strong Bullish Volatility"</span>)
+<span class="function">bgcolor</span>(rviValue &lt; <span class="number">50</span> ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Strong Bearish Volatility"</span>)
+</code></pre>
+
+
+    <div class="tip">
+      <strong>Volatility Ratio:</strong> RVI helps assess which side (buyers or sellers) is generating more volatility, giving insight into underlying market conviction.
+    </div>
+
+    <h2>Practical RVI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Trend Confirmation and Strength</h3>
+    <p>RVI can be used to confirm the strength of an existing trend. In a healthy uptrend, upward volatility should dominate (RVI > 100 and rising). In a healthy downtrend, downward volatility should dominate (RVI < 100 and falling).</p>
+    <ul>
+      <li><strong>Bullish Confirmation</strong>: When price is in an uptrend, and RVI is consistently above 100 and preferably rising. This indicates that upward price movements (and their ranges) are more significant than downward ones.</li>
+      <li><strong>Bearish Confirmation</strong>: When price is in a downtrend, and RVI is consistently below 100 and preferably falling. This indicates that downward price movements are more significant than upward ones.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"RVI Trend Confirmation Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">rviBullishThreshold</span> = <span class="function">input.float</span>(<span class="number">150</span>, <span class="keyword">title</span>=<span class="string">"RVI Bullish Threshold"</span>, <span class="keyword">minval</span>=<span class="number">100</span>)
+<span class="keyword">rviBearishThreshold</span> = <span class="function">input.float</span>(<span class="number">50</span>, <span class="keyword">title</span>=<span class="string">"RVI Bearish Threshold"</span>, <span class="keyword">maxval</span>=<span class="number">100</span>)
+
+tr = <span class="function">ta.tr</span>
+isUpDay = close > close[<span class="number">1</span>]
+isDownDay = close &lt; close[<span class="number">1</span>]
+upTrValue = isUpDay ? tr : <span class="number">0.0</span>
+downTrValue = isDownDay ? tr : <span class="number">0.0</span>
+avgUpTr = <span class="function">ta.sma</span>(upTrValue, length)
+avgDownTr = <span class="function">ta.sma</span>(downTrValue, length)
+rviValue = avgDownTr != <span class="number">0</span> ? (avgUpTr / avgDownTr) * <span class="number">100</span> : <span class="number">0.0</span>
+
+<span class="function">plot</span>(rviValue, <span class="string">"RVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">100</span>, <span class="string">"Equilibrium"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(rviBullishThreshold, <span class="string">"Bullish Threshold"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(rviBearishThreshold, <span class="string">"Bearish Threshold"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Simple trend filter (e.g., using a long-term EMA)</span>
+trendEMA = <span class="function">ta.ema</span>(close, <span class="number">50</span>)
+isUptrend = close > trendEMA
+isDowntrend = close &lt; trendEMA
+
+<span class="comment">// Long Entry: Uptrend confirmed by price and RVI showing strong upward volatility bias</span>
+longCondition = isUptrend <span class="keyword">and</span> rviValue > rviBullishThreshold <span class="keyword">and</span> rviValue > rviValue[<span class="number">1</span>]
+
+<span class="comment">// Short Entry: Downtrend confirmed by price and RVI showing strong downward volatility bias</span>
+shortCondition = isDowntrend <span class="keyword">and</span> rviValue &lt; rviBearishThreshold <span class="keyword">and</span> rviValue &lt; rviValue[<span class="number">1</span>]
+
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long Confirmed"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short Confirmed"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Basic exit: trend reversal or RVI weakening</span>
+<span class="function">strategy.close</span>(<span class="string">"Long Confirmed"</span>, <span class="keyword">when</span>=close &lt; trendEMA <span class="keyword">or</span> rviValue &lt; <span class="number">100</span>)
+<span class="function">strategy.close</span>(<span class="string">"Short Confirmed"</span>, <span class="keyword">when</span>=close > trendEMA <span class="keyword">or</span> rviValue > <span class="number">100</span>)
+</code></pre>
+
+
+    <h3>2. Trend Reversal Signals (Zero/Equilibrium Line Crossovers)</h3>
+    <p>A crossover of the 100-level (the equilibrium point) can signal a shift in the dominant volatility, potentially indicating a trend reversal or a pause in the current trend.</p>
+    <ul>
+      <li><strong>Bullish Reversal Signal</strong>: RVI crosses above 100, suggesting that upward volatility is beginning to dominate after a period of downward volatility dominance.</li>
+      <li><strong>Bearish Reversal Signal</strong>: RVI crosses below 100, suggesting that downward volatility is beginning to dominate after a period of upward volatility dominance.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"RVI Reversal Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+tr = <span class="function">ta.tr</span>
+isUpDay = close > close[<span class="number">1</span>]
+isDownDay = close &lt; close[<span class="number">1</span>]
+upTrValue = isUpDay ? tr : <span class="number">0.0</span>
+downTrValue = isDownDay ? tr : <span class="number">0.0</span>
+avgUpTr = <span class="function">ta.sma</span>(upTrValue, length)
+avgDownTr = <span class="function">ta.sma</span>(downTrValue, length)
+rviValue = avgDownTr != <span class="number">0</span> ? (avgUpTr / avgDownTr) * <span class="number">100</span> : <span class="number">0.0</span>
+
+<span class="function">plot</span>(rviValue, <span class="string">"RVI"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(<span class="number">100</span>, <span class="string">"Equilibrium (100)"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Conditions for entries based on 100-level crossover</span>
+longSignal = <span class="function">ta.crossover</span>(rviValue, <span class="number">100</span>)
+shortSignal = <span class="function">ta.crossunder</span>(rviValue, <span class="number">100</span>)
+
+<span class="keyword">if</span> (longSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Long RVI Cross"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortSignal)
+    <span class="function">strategy.entry</span>(<span class="string">"Short RVI Cross"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+</code></pre>
+
+
+    <h3>3. Divergence with Price</h3>
+    <p>Divergence between price and RVI can be a strong indication of weakening underlying conviction in the current trend, potentially leading to a reversal.</p>
+    <ul>
+      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but RVI makes a higher low (or fails to make a significantly lower low). This suggests that downside volatility is diminishing, even as price declines, hinting at a potential upward reversal.</li>
+      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but RVI makes a lower high (or fails to make a significantly higher high). This suggests that upward volatility is diminishing, even as price rises, hinting at a potential downward reversal.</li>
+    </ul>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"RVI Divergence Scanner"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">14</span>, <span class="keyword">title</span>=<span class="string">"RVI Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+tr = <span class="function">ta.tr</span>
+isUpDay = close > close[<span class="number">1</span>]
+isDownDay = close &lt; close[<span class="number">1</span>]
+upTrValue = isUpDay ? tr : <span class="number">0.0</span>
+downTrValue = isDownDay ? tr : <span class="number">0.0</span>
+avgUpTr = <span class="function">ta.sma</span>(upTrValue, length)
+avgDownTr = <span class="function">ta.sma</span>(downTrValue, length)
+rviValue = avgDownTr != <span class="number">0</span> ? (avgUpTr / avgDownTr) * <span class="number">100</span> : <span class="number">0.0</span>
+
+<span class="function">plot</span>(rviValue, <span class="string">"Relative Volatility Index"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(<span class="number">100</span>, <span class="string">"Equilibrium (100)"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+
+<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
+<span class="comment">// This is a simplified example focusing on price vs RVI divergence.</span>
+
+<span class="comment">// Bullish Divergence (Price lower low, RVI higher low or less negative)</span>
+bullishDivergence = close[<span class="number">2</span>] &gt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &gt; close <span class="keyword">and</span> rviValue[<span class="number">2</span>] &lt; rviValue[<span class="number">1</span>] <span class="keyword">and</span> rviValue[<span class="number">1</span>] &lt; rviValue
+
+<span class="comment">// Bearish Divergence (Price higher high, RVI lower high or less positive)</span>
+bearishDivergence = close[<span class="number">2</span>] &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close <span class="keyword">and</span> rviValue[<span class="number">2</span>] &gt; rviValue[<span class="number">1</span>] <span class="keyword">and</span> rviValue[<span class="number">1</span>] &gt; rviValue
+
+<span class="function">plotshape</span>(bullishDivergence, <span class="keyword">title</span>=<span class="string">"Bullish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+<span class="function">plotshape</span>(bearishDivergence, <span class="keyword">title</span>=<span class="string">"Bearish Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
+
+<span class="function">alertcondition</span>(bullishDivergence, <span class="string">"Bullish RVI Divergence"</span>, <span class="string">"Potential bullish reversal based on RVI divergence."</span>)
+<span class="function">alertcondition</span>(bearishDivergence, <span class="string">"Bearish RVI Divergence"</span>, <span class="string">"Potential bearish reversal based on RVI divergence."</span>)
+</code></pre>
+
+
+    <h2>Optimizing Relative Volatility Index (RVI) Performance</h2>
+    <p>To get the most from the Relative Volatility Index in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter (commonly 14) influences the responsiveness of RVI. Shorter lengths will make it more sensitive to recent volatility shifts, potentially leading to more signals and noise. Longer lengths will smooth the indicator, providing a broader view of volatility dominance but with more lag. Experiment to find optimal settings for your asset and timeframe.</li>
+      <li><strong>Contextual Interpretation:</strong> RVI values are relative. What constitutes a "strong bullish bias" (e.g., RVI > 150 or 200) or "strong bearish bias" (e.g., RVI &lt; 50) will vary significantly between different assets or market conditions. Analyze historical RVI ranges for your specific asset.</li>
+      <li><strong>Combine with Price Action:</strong> RVI is a volatility-based momentum indicator. Always confirm RVI signals with actual price action, such as candlestick patterns, breaks of support/resistance, or chart patterns, for higher conviction trades.</li>
+      <li><strong>Filter with Trend Indicators:</strong> To reduce false signals, especially around the 100-level, combine RVI with a separate trend-following indicator (e.g., a long-term moving average, ADX). For instance, only take bullish RVI signals in an established uptrend.</li>
+      <li><strong>Divergence Reliability:</strong> RVI divergence can be a powerful signal, especially for identifying trend exhaustion. These signals are often more reliable than simple crossovers.</li>
+    </ul>
+
+    <div class="tip">
+      <strong>Beyond Price-Only:</strong> RVI adds a unique dimension to momentum analysis by incorporating volatility into the calculation, offering a different perspective than traditional momentum oscillators.
+    </div>
+
+    <h2>Common Relative Volatility Index (RVI) Pitfalls</h2>
+    <ul>
+      <li> <b>Not a Direct Buy/Sell Signal:</b> RVI primarily measures *relative volatility strength*, not necessarily an immediate buy/sell signal on its own. It's a contextual indicator.</li>
+      <li> <b>Lag:</b> As it uses moving averages, RVI is a lagging indicator and will not perfectly pinpoint exact tops or bottoms.</li>
+      <li> <b>False Signals in Sideways Markets:</b> In very tight ranges or choppy markets, RVI can fluctuate around the 100-level, generating ambiguous or false signals. It performs best in trending environments where there's a clear bias in volatility.</li>
+      <li> <b>Division by Zero:</b> If `avgDownTr` is zero (meaning no down days in the lookback period, which is rare but possible in strong uptrends on very short timeframes), it can cause a division by zero error. The provided Pine Script code includes a check for this.</li>
+      <li> <b>Confusion with Relative Vigor Index:</b> Be mindful that "RVI" can refer to two different indicators. Ensure you are using the correct calculation and interpretation.</li>
+      <li> <b>Not a Standalone Indicator:</b> RVI should always be used as part of a comprehensive trading system, complementing other indicators and price action analysis.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Relative Volatility Index (RVI) is an advanced and insightful technical indicator in Pine Script for TradingView. By quantifying the dominance of upward versus downward price volatility, it provides a unique perspective on underlying market conviction and trend health. Whether used for confirming the strength of a trend, identifying potential shifts around the 100-level, or spotting powerful reversals through divergence, RVI adds a valuable layer to your technical analysis. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and robust price action analysis, you can leverage the RVI to enhance your trading decisions and gain a deeper understanding of the market's dynamic forces.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

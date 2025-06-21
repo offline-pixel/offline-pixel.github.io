@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Gopalakrishnan Range Index (GAPO) - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master the Gopalakrishnan Range Index (GAPO) in Pine Script for TradingView - a unique indicator that measures the market's efficiency and trend strength by comparing price range to ATR.">
+    <meta name="keywords" content="pine script strategies, Gopalakrishnan Range Index, GAPO, tradingview indicator, technical analysis, trend strength, volatility, market efficiency, range">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Gopalakrishnan Range Index (GAPO) - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Gopalakrishnan Range Index (GAPO) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Gopalakrishnan Range Index (GAPO) - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-GAPO.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Gopalakrishnan Range Index (GAPO) - Complete TradingView Guide",
+      "description": "Master the Gopalakrishnan Range Index (GAPO) in Pine Script for TradingView - a unique indicator that measures the market's efficiency and trend strength by comparing price range to ATR.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-GAPO.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Gopalakrishnan Range Index (GAPO)",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-GAPO.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Gopalakrishnan Range Index (GAPO) </h1>
+      <p class="blog-subtitle">Master this unique indicator in TradingView's Pine Script that measures how efficiently price is trending by comparing its range to average true range.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Intermediate</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="https://offline-pixel.github.io/">Home</a> >
+  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+  <span aria-current="page">Gopalakrishnan Range Index (GAPO)</span>
+</nav>
+
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is the Gopalakrishnan Range Index (GAPO)?</h2>
+    <p>The <b>Gopalakrishnan Range Index (GAPO)</b> is a technical indicator designed to measure the efficiency of a market's trend by comparing the highest high to the lowest low over a certain period, relative to the Average True Range (ATR) over the same period. Essentially, it assesses how much of the price movement within a given timeframe contributes to the overall directional trend versus just random volatility. A high GAPO value suggests a strong, efficient trend, while a low value indicates consolidation, choppiness, or a less efficient trending environment.</p>
+
+    <p>In Pine Script, GAPO can be a valuable tool for traders to understand the underlying "quality" of a trend, helping to identify periods where a market is likely to continue its direction with conviction versus periods where it's consolidating or experiencing significant whipsaws.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of the Gopalakrishnan Range Index involves three main components:</p>
+    <ol>
+      <li><strong>Highest High (HH)</strong>: The highest price over the specified `length` period.</li>
+      <li><strong>Lowest Low (LL)</strong>: The lowest price over the specified `length` period.</li>
+      <li><strong>Average True Range (ATR)</strong>: A measure of market volatility over the same `length` period.</li>
+      <li><strong>GAPO Formula</strong>:
+        <br>
+        `GAPO = ((Highest High - Lowest Low) / ATR) * 100`
+        <br>
+        The result is multiplied by 100 to scale it, making it easier to read and compare.
+      </li>
+    </ol>
+    <p>The standard `length` for GAPO is often 10 or 14 periods, matching common ATR settings.</p>
+
+    <h2>Basic Gopalakrishnan Range Index (GAPO) Implementation in Pine Script</h2>
+    <p>Pine Script v5 makes it straightforward to calculate GAPO using `ta.highest()`, `ta.lowest()`, and `ta.atr()`.</p>
+
+    <pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"Gopalakrishnan Range Index (GAPO)"</span>, overlay=<span class="keyword">false</span>, format=format.price) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for the look-back length</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Highest High and Lowest Low over the period</span>
+highestHigh = <span class="function">ta.highest</span>(high, length)
+lowestLow = <span class="function">ta.lowest</span>(low, length)
+
+<span class="comment">// Calculate Average True Range over the period</span>
+atrValue = <span class="function">ta.atr</span>(length)
+
+<span class="comment">// Calculate GAPO</span>
+<span class="comment">// Add a check to prevent division by zero if ATR is ever 0 (highly unlikely for liquid assets)</span>
+gapoValue = atrValue != <span class="number">0</span> ? ((highestHigh - lowestLow) / atrValue) * <span class="number">100</span> : <span class="number">0</span>
+
+<span class="comment">// Plot the GAPO line</span>
+<span class="function">plot</span>(gapoValue, <span class="keyword">title</span>=<span class="string">"GAPO"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add reference lines based on historical observation or common thresholds</span>
+<span class="comment">// These levels are not fixed and depend on the asset and timeframe.</span>
+<span class="comment">// For example, values above 150-200 might indicate strong trends.</span>
+<span class="comment">// Values below 50-100 might indicate consolidation.</span>
+<span class="function">hline</span>(<span class="number">150</span>, <span class="string">"Strong Trend Ref"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(<span class="number">100</span>, <span class="string">"Mid Range Ref"</span>, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">gray</span>, <span class="number">50</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dotted</span>)
+<span class="function">hline</span>(<span class="number">50</span>, <span class="string">"Consolidation Ref"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+</code>
+</pre>
+
+
+    <div class="tip">
+     <b>Trend Efficiency:</b> Think of GAPO as a measure of how "efficient" the trend is. A high GAPO means a significant portion of the price movement is contributing to the overall range, indicating a strong, directional move.
+    </div>
+
+    <h2>Practical GAPO <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Trend Confirmation and Strength</h3>
+    <p>A rising GAPO or consistently high GAPO values confirm that a strong trend is in progress and is likely to continue. It suggests that volatility is consistently moving in one direction.</p>
+    <ul>
+      <li><strong>Bullish Trend Confirmation</strong>: When price is making higher highs and higher lows, and GAPO is high (e.g., above 150-200, depending on asset) and ideally rising. This confirms the strength of the uptrend.</li>
+      <li><strong>Bearish Trend Confirmation</strong>: When price is making lower highs and lower lows, and GAPO is high (e.g., above 150-200) and ideally rising. This confirms the strength of the downtrend.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"GAPO Trend Strength Strategy"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">gapoThreshold</span> = <span class="function">input.float</span>(<span class="number">150</span>, <span class="keyword">title</span>=<span class="string">"GAPO Trend Threshold"</span>, <span class="keyword">minval</span>=<span class="number">1</span>) <span class="comment">// Adjust based on asset</span>
+
+highestHigh = <span class="function">ta.highest</span>(high, length)
+lowestLow = <span class="function">ta.lowest</span>(low, length)
+atrValue = <span class="function">ta.atr</span>(length)
+gapoValue = atrValue != <span class="number">0</span> ? ((highestHigh - lowestLow) / atrValue) * <span class="number">100</span> : <span class="number">0</span>
+
+<span class="function">plot</span>(gapoValue, <span class="string">"GAPO"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(gapoThreshold, <span class="string">"Trend Threshold"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Use a simple moving average to define trend direction</span>
+<span class="keyword">trendLength</span> = <span class="function">input.int</span>(<span class="number">50</span>, <span class="keyword">title</span>=<span class="string">"Trend MA Length"</span>, <span class="keyword">minval</span>=<span class="number">10</span>)
+<span class="keyword">trendMA</span> = <span class="function">ta.sma</span>(close, trendLength)
+
+<span class="comment">// Long entry: Price is in uptrend and GAPO confirms strong trend</span>
+longCondition = close > trendMA <span class="keyword">and</span> gapoValue > gapoThreshold <span class="keyword">and</span> gapoValue > gapoValue[<span class="number">1</span>]
+
+<span class="comment">// Short entry: Price is in downtrend and GAPO confirms strong trend</span>
+shortCondition = close &lt; trendMA <span class="keyword">and</span> gapoValue > gapoThreshold <span class="keyword">and</span> gapoValue > gapoValue[<span class="number">1</span>]
+
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Exits could be based on GAPO falling below threshold or trend reversal</span>
+<span class="function">strategy.close</span>(<span class="string">"Long"</span>, <span class="keyword">when</span>=gapoValue &lt; gapoThreshold - <span class="number">20</span>) <span class="comment">// Exit if trend weakens</span>
+<span class="function">strategy.close</span>(<span class="string">"Short"</span>, <span class="keyword">when</span>=gapoValue &lt; gapoThreshold - <span class="number">20</span>)
+</code>
+</pre>
+
+    <h3>2. Consolidation and Reversal Signals</h3>
+    <p>Conversely, a falling GAPO or consistently low GAPO values (e.g., below 100 or 50) indicate that the market is consolidating, becoming choppy, or losing its directional conviction. This can precede a trend reversal or a breakout from consolidation.</p>
+    <ul>
+      <li><strong>Consolidation Confirmation</strong>: When GAPO is consistently low and often flat. This suggests accumulation/distribution phase.</li>
+      <li><strong>Potential Reversal (from strong trend)</strong>: If GAPO was high, and then starts to decline significantly (especially if it falls below the mid-range like 100), it signals that the trend's efficiency is diminishing, potentially leading to a reversal or a deep pullback.</li>
+      <li><strong>Breakout Confirmation (from consolidation)</strong>: If GAPO is low, and then suddenly surges upwards, it could signal a breakout from a consolidation phase, confirming the new directional move.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"GAPO Consolidation/Breakout Signals"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">gapoLowThreshold</span> = <span class="function">input.float</span>(<span class="number">70</span>, <span class="keyword">title</span>=<span class="string">"GAPO Low Threshold"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">gapoHighThreshold</span> = <span class="function">input.float</span>(<span class="number">150</span>, <span class="keyword">title</span>=<span class="string">"GAPO High Threshold"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+highestHigh = <span class="function">ta.highest</span>(high, length)
+lowestLow = <span class="function">ta.lowest</span>(low, length)
+atrValue = <span class="function">ta.atr</span>(length)
+gapoValue = atrValue != <span class="number">0</span> ? ((highestHigh - lowestLow) / atrValue) * <span class="number">100</span> : <span class="number">0</span>
+
+<span class="function">plot</span>(gapoValue, <span class="string">"GAPO"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
+<span class="function">hline</span>(gapoLowThreshold, <span class="string">"Low Threshold"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+<span class="function">hline</span>(gapoHighThreshold, <span class="string">"High Threshold"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>)
+
+<span class="comment">// Signal for potential consolidation</span>
+isConsolidating = gapoValue &lt; gapoLowThreshold <span class="keyword">and</span> gapoValue[<span class="number">1</span>] &lt; gapoLowThreshold
+
+<span class="comment">// Signal for potential breakout (from low GAPO to high GAPO)</span>
+isBreakout = gapoValue > gapoHighThreshold <span class="keyword">and</span> gapoValue[<span class="number">1</span>] &lt;= gapoLowThreshold
+
+<span class="function">bgcolor</span>(isConsolidating ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">fuchsia</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Consolidation"</span>)
+<span class="function">bgcolor</span>(isBreakout ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Breakout Imminent"</span>)
+
+<span class="function">alertcondition</span>(isConsolidating, <span class="string">"GAPO Consolidation"</span>, <span class="string">"GAPO indicates consolidation."</span>)
+<span class="function">alertcondition</span>(isBreakout, <span class="string">"GAPO Breakout"</span>, <span class="string">"GAPO indicates potential breakout from consolidation."</span>)
+</code></pre>
+
+
+    <h2>Optimizing GAPO Performance</h2>
+    <p>To get the most from the Gopalakrishnan Range Index in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong> The `length` parameter is crucial. A shorter length (e.g., 5-7 periods) will make GAPO more reactive to recent range changes, while a longer length (e.g., 14-20 periods) will provide a smoother view of longer-term trend efficiency. Experiment to match the `length` to your trading style and the asset's typical cycle.</li>
+      <li><strong>Define Relevant Thresholds:</strong> Since GAPO is unbounded (theoretically), its "high" or "low" values are relative to the asset being traded. Backtest or visually observe historical GAPO levels to determine what constitutes a "strong trend" or "consolidation" for your specific asset and timeframe.</li>
+      <li><strong>Combine with Directional Indicators:</strong> GAPO is a trend strength/efficiency indicator, not a directional one. Always combine it with a trend-following indicator (like moving averages, ADX, or price action) to confirm the direction of the trend you are assessing.</li>
+      <li><strong>Confluence with Price Action:</strong> Use GAPO to confirm price action. For example, if price is attempting a breakout from a long consolidation, a surge in GAPO above your "strong trend" threshold would provide strong confirmation.</li>
+      <li><strong>Volume Analysis:</strong> Strong, efficient trends (high GAPO) are often accompanied by sustained high volume. Conversely, consolidation (low GAPO) might see declining volume. Integrating volume analysis can add further conviction.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Efficiency, Not Direction:</b> Remember, GAPO measures the *efficiency* of price movement within its range. It does not tell you if the price is going up or down, only how strongly it's moving in a single direction.
+    </div>
+
+    <h2>Common GAPO Pitfalls</h2>
+    <ul>
+      <li> <b>Not a Directional Indicator:</b> The most common mistake is using GAPO to determine trend direction. It only tells you about the *quality* or *efficiency* of a trend.</li>
+      <li> <b>Requires Context:</b> GAPO signals are highly dependent on the current market environment (trending vs. consolidating). Using it without proper trend identification can lead to misinterpretations.</li>
+      <li> <b>False Signals/Whipsaws:</b> In very choppy or rapidly reversing markets, GAPO can fluctuate quickly, potentially giving ambiguous signals or false confirmations of strength.</li>
+      <li> <b>ATR Sensitivity:</b> Since ATR is a component, the indicator is sensitive to gaps and sudden large price movements that impact ATR.</li>
+      <li> <b>No Universal Levels:</b> The thresholds for "high" or "low" GAPO are subjective and vary by asset and timeframe, requiring careful calibration.</li>
+      <li> <b>Not a Standalone Indicator:</b> GAPO should always be used as part of a broader trading system, complementing other indicators and price action analysis for comprehensive decision-making.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The Gopalakrishnan Range Index (GAPO) is a unique and insightful technical indicator in Pine Script for TradingView. By quantifying the efficiency of price movement relative to its volatility, it offers traders a distinct perspective on trend strength and market phases. Whether used for confirming strong, efficient trends, identifying periods of consolidation, or signaling potential breakouts, GAPO provides valuable context to price action. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and price action analysis, you can leverage the GAPO to gain deeper insights into market dynamics and enhance your trading decisions.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

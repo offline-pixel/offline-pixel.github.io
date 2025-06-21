@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/blog-common.css" />
+    <style>
+        .fullscreen {
+            padding: 10px 50px;
+            max-width: 70%;
+            margin: auto;
+            text-align: justify;
+        }
+        .tip {
+            background: #e8f4fc;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+        }
+        .code-comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+    </style>
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/1d0bc1a6c5f92dbb39d740b56/298aebd458318fd32c6cfc6a7.js");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+
+    <title>Pine Script Historical Volatility - Complete TradingView Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Historical Volatility (HV) in Pine Script for TradingView - a statistical measure of price variation, crucial for risk management, options trading, and understanding market phases.">
+    <meta name="keywords" content="pine script strategies, Historical Volatility, HV, tradingview indicator, technical analysis, volatility, options trading, risk management, standard deviation, log returns, annualization">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Pine Script Historical Volatility - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Historical Volatility (HV) in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Historical Volatility - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html" />
+
+    <!-- JSON-LD Schema -->
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Pine Script Historical Volatility - Complete TradingView Guide",
+      "description": "Master Historical Volatility (HV) in Pine Script for TradingView - a statistical measure of price variation, crucial for risk management, options trading, and understanding market phases.",
+      "author": {
+        "@type": "Person",
+        "name": "Offline Pixel Computers"
+      },
+      "datePublished": "2025-06-10",
+      "image": "https://offline-pixel.github.io/assets/logo2.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/assets/logo2.png"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://offline-pixel.github.io/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "PineScript Strategies",
+            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Historical Volatility",
+            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
+          }
+        ]
+      }
+    }
+    </script>
+</head>
+<body>
+  <header class="blog-header">
+    <div class="container">
+      <h1 class="blog-title">Pine Script Historical Volatility </h1>
+      <p class="blog-subtitle">Master this statistical measure of price fluctuation in TradingView's Pine Script, crucial for risk management, option pricing, and understanding market phases.</p>
+      <p class="job-meta">
+        <span class="job-posted-time">Last Updated on: <span id="dynamicDatePosted"></span></span>
+        <span class="job-location">Expertise: Advanced</span>
+      </p>
+    </div>
+  </header>
+
+  <article class="fullscreen">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://offline-pixel.github.io/">Home</a> >
+    <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
+    <span aria-current="page">Historical Volatility</span>
+  </nav>
+  
+  <div class="pinescript-disclaimer"></div>
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <h2>What is Historical Volatility (HV)?</h2>
+    <p> <b>Historical Volatility (HV)</b> is a statistical measure that quantifies the degree of variation of a security's price returns over a specific past period. Unlike indicators like Average True Range (ATR) which measure average price movement, HV specifically uses <b>standard deviation of logarithmic returns</b> to represent volatility as a percentage. It indicates how much price has deviated from its average over time, effectively showing how "jumpy" or "calm" an asset has been.</p>
+
+    <p>HV is crucial for <b>risk management</b>, particularly in <b>options trading</b> (where it's compared to implied volatility), and for understanding different market phases. High HV suggests unpredictable, large price swings, while low HV suggests stable, smaller price movements.</p>
+
+    <p>In Pine Script, calculating and interpreting Historical Volatility allows traders and investors to adapt their strategies based on the current market's inherent risk and opportunity profile.</p>
+
+    <h2>Components and Calculation</h2>
+    <p>The calculation of Historical Volatility involves several statistical steps, typically annualized for consistency across different assets and timeframes:</p>
+    <ol>
+      <li><strong>Logarithmic Returns</strong>: For each period, calculate the natural logarithm of the current closing price divided by the previous closing price. This normalizes percentage changes.
+        <br>
+        `Log Return = math.log(close / close[1])`
+      </li>
+      <li><strong>Standard Deviation of Log Returns</strong>: Calculate the standard deviation of these logarithmic returns over a specified `length` (e.g., 20 periods for 20 trading days).
+        <br>
+        `StdDev_Log_Returns = ta.stdev(Log Return, length)`
+      </li>
+      <li><strong>Annualization</strong>: To compare volatility across different assets or timeframes, the daily (or per-period) standard deviation is annualized. This involves multiplying by the square root of the number of periods in a year.
+        <br>
+        * For daily data, typically `math.sqrt(252)` (representing 252 trading days in a year).
+        * For weekly data, `math.sqrt(52)`.
+        * For monthly data, `math.sqrt(12)`.
+        <br>
+        `Annualized HV = StdDev_Log_Returns * math.sqrt(Annualization Factor)`
+      </li>
+      <li><strong>Convert to Percentage</strong>: The result is often multiplied by 100 to express it as a percentage.
+        <br>
+        `Historical Volatility (%) = Annualized HV * 100`
+      </li>
+    </ol>
+    <p>A common `length` for daily charts is 20 periods, representing roughly one trading month.</p>
+
+    <h2>Basic Historical Volatility (HV) Implementation in Pine Script</h2>
+    <p>Pine Script v5 requires a custom function to calculate Historical Volatility, as `ta.hvol()` is not a direct built-in in its most common annualized form. We'll leverage `math.log` and `ta.stdev`.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"My Historical Volatility (HV)"</span>, overlay=<span class="keyword">false</span>, format=format.percent) <span class="comment">// overlay=false to plot in a separate pane</span>
+
+<span class="comment">// Input for HV length (number of periods for standard deviation)</span>
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>) <span class="comment">// Minval 2 needed for log return calculation</span>
+
+<span class="comment">// Input for annualization factor</span>
+<span class="comment">// 252 for daily trading days, 365 for calendar days (if using daily candles)</span>
+<span class="comment">// 52 for weekly, 12 for monthly</span>
+<span class="keyword">annualizationFactor</span> = <span class="function">input.int</span>(<span class="number">252</span>, <span class="keyword">title</span>=<span class="string">"Annualization Factor (e.g., 252 for daily)"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+<span class="comment">// Calculate Logarithmic Returns</span>
+<span class="comment">// Handle first bar case (close[1] will be NaN)</span>
+logReturn = <span class="function">math.log</span>(close / close[<span class="number">1</span>])
+
+<span class="comment">// Calculate Standard Deviation of Log Returns</span>
+<span class="comment">// Use `fixnan` to handle the first `length-1` bars where stdev would be NaN</span>
+stdevLogReturns = <span class="function">ta.stdev</span>(logReturn, length)
+
+<span class="comment">// Annualize the Standard Deviation</span>
+annualizedHV = stdevLogReturns * <span class="function">math.sqrt</span>(annualizationFactor)
+
+<span class="comment">// Convert to percentage</span>
+historicalVolatility = annualizedHV * <span class="number">100</span>
+
+<span class="comment">// Plot the Historical Volatility line</span>
+<span class="function">plot</span>(historicalVolatility, <span class="keyword">title</span>=<span class="string">"Historical Volatility (%)"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Optional: Add moving average of HV to identify trends in volatility</span>
+hvMA = <span class="function">ta.sma</span>(historicalVolatility, <span class="number">20</span>) <span class="comment">// 20-period SMA of HV</span>
+<span class="function">plot</span>(hvMA, <span class="keyword">title</span>=<span class="string">"HV SMA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_line</span>)
+
+<span class="comment">// Highlight background when HV is significantly higher or lower than its average</span>
+<span class="function">bgcolor</span>(historicalVolatility > hvMA * <span class="number">1.2</span> ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"High HV"</span>)
+<span class="function">bgcolor</span>(historicalVolatility &lt; hvMA * <span class="number">0.8</span> ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Low HV"</span>)
+</code>
+</pre>
+
+
+    <div class="tip">
+     <b>Percentage Volatility:</b> HV expresses volatility as a percentage, directly comparable across different assets, unlike ATR which is in absolute price units.
+    </div>
+
+    <h2>Practical Historical Volatility (HV) <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+
+    <h3>1. Volatility Regimes (Mean Reversion of Volatility)</h3>
+    <p>Volatility often exhibits mean-reverting behavior: periods of high volatility tend to be followed by periods of low volatility, and vice versa. HV helps identify these shifts.</p>
+    <ul>
+      <li><strong>High HV (Contracting Volatility)</strong>: When HV is significantly high (e.g., above its long-term average or a historical high threshold), it suggests volatility is stretched and might soon contract. This often occurs after sharp price movements. Traders might look for a <b>reversal</b> or a <b>period of consolidation</b> to follow.</li>
+      <li><strong>Low HV (Expanding Volatility)</strong>: When HV is significantly low (e.g., below its long-term average or a historical low threshold), it suggests volatility is compressed and might soon expand. This often occurs during quiet, range-bound periods. Traders might anticipate an <b>impending price breakout</b> or the start of a strong trend.</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"HV Volatility Regimes"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>)
+<span class="keyword">annualizationFactor</span> = <span class="function">input.int</span>(<span class="number">252</span>, <span class="keyword">title</span>=<span class="string">"Annualization Factor"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">hvUpperThreshold</span> = <span class="function">input.float</span>(<span class="number">30.0</span>, <span class="keyword">title</span>=<span class="string">"High HV Threshold (%)"</span>, <span class="keyword">minval</span>=<span class="number">10.0</span>, <span class="keyword">step</span>=<span class="number">1.0</span>)
+<span class="keyword">hvLowerThreshold</span> = <span class="function">input.float</span>(<span class="number">15.0</span>, <span class="keyword">title</span>=<span class="string">"Low HV Threshold (%)"</span>, <span class="keyword">minval</span>=<span class="number">5.0</span>, <span class="keyword">step</span>=<span class="number">1.0</span>)
+
+logReturn = <span class="function">math.log</span>(close / close[<span class="number">1</span>])
+stdevLogReturns = <span class="function">ta.stdev</span>(logReturn, length)
+historicalVolatility = stdevLogReturns * <span class="function">math.sqrt</span>(annualizationFactor) * <span class="number">100</span>
+
+<span class="function">plot</span>(historicalVolatility, <span class="string">"Historical Volatility"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(hvUpperThreshold, <span class="string">"High Vol Threshold"</span>, <span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+<span class="function">hline</span>(hvLowerThreshold, <span class="string">"Low Vol Threshold"</span>, <span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_dashed</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
+
+<span class="comment">// Conditions for Volatility Expansion/Contraction</span>
+isHighHV = historicalVolatility > hvUpperThreshold
+isLowHV = historicalVolatility &lt; hvLowerThreshold
+
+<span class="comment">// Strategy Entry/Exit based on volatility shifts</span>
+<span class="comment">// Example: Enter long when volatility is low and breaks out bullishly</span>
+<span class="comment">// And short when volatility is high and reverses bearishly</span>
+maFast = <span class="function">ta.ema</span>(close, <span class="number">10</span>)
+maSlow = <span class="function">ta.ema</span>(close, <span class="number">20</span>)
+
+<span class="comment">// Anticipate bullish breakout after low volatility</span>
+<span class="keyword">if</span> (isLowHV[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">ta.crossover</span>(maFast, maSlow))
+    <span class="function">strategy.entry</span>(<span class="string">"Long (Vol Expand)"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
+
+<span class="comment">// Anticipate bearish reversal after high volatility</span>
+<span class="keyword">if</span> (isHighHV[<span class="number">1</span>] <span class="keyword">and</span> <span class="function">ta.crossunder</span>(maFast, maSlow))
+    <span class="function">strategy.entry</span>(<span class="string">"Short (Vol Contract)"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
+
+<span class="comment">// Basic exit logic</span>
+<span class="function">strategy.close</span>(<span class="string">"Long (Vol Expand)"</span>, <span class="keyword">when</span>=<span class="function">ta.crossunder</span>(maFast, maSlow))
+<span class="function">strategy.close</span>(<span class="string">"Short (Vol Contract)"</span>, <span class="keyword">when</span>=<span class="function">ta.crossover</span>(maFast, maSlow))
+</code>
+</pre>
+
+    <h3>2. Options Trading (Implied Volatility vs. Historical Volatility)</h3>
+    <p>While Pine Script does not directly provide implied volatility data from options chains, traders often compare an option's implied volatility (IV) to the underlying asset's Historical Volatility (HV) to assess if options are relatively cheap or expensive.</p>
+    <ul>
+      <li> <b>IV > HV:</b> Options are expensive (premium is high relative to actual past price movement). Opportunity for option sellers (e.g., sell covered calls, put credit spreads).</li>
+      <li> <b>IV < HV:</b> Options are cheap (premium is low relative to actual past price movement). Opportunity for option buyers (e.g., buy calls, buy puts).</li>
+    </ul>
+    <p>This strategy is conceptual within Pine Script, as it requires external IV data, but HV itself is a core component.</p>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">indicator</span>(<span class="string">"HV for Options Context"</span>, overlay=<span class="keyword">false</span>, format=format.percent)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>)
+<span class="keyword">annualizationFactor</span> = <span class="function">input.int</span>(<span class="number">252</span>, <span class="keyword">title</span>=<span class="string">"Annualization Factor"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+
+logReturn = <span class="function">math.log</span>(close / close[<span class="number">1</span>])
+stdevLogReturns = <span class="function">ta.stdev</span>(logReturn, length)
+historicalVolatility = stdevLogReturns * <span class="function">math.sqrt</span>(annualizationFactor) * <span class="number">100</span>
+
+<span class="function">plot</span>(historicalVolatility, <span class="string">"Historical Volatility (%)"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// To compare with Implied Volatility (IV), you would need to input IV manually or via external data.</span>
+<span class="comment">// For demonstration, let's assume a hypothetical IV input.</span>
+<span class="comment">// Note: This 'impliedVol' input is purely for illustration; real IV comes from option chain data.</span>
+<span class="keyword">impliedVol</span> = <span class="function">input.float</span>(<span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Implied Volatility (%) (Manual Input for Demo)"</span>, <span class="keyword">group</span>=<span class="string">"Options Context"</span>)
+
+<span class="comment">// Plot the hypothetical Implied Volatility for visual comparison</span>
+<span class="function">plot</span>(<span class="keyword">not</span> <span class="function">na</span>(impliedVol) ? impliedVol : <span class="keyword">na</span>, <span class="string">"Implied Volatility"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
+
+<span class="comment">// Determine if options are relatively expensive or cheap based on IV vs HV</span>
+areOptionsExpensive = historicalVolatility > <span class="number">0</span> <span class="keyword">and</span> impliedVol > historicalVolatility * <span class="number">1.2</span> <span class="comment">// IV is 20% higher than HV</span>
+areOptionsCheap = historicalVolatility > <span class="number">0</span> <span class="keyword">and</span> impliedVol &lt; historicalVolatility * <span class="number">0.8</span> <span class="comment">// IV is 20% lower than HV</span>
+
+<span class="function">bgcolor</span>(areOptionsExpensive ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Options Potentially Expensive"</span>)
+<span class="function">bgcolor</span>(areOptionsCheap ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">90</span>) : <span class="keyword">na</span>, <span class="keyword">title</span>=<span class="string">"Options Potentially Cheap"</span>)
+
+<span class="function">alertcondition</span>(areOptionsExpensive, <span class="string">"Options Expensive"</span>, <span class="string">"Implied Volatility is high relative to Historical Volatility."</span>)
+<span class="function">alertcondition</span>(areOptionsCheap, <span class="string">"Options Cheap"</span>, <span class="string">"Implied Volatility is low relative to Historical Volatility."</span>)
+</code>
+</pre>
+
+    <h3>3. Dynamic Stop Loss & Position Sizing</h3>
+    <p>Similar to ATR, Historical Volatility can be used to dynamically adjust risk management parameters, but on a percentage basis.</p>
+    <ul>
+      <li> <b>Dynamic Stop Loss:</b> For a long position, place a stop loss `X%` below your entry, where `X` is a multiple of the current HV. For a short position, `X%` above your entry.
+        <br>
+        `Stop Loss Price = Entry Price * (1 - (HV * Multiplier) / 100)` for longs.
+      </li>
+      <li> <b>Dynamic Position Sizing:</b> Adjust your position size so that your maximum dollar risk per trade remains constant. When HV is high, reduce position size; when HV is low, increase position size.
+        <br>
+        `Shares = Risk Per Trade / (Entry Price * HV)`</li>
+    </ul>
+<pre><code><span class="comment">//@version=5</span>
+<span class="function">strategy</span>(<span class="string">"HV Dynamic Risk Management"</span>, overlay=<span class="keyword">true</span>)
+
+<span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>)
+<span class="keyword">annualizationFactor</span> = <span class="function">input.int</span>(<span class="number">252</span>, <span class="keyword">title</span>=<span class="string">"Annualization Factor"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">hvStopLossMultiplier</span> = <span class="function">input.float</span>(<span class="number">1.5</span>, <span class="keyword">title</span>=<span class="string">"HV Stop Loss Multiplier"</span>, <span class="keyword">minval</span>=<span class="number">0.1</span>, <span class="keyword">step</span>=<span class="number">0.1</span>) <span class="comment">// e.g., 1.5x HV</span>
+<span class="keyword">accountRiskPerTrade</span> = <span class="function">input.float</span>(<span class="number">1000.0</span>, <span class="keyword">title</span>=<span class="string">"Max $ Risk Per Trade"</span>, <span class="keyword">minval</span>=<span class="number">10</span>)
+
+logReturn = <span class="function">math.log</span>(close / close[<span class="number">1</span>])
+stdevLogReturns = <span class="function">ta.stdev</span>(logReturn, length)
+historicalVolatility = stdevLogReturns * <span class="function">math.sqrt</span>(annualizationFactor) <span class="comment">// Not converting to % for calculation</span>
+
+<span class="comment">// Simple entry: crossing a 20-period SMA</span>
+<span class="keyword">maLength</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="string">"Entry MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
+<span class="keyword">maValue</span> = <span class="function">ta.sma</span>(close, maLength)
+
+longCondition = <span class="function">ta.crossover</span>(close, maValue)
+shortCondition = <span class="function">ta.crossunder</span>(close, maValue)
+
+<span class="comment">// Calculate dynamic stop loss</span>
+<span class="comment">// Ensure historicalVolatility is not zero to prevent division by zero</span>
+longStopLossPercentage = historicalVolatility * hvStopLossMultiplier
+shortStopLossPercentage = historicalVolatility * hvStopLossMultiplier
+
+longStopPrice = strategy.position_avg_price * (<span class="number">1</span> - longStopLossPercentage)
+shortStopPrice = strategy.position_avg_price * (<span class="number">1</span> + shortStopLossPercentage)
+
+<span class="comment">// Calculate dynamic position size</span>
+<span class="comment">// Risk_per_share = Entry Price * HV * Multiplier</span>
+<span class="comment">// Qty = Account Risk / Risk_per_share</span>
+qtyToTrade = <span class="number">0</span>
+<span class="keyword">if</span> (historicalVolatility > <span class="number">0</span>)
+    riskPerShare = close * historicalVolatility * hvStopLossMultiplier
+    qtyToTrade := <span class="function">math.floor</span>(accountRiskPerTrade / riskPerShare)
+    qtyToTrade := <span class="function">math.max</span>(<span class="number">1</span>, qtyToTrade) <span class="comment">// Ensure at least 1 share</span>
+
+<span class="keyword">if</span> (longCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Long HV"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>, <span class="keyword">qty</span>=qtyToTrade)
+
+<span class="keyword">if</span> (shortCondition)
+    <span class="function">strategy.entry</span>(<span class="string">"Short HV"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>, <span class="keyword">qty</span>=qtyToTrade)
+
+<span class="comment">// Apply dynamic stop losses</span>
+<span class="function">strategy.exit</span>(<span class="string">"Long Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long HV"</span>, <span class="keyword">stop</span>=longStopPrice)
+<span class="function">strategy.exit</span>(<span class="string">"Short Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short HV"</span>, <span class="keyword">profit</span>=na, <span class="keyword">stop</span>=shortStopPrice) <span class="comment">// Added profit=na for clarity based on previous exits; adjust if needed</span>
+
+<span class="function">plot</span>(historicalVolatility * <span class="number">100</span>, <span class="string">"HV %"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">purple</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>) <span class="comment">// Plot as percentage for viewing</span>
+<span class="function">plot</span>(strategy.position_avg_price > <span class="number">0</span> ? longStopPrice : <span class="keyword">na</span>, <span class="string">"Long Stop"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_linebr</span>)
+<span class="function">plot</span>(strategy.position_avg_price &lt; <span class="number">0</span> ? shortStopPrice : <span class="keyword">na</span>, <span class="string">"Short Stop"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">plot</span>.<span class="function">style_linebr</span>)
+</code>
+</pre>
+
+
+    <h2>Optimizing Historical Volatility Performance</h2>
+    <p>To get the most from Historical Volatility in Pine Script:</p>
+    <ul>
+      <li><strong>Parameter Tuning:</strong>
+        <ul>
+          <li>`Length`: The period for calculating standard deviation. Common values are 20 (for daily charts, representing a month) or 252 (for annual volatility). Shorter lengths are more reactive to recent price swings, longer lengths provide a smoother, broader view.</li>
+          <li>`Annualization Factor`: Crucial for consistency. Ensure it matches your chart's timeframe (e.g., 252 for daily, 52 for weekly).</li>
+        </ul>
+      </li>
+      <li><strong>Combine with Directional Indicators:</strong> HV tells you *how much* prices are moving, not *where*. Always combine it with trend-following or momentum indicators (e.g., moving averages, MACD, ADX) to confirm the direction of the market before acting on HV signals.</li>
+      <li><strong>Contextual Interpretation:</strong> HV levels are relative to the asset. What's "high" volatility for a stable large-cap stock might be "low" for a highly speculative cryptocurrency. Analyze historical HV ranges for the specific asset.</li>
+      <li><strong>Volatility Spikes and Contractions:</strong> The cyclical nature of volatility (expansion followed by contraction, and vice-versa) is a powerful concept. Look for HV reaching historical extremes as potential turning points for volatility itself, which can precede price reversals or strong breakouts.</li>
+      <li><strong>Options Trading Integration (External):</strong> For serious options trading, compare HV with implied volatility data from an options provider. HV helps determine if current market prices for options are cheap or expensive.</li>
+    </ul>
+
+    <div class="tip">
+     <b>Volatility as a Cycle:</b> Markets often alternate between periods of low volatility (sideways, accumulation) and high volatility (trending, distribution). HV helps you understand where you are in this cycle.
+    </div>
+
+    <h2>Common Historical Volatility Pitfalls</h2>
+    <ul>
+      <li> <b>Not a Directional Signal:</b> The most critical mistake is using HV to predict future price direction. It measures past price *movement*, not future direction.</li>
+      <li> <b>Lagging Indicator:</b> HV is based on past data and calculations, making it a lagging indicator. It reflects what has *already happened*.</li>
+      <li> <b>Sensitivity to Outliers:</b> Extreme price swings (e.g., flash crashes, news events) can cause temporary spikes in HV that might not be representative of the underlying volatility regime.</li>
+      <li> <b>Parameter Dependency:</b> The HV value can change significantly depending on the `length` and `annualizationFactor` chosen, requiring careful selection and consistency.</li>
+      <li> <b>Not a Standalone Indicator:</b> HV is a powerful analytical tool but should always be part of a comprehensive trading system that includes trend analysis, risk management, and confirmation from other indicators.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>Historical Volatility (HV) is a fundamental statistical measure in Pine Script for TradingView, providing a quantifiable understanding of an asset's price variability. By measuring the annualized standard deviation of logarithmic returns, it offers valuable insights into market behavior, aiding in crucial aspects like risk management, position sizing, and adapting strategies to changing volatility regimes. While it does not predict price direction, its ability to signal periods of volatility expansion (preceding breakouts) or contraction (preceding reversals/consolidation) is invaluable. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and robust risk management practices, you can leverage Historical Volatility to enhance your trading decisions and navigate various market environments with greater precision.</p>
+  </article>
+
+  <ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-9243803325136617"
+     data-ad-slot="5548365171"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  <script src="../scripts/scripts.js"></script>
+  <script src="../scripts/dynamicContent.js" defer></script>
+  <script src="../scripts/pinescript-disclaimer.js"></script>
+
+</body>
+</html>

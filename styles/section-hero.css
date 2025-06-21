@@ -1,0 +1,183 @@
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+  color: var(--color-light);
+  padding-left: 5vw;
+  padding-right: 5vw;
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  overflow: hidden;
+}
+
+.hero-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+      rgba(255,255,255,0) 0%, 
+      rgba(255,255,255,0.2) 50%, 
+      rgba(255,255,255,0) 100%);
+  animation: wind 8s linear infinite;
+  z-index: 0;
+}
+
+@keyframes wind {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 1;
+}
+
+.hero-slide.inactive {
+  animation-play-state: paused;
+}
+
+.hero-slide .left, 
+.hero-slide .right {
+  flex: 0.5;
+  padding: 40px;
+  position: relative;
+  z-index: 1; /* Ensure content stays above animated background */
+}
+
+.hero-slide .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+.hero-slide .right {
+  background-color: #fff;
+  color: #333;
+  border: 1px dashed #ccc;
+}
+
+/* Slide-specific animations */
+.hero-slide.slide1 {
+  background: linear-gradient(135deg, #FF7043 0%, #F4511E 50%, #FF8A65 100%);
+  animation: slide1BgAnimation 12s infinite, windEffect1 15s infinite alternate;
+}
+
+.hero-slide.slide2 {
+  background: linear-gradient(135deg, #29B6F6 0%, #0288D1 50%, #4FC3F7 100%);
+  animation: slide2BgAnimation 15s infinite, windEffect2 18s infinite alternate;
+}
+
+.hero-slide.slide3 {
+  background: linear-gradient(135deg, #66BB6A 0%, #2E7D32 50%, #81C784 100%);
+  animation: slide3BgAnimation 14s infinite, windEffect3 16s infinite alternate;
+}
+
+.hero-slide.slide4 {
+  background: linear-gradient(135deg, #AB47BC 0%, #7B1FA2 50%, #BA68C8 100%);
+  animation: slide4BgAnimation 16s infinite, windEffect4 20s infinite alternate;
+}
+
+.hero-slide.slide5 {
+  background: linear-gradient(135deg, #FFA726 0%, #FB8C00 50%, #FFB74D 100%);
+  animation: slide5BgAnimation 13s infinite, windEffect5 14s infinite alternate;
+}
+
+/* Keyframe animations */
+@keyframes slide1BgAnimation {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes slide2BgAnimation {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 80%; }
+}
+
+@keyframes slide3BgAnimation {
+  0%, 100% { background-position: 0% 30%; }
+  50% { background-position: 100% 70%; }
+}
+
+@keyframes slide4BgAnimation {
+  0%, 100% { background-position: 0% 20%; }
+  50% { background-position: 100% 80%; }
+}
+
+@keyframes slide5BgAnimation {
+  0%, 100% { background-position: 0% 40%; }
+  50% { background-position: 100% 60%; }
+}
+
+/* Wind effect variations */
+@keyframes windEffect1 {
+  0% { background-size: 200% 200%; }
+  50% { background-size: 220% 220%; }
+  100% { background-size: 200% 200%; }
+}
+
+@keyframes windEffect2 {
+  0% { background-size: 200% 200%; }
+  50% { background-size: 210% 230%; }
+  100% { background-size: 200% 200%; }
+}
+
+/* Rest of your existing styles... */
+.hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  font-family: var(--title-font);
+  text-shadow: 1px 1px 0px #000;
+}
+
+.hero-subtitle {
+  margin-bottom: 10px;
+}
+
+.hero-description {
+  font-size: 15px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.hero-benefits {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+}
+
+.hero-nav {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.hero-nav .dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hero-nav .dot.active {
+  background-color: #fff;
+}
