@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <title>Page Not Found - Offline Pixel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0MM8039GLD');
+    </script>
+
     <!-- Load Inter font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS from CDN -->
@@ -55,8 +64,8 @@
         }
     </script>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-800 p-4">
-    <div class="text-center bg-white p-8 md:p-12 rounded-xl shadow-2xl transform transition-all duration-300 hover:scale-105 border border-blue-200">
+<body  >
+    <div style="margin-top: 3rem;" class="text-center bg-white p-8 md:p-12 rounded-xl shadow-2xl transform transition-all duration-300 hover:scale-105 border border-blue-200">
         <!-- Large, animated 404 text -->
         <div class="text-blue-600 text-6xl md:text-8xl font-extrabold mb-4 animate-bounce">
             404
@@ -88,6 +97,7 @@
             Go to Homepage
         </a>
     </div>
+    
     <script>
         // Update fallback link dynamically after the page has loaded and elements are available.
         // This ensures the link always points to the most relevant new location or homepage.
@@ -101,5 +111,7 @@
         }
         document.getElementById('redirectLink').href = fallbackHref;
     </script>
+    <script src="https://offline-pixel.github.io/scripts/scripts.js"></script>
+
 </body>
 </html>

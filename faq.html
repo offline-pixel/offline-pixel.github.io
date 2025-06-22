@@ -117,6 +117,8 @@
 
     <title>FAQ: AI Agents, Search Engines, & Project Costs | MVP Developers & Software Engineers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
+
     <meta name="description" content="Frequently Asked Questions about building AI Agents for search engines, project costs ($500-$10,000), MVP development, and benefits for Software Engineers.">
     <meta name="keywords" content="FAQ, AI Agents, search engine optimization, SEO, AI product development, MVP development, software engineers, AI project cost, AI for marketing, machine learning, natural language processing">
 
@@ -309,9 +311,10 @@
   </header>
 
   <article class="fullscreen">
-        <a href="#" onclick="openTeamsChat()" class="teams-button">
+        <!-- <a href="#" onclick="openTeamsChat()" class="teams-button">
           <img src="https://offline-pixel.github.io/assets/teams.png" width="24" height="24" /> &nbsp;&nbsp;Chat on Teams
-        </a>    
+        </a>     -->
+      <div class="" id="top-chat-buttons"></div>
     
     <h2>General Questions about AI Agents & Search Engines</h2>
 
@@ -452,13 +455,26 @@
       <strong>Limited Engagement:</strong> To ensure high-quality, personalized service and dedicated attention to each project, we currently onboard a limited number of new client projects per month. Secure your consultation today!
     </p>
       <!-- <p class="urgency"><sup class="trending">Limited consultation slots available this month to ensure dedicated expert attention!</sup></p> -->
-        <a href="#" onclick="openTeamsChat()" class="teams-button">
+        <!-- <a href="#" onclick="openTeamsChat()" class="teams-button">
           <img src="https://offline-pixel.github.io/assets/teams.png" width="24" height="24" /> &nbsp;&nbsp;Chat on Teams
-        </a>
+        </a> -->
+      <div class="" id="bottom-chat-buttons"></div>
+        
     </div>
 
   </article>
 
+    <script src="./scripts/chat-buttons.js"></script>
+  <script>
+    injectChatButtons('#top-chat-buttons', {
+      margins: '20px 0 20px 0',
+      position: 'prepend'
+    });
+    injectChatButtons('#bottom-chat-buttons', {
+      margins: '20px 0 0 0',
+      position: 'prepend'
+    });
+  </script>
   <script>
     function openTeamsChat() {
       const parts = ['deepak', 'ranolia', '@', 'outlook', '.com'];
