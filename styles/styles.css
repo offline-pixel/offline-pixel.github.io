@@ -1,0 +1,192 @@
+/* ============================= */
+/* VARIABLES                    */
+/* ============================= */
+:root {
+  /* Colors */
+  --color-bg: #f3f3f3;
+  --color-text: #333;
+  --color-heading: #323232;
+  --color-subtext: #555;
+  --color-card-text: #666;
+  --color-review: #777;
+  --color-accent: #ff6f61;
+  --color-accent-hover: #e45548;
+  --color-particle: rgba(210, 210, 210, 0.8);
+  
+  /* Font Sizes */
+  --font-title: 32px;
+  --font-description: 18px;
+  --font-button: 16px;
+  --font-card-title: 18px;
+  --font-card-text: 14px;
+  --font-review: 14px;
+  --font-footer: 11px;
+}
+
+/* ============================= */
+/* RESET + Base                 */
+/* ============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+
+/* ============================= */
+/* Fullscreen Sections          */
+/* ============================= */
+.section {
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================= */
+/* Titles and Text              */
+/* ============================= */
+p.title {
+  font-size: var(--font-title);
+  color: var(--color-heading);
+  text-align: center;
+  margin-bottom: 15px;
+}
+p.description {
+  font-size: var(--font-description);
+  color: var(--color-subtext);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* ============================= */
+/* CTA Button                   */
+/* ============================= */
+.cta-button {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  font-size: var(--font-button);
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+  background-color: var(--color-accent-hover);
+}
+/* ============================= */
+/* Cards                        */
+/* ============================= */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+}
+.card h3 {
+  font-size: var(--font-card-title);
+  margin-bottom: 10px;
+}
+.card p {
+  font-size: var(--font-card-text);
+  color: var(--color-card-text);
+}
+.card a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+.card a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* Reviews                      */
+/* ============================= */
+.reviews {
+  text-align: center;
+}
+.review-slider {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+.review {
+  display: none;
+  max-width: 400px;
+  font-size: var(--font-review);
+  color: var(--color-review);
+}
+.review.active {
+  display: block;
+}
+
+/* ============================= */
+/* Floating Particles           */
+/* ============================= */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+.particle {
+  position: absolute;
+  background-color: var(--color-particle);
+  border-radius: 50%;
+  animation: float 3s infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-50px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* ============================= */
+/* Footer (Optional)            */
+/* ============================= */
+/*
+footer {
+  background: white;
+  padding: 10px;
+  text-align: center;
+  color: var(--color-review);
+  position: relative;
+  z-index: 1;
+}
+footer p {
+  font-size: var(--font-footer);
+  margin: 0;
+}
+*/
