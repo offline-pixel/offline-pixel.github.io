@@ -1,0 +1,193 @@
+<style>
+    footer {
+      background: #fff;
+      border-top: 1px solid #e5e5e5;
+      padding: 3rem 1rem;
+      font-family: 'Segoe UI', sans-serif;
+      position: relative;
+    }
+  
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .footer-heading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #222;
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .footer-heading::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, #ddd 0%, transparent 100%);
+      margin-left: 1rem;
+    }
+  
+    .footer-section p,
+    .footer-section li,
+    .footer-section a {
+      color: #555;
+      margin: 0.4rem 0;
+      text-decoration: none;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  
+    .footer-section a:hover {
+      color: #000;
+      text-decoration: underline;
+    }
+  
+    .footer-bottom {
+      text-align: center;
+      margin-top: 3rem;
+      color: #aaa;
+      font-size: 0.85rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-heading::after {
+        display: none;
+      }
+    }
+    sup.trending {
+      color: red;
+      display: inline-block;
+      transition: all 150ms ease-in-out;
+      animation: trending-color 1.5s ease-in-out infinite alternate; /* Use direct value, no var */
+    }
+
+
+@keyframes trending-color {
+    0% {
+      /* transform: rotate(0deg); */
+      transform: scale(0.8);
+      color: rgb(244, 77, 77);
+      opacity: 0.8;
+    }
+    50% {
+      /* transform: rotate(45deg); */
+      transform: scale(1);
+      color: red;
+      opacity: 1;
+    }
+    100% {
+      /* transform: rotate(0deg); */
+      transform: scale(0.8);
+      color: rgb(250, 96, 96);
+      opacity: 0.8;
+    }
+}
+  </style>
+  
+  <footer>
+    <div class="footer-container">
+      <!-- Company -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Offline Pixel</h4>
+        <p>AI-Powered MVP Development</p>
+        <p>Real humans. Real delivery.</p>
+        <p><a href="https://offline-pixel.github.io/it-services/hire-software-engineers.html" target="_blank">IT Services<sup class="trending">👨🏻‍💻</sup></a></p>
+      </div>
+  
+      <!-- Resources -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Resources</h4>
+        <ul style="list-style: none; padding: 0; text-align:left">
+          <!-- <li><a href="https://offline-pixel.github.io/side-income.html" target="_blank">Side Income</a></li> -->
+          <!-- <li><a href="https://offline-pixel.github.io/commission-only-jobs.html" target="_blank">Sales Job's</a></li> -->
+          <!-- <li><a href="cities-blogs.html" target="_blank">Non Tech Blogs</a></li> -->
+          <li><a href="https://offline-pixel.github.io/aiml.html" target="_blank">AI Agents<sup class="trending">Hot</sup></a></li>
+          <li><a href="https://offline-pixel.github.io/pinescript-strategies.html" target="_blank">Pine Scripts</a></li>
+          <li><a href="https://offline-pixel.github.io/faq.html">FAQs</a></li>
+          <!-- <li><a href="https://www.npmjs.com/~deepak-ranolia" target="_blank">NPM Packages</a></li> -->
+        </ul>
+      </div>
+  
+      <!-- Contact -->
+      <div class="footer-section">
+        <h4 class="footer-heading">Get in Touch</h4>
+        <p><a href="https://offline-pixel.github.io/contact.html">Contact Us!</a></p>
+        <p><a href="https://www.linkedin.com/company/offlinepixel/" target="_blank">LinkedIn</a></p>
+        <p><a style="color: darkred;" href="https://offline-pixel.github.io/travelling-to-north-india.html" target="_blank">Travel<sup class="trending">Popular</sup></a></p>
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      <p><small><a href="privacy-policy.html">Privacy Policy</a></small> <small><a href="terms-conditions.html">tnc</a></small>
+    </p>
+      &copy; 2025 Offline-Pixel. All rights reserved.
+    </div>
+  </footer> 
+    <link rel="stylesheet" href="../styles/cookie.css">
+
+    <!-- Cookie Consent GUI HTML structure -->
+    <!-- This structure is required in every HTML file that uses the cookie-consent.js script -->
+    <!-- <div id="cookie-banner" class="hidden">
+      <p>We use cookies to improve your experience, analyze site traffic, and personalize ads. By clicking "Accept All", you consent to our use of cookies. <a href="https://example.com/privacy-policy" class="text-blue-300 hover:underline" target="_blank">Read our Privacy Policy</a></p>
+      <div class="button-group">
+        <button class="btn-accept" id="accept-cookies">Accept All</button>
+        <button class="btn-reject" id="reject-cookies">Reject All</button>
+        <button class="btn-customize" id="customize-cookies">Customize</button>
+      </div>
+    </div> -->
+
+    <!-- <div id="cookie-preferences-modal" class="hidden">
+      <div class="modal-content">
+        <h3>Cookie Preferences</h3>
+        <p class="text-sm text-gray-600 mb-4">Select which cookie categories you're comfortable with. Necessary cookies cannot be disabled.</p>
+
+        <div class="checkbox-group">
+          <div class="checkbox-item">
+            <input type="checkbox" id="cookie-necessary" checked disabled>
+            <label for="cookie-necessary">Necessary Cookies</label>
+            <p>These cookies are essential for the website to function properly. They enable basic functionalities and security features of the website.</p>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="cookie-analytics" class="cookie-category-checkbox" checked>
+            <label for="cookie-analytics">Analytics Cookies</label>
+            <p>These cookies collect information about how visitors use our website, like which pages they visit most often, and if they get error messages from web pages. This helps us improve how the website works.</p>
+          </div>
+          <div class="checkbox-item">
+            <input type="checkbox" id="cookie-marketing" class="cookie-category-checkbox" checked>
+            <label for="cookie-marketing">Marketing Cookies</label>
+            <p>These cookies are used to track visitors across websites. The intention is to display ads that are relevant and engaging for the individual user.</p>
+          </div>
+        </div>
+
+        <div class="modal-buttons">
+          <button class="btn-close" id="close-preferences">Close</button>
+          <button class="btn-save" id="save-preferences">Save Preferences</button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Link to the cookie consent JavaScript file at the end of the body -->
+    <!-- <script src="../scripts/cookie-consent.js"></script> -->
