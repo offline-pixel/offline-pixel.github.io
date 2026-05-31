@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=yes"
+        />
+        <title>
+            MindyCore | Inclusive Technology for Neurodivergent People
+        </title>
+
+        <!-- Font Awesome Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+
+        <!-- Google Fonts - Highly Legible -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Open+Dyslexic&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            /* ============================================
+           CSS VARIABLES - Light/Dark Mode Ready
+        ============================================ */
+            :root {
+                /* Light Mode (Default) */
+                --bg-primary: #ffffff;
+                --bg-secondary: #f5f7fa;
+                --text-primary: #1a1a2e;
+                --text-secondary: #4a4a6a;
+                --border-color: #e0e0e0;
+                --accent-primary: #4a90e2;
+                --accent-hover: #3a7bc8;
+                --accent-soft: #e8f0fe;
+                --card-bg: #ffffff;
+                --shadow: rgba(0, 0, 0, 0.05);
+                --focus-ring: #4a90e2;
+
+                /* Typography */
+                --font-body:
+                    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    sans-serif;
+                --font-dyslexic: "Open Dyslexic", "Inter", monospace;
+
+                /* Spacing */
+                --container: 56rem;
+                --section-gap: 3rem;
+            }
+
+            /* Dark Mode */
+            [data-theme="dark"] {
+                --bg-primary: #0f0f1a;
+                --bg-secondary: #1a1a2e;
+                --text-primary: #e0e0e0;
+                --text-secondary: #a0a0c0;
+                --border-color: #2a2a40;
+                --accent-primary: #bb86fc;
+                --accent-hover: #9b6fdc;
+                --accent-soft: #1e1e3a;
+                --card-bg: #16162a;
+                --shadow: rgba(0, 0, 0, 0.2);
+                --focus-ring: #bb86fc;
+            }
+
+            /* Dyslexic Font Mode */
+            [data-font="dyslexic"] {
+                --font-body: var(--font-dyslexic);
+            }
+
+            /* Reduced Motion Mode */
+            [data-motion="reduced"] * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            /* High Contrast Mode */
+            [data-contrast="high"] {
+                --bg-primary: #000000;
+                --bg-secondary: #111111;
+                --text-primary: #ffffff;
+                --text-secondary: #ffff00;
+                --border-color: #ffff00;
+                --accent-primary: #ffff00;
+                --accent-hover: #ffcc00;
+                --card-bg: #000000;
+            }
+
+            /* ============================================
+           BASE STYLES
+        ============================================ */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: var(--bg-primary);
+                color: var(--text-primary);
+                font-family: var(--font-body);
+                line-height: 1.65;
+                transition:
+                    background 0.2s ease,
+                    color 0.2s ease;
+            }
+
+            /* Focus states for accessibility */
+            :focus {
+                outline: 3px solid var(--focus-ring);
+                outline-offset: 4px;
+            }
+
+            /* Skip to content link */
+            .skip-link {
+                position: absolute;
+                top: -40px;
+                left: 0;
+                background: var(--accent-primary);
+                color: white;
+                padding: 8px 16px;
+                text-decoration: none;
+                z-index: 1000;
+            }
+            .skip-link:focus {
+                top: 0;
+            }
+
+            .container {
+                max-width: var(--container);
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+
+            section {
+                padding: var(--section-gap) 0;
+                scroll-margin-top: 80px;
+            }
+
+            /* Typography */
+            h1,
+            h2,
+            h3 {
+                font-weight: 600;
+                line-height: 1.3;
+                letter-spacing: -0.02em;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+                border-left: 4px solid var(--accent-primary);
+                padding-left: 1rem;
+            }
+            h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+
+            p,
+            li {
+                margin-bottom: 0.75rem;
+                color: var(--text-secondary);
+            }
+
+            a {
+                color: var(--accent-primary);
+                text-decoration: none;
+            }
+            a:hover {
+                color: var(--accent-hover);
+                text-decoration: underline;
+            }
+
+            button,
+            .button {
+                background: var(--accent-primary);
+                color: white;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition:
+                    background 0.2s ease,
+                    transform 0.1s ease;
+            }
+            button:hover,
+            .button:hover {
+                background: var(--accent-hover);
+                transform: scale(1.02);
+            }
+            button:active {
+                transform: scale(0.98);
+            }
+
+            /* Cards */
+            .card {
+                background: var(--card-bg);
+                border: 1px solid var(--border-color);
+                border-radius: 16px;
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+                box-shadow: 0 2px 8px var(--shadow);
+            }
+
+            details {
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+                margin-bottom: 1rem;
+                padding: 0.75rem;
+            }
+            summary {
+                font-weight: 600;
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 8px;
+            }
+            summary:hover {
+                background: var(--accent-soft);
+            }
+            details[open] summary {
+                margin-bottom: 1rem;
+            }
+
+            /* Grid layouts */
+            .grid-2,
+            .grid-3 {
+                display: grid;
+                gap: 1.5rem;
+            }
+            .grid-2 {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .grid-3 {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            /* Badges */
+            .badge {
+                display: inline-block;
+                background: var(--accent-soft);
+                color: var(--accent-primary);
+                padding: 0.25rem 0.75rem;
+                border-radius: 20px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                margin-bottom: 0.75rem;
+            }
+
+            /* ============================================
+           NAVIGATION & PROGRESS BAR
+        ============================================ */
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-color);
+                backdrop-filter: blur(10px);
+                z-index: 100;
+                padding: 1rem 0;
+            }
+
+            .navbar .container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--text-primary);
+                text-decoration: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .nav-link {
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 0.5rem 0;
+            }
+            .nav-link:hover,
+            .nav-link.active {
+                color: var(--accent-primary);
+                border-bottom: 2px solid var(--accent-primary);
+            }
+
+            .progress-bar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background: var(--accent-primary);
+                width: 0%;
+                z-index: 101;
+                transition: width 0.1s ease;
+            }
+
+            /* Accessibility Controls */
+            .accessibility-bar {
+                background: var(--bg-secondary);
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .accessibility-bar .container {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .access-btn {
+                background: var(--bg-primary);
+                color: var(--text-primary);
+                border: 1px solid var(--border-color);
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            .access-btn:hover {
+                background: var(--accent-soft);
+                transform: none;
+            }
+
+            /* Compact View */
+            .compact-view details {
+                margin-bottom: 0.5rem;
+            }
+            .compact-view .card {
+                padding: 1rem;
+            }
+
+            /* Section Indicator */
+            .section-indicator {
+                position: fixed;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                z-index: 90;
+            }
+            .indicator-dot {
+                width: 8px;
+                height: 8px;
+                background: var(--border-color);
+                border-radius: 50%;
+                transition: all 0.2s ease;
+            }
+            .indicator-dot.active {
+                background: var(--accent-primary);
+                width: 12px;
+                height: 12px;
+                transform: translateX(-2px);
+            }
+
+            /* Search Box */
+            .search-box {
+                position: relative;
+                margin-bottom: 2rem;
+            }
+            .search-input {
+                width: 100%;
+                padding: 0.75rem 1rem;
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                border-radius: 12px;
+                color: var(--text-primary);
+                font-size: 1rem;
+            }
+            .search-results {
+                margin-top: 1rem;
+                padding: 1rem;
+                background: var(--bg-secondary);
+                border-radius: 12px;
+                display: none;
+            }
+
+            /* Newsletter Form */
+            .newsletter-form {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-top: 1rem;
+            }
+            .newsletter-form input {
+                flex: 1;
+                padding: 0.75rem 1rem;
+                background: var(--bg-secondary);
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                color: var(--text-primary);
+                min-width: 200px;
+            }
+
+            /* Footer */
+            footer {
+                border-top: 1px solid var(--border-color);
+                padding: 2rem 0;
+                margin-top: 2rem;
+            }
+
+            /* Scroll behavior */
+            html {
+                scroll-behavior: smooth;
+            }
+            [data-motion="reduced"] html {
+                scroll-behavior: auto;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .navbar .container {
+                    flex-direction: column;
+                }
+                .section-indicator {
+                    display: none;
+                }
+                h1 {
+                    font-size: 1.75rem;
+                }
+                h2 {
+                    font-size: 1.5rem;
+                }
+                .container {
+                    padding: 0 1rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#main" class="skip-link">Skip to main content</a>
+        <div class="progress-bar" id="progressBar"></div>
+
+        <!-- Accessibility Controls Bar -->
+        <div class="accessibility-bar">
+            <div class="container">
+                <button
+                    class="access-btn"
+                    onclick="toggleTheme()"
+                    id="themeBtn"
+                >
+                    <i class="fas fa-moon"></i> Dark Mode
+                </button>
+                <button class="access-btn" onclick="toggleFont()">
+                    <i class="fas fa-font"></i> Dyslexic Font
+                </button>
+                <button class="access-btn" onclick="toggleMotion()">
+                    <i class="fas fa-walking"></i> Reduce Motion
+                </button>
+                <button class="access-btn" onclick="toggleContrast()">
+                    <i class="fas fa-adjust"></i> High Contrast
+                </button>
+                <button class="access-btn" onclick="toggleCompact()">
+                    <i class="fas fa-compress"></i> Compact View
+                </button>
+                <div class="nav-links" style="margin-left: auto">
+                    <button class="access-btn" onclick="switchLang('en')">
+                        EN
+                    </button>
+                    <button class="access-btn" onclick="switchLang('es')">
+                        ES
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="#" class="logo">MindyCore</a>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link" data-section="home"
+                        >Home</a
+                    >
+                    <a href="#about" class="nav-link" data-section="about"
+                        >About</a
+                    >
+                    <a href="#labs" class="nav-link" data-section="labs"
+                        >Labs</a
+                    >
+                    <a
+                        href="#get-started"
+                        class="nav-link"
+                        data-section="get-started"
+                        >Get Started</a
+                    >
+                    <a
+                        href="#testimonials"
+                        class="nav-link"
+                        data-section="testimonials"
+                        >Stories</a
+                    >
+                    <a href="#faq" class="nav-link" data-section="faq">FAQ</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Section Indicator -->
+        <div class="section-indicator" id="sectionIndicator"></div>
+
+        <main id="main">
+            <!-- Search Section -->
+            <div class="container" style="margin-top: 120px">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Search this page..."
+                    />
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
+
+            <!-- HOME Section -->
+            <section id="home">
+                <div class="container">
+                    <span class="badge">Inclusive by Design</span>
+                    <h1 data-i18n="title">
+                        Building Technology for Neurodivergent Minds
+                    </h1>
+                    <p data-i18n="hero">
+                        Clear. Predictable. Accessible. Technology that adapts
+                        to you, not the other way around.
+                    </p>
+                    <a
+                        href="https://hellomindy.mindycore.com"
+                        target="_blank"
+                        class="button"
+                        style="display: inline-block; margin-top: 1rem"
+                    >
+                        <i class="fas fa-comment"></i> Chat with NeuroMindy →
+                    </a>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem">
+                        <i class="fas fa-external-link-alt"></i> Opens in new
+                        window — this is an external assistant
+                    </p>
+                </div>
+            </section>
+
+            <!-- ABOUT Section -->
+            <section id="about">
+                <div class="container">
+                    <h2 data-i18n="about_title">What is MindyCore?</h2>
+                    <details open>
+                        <summary data-i18n="mission_summary">
+                            🎯 Our Mission
+                        </summary>
+                        <p data-i18n="mission_text">
+                            We build digital experiences designed for cognitive
+                            ease — reducing sensory load, eliminating guesswork,
+                            and creating predictable environments where
+                            neurodivergent minds can thrive.
+                        </p>
+                    </details>
+                    <details>
+                        <summary data-i18n="approach_summary">
+                            💡 Our Approach
+                        </summary>
+                        <p data-i18n="approach_text">
+                            Every decision we make starts with a question: "Does
+                            this make the experience more accessible?" From our
+                            color choices to our navigation structure,
+                            accessibility isn't an add-on — it's our foundation.
+                        </p>
+                    </details>
+                    <details>
+                        <summary data-i18n="values_summary">
+                            🌟 Our Values
+                        </summary>
+                        <p data-i18n="values_text">
+                            Clarity over cleverness. Predictability over
+                            surprise. Control over automation. Honesty over
+                            hype. These guide everything we build.
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- LABS Section -->
+            <section id="labs">
+                <div class="container">
+                    <h2 data-i18n="labs_title">Our Labs</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <i
+                                class="fas fa-brain"
+                                style="
+                                    font-size: 2rem;
+                                    color: var(--accent-primary);
+                                    margin-bottom: 1rem;
+                                "
+                            ></i>
+                            <h3>MindyMinds</h3>
+                            <p data-i18n="minds_text">
+                                AI assistant designed for cognitive support —
+                                helping with executive function, task
+                                management, and reducing decision fatigue.
+                            </p>
+                            <a
+                                href="https://hellomindy.mindycore.com"
+                                target="_blank"
+                                class="button"
+                                style="margin-top: 1rem; display: inline-block"
+                                >Try NeuroMindy →</a
+                            >
+                        </div>
+                        <div class="card">
+                            <i
+                                class="fas fa-gamepad"
+                                style="
+                                    font-size: 2rem;
+                                    color: var(--accent-primary);
+                                    margin-bottom: 1rem;
+                                "
+                            ></i>
+                            <h3>MindyPlay</h3>
+                            <p data-i18n="play_text">
+                                Games designed with accessibility at the core —
+                                no twitch reflexes required, adjustable
+                                difficulty, and sensory-friendly modes.
+                            </p>
+                            <span
+                                class="badge"
+                                style="margin-top: 1rem; display: inline-block"
+                                >Coming Soon</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GET STARTED Section -->
+            <section id="get-started">
+                <div class="container">
+                    <h2 data-i18n="start_title">How to Get Started</h2>
+                    <div class="grid-3">
+                        <div class="card">
+                            <i
+                                class="fas fa-message"
+                                style="font-size: 1.5rem"
+                            ></i>
+                            <h3>1. Chat with NeuroMindy</h3>
+                            <p>
+                                Visit our assistant to explore how MindyMinds
+                                can support your daily life.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i
+                                class="fas fa-envelope"
+                                style="font-size: 1.5rem"
+                            ></i>
+                            <h3>2. Join Our Community</h3>
+                            <p>
+                                Connect with other neurodivergent individuals
+                                and share your experience.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i
+                                class="fas fa-bell"
+                                style="font-size: 1.5rem"
+                            ></i>
+                            <h3>3. Get Updates</h3>
+                            <p>
+                                Be the first to know when MindyPlay launches and
+                                new features arrive.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS Section -->
+            <section id="testimonials">
+                <div class="container">
+                    <h2 data-i18n="testimonials_title">Community Voices</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i>
+                            <p
+                                style="margin-top: 0.5rem"
+                                data-i18n="testimonial_1"
+                            >
+                                "Finally, a tool that understands how my brain
+                                works. No overwhelm, no guessing — just clear,
+                                helpful support."
+                            </p>
+                            <p><strong>— Jamie, ADHD Coach</strong></p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i
+                            ><i class="fas fa-star" style="color: gold"></i>
+                            <p
+                                style="margin-top: 0.5rem"
+                                data-i18n="testimonial_2"
+                            >
+                                "The dyslexia-friendly font and adjustable
+                                contrast made this the first website I could
+                                actually read without strain."
+                            </p>
+                            <p><strong>— Alex, Graphic Designer</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMMUNITY Section -->
+            <section id="community">
+                <div class="container">
+                    <h2 data-i18n="community_title">Join Our Community</h2>
+                    <div class="card" style="text-align: center">
+                        <p data-i18n="community_text">
+                            Connect with neurodivergent individuals, share
+                            resources, and help shape the future of inclusive
+                            technology.
+                        </p>
+                        <div
+                            style="
+                                display: flex;
+                                gap: 1rem;
+                                justify-content: center;
+                                margin-top: 1rem;
+                            "
+                        >
+                            <a href="#" class="button"
+                                ><i class="fab fa-discord"></i> Discord</a
+                            >
+                            <a href="#" class="button"
+                                ><i class="fab fa-reddit-alien"></i> Reddit</a
+                            >
+                            <a href="#" class="button"
+                                ><i class="fab fa-mastodon"></i> Mastodon</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- NEWSLETTER Section -->
+            <section id="newsletter">
+                <div class="container">
+                    <h2 data-i18n="newsletter_title">Stay in the Loop</h2>
+                    <div class="card">
+                        <p data-i18n="newsletter_text">
+                            Get updates about MindyPlay launch, new features,
+                            and community events — no spam, just what matters.
+                        </p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input
+                                type="email"
+                                id="newsletterEmail"
+                                placeholder="Your email address"
+                                required
+                            />
+                            <button type="submit" data-i18n="subscribe">
+                                Subscribe
+                            </button>
+                        </form>
+                        <p
+                            id="newsletterMessage"
+                            style="
+                                margin-top: 0.5rem;
+                                font-size: 0.85rem;
+                                display: none;
+                            "
+                        ></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section (Accordion) -->
+            <section id="faq">
+                <div class="container">
+                    <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+                    <details>
+                        <summary data-i18n="faq1_q">Is MindyCore free?</summary>
+                        <p data-i18n="faq1_a">
+                            Yes! Our core features are completely free. We're
+                            committed to keeping essential tools accessible to
+                            everyone.
+                        </p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq2_q">
+                            Will MindyPlay be available on iOS and Android?
+                        </summary>
+                        <p data-i18n="faq2_a">
+                            Yes! MindyPlay will launch on both iOS and Android.
+                            We'll announce specific release dates as we get
+                            closer.
+                        </p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq3_q">
+                            How is this different from other AI assistants?
+                        </summary>
+                        <p data-i18n="faq3_a">
+                            NeuroMindy is designed specifically for
+                            neurodivergent users — with clear language,
+                            predictable responses, and no hidden features.
+                        </p>
+                    </details>
+                    <details>
+                        <summary data-i18n="faq4_q">
+                            Can I use the accessibility tools on other websites?
+                        </summary>
+                        <p data-i18n="faq4_a">
+                            These tools work on this site only, but we're
+                            building browser extensions to bring our
+                            accessibility features everywhere you go online.
+                        </p>
+                    </details>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p style="text-align: center">
+                    © 2026 MindyCore — Built for neurodivergent minds, by people
+                    who understand.
+                </p>
+                <p style="text-align: center; margin-top: 1rem">
+                    <a href="#">Accessibility Statement</a> •
+                    <a href="#">Privacy Policy</a> •
+                    <a href="https://hellomindy.mindycore.com">NeuroMindy</a>
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            // ============================================
+            // MULTILINGUAL SUPPORT (EN/ES)
+            // ============================================
+            const translations = {
+                en: {
+                    title: "Building Technology for Neurodivergent Minds",
+                    hero: "Clear. Predictable. Accessible. Technology that adapts to you, not the other way around.",
+                    about_title: "What is MindyCore?",
+                    mission_summary: "🎯 Our Mission",
+                    mission_text:
+                        "We build digital experiences designed for cognitive ease — reducing sensory load, eliminating guesswork, and creating predictable environments where neurodivergent minds can thrive.",
+                    approach_summary: "💡 Our Approach",
+                    approach_text:
+                        "Every decision we make starts with a question: 'Does this make the experience more accessible?' From our color choices to our navigation structure, accessibility isn't an add-on — it's our foundation.",
+                    values_summary: "🌟 Our Values",
+                    values_text:
+                        "Clarity over cleverness. Predictability over surprise. Control over automation. Honesty over hype. These guide everything we build.",
+                    labs_title: "Our Labs",
+                    minds_text:
+                        "AI assistant designed for cognitive support — helping with executive function, task management, and reducing decision fatigue.",
+                    play_text:
+                        "Games designed with accessibility at the core — no twitch reflexes required, adjustable difficulty, and sensory-friendly modes.",
+                    start_title: "How to Get Started",
+                    testimonials_title: "Community Voices",
+                    testimonial_1:
+                        '"Finally, a tool that understands how my brain works. No overwhelm, no guessing — just clear, helpful support."',
+                    testimonial_2:
+                        '"The dyslexia-friendly font and adjustable contrast made this the first website I could actually read without strain."',
+                    community_title: "Join Our Community",
+                    community_text:
+                        "Connect with neurodivergent individuals, share resources, and help shape the future of inclusive technology.",
+                    newsletter_title: "Stay in the Loop",
+                    newsletter_text:
+                        "Get updates about MindyPlay launch, new features, and community events — no spam, just what matters.",
+                    subscribe: "Subscribe",
+                    faq_title: "Frequently Asked Questions",
+                    faq1_q: "Is MindyCore free?",
+                    faq1_a: "Yes! Our core features are completely free. We're committed to keeping essential tools accessible to everyone.",
+                    faq2_q: "Will MindyPlay be available on iOS and Android?",
+                    faq2_a: "Yes! MindyPlay will launch on both iOS and Android. We'll announce specific release dates as we get closer.",
+                    faq3_q: "How is this different from other AI assistants?",
+                    faq3_a: "NeuroMindy is designed specifically for neurodivergent users — with clear language, predictable responses, and no hidden features.",
+                    faq4_q: "Can I use the accessibility tools on other websites?",
+                    faq4_a: "These tools work on this site only, but we're building browser extensions to bring our accessibility features everywhere you go online.",
+                },
+                es: {
+                    title: "Construyendo Tecnología para Mentes Neurodivergentes",
+                    hero: "Clara. Predecible. Accesible. Tecnología que se adapta a ti, no al revés.",
+                    about_title: "¿Qué es MindyCore?",
+                    mission_summary: "🎯 Nuestra Misión",
+                    mission_text:
+                        "Construimos experiencias digitales diseñadas para la facilidad cognitiva — reduciendo la carga sensorial, eliminando conjeturas y creando entornos predecibles donde las mentes neurodivergentes pueden prosperar.",
+                    approach_summary: "💡 Nuestro Enfoque",
+                    approach_text:
+                        "Cada decisión que tomamos comienza con una pregunta: '¿Esto hace que la experiencia sea más accesible?' Desde nuestras opciones de color hasta nuestra estructura de navegación, la accesibilidad no es un complemento — es nuestra base.",
+                    values_summary: "🌟 Nuestros Valores",
+                    values_text:
+                        "Claridad sobre astucia. Predictibilidad sobre sorpresa. Control sobre automatización. Honestidad sobre exageración. Estos guían todo lo que construimos.",
+                    labs_title: "Nuestros Labs",
+                    minds_text:
+                        "Asistente de IA diseñado para apoyo cognitivo — ayudando con la función ejecutiva, gestión de tareas y reduciendo la fatiga de decisiones.",
+                    play_text:
+                        "Juegos diseñados con la accesibilidad como núcleo — sin reflejos rápidos, dificultad ajustable y modos sensorialmente amigables.",
+                    start_title: "Cómo Empezar",
+                    testimonials_title: "Voces de la Comunidad",
+                    testimonial_1:
+                        '"Finalmente, una herramienta que entiende cómo funciona mi cerebro. Sin agobio, sin conjeturas — solo apoyo claro y útil."',
+                    testimonial_2:
+                        '"La fuente amigable para dislexia y el contraste ajustable hicieron de este el primer sitio web que pude leer sin esfuerzo."',
+                    community_title: "Únete a Nuestra Comunidad",
+                    community_text:
+                        "Conéctate con personas neurodivergentes, comparte recursos y ayuda a dar forma al futuro de la tecnología inclusiva.",
+                    newsletter_title: "Mantente Informado",
+                    newsletter_text:
+                        "Recibe actualizaciones sobre el lanzamiento de MindyPlay, nuevas funciones y eventos comunitarios — sin spam, solo lo que importa.",
+                    subscribe: "Suscribirse",
+                    faq_title: "Preguntas Frecuentes",
+                    faq1_q: "¿MindyCore es gratis?",
+                    faq1_a: "¡Sí! Nuestras funciones principales son completamente gratuitas. Estamos comprometidos a mantener las herramientas esenciales accesibles para todos.",
+                    faq2_q: "¿MindyPlay estará disponible en iOS y Android?",
+                    faq2_a: "¡Sí! MindyPlay se lanzará tanto en iOS como en Android. Anunciaremos fechas específicas a medida que nos acerquemos.",
+                    faq3_q: "¿En qué se diferencia esto de otros asistentes de IA?",
+                    faq3_a: "NeuroMindy está diseñado específicamente para usuarios neurodivergentes — con lenguaje claro, respuestas predecibles y sin funciones ocultas.",
+                    faq4_q: "¿Puedo usar las herramientas de accesibilidad en otros sitios web?",
+                    faq4_a: "Estas herramientas funcionan solo en este sitio, pero estamos construyendo extensiones de navegador para llevar nuestras características de accesibilidad a todos lados.",
+                },
+            };
+
+            let currentLang = "en";
+
+            function switchLang(lang) {
+                currentLang = lang;
+                document.querySelectorAll("[data-i18n]").forEach((el) => {
+                    const key = el.getAttribute("data-i18n");
+                    if (translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+            }
+
+            // ============================================
+            // DARK/LIGHT MODE (with system preference)
+            // ============================================
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+                const themeBtn = document.getElementById("themeBtn");
+                if (themeBtn) {
+                    themeBtn.innerHTML =
+                        theme === "dark"
+                            ? '<i class="fas fa-sun"></i> Light Mode'
+                            : '<i class="fas fa-moon"></i> Dark Mode';
+                }
+            }
+
+            function toggleTheme() {
+                const current =
+                    document.documentElement.getAttribute("data-theme");
+                setTheme(current === "dark" ? "light" : "dark");
+            }
+
+            // Check system preference
+            if (localStorage.getItem("theme")) {
+                setTheme(localStorage.getItem("theme"));
+            } else if (
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+            ) {
+                setTheme("dark");
+            }
+
+            // ============================================
+            // ACCESSIBILITY TOGGLES
+            // ============================================
+            function toggleFont() {
+                const current =
+                    document.documentElement.getAttribute("data-font");
+                document.documentElement.setAttribute(
+                    "data-font",
+                    current === "dyslexic" ? "standard" : "dyslexic",
+                );
+                localStorage.setItem(
+                    "font",
+                    current === "dyslexic" ? "standard" : "dyslexic",
+                );
+            }
+
+            function toggleMotion() {
+                const current =
+                    document.documentElement.getAttribute("data-motion");
+                document.documentElement.setAttribute(
+                    "data-motion",
+                    current === "reduced" ? "normal" : "reduced",
+                );
+                localStorage.setItem(
+                    "motion",
+                    current === "reduced" ? "normal" : "reduced",
+                );
+            }
+
+            function toggleContrast() {
+                const current =
+                    document.documentElement.getAttribute("data-contrast");
+                document.documentElement.setAttribute(
+                    "data-contrast",
+                    current === "high" ? "normal" : "high",
+                );
+                localStorage.setItem(
+                    "contrast",
+                    current === "high" ? "normal" : "high",
+                );
+            }
+
+            function toggleCompact() {
+                document.body.classList.toggle("compact-view");
+                localStorage.setItem(
+                    "compact",
+                    document.body.classList.contains("compact-view"),
+                );
+            }
+
+            // Load saved preferences
+            if (localStorage.getItem("font") === "dyslexic") toggleFont();
+            if (localStorage.getItem("motion") === "reduced") toggleMotion();
+            if (localStorage.getItem("contrast") === "high") toggleContrast();
+            if (localStorage.getItem("compact") === "true") toggleCompact();
+
+            // ============================================
+            // PROGRESS BAR
+            // ============================================
+            function updateProgressBar() {
+                const winScroll = document.documentElement.scrollTop;
+                const height =
+                    document.documentElement.scrollHeight -
+                    document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById("progressBar").style.width =
+                    scrolled + "%";
+            }
+            window.addEventListener("scroll", updateProgressBar);
+
+            // ============================================
+            // ACTIVE SECTION INDICATOR
+            // ============================================
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const indicatorContainer =
+                document.getElementById("sectionIndicator");
+
+            sections.forEach((section, index) => {
+                const dot = document.createElement("div");
+                dot.className = "indicator-dot";
+                dot.setAttribute("data-section", section.id);
+                dot.addEventListener("click", () => {
+                    section.scrollIntoView({ behavior: "smooth" });
+                });
+                indicatorContainer.appendChild(dot);
+            });
+
+            function updateActiveSection() {
+                const scrollPos = window.scrollY + 150;
+                let currentSection = "";
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                        currentSection = section.id;
+                    }
+                });
+
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("data-section") === currentSection) {
+                        link.classList.add("active");
+                    }
+                });
+
+                const dots = document.querySelectorAll(".indicator-dot");
+                dots.forEach((dot, idx) => {
+                    dot.classList.remove("active");
+                    if (sections[idx] && sections[idx].id === currentSection) {
+                        dot.classList.add("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", updateActiveSection);
+            updateActiveSection();
+
+            // ============================================
+            // SEARCH FUNCTIONALITY
+            // ============================================
+            const searchInput = document.getElementById("searchInput");
+            const searchResults = document.getElementById("searchResults");
+
+            function searchPage() {
+                const query = searchInput.value.toLowerCase().trim();
+                if (query.length < 2) {
+                    searchResults.style.display = "none";
+                    return;
+                }
+
+                const results = [];
+                const allText = document.body.innerText.toLowerCase();
+
+                // Simple search - find sections containing the query
+                sections.forEach((section) => {
+                    const sectionText = section.innerText.toLowerCase();
+                    if (sectionText.includes(query)) {
+                        const title =
+                            section.querySelector("h1, h2")?.innerText ||
+                            section.id;
+                        results.push({ id: section.id, title: title });
+                    }
+                });
+
+                if (results.length > 0) {
+                    searchResults.style.display = "block";
+                    searchResults.innerHTML = results
+                        .map(
+                            (r) =>
+                                `<a href="#${r.id}" style="display: block; padding: 0.5rem; color: var(--text-primary); text-decoration: none; border-bottom: 1px solid var(--border-color);">
+                        <i class="fas fa-arrow-right"></i> ${r.title}
+                    </a>`,
+                        )
+                        .join("");
+                } else {
+                    searchResults.style.display = "block";
+                    searchResults.innerHTML =
+                        "<p>No results found. Try a different search term.</p>";
+                }
+            }
+
+            searchInput.addEventListener("input", searchPage);
+
+            // ============================================
+            // NEWSLETTER FORM
+            // ============================================
+            document
+                .getElementById("newsletterForm")
+                .addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const email =
+                        document.getElementById("newsletterEmail").value;
+                    const messageEl =
+                        document.getElementById("newsletterMessage");
+
+                    // Here you would connect to your email marketing service
+                    // For now, just show success message
+                    messageEl.style.display = "block";
+                    messageEl.style.color = "var(--accent-primary)";
+                    messageEl.innerHTML =
+                        "✓ Thanks for subscribing! We'll keep you updated.";
+                    document.getElementById("newsletterEmail").value = "";
+
+                    setTimeout(() => {
+                        messageEl.style.display = "none";
+                    }, 5000);
+                });
+        </script>
+    </body>
+</html>
