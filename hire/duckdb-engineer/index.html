@@ -5,8 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hire DuckDB Engineers | OLAP, Analytics Pipelines</title>
-    <script type="module" crossorigin src="/assets/index-C444XsKb.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dg3vj-v9.css">
+    <script type="module" crossorigin src="/assets/index-B4UcDER1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-7cGW1_5D.css">
   
     <meta name="description" content="Hire pre-vetted DuckDB engineers for analytical infrastructure, local OLAP, parquet pipelines, quant research environments, and ultra-fast data workflows.">
     <meta property="og:title" content="Hire DuckDB Engineers | OLAP, Analytics Pipelines">
@@ -29,28 +29,10 @@
   <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
     <!-- Brand / Logo -->
-    <a
-      href="/"
-      class="flex items-center gap-2.5 group"
-      title="Offline Pixel - Custom Quant, ML, and Enterprise App Development"
-    >
-      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-600 text-white transition-transform group-hover:scale-105">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M8 9l3 3-3 3m5 0h3M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"
-          />
-        </svg>
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
       </div>
-
       <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
         OFFLINE<span class="text-indigo-600">PIXEL</span>
       </span>
@@ -59,89 +41,316 @@
     <!-- Desktop Navigation -->
     <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
 
-      <a
-        href="/pinescript-strategies.html"
-        class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-        title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines"
-      >
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
         <span>Pine Strategies</span>
       </a>
 
-      <a
-        href="#hire-quant"
-        class="transition-colors hover:text-slate-900 dark:hover:text-slate-300"
-        title="Hire Quantitative Experts"
-      >
-        Quant Systems
-      </a>
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
 
-      <a
-        href="#hire-ml"
-        class="transition-colors hover:text-slate-900 dark:hover:text-slate-300"
-        title="Hire Machine Learning Engineers"
-      >
-        ML Infrastructure
-      </a>
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
 
-      <a
-        href="#hire-dev"
-        class="transition-colors hover:text-slate-900 dark:hover:text-slate-300"
-        title="Hire App Developers"
-      >
-        App Architecture
-      </a>
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
 
-      <a
-        href="#cloud-enterprise"
-        class="transition-colors hover:text-slate-900 dark:hover:text-slate-300"
-        title="Enterprise System Migration"
-      >
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
         Cloud & Enterprise
       </a>
 
-      <a
-        href="#bi-analytics"
-        class="transition-colors hover:text-slate-900 dark:hover:text-slate-300"
-        title="Power BI Dashboards and Analytics"
-      >
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
         Analytics
       </a>
     </nav>
 
-    <!-- CTA -->
+    <!-- CTA Area -->
     <div class="flex items-center gap-4">
-      <a
-        href="/#allocate"
-        class="hidden sm:inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100"
-        title="Book an Expert Engineering Consultation"
-      >
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
         Hire Online
-      </a>
+      </button>
 
-      <!-- Mobile Menu Icon -->
-      <button
-        type="button"
-        class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800"
-        aria-label="Toggle navigation menu"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
     </div>
   </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
 </header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
 
         <div class="flex-1">
           
@@ -180,7 +389,7 @@
         </div>
         <div>
           <div class="text-4xl font-extrabold text-slate-900 dark:text-white mb-1">72 Hours</div>
-          <div class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Delivery Guarantee</div>
+          <div class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Turnaround</div>
         </div>
         
         
