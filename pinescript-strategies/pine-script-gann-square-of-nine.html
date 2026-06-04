@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-      <html lang="en">
-      <head>
-        
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pine Script Gann Square of Nine - Complete TradingView Guide</title>
+    <script type="module" crossorigin src="/assets/index-cbzqRjfe.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DExlq4qT.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BkN0Usuy.css">
+  
     <meta name="description" content="Master Gann Square of Nine price levels in Pine Script for TradingView - a unique tool based on W.D. Gann's theories to identify potential support, resistance, and reversal points based on price and geometric relationships.">
     <meta name="keywords" content="pine script strategies, Gann Square of Nine, Gann Theory, tradingview indicator, technical analysis, support resistance, price cycles, angle levels, square roots, turning points">
     <meta property="og:title" content="Pine Script Gann Square of Nine - Complete TradingView Guide">
@@ -18,69 +23,505 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
     <script type="application/ld+json">
-    {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Pine Script Gann Square of Nine - Complete TradingView Guide",
-  "description": "Master Gann Square of Nine price levels in Pine Script for TradingView - a unique tool based on W.D. Gann's theories to identify potential support, resistance, and reversal points based on price and geometric relationships.",
-  "author": {
-    "@type": "Person",
-    "name": "Offline Pixel Computers"
-  },
-  "datePublished": "2025-06-10",
-  "image": "https://offline-pixel.github.io/assets/logo2.png",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Offline Pixel",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://offline-pixel.github.io/assets/logo2.png"
-    }
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://offline-pixel.github.io/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "PineScript Strategies",
-        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Gann Square of Nine",
-        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"
-      }
-    ]
-  }
-}
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Gann Square of Nine - Complete TradingView Guide","description":"Master Gann Square of Nine price levels in Pine Script for TradingView - a unique tool based on W.D. Gann's theories to identify potential support, resistance, and reversal points based on price and geometric relationships.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Gann Square of Nine","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"}]}}
     </script>
   
-        <link rel="stylesheet" crossorigin href="https://offline-pixel.github.io/assets/index-BkN0Usuy.css">
-      </head>
-      <body>
-        <div id="app"><div class="min-h-screen bg-white dark:bg-black"><section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div><div class="absolute inset-0 opacity-5 dark:opacity-10"><div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div></div><div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div><div style="animation-delay:1s;" class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"></div><div class="relative max-w-5xl mx-auto px-6 py-24 text-center"><div class="animate-in mb-8"><div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg><span>/</span><a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a><span>/</span><span class="text-indigo-500">pine-script-gann-square-of-nine</span></div></div><h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6"><span class="text-indigo-500">$</span> <span class="inline-block min-w-[200px]">Pine Script Gann Square of Nine</span></h1><p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">Master this advanced and unique technical analysis tool in TradingView's Pine Script that identifies key price levels based on W.D. Gann's geometric and numerical theories, revealing potential support, resistance, and turning points.</p><div class="animate-in flex flex-wrap justify-center gap-6 mb-10"><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path></svg><span class="text-sm font-mono">500+ Clients Helped</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg><span class="text-sm font-mono">100% Satisfaction</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg><span class="text-sm font-mono">Live Trading Ready</span></div></div><div class="animate-in flex flex-col sm:flex-row gap-4 justify-center"><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a><a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>Get The Option Buyer guide now</a></div></div></section><div class="max-w-4xl mx-auto px-6 py-16"><div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl"><div class="flex items-start gap-3"><span class="text-amber-500 text-lg">⚠️</span><div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div></div></div><div class="animate-in mb-10"></div><section id="section-0" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is the Gann Square of Nine?</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p><b>The Gann Square of Nine</b> is a unique and complex analytical tool developed by legendary trader W.D. Gann. It's a spiral of numbers where numbers are arranged in a clockwise spiral, starting from a central number (often 1). The key insight of the Square of Nine is that specific numbers (prices) that fall on certain angles (e.g., 90, 180, 270, 360 degrees, or cardinal and ordinal crosses) from a central starting point tend to act as significant support and resistance levels, and even indicate potential price reversals.</p><p>Gann believed that markets move in predictable, geometric patterns, and that there's a harmonious relationship between price and time. The Square of Nine attempts to reveal these hidden relationships. For traders, the practical application often involves:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Identifying potential support and resistance levels:</b> Prices falling on key angular lines from a significant high or low are considered strong levels.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Predicting turning points:</b> When price approaches these angular levels, it's considered a potential area for reversal or acceleration.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Understanding market harmony:</b> The belief that markets adhere to mathematical laws and cycles.</span></li></ul></section><section id="section-1" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation (Gann Square of Nine Price Levels)</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>The core concept of the Gann Square of Nine for price levels is that square roots of prices, when plotted, form an arithmetic progression. Key levels are then derived from these square roots. A common way to calculate the significant angular price levels for a given `start_price` and a `box_size` (which represents the increment in the spiral) involves the following steps:</p></div><ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Normalize the Starting Price:</b> Divide the `start_price` by the `box_size`.<br><code>Normalized_Price = start_price / box_size</code></li><li><b>Find the Square Root:</b> Take the square root of the `Normalized_Price`.<br><code>Root_Price = math.sqrt(Normalized_Price)</code></li><li><b>Identify the Integer Roots:</b> Determine the integer part of the `Root_Price` and the next integer.<br><code>N = math.floor(Root_Price)</code><br><code>N_plus_1 = N + 1</code></li><li><b>Calculate Levels for the Current Cycle/Ring:</b> The levels are derived from `(N + X)^2 * box_size` or `(N_plus_1 + X)^2 * box_size`, where `X` represents fractional steps around the square (0.0 for 0 degrees, 0.125 for 45 degrees, 0.25 for 90 degrees, etc.).</li></ol></section><section id="section-2" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Gann Square of Nine Implementation in Pine Script</h2><div class="code-block mt-6"><div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"><div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg><span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span></div><button class="text-slate-500 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg></button></div><pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
-indicator("My Gann Square of Nine Levels", overlay=true, max_bars_back=500)
+</head>
+  <body>
+    <div id="app">
+    <div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950">
+      
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+
+      <div class="flex-1">
+      
+    <div class="min-h-screen bg-white dark:bg-black">
+      <!-- Hero Section - EXACT match -->
+      <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div>
+        <div class="absolute inset-0 opacity-5 dark:opacity-10">
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        </div>
+        <div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6 py-24 text-center">
+          <div class="animate-in mb-8">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+              </svg>
+              <span>/</span>
+              <a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a>
+              <span>/</span>
+              <span class="text-indigo-500">pine-script-gann-square-of-nine</span>
+            </div>
+          </div>
+
+          <h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6">
+            <span class="text-indigo-500">$</span>
+            <span class="inline-block min-w-[200px]">Pine Script Gann Square of Nine</span>
+          </h1>
+
+          <p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">
+            Master this advanced and unique technical analysis tool in TradingView&#39;s Pine Script that identifies key price levels based on W.D. Gann&#39;s geometric and numerical theories, revealing potential support, resistance, and turning points.
+          </p>
+
+          <div class="animate-in flex flex-wrap justify-center gap-6 mb-10">
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">500+ Clients Helped</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+              <span class="text-sm font-mono">100% Satisfaction</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">Live Trading Ready</span>
+            </div>
+          </div>
+
+          <div class="animate-in flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+              </svg>
+              Get Pine Script Strategy
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+              </svg>
+            </a>
+            
+              <a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
+                </svg>
+                Get The Option Buyer guide now
+              </a>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        
+          <div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl">
+            <div class="flex items-start gap-3">
+              <span class="text-amber-500 text-lg">⚠️</span>
+              <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div>
+            </div>
+          </div>
+        
+
+        
+          <div class="animate-in mb-10">
+            <ins class="adsbygoogle" style="display: block; text-align: center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171" data-adtest="on"></ins>
+          </div>
+        
+
+        
+      <section id="section-0" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is the Gann Square of Nine?</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p><b>The Gann Square of Nine</b> is a unique and complex analytical tool developed by legendary trader W.D. Gann. It's a spiral of numbers where numbers are arranged in a clockwise spiral, starting from a central number (often 1). The key insight of the Square of Nine is that specific numbers (prices) that fall on certain angles (e.g., 90, 180, 270, 360 degrees, or cardinal and ordinal crosses) from a central starting point tend to act as significant support and resistance levels, and even indicate potential price reversals.</p><p>Gann believed that markets move in predictable, geometric patterns, and that there's a harmonious relationship between price and time. The Square of Nine attempts to reveal these hidden relationships. For traders, the practical application often involves:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Identifying potential support and resistance levels:</b> Prices falling on key angular lines from a significant high or low are considered strong levels.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Predicting turning points:</b> When price approaches these angular levels, it's considered a potential area for reversal or acceleration.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Understanding market harmony:</b> The belief that markets adhere to mathematical laws and cycles.</span>
+        </li>
+      </ul></section>
+      <section id="section-1" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation (Gann Square of Nine Price Levels)</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>The core concept of the Gann Square of Nine for price levels is that square roots of prices, when plotted, form an arithmetic progression. Key levels are then derived from these square roots. A common way to calculate the significant angular price levels for a given `start_price` and a `box_size` (which represents the increment in the spiral) involves the following steps:</p>
+          </div>
+        <ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Normalize the Starting Price:</b> Divide the `start_price` by the `box_size`.<br><code>Normalized_Price = start_price / box_size</code></li><li><b>Find the Square Root:</b> Take the square root of the `Normalized_Price`.<br><code>Root_Price = math.sqrt(Normalized_Price)</code></li><li><b>Identify the Integer Roots:</b> Determine the integer part of the `Root_Price` and the next integer.<br><code>N = math.floor(Root_Price)</code><br><code>N_plus_1 = N + 1</code></li><li><b>Calculate Levels for the Current Cycle/Ring:</b> The levels are derived from `(N + X)^2 * box_size` or `(N_plus_1 + X)^2 * box_size`, where `X` represents fractional steps around the square (0.0 for 0 degrees, 0.125 for 45 degrees, 0.25 for 90 degrees, etc.).</li></ol></section>
+      <section id="section-2" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Gann Square of Nine Implementation in Pine Script</h2>
+    
+        <div class="code-block mt-6">
+          <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3 text-slate-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                </svg>
+                <span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span>
+              </div>
+              <button class="text-slate-500 hover:text-white transition-colors" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;My Gann Square of Nine Levels&quot;, overlay=true, max_bars_back=500)
 
 // --- User Inputs ---
-anchorPriceInput = input.float(close, title="Anchor Price (Start of Square)", tooltip="The central price from which Gann levels are calculated.")
-boxSize = input.float(1.0, title="Box Size / Increment", minval=0.000001, tooltip="The increment used in the Gann Square spiral.")
-lineTransparency = input.int(10, title="Line Transparency (0-100)", minval=0, maxval=100)
-showLabels = input.bool(true, title="Show Level Labels")
+anchorPriceInput = input.float(close, title=&quot;Anchor Price (Start of Square)&quot;, tooltip=&quot;The central price from which Gann levels are calculated.&quot;)
+boxSize = input.float(1.0, title=&quot;Box Size / Increment&quot;, minval=0.000001, tooltip=&quot;The increment used in the Gann Square spiral.&quot;)
+lineTransparency = input.int(10, title=&quot;Line Transparency (0-100)&quot;, minval=0, maxval=100)
+showLabels = input.bool(true, title=&quot;Show Level Labels&quot;)
 
 // Function to calculate a Gann Square of Nine price level for a given degree
-f_gann_level(currentPrice, boxSize, degree) =>
+f_gann_level(currentPrice, boxSize, degree) =&gt;
     float normalizedPrice = currentPrice / boxSize
     float sqrtNormalizedPrice = math.sqrt(normalizedPrice)
     float n_ = math.round(math.sqrt(currentPrice / boxSize))
@@ -130,16 +571,131 @@ if barstate.isfirst or ta.change(anchorPriceInput) or ta.change(boxSize)
     gann_level_315 = f_gann_level(anchorPriceInput, boxSize, 315)
     gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)
 
-plot(gann_level_0,   title="Gann 0/360 Deg", color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)
-plot(gann_level_45,  title="Gann 45 Deg",  color=color.new(color.orange, lineTransparency), linewidth=1, style=plot.style_stepline)
-plot(gann_level_90,  title="Gann 90 Deg",  color=color.new(color.red, lineTransparency),    linewidth=2, style=plot.style_stepline)
-plot(gann_level_135, title="Gann 135 Deg", color=color.new(color.yellow, lineTransparency), linewidth=1, style=plot.style_stepline)
-plot(gann_level_180, title="Gann 180 Deg", color=color.new(color.purple, lineTransparency), linewidth=2, style=plot.style_stepline)
-plot(gann_level_225, title="Gann 225 Deg", color=color.new(color.aqua, lineTransparency),   linewidth=1, style=plot.style_stepline)
-plot(gann_level_270, title="Gann 270 Deg", color=color.new(color.blue, lineTransparency),   linewidth=2, style=plot.style_stepline)
-plot(gann_level_315, title="Gann 315 Deg", color=color.new(color.lime, lineTransparency),   linewidth=1, style=plot.style_stepline)
-plot(gann_level_360, title="Gann 360 Deg", color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)</code></pre><div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"><span class="text-indigo-400 text-xs">$</span><span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span></div></div></div></section><section id="section-3" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Geometric Harmony</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Geometric Harmony</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Gann's Square of Nine is rooted in the belief that markets move in predictable, geometric patterns and that specific price levels and timeframes are harmonically related. This indicator helps visualize those price harmonics.</p></div></div></div></section><section id="section-4" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Gann Square of Nine Trading Strategies</h2><div class="mt-6 space-y-8"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">Conceptual Strategy: Bounces off Gann Levels</h3><p class="text-slate-600 dark:text-slate-400 mb-4">This simplified strategy demonstrates how you might react to Gann Square of Nine levels. It focuses on bounces off strong Gann angles (90°, 180°, 270°).</p><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
-strategy("Gann Square of Nine Strategy", overlay=true)
+plot(gann_level_0,   title=&quot;Gann 0/360 Deg&quot;, color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_45,  title=&quot;Gann 45 Deg&quot;,  color=color.new(color.orange, lineTransparency), linewidth=1, style=plot.style_stepline)
+plot(gann_level_90,  title=&quot;Gann 90 Deg&quot;,  color=color.new(color.red, lineTransparency),    linewidth=2, style=plot.style_stepline)
+plot(gann_level_135, title=&quot;Gann 135 Deg&quot;, color=color.new(color.yellow, lineTransparency), linewidth=1, style=plot.style_stepline)
+plot(gann_level_180, title=&quot;Gann 180 Deg&quot;, color=color.new(color.purple, lineTransparency), linewidth=2, style=plot.style_stepline)
+plot(gann_level_225, title=&quot;Gann 225 Deg&quot;, color=color.new(color.aqua, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_270, title=&quot;Gann 270 Deg&quot;, color=color.new(color.blue, lineTransparency),   linewidth=2, style=plot.style_stepline)
+plot(gann_level_315, title=&quot;Gann 315 Deg&quot;, color=color.new(color.lime, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_360, title=&quot;Gann 360 Deg&quot;, color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+              </button>
+            </div>
+            <pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator(&quot;My Gann Square of Nine Levels&quot;, overlay=true, max_bars_back=500)
+
+// --- User Inputs ---
+anchorPriceInput = input.float(close, title=&quot;Anchor Price (Start of Square)&quot;, tooltip=&quot;The central price from which Gann levels are calculated.&quot;)
+boxSize = input.float(1.0, title=&quot;Box Size / Increment&quot;, minval=0.000001, tooltip=&quot;The increment used in the Gann Square spiral.&quot;)
+lineTransparency = input.int(10, title=&quot;Line Transparency (0-100)&quot;, minval=0, maxval=100)
+showLabels = input.bool(true, title=&quot;Show Level Labels&quot;)
+
+// Function to calculate a Gann Square of Nine price level for a given degree
+f_gann_level(currentPrice, boxSize, degree) =&gt;
+    float normalizedPrice = currentPrice / boxSize
+    float sqrtNormalizedPrice = math.sqrt(normalizedPrice)
+    float n_ = math.round(math.sqrt(currentPrice / boxSize))
+    
+    float calculated_level = na
+    if (degree == 0)
+        calculated_level = (n_ * n_) * boxSize
+    else if (degree == 45)
+        calculated_level = (n_ + 0.125) * (n_ + 0.125) * boxSize
+    else if (degree == 90)
+        calculated_level = (n_ + 0.25) * (n_ + 0.25) * boxSize
+    else if (degree == 135)
+        calculated_level = (n_ + 0.375) * (n_ + 0.375) * boxSize
+    else if (degree == 180)
+        calculated_level = (n_ + 0.5) * (n_ + 0.5) * boxSize
+    else if (degree == 225)
+        calculated_level = (n_ + 0.625) * (n_ + 0.625) * boxSize
+    else if (degree == 270)
+        calculated_level = (n_ + 0.75) * (n_ + 0.75) * boxSize
+    else if (degree == 315)
+        calculated_level = (n_ + 0.875) * (n_ + 0.875) * boxSize
+    else if (degree == 360)
+        calculated_level = (n_ + 1) * (n_ + 1) * boxSize
+    else
+        calculated_level = na
+    
+    calculated_level
+
+var float gann_level_0 = na
+var float gann_level_45 = na
+var float gann_level_90 = na
+var float gann_level_135 = na
+var float gann_level_180 = na
+var gann_level_225 = na
+var gann_level_270 = na
+var gann_level_315 = na
+var gann_level_360 = na
+
+if barstate.isfirst or ta.change(anchorPriceInput) or ta.change(boxSize)
+    gann_level_0 = f_gann_level(anchorPriceInput, boxSize, 0)
+    gann_level_45 = f_gann_level(anchorPriceInput, boxSize, 45)
+    gann_level_90 = f_gann_level(anchorPriceInput, boxSize, 90)
+    gann_level_135 = f_gann_level(anchorPriceInput, boxSize, 135)
+    gann_level_180 = f_gann_level(anchorPriceInput, boxSize, 180)
+    gann_level_225 = f_gann_level(anchorPriceInput, boxSize, 225)
+    gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)
+    gann_level_315 = f_gann_level(anchorPriceInput, boxSize, 315)
+    gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)
+
+plot(gann_level_0,   title=&quot;Gann 0/360 Deg&quot;, color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_45,  title=&quot;Gann 45 Deg&quot;,  color=color.new(color.orange, lineTransparency), linewidth=1, style=plot.style_stepline)
+plot(gann_level_90,  title=&quot;Gann 90 Deg&quot;,  color=color.new(color.red, lineTransparency),    linewidth=2, style=plot.style_stepline)
+plot(gann_level_135, title=&quot;Gann 135 Deg&quot;, color=color.new(color.yellow, lineTransparency), linewidth=1, style=plot.style_stepline)
+plot(gann_level_180, title=&quot;Gann 180 Deg&quot;, color=color.new(color.purple, lineTransparency), linewidth=2, style=plot.style_stepline)
+plot(gann_level_225, title=&quot;Gann 225 Deg&quot;, color=color.new(color.aqua, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_270, title=&quot;Gann 270 Deg&quot;, color=color.new(color.blue, lineTransparency),   linewidth=2, style=plot.style_stepline)
+plot(gann_level_315, title=&quot;Gann 315 Deg&quot;, color=color.new(color.lime, lineTransparency),   linewidth=1, style=plot.style_stepline)
+plot(gann_level_360, title=&quot;Gann 360 Deg&quot;, color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)</code></pre>
+            <div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3">
+              <span class="text-indigo-400 text-xs">$</span>
+              <span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-3" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Geometric Harmony</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Geometric Harmony</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Gann's Square of Nine is rooted in the belief that markets move in predictable, geometric patterns and that specific price levels and timeframes are harmonically related. This indicator helps visualize those price harmonics.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-4" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Gann Square of Nine Trading Strategies</h2>
+    <div class="mt-6 space-y-8">
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">Conceptual Strategy: Bounces off Gann Levels</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">This simplified strategy demonstrates how you might react to Gann Square of Nine levels. It focuses on bounces off strong Gann angles (90°, 180°, 270°).</p>
+        
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;Gann Square of Nine Strategy&quot;, overlay=true)
 
 var float strat_gann_level_90 = na
 var float strat_gann_level_180 = na
@@ -152,20 +708,195 @@ if barstate.islast or ta.change(anchorPriceInput) or ta.change(boxSize)
     strat_gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)
     strat_gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)
 
-longCondition = close > strat_gann_level_270 and close[1] <= strat_gann_level_270[1]
-shortCondition = close < strat_gann_level_90 and close[1] >= strat_gann_level_90[1]
+longCondition = close &gt; strat_gann_level_270 and close[1] &lt;= strat_gann_level_270[1]
+shortCondition = close &lt; strat_gann_level_90 and close[1] &gt;= strat_gann_level_90[1]
 
 if (longCondition and not na(strat_gann_level_270))
-    strategy.entry("Long Gann 270", strategy.long)
+    strategy.entry(&quot;Long Gann 270&quot;, strategy.long)
 
 if (shortCondition and not na(strat_gann_level_90))
-    strategy.entry("Short Gann 90", strategy.short)
+    strategy.entry(&quot;Short Gann 90&quot;, strategy.short)
 
-profitTargetPoints = input.float(2.0, title="Profit Target (Points)", minval=0.1)
-stopLossPoints = input.float(1.0, title="Stop Loss (Points)", minval=0.1)
+profitTargetPoints = input.float(2.0, title=&quot;Profit Target (Points)&quot;, minval=0.1)
+stopLossPoints = input.float(1.0, title=&quot;Stop Loss (Points)&quot;, minval=0.1)
 
-strategy.exit("Long Gann 270 Exit", from_entry="Long Gann 270", profit=strategy.position_avg_price + profitTargetPoints, stop=strategy.position_avg_price - stopLossPoints)
-strategy.exit("Short Gann 90 Exit", from_entry="Short Gann 90", profit=strategy.position_avg_price - profitTargetPoints, stop=strategy.position_avg_price + stopLossPoints)</code></pre></div></div></div></section><section id="section-5" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Gann Square of Nine Performance</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>To get the most from Gann Square of Nine levels in Pine Script:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Anchor Price Selection:</b> The choice of the `anchorPriceInput` is paramount. It should typically be a significant swing high or low from which a new move is expected.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Box Size (Increment) Tuning:</b> The `boxSize` is crucial for the indicator's relevance. Experiment to find a `boxSize` that makes the lines visually meaningful for your asset.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Confluence is Key:</b> Gann Square of Nine levels become much more powerful when they align with traditional Pivot Points, Fibonacci Retracements, significant historical highs/lows, Moving Averages, or Trendlines.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Price Action Confirmation:</b> Always confirm price reactions at Gann levels with strong candlestick patterns and volume.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Understanding Angle Interpretations:</b> 90°, 180°, 270°, and 360° are generally considered the strongest cardinal levels, while 45°, 135°, 225°, and 315° are ordinal levels.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Time Cycles (Advanced):</b> True Gann analysis often integrates time cycles, which requires advanced Pine Script coding beyond simple horizontal lines.</span></li></ul></section><section id="section-6" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Important Note</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Important Note</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Gann's methods are highly subjective and complex. The 'correct' anchorPriceInput and boxSize can be difficult to determine, and different interpretations exist.</p></div></div></div></section><section id="section-7" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Gann Square of Nine Pitfalls</h2><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Subjectivity and Complexity:</b> Gann's methods are highly subjective and complex. Different interpretations exist, leading to varying results.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Not a Guaranteed System:</b> Gann's tools are not infallible. Price can move through Gann levels without reaction, especially during high volatility.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Over-Reliance:</b> Using Gann Square of Nine as the sole decision-making tool without additional confirmation can lead to poor trading decisions.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Lack of Standardization:</b> There isn't one single, universally accepted formula for the Gann Square of Nine. Implementations can vary.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Lagging Element (for Anchor):</b> If the anchorPriceInput is based on historical data, the levels derived from it are somewhat static and historical.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Visual Clutter:</b> Plotting too many levels or using incorrect parameters can clutter the chart.</span></li></ul></section><section id="section-8" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2><div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800"><div class="flex gap-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-8 w-8 text-indigo-500 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path></svg><div><h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3><div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>The Gann Square of Nine, as implemented in Pine Script, offers a fascinating and advanced approach to identifying potential support and resistance levels based on W.D. Gann's profound theories. By calculating specific price points corresponding to geometric angles around a chosen anchor, this indicator provides a unique framework for understanding market structure and anticipating turning points. While demanding careful selection of the `anchorPriceInput` and `boxSize`, and requiring diligent confirmation from other technical analysis tools and price action, mastering the Gann Square of Nine can significantly enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies">pine script strategies</a></b>. By integrating these harmonically derived levels into your trading plan, you can gain a deeper and more nuanced understanding of market dynamics and improve your timing for entries and exits.</p></div></div></div></div></section><div class="animate-in mt-20 text-center"><div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800"><h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2><p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p><p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a></div></div></div><style>
+strategy.exit(&quot;Long Gann 270 Exit&quot;, from_entry=&quot;Long Gann 270&quot;, profit=strategy.position_avg_price + profitTargetPoints, stop=strategy.position_avg_price - stopLossPoints)
+strategy.exit(&quot;Short Gann 90 Exit&quot;, from_entry=&quot;Short Gann 90&quot;, profit=strategy.position_avg_price - profitTargetPoints, stop=strategy.position_avg_price + stopLossPoints)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;Gann Square of Nine Strategy&quot;, overlay=true)
+
+var float strat_gann_level_90 = na
+var float strat_gann_level_180 = na
+var float strat_gann_level_270 = na
+var float strat_gann_level_360 = na
+
+if barstate.islast or ta.change(anchorPriceInput) or ta.change(boxSize)
+    strat_gann_level_90 = f_gann_level(anchorPriceInput, boxSize, 90)
+    strat_gann_level_180 = f_gann_level(anchorPriceInput, boxSize, 180)
+    strat_gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)
+    strat_gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)
+
+longCondition = close &gt; strat_gann_level_270 and close[1] &lt;= strat_gann_level_270[1]
+shortCondition = close &lt; strat_gann_level_90 and close[1] &gt;= strat_gann_level_90[1]
+
+if (longCondition and not na(strat_gann_level_270))
+    strategy.entry(&quot;Long Gann 270&quot;, strategy.long)
+
+if (shortCondition and not na(strat_gann_level_90))
+    strategy.entry(&quot;Short Gann 90&quot;, strategy.short)
+
+profitTargetPoints = input.float(2.0, title=&quot;Profit Target (Points)&quot;, minval=0.1)
+stopLossPoints = input.float(1.0, title=&quot;Stop Loss (Points)&quot;, minval=0.1)
+
+strategy.exit(&quot;Long Gann 270 Exit&quot;, from_entry=&quot;Long Gann 270&quot;, profit=strategy.position_avg_price + profitTargetPoints, stop=strategy.position_avg_price - stopLossPoints)
+strategy.exit(&quot;Short Gann 90 Exit&quot;, from_entry=&quot;Short Gann 90&quot;, profit=strategy.position_avg_price - profitTargetPoints, stop=strategy.position_avg_price + stopLossPoints)</code></pre>
+            </div>
+          </div></div></section>
+      <section id="section-5" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Gann Square of Nine Performance</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>To get the most from Gann Square of Nine levels in Pine Script:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Anchor Price Selection:</b> The choice of the `anchorPriceInput` is paramount. It should typically be a significant swing high or low from which a new move is expected.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Box Size (Increment) Tuning:</b> The `boxSize` is crucial for the indicator's relevance. Experiment to find a `boxSize` that makes the lines visually meaningful for your asset.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Confluence is Key:</b> Gann Square of Nine levels become much more powerful when they align with traditional Pivot Points, Fibonacci Retracements, significant historical highs/lows, Moving Averages, or Trendlines.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Price Action Confirmation:</b> Always confirm price reactions at Gann levels with strong candlestick patterns and volume.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Understanding Angle Interpretations:</b> 90°, 180°, 270°, and 360° are generally considered the strongest cardinal levels, while 45°, 135°, 225°, and 315° are ordinal levels.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Time Cycles (Advanced):</b> True Gann analysis often integrates time cycles, which requires advanced Pine Script coding beyond simple horizontal lines.</span>
+        </li>
+      </ul></section>
+      <section id="section-6" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Important Note</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Important Note</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Gann's methods are highly subjective and complex. The 'correct' anchorPriceInput and boxSize can be difficult to determine, and different interpretations exist.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-7" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Gann Square of Nine Pitfalls</h2>
+    <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Subjectivity and Complexity:</b> Gann's methods are highly subjective and complex. Different interpretations exist, leading to varying results.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Not a Guaranteed System:</b> Gann's tools are not infallible. Price can move through Gann levels without reaction, especially during high volatility.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Over-Reliance:</b> Using Gann Square of Nine as the sole decision-making tool without additional confirmation can lead to poor trading decisions.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Lack of Standardization:</b> There isn't one single, universally accepted formula for the Gann Square of Nine. Implementations can vary.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Lagging Element (for Anchor):</b> If the anchorPriceInput is based on historical data, the levels derived from it are somewhat static and historical.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Visual Clutter:</b> Plotting too many levels or using incorrect parameters can clutter the chart.</span>
+        </li>
+      </ul></section>
+      <section id="section-8" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2>
+    
+        <div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-indigo-500 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path>
+            </svg>
+            <div>
+              <h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3>
+              <div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>The Gann Square of Nine, as implemented in Pine Script, offers a fascinating and advanced approach to identifying potential support and resistance levels based on W.D. Gann's profound theories. By calculating specific price points corresponding to geometric angles around a chosen anchor, this indicator provides a unique framework for understanding market structure and anticipating turning points. While demanding careful selection of the `anchorPriceInput` and `boxSize`, and requiring diligent confirmation from other technical analysis tools and price action, mastering the Gann Square of Nine can significantly enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies">pine script strategies</a></b>. By integrating these harmonically derived levels into your trading plan, you can gain a deeper and more nuanced understanding of market dynamics and improve your timing for entries and exits.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        
+          <div class="animate-in mt-20 text-center">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800">
+              <h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2>
+              <p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
+              <p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
+              <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+                </svg>
+                Get Pine Script Strategy
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        
+      </div>
+
+      <style>
         @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
         .animate-in { opacity: 0; transform: translateY(20px); }
         .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
@@ -174,9 +905,184 @@ strategy.exit("Short Gann 90 Exit", from_entry="Short Gann 90", profit=strategy.
         .token.number { color: #b5cea8; }
         .token.function, .token.builtin { color: #dcdcaa; }
         .token.operator, .token.punctuation { color: #d4d4d4; }
-      </style></div></div>
-        <script>
-          window.__INITIAL_DATA__ = {"slug":"pine-script-gann-square-of-nine","article":{"meta":{"title":"Pine Script Gann Square of Nine - Complete TradingView Guide","description":"Master Gann Square of Nine price levels in Pine Script for TradingView - a unique tool based on W.D. Gann's theories to identify potential support, resistance, and reversal points based on price and geometric relationships.","keywords":"pine script strategies, Gann Square of Nine, Gann Theory, tradingview indicator, technical analysis, support resistance, price cycles, angle levels, square roots, turning points","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine","ogTitle":"Pine Script Gann Square of Nine - Complete TradingView Guide","ogDescription":"Comprehensive tutorial on implementing and using Gann Square of Nine price levels in Pine Script for advanced trading strategies.","twitterTitle":"Pine Script Gann Square of Nine - Complete TradingView Guide","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Gann Square of Nine - Complete TradingView Guide","description":"Master Gann Square of Nine price levels in Pine Script for TradingView - a unique tool based on W.D. Gann's theories to identify potential support, resistance, and reversal points based on price and geometric relationships.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Gann Square of Nine","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"Gann Square of Nine","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script Gann Square of Nine","subtitle":"Master this advanced and unique technical analysis tool in TradingView's Pine Script that identifies key price levels based on W.D. Gann's geometric and numerical theories, revealing potential support, resistance, and turning points.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What is the Gann Square of Nine?","html":"<p><b>The Gann Square of Nine</b> is a unique and complex analytical tool developed by legendary trader W.D. Gann. It's a spiral of numbers where numbers are arranged in a clockwise spiral, starting from a central number (often 1). The key insight of the Square of Nine is that specific numbers (prices) that fall on certain angles (e.g., 90, 180, 270, 360 degrees, or cardinal and ordinal crosses) from a central starting point tend to act as significant support and resistance levels, and even indicate potential price reversals.</p><p>Gann believed that markets move in predictable, geometric patterns, and that there's a harmonious relationship between price and time. The Square of Nine attempts to reveal these hidden relationships. For traders, the practical application often involves:</p>","listItems":["<b>Identifying potential support and resistance levels:</b> Prices falling on key angular lines from a significant high or low are considered strong levels.","<b>Predicting turning points:</b> When price approaches these angular levels, it's considered a potential area for reversal or acceleration.","<b>Understanding market harmony:</b> The belief that markets adhere to mathematical laws and cycles."],"additionalHtml":"<p>It's crucial to understand that implementing the full visual and time-based complexity of Gann's Square of Nine in Pine Script is challenging. This guide will focus on calculating and plotting the <b>price levels</b> derived from the Square of Nine, based on a user-defined anchor price and scaling.</p>"},{"type":"content","title":"Components and Calculation (Gann Square of Nine Price Levels)","html":"<p>The core concept of the Gann Square of Nine for price levels is that square roots of prices, when plotted, form an arithmetic progression. Key levels are then derived from these square roots. A common way to calculate the significant angular price levels for a given `start_price` and a `box_size` (which represents the increment in the spiral) involves the following steps:</p>","orderedItems":["<b>Normalize the Starting Price:</b> Divide the `start_price` by the `box_size`.<br><code>Normalized_Price = start_price / box_size</code>","<b>Find the Square Root:</b> Take the square root of the `Normalized_Price`.<br><code>Root_Price = math.sqrt(Normalized_Price)</code>","<b>Identify the Integer Roots:</b> Determine the integer part of the `Root_Price` and the next integer.<br><code>N = math.floor(Root_Price)</code><br><code>N_plus_1 = N + 1</code>","<b>Calculate Levels for the Current Cycle/Ring:</b> The levels are derived from `(N + X)^2 * box_size` or `(N_plus_1 + X)^2 * box_size`, where `X` represents fractional steps around the square (0.0 for 0 degrees, 0.125 for 45 degrees, 0.25 for 90 degrees, etc.)."],"additionalHtml":"<p>The `box_size` is a critical input that needs to be chosen carefully based on the asset's price scale (e.g., 1 for stocks trading in whole numbers, 0.1 for lower-priced stocks, 0.0001 for forex pairs). It defines the \"step\" around the square.</p>"},{"type":"code","title":"Basic Gann Square of Nine Implementation in Pine Script","description":"Since Pine Script does not have a built-in `ta.gannSquareOfNine()` function, we will create a custom function to calculate these levels based on the described methodology.","code":"//@version=5\nindicator(\"My Gann Square of Nine Levels\", overlay=true, max_bars_back=500)\n\n// --- User Inputs ---\nanchorPriceInput = input.float(close, title=\"Anchor Price (Start of Square)\", tooltip=\"The central price from which Gann levels are calculated.\")\nboxSize = input.float(1.0, title=\"Box Size / Increment\", minval=0.000001, tooltip=\"The increment used in the Gann Square spiral.\")\nlineTransparency = input.int(10, title=\"Line Transparency (0-100)\", minval=0, maxval=100)\nshowLabels = input.bool(true, title=\"Show Level Labels\")\n\n// Function to calculate a Gann Square of Nine price level for a given degree\nf_gann_level(currentPrice, boxSize, degree) =>\n    float normalizedPrice = currentPrice / boxSize\n    float sqrtNormalizedPrice = math.sqrt(normalizedPrice)\n    float n_ = math.round(math.sqrt(currentPrice / boxSize))\n    \n    float calculated_level = na\n    if (degree == 0)\n        calculated_level = (n_ * n_) * boxSize\n    else if (degree == 45)\n        calculated_level = (n_ + 0.125) * (n_ + 0.125) * boxSize\n    else if (degree == 90)\n        calculated_level = (n_ + 0.25) * (n_ + 0.25) * boxSize\n    else if (degree == 135)\n        calculated_level = (n_ + 0.375) * (n_ + 0.375) * boxSize\n    else if (degree == 180)\n        calculated_level = (n_ + 0.5) * (n_ + 0.5) * boxSize\n    else if (degree == 225)\n        calculated_level = (n_ + 0.625) * (n_ + 0.625) * boxSize\n    else if (degree == 270)\n        calculated_level = (n_ + 0.75) * (n_ + 0.75) * boxSize\n    else if (degree == 315)\n        calculated_level = (n_ + 0.875) * (n_ + 0.875) * boxSize\n    else if (degree == 360)\n        calculated_level = (n_ + 1) * (n_ + 1) * boxSize\n    else\n        calculated_level = na\n    \n    calculated_level\n\nvar float gann_level_0 = na\nvar float gann_level_45 = na\nvar float gann_level_90 = na\nvar float gann_level_135 = na\nvar float gann_level_180 = na\nvar gann_level_225 = na\nvar gann_level_270 = na\nvar gann_level_315 = na\nvar gann_level_360 = na\n\nif barstate.isfirst or ta.change(anchorPriceInput) or ta.change(boxSize)\n    gann_level_0 = f_gann_level(anchorPriceInput, boxSize, 0)\n    gann_level_45 = f_gann_level(anchorPriceInput, boxSize, 45)\n    gann_level_90 = f_gann_level(anchorPriceInput, boxSize, 90)\n    gann_level_135 = f_gann_level(anchorPriceInput, boxSize, 135)\n    gann_level_180 = f_gann_level(anchorPriceInput, boxSize, 180)\n    gann_level_225 = f_gann_level(anchorPriceInput, boxSize, 225)\n    gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)\n    gann_level_315 = f_gann_level(anchorPriceInput, boxSize, 315)\n    gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)\n\nplot(gann_level_0,   title=\"Gann 0/360 Deg\", color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)\nplot(gann_level_45,  title=\"Gann 45 Deg\",  color=color.new(color.orange, lineTransparency), linewidth=1, style=plot.style_stepline)\nplot(gann_level_90,  title=\"Gann 90 Deg\",  color=color.new(color.red, lineTransparency),    linewidth=2, style=plot.style_stepline)\nplot(gann_level_135, title=\"Gann 135 Deg\", color=color.new(color.yellow, lineTransparency), linewidth=1, style=plot.style_stepline)\nplot(gann_level_180, title=\"Gann 180 Deg\", color=color.new(color.purple, lineTransparency), linewidth=2, style=plot.style_stepline)\nplot(gann_level_225, title=\"Gann 225 Deg\", color=color.new(color.aqua, lineTransparency),   linewidth=1, style=plot.style_stepline)\nplot(gann_level_270, title=\"Gann 270 Deg\", color=color.new(color.blue, lineTransparency),   linewidth=2, style=plot.style_stepline)\nplot(gann_level_315, title=\"Gann 315 Deg\", color=color.new(color.lime, lineTransparency),   linewidth=1, style=plot.style_stepline)\nplot(gann_level_360, title=\"Gann 360 Deg\", color=color.new(color.gray, lineTransparency),   linewidth=1, style=plot.style_stepline)"},{"type":"tip","title":"Geometric Harmony","content":"Gann's Square of Nine is rooted in the belief that markets move in predictable, geometric patterns and that specific price levels and timeframes are harmonically related. This indicator helps visualize those price harmonics."},{"type":"strategies","title":"Gann Square of Nine Trading Strategies","strategies":[{"name":"Conceptual Strategy: Bounces off Gann Levels","description":"This simplified strategy demonstrates how you might react to Gann Square of Nine levels. It focuses on bounces off strong Gann angles (90°, 180°, 270°).","code":"//@version=5\nstrategy(\"Gann Square of Nine Strategy\", overlay=true)\n\nvar float strat_gann_level_90 = na\nvar float strat_gann_level_180 = na\nvar float strat_gann_level_270 = na\nvar float strat_gann_level_360 = na\n\nif barstate.islast or ta.change(anchorPriceInput) or ta.change(boxSize)\n    strat_gann_level_90 = f_gann_level(anchorPriceInput, boxSize, 90)\n    strat_gann_level_180 = f_gann_level(anchorPriceInput, boxSize, 180)\n    strat_gann_level_270 = f_gann_level(anchorPriceInput, boxSize, 270)\n    strat_gann_level_360 = f_gann_level(anchorPriceInput, boxSize, 360)\n\nlongCondition = close > strat_gann_level_270 and close[1] <= strat_gann_level_270[1]\nshortCondition = close < strat_gann_level_90 and close[1] >= strat_gann_level_90[1]\n\nif (longCondition and not na(strat_gann_level_270))\n    strategy.entry(\"Long Gann 270\", strategy.long)\n\nif (shortCondition and not na(strat_gann_level_90))\n    strategy.entry(\"Short Gann 90\", strategy.short)\n\nprofitTargetPoints = input.float(2.0, title=\"Profit Target (Points)\", minval=0.1)\nstopLossPoints = input.float(1.0, title=\"Stop Loss (Points)\", minval=0.1)\n\nstrategy.exit(\"Long Gann 270 Exit\", from_entry=\"Long Gann 270\", profit=strategy.position_avg_price + profitTargetPoints, stop=strategy.position_avg_price - stopLossPoints)\nstrategy.exit(\"Short Gann 90 Exit\", from_entry=\"Short Gann 90\", profit=strategy.position_avg_price - profitTargetPoints, stop=strategy.position_avg_price + stopLossPoints)"}]},{"type":"content","title":"Optimizing Gann Square of Nine Performance","html":"<p>To get the most from Gann Square of Nine levels in Pine Script:</p>","listItems":["<b>Anchor Price Selection:</b> The choice of the `anchorPriceInput` is paramount. It should typically be a significant swing high or low from which a new move is expected.","<b>Box Size (Increment) Tuning:</b> The `boxSize` is crucial for the indicator's relevance. Experiment to find a `boxSize` that makes the lines visually meaningful for your asset.","<b>Confluence is Key:</b> Gann Square of Nine levels become much more powerful when they align with traditional Pivot Points, Fibonacci Retracements, significant historical highs/lows, Moving Averages, or Trendlines.","<b>Price Action Confirmation:</b> Always confirm price reactions at Gann levels with strong candlestick patterns and volume.","<b>Understanding Angle Interpretations:</b> 90°, 180°, 270°, and 360° are generally considered the strongest cardinal levels, while 45°, 135°, 225°, and 315° are ordinal levels.","<b>Time Cycles (Advanced):</b> True Gann analysis often integrates time cycles, which requires advanced Pine Script coding beyond simple horizontal lines."]},{"type":"tip","title":"Important Note","content":"Gann's methods are highly subjective and complex. The 'correct' anchorPriceInput and boxSize can be difficult to determine, and different interpretations exist."},{"type":"content","title":"Common Gann Square of Nine Pitfalls","listItems":["<b>Subjectivity and Complexity:</b> Gann's methods are highly subjective and complex. Different interpretations exist, leading to varying results.","<b>Not a Guaranteed System:</b> Gann's tools are not infallible. Price can move through Gann levels without reaction, especially during high volatility.","<b>Over-Reliance:</b> Using Gann Square of Nine as the sole decision-making tool without additional confirmation can lead to poor trading decisions.","<b>Lack of Standardization:</b> There isn't one single, universally accepted formula for the Gann Square of Nine. Implementations can vary.","<b>Lagging Element (for Anchor):</b> If the anchorPriceInput is based on historical data, the levels derived from it are somewhat static and historical.","<b>Visual Clutter:</b> Plotting too many levels or using incorrect parameters can clutter the chart."]},{"type":"conclusion","title":"Conclusion","html":"<p>The Gann Square of Nine, as implemented in Pine Script, offers a fascinating and advanced approach to identifying potential support and resistance levels based on W.D. Gann's profound theories. By calculating specific price points corresponding to geometric angles around a chosen anchor, this indicator provides a unique framework for understanding market structure and anticipating turning points. While demanding careful selection of the `anchorPriceInput` and `boxSize`, and requiring diligent confirmation from other technical analysis tools and price action, mastering the Gann Square of Nine can significantly enhance your <b><a href=\"https://offline-pixel.github.io/pinescript-strategies\">pine script strategies</a></b>. By integrating these harmonically derived levels into your trading plan, you can gain a deeper and more nuanced understanding of market dynamics and improve your timing for entries and exits.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]},"isSSR":true};
-        </script>
-      </body>
-      </html>
+      </style>
+    </div>
+  </div>
+      </div>
+      
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+
+    </div>
+    
+  </body>
+</html>
