@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pine Script Fibonacci Retracements - Complete TradingView Guide</title>
+    <script type="module" crossorigin src="/assets/index-cbzqRjfe.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DExlq4qT.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-BkN0Usuy.css">
+  
+    <meta name="description" content="Master Fibonacci Retracements in Pine Script for TradingView - a powerful tool for identifying potential support and resistance levels during price pullbacks within a trend.">
+    <meta name="keywords" content="pine script strategies, Fibonacci Retracements, Fibo levels, tradingview indicator, technical analysis, support resistance, trend continuation, reversal points, Fibonacci ratios, swing trading">
+    <meta property="og:title" content="Pine Script Fibonacci Retracements - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Fibonacci Retracements in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-fibonacci-retracements">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pine Script Fibonacci Retracements - Complete TradingView Guide">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-fibonacci-retracements">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Fibonacci Retracements - Complete TradingView Guide","description":"Master Fibonacci Retracements in Pine Script for TradingView - a powerful tool for identifying potential support and resistance levels during price pullbacks within a trend.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-fibonacci-retracements"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Fibonacci Retracements","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-fibonacci-retracements"}]}}
+    </script>
+  
+</head>
+  <body>
+    <div id="app">
+    <div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950">
+      
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+
+      <div class="flex-1">
+      
+    <div class="min-h-screen bg-white dark:bg-black">
+      <!-- Hero Section - EXACT match -->
+      <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div>
+        <div class="absolute inset-0 opacity-5 dark:opacity-10">
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        </div>
+        <div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6 py-24 text-center">
+          <div class="animate-in mb-8">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+              </svg>
+              <span>/</span>
+              <a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a>
+              <span>/</span>
+              <span class="text-indigo-500">pine-script-fibonacci-retracements</span>
+            </div>
+          </div>
+
+          <h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6">
+            <span class="text-indigo-500">$</span>
+            <span class="inline-block min-w-[200px]">Pine Script Fibonacci Retracements</span>
+          </h1>
+
+          <p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">
+            Master this powerful technical analysis tool in TradingView&#39;s Pine Script that identifies key potential support and resistance levels during price pullbacks within a trend, based on mathematical ratios.
+          </p>
+
+          <div class="animate-in flex flex-wrap justify-center gap-6 mb-10">
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">500+ Clients Helped</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+              <span class="text-sm font-mono">100% Satisfaction</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">Live Trading Ready</span>
+            </div>
+          </div>
+
+          <div class="animate-in flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+              </svg>
+              Get Pine Script Strategy
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+              </svg>
+            </a>
+            
+              <a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
+                </svg>
+                Get The Option Buyer guide now
+              </a>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        
+          <div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl">
+            <div class="flex items-start gap-3">
+              <span class="text-amber-500 text-lg">⚠️</span>
+              <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div>
+            </div>
+          </div>
+        
+
+        
+          <div class="animate-in mb-10">
+            <ins class="adsbygoogle" style="display: block; text-align: center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171" data-adtest="on"></ins>
+          </div>
+        
+
+        
+      <section id="section-0" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What are Fibonacci Retracements?</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p><b>Fibonacci Retracements</b> are horizontal lines used in technical analysis that indicate potential support and resistance levels. They are derived from the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...) where each number is the sum of the two preceding ones. The key ratios used in retracements are obtained by dividing a number in the sequence by the number that follows it (e.g., 34/55 ≈ 0.618 or 61.8%), or by two numbers after it (e.g., 34/89 ≈ 0.382 or 38.2%).</p><p>These levels are drawn by taking two extreme points (a swing high and a swing low) on a chart and then drawing horizontal lines at the classic Fibonacci ratios: <b>23.6%, 38.2%, 50% (not a Fibonacci ratio, but commonly included), 61.8%, and 78.6% (sometimes 76.4%)</b>. The idea is that after a significant price move (impulse wave), price will often retrace a portion of that move to one of these Fibonacci levels before continuing in its original direction.</p><p>Fibonacci Retracements are primarily used to:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Identify potential entry points:</b> During a pullback, price might find support/resistance at a Fibonacci level, offering an entry opportunity for trend continuation.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Set profit targets:</b> Traders might use these levels as areas to take partial or full profits on existing positions.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Place stop-loss orders:</b> A stop-loss could be placed just beyond a critical Fibonacci level.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Confirm trend strength:</b> A strong bounce from a key Fibonacci level (e.g., 50% or 61.8%) can confirm the underlying trend.</span>
+        </li>
+      </ul></section>
+      <section id="section-1" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>To calculate Fibonacci Retracement levels, you first need to identify a <b>significant price swing</b>, which means a distinct high and a distinct low. Once these are defined, the levels are calculated as follows:</p><br><b>For an Uptrend (Price retracing downwards from a high):</b><br><code>Retracement Level = High_Price - (High_Price - Low_Price) * Fibonacci_Ratio</code><br><br><b>For a Downtrend (Price retracing upwards from a low):</b><br><code>Retracement Level = Low_Price + (High_Price - Low_Price) * Fibonacci_Ratio</code><br><br>Common Fibonacci Ratios:<br><b>0.236 (23.6%)</b><br><b>0.382 (38.2%)</b><br><b>0.500 (50%)</b> - Often called the "mid-point" or "half-back"<br><b>0.618 (61.8%)</b> - Known as the "Golden Ratio"<br><b>0.786 (78.6%)</b> - Square root of 0.618, also commonly used.</p><p>To implement this dynamically in Pine Script, we often use `ta.highest()` and `ta.lowest()` to find a significant swing within a specified lookback period.</p>
+          </div>
+        </section>
+      <section id="section-2" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Fibonacci Retracements Implementation in Pine Script</h2>
+    
+        <div class="code-block mt-6">
+          <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3 text-slate-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                </svg>
+                <span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span>
+              </div>
+              <button class="text-slate-500 hover:text-white transition-colors" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;My Fibonacci Retracements&quot;, overlay=true, max_bars_back=500)
+
+lookbackPeriod = input.int(50, title=&quot;Lookback Period for Swing&quot;, minval=10, maxval=500)
+showLevels = input.bool(true, title=&quot;Show Fibonacci Levels&quot;)
+showLabels = input.bool(true, title=&quot;Show Level Labels&quot;)
+
+fib0 = 0.0
+fib236 = 0.236
+fib382 = 0.382
+fib500 = 0.500
+fib618 = 0.618
+fib786 = 0.786
+fib100 = 1.0
+
+hh = ta.highest(high, lookbackPeriod)
+ll = ta.lowest(low, lookbackPeriod)
+hh_idx = ta.highestbars(high, lookbackPeriod)
+ll_idx = ta.lowestbars(low, lookbackPeriod)
+
+leftBars = 5
+rightBars = 5
+
+pivotHigh = ta.pivothigh(high, leftBars, rightBars)
+pivotLow = ta.pivotlow(low, leftBars, rightBars)
+
+var float currentSwingHigh = na
+var float currentSwingLow = na
+var int currentSwingHighIdx = na
+var int currentSwingLowIdx = na
+
+if not na(pivotHigh)
+    currentSwingHigh := pivotHigh
+    currentSwingHighIdx := bar_index[rightBars]
+if not na(pivotLow)
+    currentSwingLow := pivotLow
+    currentSwingLowIdx := bar_index[rightBars]
+
+if not na(currentSwingHigh) and not na(currentSwingLow)
+    float range = math.abs(currentSwingHigh - currentSwingLow)
+    if range &gt; 0
+        float fib236_level = na
+        float fib382_level = na
+        float fib500_level = na
+        float fib618_level = na
+        float fib786_level = na
+
+        isUptrendSwing = currentSwingHighIdx &gt; currentSwingLowIdx
+        isDowntrendSwing = currentSwingLowIdx &gt; currentSwingHighIdx
+
+        if isUptrendSwing
+            fib236_level := currentSwingHigh - (range * fib236)
+            fib382_level := currentSwingHigh - (range * fib382)
+            fib500_level := currentSwingHigh - (range * fib500)
+            fib618_level := currentSwingHigh - (range * fib618)
+            fib786_level := currentSwingHigh - (range * fib786)
+        else if isDowntrendSwing
+            fib236_level := currentSwingLow + (range * fib236)
+            fib382_level := currentSwingLow + (range * fib382)
+            fib500_level := currentSwingLow + (range * fib500)
+            fib618_level := currentSwingLow + (range * fib618)
+            fib786_level := currentSwingLow + (range * fib786)
+
+        if showLevels
+            plot(fib236_level, title=&quot;23.6%&quot;, color=color.new(color.blue, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib382_level, title=&quot;38.2%&quot;, color=color.new(color.green, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib500_level, title=&quot;50.0%&quot;, color=color.new(color.purple, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib618_level, title=&quot;61.8%&quot;, color=color.new(color.orange, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib786_level, title=&quot;78.6%&quot;, color=color.new(color.red, 0), style=plot.style_stepline, linewidth=1)
+            plot(currentSwingHigh, title=&quot;0% / Swing High&quot;, color=color.gray, style=plot.style_stepline, linewidth=1)
+            plot(currentSwingLow, title=&quot;100% / Swing Low&quot;, color=color.gray, style=plot.style_stepline, linewidth=1)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+              </button>
+            </div>
+            <pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator(&quot;My Fibonacci Retracements&quot;, overlay=true, max_bars_back=500)
+
+lookbackPeriod = input.int(50, title=&quot;Lookback Period for Swing&quot;, minval=10, maxval=500)
+showLevels = input.bool(true, title=&quot;Show Fibonacci Levels&quot;)
+showLabels = input.bool(true, title=&quot;Show Level Labels&quot;)
+
+fib0 = 0.0
+fib236 = 0.236
+fib382 = 0.382
+fib500 = 0.500
+fib618 = 0.618
+fib786 = 0.786
+fib100 = 1.0
+
+hh = ta.highest(high, lookbackPeriod)
+ll = ta.lowest(low, lookbackPeriod)
+hh_idx = ta.highestbars(high, lookbackPeriod)
+ll_idx = ta.lowestbars(low, lookbackPeriod)
+
+leftBars = 5
+rightBars = 5
+
+pivotHigh = ta.pivothigh(high, leftBars, rightBars)
+pivotLow = ta.pivotlow(low, leftBars, rightBars)
+
+var float currentSwingHigh = na
+var float currentSwingLow = na
+var int currentSwingHighIdx = na
+var int currentSwingLowIdx = na
+
+if not na(pivotHigh)
+    currentSwingHigh := pivotHigh
+    currentSwingHighIdx := bar_index[rightBars]
+if not na(pivotLow)
+    currentSwingLow := pivotLow
+    currentSwingLowIdx := bar_index[rightBars]
+
+if not na(currentSwingHigh) and not na(currentSwingLow)
+    float range = math.abs(currentSwingHigh - currentSwingLow)
+    if range &gt; 0
+        float fib236_level = na
+        float fib382_level = na
+        float fib500_level = na
+        float fib618_level = na
+        float fib786_level = na
+
+        isUptrendSwing = currentSwingHighIdx &gt; currentSwingLowIdx
+        isDowntrendSwing = currentSwingLowIdx &gt; currentSwingHighIdx
+
+        if isUptrendSwing
+            fib236_level := currentSwingHigh - (range * fib236)
+            fib382_level := currentSwingHigh - (range * fib382)
+            fib500_level := currentSwingHigh - (range * fib500)
+            fib618_level := currentSwingHigh - (range * fib618)
+            fib786_level := currentSwingHigh - (range * fib786)
+        else if isDowntrendSwing
+            fib236_level := currentSwingLow + (range * fib236)
+            fib382_level := currentSwingLow + (range * fib382)
+            fib500_level := currentSwingLow + (range * fib500)
+            fib618_level := currentSwingLow + (range * fib618)
+            fib786_level := currentSwingLow + (range * fib786)
+
+        if showLevels
+            plot(fib236_level, title=&quot;23.6%&quot;, color=color.new(color.blue, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib382_level, title=&quot;38.2%&quot;, color=color.new(color.green, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib500_level, title=&quot;50.0%&quot;, color=color.new(color.purple, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib618_level, title=&quot;61.8%&quot;, color=color.new(color.orange, 0), style=plot.style_stepline, linewidth=1)
+            plot(fib786_level, title=&quot;78.6%&quot;, color=color.new(color.red, 0), style=plot.style_stepline, linewidth=1)
+            plot(currentSwingHigh, title=&quot;0% / Swing High&quot;, color=color.gray, style=plot.style_stepline, linewidth=1)
+            plot(currentSwingLow, title=&quot;100% / Swing Low&quot;, color=color.gray, style=plot.style_stepline, linewidth=1)</code></pre>
+            <div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3">
+              <span class="text-indigo-400 text-xs">$</span>
+              <span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-3" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">The Golden Ratio</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">The Golden Ratio</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">The 61.8% (and its inverse 38.2%) Fibonacci ratio is often considered the most significant for reversals. Price frequently finds strong support/resistance at or around this level.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-4" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Fibonacci Retracements Trading Strategies</h2>
+    <div class="mt-6 space-y-8">
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">Strategy Example: Bounce from 61.8% Retracement</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">This strategy demonstrates buying on a bounce from the 61.8% Fibonacci level in an uptrend, and selling on a bounce from the 61.8% level in a downtrend.</p>
+        
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;Fibonacci Retracement Strategy&quot;, overlay=true)
+
+if not na(currentSwingHigh) and not na(currentSwingLow)
+    isCurrentlyUptrendSwing = currentSwingHighIdx &gt; currentSwingLowIdx
+    float fib618BuyLevel = na
+    float fib382ProfitTarget = na
+
+    if isCurrentlyUptrendSwing
+        range = math.abs(currentSwingHigh - currentSwingLow)
+        if range &gt; 0
+            fib618BuyLevel := currentSwingHigh - (range * fib618)
+            fib382ProfitTarget := currentSwingHigh - (range * fib382)
+
+            longCondition = close &gt; fib618BuyLevel and close[1] &lt;= fib618BuyLevel[1] and close &gt; currentSwingLow
+            stopLossLevel = currentSwingHigh - (range * fib786)
+            
+            if (longCondition)
+                strategy.entry(&quot;Long Fib 61.8&quot;, strategy.long)
+            
+            if not na(fib382ProfitTarget) and not na(stopLossLevel)
+                strategy.exit(&quot;Long Fib 61.8 Exit&quot;, from_entry=&quot;Long Fib 61.8&quot;, profit=fib382ProfitTarget, stop=stopLossLevel)
+
+    isCurrentlyDowntrendSwing = currentSwingLowIdx &gt; currentSwingHighIdx
+    float fib618SellLevel = na
+    float fib382ProfitTargetSell = na
+
+    if isCurrentlyDowntrendSwing
+        range = math.abs(currentSwingHigh - currentSwingLow)
+        if range &gt; 0
+            fib618SellLevel := currentSwingLow + (range * fib618)
+            fib382ProfitTargetSell := currentSwingLow + (range * fib382)
+
+            shortCondition = close &lt; fib618SellLevel and close[1] &gt;= fib618SellLevel[1] and close &lt; currentSwingHigh
+            stopLossLevelSell = currentSwingLow + (range * fib786)
+
+            if (shortCondition)
+                strategy.entry(&quot;Short Fib 61.8&quot;, strategy.short)
+
+            if not na(fib382ProfitTargetSell) and not na(stopLossLevelSell)
+                strategy.exit(&quot;Short Fib 61.8 Exit&quot;, from_entry=&quot;Short Fib 61.8&quot;, profit=fib382ProfitTargetSell, stop=stopLossLevelSell)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;Fibonacci Retracement Strategy&quot;, overlay=true)
+
+if not na(currentSwingHigh) and not na(currentSwingLow)
+    isCurrentlyUptrendSwing = currentSwingHighIdx &gt; currentSwingLowIdx
+    float fib618BuyLevel = na
+    float fib382ProfitTarget = na
+
+    if isCurrentlyUptrendSwing
+        range = math.abs(currentSwingHigh - currentSwingLow)
+        if range &gt; 0
+            fib618BuyLevel := currentSwingHigh - (range * fib618)
+            fib382ProfitTarget := currentSwingHigh - (range * fib382)
+
+            longCondition = close &gt; fib618BuyLevel and close[1] &lt;= fib618BuyLevel[1] and close &gt; currentSwingLow
+            stopLossLevel = currentSwingHigh - (range * fib786)
+            
+            if (longCondition)
+                strategy.entry(&quot;Long Fib 61.8&quot;, strategy.long)
+            
+            if not na(fib382ProfitTarget) and not na(stopLossLevel)
+                strategy.exit(&quot;Long Fib 61.8 Exit&quot;, from_entry=&quot;Long Fib 61.8&quot;, profit=fib382ProfitTarget, stop=stopLossLevel)
+
+    isCurrentlyDowntrendSwing = currentSwingLowIdx &gt; currentSwingHighIdx
+    float fib618SellLevel = na
+    float fib382ProfitTargetSell = na
+
+    if isCurrentlyDowntrendSwing
+        range = math.abs(currentSwingHigh - currentSwingLow)
+        if range &gt; 0
+            fib618SellLevel := currentSwingLow + (range * fib618)
+            fib382ProfitTargetSell := currentSwingLow + (range * fib382)
+
+            shortCondition = close &lt; fib618SellLevel and close[1] &gt;= fib618SellLevel[1] and close &lt; currentSwingHigh
+            stopLossLevelSell = currentSwingLow + (range * fib786)
+
+            if (shortCondition)
+                strategy.entry(&quot;Short Fib 61.8&quot;, strategy.short)
+
+            if not na(fib382ProfitTargetSell) and not na(stopLossLevelSell)
+                strategy.exit(&quot;Short Fib 61.8 Exit&quot;, from_entry=&quot;Short Fib 61.8&quot;, profit=fib382ProfitTargetSell, stop=stopLossLevelSell)</code></pre>
+            </div>
+          </div></div></section>
+      <section id="section-5" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Fibonacci Retracements Performance</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>To get the most from Fibonacci Retracements in Pine Script:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Accurate Swing Point Selection:</b> The most crucial aspect is correctly identifying the significant swing high and swing low using robust pivot detection.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Confluence is Key:</b> Fibonacci levels become much more powerful when they align with previous significant highs/lows, moving averages, trendlines, psychological whole numbers, or pivot points.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Volume Confirmation:</b> Look for volume to confirm bounces or breaks of Fibonacci levels.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Candlestick Patterns:</b> Confirm reactions at Fibonacci levels with bullish or bearish candlestick patterns for higher probability trades.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Trend Context:</b> Use Fibonacci retracements primarily for trend continuation strategies.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Multiple Timeframes:</b> Fibonacci levels on higher timeframes can provide stronger support/resistance than those on lower timeframes.</span>
+        </li>
+      </ul></section>
+      <section id="section-6" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Important Note</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Important Note</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Fibonacci levels are potential zones, not guaranteed levels. Price can overshoot, undershoot, or ignore them completely.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-7" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Fibonacci Retracements Pitfalls</h2>
+    <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Subjectivity in Swing Point Selection:</b> Manually selecting swing highs and lows can be subjective and lead to different interpretations.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Self-Fulfilling Prophecy:</b> Because many traders use Fibonacci levels, they can become self-fulfilling prophecies.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Not Guaranteed Support/Resistance:</b> Fibonacci levels are potential zones, not guaranteed levels.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Whipsaws in Choppy Markets:</b> In ranging or consolidating markets, price might move across multiple levels without clear reaction.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Over-Reliance:</b> Relying solely on Fibonacci retracements without additional confirmation can lead to poor trading decisions.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Too Many Levels:</b> Plotting too many levels can clutter the chart and lead to analysis paralysis.</span>
+        </li>
+      </ul></section>
+      <section id="section-8" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2>
+    
+        <div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-indigo-500 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path>
+            </svg>
+            <div>
+              <h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3>
+              <div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>Fibonacci Retracements are a deeply ingrained and widely used technical analysis tool available in Pine Script for TradingView. By providing mathematically derived potential support and resistance levels during price pullbacks, they offer traders a valuable framework for anticipating market reactions, identifying entry/exit points, and managing risk within a trending market. While requiring careful selection of swing points and confirmation from other indicators like candlestick patterns and volume, mastering Fibonacci Retracements can significantly enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies">pine script strategies</a></b>. By understanding their calculation, thoughtfully applying them to clear price swings, and integrating them strategically into your overall trading plan, you can leverage these powerful levels to improve your decision-making and better capitalize on market opportunities.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        
+          <div class="animate-in mt-20 text-center">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800">
+              <h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2>
+              <p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
+              <p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
+              <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+                </svg>
+                Get Pine Script Strategy
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        
+      </div>
+
+      <style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style>
+    </div>
+  </div>
+      </div>
+      
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+
+    </div>
+    
+  </body>
+</html>
