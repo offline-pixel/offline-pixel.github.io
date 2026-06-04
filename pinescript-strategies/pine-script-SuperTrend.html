@@ -1,309 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+      <html lang="en">
+      <head>
+        
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
-
-    <title>Pine Script SuperTrend (ATR-based) </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
-
+    <title>Pine Script SuperTrend (ATR-based)</title>
     <meta name="description" content="A comprehensive guide to the SuperTrend indicator in Pine Script, explaining its ATR-based calculation, trend following, and reversal signaling for TradingView.">
     <meta name="keywords" content="pine script, SuperTrend, ATR, Average True Range, tradingview indicator, technical analysis, trend following, reversal signals">
-
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:title" content="Pine Script SuperTrend (ATR-based) ">
+    <meta property="og:title" content="Pine Script SuperTrend (ATR-based)">
     <meta property="og:description" content="Master the SuperTrend indicator in Pine Script for robust trend identification and dynamic stop-loss placement.">
     <meta property="og:type" content="article">
-
-    <!-- Twitter Card -->
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pine Script SuperTrend (ATR-based) ">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-SuperTrend.html" />
-
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon"> 
+    <meta name="twitter:title" content="Pine Script SuperTrend (ATR-based)">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Pine Script SuperTrend (ATR-based)",
-      "description": "A comprehensive guide to the SuperTrend indicator in Pine Script, explaining its ATR-based calculation, trend following, and reversal signaling for TradingView.",
-      "author": {
-        "@type": "Person",
-        "name": "Offline Pixel Computers"
-      },
-      "datePublished": "2024-06-16",
-      "image": "https://offline-pixel.github.io/assets/logo2.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-SuperTrend.html"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://offline-pixel.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "PineScript Strategies",
-            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "SuperTrend (ATR-based)",
-            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-SuperTrend.html"
-          }
-        ]
-      }
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script SuperTrend (ATR-based)",
+  "description": "A comprehensive guide to the SuperTrend indicator in Pine Script, explaining its ATR-based calculation, trend following, and reversal signaling for TradingView.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2024-06-16",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
     }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "SuperTrend (ATR-based)",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend"
+      }
+    ]
+  }
+}
     </script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script SuperTrend (ATR-based) </h1>
-      <p class="blog-subtitle">Master this powerful volatility-adjusted trend indicator in TradingView's Pine Script for dynamic buy/sell signals and stop-loss placement.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
-
-  <article class="fullscreen">
-
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="https://offline-pixel.github.io/">Home</a> >
-  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-  <span aria-current="page">SuperTrend (ATR-based)</span>
-</nav>
-</div>
-
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is SuperTrend?</h2>
-    <p>The SuperTrend indicator is a popular trend-following system that plots a line on the price chart, dynamically switching its position relative to the price. It's built upon the concept of <a href="https://offline-pixel.github.io/pinescript-strategies/pine-script-ATR.html"><b>Average True Range (ATR)</b></a>, which measures market volatility. This makes SuperTrend adaptive to changing market conditions, providing more reliable signals than indicators with fixed distances from price.</p>
-
-    <p>In Pine Script, SuperTrend is a robust tool for identifying trends, generating buy/sell signals, and even for setting dynamic stop-loss levels.</p>
-
-    <h2>Components and Calculation</h2>
-    <p>SuperTrend primarily consists of two key components:</p>
-    <ul>
-      <li><strong>ATR Period</strong>: The look-back period for calculating the Average True Range (e.g., 10 periods).</li>
-      <li><strong>Multiplier (Factor)</strong>: A value that determines the distance of the SuperTrend line from the price (e.g., 3).</li>
-    </ul>
-    <p>The indicator calculates an upper and lower basic band, and then switches between them based on price action.
-    The core calculation involves:</p>
-    <ol>
-      <li><strong>Calculating ATR</strong>: Measures the average volatility over the specified period.</li>
-      <li><strong>Basic Upper Band</strong>: `(high + low) / 2 + (multiplier * ATR)`</li>
-      <li><strong>Basic Lower Band</strong>: `(high + low) / 2 - (multiplier * ATR)`</li>
-      <li><strong>Final SuperTrend Line</strong>: The line switches based on whether the closing price crosses the basic bands, reflecting the prevailing trend. When price closes above the upper band, SuperTrend flips below price; when price closes below the lower band, it flips above price.</li>
-    </ol>
-
-    <h2>Basic SuperTrend Implementation in Pine Script</h2>
-    <p>Pine Script v5 provides a convenient built-in function `ta.supertrend()` that handles all the calculations for you.</p>
-
-    <pre><code><span class="comment">//@version=5</span>
-<span class="keyword">indicator</span>(<span class="string">"My SuperTrend Indicator"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Inputs for SuperTrend parameters</span>
-atrPeriod = <span class="keyword">input</span>(<span class="number">10</span>, title=<span class="string">"ATR Length"</span>)
-factor = <span class="keyword">input</span>.float(<span class="number">3.0</span>, title=<span class="string">"Factor"</span>)
-
-<span class="comment">// Calculate SuperTrend using the built-in function</span>
-[supertrend, direction] = <span class="builtin">ta.supertrend</span>(factor, atrPeriod)
-
-<span class="comment">// Plot the SuperTrend line, coloring it based on its direction</span>
-<span class="builtin">plot</span>(supertrend, title=<span class="string">"SuperTrend"</span>, color=direction &lt; <span class="number">0</span> ? <span class="builtin">color</span>.green : <span class="builtin">color</span>.red, linewidth=<span class="number">2</span>)
-
-<span class="comment">// Optional: Plot arrows when the trend changes</span>
-<span class="builtin">plotshape</span>(direction == <span class="number">1</span> <span class="keyword">and</span> direction[<span class="number">1</span>] == -<span class="number">1</span>, title=<span class="string">"Sell Signal"</span>, location=location.abovebar, color=<span class="builtin">color</span>.red, style=shape.triangledown, size=size.small)
-<span class="builtin">plotshape</span>(direction == -<span class="number">1</span> <span class="keyword">and</span> direction[<span class="number">1</span>] == <span class="number">1</span>, title=<span class="string">"Buy Signal"</span>, location=location.belowbar, color=<span class="builtin">color</span>.green, style=shape.triangleup, size=size.small)
-</code></pre>
-
-    <div class="tip">
-      <strong>Understanding `direction` Output:</strong> The `ta.supertrend()` function returns two values: the `supertrend` line value and a `direction` value. `direction` is `1` for an uptrend (SuperTrend below price) and `-1` for a downtrend (SuperTrend above price).
-    </div>
-
-    <h2>Practical SuperTrend Strategies</h2>
-
-    <h3>1. Trend Following with SuperTrend</h3>
-    <p>SuperTrend excels at identifying and following trends. When the SuperTrend line is below the price, it indicates an uptrend (often colored green). When it's above the price, it indicates a downtrend (often colored red).</p>
-<pre><code><span class="comment">//@version=5</span>
-<span class="keyword">strategy</span>(<span class="string">"SuperTrend Trend Following"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Inputs</span>
-atrPeriod = <span class="keyword">input</span>(<span class="number">10</span>, title=<span class="string">"ATR Length"</span>)
-factor = <span class="keyword">input</span>.float(<span class="number">3.0</span>, title=<span class="string">"Factor"</span>)
-
-<span class="comment">// Calculate SuperTrend</span>
-[supertrend, direction] = <span class="builtin">ta.supertrend</span>(factor, atrPeriod)
-
-<span class="comment">// Entry conditions based on SuperTrend direction change</span>
-longCondition = <span class="builtin">ta.crossover</span>(close, supertrend) <span class="comment">// Price crosses above SuperTrend</span>
-shortCondition = <span class="builtin">ta.crossunder</span>(close, supertrend) <span class="comment">// Price crosses below SuperTrend</span>
-
-<span class="comment">// Strategy entries</span>
-<span class="keyword">if</span> (longCondition)
-    <span class="builtin">strategy</span>.entry(<span class="string">"Long"</span>, <span class="builtin">strategy</span>.long)
-
-<span class="keyword">if</span> (shortCondition)
-    <span class="builtin">strategy</span>.entry(<span class="string">"Short"</span>, <span class="builtin">strategy</span>.short)
-
-<span class="comment">// Plot SuperTrend</span>
-<span class="builtin">plot</span>(supertrend, title=<span class="string">"SuperTrend"</span>, color=direction &lt; <span class="number">0</span> ? <span class="builtin">color</span>.green : <span class="builtin">color</span>.red, linewidth=<span class="number">2</span>)
-</code></pre>
-
-    <h3>2. SuperTrend as a Dynamic Stop-Loss</h3>
-    <p>One of SuperTrend's most powerful applications is as a dynamic stop-loss. The indicator's line itself can serve as a trailing stop, adapting to market volatility. When in a long position, the SuperTrend's green line (uptrend) acts as your stop. When in a short position, the red line (downtrend) acts as your stop.</p>
-<pre><code><span class="comment">//@version=5</span>
-<span class="keyword">strategy</span>(<span class="string">"SuperTrend Dynamic Stop-Loss"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Inputs</span>
-atrPeriod = <span class="keyword">input</span>(<span class="number">10</span>, title=<span class="string">"ATR Length"</span>)
-factor = <span class="keyword">input</span>.float(<span class="number">3.0</span>, title=<span class="string">"Factor"</span>)
-
-<span class="comment">// Calculate SuperTrend</span>
-[supertrend, direction] = <span class="builtin">ta.supertrend</span>(factor, atrPeriod)
-
-<span class="comment">// Entry conditions (example: simple moving average crossover for entries)</span>
-fastMA = <span class="builtin">ta.ema</span>(close, <span class="number">20</span>)
-slowMA = <span class="builtin">ta.ema</span>(close, <span class="number">50</span>)
-longEntry = <span class="builtin">ta.crossover</span>(fastMA, slowMA)
-shortEntry = <span class="builtin">ta.crossunder</span>(fastMA, slowMA)
-
-<span class="comment">// Long strategy</span>
-<span class="keyword">if</span> (longEntry)
-    <span class="builtin">strategy</span>.entry(<span class="string">"Buy"</span>, <span class="builtin">strategy</span>.long)
-
-<span class="comment">// Short strategy</span>
-<span class="keyword">if</span> (shortEntry)
-    <span class="builtin">strategy</span>.entry(<span class="string">"Sell"</span>, <span class="builtin">strategy</span>.short)
-
-<span class="comment">// Dynamic Stop Loss based on SuperTrend</span>
-<span class="comment">// If in a long position, close if price crosses below SuperTrend</span>
-<span class="keyword">if</span> (<span class="builtin">strategy</span>.position_size > <span class="number">0</span>)
-    <span class="builtin">strategy</span>.exit(<span class="string">"Long Exit"</span>, from_entry=<span class="string">"Buy"</span>, stop=supertrend)
-
-<span class="comment">// If in a short position, close if price crosses above SuperTrend</span>
-<span class="keyword">if</span> (<span class="builtin">strategy</span>.position_size &lt; <span class="number">0</span>)
-    <span class="builtin">strategy</span>.exit(<span class="string">"Short Exit"</span>, from_entry=<span class="string">"Sell"</span>, stop=supertrend)
-
-<span class="comment">// Plot SuperTrend</span>
-<span class="builtin">plot</span>(supertrend, title=<span class="string">"SuperTrend"</span>, color=direction &lt; <span class="number">0</span> ? <span class="builtin">color</span>.green : <span class="builtin">color</span>.red, linewidth=<span class="number">2</span>)
-</code></pre>
-
-    <h2>Optimizing SuperTrend Performance</h2>
-    <p>To maximize SuperTrend's effectiveness:</p>
-    <ul>
-      <li><strong>Parameter Tuning:</strong> Experiment with `atrPeriod` and `factor` for different timeframes and assets. A shorter ATR period makes it more sensitive; a smaller factor brings the line closer to price.</li>
-      <li><strong>Multi-Timeframe Analysis:</strong> Use SuperTrend on a higher timeframe to confirm the overall trend, and on a lower timeframe for entry/exit signals.</li>
-      <li><strong>Combine with Volume:</strong> Look for volume confirmation on SuperTrend signals. A trend reversal accompanied by significant volume often provides a stronger signal.</li>
-      <li><strong>Confluence with Support/Resistance:</strong> SuperTrend signals that align with key support or resistance levels can be more reliable.</li>
-    </ul>
-
-    <div class="tip">
-      <strong>Important:</strong> The ATR period and multiplier are crucial. Too small, and you'll get whipsaws; too large, and signals will be too late. Find a balance that suits your trading style and asset.
-    </div>
-
-    <h2>Common SuperTrend Pitfalls</h2>
-    <ul>
-      <li> <b>Whipsaws in Ranging Markets:</b> SuperTrend performs best in trending markets. In choppy or sideways markets, it can generate numerous false signals.</li>
-      <li> <b>Lagging Indicator:</b> Like other trend-following indicators, SuperTrend can sometimes lag price action, especially during sharp reversals.</li>
-      <li> <b>Not a Standalone Indicator:</b> Relying solely on SuperTrend without additional confirmation from other indicators or price action can lead to poor results.</li>
-      <li> <b>Over-Optimization:</b> Excessive tuning of parameters to historical data may not translate to future performance.</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-    <p>The SuperTrend indicator is an exceptional tool for traders seeking a dynamic, volatility-adjusted way to identify and follow trends in Pine Script. Its intuitive visual signals and utility as a stop-loss mechanism make it a valuable addition to any TradingView strategy. By understanding its ATR-based calculations and combining it wisely with other analytical tools, you can harness the full power of SuperTrend to navigate market movements more effectively.</p>
   
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
+        <script type="module" crossorigin src="/assets/__vite-browser-external-Cvvx4-p9.js"></script>
+        <link rel="stylesheet" crossorigin href="/assets/index-BMPzknT4.css">
+      </head>
+      <body>
+        <div id="app"><div class="min-h-screen bg-white dark:bg-black"><section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div><div class="absolute inset-0 opacity-5 dark:opacity-10"><div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div></div><div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div><div style="animation-delay:1s;" class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"></div><div class="relative max-w-5xl mx-auto px-6 py-24 text-center"><div class="animate-in mb-8"><div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg><span>/</span><a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a><span>/</span><span class="text-indigo-500">pine-script-supertrend</span></div></div><h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6"><span class="text-indigo-500">$</span> <span class="inline-block min-w-[200px]">Pine Script SuperTrend (ATR-based)</span></h1><p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">Master this powerful volatility-adjusted trend indicator in TradingView's Pine Script for dynamic buy/sell signals and stop-loss placement.</p><div class="animate-in flex flex-wrap justify-center gap-6 mb-10"><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path></svg><span class="text-sm font-mono">500+ Clients Helped</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg><span class="text-sm font-mono">100% Satisfaction</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg><span class="text-sm font-mono">Live Trading Ready</span></div></div><div class="animate-in flex flex-col sm:flex-row gap-4 justify-center"><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a><a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>Get The Option Buyer guide now</a></div></div></section><div class="max-w-4xl mx-auto px-6 py-16"><div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl"><div class="flex items-start gap-3"><span class="text-amber-500 text-lg">⚠️</span><div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div></div></div><div class="animate-in mb-10"></div><section id="section-0" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is SuperTrend?</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>The SuperTrend indicator is a popular trend-following system that plots a line on the price chart, dynamically switching its position relative to the price. It's built upon the concept of <a href="https://offline-pixel.github.io/pinescript-strategies/pine-script-atr"><b>Average True Range (ATR)</b></a>, which measures market volatility. This makes SuperTrend adaptive to changing market conditions, providing more reliable signals than indicators with fixed distances from price.</p><p>In Pine Script, SuperTrend is a robust tool for identifying trends, generating buy/sell signals, and even for setting dynamic stop-loss levels.</p></div></section><section id="section-1" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>SuperTrend primarily consists of two key components:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>ATR Period</b>: The look-back period for calculating the Average True Range (e.g., 10 periods).</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Multiplier (Factor)</b>: A value that determines the distance of the SuperTrend line from the price (e.g., 3).</span></li></ul><ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Calculating ATR</b>: Measures the average volatility over the specified period.</li><li><b>Basic Upper Band</b>: <code>(high + low) / 2 + (multiplier * ATR)</code></li><li><b>Basic Lower Band</b>: <code>(high + low) / 2 - (multiplier * ATR)</code></li><li><b>Final SuperTrend Line</b>: The line switches based on whether the closing price crosses the basic bands, reflecting the prevailing trend.</li></ol></section><section id="section-2" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic SuperTrend Implementation in Pine Script</h2><div class="code-block mt-6"><div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"><div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg><span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span></div><button class="text-slate-500 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg></button></div><pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator("My SuperTrend Indicator", overlay=true)
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
+// Inputs for SuperTrend parameters
+atrPeriod = input(10, title="ATR Length")
+factor = input.float(3.0, title="Factor")
 
-</body>
-</html>
+// Calculate SuperTrend using the built-in function
+[supertrend, direction] = ta.supertrend(factor, atrPeriod)
+
+// Plot the SuperTrend line, coloring it based on its direction
+plot(supertrend, title="SuperTrend", color=direction < 0 ? color.green : color.red, linewidth=2)
+
+// Optional: Plot arrows when the trend changes
+plotshape(direction == 1 and direction[1] == -1, title="Sell Signal", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+plotshape(direction == -1 and direction[1] == 1, title="Buy Signal", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)</code></pre><div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"><span class="text-indigo-400 text-xs">$</span><span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span></div></div></div></section><section id="section-3" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Understanding `direction` Output</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Understanding `direction` Output</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">The `ta.supertrend()` function returns two values: the `supertrend` line value and a `direction` value. `direction` is `1` for an uptrend (SuperTrend below price) and `-1` for a downtrend (SuperTrend above price).</p></div></div></div></section><section id="section-4" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Practical SuperTrend Strategies</h2><div class="mt-6 space-y-8"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. Trend Following with SuperTrend</h3><p class="text-slate-600 dark:text-slate-400 mb-4">SuperTrend excels at identifying and following trends. When the SuperTrend line is below the price, it indicates an uptrend (often colored green). When it's above the price, it indicates a downtrend (often colored red).</p><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy("SuperTrend Trend Following", overlay=true)
+
+// Inputs
+atrPeriod = input(10, title="ATR Length")
+factor = input.float(3.0, title="Factor")
+
+// Calculate SuperTrend
+[supertrend, direction] = ta.supertrend(factor, atrPeriod)
+
+// Entry conditions based on SuperTrend direction change
+longCondition = ta.crossover(close, supertrend)
+shortCondition = ta.crossunder(close, supertrend)
+
+// Strategy entries
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+
+if (shortCondition)
+    strategy.entry("Short", strategy.short)
+
+// Plot SuperTrend
+plot(supertrend, title="SuperTrend", color=direction < 0 ? color.green : color.red, linewidth=2)</code></pre></div></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. SuperTrend as a Dynamic Stop-Loss</h3><p class="text-slate-600 dark:text-slate-400 mb-4">One of SuperTrend's most powerful applications is as a dynamic stop-loss. The indicator's line itself can serve as a trailing stop, adapting to market volatility.</p><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy("SuperTrend Dynamic Stop-Loss", overlay=true)
+
+// Inputs
+atrPeriod = input(10, title="ATR Length")
+factor = input.float(3.0, title="Factor")
+
+// Calculate SuperTrend
+[supertrend, direction] = ta.supertrend(factor, atrPeriod)
+
+// Entry conditions (example: simple moving average crossover for entries)
+fastMA = ta.ema(close, 20)
+slowMA = ta.ema(close, 50)
+longEntry = ta.crossover(fastMA, slowMA)
+shortEntry = ta.crossunder(fastMA, slowMA)
+
+// Long strategy
+if (longEntry)
+    strategy.entry("Buy", strategy.long)
+
+// Short strategy
+if (shortEntry)
+    strategy.entry("Sell", strategy.short)
+
+// Dynamic Stop Loss based on SuperTrend
+if (strategy.position_size > 0)
+    strategy.exit("Long Exit", from_entry="Buy", stop=supertrend)
+
+if (strategy.position_size < 0)
+    strategy.exit("Short Exit", from_entry="Sell", stop=supertrend)
+
+// Plot SuperTrend
+plot(supertrend, title="SuperTrend", color=direction < 0 ? color.green : color.red, linewidth=2)</code></pre></div></div></div></section><section id="section-5" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing SuperTrend Performance</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>To maximize SuperTrend's effectiveness:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Parameter Tuning:</b> Experiment with `atrPeriod` and `factor` for different timeframes and assets. A shorter ATR period makes it more sensitive; a smaller factor brings the line closer to price.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Multi-Timeframe Analysis:</b> Use SuperTrend on a higher timeframe to confirm the overall trend, and on a lower timeframe for entry/exit signals.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Combine with Volume:</b> Look for volume confirmation on SuperTrend signals. A trend reversal accompanied by significant volume often provides a stronger signal.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Confluence with Support/Resistance:</b> SuperTrend signals that align with key support or resistance levels can be more reliable.</span></li></ul></section><section id="section-6" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Important Parameter Note</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Important Parameter Note</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">The ATR period and multiplier are crucial. Too small, and you'll get whipsaws; too large, and signals will be too late. Find a balance that suits your trading style and asset.</p></div></div></div></section><section id="section-7" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common SuperTrend Pitfalls</h2><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Whipsaws in Ranging Markets:</b> SuperTrend performs best in trending markets. In choppy or sideways markets, it can generate numerous false signals.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Lagging Indicator:</b> Like other trend-following indicators, SuperTrend can sometimes lag price action, especially during sharp reversals.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Not a Standalone Indicator:</b> Relying solely on SuperTrend without additional confirmation from other indicators or price action can lead to poor results.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Over-Optimization:</b> Excessive tuning of parameters to historical data may not translate to future performance.</span></li></ul></section><section id="section-8" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2><div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800"><div class="flex gap-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-8 w-8 text-indigo-500 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path></svg><div><h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3><div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>The SuperTrend indicator is an exceptional tool for traders seeking a dynamic, volatility-adjusted way to identify and follow trends in Pine Script. Its intuitive visual signals and utility as a stop-loss mechanism make it a valuable addition to any TradingView strategy. By understanding its ATR-based calculations and combining it wisely with other analytical tools, you can harness the full power of SuperTrend to navigate market movements more effectively.</p></div></div></div></div></section><div class="animate-in mt-20 text-center"><div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800"><h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2><p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p><p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a></div></div></div><style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style></div></div>
+
+        <script>
+          window.__INITIAL_DATA__ = {"slug":"pine-script-supertrend","article":{"meta":{"title":"Pine Script SuperTrend (ATR-based)","description":"A comprehensive guide to the SuperTrend indicator in Pine Script, explaining its ATR-based calculation, trend following, and reversal signaling for TradingView.","keywords":"pine script, SuperTrend, ATR, Average True Range, tradingview indicator, technical analysis, trend following, reversal signals","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend","ogTitle":"Pine Script SuperTrend (ATR-based)","ogDescription":"Master the SuperTrend indicator in Pine Script for robust trend identification and dynamic stop-loss placement.","twitterTitle":"Pine Script SuperTrend (ATR-based)","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script SuperTrend (ATR-based)","description":"A comprehensive guide to the SuperTrend indicator in Pine Script, explaining its ATR-based calculation, trend following, and reversal signaling for TradingView.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2024-06-16","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"SuperTrend (ATR-based)","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"SuperTrend (ATR-based)","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script SuperTrend (ATR-based)","subtitle":"Master this powerful volatility-adjusted trend indicator in TradingView's Pine Script for dynamic buy/sell signals and stop-loss placement.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What is SuperTrend?","html":"<p>The SuperTrend indicator is a popular trend-following system that plots a line on the price chart, dynamically switching its position relative to the price. It's built upon the concept of <a href=\"https://offline-pixel.github.io/pinescript-strategies/pine-script-atr\"><b>Average True Range (ATR)</b></a>, which measures market volatility. This makes SuperTrend adaptive to changing market conditions, providing more reliable signals than indicators with fixed distances from price.</p><p>In Pine Script, SuperTrend is a robust tool for identifying trends, generating buy/sell signals, and even for setting dynamic stop-loss levels.</p>"},{"type":"content","title":"Components and Calculation","html":"<p>SuperTrend primarily consists of two key components:</p>","listItems":["<b>ATR Period</b>: The look-back period for calculating the Average True Range (e.g., 10 periods).","<b>Multiplier (Factor)</b>: A value that determines the distance of the SuperTrend line from the price (e.g., 3)."],"additionalHtml":"<p>The indicator calculates an upper and lower basic band, and then switches between them based on price action. The core calculation involves:</p>","orderedItems":["<b>Calculating ATR</b>: Measures the average volatility over the specified period.","<b>Basic Upper Band</b>: <code>(high + low) / 2 + (multiplier * ATR)</code>","<b>Basic Lower Band</b>: <code>(high + low) / 2 - (multiplier * ATR)</code>","<b>Final SuperTrend Line</b>: The line switches based on whether the closing price crosses the basic bands, reflecting the prevailing trend."]},{"type":"code","title":"Basic SuperTrend Implementation in Pine Script","description":"Pine Script v5 provides a convenient built-in function `ta.supertrend()` that handles all the calculations for you.","code":"//@version=5\nindicator(\"My SuperTrend Indicator\", overlay=true)\n\n// Inputs for SuperTrend parameters\natrPeriod = input(10, title=\"ATR Length\")\nfactor = input.float(3.0, title=\"Factor\")\n\n// Calculate SuperTrend using the built-in function\n[supertrend, direction] = ta.supertrend(factor, atrPeriod)\n\n// Plot the SuperTrend line, coloring it based on its direction\nplot(supertrend, title=\"SuperTrend\", color=direction < 0 ? color.green : color.red, linewidth=2)\n\n// Optional: Plot arrows when the trend changes\nplotshape(direction == 1 and direction[1] == -1, title=\"Sell Signal\", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)\nplotshape(direction == -1 and direction[1] == 1, title=\"Buy Signal\", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)"},{"type":"tip","title":"Understanding `direction` Output","content":"The `ta.supertrend()` function returns two values: the `supertrend` line value and a `direction` value. `direction` is `1` for an uptrend (SuperTrend below price) and `-1` for a downtrend (SuperTrend above price)."},{"type":"strategies","title":"Practical SuperTrend Strategies","strategies":[{"name":"1. Trend Following with SuperTrend","description":"SuperTrend excels at identifying and following trends. When the SuperTrend line is below the price, it indicates an uptrend (often colored green). When it's above the price, it indicates a downtrend (often colored red).","code":"//@version=5\nstrategy(\"SuperTrend Trend Following\", overlay=true)\n\n// Inputs\natrPeriod = input(10, title=\"ATR Length\")\nfactor = input.float(3.0, title=\"Factor\")\n\n// Calculate SuperTrend\n[supertrend, direction] = ta.supertrend(factor, atrPeriod)\n\n// Entry conditions based on SuperTrend direction change\nlongCondition = ta.crossover(close, supertrend)\nshortCondition = ta.crossunder(close, supertrend)\n\n// Strategy entries\nif (longCondition)\n    strategy.entry(\"Long\", strategy.long)\n\nif (shortCondition)\n    strategy.entry(\"Short\", strategy.short)\n\n// Plot SuperTrend\nplot(supertrend, title=\"SuperTrend\", color=direction < 0 ? color.green : color.red, linewidth=2)"},{"name":"2. SuperTrend as a Dynamic Stop-Loss","description":"One of SuperTrend's most powerful applications is as a dynamic stop-loss. The indicator's line itself can serve as a trailing stop, adapting to market volatility.","code":"//@version=5\nstrategy(\"SuperTrend Dynamic Stop-Loss\", overlay=true)\n\n// Inputs\natrPeriod = input(10, title=\"ATR Length\")\nfactor = input.float(3.0, title=\"Factor\")\n\n// Calculate SuperTrend\n[supertrend, direction] = ta.supertrend(factor, atrPeriod)\n\n// Entry conditions (example: simple moving average crossover for entries)\nfastMA = ta.ema(close, 20)\nslowMA = ta.ema(close, 50)\nlongEntry = ta.crossover(fastMA, slowMA)\nshortEntry = ta.crossunder(fastMA, slowMA)\n\n// Long strategy\nif (longEntry)\n    strategy.entry(\"Buy\", strategy.long)\n\n// Short strategy\nif (shortEntry)\n    strategy.entry(\"Sell\", strategy.short)\n\n// Dynamic Stop Loss based on SuperTrend\nif (strategy.position_size > 0)\n    strategy.exit(\"Long Exit\", from_entry=\"Buy\", stop=supertrend)\n\nif (strategy.position_size < 0)\n    strategy.exit(\"Short Exit\", from_entry=\"Sell\", stop=supertrend)\n\n// Plot SuperTrend\nplot(supertrend, title=\"SuperTrend\", color=direction < 0 ? color.green : color.red, linewidth=2)"}]},{"type":"content","title":"Optimizing SuperTrend Performance","html":"<p>To maximize SuperTrend's effectiveness:</p>","listItems":["<b>Parameter Tuning:</b> Experiment with `atrPeriod` and `factor` for different timeframes and assets. A shorter ATR period makes it more sensitive; a smaller factor brings the line closer to price.","<b>Multi-Timeframe Analysis:</b> Use SuperTrend on a higher timeframe to confirm the overall trend, and on a lower timeframe for entry/exit signals.","<b>Combine with Volume:</b> Look for volume confirmation on SuperTrend signals. A trend reversal accompanied by significant volume often provides a stronger signal.","<b>Confluence with Support/Resistance:</b> SuperTrend signals that align with key support or resistance levels can be more reliable."]},{"type":"tip","title":"Important Parameter Note","content":"The ATR period and multiplier are crucial. Too small, and you'll get whipsaws; too large, and signals will be too late. Find a balance that suits your trading style and asset."},{"type":"content","title":"Common SuperTrend Pitfalls","listItems":["<b>Whipsaws in Ranging Markets:</b> SuperTrend performs best in trending markets. In choppy or sideways markets, it can generate numerous false signals.","<b>Lagging Indicator:</b> Like other trend-following indicators, SuperTrend can sometimes lag price action, especially during sharp reversals.","<b>Not a Standalone Indicator:</b> Relying solely on SuperTrend without additional confirmation from other indicators or price action can lead to poor results.","<b>Over-Optimization:</b> Excessive tuning of parameters to historical data may not translate to future performance."]},{"type":"conclusion","title":"Conclusion","html":"<p>The SuperTrend indicator is an exceptional tool for traders seeking a dynamic, volatility-adjusted way to identify and follow trends in Pine Script. Its intuitive visual signals and utility as a stop-loss mechanism make it a valuable addition to any TradingView strategy. By understanding its ATR-based calculations and combining it wisely with other analytical tools, you can harness the full power of SuperTrend to navigate market movements more effectively.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]},"isSSR":true};
+        </script>
+      </body>
+      </html>
