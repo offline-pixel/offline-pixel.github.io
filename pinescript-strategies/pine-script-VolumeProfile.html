@@ -1,77 +1,588 @@
-<!DOCTYPE html>
-      <html lang="en">
-      <head>
-        
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pine Script Volume Profile - Complete TradingView Guide</title>
-    <meta name="description" content="Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.">
-    <meta name="keywords" content="pine script strategies, Volume Profile, POC, Value Area, HVN, LVN, tradingview indicator, technical analysis, volume distribution, market profile, support resistance, supply demand">
-    <meta property="og:title" content="Pine Script Volume Profile - Complete TradingView Guide">
-    <meta property="og:description" content="Comprehensive tutorial on implementing and using Volume Profile in Pine Script for advanced trading strategies.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile">
-    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pine Script Volume Profile - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile">
-    <link rel="icon" type="image/svg+xml" href="/vite.svg">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
-    <script type="application/ld+json">
-    {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Pine Script Volume Profile - Complete TradingView Guide",
-  "description": "Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.",
-  "author": {
-    "@type": "Person",
-    "name": "Offline Pixel Computers"
-  },
-  "datePublished": "2025-06-16",
-  "image": "https://offline-pixel.github.io/assets/logo2.png",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Offline Pixel",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://offline-pixel.github.io/assets/logo2.png"
-    }
-  },
-  "breadcrumb": {
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://offline-pixel.github.io/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "PineScript Strategies",
-        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Volume Profile",
-        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"
-      }
-    ]
-  }
-}
-    </script>
-  
-        <script type="module" crossorigin src="https://offline-pixel.github.io/assets/__vite-browser-external-Cvvx4-p9.js"></script>
-        <link rel="stylesheet" crossorigin href="https://offline-pixel.github.io/assets/index-BMPzknT4.css">
-      </head>
-      <body>
-        <div id="app"><div class="min-h-screen bg-white dark:bg-black"><section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div><div class="absolute inset-0 opacity-5 dark:opacity-10"><div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div></div><div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div><div style="animation-delay:1s;" class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"></div><div class="relative max-w-5xl mx-auto px-6 py-24 text-center"><div class="animate-in mb-8"><div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg><span>/</span><a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a><span>/</span><span class="text-indigo-500">pine-script-volumeprofile</span></div></div><h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6"><span class="text-indigo-500">$</span> <span class="inline-block min-w-[200px]">Pine Script Volume Profile</span></h1><p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">Master this powerful technical analysis tool in TradingView's Pine Script that displays trading activity over a specified price range, revealing key areas of supply and demand for more informed trading decisions.</p><div class="animate-in flex flex-wrap justify-center gap-6 mb-10"><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path></svg><span class="text-sm font-mono">500+ Clients Helped</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg><span class="text-sm font-mono">100% Satisfaction</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg><span class="text-sm font-mono">Live Trading Ready</span></div></div><div class="animate-in flex flex-col sm:flex-row gap-4 justify-center"><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a><a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>Get The Option Buyer guide now</a></div></div></section><div class="max-w-4xl mx-auto px-6 py-16"><div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl"><div class="flex items-start gap-3"><span class="text-amber-500 text-lg">⚠️</span><div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div></div></div><div class="animate-in mb-10"></div><section id="section-0" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is Volume Profile?</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p> <b>Volume Profile</b> is an advanced charting indicator that displays trading activity over a specified price range during a specified period. It shows the total volume traded at each price level, often represented as a horizontal histogram on the left or right side of the price chart. Unlike traditional volume indicators that show total volume traded over a specific time period (e.g., a bar), Volume Profile reveals *where* that volume was traded across different price points.</p><p>This insight into the distribution of volume provides a deeper understanding of market dynamics and participant behavior. Key components derived from the Volume Profile include:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Point of Control (POC):</b> The price level with the highest traded volume for the specified period. It represents the price where the most trading activity occurred and is considered a fair value area.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Value Area (VA):</b> The price range where a significant percentage of the total volume (typically 70% or 68%) was traded. It signifies where the majority of participants found value.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>High Volume Nodes (HVN):</b> Price levels where a large amount of volume was traded, indicating areas of agreement or consolidation. These often act as strong support or resistance.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Low Volume Nodes (LVN):</b> Price levels where very little volume was traded, indicating areas of disagreement or rapid price movement. These often act as weak support/resistance and tend to be easily broken through.</span></li></ul></section><section id="section-1" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation (Conceptual)</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>The Volume Profile is constructed by taking all the trades (volume) that occurred within a defined time window (e.g., a day, a week, or a fixed number of bars) and categorizing them into discrete price "bins" or levels. For each bin, the total volume traded at that price level is accumulated. This accumulation is then displayed as a horizontal bar, with longer bars indicating more volume traded at that price.<br><br>The calculation conceptually involves:</p></div><ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Define the Analysis Period:</b> This can be a specific session (e.g., daily, weekly) or a fixed number of bars (e.g., last 100 bars).</li><li><b>Determine Price Range:</b> Identify the high and low prices within the analysis period.</li><li><b>Define Bins:</b> Divide the price range into a specified number of equal price "bins." For example, if the range is $10 and you want 10 bins, each bin would be $1 wide.</li><li><b>Distribute Volume:</b> For each bar within the analysis period, distribute its volume across the price bins that its `high`-`low` range covers. If a bar's `high` is in one bin and its `low` in another, its volume is proportionally distributed.</li><li><b>Aggregate Volume per Bin:</b> Sum up the volume for each price bin.</li><li><b>Identify POC, VA, HVN, LVN:</b> Once the volume distribution is complete, the POC is the bin with the highest volume. The Value Area is found by accumulating volume from the POC outwards until the specified percentage (e.g., 70%) of total volume is reached.</li></ol></section><section id="section-2" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Volume Profile Implementation in Pine Script</h2><div class="code-block mt-6"><div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"><div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg><span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span></div><button class="text-slate-500 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg></button></div><pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pine Script Volume Profile - Complete TradingView Guide</title>
+        <meta
+            name="description"
+            content="Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction."
+        />
+        <meta
+            name="keywords"
+            content="pine script strategies, Volume Profile, POC, Value Area, HVN, LVN, tradingview indicator, technical analysis, volume distribution, market profile, support resistance, supply demand"
+        />
+        <meta
+            property="og:title"
+            content="Pine Script Volume Profile - Complete TradingView Guide"
+        />
+        <meta
+            property="og:description"
+            content="Comprehensive tutorial on implementing and using Volume Profile in Pine Script for advanced trading strategies."
+        />
+        <meta property="og:type" content="article" />
+        <meta
+            property="og:url"
+            content="https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"
+        />
+        <meta
+            property="og:image"
+            content="https://offline-pixel.github.io/assets/logo2.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Pine Script Volume Profile - Complete TradingView Guide"
+        />
+        <link
+            rel="canonical"
+            href="https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"
+        />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617"
+            crossorigin="anonymous"
+        ></script>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": "Pine Script Volume Profile - Complete TradingView Guide",
+                "description": "Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.",
+                "author": {
+                    "@type": "Person",
+                    "name": "Offline Pixel Computers"
+                },
+                "datePublished": "2025-06-16",
+                "image": "https://offline-pixel.github.io/assets/logo2.png",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Offline Pixel",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://offline-pixel.github.io/assets/logo2.png"
+                    }
+                },
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://offline-pixel.github.io/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "PineScript Strategies",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "Volume Profile",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"
+                        }
+                    ]
+                }
+            }
+        </script>
+
+        <script
+            type="module"
+            crossorigin
+            src="https://offline-pixel.github.io/assets/asyncToGenerator-D9OcAC2v.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            crossorigin
+            href="https://offline-pixel.github.io/assets/index-BMPzknT4.css"
+        />
+    </head>
+    <body>
+        <div id="app">
+            <div class="min-h-screen bg-white dark:bg-black">
+                <section
+                    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
+                >
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"
+                    ></div>
+                    <div class="absolute inset-0 opacity-5 dark:opacity-10">
+                        <div
+                            class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"
+                        ></div>
+                    </div>
+                    <div
+                        class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"
+                    ></div>
+                    <div
+                        style="animation-delay: 1s"
+                        class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"
+                    ></div>
+                    <div
+                        class="relative max-w-5xl mx-auto px-6 py-24 text-center"
+                    >
+                        <div class="animate-in mb-8">
+                            <div
+                                class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-3 w-3"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                                    ></path></svg
+                                ><span>/</span
+                                ><a
+                                    href="/pinescript-strategies.html"
+                                    class="hover:text-indigo-500 transition-colors"
+                                    >pinescript-strategies</a
+                                ><span>/</span
+                                ><span class="text-indigo-500"
+                                    >pine-script-volumeprofile</span
+                                >
+                            </div>
+                        </div>
+                        <h1
+                            class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6"
+                        >
+                            <span class="text-indigo-500">$</span>
+                            <span class="inline-block min-w-[200px]"
+                                >Pine Script Volume Profile</span
+                            >
+                        </h1>
+                        <p
+                            class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6"
+                        >
+                            Master this powerful technical analysis tool in
+                            TradingView's Pine Script that displays trading
+                            activity over a specified price range, revealing key
+                            areas of supply and demand for more informed trading
+                            decisions.
+                        </p>
+                        <div
+                            class="animate-in flex flex-wrap justify-center gap-6 mb-10"
+                        >
+                            <div
+                                class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"
+                                    ></path></svg
+                                ><span class="text-sm font-mono"
+                                    >500+ Clients Helped</span
+                                >
+                            </div>
+                            <div
+                                class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+                                    ></path></svg
+                                ><span class="text-sm font-mono"
+                                    >100% Satisfaction</span
+                                >
+                            </div>
+                            <div
+                                class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                    ></path></svg
+                                ><span class="text-sm font-mono"
+                                    >Live Trading Ready</span
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="animate-in flex flex-col sm:flex-row gap-4 justify-center"
+                        >
+                            <a
+                                href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg"
+                                ><svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
+                                    ></path></svg
+                                >Get Pine Script Strategy<svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                                    ></path></svg></a
+                            ><a
+                                href="https://offlinepixel.gumroad.com/l/kpafhy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all"
+                                ><svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+                                    ></path></svg
+                                >Get The Option Buyer guide now</a
+                            >
+                        </div>
+                    </div>
+                </section>
+                <div class="max-w-4xl mx-auto px-6 py-16">
+                    <div
+                        class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl"
+                    >
+                        <div class="flex items-start gap-3">
+                            <span class="text-amber-500 text-lg">⚠️</span>
+                            <div
+                                class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"
+                            >
+                                Trading financial markets carries risk. All
+                                content (PineScript code, indicators,
+                                strategies) on this website is for educational
+                                purposes only. Past performance is not
+                                indicative of future results. By using any code
+                                or information from this site, you agree that
+                                you are solely responsible for your trading
+                                decisions. The author disclaims all liability
+                                for any losses incurred. To gain from experts
+                                experiences, You can always try our
+                                <a
+                                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                                    target="_blank"
+                                    rel="nofollow"
+                                    >Invite Only Scripts</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="animate-in mb-10"></div>
+                    <section
+                        id="section-0"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >01</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            What is Volume Profile?
+                        </h2>
+                        <div
+                            class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"
+                        >
+                            <p>
+                                <b>Volume Profile</b> is an advanced charting
+                                indicator that displays trading activity over a
+                                specified price range during a specified period.
+                                It shows the total volume traded at each price
+                                level, often represented as a horizontal
+                                histogram on the left or right side of the price
+                                chart. Unlike traditional volume indicators that
+                                show total volume traded over a specific time
+                                period (e.g., a bar), Volume Profile reveals
+                                *where* that volume was traded across different
+                                price points.
+                            </p>
+                            <p>
+                                This insight into the distribution of volume
+                                provides a deeper understanding of market
+                                dynamics and participant behavior. Key
+                                components derived from the Volume Profile
+                                include:
+                            </p>
+                        </div>
+                        <ul class="mt-6 space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Point of Control (POC):</b> The price
+                                    level with the highest traded volume for the
+                                    specified period. It represents the price
+                                    where the most trading activity occurred and
+                                    is considered a fair value area.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Value Area (VA):</b> The price range
+                                    where a significant percentage of the total
+                                    volume (typically 70% or 68%) was traded. It
+                                    signifies where the majority of participants
+                                    found value.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>High Volume Nodes (HVN):</b> Price
+                                    levels where a large amount of volume was
+                                    traded, indicating areas of agreement or
+                                    consolidation. These often act as strong
+                                    support or resistance.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Low Volume Nodes (LVN):</b> Price levels
+                                    where very little volume was traded,
+                                    indicating areas of disagreement or rapid
+                                    price movement. These often act as weak
+                                    support/resistance and tend to be easily
+                                    broken through.</span
+                                >
+                            </li>
+                        </ul>
+                    </section>
+                    <section
+                        id="section-1"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >02</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Components and Calculation (Conceptual)
+                        </h2>
+                        <div
+                            class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"
+                        >
+                            <p>
+                                The Volume Profile is constructed by taking all
+                                the trades (volume) that occurred within a
+                                defined time window (e.g., a day, a week, or a
+                                fixed number of bars) and categorizing them into
+                                discrete price "bins" or levels. For each bin,
+                                the total volume traded at that price level is
+                                accumulated. This accumulation is then displayed
+                                as a horizontal bar, with longer bars indicating
+                                more volume traded at that price.<br /><br />The
+                                calculation conceptually involves:
+                            </p>
+                        </div>
+                        <ol
+                            class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"
+                        >
+                            <li>
+                                <b>Define the Analysis Period:</b> This can be a
+                                specific session (e.g., daily, weekly) or a
+                                fixed number of bars (e.g., last 100 bars).
+                            </li>
+                            <li>
+                                <b>Determine Price Range:</b> Identify the high
+                                and low prices within the analysis period.
+                            </li>
+                            <li>
+                                <b>Define Bins:</b> Divide the price range into
+                                a specified number of equal price "bins." For
+                                example, if the range is $10 and you want 10
+                                bins, each bin would be $1 wide.
+                            </li>
+                            <li>
+                                <b>Distribute Volume:</b> For each bar within
+                                the analysis period, distribute its volume
+                                across the price bins that its `high`-`low`
+                                range covers. If a bar's `high` is in one bin
+                                and its `low` in another, its volume is
+                                proportionally distributed.
+                            </li>
+                            <li>
+                                <b>Aggregate Volume per Bin:</b> Sum up the
+                                volume for each price bin.
+                            </li>
+                            <li>
+                                <b>Identify POC, VA, HVN, LVN:</b> Once the
+                                volume distribution is complete, the POC is the
+                                bin with the highest volume. The Value Area is
+                                found by accumulating volume from the POC
+                                outwards until the specified percentage (e.g.,
+                                70%) of total volume is reached.
+                            </li>
+                        </ol>
+                    </section>
+                    <section
+                        id="section-2"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >03</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Basic Volume Profile Implementation in Pine Script
+                        </h2>
+                        <div class="code-block mt-6">
+                            <div
+                                class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"
+                            >
+                                <div
+                                    class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"
+                                >
+                                    <div class="flex gap-2">
+                                        <div
+                                            class="w-3 h-3 rounded-full bg-red-500"
+                                        ></div>
+                                        <div
+                                            class="w-3 h-3 rounded-full bg-yellow-500"
+                                        ></div>
+                                        <div
+                                            class="w-3 h-3 rounded-full bg-green-500"
+                                        ></div>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                            data-slot="icon"
+                                            class="h-3 w-3 text-slate-500"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
+                                            ></path></svg
+                                        ><span
+                                            class="text-[11px] font-mono text-slate-400"
+                                            >pine-script@terminal</span
+                                        >
+                                    </div>
+                                    <button
+                                        class="text-slate-500 hover:text-white transition-colors"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                            data-slot="icon"
+                                            class="h-4 w-4"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
+                                            ></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <pre
+                                    class="p-6 overflow-x-auto"
+                                ><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
 indicator("My Volume Profile", overlay=true, max_bars_back=500)
 
 // --- User Inputs ---
@@ -97,7 +608,169 @@ else if profileType == "Session Profile"
         profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)
 
 // Note: Pine Script's built-in `volume` module handles the complex drawing
-// of the histogram, POC line, and Value Area shading automatically.</code></pre><div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"><span class="text-indigo-400 text-xs">$</span><span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span></div></div></div></section><section id="section-3" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Supply &amp; Demand Hotspots</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Supply &amp; Demand Hotspots</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Volume Profile helps identify where the majority of trading activity occurred, pinpointing true supply and demand zones where institutions and large players have likely taken positions.</p></div></div></div></section><section id="section-4" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Practical Volume Profile Trading Strategies</h2><div class="mt-6 space-y-8"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. Support and Resistance with HVNs &amp; LVNs</h3><p class="text-slate-600 dark:text-slate-400 mb-4">HVNs act as strong areas of agreement and potential support/resistance, while LVNs represent areas of rapid transit and weak support/resistance.</p><ul class="mb-6 space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>HVN as Support/Resistance:</b> When price approaches an HVN, it's likely to consolidate or reverse as significant past trading activity suggests strong conviction at that level.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>LVN as Price Magnet/Breakout:</b> Price tends to move quickly through LVNs because there was little prior agreement.</span></li></ul><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+// of the histogram, POC line, and Value Area shading automatically.</code></pre>
+                                <div
+                                    class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"
+                                >
+                                    <span class="text-indigo-400 text-xs"
+                                        >$</span
+                                    ><span
+                                        class="text-slate-500 text-xs font-mono"
+                                        >✓ Compiled successfully</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section
+                        id="section-3"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >04</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Supply &amp; Demand Hotspots
+                        </h2>
+                        <div
+                            class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"
+                        >
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                        data-slot="icon"
+                                        class="h-5 w-5 text-indigo-500"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <strong
+                                        class="text-indigo-700 dark:text-indigo-400 block mb-2"
+                                        >Supply &amp; Demand Hotspots</strong
+                                    >
+                                    <p
+                                        class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed"
+                                    >
+                                        Volume Profile helps identify where the
+                                        majority of trading activity occurred,
+                                        pinpointing true supply and demand zones
+                                        where institutions and large players
+                                        have likely taken positions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section
+                        id="section-4"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >05</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Practical Volume Profile Trading Strategies
+                        </h2>
+                        <div class="mt-6 space-y-8">
+                            <div
+                                class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"
+                            >
+                                <h3
+                                    class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3"
+                                >
+                                    1. Support and Resistance with HVNs &amp;
+                                    LVNs
+                                </h3>
+                                <p
+                                    class="text-slate-600 dark:text-slate-400 mb-4"
+                                >
+                                    HVNs act as strong areas of agreement and
+                                    potential support/resistance, while LVNs
+                                    represent areas of rapid transit and weak
+                                    support/resistance.
+                                </p>
+                                <ul class="mb-6 space-y-2">
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b>HVN as Support/Resistance:</b>
+                                            When price approaches an HVN, it's
+                                            likely to consolidate or reverse as
+                                            significant past trading activity
+                                            suggests strong conviction at that
+                                            level.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b
+                                                >LVN as Price
+                                                Magnet/Breakout:</b
+                                            >
+                                            Price tends to move quickly through
+                                            LVNs because there was little prior
+                                            agreement.</span
+                                        >
+                                    </li>
+                                </ul>
+                                <div class="mt-4">
+                                    <button
+                                        class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                            data-slot="icon"
+                                            class="h-3 w-3"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
+                                            ></path></svg
+                                        >Copy code
+                                    </button>
+                                    <pre
+                                        class="bg-slate-900 rounded-xl p-4 overflow-x-auto"
+                                    ><code class="language-pinescript text-xs font-mono">//@version=5
 strategy("VP: HVN/LVN Strategy", overlay=true)
 
 numberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)
@@ -122,7 +795,83 @@ if not na(profile) and barstate.isconfirmed
     if shortCondition
         strategy.entry("Short POC Break", strategy.short)
     strategy.close("Long POC Break", when=shortCondition)
-    strategy.close("Short POC Break", when=longCondition)</code></pre></div></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. Value Area (VA) as Fair Price Zone</h3><p class="text-slate-600 dark:text-slate-400 mb-4">The Value Area represents where the majority of trades occurred and where market participants found &quot;fair value.&quot;</p><ul class="mb-6 space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Trading within Value Area:</b> Price tends to spend a significant amount of time within the Value Area.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Opening outside Value Area:</b> If price opens significantly outside the previous day's Value Area, it often suggests a trending day.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>VA as Support/Resistance:</b> The Value Area High (VAH) and Value Area Low (VAL) act as dynamic support and resistance levels.</span></li></ul><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+    strategy.close("Short POC Break", when=longCondition)</code></pre>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"
+                            >
+                                <h3
+                                    class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3"
+                                >
+                                    2. Value Area (VA) as Fair Price Zone
+                                </h3>
+                                <p
+                                    class="text-slate-600 dark:text-slate-400 mb-4"
+                                >
+                                    The Value Area represents where the majority
+                                    of trades occurred and where market
+                                    participants found &quot;fair value.&quot;
+                                </p>
+                                <ul class="mb-6 space-y-2">
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b>Trading within Value Area:</b>
+                                            Price tends to spend a significant
+                                            amount of time within the Value
+                                            Area.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b>Opening outside Value Area:</b>
+                                            If price opens significantly outside
+                                            the previous day's Value Area, it
+                                            often suggests a trending day.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b>VA as Support/Resistance:</b>
+                                            The Value Area High (VAH) and Value
+                                            Area Low (VAL) act as dynamic
+                                            support and resistance levels.</span
+                                        >
+                                    </li>
+                                </ul>
+                                <div class="mt-4">
+                                    <button
+                                        class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                            data-slot="icon"
+                                            class="h-3 w-3"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
+                                            ></path></svg
+                                        >Copy code
+                                    </button>
+                                    <pre
+                                        class="bg-slate-900 rounded-xl p-4 overflow-x-auto"
+                                    ><code class="language-pinescript text-xs font-mono">//@version=5
 strategy("VP: Value Area Strategy", overlay=true)
 
 numberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)
@@ -155,7 +904,74 @@ if not na(prevVAH) and not na(prevVAL)
     if (longAbsorption)
         strategy.entry("Long VA Absorb", strategy.long)
     if (shortAbsorption)
-        strategy.entry("Short VA Absorb", strategy.short)</code></pre></div></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">3. POC Rejection/Breakout</h3><p class="text-slate-600 dark:text-slate-400 mb-4">The Point of Control (POC) is the single most traded price level. It acts as a significant magnet and a strong area of support/resistance.</p><ul class="mb-6 space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>POC Rejection:</b> Price rallies towards the POC and then reverses, suggesting strong supply at POC.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>POC Breakout:</b> Price decisively breaks and holds above/below the POC, often indicating a shift in fair value.</span></li></ul><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+        strategy.entry("Short VA Absorb", strategy.short)</code></pre>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"
+                            >
+                                <h3
+                                    class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3"
+                                >
+                                    3. POC Rejection/Breakout
+                                </h3>
+                                <p
+                                    class="text-slate-600 dark:text-slate-400 mb-4"
+                                >
+                                    The Point of Control (POC) is the single
+                                    most traded price level. It acts as a
+                                    significant magnet and a strong area of
+                                    support/resistance.
+                                </p>
+                                <ul class="mb-6 space-y-2">
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b>POC Rejection:</b> Price rallies
+                                            towards the POC and then reverses,
+                                            suggesting strong supply at
+                                            POC.</span
+                                        >
+                                    </li>
+                                    <li
+                                        class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"
+                                    >
+                                        <span class="text-indigo-500">→</span
+                                        ><span
+                                            ><b>POC Breakout:</b> Price
+                                            decisively breaks and holds
+                                            above/below the POC, often
+                                            indicating a shift in fair
+                                            value.</span
+                                        >
+                                    </li>
+                                </ul>
+                                <div class="mt-4">
+                                    <button
+                                        class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke-width="1.5"
+                                            stroke="currentColor"
+                                            aria-hidden="true"
+                                            data-slot="icon"
+                                            class="h-3 w-3"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"
+                                            ></path></svg
+                                        >Copy code
+                                    </button>
+                                    <pre
+                                        class="bg-slate-900 rounded-xl p-4 overflow-x-auto"
+                                    ><code class="language-pinescript text-xs font-mono">//@version=5
 strategy("VP: POC Strategy", overlay=true)
 
 numberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)
@@ -185,19 +1001,679 @@ if not na(prevPOC)
     if (longPOCBreakout)
         strategy.entry("Long POC Breakout", strategy.long)
     if (shortPOCBreakout)
-        strategy.entry("Short POC Breakout", strategy.short)</code></pre></div></div></div></section><section id="section-5" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Volume Profile Performance</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>To get the most from Volume Profile in Pine Script:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Contextual Analysis:</b> Volume Profile is best used in conjunction with price action and overall market context.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Timeframe Selection:</b> The chosen `profileType` and the chart's timeframe greatly impact the profile's relevance.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Number of Rows (Bins):</b> Experiment with the `numberOfRows`. Start with 20-30 and adjust.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Value Area Percentage:</b> The default 70% is common, but some traders prefer 68%.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Confluence with Other Indicators:</b> Volume Profile levels gain significant strength when they align with Moving Averages, Fibonacci Retracements, Trendlines, and Psychological price levels.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Volume Confirmation:</b> Always seek confirmation from volume. A breakout with strong, increasing volume is more reliable.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Market Open/Close Behavior:</b> Pay attention to how price reacts to the previous session's POC and Value Area boundaries.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Fixed vs. Session Profile:</b> Understand when to use each. `volume.profile_session` is for recurring periods while `volume.profile_fixed` is for analyzing specific ranges.</span></li></ul></section><section id="section-6" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Institutional Footprint</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Institutional Footprint</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Volume Profile helps visualize where 'smart money' (large institutions) has likely accumulated or distributed positions, as these are often the areas of highest volume.</p></div></div></div></section><section id="section-7" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Volume Profile Pitfalls</h2><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Lagging Nature:</b> Volume Profile shows where volume *has been* traded, not where it *will* be traded.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>False Signals:</b> Price can temporarily penetrate or "fake out" around key Volume Profile levels.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Over-Reliance:</b> Using Volume Profile as the sole decision-making tool without considering broader market context.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Data Quality:</b> The accuracy depends on the quality and granularity of volume data.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Visual Clutter:</b> With too many profiles or too many rows, the chart can become overly cluttered.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Dynamic Nature in Strategies:</b> Implementing strategies based on *previous* session's data can be tricky.</span></li></ul></section><section id="section-8" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2><div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800"><div class="flex gap-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-8 w-8 text-indigo-500 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path></svg><div><h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3><div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>Volume Profile is an exceptionally powerful and insightful technical analysis tool available in Pine Script for TradingView. By providing a clear visualization of trading activity across different price levels, it allows traders to identify key areas of supply and demand, understand market conviction, and pinpoint significant support and resistance zones. Mastering its components – the Point of Control (POC), Value Area (VA), High Volume Nodes (HVN), and Low Volume Nodes (LVN) – can significantly enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies">pine script strategies</a></b>. While requiring careful consideration of its settings and integration with other technical analysis, Volume Profile provides a unique "x-ray" view into market structure, helping you make more informed and robust trading decisions by understanding where the true battle between buyers and sellers took place.</p></div></div></div></div></section><div class="animate-in mt-20 text-center"><div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800"><h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2><p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p><p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a></div></div></div><style>
-        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
-        .animate-in { opacity: 0; transform: translateY(20px); }
-        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
-        .token.keyword { color: #569cd6; }
-        .token.string { color: #ce9178; }
-        .token.number { color: #b5cea8; }
-        .token.function, .token.builtin { color: #dcdcaa; }
-        .token.operator, .token.punctuation { color: #d4d4d4; }
-      </style></div></div>
+        strategy.entry("Short POC Breakout", strategy.short)</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section
+                        id="section-5"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >06</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Optimizing Volume Profile Performance
+                        </h2>
+                        <div
+                            class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"
+                        >
+                            <p>
+                                To get the most from Volume Profile in Pine
+                                Script:
+                            </p>
+                        </div>
+                        <ul class="mt-6 space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Contextual Analysis:</b> Volume Profile
+                                    is best used in conjunction with price
+                                    action and overall market context.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Timeframe Selection:</b> The chosen
+                                    `profileType` and the chart's timeframe
+                                    greatly impact the profile's
+                                    relevance.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Number of Rows (Bins):</b> Experiment
+                                    with the `numberOfRows`. Start with 20-30
+                                    and adjust.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Value Area Percentage:</b> The default
+                                    70% is common, but some traders prefer
+                                    68%.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Confluence with Other Indicators:</b>
+                                    Volume Profile levels gain significant
+                                    strength when they align with Moving
+                                    Averages, Fibonacci Retracements,
+                                    Trendlines, and Psychological price
+                                    levels.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Volume Confirmation:</b> Always seek
+                                    confirmation from volume. A breakout with
+                                    strong, increasing volume is more
+                                    reliable.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Market Open/Close Behavior:</b> Pay
+                                    attention to how price reacts to the
+                                    previous session's POC and Value Area
+                                    boundaries.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Fixed vs. Session Profile:</b>
+                                    Understand when to use each.
+                                    `volume.profile_session` is for recurring
+                                    periods while `volume.profile_fixed` is for
+                                    analyzing specific ranges.</span
+                                >
+                            </li>
+                        </ul>
+                    </section>
+                    <section
+                        id="section-6"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >07</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Institutional Footprint
+                        </h2>
+                        <div
+                            class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"
+                        >
+                            <div class="flex gap-4">
+                                <div
+                                    class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        aria-hidden="true"
+                                        data-slot="icon"
+                                        class="h-5 w-5 text-indigo-500"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <strong
+                                        class="text-indigo-700 dark:text-indigo-400 block mb-2"
+                                        >Institutional Footprint</strong
+                                    >
+                                    <p
+                                        class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed"
+                                    >
+                                        Volume Profile helps visualize where
+                                        'smart money' (large institutions) has
+                                        likely accumulated or distributed
+                                        positions, as these are often the areas
+                                        of highest volume.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section
+                        id="section-7"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >08</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Common Volume Profile Pitfalls
+                        </h2>
+                        <ul class="mt-6 space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Lagging Nature:</b> Volume Profile shows
+                                    where volume *has been* traded, not where it
+                                    *will* be traded.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>False Signals:</b> Price can temporarily
+                                    penetrate or "fake out" around key Volume
+                                    Profile levels.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Over-Reliance:</b> Using Volume Profile
+                                    as the sole decision-making tool without
+                                    considering broader market context.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Data Quality:</b> The accuracy depends
+                                    on the quality and granularity of volume
+                                    data.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Visual Clutter:</b> With too many
+                                    profiles or too many rows, the chart can
+                                    become overly cluttered.</span
+                                >
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-indigo-500 mt-1">▸</span
+                                ><span
+                                    class="text-slate-600 dark:text-slate-400"
+                                    ><b>Dynamic Nature in Strategies:</b>
+                                    Implementing strategies based on *previous*
+                                    session's data can be tricky.</span
+                                >
+                            </li>
+                        </ul>
+                    </section>
+                    <section
+                        id="section-8"
+                        class="animate-in mb-16 scroll-mt-24"
+                    >
+                        <div class="flex items-center gap-3 mb-6">
+                            <span
+                                class="text-2xl font-black font-mono text-indigo-500 opacity-50"
+                                >09</span
+                            >
+                            <div
+                                class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"
+                            ></div>
+                        </div>
+                        <h2
+                            class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6"
+                        >
+                            Conclusion
+                        </h2>
+                        <div
+                            class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800"
+                        >
+                            <div class="flex gap-4">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-8 w-8 text-indigo-500 flex-shrink-0"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                                    ></path>
+                                </svg>
+                                <div>
+                                    <h3
+                                        class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4"
+                                    >
+                                        Conclusion
+                                    </h3>
+                                    <div
+                                        class="text-slate-600 dark:text-slate-400 leading-relaxed"
+                                    >
+                                        <p>
+                                            Volume Profile is an exceptionally
+                                            powerful and insightful technical
+                                            analysis tool available in Pine
+                                            Script for TradingView. By providing
+                                            a clear visualization of trading
+                                            activity across different price
+                                            levels, it allows traders to
+                                            identify key areas of supply and
+                                            demand, understand market
+                                            conviction, and pinpoint significant
+                                            support and resistance zones.
+                                            Mastering its components – the Point
+                                            of Control (POC), Value Area (VA),
+                                            High Volume Nodes (HVN), and Low
+                                            Volume Nodes (LVN) – can
+                                            significantly enhance your
+                                            <b
+                                                ><a
+                                                    href="https://offline-pixel.github.io/pinescript-strategies"
+                                                    >pine script strategies</a
+                                                ></b
+                                            >. While requiring careful
+                                            consideration of its settings and
+                                            integration with other technical
+                                            analysis, Volume Profile provides a
+                                            unique "x-ray" view into market
+                                            structure, helping you make more
+                                            informed and robust trading
+                                            decisions by understanding where the
+                                            true battle between buyers and
+                                            sellers took place.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="animate-in mt-20 text-center">
+                        <div
+                            class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800"
+                        >
+                            <h2
+                                class="text-3xl md:text-4xl font-black font-mono text-white mb-4"
+                            >
+                                Enhance Your Trading
+                            </h2>
+                            <p class="text-slate-300 mb-6 max-w-2xl mx-auto">
+                                Get a high-performance Pine Script analysis tool
+                                for actionable market insights, designed for
+                                traders on the move.
+                            </p>
+                            <p class="text-slate-400 text-sm mb-6">
+                                This strategy runs in live mode on TradingView,
+                                helping you identify potential opportunities.
+                            </p>
+                            <a
+                                href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl"
+                                ><svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"
+                                    ></path></svg
+                                >Get Pine Script Strategy<svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    aria-hidden="true"
+                                    data-slot="icon"
+                                    class="h-4 w-4"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                                    ></path></svg
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    @keyframes shimmer {
+                        0% {
+                            background-position: 0% 0%;
+                        }
+                        100% {
+                            background-position: 200% 0%;
+                        }
+                    }
+                    .animate-in {
+                        opacity: 0;
+                        transform: translateY(20px);
+                    }
+                    .token.comment,
+                    .token.prolog,
+                    .token.doctype,
+                    .token.cdata {
+                        color: #6a9955;
+                        font-style: italic;
+                    }
+                    .token.keyword {
+                        color: #569cd6;
+                    }
+                    .token.string {
+                        color: #ce9178;
+                    }
+                    .token.number {
+                        color: #b5cea8;
+                    }
+                    .token.function,
+                    .token.builtin {
+                        color: #dcdcaa;
+                    }
+                    .token.operator,
+                    .token.punctuation {
+                        color: #d4d4d4;
+                    }
+                </style>
+            </div>
+        </div>
 
         <script>
-          window.__INITIAL_DATA__ = {"slug":"pine-script-volumeprofile","article":{"meta":{"title":"Pine Script Volume Profile - Complete TradingView Guide","description":"Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.","keywords":"pine script strategies, Volume Profile, POC, Value Area, HVN, LVN, tradingview indicator, technical analysis, volume distribution, market profile, support resistance, supply demand","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile","ogTitle":"Pine Script Volume Profile - Complete TradingView Guide","ogDescription":"Comprehensive tutorial on implementing and using Volume Profile in Pine Script for advanced trading strategies.","twitterTitle":"Pine Script Volume Profile - Complete TradingView Guide","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Volume Profile - Complete TradingView Guide","description":"Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-16","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Volume Profile","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"Volume Profile","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script Volume Profile","subtitle":"Master this powerful technical analysis tool in TradingView's Pine Script that displays trading activity over a specified price range, revealing key areas of supply and demand for more informed trading decisions.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What is Volume Profile?","html":"<p> <b>Volume Profile</b> is an advanced charting indicator that displays trading activity over a specified price range during a specified period. It shows the total volume traded at each price level, often represented as a horizontal histogram on the left or right side of the price chart. Unlike traditional volume indicators that show total volume traded over a specific time period (e.g., a bar), Volume Profile reveals *where* that volume was traded across different price points.</p><p>This insight into the distribution of volume provides a deeper understanding of market dynamics and participant behavior. Key components derived from the Volume Profile include:</p>","listItems":["<b>Point of Control (POC):</b> The price level with the highest traded volume for the specified period. It represents the price where the most trading activity occurred and is considered a fair value area.","<b>Value Area (VA):</b> The price range where a significant percentage of the total volume (typically 70% or 68%) was traded. It signifies where the majority of participants found value.","<b>High Volume Nodes (HVN):</b> Price levels where a large amount of volume was traded, indicating areas of agreement or consolidation. These often act as strong support or resistance.","<b>Low Volume Nodes (LVN):</b> Price levels where very little volume was traded, indicating areas of disagreement or rapid price movement. These often act as weak support/resistance and tend to be easily broken through."],"additionalHtml":"<p>Volume Profile is an indispensable tool for active traders, helping them identify key supply/demand zones, understand market sentiment, and plan their <b><a href=\"https://offline-pixel.github.io/pinescript-strategies\">pine script strategies</a></b> for entries, exits, and risk management.</p>"},{"type":"content","title":"Components and Calculation (Conceptual)","html":"<p>The Volume Profile is constructed by taking all the trades (volume) that occurred within a defined time window (e.g., a day, a week, or a fixed number of bars) and categorizing them into discrete price \"bins\" or levels. For each bin, the total volume traded at that price level is accumulated. This accumulation is then displayed as a horizontal bar, with longer bars indicating more volume traded at that price.<br><br>The calculation conceptually involves:</p>","orderedItems":["<b>Define the Analysis Period:</b> This can be a specific session (e.g., daily, weekly) or a fixed number of bars (e.g., last 100 bars).","<b>Determine Price Range:</b> Identify the high and low prices within the analysis period.","<b>Define Bins:</b> Divide the price range into a specified number of equal price \"bins.\" For example, if the range is $10 and you want 10 bins, each bin would be $1 wide.","<b>Distribute Volume:</b> For each bar within the analysis period, distribute its volume across the price bins that its `high`-`low` range covers. If a bar's `high` is in one bin and its `low` in another, its volume is proportionally distributed.","<b>Aggregate Volume per Bin:</b> Sum up the volume for each price bin.","<b>Identify POC, VA, HVN, LVN:</b> Once the volume distribution is complete, the POC is the bin with the highest volume. The Value Area is found by accumulating volume from the POC outwards until the specified percentage (e.g., 70%) of total volume is reached."]},{"type":"code","title":"Basic Volume Profile Implementation in Pine Script","description":"Pine Script v5 significantly simplifies Volume Profile implementation with its dedicated `volume` module. It provides functions like `volume.profile_fixed()` and `volume.profile_session()` to draw these profiles directly on the chart.","code":"//@version=5\nindicator(\"My Volume Profile\", overlay=true, max_bars_back=500)\n\n// --- User Inputs ---\nprofileType = input.string(\"Fixed Range\", title=\"Profile Type\", options=[\"Fixed Range\", \"Session Profile\"])\nfixedRangeBars = input.int(100, title=\"Fixed Range Bars (for Fixed Range Profile)\", minval=10, maxval=500)\nnumberOfRows = input.int(20, title=\"Number of Rows (Bins)\", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title=\"Value Area (%)\", minval=50, maxval=99)\n\n// --- Plotting Colors ---\nupVolumeColor = input.color(color.new(color.lime, 40), title=\"Up Volume Color\")\ndownVolumeColor = input.color(color.new(color.red, 40), title=\"Down Volume Color\")\npocColor = input.color(color.new(color.purple, 0), title=\"POC Color\")\nvaColor = input.color(color.new(color.yellow, 60), title=\"Value Area Color\")\n\n// --- Implement Volume Profile Logic ---\nif profileType == \"Fixed Range\"\n    profile = volume.profile_fixed(fixedRangeBars, numberOfRows, valueAreaPercentage)\n    if barstate.islast and not na(profile)\n        profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)\nelse if profileType == \"Session Profile\"\n    profile = volume.profile_session(numberOfRows, valueAreaPercentage)\n    if not na(profile)\n        profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)\n\n// Note: Pine Script's built-in `volume` module handles the complex drawing\n// of the histogram, POC line, and Value Area shading automatically."},{"type":"tip","title":"Supply & Demand Hotspots","content":"Volume Profile helps identify where the majority of trading activity occurred, pinpointing true supply and demand zones where institutions and large players have likely taken positions."},{"type":"strategies","title":"Practical Volume Profile Trading Strategies","strategies":[{"name":"1. Support and Resistance with HVNs & LVNs","description":"HVNs act as strong areas of agreement and potential support/resistance, while LVNs represent areas of rapid transit and weak support/resistance.","subItems":["<b>HVN as Support/Resistance:</b> When price approaches an HVN, it's likely to consolidate or reverse as significant past trading activity suggests strong conviction at that level.","<b>LVN as Price Magnet/Breakout:</b> Price tends to move quickly through LVNs because there was little prior agreement."],"code":"//@version=5\nstrategy(\"VP: HVN/LVN Strategy\", overlay=true)\n\nnumberOfRows = input.int(30, title=\"Number of Rows (Bins)\", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title=\"Value Area (%)\", minval=50, maxval=99)\n\nprofile = volume.profile_session(numberOfRows, valueAreaPercentage)\n\nif not na(profile)\n    profile.plot(\n        color.new(color.lime, 40),\n        color.new(color.red, 40),\n        color.new(color.purple, 0),\n        color.new(color.yellow, 60)\n    )\n\nif not na(profile) and barstate.isconfirmed\n    pocPrice = profile.poc_price\n    longCondition = ta.crossover(close, pocPrice)\n    shortCondition = ta.crossunder(close, pocPrice)\n    if longCondition\n        strategy.entry(\"Long POC Break\", strategy.long)\n    if shortCondition\n        strategy.entry(\"Short POC Break\", strategy.short)\n    strategy.close(\"Long POC Break\", when=shortCondition)\n    strategy.close(\"Short POC Break\", when=longCondition)"},{"name":"2. Value Area (VA) as Fair Price Zone","description":"The Value Area represents where the majority of trades occurred and where market participants found \"fair value.\"","subItems":["<b>Trading within Value Area:</b> Price tends to spend a significant amount of time within the Value Area.","<b>Opening outside Value Area:</b> If price opens significantly outside the previous day's Value Area, it often suggests a trending day.","<b>VA as Support/Resistance:</b> The Value Area High (VAH) and Value Area Low (VAL) act as dynamic support and resistance levels."],"code":"//@version=5\nstrategy(\"VP: Value Area Strategy\", overlay=true)\n\nnumberOfRows = input.int(30, title=\"Number of Rows (Bins)\", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title=\"Value Area (%)\", minval=50, maxval=99)\n\nprofile = volume.profile_session(numberOfRows, valueAreaPercentage)\n\nif not na(profile)\n    profile.plot(\n        color.new(color.lime, 40),\n        color.new(color.red, 40),\n        color.new(color.purple, 0),\n        color.new(color.yellow, 60)\n    )\n\nvar float prevVAH = na\nvar float prevVAL = na\nisNewSession = ta.change(time(\"D\"))\n\nif isNewSession[1] and not na(profile[1])\n    prevVAH := profile[1].value_area_high\n    prevVAL := profile[1].value_area_low\n\nprevVAH := nz(prevVAH[1], prevVAH)\nprevVAL := nz(prevVAL[1], prevVAL)\n\nif not na(prevVAH) and not na(prevVAL)\n    longAbsorption = open < prevVAL and close > prevVAL\n    shortAbsorption = open > prevVAH and close < prevVAH\n    if (longAbsorption)\n        strategy.entry(\"Long VA Absorb\", strategy.long)\n    if (shortAbsorption)\n        strategy.entry(\"Short VA Absorb\", strategy.short)"},{"name":"3. POC Rejection/Breakout","description":"The Point of Control (POC) is the single most traded price level. It acts as a significant magnet and a strong area of support/resistance.","subItems":["<b>POC Rejection:</b> Price rallies towards the POC and then reverses, suggesting strong supply at POC.","<b>POC Breakout:</b> Price decisively breaks and holds above/below the POC, often indicating a shift in fair value."],"code":"//@version=5\nstrategy(\"VP: POC Strategy\", overlay=true)\n\nnumberOfRows = input.int(30, title=\"Number of Rows (Bins)\", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title=\"Value Area (%)\", minval=50, maxval=99)\n\nprofile = volume.profile_session(numberOfRows, valueAreaPercentage)\n\nif not na(profile)\n    profile.plot(\n        color.new(color.lime, 40),\n        color.new(color.red, 40),\n        color.new(color.purple, 0),\n        color.new(color.yellow, 60)\n    )\n\nvar float prevPOC = na\nisNewSession = ta.change(time(\"D\"))\n\nif isNewSession[1] and not na(profile[1])\n    prevPOC := profile[1].poc_price\n\nprevPOC := nz(prevPOC[1], prevPOC)\n\nif not na(prevPOC)\n    longPOCBreakout = close > prevPOC and close[1] <= prevPOC[1] and volume > ta.sma(volume, 20) * 1.2\n    shortPOCBreakout = close < prevPOC and close[1] >= prevPOC[1] and volume > ta.sma(volume, 20) * 1.2\n    if (longPOCBreakout)\n        strategy.entry(\"Long POC Breakout\", strategy.long)\n    if (shortPOCBreakout)\n        strategy.entry(\"Short POC Breakout\", strategy.short)"}]},{"type":"content","title":"Optimizing Volume Profile Performance","html":"<p>To get the most from Volume Profile in Pine Script:</p>","listItems":["<b>Contextual Analysis:</b> Volume Profile is best used in conjunction with price action and overall market context.","<b>Timeframe Selection:</b> The chosen `profileType` and the chart's timeframe greatly impact the profile's relevance.","<b>Number of Rows (Bins):</b> Experiment with the `numberOfRows`. Start with 20-30 and adjust.","<b>Value Area Percentage:</b> The default 70% is common, but some traders prefer 68%.","<b>Confluence with Other Indicators:</b> Volume Profile levels gain significant strength when they align with Moving Averages, Fibonacci Retracements, Trendlines, and Psychological price levels.","<b>Volume Confirmation:</b> Always seek confirmation from volume. A breakout with strong, increasing volume is more reliable.","<b>Market Open/Close Behavior:</b> Pay attention to how price reacts to the previous session's POC and Value Area boundaries.","<b>Fixed vs. Session Profile:</b> Understand when to use each. `volume.profile_session` is for recurring periods while `volume.profile_fixed` is for analyzing specific ranges."]},{"type":"tip","title":"Institutional Footprint","content":"Volume Profile helps visualize where 'smart money' (large institutions) has likely accumulated or distributed positions, as these are often the areas of highest volume."},{"type":"content","title":"Common Volume Profile Pitfalls","listItems":["<b>Lagging Nature:</b> Volume Profile shows where volume *has been* traded, not where it *will* be traded.","<b>False Signals:</b> Price can temporarily penetrate or \"fake out\" around key Volume Profile levels.","<b>Over-Reliance:</b> Using Volume Profile as the sole decision-making tool without considering broader market context.","<b>Data Quality:</b> The accuracy depends on the quality and granularity of volume data.","<b>Visual Clutter:</b> With too many profiles or too many rows, the chart can become overly cluttered.","<b>Dynamic Nature in Strategies:</b> Implementing strategies based on *previous* session's data can be tricky."]},{"type":"conclusion","title":"Conclusion","html":"<p>Volume Profile is an exceptionally powerful and insightful technical analysis tool available in Pine Script for TradingView. By providing a clear visualization of trading activity across different price levels, it allows traders to identify key areas of supply and demand, understand market conviction, and pinpoint significant support and resistance zones. Mastering its components – the Point of Control (POC), Value Area (VA), High Volume Nodes (HVN), and Low Volume Nodes (LVN) – can significantly enhance your <b><a href=\"https://offline-pixel.github.io/pinescript-strategies\">pine script strategies</a></b>. While requiring careful consideration of its settings and integration with other technical analysis, Volume Profile provides a unique \"x-ray\" view into market structure, helping you make more informed and robust trading decisions by understanding where the true battle between buyers and sellers took place.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]},"isSSR":true};
+            window.__INITIAL_DATA__ = {
+                slug: "pine-script-volumeprofile",
+                article: {
+                    meta: {
+                        title: "Pine Script Volume Profile - Complete TradingView Guide",
+                        description:
+                            "Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.",
+                        keywords:
+                            "pine script strategies, Volume Profile, POC, Value Area, HVN, LVN, tradingview indicator, technical analysis, volume distribution, market profile, support resistance, supply demand",
+                        canonical:
+                            "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile",
+                        ogTitle:
+                            "Pine Script Volume Profile - Complete TradingView Guide",
+                        ogDescription:
+                            "Comprehensive tutorial on implementing and using Volume Profile in Pine Script for advanced trading strategies.",
+                        twitterTitle:
+                            "Pine Script Volume Profile - Complete TradingView Guide",
+                        schema: {
+                            "@context": "https://schema.org",
+                            "@type": "BlogPosting",
+                            headline:
+                                "Pine Script Volume Profile - Complete TradingView Guide",
+                            description:
+                                "Master Volume Profile in Pine Script for TradingView - a powerful tool to analyze volume distribution across price levels, identify key support/resistance zones, and understand market conviction.",
+                            author: {
+                                "@type": "Person",
+                                name: "Offline Pixel Computers",
+                            },
+                            datePublished: "2025-06-16",
+                            image: "https://offline-pixel.github.io/assets/logo2.png",
+                            mainEntityOfPage: {
+                                "@type": "WebPage",
+                                "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile",
+                            },
+                            publisher: {
+                                "@type": "Organization",
+                                name: "Offline Pixel",
+                                logo: {
+                                    "@type": "ImageObject",
+                                    url: "https://offline-pixel.github.io/assets/logo2.png",
+                                },
+                            },
+                            breadcrumb: {
+                                "@type": "BreadcrumbList",
+                                itemListElement: [
+                                    {
+                                        "@type": "ListItem",
+                                        position: 1,
+                                        name: "Home",
+                                        item: "https://offline-pixel.github.io/",
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        position: 2,
+                                        name: "PineScript Strategies",
+                                        item: "https://offline-pixel.github.io/pinescript-strategies.html",
+                                    },
+                                    {
+                                        "@type": "ListItem",
+                                        position: 3,
+                                        name: "Volume Profile",
+                                        item: "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile",
+                                    },
+                                ],
+                            },
+                        },
+                    },
+                    breadcrumb: {
+                        items: [
+                            {
+                                name: "Home",
+                                url: "https://offline-pixel.github.io/",
+                            },
+                            {
+                                name: "PineScript Strategies",
+                                url: "https://offline-pixel.github.io/pinescript-strategies.html",
+                            },
+                            {
+                                name: "Volume Profile",
+                                url: "https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile",
+                            },
+                        ],
+                    },
+                    specialNav: {
+                        linkUrl: "https://offlinepixel.gumroad.com/l/kpafhy",
+                        linkText: "Get The Option Buyer guide now",
+                    },
+                    header: {
+                        title: "Pine Script Volume Profile",
+                        subtitle:
+                            "Master this powerful technical analysis tool in TradingView's Pine Script that displays trading activity over a specified price range, revealing key areas of supply and demand for more informed trading decisions.",
+                        rating: "⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate",
+                        ctaImage: "../assets/ss.png",
+                        ctaLink:
+                            "https://offlinepixel.gumroad.com/l/trader-on-the-go",
+                        ctaText: "Get Pine Script Strategy",
+                    },
+                    sections: [
+                        {
+                            type: "content",
+                            title: "What is Volume Profile?",
+                            html: "<p> <b>Volume Profile</b> is an advanced charting indicator that displays trading activity over a specified price range during a specified period. It shows the total volume traded at each price level, often represented as a horizontal histogram on the left or right side of the price chart. Unlike traditional volume indicators that show total volume traded over a specific time period (e.g., a bar), Volume Profile reveals *where* that volume was traded across different price points.</p><p>This insight into the distribution of volume provides a deeper understanding of market dynamics and participant behavior. Key components derived from the Volume Profile include:</p>",
+                            listItems: [
+                                "<b>Point of Control (POC):</b> The price level with the highest traded volume for the specified period. It represents the price where the most trading activity occurred and is considered a fair value area.",
+                                "<b>Value Area (VA):</b> The price range where a significant percentage of the total volume (typically 70% or 68%) was traded. It signifies where the majority of participants found value.",
+                                "<b>High Volume Nodes (HVN):</b> Price levels where a large amount of volume was traded, indicating areas of agreement or consolidation. These often act as strong support or resistance.",
+                                "<b>Low Volume Nodes (LVN):</b> Price levels where very little volume was traded, indicating areas of disagreement or rapid price movement. These often act as weak support/resistance and tend to be easily broken through.",
+                            ],
+                            additionalHtml:
+                                '<p>Volume Profile is an indispensable tool for active traders, helping them identify key supply/demand zones, understand market sentiment, and plan their <b><a href="https://offline-pixel.github.io/pinescript-strategies">pine script strategies</a></b> for entries, exits, and risk management.</p>',
+                        },
+                        {
+                            type: "content",
+                            title: "Components and Calculation (Conceptual)",
+                            html: '<p>The Volume Profile is constructed by taking all the trades (volume) that occurred within a defined time window (e.g., a day, a week, or a fixed number of bars) and categorizing them into discrete price "bins" or levels. For each bin, the total volume traded at that price level is accumulated. This accumulation is then displayed as a horizontal bar, with longer bars indicating more volume traded at that price.<br><br>The calculation conceptually involves:</p>',
+                            orderedItems: [
+                                "<b>Define the Analysis Period:</b> This can be a specific session (e.g., daily, weekly) or a fixed number of bars (e.g., last 100 bars).",
+                                "<b>Determine Price Range:</b> Identify the high and low prices within the analysis period.",
+                                '<b>Define Bins:</b> Divide the price range into a specified number of equal price "bins." For example, if the range is $10 and you want 10 bins, each bin would be $1 wide.',
+                                "<b>Distribute Volume:</b> For each bar within the analysis period, distribute its volume across the price bins that its `high`-`low` range covers. If a bar's `high` is in one bin and its `low` in another, its volume is proportionally distributed.",
+                                "<b>Aggregate Volume per Bin:</b> Sum up the volume for each price bin.",
+                                "<b>Identify POC, VA, HVN, LVN:</b> Once the volume distribution is complete, the POC is the bin with the highest volume. The Value Area is found by accumulating volume from the POC outwards until the specified percentage (e.g., 70%) of total volume is reached.",
+                            ],
+                        },
+                        {
+                            type: "code",
+                            title: "Basic Volume Profile Implementation in Pine Script",
+                            description:
+                                "Pine Script v5 significantly simplifies Volume Profile implementation with its dedicated `volume` module. It provides functions like `volume.profile_fixed()` and `volume.profile_session()` to draw these profiles directly on the chart.",
+                            code: '//@version=5\nindicator("My Volume Profile", overlay=true, max_bars_back=500)\n\n// --- User Inputs ---\nprofileType = input.string("Fixed Range", title="Profile Type", options=["Fixed Range", "Session Profile"])\nfixedRangeBars = input.int(100, title="Fixed Range Bars (for Fixed Range Profile)", minval=10, maxval=500)\nnumberOfRows = input.int(20, title="Number of Rows (Bins)", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)\n\n// --- Plotting Colors ---\nupVolumeColor = input.color(color.new(color.lime, 40), title="Up Volume Color")\ndownVolumeColor = input.color(color.new(color.red, 40), title="Down Volume Color")\npocColor = input.color(color.new(color.purple, 0), title="POC Color")\nvaColor = input.color(color.new(color.yellow, 60), title="Value Area Color")\n\n// --- Implement Volume Profile Logic ---\nif profileType == "Fixed Range"\n    profile = volume.profile_fixed(fixedRangeBars, numberOfRows, valueAreaPercentage)\n    if barstate.islast and not na(profile)\n        profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)\nelse if profileType == "Session Profile"\n    profile = volume.profile_session(numberOfRows, valueAreaPercentage)\n    if not na(profile)\n        profile.plot(upVolumeColor, downVolumeColor, pocColor, vaColor)\n\n// Note: Pine Script\'s built-in `volume` module handles the complex drawing\n// of the histogram, POC line, and Value Area shading automatically.',
+                        },
+                        {
+                            type: "tip",
+                            title: "Supply & Demand Hotspots",
+                            content:
+                                "Volume Profile helps identify where the majority of trading activity occurred, pinpointing true supply and demand zones where institutions and large players have likely taken positions.",
+                        },
+                        {
+                            type: "strategies",
+                            title: "Practical Volume Profile Trading Strategies",
+                            strategies: [
+                                {
+                                    name: "1. Support and Resistance with HVNs & LVNs",
+                                    description:
+                                        "HVNs act as strong areas of agreement and potential support/resistance, while LVNs represent areas of rapid transit and weak support/resistance.",
+                                    subItems: [
+                                        "<b>HVN as Support/Resistance:</b> When price approaches an HVN, it's likely to consolidate or reverse as significant past trading activity suggests strong conviction at that level.",
+                                        "<b>LVN as Price Magnet/Breakout:</b> Price tends to move quickly through LVNs because there was little prior agreement.",
+                                    ],
+                                    code: '//@version=5\nstrategy("VP: HVN/LVN Strategy", overlay=true)\n\nnumberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)\n\nprofile = volume.profile_session(numberOfRows, valueAreaPercentage)\n\nif not na(profile)\n    profile.plot(\n        color.new(color.lime, 40),\n        color.new(color.red, 40),\n        color.new(color.purple, 0),\n        color.new(color.yellow, 60)\n    )\n\nif not na(profile) and barstate.isconfirmed\n    pocPrice = profile.poc_price\n    longCondition = ta.crossover(close, pocPrice)\n    shortCondition = ta.crossunder(close, pocPrice)\n    if longCondition\n        strategy.entry("Long POC Break", strategy.long)\n    if shortCondition\n        strategy.entry("Short POC Break", strategy.short)\n    strategy.close("Long POC Break", when=shortCondition)\n    strategy.close("Short POC Break", when=longCondition)',
+                                },
+                                {
+                                    name: "2. Value Area (VA) as Fair Price Zone",
+                                    description:
+                                        'The Value Area represents where the majority of trades occurred and where market participants found "fair value."',
+                                    subItems: [
+                                        "<b>Trading within Value Area:</b> Price tends to spend a significant amount of time within the Value Area.",
+                                        "<b>Opening outside Value Area:</b> If price opens significantly outside the previous day's Value Area, it often suggests a trending day.",
+                                        "<b>VA as Support/Resistance:</b> The Value Area High (VAH) and Value Area Low (VAL) act as dynamic support and resistance levels.",
+                                    ],
+                                    code: '//@version=5\nstrategy("VP: Value Area Strategy", overlay=true)\n\nnumberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)\n\nprofile = volume.profile_session(numberOfRows, valueAreaPercentage)\n\nif not na(profile)\n    profile.plot(\n        color.new(color.lime, 40),\n        color.new(color.red, 40),\n        color.new(color.purple, 0),\n        color.new(color.yellow, 60)\n    )\n\nvar float prevVAH = na\nvar float prevVAL = na\nisNewSession = ta.change(time("D"))\n\nif isNewSession[1] and not na(profile[1])\n    prevVAH := profile[1].value_area_high\n    prevVAL := profile[1].value_area_low\n\nprevVAH := nz(prevVAH[1], prevVAH)\nprevVAL := nz(prevVAL[1], prevVAL)\n\nif not na(prevVAH) and not na(prevVAL)\n    longAbsorption = open < prevVAL and close > prevVAL\n    shortAbsorption = open > prevVAH and close < prevVAH\n    if (longAbsorption)\n        strategy.entry("Long VA Absorb", strategy.long)\n    if (shortAbsorption)\n        strategy.entry("Short VA Absorb", strategy.short)',
+                                },
+                                {
+                                    name: "3. POC Rejection/Breakout",
+                                    description:
+                                        "The Point of Control (POC) is the single most traded price level. It acts as a significant magnet and a strong area of support/resistance.",
+                                    subItems: [
+                                        "<b>POC Rejection:</b> Price rallies towards the POC and then reverses, suggesting strong supply at POC.",
+                                        "<b>POC Breakout:</b> Price decisively breaks and holds above/below the POC, often indicating a shift in fair value.",
+                                    ],
+                                    code: '//@version=5\nstrategy("VP: POC Strategy", overlay=true)\n\nnumberOfRows = input.int(30, title="Number of Rows (Bins)", minval=5, maxval=100)\nvalueAreaPercentage = input.int(70, title="Value Area (%)", minval=50, maxval=99)\n\nprofile = volume.profile_session(numberOfRows, valueAreaPercentage)\n\nif not na(profile)\n    profile.plot(\n        color.new(color.lime, 40),\n        color.new(color.red, 40),\n        color.new(color.purple, 0),\n        color.new(color.yellow, 60)\n    )\n\nvar float prevPOC = na\nisNewSession = ta.change(time("D"))\n\nif isNewSession[1] and not na(profile[1])\n    prevPOC := profile[1].poc_price\n\nprevPOC := nz(prevPOC[1], prevPOC)\n\nif not na(prevPOC)\n    longPOCBreakout = close > prevPOC and close[1] <= prevPOC[1] and volume > ta.sma(volume, 20) * 1.2\n    shortPOCBreakout = close < prevPOC and close[1] >= prevPOC[1] and volume > ta.sma(volume, 20) * 1.2\n    if (longPOCBreakout)\n        strategy.entry("Long POC Breakout", strategy.long)\n    if (shortPOCBreakout)\n        strategy.entry("Short POC Breakout", strategy.short)',
+                                },
+                            ],
+                        },
+                        {
+                            type: "content",
+                            title: "Optimizing Volume Profile Performance",
+                            html: "<p>To get the most from Volume Profile in Pine Script:</p>",
+                            listItems: [
+                                "<b>Contextual Analysis:</b> Volume Profile is best used in conjunction with price action and overall market context.",
+                                "<b>Timeframe Selection:</b> The chosen `profileType` and the chart's timeframe greatly impact the profile's relevance.",
+                                "<b>Number of Rows (Bins):</b> Experiment with the `numberOfRows`. Start with 20-30 and adjust.",
+                                "<b>Value Area Percentage:</b> The default 70% is common, but some traders prefer 68%.",
+                                "<b>Confluence with Other Indicators:</b> Volume Profile levels gain significant strength when they align with Moving Averages, Fibonacci Retracements, Trendlines, and Psychological price levels.",
+                                "<b>Volume Confirmation:</b> Always seek confirmation from volume. A breakout with strong, increasing volume is more reliable.",
+                                "<b>Market Open/Close Behavior:</b> Pay attention to how price reacts to the previous session's POC and Value Area boundaries.",
+                                "<b>Fixed vs. Session Profile:</b> Understand when to use each. `volume.profile_session` is for recurring periods while `volume.profile_fixed` is for analyzing specific ranges.",
+                            ],
+                        },
+                        {
+                            type: "tip",
+                            title: "Institutional Footprint",
+                            content:
+                                "Volume Profile helps visualize where 'smart money' (large institutions) has likely accumulated or distributed positions, as these are often the areas of highest volume.",
+                        },
+                        {
+                            type: "content",
+                            title: "Common Volume Profile Pitfalls",
+                            listItems: [
+                                "<b>Lagging Nature:</b> Volume Profile shows where volume *has been* traded, not where it *will* be traded.",
+                                '<b>False Signals:</b> Price can temporarily penetrate or "fake out" around key Volume Profile levels.',
+                                "<b>Over-Reliance:</b> Using Volume Profile as the sole decision-making tool without considering broader market context.",
+                                "<b>Data Quality:</b> The accuracy depends on the quality and granularity of volume data.",
+                                "<b>Visual Clutter:</b> With too many profiles or too many rows, the chart can become overly cluttered.",
+                                "<b>Dynamic Nature in Strategies:</b> Implementing strategies based on *previous* session's data can be tricky.",
+                            ],
+                        },
+                        {
+                            type: "conclusion",
+                            title: "Conclusion",
+                            html: '<p>Volume Profile is an exceptionally powerful and insightful technical analysis tool available in Pine Script for TradingView. By providing a clear visualization of trading activity across different price levels, it allows traders to identify key areas of supply and demand, understand market conviction, and pinpoint significant support and resistance zones. Mastering its components – the Point of Control (POC), Value Area (VA), High Volume Nodes (HVN), and Low Volume Nodes (LVN) – can significantly enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies">pine script strategies</a></b>. While requiring careful consideration of its settings and integration with other technical analysis, Volume Profile provides a unique "x-ray" view into market structure, helping you make more informed and robust trading decisions by understanding where the true battle between buyers and sellers took place.</p>',
+                        },
+                    ],
+                    footer: {
+                        ctaTitle: "Enhance Your Trading",
+                        ctaDescription:
+                            "Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.",
+                        ctaSubtext:
+                            "This strategy runs in live mode on TradingView, helping you identify potential opportunities.",
+                        ctaRating:
+                            "⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate",
+                        ctaImage: "../assets/ss.png",
+                        ctaLink:
+                            "https://offlinepixel.gumroad.com/l/trader-on-the-go",
+                        ctaText: "Get Pine Script Strategy",
+                    },
+                    disclaimer:
+                        'Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a>',
+                    adsense: {
+                        client: "ca-pub-9243803325136617",
+                        slot: "5548365171",
+                    },
+                    scripts: [
+                        "../scripts/scripts.js",
+                        "../scripts/dynamicContent.js",
+                        "../scripts/pinescript-disclaimer.js",
+                    ],
+                },
+                isSSR: true,
+            };
         </script>
-      </body>
-      </html>
+    </body>
+</html>
