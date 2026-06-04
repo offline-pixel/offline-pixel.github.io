@@ -1,315 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+      <html lang="en">
+      <head>
+        
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        } 
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD'); 
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/> 
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
-    
-    <title>Pine Script EMA (Exponential Moving Average) - Complete TradingView Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
-
+    <title>Pine Script EMA (Exponential Moving Average) - Complete TradingView Guide</title>
     <meta name="description" content="Master the Exponential Moving Average (EMA) in Pine Script for TradingView - advanced guide with practical examples and strategies">
     <meta name="keywords" content="pine script, EMA, exponential moving average, tradingview indicator, technical analysis, momentum trading">
-    
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:title" content="Pine Script EMA (Exponential Moving Average) ">
+    <meta property="og:title" content="Pine Script EMA (Exponential Moving Average)">
     <meta property="og:description" content="Advanced tutorial on implementing EMAs in Pine Script for momentum trading strategies">
     <meta property="og:type" content="article">
-    
-    <!-- Twitter Card -->
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-ema">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pine Script EMA (Exponential Moving Average) ">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-EMA.html" />
-
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-<script type="application/ld+json">
+    <meta name="twitter:title" content="Pine Script EMA (Exponential Moving Average)">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-ema">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Pine Script EMA (Exponential Moving Average) - Complete TradingView Guide",
-      "description": "Master the Exponential Moving Average (EMA) in Pine Script for TradingView - advanced guide with practical examples and strategies",
-      "author": {
-        "@type": "Person",
-        "name": "Offline Pixel Computers"
-      },
-      "datePublished": "2023-11-15",
-      "image": "https://offline-pixel.github.io/assets/logo2.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-EMA.html"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://offline-pixel.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "PineScript Strategies",
-            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "EMA (Exponential Moving Average)",
-            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-EMA.html"
-          }
-        ]
-      }
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script EMA (Exponential Moving Average) - Complete TradingView Guide",
+  "description": "Master the Exponential Moving Average (EMA) in Pine Script for TradingView - advanced guide with practical examples and strategies",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2023-11-15",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ema"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
     }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "EMA (Exponential Moving Average)",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-ema"
+      }
+    ]
+  }
+}
     </script>
-</head>
-<body> 
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script EMA (Exponential Moving Average) </h1>
-      <p class="blog-subtitle">Master momentum trading with this advanced guide to Exponential Moving Averages in TradingView's Pine Script</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
-
-
-  <article class="fullscreen">
-
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="https://offline-pixel.github.io/">Home</a> >
-  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-  <span aria-current="page">EMA (Exponential Moving Average)</span>
-</nav>
-</div>
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>Why EMA Matters in Pine Script</h2>
-    <p>The Exponential Moving Average (EMA) is a powerful technical indicator that gives more weight to recent prices, making it more responsive to new information than the Simple Moving Average (SMA). This makes EMAs ideal for:</p>
-    <ul>
-      <li>Momentum <a href="https://offline-pixel.github.io/pinescript-strategies.html">trading strategies</a></li>
-      <li>Trend-following systems</li>
-      <li>Early reversal detection</li>
-    </ul>
-
-    <h2>Basic EMA Implementation</h2>
-    <p>Here's how to create a basic EMA indicator in Pine Script v5:</p>
-    <pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"My EMA Indicator"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// User input for EMA length</span>
-<span class="keyword">length</span> = <span class="function">input</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"EMA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
-
-<span class="comment">// Calculate EMA</span>
-emaValue = <span class="function">ta.ema</span>(close, length)
-
-<span class="comment">// Plot with customizable color</span>
-<span class="function">plot</span>(emaValue, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">purple</span>, <span class="number">0</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
-</code>
-</pre>
-
-
-    <div class="tip">
-      <strong>Key Difference:</strong> Unlike <a href="https://offline-pixel.github.io/pinescript-strategies/pine-script-SMA.html" target="_blank">SMA</a> which weights all prices equally, EMA applies exponentially decreasing weights to older prices, making it more responsive to recent price action.
-    </div>
-
-    <h2>EMA vs SMA: The Math Behind It</h2>
-    <p>The EMA calculation involves two steps:</p>
-    <ol>
-      <li><strong>Smoothing Factor</strong>: α = 2/(length + 1)</li>
-      <li><strong>EMA Formula</strong>: EMA = (Close - Previous EMA) × α + Previous EMA</li>
-    </ol>
-    <p>This recursive calculation means EMAs require less historical data than SMAs to maintain accuracy.</p>
-
-    <h2>Advanced EMA Strategies</h2>
-    
-    <h3>1. EMA Crossover System</h3>
-    <pre><code><span class="comment">//@version=5</span>
-<span class="function">strategy</span>(<span class="string">"EMA Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Inputs</span>
-<span class="keyword">fastLength</span> = <span class="function">input</span>(<span class="number">9</span>, <span class="string">"Fast EMA Length"</span>)
-<span class="keyword">slowLength</span> = <span class="function">input</span>(<span class="number">21</span>, <span class="string">"Slow EMA Length"</span>)
-
-<span class="comment">// Calculate EMAs</span>
-fastEMA = <span class="function">ta.ema</span>(close, fastLength)
-slowEMA = <span class="function">ta.ema</span>(close, slowLength)
-
-<span class="comment">// Plot</span>
-<span class="function">plot</span>(fastEMA, <span class="string">"Fast EMA"</span>, <span class="keyword">color</span>.<span class="function">green</span>)
-<span class="function">plot</span>(slowEMA, <span class="string">"Slow EMA"</span>, <span class="keyword">color</span>.<span class="function">red</span>)
-
-<span class="comment">// Strategy logic</span>
-longCondition = <span class="function">ta.crossover</span>(fastEMA, slowEMA)
-shortCondition = <span class="function">ta.crossunder</span>(fastEMA, slowEMA)
-
-<span class="keyword">if</span> (longCondition)
-    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
-    
-<span class="keyword">if</span> (shortCondition)
-    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
-</code>
-</pre>
-
-
-    <h3>2. EMA Ribbon for Trend Strength</h3>
-    <pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"EMA Ribbon"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Multiple EMAs for trend visualization</span>
-ema5 = <span class="function">ta.ema</span>(close, <span class="number">5</span>)
-ema10 = <span class="function">ta.ema</span>(close, <span class="number">10</span>)
-ema20 = <span class="function">ta.ema</span>(close, <span class="number">20</span>)
-ema50 = <span class="function">ta.ema</span>(close, <span class="number">50</span>)
-
-<span class="comment">// Color based on trend direction</span>
-ribbonColor = ema5 > ema10 <span class="keyword">and</span> ema10 > ema20 <span class="keyword">and</span> ema20 > ema50 ? <span class="keyword">color</span>.<span class="function">green</span> :
-              ema5 < ema10 <span class="keyword">and</span> ema10 < ema20 <span class="keyword">and</span> ema20 < ema50 ? <span class="keyword">color</span>.<span class="function">red</span> : <span class="keyword">color</span>.<span class="function">gray</span>
-
-<span class="comment">// Plot all EMAs with gradient colors</span>
-<span class="function">plot</span>(ema5, <span class="string">"EMA 5"</span>, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">30</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
-<span class="function">plot</span>(ema10, <span class="string">"EMA 10"</span>, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">lime</span>, <span class="number">30</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
-<span class="function">plot</span>(ema20, <span class="string">"EMA 20"</span>, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">orange</span>, <span class="number">30</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
-<span class="function">plot</span>(ema50, <span class="string">"EMA 50"</span>, <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">30</span>), <span class="keyword">linewidth</span>=<span class="number">2</span>)
-
-<span class="comment">// Background for visual clarity</span>
-<span class="function">bgcolor</span>(ribbonColor, <span class="number">90</span>)
-</code>
-</pre>
-
-
-    <h2>Optimizing EMA Performance</h2>
-    <p>To get the most from EMAs in Pine Script:</p>
-    <ul>
-      <li><strong>Combine with volume</strong>: Filter signals with volume confirmation</li>
-      <li><strong>Use multiple timeframes</strong>: Confirm trends across different timeframes</li>
-      <li><strong>Add dynamic lengths</strong>: Automatically adjust EMA periods based on volatility</li>
-    </ul>
-
-    <h3>Dynamic EMA Length Example</h3>
-    <pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"Dynamic EMA"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Base length adjusted by volatility</span>
-<span class="keyword">atrLength</span> = <span class="function">input</span>(<span class="number">14</span>, <span class="string">"ATR Length"</span>)
-<span class="keyword">volatilityFactor</span> = <span class="function">input</span>(<span class="number">1.5</span>, <span class="string">"Volatility Factor"</span>)
-<span class="keyword">baseLength</span> = <span class="function">input</span>(<span class="number">20</span>, <span class="string">"Base EMA Length"</span>)
-
-<span class="comment">// Calculate dynamic length</span>
-atrValue = <span class="function">ta.atr</span>(atrLength)
-
-<span class="comment">// Use a relative change in ATR to adjust length.</span>
-<span class="comment">// Adding a small value to the denominator to prevent division by zero, though ATR is usually positive.</span>
-<span class="comment">// Also, `ta.valuewhen` can return `na` on early bars, so use `nz` for a default.</span>
-<span class="keyword">float</span> atrChangeRatio = <span class="function">nz</span>(<span class="function">ta.change</span>(atrValue) / (<span class="function">nz</span>(<span class="function">ta.valuewhen</span>(<span class="function">ta.lowest</span>(atrValue, <span class="number">50</span>), atrValue, <span class="number">0</span>)) + <span class="number">1e-10</span>))
-
-<span class="keyword">float</span> scaledLengthRaw = <span class="keyword">baseLength</span> * (<span class="number">1</span> + atrChangeRatio * volatilityFactor)
-
-<span class="comment">// Ensure length stays within bounds and is an integer for EMA function</span>
-dynamicLength = <span class="function">math.max</span>(<span class="number">5</span>, <span class="function">math.min</span>(<span class="number">50</span>, <span class="function">int</span>(scaledLengthRaw)))
-
-<span class="comment">// Plot dynamic EMA</span>
-<span class="function">plot</span>(<span class="function">ta.ema</span>(close, dynamicLength), <span class="string">"Dynamic EMA"</span>, <span class="keyword">color</span>.<span class="function">purple</span>)
-</code>
-</pre>
-
-
-    <h2>Common EMA Pitfalls to Avoid</h2>
-    <div class="tip">
-      <strong>Warning:</strong> EMAs can produce false signals in ranging markets. Always combine with other indicators or filters.
-    </div>
-    <ul>
-      <li>Using EMAs alone without confirmation</li>
-      <li>Setting lengths too short (excessive whipsaws)</li>
-      <li>Ignoring the overall market context</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-    <p>The EMA is one of Pine Script's most versatile tools when used properly. By understanding its mathematical foundation and combining it with other technical elements, you can create powerful trading systems that respond quickly to market changes while filtering out noise.</p>
   
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
+        <script type="module" crossorigin src="/assets/__vite-browser-external-Cvvx4-p9.js"></script>
+        <link rel="stylesheet" crossorigin href="/assets/index-BMPzknT4.css">
+      </head>
+      <body>
+        <div id="app"><div class="min-h-screen bg-white dark:bg-black"><section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div><div class="absolute inset-0 opacity-5 dark:opacity-10"><div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div></div><div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div><div style="animation-delay:1s;" class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"></div><div class="relative max-w-5xl mx-auto px-6 py-24 text-center"><div class="animate-in mb-8"><div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg><span>/</span><a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a><span>/</span><span class="text-indigo-500">pine-script-ema</span></div></div><h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6"><span class="text-indigo-500">$</span> <span class="inline-block min-w-[200px]">Pine Script EMA (Exponential Moving Average)</span></h1><p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">Master momentum trading with this advanced guide to Exponential Moving Averages in TradingView's Pine Script</p><div class="animate-in flex flex-wrap justify-center gap-6 mb-10"><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path></svg><span class="text-sm font-mono">500+ Clients Helped</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg><span class="text-sm font-mono">100% Satisfaction</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg><span class="text-sm font-mono">Live Trading Ready</span></div></div><div class="animate-in flex flex-col sm:flex-row gap-4 justify-center"><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a><a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>Get The Option Buyer guide now</a></div></div></section><div class="max-w-4xl mx-auto px-6 py-16"><div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl"><div class="flex items-start gap-3"><span class="text-amber-500 text-lg">⚠️</span><div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div></div></div><div class="animate-in mb-10"></div><section id="section-0" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Why EMA Matters in Pine Script</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>The Exponential Moving Average (EMA) is a powerful technical indicator that gives more weight to recent prices, making it more responsive to new information than the Simple Moving Average (SMA). This makes EMAs ideal for:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400">Momentum <a href="https://offline-pixel.github.io/pinescript-strategies">trading strategies</a></span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400">Trend-following systems</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400">Early reversal detection</span></li></ul></section><section id="section-1" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic EMA Implementation</h2><div class="code-block mt-6"><div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"><div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg><span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span></div><button class="text-slate-500 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg></button></div><pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator("My EMA Indicator", overlay=true)
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
+// User input for EMA length
+length = input(20, title="EMA Length", minval=1)
 
-</body>
-</html>
+// Calculate EMA
+emaValue = ta.ema(close, length)
+
+// Plot with customizable color
+plot(emaValue, color=color.new(color.purple, 0), linewidth=2)</code></pre><div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"><span class="text-indigo-400 text-xs">$</span><span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span></div></div></div></section><section id="section-2" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Key Difference</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Key Difference</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Unlike <a href="https://offline-pixel.github.io/pinescript-strategies/pine-script-sma" target="_blank">SMA</a> which weights all prices equally, EMA applies exponentially decreasing weights to older prices, making it more responsive to recent price action.</p></div></div></div></section><section id="section-3" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">EMA vs SMA: The Math Behind It</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>The EMA calculation involves two steps:</p></div><ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Smoothing Factor</b>: α = 2/(length + 1)</li><li><b>EMA Formula</b>: EMA = (Close - Previous EMA) × α + Previous EMA</li></ol></section><section id="section-4" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Advanced EMA Strategies</h2><div class="mt-6 space-y-8"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. EMA Crossover System</h3><p class="text-slate-600 dark:text-slate-400 mb-4"></p><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy("EMA Crossover Strategy", overlay=true)
+
+// Inputs
+fastLength = input(9, "Fast EMA Length")
+slowLength = input(21, "Slow EMA Length")
+
+// Calculate EMAs
+fastEMA = ta.ema(close, fastLength)
+slowEMA = ta.ema(close, slowLength)
+
+// Plot
+plot(fastEMA, "Fast EMA", color.green)
+plot(slowEMA, "Slow EMA", color.red)
+
+// Strategy logic
+longCondition = ta.crossover(fastEMA, slowEMA)
+shortCondition = ta.crossunder(fastEMA, slowEMA)
+
+if (longCondition)
+    strategy.entry("Long", strategy.long)
+    
+if (shortCondition)
+    strategy.entry("Short", strategy.short)</code></pre></div></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. EMA Ribbon for Trend Strength</h3><p class="text-slate-600 dark:text-slate-400 mb-4"></p><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+indicator("EMA Ribbon", overlay=true)
+
+// Multiple EMAs for trend visualization
+ema5 = ta.ema(close, 5)
+ema10 = ta.ema(close, 10)
+ema20 = ta.ema(close, 20)
+ema50 = ta.ema(close, 50)
+
+// Color based on trend direction
+ribbonColor = ema5 > ema10 and ema10 > ema20 and ema20 > ema50 ? color.green :
+              ema5 < ema10 and ema10 < ema20 and ema20 < ema50 ? color.red : color.gray
+
+// Plot all EMAs with gradient colors
+plot(ema5, "EMA 5", color.new(color.green, 30), linewidth=2)
+plot(ema10, "EMA 10", color.new(color.lime, 30), linewidth=2)
+plot(ema20, "EMA 20", color.new(color.orange, 30), linewidth=2)
+plot(ema50, "EMA 50", color.new(color.red, 30), linewidth=2)
+
+// Background for visual clarity
+bgcolor(ribbonColor, 90)</code></pre></div></div></div></section><section id="section-5" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing EMA Performance</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>To get the most from EMAs in Pine Script:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Combine with volume</b>: Filter signals with volume confirmation</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Use multiple timeframes</b>: Confirm trends across different timeframes</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Add dynamic lengths</b>: Automatically adjust EMA periods based on volatility</span></li></ul></section><section id="section-6" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Dynamic EMA Length Example</h2><div class="code-block mt-6"><div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"><div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg><span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span></div><button class="text-slate-500 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg></button></div><pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator("Dynamic EMA", overlay=true)
+
+// Base length adjusted by volatility
+atrLength = input(14, "ATR Length")
+volatilityFactor = input(1.5, "Volatility Factor")
+baseLength = input(20, "Base EMA Length")
+
+// Calculate dynamic length
+atrValue = ta.atr(atrLength)
+
+// Use a relative change in ATR to adjust length.
+float atrChangeRatio = nz(ta.change(atrValue) / (nz(ta.valuewhen(ta.lowest(atrValue, 50), atrValue, 0)) + 1e-10))
+
+float scaledLengthRaw = baseLength * (1 + atrChangeRatio * volatilityFactor)
+
+// Ensure length stays within bounds and is an integer for EMA function
+dynamicLength = math.max(5, math.min(50, int(scaledLengthRaw)))
+
+// Plot dynamic EMA
+plot(ta.ema(close, dynamicLength), "Dynamic EMA", color.purple)</code></pre><div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"><span class="text-indigo-400 text-xs">$</span><span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span></div></div></div></section><section id="section-7" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Warning</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Warning</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">EMAs can produce false signals in ranging markets. Always combine with other indicators or filters.</p></div></div></div></section><section id="section-8" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common EMA Pitfalls to Avoid</h2><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400">Using EMAs alone without confirmation</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400">Setting lengths too short (excessive whipsaws)</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400">Ignoring the overall market context</span></li></ul></section><section id="section-9" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">10</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2><div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800"><div class="flex gap-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-8 w-8 text-indigo-500 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path></svg><div><h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3><div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>The EMA is one of Pine Script's most versatile tools when used properly. By understanding its mathematical foundation and combining it with other technical elements, you can create powerful trading systems that respond quickly to market changes while filtering out noise.</p></div></div></div></div></section><div class="animate-in mt-20 text-center"><div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800"><h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2><p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p><p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a></div></div></div><style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style></div></div>
+
+        <script>
+          window.__INITIAL_DATA__ = {"slug":"pine-script-ema","article":{"meta":{"title":"Pine Script EMA (Exponential Moving Average) - Complete TradingView Guide","description":"Master the Exponential Moving Average (EMA) in Pine Script for TradingView - advanced guide with practical examples and strategies","keywords":"pine script, EMA, exponential moving average, tradingview indicator, technical analysis, momentum trading","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-ema","ogTitle":"Pine Script EMA (Exponential Moving Average)","ogDescription":"Advanced tutorial on implementing EMAs in Pine Script for momentum trading strategies","twitterTitle":"Pine Script EMA (Exponential Moving Average)","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script EMA (Exponential Moving Average) - Complete TradingView Guide","description":"Master the Exponential Moving Average (EMA) in Pine Script for TradingView - advanced guide with practical examples and strategies","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2023-11-15","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-ema"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"EMA (Exponential Moving Average)","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-ema"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"EMA (Exponential Moving Average)","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-ema"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script EMA (Exponential Moving Average)","subtitle":"Master momentum trading with this advanced guide to Exponential Moving Averages in TradingView's Pine Script","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"Why EMA Matters in Pine Script","html":"<p>The Exponential Moving Average (EMA) is a powerful technical indicator that gives more weight to recent prices, making it more responsive to new information than the Simple Moving Average (SMA). This makes EMAs ideal for:</p>","listItems":["Momentum <a href=\"https://offline-pixel.github.io/pinescript-strategies\">trading strategies</a>","Trend-following systems","Early reversal detection"]},{"type":"code","title":"Basic EMA Implementation","description":"Here's how to create a basic EMA indicator in Pine Script v5:","code":"//@version=5\nindicator(\"My EMA Indicator\", overlay=true)\n\n// User input for EMA length\nlength = input(20, title=\"EMA Length\", minval=1)\n\n// Calculate EMA\nemaValue = ta.ema(close, length)\n\n// Plot with customizable color\nplot(emaValue, color=color.new(color.purple, 0), linewidth=2)"},{"type":"tip","title":"Key Difference","content":"Unlike <a href=\"https://offline-pixel.github.io/pinescript-strategies/pine-script-sma\" target=\"_blank\">SMA</a> which weights all prices equally, EMA applies exponentially decreasing weights to older prices, making it more responsive to recent price action."},{"type":"content","title":"EMA vs SMA: The Math Behind It","html":"<p>The EMA calculation involves two steps:</p>","orderedItems":["<b>Smoothing Factor</b>: α = 2/(length + 1)","<b>EMA Formula</b>: EMA = (Close - Previous EMA) × α + Previous EMA"],"additionalHtml":"<p>This recursive calculation means EMAs require less historical data than SMAs to maintain accuracy.</p>"},{"type":"strategies","title":"Advanced EMA Strategies","strategies":[{"name":"1. EMA Crossover System","code":"//@version=5\nstrategy(\"EMA Crossover Strategy\", overlay=true)\n\n// Inputs\nfastLength = input(9, \"Fast EMA Length\")\nslowLength = input(21, \"Slow EMA Length\")\n\n// Calculate EMAs\nfastEMA = ta.ema(close, fastLength)\nslowEMA = ta.ema(close, slowLength)\n\n// Plot\nplot(fastEMA, \"Fast EMA\", color.green)\nplot(slowEMA, \"Slow EMA\", color.red)\n\n// Strategy logic\nlongCondition = ta.crossover(fastEMA, slowEMA)\nshortCondition = ta.crossunder(fastEMA, slowEMA)\n\nif (longCondition)\n    strategy.entry(\"Long\", strategy.long)\n    \nif (shortCondition)\n    strategy.entry(\"Short\", strategy.short)"},{"name":"2. EMA Ribbon for Trend Strength","code":"//@version=5\nindicator(\"EMA Ribbon\", overlay=true)\n\n// Multiple EMAs for trend visualization\nema5 = ta.ema(close, 5)\nema10 = ta.ema(close, 10)\nema20 = ta.ema(close, 20)\nema50 = ta.ema(close, 50)\n\n// Color based on trend direction\nribbonColor = ema5 > ema10 and ema10 > ema20 and ema20 > ema50 ? color.green :\n              ema5 < ema10 and ema10 < ema20 and ema20 < ema50 ? color.red : color.gray\n\n// Plot all EMAs with gradient colors\nplot(ema5, \"EMA 5\", color.new(color.green, 30), linewidth=2)\nplot(ema10, \"EMA 10\", color.new(color.lime, 30), linewidth=2)\nplot(ema20, \"EMA 20\", color.new(color.orange, 30), linewidth=2)\nplot(ema50, \"EMA 50\", color.new(color.red, 30), linewidth=2)\n\n// Background for visual clarity\nbgcolor(ribbonColor, 90)"}]},{"type":"content","title":"Optimizing EMA Performance","html":"<p>To get the most from EMAs in Pine Script:</p>","listItems":["<b>Combine with volume</b>: Filter signals with volume confirmation","<b>Use multiple timeframes</b>: Confirm trends across different timeframes","<b>Add dynamic lengths</b>: Automatically adjust EMA periods based on volatility"]},{"type":"code","title":"Dynamic EMA Length Example","description":"","code":"//@version=5\nindicator(\"Dynamic EMA\", overlay=true)\n\n// Base length adjusted by volatility\natrLength = input(14, \"ATR Length\")\nvolatilityFactor = input(1.5, \"Volatility Factor\")\nbaseLength = input(20, \"Base EMA Length\")\n\n// Calculate dynamic length\natrValue = ta.atr(atrLength)\n\n// Use a relative change in ATR to adjust length.\nfloat atrChangeRatio = nz(ta.change(atrValue) / (nz(ta.valuewhen(ta.lowest(atrValue, 50), atrValue, 0)) + 1e-10))\n\nfloat scaledLengthRaw = baseLength * (1 + atrChangeRatio * volatilityFactor)\n\n// Ensure length stays within bounds and is an integer for EMA function\ndynamicLength = math.max(5, math.min(50, int(scaledLengthRaw)))\n\n// Plot dynamic EMA\nplot(ta.ema(close, dynamicLength), \"Dynamic EMA\", color.purple)"},{"type":"tip","title":"Warning","content":"EMAs can produce false signals in ranging markets. Always combine with other indicators or filters."},{"type":"content","title":"Common EMA Pitfalls to Avoid","listItems":["Using EMAs alone without confirmation","Setting lengths too short (excessive whipsaws)","Ignoring the overall market context"]},{"type":"conclusion","title":"Conclusion","html":"<p>The EMA is one of Pine Script's most versatile tools when used properly. By understanding its mathematical foundation and combining it with other technical elements, you can create powerful trading systems that respond quickly to market changes while filtering out noise.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]},"isSSR":true};
+        </script>
+      </body>
+      </html>

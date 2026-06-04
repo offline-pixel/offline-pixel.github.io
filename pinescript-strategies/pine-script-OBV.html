@@ -1,363 +1,165 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+      <html lang="en">
+      <head>
+        
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
-
-    <title>Pine Script OBV (On-Balance Volume) - Complete TradingView Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
-
+    <title>Pine Script OBV (On-Balance Volume) - Complete TradingView Guide</title>
     <meta name="description" content="Master On-Balance Volume (OBV) in Pine Script for TradingView - a powerful momentum indicator that uses volume flow to predict price changes and identify divergence.">
     <meta name="keywords" content="pine script strategies, OBV, On-Balance Volume, tradingview indicator, technical analysis, volume analysis, momentum, divergence, accumulation, distribution">
-
-    <!-- Open Graph / Social Meta -->
     <meta property="og:title" content="Pine Script OBV (On-Balance Volume) - Complete TradingView Guide">
     <meta property="og:description" content="Comprehensive tutorial on implementing and using On-Balance Volume (OBV) in Pine Script for advanced trading strategies.">
     <meta property="og:type" content="article">
-
-    <!-- Twitter Card -->
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-obv">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Pine Script OBV (On-Balance Volume) - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-OBV.html" />
-
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-obv">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Pine Script OBV (On-Balance Volume) - Complete TradingView Guide",
-      "description": "Master On-Balance Volume (OBV) in Pine Script for TradingView - a powerful momentum indicator that uses volume flow to predict price changes and identify divergence.",
-      "author": {
-        "@type": "Person",
-        "name": "Offline Pixel Computers"
-      },
-      "datePublished": "2025-06-10",
-      "image": "https://offline-pixel.github.io/assets/logo2.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-OBV.html"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://offline-pixel.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "PineScript Strategies",
-            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "OBV (On-Balance Volume)",
-            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-OBV.html"
-          }
-        ]
-      }
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script OBV (On-Balance Volume) - Complete TradingView Guide",
+  "description": "Master On-Balance Volume (OBV) in Pine Script for TradingView - a powerful momentum indicator that uses volume flow to predict price changes and identify divergence.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-obv"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
     }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "OBV (On-Balance Volume)",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-obv"
+      }
+    ]
+  }
+}
     </script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script OBV (On-Balance Volume) </h1>
-      <p class="blog-subtitle">Master this powerful volume-based momentum indicator in TradingView's Pine Script that measures buying and selling pressure to confirm trends and anticipate price movements.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
-
-  <article class="fullscreen">
-
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="https://offline-pixel.github.io/">Home</a> >
-  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-  <span aria-current="page">OBV (On-Balance Volume)</span>
-</nav>
-</div>
-
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is On-Balance Volume (OBV)?</h2>
-    <p> <b>On-Balance Volume (OBV)</b> is a momentum indicator that relates volume to price change. Developed by Joe Granville, OBV is a cumulative total of volume, adding or subtracting volume based on whether the price closed higher or lower than the previous day. The core idea behind OBV is that <b>volume precedes price</b>. A rising OBV indicates that volume is flowing into an asset, suggesting accumulation (buying pressure), which often precedes price increases. Conversely, a falling OBV indicates distribution (selling pressure), often preceding price declines.</p>
-
-    <p>OBV is a leading or confirming indicator, providing insights into whether smart money is accumulating or distributing an asset. It helps traders confirm trend direction, identify potential reversals through divergence, and spot breakout validity.</p>
-
-    <p>In Pine Script, OBV is a crucial tool for understanding the underlying strength of price movements and anticipating future trends by observing volume flow.</p>
-
-    <h2>Components and Calculation</h2>
-    <p>The calculation of On-Balance Volume is quite simple and cumulative:</p>
-    <ol>
-      <li>If the current <b>closing price is higher</b> than the previous closing price, the current day's volume is <b>added</b> to the previous OBV value.</li>
-      <li>If the current <b>closing price is lower</b> than the previous closing price, the current day's volume is <b>subtracted</b> from the previous OBV value.</li>
-      <li>If the current <b>closing price is the same</b> as the previous closing price, the OBV value <b>remains unchanged</b>.</li>
-    </ol>
-    <br>
-    `OBV = Previous OBV + Current Volume (if Close > Close[1])`
-    <br>
-    `OBV = Previous OBV - Current Volume (if Close < Close[1])`
-    <br>
-    `OBV = Previous OBV (if Close == Close[1])`
-    <br>
-    The starting OBV value is typically set to zero or the first bar's volume.
-
-    <h2>Basic OBV Implementation in Pine Script</h2>
-    <p>Pine Script v5 provides a convenient built-in function `ta.obv()` for calculating On-Balance Volume.</p>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"My On-Balance Volume (OBV)"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
-
-<span class="comment">// Calculate OBV using the built-in function</span>
-<span class="comment">// ta.obv implicitly uses 'close' for price comparison and 'volume' for calculation</span>
-obvValue = <span class="function">ta.obv</span>(close, volume)
-
-<span class="comment">// Plot the OBV line</span>
-<span class="function">plot</span>(obvValue, <span class="keyword">title</span>=<span class="string">"OBV"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">linewidth</span>=<span class="number">2</span>)
-
-<span class="comment">// Optional: Add a Moving Average of OBV to act as a signal line</span>
-<span class="comment">// Common lengths for OBV MA are 10, 20, or 30</span>
-obvMALength = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"OBV MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
-obvMA = <span class="function">ta.sma</span>(obvValue, obvMALength)
-
-<span class="comment">// Plot the OBV Moving Average (signal line)</span>
-<span class="function">plot</span>(obvMA, <span class="keyword">title</span>=<span class="string">"OBV MA"</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">linewidth</span>=<span class="number">1</span>)
-</code></pre>
-
-
-    <div class="tip">
-      <strong>Volume Drives Price:</strong> The core philosophy of OBV is that major price moves are often preceded by significant volume flow. OBV quantifies this accumulation/distribution.
-    </div>
-
-    <h2>Practical OBV <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
-
-    <h3>1. OBV Divergence (Key Strategy)</h3>
-    <p>Divergence between price and OBV is one of the most powerful signals generated by the indicator, suggesting a weakening trend and potential reversal.</p>
-    <ul>
-      <li><strong>Bullish Divergence</strong>: Price makes a lower low, but OBV makes a higher low. This indicates that despite falling prices, buying pressure (accumulation) is increasing, hinting at a potential upward reversal.</li>
-      <li><strong>Bearish Divergence</strong>: Price makes a higher high, but OBV makes a lower high. This indicates that despite rising prices, selling pressure (distribution) is increasing, hinting at a potential downward reversal.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">strategy</span>(<span class="string">"OBV Divergence Strategy"</span>, overlay=<span class="keyword">true</span>)
-
-obvValue = <span class="function">ta.obv</span>(close, volume)
-
-<span class="comment">// Plot OBV in a separate pane</span>
-<span class="function">plot</span>(obvValue, <span class="string">"OBV"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
-
-<span class="comment">// Simple divergence detection (conceptual, robust detection requires advanced pivot logic)</span>
-<span class="comment">// This example looks for recent higher/lower swings in price and OBV.</span>
-
-<span class="comment">// Bullish Divergence: Price makes a lower low, OBV makes a higher low</span>
-bullishDiv = close &lt; close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] &lt; close[<span class="number">2</span>] <span class="keyword">and</span> obvValue > obvValue[<span class="number">1</span>] <span class="keyword">and</span> obvValue[<span class="number">1</span>] > obvValue[<span class="number">2</span>]
-
-<span class="comment">// Bearish Divergence: Price makes a higher high, OBV makes a lower high</span>
-bearishDiv = close > close[<span class="number">1</span>] <span class="keyword">and</span> close[<span class="number">1</span>] > close[<span class="number">2</span>] <span class="keyword">and</span> obvValue &lt; obvValue[<span class="number">1</span>] <span class="keyword">and</span> obvValue[<span class="number">1</span>] &lt; obvValue[<span class="number">2</span>]
-
-<span class="comment">// Plot shapes on the chart to indicate divergence</span>
-<span class="function">plotshape</span>(bullishDiv, <span class="keyword">title</span>=<span class="string">"Bullish OBV Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">green</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
-<span class="function">plotshape</span>(bearishDiv, <span class="keyword">title</span>=<span class="string">"Bearish OBV Divergence"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">red</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
-
-<span class="keyword">if</span> (bullishDiv)
-    <span class="function">strategy.entry</span>(<span class="string">"Long Divergence"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
-<span class="keyword">if</span> (bearishDiv)
-    <span class="function">strategy.entry</span>(<span class="string">"Short Divergence"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
-
-<span class="comment">// Basic exit after a few bars or on opposite signal</span>
-<span class="function">strategy.exit</span>(<span class="string">"Long Divergence Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Long Divergence"</span>, <span class="keyword">profit</span>=close*<span class="number">0.02</span>, <span class="keyword">loss</span>=close*<span class="number">0.01</span>)
-<span class="function">strategy.exit</span>(<span class="string">"Short Divergence Exit"</span>, <span class="keyword">from_entry</span>=<span class="string">"Short Divergence"</span>, <span class="keyword">profit</span>=close*<span class="number">0.02</span>, <span class="keyword">loss</span>=close*<span class="number">0.01</span>)
-</code></pre>
-
-
-    <h3>2. Trend Confirmation</h3>
-    <p>OBV can confirm the strength and direction of a price trend. If price is trending up and OBV is also trending up, it confirms buying pressure. If price is trending down and OBV is also trending down, it confirms selling pressure.</p>
-    <ul>
-      <li><strong>Uptrend Confirmation</strong>: Price is making higher highs and higher lows, and OBV is also making higher highs and higher lows.</li>
-      <li><strong>Downtrend Confirmation</strong>: Price is making lower highs and lower lows, and OBV is also making lower highs and lower lows.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">strategy</span>(<span class="string">"OBV Trend Confirmation Strategy"</span>, overlay=<span class="keyword">true</span>)
-
-obvValue = <span class="function">ta.obv</span>(close, volume)
-obvMALength = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"OBV MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
-obvMA = <span class="function">ta.sma</span>(obvValue, obvMALength)
-
-<span class="function">plot</span>(obvValue, <span class="string">"OBV"</span>, <span class="keyword">color</span>.<span class="function">blue</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
-<span class="function">plot</span>(obvMA, <span class="string">"OBV MA"</span>, <span class="keyword">color</span>.<span class="function">orange</span>, <span class="keyword">display</span>=<span class="keyword">display</span>.<span class="function">pane_only</span>)
-
-<span class="comment">// Price trend filter (e.g., 50-period SMA)</span>
-priceMALength = <span class="function">input.int</span>(<span class="number">50</span>, <span class="keyword">title</span>=<span class="string">"Price MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
-priceMA = <span class="function">ta.sma</span>(close, priceMALength)
-
-<span class="comment">// Conditions for trend confirmation</span>
-<span class="comment">// Long: Price above MA, and OBV above its MA (or sloping up)</span>
-longConfirm = close > priceMA <span class="keyword">and</span> obvValue > obvMA
-
-<span class="comment">// Short: Price below MA, and OBV below its MA (or sloping down)</span>
-shortConfirm = close &lt; priceMA <span class="keyword">and</span> obvValue &lt; obvMA
-
-<span class="keyword">if</span> (longConfirm)
-    <span class="function">strategy.entry</span>(<span class="string">"Long Confirm"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
-
-<span class="keyword">if</span> (shortConfirm)
-    <span class="function">strategy.entry</span>(<span class="string">"Short Confirm"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
-
-<span class="comment">// Basic exit: trend reversal or OBV MA cross</span>
-<span class="function">strategy.close</span>(<span class="string">"Long Confirm"</span>, <span class="keyword">when</span>=close &lt; priceMA <span class="keyword">or</span> obvValue &lt; obvMA)
-<span class="function">strategy.close</span>(<span class="string">"Short Confirm"</span>, <span class="keyword">when</span>=close > priceMA <span class="keyword">or</span> obvValue > obvMA)
-</code></pre>
-
-
-    <h3>3. OBV Breakouts (Accumulation/Distribution Breakouts)</h3>
-    <p>Sometimes, OBV will break out of its own trading range before price does. This can act as an early warning signal for an impending price breakout.</p>
-    <ul>
-      <li><strong>Bullish Breakout</strong>: OBV breaks above its recent resistance level (e.g., a trendline or a previous high on OBV) before price does.</li>
-      <li><strong>Bearish Breakout</strong>: OBV breaks below its recent support level (e.g., a trendline or a previous low on OBV) before price does.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"OBV Breakout Detection"</span>, overlay=<span class="keyword">true</span>)
-
-obvValue = <span class="function">ta.obv</span>(close, volume)
-obvMALength = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"OBV MA Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
-obvMA = <span class="function">ta.sma</span>(obvValue, obvMALength)
-
-<span class="function">plot</span>(obvValue, <span class="string">"OBV"</span>, <span class="keyword">color</span>.<span class="function">blue</span>)
-<span class="function">plot</span>(obvMA, <span class="string">"OBV MA"</span>, <span class="keyword">color</span>.<span class="function">orange</span>)
-
-<span class="comment">// Identify recent highs/lows on OBV for breakout detection (simplified)</span>
-obvHighest = <span class="function">ta.highest</span>(obvValue, <span class="number">20</span>) <span class="comment">// 20-period highest OBV</span>
-obvLowest = <span class="function">ta.lowest</span>(obvValue, <span class="number">20</span>)   <span class="comment">// 20-period lowest OBV</span>
-
-<span class="comment">// Bullish OBV Breakout: OBV crosses above its recent high</span>
-bullishObvBreakout = obvValue > obvHighest[<span class="number">1</span>] <span class="keyword">and</span> obvValue[<span class="number">1</span>] &lt;= obvHighest[<span class="number">1</span>]
-
-<span class="comment">// Bearish OBV Breakout: OBV crosses below its recent low</span>
-bearishObvBreakout = obvValue &lt; obvLowest[<span class="number">1</span>] <span class="keyword">and</span> obvValue[<span class="number">1</span>] >= obvLowest[<span class="number">1</span>]
-
-<span class="comment">// Plot alerts/shapes on the price chart</span>
-<span class="function">plotshape</span>(bullishObvBreakout, <span class="keyword">title</span>=<span class="string">"Bullish OBV Breakout"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">lime</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowup</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
-<span class="function">plotshape</span>(bearishObvBreakout, <span class="keyword">title</span>=<span class="string">"Bearish OBV Breakout"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">maroon</span>, <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">arrowdown</span>, <span class="keyword">size</span>=<span class="keyword">size</span>.<span class="function">small</span>)
-
-<span class="function">alertcondition</span>(bullishObvBreakout, <span class="string">"OBV Bullish Breakout"</span>, <span class="string">"OBV has broken out upwards, anticipate price move."</span>)
-<span class="function">alertcondition</span>(bearishObvBreakout, <span class="string">"OBV Bearish Breakout"</span>, <span class="string">"OBV has broken out downwards, anticipate price move."</span>)
-</code></pre>
-
-
-    <h2>Optimizing OBV Performance</h2>
-    <p>To get the most from On-Balance Volume in Pine Script:</p>
-    <ul>
-      <li><strong>Focus on Divergence:</strong> OBV's greatest strength lies in identifying divergences. These signals often provide early warnings of trend reversals.</li>
-      <li><strong>Smooth with Moving Averages:</strong> While OBV itself is cumulative, applying a moving average to OBV (the signal line) can help smooth out noise and make crossovers more reliable.</li>
-      <li><strong>Combine with Price Action:</strong> Always confirm OBV signals with price action. A bullish OBV divergence is stronger if price also shows a bullish reversal pattern (e.g., hammer, engulfing).</li>
-      <li><strong>Context is Key:</strong> Analyze OBV in the context of the overall market trend. A strong OBV rise in a downtrend is more significant than in an established uptrend.</li>
-      <li><strong>Timeframe Consideration:</strong> The effectiveness of OBV can vary across different timeframes. Experiment to see how it performs on your preferred chart.</li>
-      <li><strong>Volume Thresholds (Advanced):</strong> For very active markets, you might consider setting a minimum volume threshold for bars to be included in OBV calculations to filter out low-volume noise, though this complicates the standard formula.</li>
-    </ul>
-
-    <div class="tip">
-      <strong>Volume is Conviction:</strong> OBV helps you see if a price move has real conviction (volume backing it) or if it's just noise (low volume).
-    </div>
-
-    <h2>Common OBV Pitfalls</h2>
-    <ul>
-      <li> <b>Lag:</b> Despite being a cumulative indicator, OBV can still lag price action, especially during sharp reversals. Divergence helps mitigate this.</li>
-      <li> <b>False Signals:</b> OBV can sometimes generate false signals, especially in choppy or range-bound markets where price fluctuates without a clear trend.</li>
-      <li> <b>Scalability Issues:</b> Because OBV is cumulative, its absolute value can be very large and varies widely between assets. Its absolute value doesn't matter; what matters is its trend, slope, and divergence from price.</li>
-      <li> <b>No Overbought/Oversold Levels:</b> Unlike oscillators like RSI, OBV does not have fixed overbought/oversold zones. Its interpretation is purely based on its trend and divergence from price.</li>
-      <li> <b>Gaps and News Events:</b> Large price gaps or sudden news events can cause significant jumps or drops in OBV that might not be representative of underlying accumulation/distribution, requiring careful interpretation.</li>
-      <li> <b>Not a Standalone Indicator:</b> OBV is a powerful tool but should never be used in isolation. It works best as a confirming indicator within a broader trading strategy.</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-    <p>On-Balance Volume (OBV) is a foundational and highly effective volume-based momentum indicator available in Pine Script for TradingView. By uniquely quantifying buying and selling pressure through cumulative volume, it provides traders with invaluable insights into the market's underlying strength and potential future price movements. While its greatest strength lies in identifying powerful divergences with price, it also excels at confirming existing trends and validating breakouts. By understanding its calculation, thoughtfully utilizing its signals (especially divergence), and integrating it strategically with price action and other technical analysis tools, you can leverage OBV to enhance your trading decisions and gain a clearer understanding of market conviction.</p>
   
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
+        <script type="module" crossorigin src="/assets/__vite-browser-external-Cvvx4-p9.js"></script>
+        <link rel="stylesheet" crossorigin href="/assets/index-BMPzknT4.css">
+      </head>
+      <body>
+        <div id="app"><div class="min-h-screen bg-white dark:bg-black"><section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"><div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div><div class="absolute inset-0 opacity-5 dark:opacity-10"><div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div></div><div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div><div style="animation-delay:1s;" class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse"></div><div class="relative max-w-5xl mx-auto px-6 py-24 text-center"><div class="animate-in mb-8"><div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path></svg><span>/</span><a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a><span>/</span><span class="text-indigo-500">pine-script-obv</span></div></div><h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6"><span class="text-indigo-500">$</span> <span class="inline-block min-w-[200px]">Pine Script OBV (On-Balance Volume)</span></h1><p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">Master this powerful volume-based momentum indicator in TradingView's Pine Script that measures buying and selling pressure to confirm trends and anticipate price movements.</p><div class="animate-in flex flex-wrap justify-center gap-6 mb-10"><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path></svg><span class="text-sm font-mono">500+ Clients Helped</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg><span class="text-sm font-mono">100% Satisfaction</span></div><div class="flex items-center gap-2 text-slate-500 dark:text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path></svg><span class="text-sm font-mono">Live Trading Ready</span></div></div><div class="animate-in flex flex-col sm:flex-row gap-4 justify-center"><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a><a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path></svg>Get The Option Buyer guide now</a></div></div></section><div class="max-w-4xl mx-auto px-6 py-16"><div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl"><div class="flex items-start gap-3"><span class="text-amber-500 text-lg">⚠️</span><div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div></div></div><div class="animate-in mb-10"></div><section id="section-0" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is On-Balance Volume (OBV)?</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p><b>On-Balance Volume (OBV)</b> is a momentum indicator that relates volume to price change. Developed by Joe Granville, OBV is a cumulative total of volume, adding or subtracting volume based on whether the price closed higher or lower than the previous day. The core idea behind OBV is that <b>volume precedes price</b>. A rising OBV indicates that volume is flowing into an asset, suggesting accumulation (buying pressure), which often precedes price increases. Conversely, a falling OBV indicates distribution (selling pressure), often preceding price declines.</p><p>OBV is a leading or confirming indicator, providing insights into whether smart money is accumulating or distributing an asset. It helps traders confirm trend direction, identify potential reversals through divergence, and spot breakout validity.</p><p>In Pine Script, OBV is a crucial tool for understanding the underlying strength of price movements and anticipating future trends by observing volume flow.</p></div></section><section id="section-1" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>The calculation of On-Balance Volume is quite simple and cumulative:</p></div><ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li>If the current <b>closing price is higher</b> than the previous closing price, the current day's volume is <b>added</b> to the previous OBV value.</li><li>If the current <b>closing price is lower</b> than the previous closing price, the current day's volume is <b>subtracted</b> from the previous OBV value.</li><li>If the current <b>closing price is the same</b> as the previous closing price, the OBV value <b>remains unchanged</b>.</li></ol></section><section id="section-2" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic OBV Implementation in Pine Script</h2><div class="code-block mt-6"><div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl"><div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700"><div class="flex gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path></svg><span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span></div><button class="text-slate-500 hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg></button></div><pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator("My On-Balance Volume (OBV)", overlay=false)
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
+// Calculate OBV using the built-in function
+obvValue = ta.obv(close, volume)
 
-</body>
-</html>
+// Plot the OBV line
+plot(obvValue, title="OBV", color=color.blue, linewidth=2)
+
+// Optional: Add a Moving Average of OBV to act as a signal line
+obvMALength = input.int(20, title="OBV MA Length", minval=1)
+obvMA = ta.sma(obvValue, obvMALength)
+
+// Plot the OBV Moving Average (signal line)
+plot(obvMA, title="OBV MA", color=color.orange, linewidth=1)</code></pre><div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3"><span class="text-indigo-400 text-xs">$</span><span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span></div></div></div></section><section id="section-3" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Volume Drives Price</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Volume Drives Price</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">The core philosophy of OBV is that major price moves are often preceded by significant volume flow. OBV quantifies this accumulation/distribution.</p></div></div></div></section><section id="section-4" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Practical OBV Trading Strategies</h2><div class="mt-6 space-y-8"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. OBV Divergence (Key Strategy)</h3><p class="text-slate-600 dark:text-slate-400 mb-4">Divergence between price and OBV is one of the most powerful signals generated by the indicator, suggesting a weakening trend and potential reversal.</p><ul class="mb-6 space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Bullish Divergence</b>: Price makes a lower low, but OBV makes a higher low.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Bearish Divergence</b>: Price makes a higher high, but OBV makes a lower high.</span></li></ul><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy("OBV Divergence Strategy", overlay=true)
+
+obvValue = ta.obv(close, volume)
+
+plot(obvValue, "OBV", color.blue, display=display.pane_only)
+
+bullishDiv = close < close[1] and close[1] < close[2] and obvValue > obvValue[1] and obvValue[1] > obvValue[2]
+bearishDiv = close > close[1] and close[1] > close[2] and obvValue < obvValue[1] and obvValue[1] < obvValue[2]
+
+plotshape(bullishDiv, title="Bullish OBV Divergence", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)
+plotshape(bearishDiv, title="Bearish OBV Divergence", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)
+
+if (bullishDiv)
+    strategy.entry("Long Divergence", strategy.long)
+if (bearishDiv)
+    strategy.entry("Short Divergence", strategy.short)
+
+strategy.exit("Long Divergence Exit", from_entry="Long Divergence", profit=close*0.02, loss=close*0.01)
+strategy.exit("Short Divergence Exit", from_entry="Short Divergence", profit=close*0.02, loss=close*0.01)</code></pre></div></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. Trend Confirmation</h3><p class="text-slate-600 dark:text-slate-400 mb-4">OBV can confirm the strength and direction of a price trend.</p><ul class="mb-6 space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Uptrend Confirmation</b>: Price is making higher highs and higher lows, and OBV is also making higher highs and higher lows.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Downtrend Confirmation</b>: Price is making lower highs and lower lows, and OBV is also making lower highs and lower lows.</span></li></ul><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy("OBV Trend Confirmation Strategy", overlay=true)
+
+obvValue = ta.obv(close, volume)
+obvMALength = input.int(20, title="OBV MA Length", minval=1)
+obvMA = ta.sma(obvValue, obvMALength)
+
+plot(obvValue, "OBV", color.blue, display=display.pane_only)
+plot(obvMA, "OBV MA", color.orange, display=display.pane_only)
+
+priceMALength = input.int(50, title="Price MA Length", minval=1)
+priceMA = ta.sma(close, priceMALength)
+
+longConfirm = close > priceMA and obvValue > obvMA
+shortConfirm = close < priceMA and obvValue < obvMA
+
+if (longConfirm)
+    strategy.entry("Long Confirm", strategy.long)
+
+if (shortConfirm)
+    strategy.entry("Short Confirm", strategy.short)
+
+strategy.close("Long Confirm", when=close < priceMA or obvValue < obvMA)
+strategy.close("Short Confirm", when=close > priceMA or obvValue > obvMA)</code></pre></div></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all"><h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">3. OBV Breakouts (Accumulation/Distribution Breakouts)</h3><p class="text-slate-600 dark:text-slate-400 mb-4">Sometimes, OBV will break out of its own trading range before price does. This can act as an early warning signal for an impending price breakout.</p><ul class="mb-6 space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Bullish Breakout</b>: OBV breaks above its recent resistance level before price does.</span></li><li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2"><span class="text-indigo-500">→</span><span><b>Bearish Breakout</b>: OBV breaks below its recent support level before price does.</span></li></ul><div class="mt-4"><button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path></svg>Copy code</button><pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+indicator("OBV Breakout Detection", overlay=true)
+
+obvValue = ta.obv(close, volume)
+obvMALength = input.int(20, title="OBV MA Length", minval=1)
+obvMA = ta.sma(obvValue, obvMALength)
+
+plot(obvValue, "OBV", color.blue)
+plot(obvMA, "OBV MA", color.orange)
+
+obvHighest = ta.highest(obvValue, 20)
+obvLowest = ta.lowest(obvValue, 20)
+
+bullishObvBreakout = obvValue > obvHighest[1] and obvValue[1] <= obvHighest[1]
+bearishObvBreakout = obvValue < obvLowest[1] and obvValue[1] >= obvLowest[1]
+
+plotshape(bullishObvBreakout, title="Bullish OBV Breakout", location=location.belowbar, color=color.lime, style=shape.arrowup, size=size.small)
+plotshape(bearishObvBreakout, title="Bearish OBV Breakout", location=location.abovebar, color=color.maroon, style=shape.arrowdown, size=size.small)
+
+alertcondition(bullishObvBreakout, "OBV Bullish Breakout", "OBV has broken out upwards, anticipate price move.")
+alertcondition(bearishObvBreakout, "OBV Bearish Breakout", "OBV has broken out downwards, anticipate price move.")</code></pre></div></div></div></section><section id="section-5" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing OBV Performance</h2><div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed"><p>To get the most from On-Balance Volume in Pine Script:</p></div><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Focus on Divergence:</b> OBV's greatest strength lies in identifying divergences. These signals often provide early warnings of trend reversals.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Smooth with Moving Averages:</b> While OBV itself is cumulative, applying a moving average to OBV (the signal line) can help smooth out noise and make crossovers more reliable.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Combine with Price Action:</b> Always confirm OBV signals with price action. A bullish OBV divergence is stronger if price also shows a bullish reversal pattern.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Context is Key:</b> Analyze OBV in the context of the overall market trend.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Timeframe Consideration:</b> The effectiveness of OBV can vary across different timeframes.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Volume Thresholds (Advanced):</b> For very active markets, you might consider setting a minimum volume threshold for bars to be included in OBV calculations.</span></li></ul></section><section id="section-6" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Volume is Conviction</h2><div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800"><div class="flex gap-4"><div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path></svg></div><div><strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Volume is Conviction</strong><p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">OBV helps you see if a price move has real conviction (volume backing it) or if it's just noise (low volume).</p></div></div></div></section><section id="section-7" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common OBV Pitfalls</h2><ul class="mt-6 space-y-3"><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Lag:</b> Despite being a cumulative indicator, OBV can still lag price action, especially during sharp reversals.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>False Signals:</b> OBV can sometimes generate false signals, especially in choppy or range-bound markets.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Scalability Issues:</b> Because OBV is cumulative, its absolute value can be very large. Its absolute value doesn't matter; what matters is its trend and divergence.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>No Overbought/Oversold Levels:</b> Unlike oscillators like RSI, OBV does not have fixed overbought/oversold zones.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Gaps and News Events:</b> Large price gaps or sudden news events can cause significant jumps or drops in OBV.</span></li><li class="flex items-start gap-3"><span class="text-indigo-500 mt-1">▸</span><span class="text-slate-600 dark:text-slate-400"><b>Not a Standalone Indicator:</b> OBV is a powerful tool but should never be used in isolation.</span></li></ul></section><section id="section-8" class="animate-in mb-16 scroll-mt-24"><div class="flex items-center gap-3 mb-6"><span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span><div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div></div><h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2><div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800"><div class="flex gap-4"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-8 w-8 text-indigo-500 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path></svg><div><h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3><div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>On-Balance Volume (OBV) is a foundational and highly effective volume-based momentum indicator available in Pine Script for TradingView. By uniquely quantifying buying and selling pressure through cumulative volume, it provides traders with invaluable insights into the market's underlying strength and potential future price movements. While its greatest strength lies in identifying powerful divergences with price, it also excels at confirming existing trends and validating breakouts. By understanding its calculation, thoughtfully utilizing its signals (especially divergence), and integrating it strategically with price action and other technical analysis tools, you can leverage OBV to enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies">trading strategies</a></b> and gain a clearer understanding of market conviction.</p></div></div></div></div></section><div class="animate-in mt-20 text-center"><div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800"><h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2><p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p><p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p><a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg>Get Pine Script Strategy<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path></svg></a></div></div></div><style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style></div></div>
+
+        <script>
+          window.__INITIAL_DATA__ = {"slug":"pine-script-obv","article":{"meta":{"title":"Pine Script OBV (On-Balance Volume) - Complete TradingView Guide","description":"Master On-Balance Volume (OBV) in Pine Script for TradingView - a powerful momentum indicator that uses volume flow to predict price changes and identify divergence.","keywords":"pine script strategies, OBV, On-Balance Volume, tradingview indicator, technical analysis, volume analysis, momentum, divergence, accumulation, distribution","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-obv","ogTitle":"Pine Script OBV (On-Balance Volume) - Complete TradingView Guide","ogDescription":"Comprehensive tutorial on implementing and using On-Balance Volume (OBV) in Pine Script for advanced trading strategies.","twitterTitle":"Pine Script OBV (On-Balance Volume) - Complete TradingView Guide","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script OBV (On-Balance Volume) - Complete TradingView Guide","description":"Master On-Balance Volume (OBV) in Pine Script for TradingView - a powerful momentum indicator that uses volume flow to predict price changes and identify divergence.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-obv"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"OBV (On-Balance Volume)","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-obv"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"OBV (On-Balance Volume)","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-obv"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script OBV (On-Balance Volume)","subtitle":"Master this powerful volume-based momentum indicator in TradingView's Pine Script that measures buying and selling pressure to confirm trends and anticipate price movements.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What is On-Balance Volume (OBV)?","html":"<p><b>On-Balance Volume (OBV)</b> is a momentum indicator that relates volume to price change. Developed by Joe Granville, OBV is a cumulative total of volume, adding or subtracting volume based on whether the price closed higher or lower than the previous day. The core idea behind OBV is that <b>volume precedes price</b>. A rising OBV indicates that volume is flowing into an asset, suggesting accumulation (buying pressure), which often precedes price increases. Conversely, a falling OBV indicates distribution (selling pressure), often preceding price declines.</p><p>OBV is a leading or confirming indicator, providing insights into whether smart money is accumulating or distributing an asset. It helps traders confirm trend direction, identify potential reversals through divergence, and spot breakout validity.</p><p>In Pine Script, OBV is a crucial tool for understanding the underlying strength of price movements and anticipating future trends by observing volume flow.</p>"},{"type":"content","title":"Components and Calculation","html":"<p>The calculation of On-Balance Volume is quite simple and cumulative:</p>","orderedItems":["If the current <b>closing price is higher</b> than the previous closing price, the current day's volume is <b>added</b> to the previous OBV value.","If the current <b>closing price is lower</b> than the previous closing price, the current day's volume is <b>subtracted</b> from the previous OBV value.","If the current <b>closing price is the same</b> as the previous closing price, the OBV value <b>remains unchanged</b>."],"additionalHtml":"<br><code>OBV = Previous OBV + Current Volume (if Close > Close[1])</code><br><code>OBV = Previous OBV - Current Volume (if Close < Close[1])</code><br><code>OBV = Previous OBV (if Close == Close[1])</code><br><p>The starting OBV value is typically set to zero or the first bar's volume.</p>"},{"type":"code","title":"Basic OBV Implementation in Pine Script","description":"Pine Script v5 provides a convenient built-in function `ta.obv()` for calculating On-Balance Volume.","code":"//@version=5\nindicator(\"My On-Balance Volume (OBV)\", overlay=false)\n\n// Calculate OBV using the built-in function\nobvValue = ta.obv(close, volume)\n\n// Plot the OBV line\nplot(obvValue, title=\"OBV\", color=color.blue, linewidth=2)\n\n// Optional: Add a Moving Average of OBV to act as a signal line\nobvMALength = input.int(20, title=\"OBV MA Length\", minval=1)\nobvMA = ta.sma(obvValue, obvMALength)\n\n// Plot the OBV Moving Average (signal line)\nplot(obvMA, title=\"OBV MA\", color=color.orange, linewidth=1)"},{"type":"tip","title":"Volume Drives Price","content":"The core philosophy of OBV is that major price moves are often preceded by significant volume flow. OBV quantifies this accumulation/distribution."},{"type":"strategies","title":"Practical OBV Trading Strategies","strategies":[{"name":"1. OBV Divergence (Key Strategy)","description":"Divergence between price and OBV is one of the most powerful signals generated by the indicator, suggesting a weakening trend and potential reversal.","subItems":["<b>Bullish Divergence</b>: Price makes a lower low, but OBV makes a higher low.","<b>Bearish Divergence</b>: Price makes a higher high, but OBV makes a lower high."],"code":"//@version=5\nstrategy(\"OBV Divergence Strategy\", overlay=true)\n\nobvValue = ta.obv(close, volume)\n\nplot(obvValue, \"OBV\", color.blue, display=display.pane_only)\n\nbullishDiv = close < close[1] and close[1] < close[2] and obvValue > obvValue[1] and obvValue[1] > obvValue[2]\nbearishDiv = close > close[1] and close[1] > close[2] and obvValue < obvValue[1] and obvValue[1] < obvValue[2]\n\nplotshape(bullishDiv, title=\"Bullish OBV Divergence\", location=location.belowbar, color=color.green, style=shape.triangleup, size=size.small)\nplotshape(bearishDiv, title=\"Bearish OBV Divergence\", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small)\n\nif (bullishDiv)\n    strategy.entry(\"Long Divergence\", strategy.long)\nif (bearishDiv)\n    strategy.entry(\"Short Divergence\", strategy.short)\n\nstrategy.exit(\"Long Divergence Exit\", from_entry=\"Long Divergence\", profit=close*0.02, loss=close*0.01)\nstrategy.exit(\"Short Divergence Exit\", from_entry=\"Short Divergence\", profit=close*0.02, loss=close*0.01)"},{"name":"2. Trend Confirmation","description":"OBV can confirm the strength and direction of a price trend.","subItems":["<b>Uptrend Confirmation</b>: Price is making higher highs and higher lows, and OBV is also making higher highs and higher lows.","<b>Downtrend Confirmation</b>: Price is making lower highs and lower lows, and OBV is also making lower highs and lower lows."],"code":"//@version=5\nstrategy(\"OBV Trend Confirmation Strategy\", overlay=true)\n\nobvValue = ta.obv(close, volume)\nobvMALength = input.int(20, title=\"OBV MA Length\", minval=1)\nobvMA = ta.sma(obvValue, obvMALength)\n\nplot(obvValue, \"OBV\", color.blue, display=display.pane_only)\nplot(obvMA, \"OBV MA\", color.orange, display=display.pane_only)\n\npriceMALength = input.int(50, title=\"Price MA Length\", minval=1)\npriceMA = ta.sma(close, priceMALength)\n\nlongConfirm = close > priceMA and obvValue > obvMA\nshortConfirm = close < priceMA and obvValue < obvMA\n\nif (longConfirm)\n    strategy.entry(\"Long Confirm\", strategy.long)\n\nif (shortConfirm)\n    strategy.entry(\"Short Confirm\", strategy.short)\n\nstrategy.close(\"Long Confirm\", when=close < priceMA or obvValue < obvMA)\nstrategy.close(\"Short Confirm\", when=close > priceMA or obvValue > obvMA)"},{"name":"3. OBV Breakouts (Accumulation/Distribution Breakouts)","description":"Sometimes, OBV will break out of its own trading range before price does. This can act as an early warning signal for an impending price breakout.","subItems":["<b>Bullish Breakout</b>: OBV breaks above its recent resistance level before price does.","<b>Bearish Breakout</b>: OBV breaks below its recent support level before price does."],"code":"//@version=5\nindicator(\"OBV Breakout Detection\", overlay=true)\n\nobvValue = ta.obv(close, volume)\nobvMALength = input.int(20, title=\"OBV MA Length\", minval=1)\nobvMA = ta.sma(obvValue, obvMALength)\n\nplot(obvValue, \"OBV\", color.blue)\nplot(obvMA, \"OBV MA\", color.orange)\n\nobvHighest = ta.highest(obvValue, 20)\nobvLowest = ta.lowest(obvValue, 20)\n\nbullishObvBreakout = obvValue > obvHighest[1] and obvValue[1] <= obvHighest[1]\nbearishObvBreakout = obvValue < obvLowest[1] and obvValue[1] >= obvLowest[1]\n\nplotshape(bullishObvBreakout, title=\"Bullish OBV Breakout\", location=location.belowbar, color=color.lime, style=shape.arrowup, size=size.small)\nplotshape(bearishObvBreakout, title=\"Bearish OBV Breakout\", location=location.abovebar, color=color.maroon, style=shape.arrowdown, size=size.small)\n\nalertcondition(bullishObvBreakout, \"OBV Bullish Breakout\", \"OBV has broken out upwards, anticipate price move.\")\nalertcondition(bearishObvBreakout, \"OBV Bearish Breakout\", \"OBV has broken out downwards, anticipate price move.\")"}]},{"type":"content","title":"Optimizing OBV Performance","html":"<p>To get the most from On-Balance Volume in Pine Script:</p>","listItems":["<b>Focus on Divergence:</b> OBV's greatest strength lies in identifying divergences. These signals often provide early warnings of trend reversals.","<b>Smooth with Moving Averages:</b> While OBV itself is cumulative, applying a moving average to OBV (the signal line) can help smooth out noise and make crossovers more reliable.","<b>Combine with Price Action:</b> Always confirm OBV signals with price action. A bullish OBV divergence is stronger if price also shows a bullish reversal pattern.","<b>Context is Key:</b> Analyze OBV in the context of the overall market trend.","<b>Timeframe Consideration:</b> The effectiveness of OBV can vary across different timeframes.","<b>Volume Thresholds (Advanced):</b> For very active markets, you might consider setting a minimum volume threshold for bars to be included in OBV calculations."]},{"type":"tip","title":"Volume is Conviction","content":"OBV helps you see if a price move has real conviction (volume backing it) or if it's just noise (low volume)."},{"type":"content","title":"Common OBV Pitfalls","listItems":["<b>Lag:</b> Despite being a cumulative indicator, OBV can still lag price action, especially during sharp reversals.","<b>False Signals:</b> OBV can sometimes generate false signals, especially in choppy or range-bound markets.","<b>Scalability Issues:</b> Because OBV is cumulative, its absolute value can be very large. Its absolute value doesn't matter; what matters is its trend and divergence.","<b>No Overbought/Oversold Levels:</b> Unlike oscillators like RSI, OBV does not have fixed overbought/oversold zones.","<b>Gaps and News Events:</b> Large price gaps or sudden news events can cause significant jumps or drops in OBV.","<b>Not a Standalone Indicator:</b> OBV is a powerful tool but should never be used in isolation."]},{"type":"conclusion","title":"Conclusion","html":"<p>On-Balance Volume (OBV) is a foundational and highly effective volume-based momentum indicator available in Pine Script for TradingView. By uniquely quantifying buying and selling pressure through cumulative volume, it provides traders with invaluable insights into the market's underlying strength and potential future price movements. While its greatest strength lies in identifying powerful divergences with price, it also excels at confirming existing trends and validating breakouts. By understanding its calculation, thoughtfully utilizing its signals (especially divergence), and integrating it strategically with price action and other technical analysis tools, you can leverage OBV to enhance your <b><a href=\"https://offline-pixel.github.io/pinescript-strategies\">trading strategies</a></b> and gain a clearer understanding of market conviction.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]},"isSSR":true};
+        </script>
+      </body>
+      </html>
