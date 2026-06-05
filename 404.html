@@ -64,6 +64,9 @@
                 console.log("Match found! Redirecting to:", normalized);
                 executeRedirect(`/pinescript-strategies/${normalized}`);
             } else {
+                if (normalized == "pine-script-volume-profile") {
+                    executeRedirect("pine-script-volumeprofile");
+                }
                 console.warn("No match found in ALLOWED_SLUGS for:", normalized);
             }
         }
