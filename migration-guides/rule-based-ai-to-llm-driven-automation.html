@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rule-Based AI to LLM-Driven Automation</title>
+    <script type="module" crossorigin src="/assets/index-C8ju-qce.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CYDosV_D.css">
+  
+    <meta name="description" content="A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.">
+    <meta property="og:title" content="Rule-Based AI to LLM-Driven Automation">
+    <meta property="og:description" content="A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation">
+    <link rel="canonical" href="https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation">
+    <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "headline": "Rule-Based AI to LLM-Driven Automation",
+      "datePublished": "2024-06-08",
+      "dateModified": "2024-06-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Offline Pixel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/logo.png"
+        }
+      },
+      "description": "A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Rule-Based Automation (If-Then) to LLM-Driven Automation (Natural Language) Migration",
+        "description": "Strategic migration guide from Rule-Based Automation (If-Then) to LLM-Driven Automation (Natural Language)"
+      },
+      "keywords": "Rule-Based Automation (If-Then), LLM-Driven Automation (Natural Language), incremental, migration, guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://offline-pixel.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://offline-pixel.github.io/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Migration Guides",
+          "item": "https://offline-pixel.github.io/migration-guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Rule-Based AI to LLM-Driven Automation",
+          "item": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation"
+        }
+      ]
+    },
+    {
+      "@type": "IncrementalMigration",
+      "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation#migration",
+      "name": "Rule-Based Automation (If-Then) to LLM-Driven Automation (Natural Language) Migration",
+      "description": "A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.",
+      "sourceCode": {
+        "@type": "SoftwareApplication",
+        "name": "Rule-Based Automation (If-Then)"
+      },
+      "targetCode": {
+        "@type": "SoftwareApplication",
+        "name": "LLM-Driven Automation (Natural Language)"
+      },
+      "difficulty": "Medium",
+      "timeRequired": "6-9 months",
+      "creator": {
+        "@type": "Occupation",
+        "name": "llm-engineer"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation#executive-summary",
+      "name": "Executive Summary",
+      "description": "A business process automation platform had 5K rules covering 200 workflows—brittle and hard to maintain. Over 7 months, they migrated to LLM-driven automation, reducing rule maintenance by 80% and enabling natural language process definition. This guide covers rule extraction, LLM prompting, validation, and human-in-the-loop.",
+      "totalTime": "6-9 months",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "description": "Varies by scope"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Extract rules from if-then structures; LLM generates actions"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Natural language process definition (users describe intent)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Validation with LLM-as-judge (compare to rule outcomes)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Human-in-the-loop for low-confidence predictions"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "7-Month LLM Automation Migration",
+      "totalTime": "6-9 months",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Phase 1: Foundation (Month 1-2)",
+          "text": "Extract 5K rules, build action library, LLM prompt engineering."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Phase 2: Shadow Mode (Month 3-4)",
+          "text": "LLM runs alongside rules (no action), compare outputs."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Phase 3: Soft Launch (Month 5-6)",
+          "text": "LLM for 10% of workflows (internal IT), human approval required."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Phase 4: Full Rollout (Month 7)",
+          "text": "LLM for all workflows, rule system deprecated."
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Rule-Based Automation Assessment",
+      "text": "5K rules in Drools, 200 workflows. Maintenance cost $1M/year, change cycle 2 weeks.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Technical Debt Identified",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Rule conflicts (15% of rules never triggered)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hard to test (simulation environment needed)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "No natural language interface"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Brittle (unhandled cases cause failures)"
+          }
+        ]
+      },
+      "potentialRisk": [
+        "LLM hallucination (incorrect actions)",
+        "Latency (2-5 seconds vs rules <10ms)",
+        "Cost (LLM token costs vs free)",
+        "Data privacy (sensitive process data)"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Target LLM Automation Platform",
+      "text": "LLM interprets natural language → generates actions → validates → executes.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Architecture Components",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "LLM (GPT-4 for complex workflows)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "LLM (GPT-4 for complex workflows)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Action library (100 possible actions)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Action library (100 possible actions)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Validator (LLM-as-judge)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Validator (LLM-as-judge)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Human approval for low-confidence",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Human approval for low-confidence"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Audit log for compliance",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Audit log for compliance"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Common Rule-to-LLM Migration Mistakes",
+      "description": "Pitfalls to avoid during migration",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "No confidence threshold"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Action library incomplete"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "No validation step"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "No audit log"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Migration Success Metrics",
+      "description": "Key performance indicators for migration success",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Rule maintenance cost: $1M → $200k (80% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Rule maintenance cost: $1M → $200k (80% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Change cycle: 2 weeks → 1 day (93% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Change cycle: 2 weeks → 1 day (93% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Natural language support: 0% → 100%",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Natural language support: 0% → 100%"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Edge case failure rate: 20% → 2% (90% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Edge case failure rate: 20% → 2% (90% reduction)"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Occupation",
+      "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation#lead-role",
+      "name": "llm-engineer",
+      "description": "Who Should Lead Rule to LLM Migration",
+      "occupationalCategory": "Lead LLM Engineer (3+ years), Automation Engineer (workflow), Domain Expert (business rules)",
+      "experienceRequirements": [
+        "LLM production (2+ years)",
+        "Prompt engineering (few-shot)",
+        "Rule-based systems",
+        "Human-in-the-loop design"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Testing LLM vs Rules",
+      "description": "Shadow mode for 2 months, comparing LLM actions to rule outcomes.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Checkpoint 1",
+          "text": "Action match rate (>95%)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Checkpoint 2",
+          "text": "Confidence threshold (0.8, human below)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Checkpoint 3",
+          "text": "Latency benchmark (<2 seconds)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Checkpoint 4",
+          "text": "Human evaluation (4.5/5)"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Rollback to Rules",
+      "description": "Feature flag toggles between LLM and rules per workflow.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Toggle workflow back to rules (1 minute)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Investigate LLM issue (prompt, action)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Fix and re-deploy"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Toggle back to LLM"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Migration Cost Analysis",
+      "text": "Migration cost $400K over 7 months (5 engineers × 7 months). ROI: $1M/year rule maintenance saved.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Cost Factors",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Engineering: 5 engineers × 7 months = 35 person-months ($300k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "LLM API costs ($50k/year)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Validation framework ($50k)"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Related Roles",
+      "description": "Engineering roles involved in this type of migration",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LLM Engineer",
+          "url": "https://offline-pixel.github.io/hire/llm-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "LLM Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Automation Engineer",
+          "url": "https://offline-pixel.github.io/hire/llm-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Automation Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ML Engineer",
+          "url": "https://offline-pixel.github.io/hire/ml-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "ML Engineer"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation#faq",
+      "name": "Frequently Asked Questions About Rule-Based Automation (If-Then) to LLM-Driven Automation (Natural Language) Migration",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can LLM understand complex business rules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—with few-shot examples and constraints. For critical rules, require human approval."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about compliance and auditability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Complete audit log; LLM-as-judge validates each action; human approval for sensitive actions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to handle LLM hallucinations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Confidence threshold (0.8), LLM-as-judge validation, human fallback for low confidence."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation",
+      "url": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation",
+      "name": "Rule-Based AI to LLM-Driven Automation",
+      "description": "A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.",
+      "isPartOf": {
+        "@id": "https://offline-pixel.github.io/#website"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-06-09",
+      "breadcrumb": {
+        "@id": "https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation#breadcrumb"
+      },
+      "primaryImageOfPage": "https://offline-pixel.github.io/favicon.svg"
+    }
+  ]
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Rule-Based AI to LLM-Driven Automation","description":"A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.","canonical":"https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation"},"seo_schema":{"@context":"https://schema.org","@type":"HowTo","headline":"Rule-Based AI to LLM-Driven Automation","datePublished":"2024-06-08","dateModified":"2024-06-08","author":{"@type":"Organization","name":"Offline Pixel"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/logo.png"}}},"migration":{"source_stack":"Rule-Based Automation (If-Then)","target_stack":"LLM-Driven Automation (Natural Language)","migration_type":"incremental","difficulty":"medium","estimated_timeline":"6-9 months","primary_role":"llm-engineer"},"executive_summary":{"title":"Executive Summary","content":"A business process automation platform had 5K rules covering 200 workflows—brittle and hard to maintain. Over 7 months, they migrated to LLM-driven automation, reducing rule maintenance by 80% and enabling natural language process definition. This guide covers rule extraction, LLM prompting, validation, and human-in-the-loop.","key_takeaways":["Extract rules from if-then structures; LLM generates actions","Natural language process definition (users describe intent)","Validation with LLM-as-judge (compare to rule outcomes)","Human-in-the-loop for low-confidence predictions"]},"why_migrate":{"title":"Why Migrate to LLM-Driven Automation","content":"The rule-based system had 5K rules, requiring 10 engineers to maintain. Changes took 2 weeks, and the system couldn't handle natural language inputs.","business_drivers":["$1M/year rule maintenance (10 engineers)","2-week change cycle (too slow)","No natural language understanding (strict syntax)","Brittle (20% failure rate on edge cases)"]},"migration_readiness":{"title":"LLM Automation Readiness","content":"The team spent 2 months extracting rules, designing LLM prompts, and building validation framework.","requirements":["Rule extraction (5K rules, 200 workflows)","Prompt engineering (few-shot examples)","LLM-as-judge validation","Human feedback loop","Confidence thresholding"]},"current_state_assessment":{"title":"Rule-Based Automation Assessment","content":"5K rules in Drools, 200 workflows. Maintenance cost $1M/year, change cycle 2 weeks.","technical_debt":["Rule conflicts (15% of rules never triggered)","Hard to test (simulation environment needed)","No natural language interface","Brittle (unhandled cases cause failures)"],"risks":["LLM hallucination (incorrect actions)","Latency (2-5 seconds vs rules <10ms)","Cost (LLM token costs vs free)","Data privacy (sensitive process data)"]},"target_architecture":{"title":"Target LLM Automation Platform","content":"LLM interprets natural language → generates actions → validates → executes.","architecture_components":["LLM (GPT-4 for complex workflows)","Action library (100 possible actions)","Validator (LLM-as-judge)","Human approval for low-confidence","Audit log for compliance"]},"migration_plan":{"title":"7-Month LLM Automation Migration","content":"Start with low-risk workflows (internal IT), then customer-facing.","steps":[{"step":"Phase 1: Foundation (Month 1-2)","description":"Extract 5K rules, build action library, LLM prompt engineering."},{"step":"Phase 2: Shadow Mode (Month 3-4)","description":"LLM runs alongside rules (no action), compare outputs."},{"step":"Phase 3: Soft Launch (Month 5-6)","description":"LLM for 10% of workflows (internal IT), human approval required."},{"step":"Phase 4: Full Rollout (Month 7)","description":"LLM for all workflows, rule system deprecated."}]},"data_migration":{"title":"Rule Extraction to Action Mapping","content":"Each rule mapped to action(s) and conditions.","considerations":["Rule clustering (similar rules grouped)","Action library (100 common actions)","Condition extraction (inputs needed)","Validation (LLM must match rule outcome)"]},"application_migration":{"title":"LLM Prompt Engineering","content":"Prompt includes available actions, few-shot examples, and constraints.","considerations":["Few-shot examples (5 per workflow)","Constraints (budget, timeline, approvals)","Output format (JSON with action, params)","Confidence score (0-1, threshold 0.8)"]},"testing_strategy":{"title":"Testing LLM vs Rules","content":"Shadow mode for 2 months, comparing LLM actions to rule outcomes.","checkpoints":["Action match rate (>95%)","Confidence threshold (0.8, human below)","Latency benchmark (<2 seconds)","Human evaluation (4.5/5)"]},"rollback_strategy":{"title":"Rollback to Rules","content":"Feature flag toggles between LLM and rules per workflow.","steps":["Toggle workflow back to rules (1 minute)","Investigate LLM issue (prompt, action)","Fix and re-deploy","Toggle back to LLM"]},"common_mistakes":{"title":"Common Rule-to-LLM Migration Mistakes","content":"Based on automation migrations, these are the most frequent pitfalls.","mistakes":[{"mistake":"No confidence threshold","impact":"LLM makes wrong decisions (business impact)","prevention":"Confidence threshold (0.8), human review below"},{"mistake":"Action library incomplete","impact":"LLM can't express needed actions","prevention":"Comprehensive action library (100+) before launch"},{"mistake":"No validation step","impact":"LLM hallucination undetected","prevention":"LLM-as-judge validates each action"},{"mistake":"No audit log","impact":"Compliance violation (no trace)","prevention":"Complete audit log (input, action, LLM version)"}]},"cost_considerations":{"title":"Migration Cost Analysis","content":"Migration cost $400K over 7 months (5 engineers × 7 months). ROI: $1M/year rule maintenance saved.","cost_factors":["Engineering: 5 engineers × 7 months = 35 person-months ($300k)","LLM API costs ($50k/year)","Validation framework ($50k)"]},"success_metrics":{"title":"Migration Success Metrics","content":"The migration was considered successful after achieving these metrics.","metrics":["Rule maintenance cost: $1M → $200k (80% reduction)","Change cycle: 2 weeks → 1 day (93% reduction)","Natural language support: 0% → 100%","Edge case failure rate: 20% → 2% (90% reduction)"]},"who_should_lead_this_migration":{"title":"Who Should Lead Rule to LLM Migration","content":"This migration requires an llm engineer with workflow automation experience.","recommended_roles":["Lead LLM Engineer (3+ years)","Automation Engineer (workflow)","Domain Expert (business rules)"],"required_experience":["LLM production (2+ years)","Prompt engineering (few-shot)","Rule-based systems","Human-in-the-loop design"]},"faq":{"questions":[{"q":"Can LLM understand complex business rules?","a":"Yes—with few-shot examples and constraints. For critical rules, require human approval."},{"q":"What about compliance and auditability?","a":"Complete audit log; LLM-as-judge validates each action; human approval for sensitive actions."},{"q":"How to handle LLM hallucinations?","a":"Confidence threshold (0.8), LLM-as-judge validation, human fallback for low confidence."}]},"related_roles":[{"title":"LLM Engineer","slug":"llm-engineer","url":"/hire/llm-engineer"},{"title":"Automation Engineer","slug":"llm-engineer","url":"/hire/llm-engineer"},{"title":"ML Engineer","slug":"ml-engineer","url":"/hire/ml-engineer"}],"cta":{"title":"Ready to modernize your automation platform?","body":"Hire LLM engineers who have migrated rule-based systems to LLM-driven workflows.","button_text":"Hire LLM Engineer","button_link":"/hire/llm-engineer"}};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+<div class="flex-1">
+    <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-black dark:to-slate-950">
+      
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 lg:pt-24 lg:pb-16">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            Rule-Based Automation (If-Then) → LLM-Driven Automation (Natural Language)
+          </span>
+          
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Rule-Based AI to LLM-Driven Automation</h1>
+        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.</p>
+      </div>
+    </div>
+  
+      
+    <nav aria-label="Breadcrumb" class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/30 backdrop-blur-sm sticky top-0 z-10">
+      <div class="max-w-4xl mx-auto px-6 py-3">
+        <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
+          
+            <li>
+              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <span class="text-slate-600 dark:text-slate-300">LLM-Driven Automation (Natural Language)</span>
+            </li>
+            
+          
+        </ol>
+      </div>
+    </nav>
+  
+      <article class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-6">
+          
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Rule-Based Automation (If-Then) → LLM-Driven Automation (Natural Language)</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Incremental</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">MEDIUM Difficulty</span>
+    </div>
+  
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Rule-Based AI to LLM-Driven Automation</h1>
+          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating rule-based automation systems to LLM-powered workflows with natural language understanding.</p>
+          
+    <div class="mt-8 flex flex-wrap gap-6 text-sm">
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">6-9 months</span></div>
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">llm-engineer</span></div>
+    </div>
+  
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-12">
+          
+      <section class="fade-section opacity-0 mb-12">
+        <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A business process automation platform had 5K rules covering 200 workflows—brittle and hard to maintain. Over 7 months, they migrated to LLM-driven automation, reducing rule maintenance by 80% and enabling natural language process definition. This guide covers rule extraction, LLM prompting, validation, and human-in-the-loop.</p>
+          <div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Extract rules from if-then structures; LLM generates actions</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Natural language process definition (users describe intent)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Validation with LLM-as-judge (compare to rule outcomes)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Human-in-the-loop for low-confidence predictions</span></div></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate to LLM-Driven Automation</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The rule-based system had 5K rules, requiring 10 engineers to maintain. Changes took 2 weeks, and the system couldn&#39;t handle natural language inputs.</p>
+        <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> $1M/year rule maintenance (10 engineers)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 2-week change cycle (too slow)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> No natural language understanding (strict syntax)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Brittle (20% failure rate on edge cases)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">LLM Automation Readiness</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 2 months extracting rules, designing LLM prompts, and building validation framework.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Rule extraction (5K rules, 200 workflows)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Prompt engineering (few-shot examples)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> LLM-as-judge validation</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Human feedback loop</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Confidence thresholding</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Rule-Based Automation Assessment</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">5K rules in Drools, 200 workflows. Maintenance cost $1M/year, change cycle 2 weeks.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Rule conflicts (15% of rules never triggered)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Hard to test (simulation environment needed)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No natural language interface</li><li class="text-sm text-slate-600 dark:text-slate-400">• Brittle (unhandled cases cause failures)</li></ul></div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• LLM hallucination (incorrect actions)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Latency (2-5 seconds vs rules &lt;10ms)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Cost (LLM token costs vs free)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Data privacy (sensitive process data)</li></ul></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target LLM Automation Platform</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">LLM interprets natural language → generates actions → validates → executes.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">LLM (GPT-4 for complex workflows)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Action library (100 possible actions)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Validator (LLM-as-judge)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Human approval for low-confidence</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Audit log for compliance</span></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">7-Month LLM Automation Migration</h2>
+        <ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Foundation (Month 1-2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Extract 5K rules, build action library, LLM prompt engineering.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: Shadow Mode (Month 3-4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">LLM runs alongside rules (no action), compare outputs.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Soft Launch (Month 5-6)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">LLM for 10% of workflows (internal IT), human approval required.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 4: Phase 4: Full Rollout (Month 7)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">LLM for all workflows, rule system deprecated.</p></li></ol>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Rule Extraction to Action Mapping</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Each rule mapped to action(s) and conditions.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Rule clustering (similar rules grouped)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Action library (100 common actions)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Condition extraction (inputs needed)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Validation (LLM must match rule outcome)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Rule-to-LLM Migration Mistakes</h2>
+        <div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No confidence threshold</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> LLM makes wrong decisions (business impact)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Confidence threshold (0.8), human review below</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Action library incomplete</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> LLM can&#39;t express needed actions</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Comprehensive action library (100+) before launch</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No validation step</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> LLM hallucination undetected</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> LLM-as-judge validates each action</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No audit log</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Compliance violation (no trace)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Complete audit log (input, action, LLM version)</p></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Migration Success Metrics</h2>
+        <div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Rule maintenance cost: $1M → $200k (80% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Change cycle: 2 weeks → 1 day (93% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Natural language support: 0% → 100%</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Edge case failure rate: 20% → 2% (90% reduction)</span></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead Rule to LLM Migration</h2>
+        <div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Lead LLM Engineer (3+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Automation Engineer (workflow)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Domain Expert (business rules)</span></div></div>
+        <div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> LLM production (2+ years)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Prompt engineering (few-shot)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Rule-based systems</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Human-in-the-loop design</li></ul></div>
+      </section>
+    
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
+      <div class="grid gap-4">
+    <a href="/hire/llm-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">LLM Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/llm-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Automation Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/ml-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">ML Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+    </section>
+  
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Can LLM understand complex business rules?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes—with few-shot examples and constraints. For critical rules, require human approval.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What about compliance and auditability?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Complete audit log; LLM-as-judge validates each action; human approval for sensitive actions.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How to handle LLM hallucinations?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Confidence threshold (0.8), LLM-as-judge validation, human fallback for low confidence.</dd>
+    </div>
+  </dl>
+    </section>
+  
+          
+    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
+      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to modernize your automation platform?</h3>
+      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire LLM engineers who have migrated rule-based systems to LLM-driven workflows.</p>
+      <a href="/hire/llm-engineer" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+        Hire LLM Engineer <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </aside>
+  
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+</div></div>
+  </body>
+</html>

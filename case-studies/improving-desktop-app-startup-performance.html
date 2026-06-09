@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improving Desktop App Startup Performance</title>
+    <script type="module" crossorigin src="/assets/index-C8ju-qce.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CYDosV_D.css">
+  
+    <meta name="description" content="">
+    <meta property="og:title" content="Improving Desktop App Startup Performance">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance">
+    <link rel="canonical" href="https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance">
+    <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "CaseStudy",
+      "headline": "Improving Desktop App Startup Performance",
+      "datePublished": "2024-06-08",
+      "dateModified": "2024-06-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Offline Pixel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "SaaS / Productivity",
+        "description": "Case study from SaaS / Productivity industry"
+      },
+      "keywords": "SaaS / Productivity, Tauri, Rust, Svelte, SQLite, Vite"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://offline-pixel.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hire",
+          "item": "https://offline-pixel.github.io/hire/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Case Studies",
+          "item": "https://offline-pixel.github.io/case-studies/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Improving Desktop App Startup Performance",
+          "item": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance#case-study",
+      "name": "Improving Desktop App Startup Performance",
+      "about": {
+        "@type": "Organization",
+        "name": "Time Tracking Software",
+        "industry": "SaaS / Productivity"
+      },
+      "timeRequired": "3 months",
+      "teamSize": "2 engineers",
+      "creator": {
+        "@type": "Occupation",
+        "name": "tauri-engineer"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Technology Stack Used",
+      "description": "Technologies and frameworks utilized in this engagement",
+      "numberOfItems": 5,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tauri",
+          "item": {
+            "@type": "Thing",
+            "name": "Tauri"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rust",
+          "item": {
+            "@type": "Thing",
+            "name": "Rust"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Svelte",
+          "item": {
+            "@type": "Thing",
+            "name": "Svelte"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "SQLite",
+          "item": {
+            "@type": "Thing",
+            "name": "SQLite"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Vite",
+          "item": {
+            "@type": "Thing",
+            "name": "Vite"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance#executive-summary",
+      "name": "Executive Summary",
+      "articleBody": "A time tracking app's Electron version took 8 seconds to launch—users abandoned before tracking time. Tauri reduced launch time to 1.2 seconds through system WebView, lazy loading, and optimized bundle splitting, increasing daily active users by 40%.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Key Outcomes",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "8s → 1.2s launch time (85% reduction)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Daily active users increased 40%"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Uninstall rate decreased 60%"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Measurable Results",
+      "description": "Key performance improvements achieved",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "App launch time (P95)",
+          "description": "Improved from 8 seconds to 1.2 seconds",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "App launch time (P95)",
+            "value": "85% reduction",
+            "description": "Improved from 8 seconds to 1.2 seconds"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Daily active users",
+          "description": "Improved from 25,000 to 35,000",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Daily active users",
+            "value": "40% increase",
+            "description": "Improved from 25,000 to 35,000"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "First-day uninstall rate",
+          "description": "Improved from 15% to 6%",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "First-day uninstall rate",
+            "value": "60% reduction",
+            "description": "Improved from 15% to 6%"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Technical Challenges",
+      "description": "Key technical hurdles and their resolutions",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "System WebView cold start variance",
+          "description": "Pre-warmed WebView process in background",
+          "itemListElement": {
+            "@type": "HowToTip",
+            "text": "Impact: Launch time varied 0.8-2s across different OS versions"
+          }
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "SQLite initialization on first launch",
+          "description": "Pre-seeded database in installer + async migration",
+          "itemListElement": {
+            "@type": "HowToTip",
+            "text": "Impact: First launch 2.5s (3x slower than subsequent)"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Occupation",
+      "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance#role",
+      "name": "tauri-engineer",
+      "description": "Tauri engineers reduced launch time from 8s to 1.2s, directly impacting user retention and daily active users.",
+      "skills": [
+        {
+          "@type": "Thing",
+          "name": "Tauri framework"
+        },
+        {
+          "@type": "Thing",
+          "name": "Frontend optimization (Svelte/Vite)"
+        },
+        {
+          "@type": "Thing",
+          "name": "Lazy loading strategies"
+        },
+        {
+          "@type": "Thing",
+          "name": "Startup performance profiling"
+        }
+      ],
+      "occupationalCategory": "https://schema.org/SoftwareDeveloper"
+    },
+    {
+      "@type": "HowTo",
+      "name": "Implementation",
+      "totalTime": "3 months",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Phase 1: Core Migration",
+          "text": "Replaced Electron with Tauri—launch time 8s → 2.5s immediately."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Phase 2: Frontend Optimization",
+          "text": "Svelte + Vite + code splitting—launch time 2.5s → 1.5s."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Phase 3: Lazy Loading",
+          "text": "Deferred reports and settings modules—launch time 1.5s → 1.2s."
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Lessons Learned",
+      "text": [
+        "System WebView was the biggest win (saved 2.5s vs Chromium)",
+        "Svelte's small runtime improved load time by 500ms over React",
+        "Users notice 1-second launches; 8-second launches lose customers"
+      ],
+      "about": "Key insights from this engineering engagement"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Related Roles",
+      "description": "Similar engineering roles that may be relevant",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tauri Engineer",
+          "url": "https://offline-pixel.github.io/hire/tauri-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Tauri Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Rust Engineer",
+          "url": "https://offline-pixel.github.io/hire/rust-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Rust Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Frontend Engineer",
+          "url": "https://offline-pixel.github.io/hire/app-developer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Frontend Engineer"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance#faq",
+      "name": "Frequently Asked Questions About This Case Study",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What contributed most to the speed improvement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "System WebView (3s → 0.5s). Eliminating Chromium bundle had the single biggest impact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Did you lose any features in the migration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No—full feature parity, but improved offline sync and reduced memory usage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does this case study work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Raise a request, talk to experts, fund the project, expert works, review and approve payment. All remote, all through our platform."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance",
+      "url": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance",
+      "name": "Improving Desktop App Startup Performance",
+      "isPartOf": {
+        "@id": "https://offline-pixel.github.io/#website"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-06-09",
+      "breadcrumb": {
+        "@id": "https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance#breadcrumb"
+      },
+      "primaryImageOfPage": "https://offline-pixel.github.io/favicon.svg"
+    }
+  ]
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Improving Desktop App Startup Performance","content":"A productivity startup reduced desktop app launch time from 8 seconds to 1.2 seconds using Tauri and lazy loading strategies.","canonical":"https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance"},"seo_schema":{"@context":"https://schema.org","@type":"CaseStudy","headline":"Improving Desktop App Startup Performance","datePublished":"2024-06-08","dateModified":"2024-06-08","author":{"@type":"Organization","name":"Offline Pixel"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/logo.png"}}},"case_study":{"title":"Improving Desktop App Startup Performance","industry":"SaaS / Productivity","company_type":"Time Tracking Software","technology_stack":["Tauri","Rust","Svelte","SQLite","Vite"],"project_duration":"3 months","team_size":"2 engineers","primary_role":"tauri-engineer","business_goal":"Reduce desktop app launch time from 8 seconds to under 2 seconds."},"executive_summary":{"title":"Executive Summary","content":"A time tracking app's Electron version took 8 seconds to launch—users abandoned before tracking time. Tauri reduced launch time to 1.2 seconds through system WebView, lazy loading, and optimized bundle splitting, increasing daily active users by 40%.","outcomes":["8s → 1.2s launch time (85% reduction)","Daily active users increased 40%","Uninstall rate decreased 60%"]},"client_situation":{"title":"Client Situation","content":"Users complained the app took too long to start, with many abandoning during launch. Support tickets cited \"slow startup\" as #1 complaint.","challenges":["8-second launch time causing 30% abandonment","App uninstall rate 15% within first day","Negative app store reviews mentioning performance"]},"existing_architecture":{"title":"Existing Architecture","content":"Electron with React, large bundle (25MB JS), synchronous loading of all features at startup.","limitations":["Chromium overhead adding 3 seconds to launch","No code splitting—all JS loaded upfront","IndexedDB initialization blocking UI"]},"solution_design":{"title":"Solution Design","content":"Tauri with Svelte, Vite for bundling, route-based code splitting, and lazy-loaded modules.","key_decisions":["Tauri with system WebView (500ms launch vs 3s Electron)","Svelte for minimal runtime (3KB vs React 40KB)","Vite code splitting for on-demand feature loading"],"technologies_used":["Tauri","Rust","Svelte","Vite","SQLite"]},"implementation":{"title":"Implementation","content":"Rewrote frontend in Svelte, kept business logic in Rust, optimized asset loading.","phases":[{"phase":"Phase 1: Core Migration","description":"Replaced Electron with Tauri—launch time 8s → 2.5s immediately."},{"phase":"Phase 2: Frontend Optimization","description":"Svelte + Vite + code splitting—launch time 2.5s → 1.5s."},{"phase":"Phase 3: Lazy Loading","description":"Deferred reports and settings modules—launch time 1.5s → 1.2s."}]},"technical_challenges":{"title":"Technical Challenges","items":[{"challenge":"System WebView cold start variance","impact":"Launch time varied 0.8-2s across different OS versions","resolution":"Pre-warmed WebView process in background"},{"challenge":"SQLite initialization on first launch","impact":"First launch 2.5s (3x slower than subsequent)","resolution":"Pre-seeded database in installer + async migration"}]},"results":{"title":"Results","metrics":[{"metric":"App launch time (P95)","before":"8 seconds","after":"1.2 seconds","improvement":"85% reduction"},{"metric":"Daily active users","before":"25,000","after":"35,000","improvement":"40% increase"},{"metric":"First-day uninstall rate","before":"15%","after":"6%","improvement":"60% reduction"}]},"lessons_learned":{"title":"Lessons Learned","items":["System WebView was the biggest win (saved 2.5s vs Chromium)","Svelte's small runtime improved load time by 500ms over React","Users notice 1-second launches; 8-second launches lose customers"]},"what_we_would_do_differently":{"title":"What We Would Do Differently","items":["Implement skeleton screens for perceived performance","Use Tauri's custom protocol for faster asset loading"]},"role_relevance":{"title":"Role Relevance","why_this_role_mattered":"Tauri engineers reduced launch time from 8s to 1.2s, directly impacting user retention and daily active users.","critical_skills":["Tauri framework","Frontend optimization (Svelte/Vite)","Lazy loading strategies","Startup performance profiling"]},"faq":{"questions":[{"q":"What contributed most to the speed improvement?","a":"System WebView (3s → 0.5s). Eliminating Chromium bundle had the single biggest impact."},{"q":"Did you lose any features in the migration?","a":"No—full feature parity, but improved offline sync and reduced memory usage."}]},"related_roles":[{"title":"Tauri Engineer","slug":"tauri-engineer","url":"/hire/tauri-engineer"},{"title":"Rust Engineer","slug":"rust-engineer","url":"/hire/rust-engineer"},{"title":"Frontend Engineer","slug":"app-developer","url":"/hire/app-developer"}],"cta":{"title":"Ready to improve your desktop app startup time?","body":"Hire Tauri engineers who have reduced launch times from 8s to 1.2s.","button_text":"Hire Tauri Engineer","button_link":"/hire/tauri-engineer"}};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+<div class="flex-1">
+    <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-black dark:to-slate-950">
+      
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 lg:pt-24 lg:pb-16">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/></svg>
+            SaaS / Productivity
+          </span>
+          
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Improving Desktop App Startup Performance</h1>
+        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl"></p>
+      </div>
+    </div>
+  
+      
+    <nav aria-label="Breadcrumb" class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/30 backdrop-blur-sm sticky top-0 z-10">
+      <div class="max-w-4xl mx-auto px-6 py-3">
+        <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
+          
+            <li>
+              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/hire" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Hire</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/case-studies" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Case Studies</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <span class="text-slate-600 dark:text-slate-300">SaaS / Productivity</span>
+            </li>
+            
+          
+        </ol>
+      </div>
+    </nav>
+  
+      <article class="max-w-3xl mx-auto px-6 py-12 lg:py-16">
+        
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A time tracking app&#39;s Electron version took 8 seconds to launch—users abandoned before tracking time. Tauri reduced launch time to 1.2 seconds through system WebView, lazy loading, and optimized bundle splitting, increasing daily active users by 40%.</p>
+        
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 mt-4">
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Outcomes</h3>
+            <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> 8s → 1.2s launch time (85% reduction)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> Daily active users increased 40%</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> Uninstall rate decreased 60%</li></ul>
+          </div>
+        
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Client Situation</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Users complained the app took too long to start, with many abandoning during launch. Support tickets cited &quot;slow startup&quot; as #1 complaint.</p>
+        
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6">
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Challenges</h3>
+            <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> 8-second launch time causing 30% abandonment</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> App uninstall rate 15% within first day</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> Negative app store reviews mentioning performance</li></ul>
+          </div>
+        
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Existing Architecture</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Electron with React, large bundle (25MB JS), synchronous loading of all features at startup.</p>
+        
+          <ul class="space-y-2 border-l-2 border-red-400 pl-4"><li class="text-slate-700 dark:text-slate-300">Chromium overhead adding 3 seconds to launch</li><li class="text-slate-700 dark:text-slate-300">No code splitting—all JS loaded upfront</li><li class="text-slate-700 dark:text-slate-300">IndexedDB initialization blocking UI</li></ul>
+        
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Solution Design</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Tauri with Svelte, Vite for bundling, route-based code splitting, and lazy-loaded modules.</p>
+        
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 mb-4">
+            <h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Decisions</h3>
+            <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Tauri with system WebView (500ms launch vs 3s Electron)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Svelte for minimal runtime (3KB vs React 40KB)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Vite code splitting for on-demand feature loading</li></ul>
+          </div>
+        
+        
+          <div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Tauri</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Rust</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Svelte</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Vite</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">SQLite</span></div>
+        
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Implementation</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Rewrote frontend in Svelte, kept business logic in Rust, optimized asset loading.</p>
+        
+          <ol class="space-y-4"><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 1: Phase 1: Core Migration</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Replaced Electron with Tauri—launch time 8s → 2.5s immediately.</p></li><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 2: Phase 2: Frontend Optimization</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Svelte + Vite + code splitting—launch time 2.5s → 1.5s.</p></li><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 3: Phase 3: Lazy Loading</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Deferred reports and settings modules—launch time 1.5s → 1.2s.</p></li></ol>
+        
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Technical Challenges</h2>
+        <dl class="space-y-6"><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><dt class="font-semibold text-slate-900 dark:text-white mb-2">System WebView cold start variance</dt><dd class="space-y-2"><p class="text-sm text-slate-600 dark:text-slate-400"><strong class="font-medium">Impact:</strong> Launch time varied 0.8-2s across different OS versions</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong class="font-medium">Resolution:</strong> Pre-warmed WebView process in background</p></dd></div><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><dt class="font-semibold text-slate-900 dark:text-white mb-2">SQLite initialization on first launch</dt><dd class="space-y-2"><p class="text-sm text-slate-600 dark:text-slate-400"><strong class="font-medium">Impact:</strong> First launch 2.5s (3x slower than subsequent)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong class="font-medium">Resolution:</strong> Pre-seeded database in installer + async migration</p></dd></div></dl>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Results</h2>
+        <dl class="space-y-4 my-6">
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <dt class="font-semibold text-slate-900 dark:text-white mb-1">App launch time (P95)</dt>
+        <dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">8 seconds</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">1.2 seconds</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">85% reduction</span></div></dd>
+      </div>
+    
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <dt class="font-semibold text-slate-900 dark:text-white mb-1">Daily active users</dt>
+        <dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">25,000</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">35,000</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">40% increase</span></div></dd>
+      </div>
+    
+      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
+        <dt class="font-semibold text-slate-900 dark:text-white mb-1">First-day uninstall rate</dt>
+        <dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">15%</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">6%</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">60% reduction</span></div></dd>
+      </div>
+    </dl>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Lessons Learned</h2>
+        <ul class="space-y-3"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> System WebView was the biggest win (saved 2.5s vs Chromium)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> Svelte&#39;s small runtime improved load time by 500ms over React</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> Users notice 1-second launches; 8-second launches lose customers</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">What We Would Do Differently</h2>
+        <ul class="space-y-3"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">💡</span> Implement skeleton screens for perceived performance</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">💡</span> Use Tauri&#39;s custom protocol for faster asset loading</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Role Relevance</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">Tauri engineers reduced launch time from 8s to 1.2s, directly impacting user retention and daily active users.</p>
+        
+          <div><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Critical Skills Demonstrated</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Tauri framework</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Frontend optimization (Svelte/Vite)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Lazy loading strategies</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Startup performance profiling</span></div></div>
+        
+      </section>
+    
+        
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
+      <div class="grid gap-4">
+    <a href="/hire/tauri-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Tauri Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/rust-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Rust Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/app-developer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Frontend Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+    </section>
+  
+        
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What contributed most to the speed improvement?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">System WebView (3s → 0.5s). Eliminating Chromium bundle had the single biggest impact.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Did you lose any features in the migration?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">No—full feature parity, but improved offline sync and reduced memory usage.</dd>
+    </div>
+  </dl>
+    </section>
+  
+        
+    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
+      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to improve your desktop app startup time?</h3>
+      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire Tauri engineers who have reduced launch times from 8s to 1.2s.</p>
+      <a href="/hire/tauri-engineer" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+        Hire Tauri Engineer <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </aside>
+  
+      </article>
+    </main>
+  </div>
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+</div></div>
+  </body>
+</html>

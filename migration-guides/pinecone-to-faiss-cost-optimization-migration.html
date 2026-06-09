@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pinecone to FAISS Cost Optimization Migration</title>
+    <script type="module" crossorigin src="/assets/index-C8ju-qce.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CYDosV_D.css">
+  
+    <meta name="description" content="A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.">
+    <meta property="og:title" content="Pinecone to FAISS Cost Optimization Migration">
+    <meta property="og:description" content="A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration">
+    <link rel="canonical" href="https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration">
+    <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "headline": "Pinecone to FAISS Cost Optimization Migration",
+      "datePublished": "2024-06-08",
+      "dateModified": "2024-06-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Offline Pixel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/logo.png"
+        }
+      },
+      "description": "A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Pinecone (Managed Vector DB) to FAISS (Self-Hosted) Migration",
+        "description": "Strategic migration guide from Pinecone (Managed Vector DB) to FAISS (Self-Hosted)"
+      },
+      "keywords": "Pinecone (Managed Vector DB), FAISS (Self-Hosted), big_bang, migration, guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://offline-pixel.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://offline-pixel.github.io/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Migration Guides",
+          "item": "https://offline-pixel.github.io/migration-guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Pinecone to FAISS Cost Optimization Migration",
+          "item": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration"
+        }
+      ]
+    },
+    {
+      "@type": "BigBangMigration",
+      "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration#migration",
+      "name": "Pinecone (Managed Vector DB) to FAISS (Self-Hosted) Migration",
+      "description": "A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.",
+      "sourceCode": {
+        "@type": "SoftwareApplication",
+        "name": "Pinecone (Managed Vector DB)"
+      },
+      "targetCode": {
+        "@type": "SoftwareApplication",
+        "name": "FAISS (Self-Hosted)"
+      },
+      "difficulty": "Low",
+      "timeRequired": "2-3 months",
+      "creator": {
+        "@type": "Occupation",
+        "name": "faiss-expert"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration#executive-summary",
+      "name": "Executive Summary",
+      "description": "A startup's Pinecone bill reached $50k/month for 100M vectors. Over 2 months, they migrated to self-hosted FAISS on AWS, reducing costs to $10k/month (80% reduction) while maintaining 95% recall. This guide covers FAISS deployment, index optimization, and operational best practices.",
+      "totalTime": "2-3 months",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "description": "Varies by scope"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "FAISS on EC2 costs 80% less than Pinecone at scale"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "IVFPQ index reduces memory 10x vs Flat"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Self-hosted requires operational overhead (monitoring, scaling)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Hybrid cloud (FAISS + Pinecone for burst) for cost flexibility"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "2-Month Pinecone to FAISS Migration",
+      "totalTime": "2-3 months",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Phase 1: Export (Week 1-2)",
+          "text": "Exported 100M vectors from Pinecone to S3 (Parquet)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Phase 2: Index Build (Week 3-4)",
+          "text": "Built IVFPQ index on EC2 cluster (1 week training)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Phase 3: Validation (Week 5-6)",
+          "text": "Recall 94% on test set (acceptable)."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Phase 4: Cutover (Week 7-8)",
+          "text": "Gradually shift traffic from Pinecone to FAISS over 2 weeks."
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Pinecone Usage Assessment",
+      "text": "Pinecone stored 100M 768-dim vectors, 50k queries/sec peak, 95% recall. Monthly cost $50k.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Technical Debt Identified",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Overage costs (20% monthly growth)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "No control over index parameters"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Vendor lock-in (proprietary API)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Data egress costs (Pinecone → AWS)"
+          }
+        ]
+      },
+      "potentialRisk": [
+        "FAISS recall lower than Pinecone (95% → 90% target)",
+        "Operational overhead (self-hosted)",
+        "Migration data loss",
+        "Scaling challenges (burst traffic)"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Target Self-Hosted FAISS Architecture",
+      "text": "FAISS on EC2 with load balancer, auto-scaling, and S3 backup.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Architecture Components",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "FAISS index (IVFPQ, 100M vectors)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "FAISS index (IVFPQ, 100M vectors)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "8x EC2 r5.8xlarge (256GB RAM each)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "8x EC2 r5.8xlarge (256GB RAM each)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Load balancer (round-robin)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Load balancer (round-robin)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "S3 backup (weekly index snapshots)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "S3 backup (weekly index snapshots)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Prometheus monitoring",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Prometheus monitoring"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Auto-scaling based on CPU",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Auto-scaling based on CPU"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Common Pinecone to FAISS Mistakes",
+      "description": "Pitfalls to avoid during migration",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Using Flat index (no compression)"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Single node (no HA)"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "No monitoring"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Not backing up index"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Migration Success Metrics",
+      "description": "Key performance indicators for migration success",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Monthly cost: $50k → $10k (80% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Monthly cost: $50k → $10k (80% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Recall: 95% (Pinecone) → 94% (FAISS)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Recall: 95% (Pinecone) → 94% (FAISS)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Latency: 15ms → 18ms (acceptable)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Latency: 15ms → 18ms (acceptable)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Operational overhead: 2 engineers (part-time)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Operational overhead: 2 engineers (part-time)"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Occupation",
+      "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration#lead-role",
+      "name": "faiss-expert",
+      "description": "Who Should Lead Cost Optimization Migration",
+      "occupationalCategory": "FAISS Expert (2+ years), DevOps Engineer (AWS, EC2), Data Engineer (vector export)",
+      "experienceRequirements": [
+        "FAISS index optimization",
+        "AWS (EC2, S3, load balancers)",
+        "Vector database operations",
+        "Cost optimization"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Testing FAISS vs Pinecone",
+      "description": "Shadow mode for 2 weeks, comparing search results.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Checkpoint 1",
+          "text": "Recall comparison (target 94% vs Pinecone 95%)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Checkpoint 2",
+          "text": "Latency (target <20ms)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Checkpoint 3",
+          "text": "Cost tracking (FAISS 80% cheaper)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Checkpoint 4",
+          "text": "A/B test (10% traffic to FAISS)"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Rollback to Pinecone",
+      "description": "Feature flag toggles between Pinecone and FAISS.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Toggle to Pinecone (30 seconds)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Investigate FAISS issue"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Fix and redeploy"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Toggle back to FAISS"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Migration Cost Analysis",
+      "text": "Migration cost $80K over 2 months (2 engineers × 2 months). ROI: $480k/year cost savings (80% reduction).",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Cost Factors",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Engineering: 2 engineers × 2 months = 4 person-months ($60k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "EC2 instances (8x r5.8xlarge, $2k/month)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Development ($10k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Monitoring ($5k)"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Related Roles",
+      "description": "Engineering roles involved in this type of migration",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "FAISS Expert",
+          "url": "https://offline-pixel.github.io/hire/faiss-expert",
+          "item": {
+            "@type": "Occupation",
+            "name": "FAISS Expert"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "DevOps Engineer",
+          "url": "https://offline-pixel.github.io/hire/faiss-expert",
+          "item": {
+            "@type": "Occupation",
+            "name": "DevOps Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Data Engineer",
+          "url": "https://offline-pixel.github.io/hire/duckdb-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Data Engineer"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration#faq",
+      "name": "Frequently Asked Questions About Pinecone (Managed Vector DB) to FAISS (Self-Hosted) Migration",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is FAISS as easy to use as Pinecone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No—self-hosted requires ops work (monitoring, scaling, backups). Trade-off cost vs convenience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about serverless bursts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep Pinecone for burst traffic; route steady traffic to FAISS. Hybrid cloud best of both."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How to handle schema changes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "FAISS has no schema; metadata stored separately. Version embeddings and rebuild index."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration",
+      "url": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration",
+      "name": "Pinecone to FAISS Cost Optimization Migration",
+      "description": "A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.",
+      "isPartOf": {
+        "@id": "https://offline-pixel.github.io/#website"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-06-09",
+      "breadcrumb": {
+        "@id": "https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration#breadcrumb"
+      },
+      "primaryImageOfPage": "https://offline-pixel.github.io/favicon.svg"
+    }
+  ]
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Pinecone to FAISS Cost Optimization Migration","description":"A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.","canonical":"https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration"},"seo_schema":{"@context":"https://schema.org","@type":"HowTo","headline":"Pinecone to FAISS Cost Optimization Migration","datePublished":"2024-06-08","dateModified":"2024-06-08","author":{"@type":"Organization","name":"Offline Pixel"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/logo.png"}}},"migration":{"source_stack":"Pinecone (Managed Vector DB)","target_stack":"FAISS (Self-Hosted)","migration_type":"big_bang","difficulty":"easy","estimated_timeline":"2-3 months","primary_role":"faiss-expert"},"executive_summary":{"title":"Executive Summary","content":"A startup's Pinecone bill reached $50k/month for 100M vectors. Over 2 months, they migrated to self-hosted FAISS on AWS, reducing costs to $10k/month (80% reduction) while maintaining 95% recall. This guide covers FAISS deployment, index optimization, and operational best practices.","key_takeaways":["FAISS on EC2 costs 80% less than Pinecone at scale","IVFPQ index reduces memory 10x vs Flat","Self-hosted requires operational overhead (monitoring, scaling)","Hybrid cloud (FAISS + Pinecone for burst) for cost flexibility"]},"why_migrate":{"title":"Why Migrate from Pinecone to FAISS","content":"Pinecone's managed convenience came at a premium—$50k/month for 100M vectors. At scale, self-hosted FAISS was 5x cheaper.","business_drivers":["$50k/month Pinecone bill (growing 20% monthly)","Predictable workload (no need for serverless elasticity)","Engineering team capable of self-hosting","Data gravity (vectors already in AWS)"]},"migration_readiness":{"title":"FAISS Cost Optimization Readiness","content":"The team spent 3 weeks designing FAISS architecture, benchmarking recall, and building migration scripts.","requirements":["EC2 instances (r5.8xlarge, 8 nodes)","FAISS index (IVFPQ, 100M vectors)","Migration script (Pinecone → FAISS)","Recall validation framework","Monitoring (Prometheus + Grafana)"]},"current_state_assessment":{"title":"Pinecone Usage Assessment","content":"Pinecone stored 100M 768-dim vectors, 50k queries/sec peak, 95% recall. Monthly cost $50k.","technical_debt":["Overage costs (20% monthly growth)","No control over index parameters","Vendor lock-in (proprietary API)","Data egress costs (Pinecone → AWS)"],"risks":["FAISS recall lower than Pinecone (95% → 90% target)","Operational overhead (self-hosted)","Migration data loss","Scaling challenges (burst traffic)"]},"target_architecture":{"title":"Target Self-Hosted FAISS Architecture","content":"FAISS on EC2 with load balancer, auto-scaling, and S3 backup.","architecture_components":["FAISS index (IVFPQ, 100M vectors)","8x EC2 r5.8xlarge (256GB RAM each)","Load balancer (round-robin)","S3 backup (weekly index snapshots)","Prometheus monitoring","Auto-scaling based on CPU"]},"migration_plan":{"title":"2-Month Pinecone to FAISS Migration","content":"Export vectors from Pinecone, build FAISS index, validate recall, cutover.","steps":[{"step":"Phase 1: Export (Week 1-2)","description":"Exported 100M vectors from Pinecone to S3 (Parquet)."},{"step":"Phase 2: Index Build (Week 3-4)","description":"Built IVFPQ index on EC2 cluster (1 week training)."},{"step":"Phase 3: Validation (Week 5-6)","description":"Recall 94% on test set (acceptable)."},{"step":"Phase 4: Cutover (Week 7-8)","description":"Gradually shift traffic from Pinecone to FAISS over 2 weeks."}]},"data_migration":{"title":"Vector Export from Pinecone","content":"100M vectors exported to Parquet via Pinecone's data export feature.","considerations":["Export format (JSON → Parquet for compression)","Metadata preservation (IDs, tags)","Data validation (checksums, count)","Incremental sync during migration window"]},"application_migration":{"title":"Pinecone API to FAISS","content":"Pinecone API replaced with custom FAISS service (gRPC).","considerations":["Unified API interface (same as Pinecone)","Batch search support (100 queries/batch)","Metadata filtering (post-filtering)","Idempotent upserts (for incremental updates)"]},"testing_strategy":{"title":"Testing FAISS vs Pinecone","content":"Shadow mode for 2 weeks, comparing search results.","checkpoints":["Recall comparison (target 94% vs Pinecone 95%)","Latency (target <20ms)","Cost tracking (FAISS 80% cheaper)","A/B test (10% traffic to FAISS)"]},"rollback_strategy":{"title":"Rollback to Pinecone","content":"Feature flag toggles between Pinecone and FAISS.","steps":["Toggle to Pinecone (30 seconds)","Investigate FAISS issue","Fix and redeploy","Toggle back to FAISS"]},"common_mistakes":{"title":"Common Pinecone to FAISS Mistakes","content":"Based on cost optimization migrations, these are the most frequent pitfalls.","mistakes":[{"mistake":"Using Flat index (no compression)","impact":"Memory 300GB (expensive EC2)","prevention":"IVFPQ (compression, 30GB memory)"},{"mistake":"Single node (no HA)","impact":"Downtime during maintenance","prevention":"Multiple replicas, load balancer"},{"mistake":"No monitoring","impact":"Undetected performance degradation","prevention":"Prometheus + Grafana"},{"mistake":"Not backing up index","impact":"Data loss on instance failure","prevention":"Weekly S3 snapshots"}]},"cost_considerations":{"title":"Migration Cost Analysis","content":"Migration cost $80K over 2 months (2 engineers × 2 months). ROI: $480k/year cost savings (80% reduction).","cost_factors":["Engineering: 2 engineers × 2 months = 4 person-months ($60k)","EC2 instances (8x r5.8xlarge, $2k/month)","Development ($10k)","Monitoring ($5k)"]},"success_metrics":{"title":"Migration Success Metrics","content":"The migration was considered successful after achieving these metrics.","metrics":["Monthly cost: $50k → $10k (80% reduction)","Recall: 95% (Pinecone) → 94% (FAISS)","Latency: 15ms → 18ms (acceptable)","Operational overhead: 2 engineers (part-time)"]},"who_should_lead_this_migration":{"title":"Who Should Lead Cost Optimization Migration","content":"This migration requires a faiss expert with cloud infrastructure experience.","recommended_roles":["FAISS Expert (2+ years)","DevOps Engineer (AWS, EC2)","Data Engineer (vector export)"],"required_experience":["FAISS index optimization","AWS (EC2, S3, load balancers)","Vector database operations","Cost optimization"]},"faq":{"questions":[{"q":"Is FAISS as easy to use as Pinecone?","a":"No—self-hosted requires ops work (monitoring, scaling, backups). Trade-off cost vs convenience."},{"q":"What about serverless bursts?","a":"Keep Pinecone for burst traffic; route steady traffic to FAISS. Hybrid cloud best of both."},{"q":"How to handle schema changes?","a":"FAISS has no schema; metadata stored separately. Version embeddings and rebuild index."}]},"related_roles":[{"title":"FAISS Expert","slug":"faiss-expert","url":"/hire/faiss-expert"},{"title":"DevOps Engineer","slug":"faiss-expert","url":"/hire/faiss-expert"},{"title":"Data Engineer","slug":"duckdb-engineer","url":"/hire/duckdb-engineer"}],"cta":{"title":"Ready to reduce your vector database costs?","body":"Hire FAISS experts who have migrated from Pinecone to self-hosted FAISS.","button_text":"Hire FAISS Expert","button_link":"/hire/faiss-expert"}};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+<div class="flex-1">
+    <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-black dark:to-slate-950">
+      
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 lg:pt-24 lg:pb-16">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            Pinecone (Managed Vector DB) → FAISS (Self-Hosted)
+          </span>
+          
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Pinecone to FAISS Cost Optimization Migration</h1>
+        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.</p>
+      </div>
+    </div>
+  
+      
+    <nav aria-label="Breadcrumb" class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/30 backdrop-blur-sm sticky top-0 z-10">
+      <div class="max-w-4xl mx-auto px-6 py-3">
+        <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
+          
+            <li>
+              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <span class="text-slate-600 dark:text-slate-300">FAISS (Self-Hosted)</span>
+            </li>
+            
+          
+        </ol>
+      </div>
+    </nav>
+  
+      <article class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-6">
+          
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Pinecone (Managed Vector DB) → FAISS (Self-Hosted)</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Big Bang</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">EASY Difficulty</span>
+    </div>
+  
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Pinecone to FAISS Cost Optimization Migration</h1>
+          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating from managed Pinecone to self-hosted FAISS for 80% cost reduction.</p>
+          
+    <div class="mt-8 flex flex-wrap gap-6 text-sm">
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">2-3 months</span></div>
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">faiss-expert</span></div>
+    </div>
+  
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-12">
+          
+      <section class="fade-section opacity-0 mb-12">
+        <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A startup&#39;s Pinecone bill reached $50k/month for 100M vectors. Over 2 months, they migrated to self-hosted FAISS on AWS, reducing costs to $10k/month (80% reduction) while maintaining 95% recall. This guide covers FAISS deployment, index optimization, and operational best practices.</p>
+          <div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">FAISS on EC2 costs 80% less than Pinecone at scale</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">IVFPQ index reduces memory 10x vs Flat</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Self-hosted requires operational overhead (monitoring, scaling)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Hybrid cloud (FAISS + Pinecone for burst) for cost flexibility</span></div></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate from Pinecone to FAISS</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Pinecone&#39;s managed convenience came at a premium—$50k/month for 100M vectors. At scale, self-hosted FAISS was 5x cheaper.</p>
+        <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> $50k/month Pinecone bill (growing 20% monthly)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Predictable workload (no need for serverless elasticity)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Engineering team capable of self-hosting</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Data gravity (vectors already in AWS)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">FAISS Cost Optimization Readiness</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 3 weeks designing FAISS architecture, benchmarking recall, and building migration scripts.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> EC2 instances (r5.8xlarge, 8 nodes)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> FAISS index (IVFPQ, 100M vectors)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Migration script (Pinecone → FAISS)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Recall validation framework</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Monitoring (Prometheus + Grafana)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Pinecone Usage Assessment</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Pinecone stored 100M 768-dim vectors, 50k queries/sec peak, 95% recall. Monthly cost $50k.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Overage costs (20% monthly growth)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No control over index parameters</li><li class="text-sm text-slate-600 dark:text-slate-400">• Vendor lock-in (proprietary API)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Data egress costs (Pinecone → AWS)</li></ul></div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• FAISS recall lower than Pinecone (95% → 90% target)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Operational overhead (self-hosted)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Migration data loss</li><li class="text-sm text-slate-600 dark:text-slate-400">• Scaling challenges (burst traffic)</li></ul></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target Self-Hosted FAISS Architecture</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">FAISS on EC2 with load balancer, auto-scaling, and S3 backup.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FAISS index (IVFPQ, 100M vectors)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">8x EC2 r5.8xlarge (256GB RAM each)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Load balancer (round-robin)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">S3 backup (weekly index snapshots)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Prometheus monitoring</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Auto-scaling based on CPU</span></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">2-Month Pinecone to FAISS Migration</h2>
+        <ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Export (Week 1-2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Exported 100M vectors from Pinecone to S3 (Parquet).</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: Index Build (Week 3-4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Built IVFPQ index on EC2 cluster (1 week training).</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Validation (Week 5-6)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Recall 94% on test set (acceptable).</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 4: Phase 4: Cutover (Week 7-8)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Gradually shift traffic from Pinecone to FAISS over 2 weeks.</p></li></ol>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Vector Export from Pinecone</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">100M vectors exported to Parquet via Pinecone&#39;s data export feature.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Export format (JSON → Parquet for compression)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Metadata preservation (IDs, tags)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Data validation (checksums, count)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Incremental sync during migration window</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Pinecone to FAISS Mistakes</h2>
+        <div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Using Flat index (no compression)</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Memory 300GB (expensive EC2)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> IVFPQ (compression, 30GB memory)</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Single node (no HA)</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Downtime during maintenance</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Multiple replicas, load balancer</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No monitoring</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Undetected performance degradation</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Prometheus + Grafana</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Not backing up index</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Data loss on instance failure</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Weekly S3 snapshots</p></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Migration Success Metrics</h2>
+        <div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Monthly cost: $50k → $10k (80% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Recall: 95% (Pinecone) → 94% (FAISS)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Latency: 15ms → 18ms (acceptable)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Operational overhead: 2 engineers (part-time)</span></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead Cost Optimization Migration</h2>
+        <div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FAISS Expert (2+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">DevOps Engineer (AWS, EC2)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Data Engineer (vector export)</span></div></div>
+        <div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> FAISS index optimization</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> AWS (EC2, S3, load balancers)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Vector database operations</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Cost optimization</li></ul></div>
+      </section>
+    
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
+      <div class="grid gap-4">
+    <a href="/hire/faiss-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">FAISS Expert</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/faiss-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">DevOps Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/duckdb-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Data Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+    </section>
+  
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Is FAISS as easy to use as Pinecone?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">No—self-hosted requires ops work (monitoring, scaling, backups). Trade-off cost vs convenience.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What about serverless bursts?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Keep Pinecone for burst traffic; route steady traffic to FAISS. Hybrid cloud best of both.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How to handle schema changes?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">FAISS has no schema; metadata stored separately. Version embeddings and rebuild index.</dd>
+    </div>
+  </dl>
+    </section>
+  
+          
+    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
+      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to reduce your vector database costs?</h3>
+      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire FAISS experts who have migrated from Pinecone to self-hosted FAISS.</p>
+      <a href="/hire/faiss-expert" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+        Hire FAISS Expert <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </aside>
+  
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+</div></div>
+  </body>
+</html>
