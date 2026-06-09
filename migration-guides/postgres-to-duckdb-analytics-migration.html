@@ -1,0 +1,1200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Postgres to DuckDB Analytics Migration</title>
+    <script type="module" crossorigin src="/assets/index-C8ju-qce.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CYDosV_D.css">
+  
+    <meta name="description" content="A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.">
+    <meta property="og:title" content="Postgres to DuckDB Analytics Migration">
+    <meta property="og:description" content="A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration">
+    <link rel="canonical" href="https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration">
+    <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "headline": "Postgres to DuckDB Analytics Migration",
+      "datePublished": "2024-06-08",
+      "dateModified": "2024-06-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Offline Pixel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/logo.png"
+        }
+      },
+      "description": "A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "PostgreSQL (OLTP + OLAP) to DuckDB (Analytics Only) Migration",
+        "description": "Strategic migration guide from PostgreSQL (OLTP + OLAP) to DuckDB (Analytics Only)"
+      },
+      "keywords": "PostgreSQL (OLTP + OLAP), DuckDB (Analytics Only), incremental, migration, guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://offline-pixel.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://offline-pixel.github.io/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Migration Guides",
+          "item": "https://offline-pixel.github.io/migration-guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Postgres to DuckDB Analytics Migration",
+          "item": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration"
+        }
+      ]
+    },
+    {
+      "@type": "IncrementalMigration",
+      "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration#migration",
+      "name": "PostgreSQL (OLTP + OLAP) to DuckDB (Analytics Only) Migration",
+      "description": "A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.",
+      "sourceCode": {
+        "@type": "SoftwareApplication",
+        "name": "PostgreSQL (OLTP + OLAP)"
+      },
+      "targetCode": {
+        "@type": "SoftwareApplication",
+        "name": "DuckDB (Analytics Only)"
+      },
+      "difficulty": "Low",
+      "timeRequired": "2-3 months",
+      "creator": {
+        "@type": "Occupation",
+        "name": "duckdb-engineer"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration#executive-summary",
+      "name": "Executive Summary",
+      "description": "A SaaS company's analytical queries on PostgreSQL took 45 seconds to minutes, slowing dashboards and frustrating users. Over 2 months, they migrated analytical workloads to DuckDB, reducing query time to 200ms (225x faster) and cutting infrastructure costs by 80%. This guide covers data export, Parquet conversion, and query migration.",
+      "totalTime": "2-3 months",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "description": "Varies by scope"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "PostgreSQL for OLTP, DuckDB for analytics (separate concerns)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Parquet as interchange format (10x compression)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "DuckDB queries 100x faster than Postgres for aggregations"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Cost savings from moving from RDS to S3 + local compute"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "2-Month Analytics Migration",
+      "totalTime": "2-3 months",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Phase 1: Parquet Export (Month 1, Week 1-2)",
+          "text": "Set up Airflow DAG to export 20 tables to Parquet daily."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Phase 2: Query Migration (Month 1, Week 3-4)",
+          "text": "Rewrote 20 slowest queries from Postgres to DuckDB SQL."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Phase 3: Dashboard Cutover (Month 2)",
+          "text": "Switched 50 dashboards to DuckDB backend, one by one."
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Postgres Analytics Assessment",
+      "text": "PostgreSQL had 20 analytical tables with 5TB of data. The slowest queries were multi-table aggregations (10 tables joined, 45 seconds).",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Technical Debt Identified",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Row-based storage (slow column aggregations)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "No query result caching"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Analytical queries blocking OLTP writes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "High RDS cost ($5k/month)"
+          }
+        ]
+      },
+      "potentialRisk": [
+        "Data freshness (daily Parquet export = 24-hour lag)",
+        "Query compatibility (DuckDB SQL vs Postgres)",
+        "Concurrent query performance (DuckDB single-node)",
+        "User adoption (analysts need training)"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Target DuckDB Analytics",
+      "text": "The target was Parquet files on S3 queried by DuckDB, refreshed daily.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Architecture Components",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "PostgreSQL (OLTP, unchanged)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "PostgreSQL (OLTP, unchanged)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Parquet export (Airflow, daily)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Parquet export (Airflow, daily)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "S3 storage (5TB → 500GB Parquet, 10x compression)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "S3 storage (5TB → 500GB Parquet, 10x compression)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "DuckDB (queries Parquet directly)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "DuckDB (queries Parquet directly)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "BI tools (Tableau, Superset) connect via DuckDB",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "BI tools (Tableau, Superset) connect via DuckDB"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Common Postgres to DuckDB Mistakes",
+      "description": "Pitfalls to avoid during migration",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Not partitioning Parquet files"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Using DuckDB on network storage"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "No incremental exports"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Expecting real-time data"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Migration Success Metrics",
+      "description": "Key performance indicators for migration success",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Query time (P99): 45 seconds → 200ms (225x faster)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Query time (P99): 45 seconds → 200ms (225x faster)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Infrastructure cost: $5k/month → $1k/month (80% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Infrastructure cost: $5k/month → $1k/month (80% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dashboard user satisfaction: 2.5/5 → 4.5/5",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Dashboard user satisfaction: 2.5/5 → 4.5/5"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Data freshness: 1 day (acceptable for analytics)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Data freshness: 1 day (acceptable for analytics)"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Occupation",
+      "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration#lead-role",
+      "name": "duckdb-engineer",
+      "description": "Who Should Lead Analytics Migration",
+      "occupationalCategory": "Data Engineer (3+ years), Analytics Engineer (SQL expert), DuckDB Specialist (1+ year)",
+      "experienceRequirements": [
+        "PostgreSQL performance tuning",
+        "Parquet and columnar storage",
+        "ETL pipelines (Airflow)",
+        "SQL query optimization"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Testing DuckDB vs Postgres",
+      "description": "The team ran both systems in parallel for 2 weeks, comparing query results.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Checkpoint 1",
+          "text": "Query result validation (diff < 0.01%)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Checkpoint 2",
+          "text": "Performance comparison (DuckDB must be faster)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Checkpoint 3",
+          "text": "Data freshness validation (24-hour lag acceptable)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Checkpoint 4",
+          "text": "User acceptance testing (50 dashboards)"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Rollback to Postgres",
+      "description": "Dashboards can toggle between DuckDB and Postgres via feature flag.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Toggle dashboard back to Postgres (15 seconds)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Investigate DuckDB issue (query bug, data lag)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Fix DuckDB query or export pipeline"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Toggle back to DuckDB"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Migration Cost Analysis",
+      "text": "Migration cost $50K over 2 months (2 engineers × 2 months). ROI: $4k/month RDS savings + faster dashboards.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Cost Factors",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Engineering: 2 engineers × 2 months = 4 person-months ($40k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "S3 storage ($100/month vs $5k/month RDS)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Airflow setup ($5k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Training: DuckDB for analysts ($5k)"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Related Roles",
+      "description": "Engineering roles involved in this type of migration",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "DuckDB Engineer",
+          "url": "https://offline-pixel.github.io/hire/duckdb-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "DuckDB Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Data Engineer",
+          "url": "https://offline-pixel.github.io/hire/duckdb-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Data Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Analytics Engineer",
+          "url": "https://offline-pixel.github.io/hire/duckdb-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Analytics Engineer"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration#faq",
+      "name": "Frequently Asked Questions About PostgreSQL (OLTP + OLAP) to DuckDB (Analytics Only) Migration",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can DuckDB replace Postgres entirely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No—DuckDB for analytics, Postgres for OLTP. DuckDB doesn't support high-concurrency writes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fresh is DuckDB data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Daily exports = 24-hour lag. For real-time, use Postgres or add hourly exports."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does DuckDB support JOINs on large tables?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—DuckDB joins are fast (uses hash joins). Tested on 1B rows tables."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration",
+      "url": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration",
+      "name": "Postgres to DuckDB Analytics Migration",
+      "description": "A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.",
+      "isPartOf": {
+        "@id": "https://offline-pixel.github.io/#website"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-06-09",
+      "breadcrumb": {
+        "@id": "https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration#breadcrumb"
+      },
+      "primaryImageOfPage": "https://offline-pixel.github.io/favicon.svg"
+    }
+  ]
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Postgres to DuckDB Analytics Migration","description":"A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.","canonical":"https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration"},"seo_schema":{"@context":"https://schema.org","@type":"HowTo","headline":"Postgres to DuckDB Analytics Migration","datePublished":"2024-06-08","dateModified":"2024-06-08","author":{"@type":"Organization","name":"Offline Pixel"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/logo.png"}}},"migration":{"source_stack":"PostgreSQL (OLTP + OLAP)","target_stack":"DuckDB (Analytics Only)","migration_type":"incremental","difficulty":"easy","estimated_timeline":"2-3 months","primary_role":"duckdb-engineer"},"executive_summary":{"title":"Executive Summary","content":"A SaaS company's analytical queries on PostgreSQL took 45 seconds to minutes, slowing dashboards and frustrating users. Over 2 months, they migrated analytical workloads to DuckDB, reducing query time to 200ms (225x faster) and cutting infrastructure costs by 80%. This guide covers data export, Parquet conversion, and query migration.","key_takeaways":["PostgreSQL for OLTP, DuckDB for analytics (separate concerns)","Parquet as interchange format (10x compression)","DuckDB queries 100x faster than Postgres for aggregations","Cost savings from moving from RDS to S3 + local compute"]},"why_migrate":{"title":"Why Migrate Analytics from Postgres","content":"PostgreSQL is optimized for OLTP (row-based), not analytics (columnar). Analytical queries were slow and expensive, requiring large RDS instances.","business_drivers":["45-second dashboard load times (user frustration)","$5k/month RDS cost (large instance for analytics)","Analytical queries blocking OLTP (performance impact)","Unable to scale analytics independently"]},"migration_readiness":{"title":"Postgres to DuckDB Readiness","content":"The team spent 2 weeks preparing: identifying analytical tables (20 tables, 5TB), setting up Parquet export pipeline, and training analysts on DuckDB.","requirements":["Analytical table identification (20 tables, 5TB)","Parquet export pipeline (Airflow daily sync)","DuckDB installation (local or EC2)","Query migration plan (50 dashboards)","Performance baseline (current query times)"]},"current_state_assessment":{"title":"Postgres Analytics Assessment","content":"PostgreSQL had 20 analytical tables with 5TB of data. The slowest queries were multi-table aggregations (10 tables joined, 45 seconds).","technical_debt":["Row-based storage (slow column aggregations)","No query result caching","Analytical queries blocking OLTP writes","High RDS cost ($5k/month)"],"risks":["Data freshness (daily Parquet export = 24-hour lag)","Query compatibility (DuckDB SQL vs Postgres)","Concurrent query performance (DuckDB single-node)","User adoption (analysts need training)"]},"target_architecture":{"title":"Target DuckDB Analytics","content":"The target was Parquet files on S3 queried by DuckDB, refreshed daily.","architecture_components":["PostgreSQL (OLTP, unchanged)","Parquet export (Airflow, daily)","S3 storage (5TB → 500GB Parquet, 10x compression)","DuckDB (queries Parquet directly)","BI tools (Tableau, Superset) connect via DuckDB"]},"migration_plan":{"title":"2-Month Analytics Migration","content":"The team migrated one dashboard at a time, starting with least critical (internal reporting), then customer-facing.","steps":[{"step":"Phase 1: Parquet Export (Month 1, Week 1-2)","description":"Set up Airflow DAG to export 20 tables to Parquet daily."},{"step":"Phase 2: Query Migration (Month 1, Week 3-4)","description":"Rewrote 20 slowest queries from Postgres to DuckDB SQL."},{"step":"Phase 3: Dashboard Cutover (Month 2)","description":"Switched 50 dashboards to DuckDB backend, one by one."}]},"data_migration":{"title":"Postgres to Parquet Export","content":"Daily export of analytical tables to Parquet using Airflow and pg_dump.","considerations":["Incremental exports (only new/changed rows)","Parquet compression (10x smaller than CSV)","Partitioning by date (query performance)","Data validation (row count, checksums)"]},"application_migration":{"title":"Postgres SQL to DuckDB","content":"Most queries worked unchanged; minor differences in date functions and string concatenation.","considerations":["date_trunc syntax differences (Postgres → DuckDB similar)","String concatenation (|| works in both)","Window functions (supported in both)","Testing: run same query on both, compare results"]},"testing_strategy":{"title":"Testing DuckDB vs Postgres","content":"The team ran both systems in parallel for 2 weeks, comparing query results.","checkpoints":["Query result validation (diff < 0.01%)","Performance comparison (DuckDB must be faster)","Data freshness validation (24-hour lag acceptable)","User acceptance testing (50 dashboards)"]},"rollback_strategy":{"title":"Rollback to Postgres","content":"Dashboards can toggle between DuckDB and Postgres via feature flag.","steps":["Toggle dashboard back to Postgres (15 seconds)","Investigate DuckDB issue (query bug, data lag)","Fix DuckDB query or export pipeline","Toggle back to DuckDB"]},"common_mistakes":{"title":"Common Postgres to DuckDB Mistakes","content":"Based on analytics migrations, these are the most frequent pitfalls.","mistakes":[{"mistake":"Not partitioning Parquet files","impact":"Queries scan entire 500GB dataset (slow)","prevention":"Partition by date (WHERE date='2024-01-01' scans 1 partition)"},{"mistake":"Using DuckDB on network storage","impact":"Parquet on network drive (NFS) slow","prevention":"Copy Parquet to local SSD or use S3 with caching"},{"mistake":"No incremental exports","impact":"Daily full export 5TB takes 4 hours","prevention":"Incremental exports (only changed rows)"},{"mistake":"Expecting real-time data","accuracy":"DuckDB analytics are stale (24 hours)","prevention":"Accept 24-hour lag; use Postgres for real-time needs"}]},"cost_considerations":{"title":"Migration Cost Analysis","content":"Migration cost $50K over 2 months (2 engineers × 2 months). ROI: $4k/month RDS savings + faster dashboards.","cost_factors":["Engineering: 2 engineers × 2 months = 4 person-months ($40k)","S3 storage ($100/month vs $5k/month RDS)","Airflow setup ($5k)","Training: DuckDB for analysts ($5k)"]},"success_metrics":{"title":"Migration Success Metrics","content":"The migration was considered successful after achieving these metrics.","metrics":["Query time (P99): 45 seconds → 200ms (225x faster)","Infrastructure cost: $5k/month → $1k/month (80% reduction)","Dashboard user satisfaction: 2.5/5 → 4.5/5","Data freshness: 1 day (acceptable for analytics)"]},"who_should_lead_this_migration":{"title":"Who Should Lead Analytics Migration","content":"This migration requires a data engineer with SQL expertise and ETL experience.","recommended_roles":["Data Engineer (3+ years)","Analytics Engineer (SQL expert)","DuckDB Specialist (1+ year)"],"required_experience":["PostgreSQL performance tuning","Parquet and columnar storage","ETL pipelines (Airflow)","SQL query optimization"]},"faq":{"questions":[{"q":"Can DuckDB replace Postgres entirely?","a":"No—DuckDB for analytics, Postgres for OLTP. DuckDB doesn't support high-concurrency writes."},{"q":"How fresh is DuckDB data?","a":"Daily exports = 24-hour lag. For real-time, use Postgres or add hourly exports."},{"q":"Does DuckDB support JOINs on large tables?","a":"Yes—DuckDB joins are fast (uses hash joins). Tested on 1B rows tables."}]},"related_roles":[{"title":"DuckDB Engineer","slug":"duckdb-engineer","url":"/hire/duckdb-engineer"},{"title":"Data Engineer","slug":"duckdb-engineer","url":"/hire/duckdb-engineer"},{"title":"Analytics Engineer","slug":"duckdb-engineer","url":"/hire/duckdb-engineer"}],"cta":{"title":"Ready to migrate your analytics to DuckDB?","body":"Hire DuckDB engineers who have migrated Postgres analytics to 100x faster queries.","button_text":"Hire DuckDB Engineer","button_link":"/hire/duckdb-engineer"}};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+<div class="flex-1">
+    <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-black dark:to-slate-950">
+      
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 lg:pt-24 lg:pb-16">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            PostgreSQL (OLTP + OLAP) → DuckDB (Analytics Only)
+          </span>
+          
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Postgres to DuckDB Analytics Migration</h1>
+        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.</p>
+      </div>
+    </div>
+  
+      
+    <nav aria-label="Breadcrumb" class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/30 backdrop-blur-sm sticky top-0 z-10">
+      <div class="max-w-4xl mx-auto px-6 py-3">
+        <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
+          
+            <li>
+              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <span class="text-slate-600 dark:text-slate-300">DuckDB (Analytics Only)</span>
+            </li>
+            
+          
+        </ol>
+      </div>
+    </nav>
+  
+      <article class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-6">
+          
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">PostgreSQL (OLTP + OLAP) → DuckDB (Analytics Only)</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Incremental</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">EASY Difficulty</span>
+    </div>
+  
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Postgres to DuckDB Analytics Migration</h1>
+          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating analytical workloads from PostgreSQL to DuckDB for 100x faster queries and 10x lower costs.</p>
+          
+    <div class="mt-8 flex flex-wrap gap-6 text-sm">
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">2-3 months</span></div>
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">duckdb-engineer</span></div>
+    </div>
+  
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-12">
+          
+      <section class="fade-section opacity-0 mb-12">
+        <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A SaaS company&#39;s analytical queries on PostgreSQL took 45 seconds to minutes, slowing dashboards and frustrating users. Over 2 months, they migrated analytical workloads to DuckDB, reducing query time to 200ms (225x faster) and cutting infrastructure costs by 80%. This guide covers data export, Parquet conversion, and query migration.</p>
+          <div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">PostgreSQL for OLTP, DuckDB for analytics (separate concerns)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Parquet as interchange format (10x compression)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">DuckDB queries 100x faster than Postgres for aggregations</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Cost savings from moving from RDS to S3 + local compute</span></div></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate Analytics from Postgres</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">PostgreSQL is optimized for OLTP (row-based), not analytics (columnar). Analytical queries were slow and expensive, requiring large RDS instances.</p>
+        <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 45-second dashboard load times (user frustration)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> $5k/month RDS cost (large instance for analytics)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Analytical queries blocking OLTP (performance impact)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Unable to scale analytics independently</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Postgres to DuckDB Readiness</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 2 weeks preparing: identifying analytical tables (20 tables, 5TB), setting up Parquet export pipeline, and training analysts on DuckDB.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Analytical table identification (20 tables, 5TB)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Parquet export pipeline (Airflow daily sync)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> DuckDB installation (local or EC2)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Query migration plan (50 dashboards)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Performance baseline (current query times)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Postgres Analytics Assessment</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">PostgreSQL had 20 analytical tables with 5TB of data. The slowest queries were multi-table aggregations (10 tables joined, 45 seconds).</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Row-based storage (slow column aggregations)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No query result caching</li><li class="text-sm text-slate-600 dark:text-slate-400">• Analytical queries blocking OLTP writes</li><li class="text-sm text-slate-600 dark:text-slate-400">• High RDS cost ($5k/month)</li></ul></div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Data freshness (daily Parquet export = 24-hour lag)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Query compatibility (DuckDB SQL vs Postgres)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Concurrent query performance (DuckDB single-node)</li><li class="text-sm text-slate-600 dark:text-slate-400">• User adoption (analysts need training)</li></ul></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target DuckDB Analytics</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The target was Parquet files on S3 queried by DuckDB, refreshed daily.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">PostgreSQL (OLTP, unchanged)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Parquet export (Airflow, daily)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">S3 storage (5TB → 500GB Parquet, 10x compression)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">DuckDB (queries Parquet directly)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">BI tools (Tableau, Superset) connect via DuckDB</span></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">2-Month Analytics Migration</h2>
+        <ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Parquet Export (Month 1, Week 1-2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Set up Airflow DAG to export 20 tables to Parquet daily.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: Query Migration (Month 1, Week 3-4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Rewrote 20 slowest queries from Postgres to DuckDB SQL.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Dashboard Cutover (Month 2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Switched 50 dashboards to DuckDB backend, one by one.</p></li></ol>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Postgres to Parquet Export</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Daily export of analytical tables to Parquet using Airflow and pg_dump.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Incremental exports (only new/changed rows)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Parquet compression (10x smaller than CSV)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Partitioning by date (query performance)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Data validation (row count, checksums)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Postgres to DuckDB Mistakes</h2>
+        <div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Not partitioning Parquet files</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Queries scan entire 500GB dataset (slow)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Partition by date (WHERE date=&#39;2024-01-01&#39; scans 1 partition)</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Using DuckDB on network storage</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Parquet on network drive (NFS) slow</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Copy Parquet to local SSD or use S3 with caching</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No incremental exports</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Daily full export 5TB takes 4 hours</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Incremental exports (only changed rows)</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Expecting real-time data</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> </p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Accept 24-hour lag; use Postgres for real-time needs</p></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Migration Success Metrics</h2>
+        <div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Query time (P99): 45 seconds → 200ms (225x faster)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Infrastructure cost: $5k/month → $1k/month (80% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Dashboard user satisfaction: 2.5/5 → 4.5/5</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Data freshness: 1 day (acceptable for analytics)</span></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead Analytics Migration</h2>
+        <div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Data Engineer (3+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Analytics Engineer (SQL expert)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">DuckDB Specialist (1+ year)</span></div></div>
+        <div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> PostgreSQL performance tuning</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Parquet and columnar storage</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> ETL pipelines (Airflow)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> SQL query optimization</li></ul></div>
+      </section>
+    
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
+      <div class="grid gap-4">
+    <a href="/hire/duckdb-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">DuckDB Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/duckdb-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Data Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/duckdb-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Analytics Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+    </section>
+  
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Can DuckDB replace Postgres entirely?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">No—DuckDB for analytics, Postgres for OLTP. DuckDB doesn&#39;t support high-concurrency writes.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How fresh is DuckDB data?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Daily exports = 24-hour lag. For real-time, use Postgres or add hourly exports.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Does DuckDB support JOINs on large tables?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes—DuckDB joins are fast (uses hash joins). Tested on 1B rows tables.</dd>
+    </div>
+  </dl>
+    </section>
+  
+          
+    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
+      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to migrate your analytics to DuckDB?</h3>
+      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire DuckDB engineers who have migrated Postgres analytics to 100x faster queries.</p>
+      <a href="/hire/duckdb-engineer" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+        Hire DuckDB Engineer <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </aside>
+  
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+</div></div>
+  </body>
+</html>

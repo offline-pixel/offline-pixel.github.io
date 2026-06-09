@@ -1,0 +1,1201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask to FastAPI Performance Migration</title>
+    <script type="module" crossorigin src="/assets/index-C8ju-qce.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CYDosV_D.css">
+  
+    <meta name="description" content="A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.">
+    <meta property="og:title" content="Flask to FastAPI Performance Migration">
+    <meta property="og:description" content="A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration">
+    <link rel="canonical" href="https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration">
+    <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "headline": "Flask to FastAPI Performance Migration",
+      "datePublished": "2024-06-08",
+      "dateModified": "2024-06-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Offline Pixel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/logo.png"
+        }
+      },
+      "description": "A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Flask (Sync, Gunicorn) to FastAPI (Async, Uvicorn) Migration",
+        "description": "Strategic migration guide from Flask (Sync, Gunicorn) to FastAPI (Async, Uvicorn)"
+      },
+      "keywords": "Flask (Sync, Gunicorn), FastAPI (Async, Uvicorn), incremental, migration, guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://offline-pixel.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://offline-pixel.github.io/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Migration Guides",
+          "item": "https://offline-pixel.github.io/migration-guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Flask to FastAPI Performance Migration",
+          "item": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration"
+        }
+      ]
+    },
+    {
+      "@type": "IncrementalMigration",
+      "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration#migration",
+      "name": "Flask (Sync, Gunicorn) to FastAPI (Async, Uvicorn) Migration",
+      "description": "A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.",
+      "sourceCode": {
+        "@type": "SoftwareApplication",
+        "name": "Flask (Sync, Gunicorn)"
+      },
+      "targetCode": {
+        "@type": "SoftwareApplication",
+        "name": "FastAPI (Async, Uvicorn)"
+      },
+      "difficulty": "Low",
+      "timeRequired": "2-3 months",
+      "creator": {
+        "@type": "Occupation",
+        "name": "fastapi-expert"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration#executive-summary",
+      "name": "Executive Summary",
+      "description": "A SaaS analytics platform's Flask API was hitting limits—15-second load times and 5% error rate at peak. Over 2 months, they migrated to FastAPI with async database drivers, reducing response time to 200ms and eliminating errors. This guide covers sync-to-async conversion, database driver migration, and performance tuning.",
+      "totalTime": "2-3 months",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "description": "Varies by scope"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Flask sync → FastAPI async (10x throughput improvement)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "asyncpg replaces psycopg2 (2x faster)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Pydantic v2 (5x faster validation than Flask)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Gradual migration: one route at a time"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "2-Month FastAPI Migration",
+      "totalTime": "2-3 months",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Phase 1: Foundation (Week 1-2)",
+          "text": "Set up FastAPI project, migrated database connection to asyncpg, trained team on async."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Phase 2: Read Endpoints (Week 3-4)",
+          "text": "Migrated 30 GET endpoints—immediate 5x throughput improvement."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Phase 3: Write Endpoints (Week 5-6)",
+          "text": "Migrated 20 POST/PUT endpoints—async transactions, error handling."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Phase 4: Performance Tuning (Week 7-8)",
+          "text": "Optimized queries, added connection pooling, load tested at 5K RPS."
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Flask API Assessment",
+      "text": "The API had 50 endpoints, used SQLAlchemy (sync), and ran on 100 Gunicorn workers. Slowest endpoint was analytics aggregation (10 database queries, 8 seconds).",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Technical Debt Identified",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Synchronous views (blocking)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "SQLAlchemy not async (psycopg2 blocking)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "100 Gunicorn workers (high memory)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "No request validation (manual JSON parsing)"
+          }
+        ]
+      },
+      "potentialRisk": [
+        "Async database driver compatibility (asyncpg)",
+        "SQLAlchemy 1.4 → 2.0 migration",
+        "Third-party libraries not async (requests → httpx)",
+        "Team async learning curve"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Target FastAPI Architecture",
+      "text": "The target was FastAPI with async database drivers, automatic OpenAPI docs, and dependency injection.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Architecture Components",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "FastAPI (async views)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "FastAPI (async views)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "asyncpg + SQLAlchemy 2.0 (async ORM)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "asyncpg + SQLAlchemy 2.0 (async ORM)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Pydantic v2 (validation, serialization)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Pydantic v2 (validation, serialization)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Uvicorn (production server)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Uvicorn (production server)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Redis (async client for caching)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Redis (async client for caching)"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Common Flask to FastAPI Mistakes",
+      "description": "Pitfalls to avoid during migration",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Using sync libraries in async views"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "No connection pooling for asyncpg"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "SQLAlchemy async query mistakes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Not using Pydantic v2"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Migration Success Metrics",
+      "description": "Key performance indicators for migration success",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "P99 latency: 15 seconds → 200ms (98% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "P99 latency: 15 seconds → 200ms (98% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Throughput: 1K RPS → 10K RPS (10x increase)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Throughput: 1K RPS → 10K RPS (10x increase)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Error rate: 5% → 0.1% (98% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Error rate: 5% → 0.1% (98% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Gunicorn workers: 100 → 10 (90% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Gunicorn workers: 100 → 10 (90% reduction)"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Occupation",
+      "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration#lead-role",
+      "name": "fastapi-expert",
+      "description": "Who Should Lead Flask to FastAPI Migration",
+      "occupationalCategory": "FastAPI Expert (2+ years), Backend Python Engineer (5+ years), Database Engineer (asyncpg)",
+      "experienceRequirements": [
+        "2+ years FastAPI production experience",
+        "Async Python (asyncio, asyncpg, httpx)",
+        "SQLAlchemy 2.0 async",
+        "Load testing (Locust, k6)"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Testing FastAPI vs Flask",
+      "description": "The team ran both APIs in parallel for 2 weeks, comparing responses.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Checkpoint 1",
+          "text": "Unit tests (pytest) for both"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Checkpoint 2",
+          "text": "Integration tests (same inputs, compare outputs)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Checkpoint 3",
+          "text": "Performance tests (load testing at 5K RPS)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Checkpoint 4",
+          "text": "A/B test (10% traffic to FastAPI)"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Rollback to Flask",
+      "description": "API gateway toggles traffic between Flask and FastAPI per endpoint.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Toggle endpoint traffic back to Flask (30 seconds)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Investigate FastAPI issue"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Fix, redeploy, toggle back"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Retain Flask deployment for 1 month"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Migration Cost Analysis",
+      "text": "Migration cost $60K over 2 months (2 engineers × 2 months). ROI: 90% reduction in Gunicorn workers ($8k/month savings).",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Cost Factors",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Engineering: 2 engineers × 2 months = 4 person-months ($50k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Training: Async Python workshop ($5k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Load testing infrastructure ($5k)"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Related Roles",
+      "description": "Engineering roles involved in this type of migration",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "FastAPI Expert",
+          "url": "https://offline-pixel.github.io/hire/fastapi-expert",
+          "item": {
+            "@type": "Occupation",
+            "name": "FastAPI Expert"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Python Engineer",
+          "url": "https://offline-pixel.github.io/hire/python-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Python Engineer"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Backend Engineer",
+          "url": "https://offline-pixel.github.io/hire/python-engineer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Backend Engineer"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration#faq",
+      "name": "Frequently Asked Questions About Flask (Sync, Gunicorn) to FastAPI (Async, Uvicorn) Migration",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can we keep using Flask for some endpoints?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—run both behind API gateway. Migrate high-traffic endpoints first."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about Flask extensions (Flask-SQLAlchemy)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Replace with native async libraries (SQLAlchemy 2.0 async). No direct equivalent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is FastAPI production-ready?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes—used by Netflix, Uber, Microsoft. Stable since 2020."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration",
+      "url": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration",
+      "name": "Flask to FastAPI Performance Migration",
+      "description": "A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.",
+      "isPartOf": {
+        "@id": "https://offline-pixel.github.io/#website"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-06-09",
+      "breadcrumb": {
+        "@id": "https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration#breadcrumb"
+      },
+      "primaryImageOfPage": "https://offline-pixel.github.io/favicon.svg"
+    }
+  ]
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Flask to FastAPI Performance Migration","description":"A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.","canonical":"https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration"},"seo_schema":{"@context":"https://schema.org","@type":"HowTo","headline":"Flask to FastAPI Performance Migration","datePublished":"2024-06-08","dateModified":"2024-06-08","author":{"@type":"Organization","name":"Offline Pixel"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/logo.png"}}},"migration":{"source_stack":"Flask (Sync, Gunicorn)","target_stack":"FastAPI (Async, Uvicorn)","migration_type":"incremental","difficulty":"easy","estimated_timeline":"2-3 months","primary_role":"fastapi-expert"},"executive_summary":{"title":"Executive Summary","content":"A SaaS analytics platform's Flask API was hitting limits—15-second load times and 5% error rate at peak. Over 2 months, they migrated to FastAPI with async database drivers, reducing response time to 200ms and eliminating errors. This guide covers sync-to-async conversion, database driver migration, and performance tuning.","key_takeaways":["Flask sync → FastAPI async (10x throughput improvement)","asyncpg replaces psycopg2 (2x faster)","Pydantic v2 (5x faster validation than Flask)","Gradual migration: one route at a time"]},"why_migrate":{"title":"Why Migrate from Flask to FastAPI","content":"Flask's synchronous architecture blocked on I/O—database calls, external APIs, file operations all blocked the event loop. At 1000 RPS, the API timed out 5% of requests.","business_drivers":["15-second P99 latency (user frustration)","5% timeout errors at peak load","High Gunicorn worker count (100 workers) → $10k/month","Inability to use async features"]},"migration_readiness":{"title":"Flask to FastAPI Readiness","content":"The team spent 2 weeks preparing: auditing API endpoints (50 routes), selecting async database drivers, and training on FastAPI.","requirements":["API endpoint inventory (50 routes)","Async database driver (asyncpg, databases)","Pydantic v2 models (replace Marshmallow)","Uvicorn server (production-ready)","Performance baseline (current latency, throughput)"]},"current_state_assessment":{"title":"Flask API Assessment","content":"The API had 50 endpoints, used SQLAlchemy (sync), and ran on 100 Gunicorn workers. Slowest endpoint was analytics aggregation (10 database queries, 8 seconds).","technical_debt":["Synchronous views (blocking)","SQLAlchemy not async (psycopg2 blocking)","100 Gunicorn workers (high memory)","No request validation (manual JSON parsing)"],"risks":["Async database driver compatibility (asyncpg)","SQLAlchemy 1.4 → 2.0 migration","Third-party libraries not async (requests → httpx)","Team async learning curve"]},"target_architecture":{"title":"Target FastAPI Architecture","content":"The target was FastAPI with async database drivers, automatic OpenAPI docs, and dependency injection.","architecture_components":["FastAPI (async views)","asyncpg + SQLAlchemy 2.0 (async ORM)","Pydantic v2 (validation, serialization)","Uvicorn (production server)","Redis (async client for caching)"]},"migration_plan":{"title":"2-Month FastAPI Migration","content":"The team migrated endpoints incrementally, starting with read-only (simple), then writes (complex).","steps":[{"step":"Phase 1: Foundation (Week 1-2)","description":"Set up FastAPI project, migrated database connection to asyncpg, trained team on async."},{"step":"Phase 2: Read Endpoints (Week 3-4)","description":"Migrated 30 GET endpoints—immediate 5x throughput improvement."},{"step":"Phase 3: Write Endpoints (Week 5-6)","description":"Migrated 20 POST/PUT endpoints—async transactions, error handling."},{"step":"Phase 4: Performance Tuning (Week 7-8)","description":"Optimized queries, added connection pooling, load tested at 5K RPS."}]},"data_migration":{"title":"Database Migration to Async","content":"Migrated from SQLAlchemy 1.4 (sync) to SQLAlchemy 2.0 (async) with asyncpg driver.","considerations":["SQLAlchemy 1.4 → 2.0 migration guide (2 days work)","Async session management (not thread-local)","Connection pool tuning (min 10, max 50)","Query optimization (avoid N+1 in async)"]},"application_migration":{"title":"Flask to FastAPI Translation","content":"Each Flask route became a FastAPI endpoint with async def and Pydantic models.","considerations":["Flask @app.route → FastAPI @app.get/post","Flask request args → FastAPI Query params","Flask JSON parsing → Pydantic models","Flask error handling → FastAPI HTTPException"]},"testing_strategy":{"title":"Testing FastAPI vs Flask","content":"The team ran both APIs in parallel for 2 weeks, comparing responses.","checkpoints":["Unit tests (pytest) for both","Integration tests (same inputs, compare outputs)","Performance tests (load testing at 5K RPS)","A/B test (10% traffic to FastAPI)"]},"rollback_strategy":{"title":"Rollback to Flask","content":"API gateway toggles traffic between Flask and FastAPI per endpoint.","steps":["Toggle endpoint traffic back to Flask (30 seconds)","Investigate FastAPI issue","Fix, redeploy, toggle back","Retain Flask deployment for 1 month"]},"common_mistakes":{"title":"Common Flask to FastAPI Mistakes","content":"Based on migrations, these are the most frequent pitfalls.","mistakes":[{"mistake":"Using sync libraries in async views","impact":"Blocks event loop (no performance gain)","prevention":"Use async libraries (httpx, asyncpg, aiofiles)"},{"mistake":"No connection pooling for asyncpg","impact":"Database connection exhaustion at high load","prevention":"asyncpg pool (min 10, max 50)"},{"mistake":"SQLAlchemy async query mistakes","impact":"Runtime errors (sync/async mismatch)","prevention":"Type checking with mypy + SQLAlchemy stubs"},{"mistake":"Not using Pydantic v2","impact":"Serialization still slow (Pydantic v1 5x slower)","prevention":"Upgrade to Pydantic v2 with performance flag"}]},"cost_considerations":{"title":"Migration Cost Analysis","content":"Migration cost $60K over 2 months (2 engineers × 2 months). ROI: 90% reduction in Gunicorn workers ($8k/month savings).","cost_factors":["Engineering: 2 engineers × 2 months = 4 person-months ($50k)","Training: Async Python workshop ($5k)","Load testing infrastructure ($5k)"]},"success_metrics":{"title":"Migration Success Metrics","content":"The migration was considered successful after achieving these metrics.","metrics":["P99 latency: 15 seconds → 200ms (98% reduction)","Throughput: 1K RPS → 10K RPS (10x increase)","Error rate: 5% → 0.1% (98% reduction)","Gunicorn workers: 100 → 10 (90% reduction)"]},"who_should_lead_this_migration":{"title":"Who Should Lead Flask to FastAPI Migration","content":"This migration requires a Python engineer with async experience.","recommended_roles":["FastAPI Expert (2+ years)","Backend Python Engineer (5+ years)","Database Engineer (asyncpg)"],"required_experience":["2+ years FastAPI production experience","Async Python (asyncio, asyncpg, httpx)","SQLAlchemy 2.0 async","Load testing (Locust, k6)"]},"faq":{"questions":[{"q":"Can we keep using Flask for some endpoints?","a":"Yes—run both behind API gateway. Migrate high-traffic endpoints first."},{"q":"What about Flask extensions (Flask-SQLAlchemy)?","a":"Replace with native async libraries (SQLAlchemy 2.0 async). No direct equivalent."},{"q":"Is FastAPI production-ready?","a":"Yes—used by Netflix, Uber, Microsoft. Stable since 2020."}]},"related_roles":[{"title":"FastAPI Expert","slug":"fastapi-expert","url":"/hire/fastapi-expert"},{"title":"Python Engineer","slug":"python-engineer","url":"/hire/python-engineer"},{"title":"Backend Engineer","slug":"python-engineer","url":"/hire/python-engineer"}],"cta":{"title":"Ready to migrate from Flask to FastAPI?","body":"Hire FastAPI experts who have migrated Flask APIs to 10x faster async services.","button_text":"Hire FastAPI Expert","button_link":"/hire/fastapi-expert"}};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+<div class="flex-1">
+    <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-black dark:to-slate-950">
+      
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 lg:pt-24 lg:pb-16">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            Flask (Sync, Gunicorn) → FastAPI (Async, Uvicorn)
+          </span>
+          
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Flask to FastAPI Performance Migration</h1>
+        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.</p>
+      </div>
+    </div>
+  
+      
+    <nav aria-label="Breadcrumb" class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/30 backdrop-blur-sm sticky top-0 z-10">
+      <div class="max-w-4xl mx-auto px-6 py-3">
+        <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
+          
+            <li>
+              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <span class="text-slate-600 dark:text-slate-300">FastAPI (Async, Uvicorn)</span>
+            </li>
+            
+          
+        </ol>
+      </div>
+    </nav>
+  
+      <article class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-6">
+          
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Flask (Sync, Gunicorn) → FastAPI (Async, Uvicorn)</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Incremental</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">EASY Difficulty</span>
+    </div>
+  
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Flask to FastAPI Performance Migration</h1>
+          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating synchronous Flask APIs to high-performance async FastAPI with 10x throughput.</p>
+          
+    <div class="mt-8 flex flex-wrap gap-6 text-sm">
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">2-3 months</span></div>
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">fastapi-expert</span></div>
+    </div>
+  
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-12">
+          
+      <section class="fade-section opacity-0 mb-12">
+        <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A SaaS analytics platform&#39;s Flask API was hitting limits—15-second load times and 5% error rate at peak. Over 2 months, they migrated to FastAPI with async database drivers, reducing response time to 200ms and eliminating errors. This guide covers sync-to-async conversion, database driver migration, and performance tuning.</p>
+          <div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Flask sync → FastAPI async (10x throughput improvement)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">asyncpg replaces psycopg2 (2x faster)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Pydantic v2 (5x faster validation than Flask)</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Gradual migration: one route at a time</span></div></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate from Flask to FastAPI</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Flask&#39;s synchronous architecture blocked on I/O—database calls, external APIs, file operations all blocked the event loop. At 1000 RPS, the API timed out 5% of requests.</p>
+        <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 15-second P99 latency (user frustration)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 5% timeout errors at peak load</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> High Gunicorn worker count (100 workers) → $10k/month</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Inability to use async features</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Flask to FastAPI Readiness</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 2 weeks preparing: auditing API endpoints (50 routes), selecting async database drivers, and training on FastAPI.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> API endpoint inventory (50 routes)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Async database driver (asyncpg, databases)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Pydantic v2 models (replace Marshmallow)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Uvicorn server (production-ready)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Performance baseline (current latency, throughput)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Flask API Assessment</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The API had 50 endpoints, used SQLAlchemy (sync), and ran on 100 Gunicorn workers. Slowest endpoint was analytics aggregation (10 database queries, 8 seconds).</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Synchronous views (blocking)</li><li class="text-sm text-slate-600 dark:text-slate-400">• SQLAlchemy not async (psycopg2 blocking)</li><li class="text-sm text-slate-600 dark:text-slate-400">• 100 Gunicorn workers (high memory)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No request validation (manual JSON parsing)</li></ul></div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Async database driver compatibility (asyncpg)</li><li class="text-sm text-slate-600 dark:text-slate-400">• SQLAlchemy 1.4 → 2.0 migration</li><li class="text-sm text-slate-600 dark:text-slate-400">• Third-party libraries not async (requests → httpx)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Team async learning curve</li></ul></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target FastAPI Architecture</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The target was FastAPI with async database drivers, automatic OpenAPI docs, and dependency injection.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FastAPI (async views)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">asyncpg + SQLAlchemy 2.0 (async ORM)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Pydantic v2 (validation, serialization)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Uvicorn (production server)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Redis (async client for caching)</span></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">2-Month FastAPI Migration</h2>
+        <ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Foundation (Week 1-2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Set up FastAPI project, migrated database connection to asyncpg, trained team on async.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: Read Endpoints (Week 3-4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Migrated 30 GET endpoints—immediate 5x throughput improvement.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Write Endpoints (Week 5-6)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Migrated 20 POST/PUT endpoints—async transactions, error handling.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 4: Phase 4: Performance Tuning (Week 7-8)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Optimized queries, added connection pooling, load tested at 5K RPS.</p></li></ol>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Database Migration to Async</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Migrated from SQLAlchemy 1.4 (sync) to SQLAlchemy 2.0 (async) with asyncpg driver.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> SQLAlchemy 1.4 → 2.0 migration guide (2 days work)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Async session management (not thread-local)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Connection pool tuning (min 10, max 50)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Query optimization (avoid N+1 in async)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Flask to FastAPI Mistakes</h2>
+        <div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Using sync libraries in async views</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Blocks event loop (no performance gain)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Use async libraries (httpx, asyncpg, aiofiles)</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No connection pooling for asyncpg</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Database connection exhaustion at high load</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> asyncpg pool (min 10, max 50)</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">SQLAlchemy async query mistakes</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Runtime errors (sync/async mismatch)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Type checking with mypy + SQLAlchemy stubs</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Not using Pydantic v2</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Serialization still slow (Pydantic v1 5x slower)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Upgrade to Pydantic v2 with performance flag</p></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Migration Success Metrics</h2>
+        <div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">P99 latency: 15 seconds → 200ms (98% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Throughput: 1K RPS → 10K RPS (10x increase)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Error rate: 5% → 0.1% (98% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Gunicorn workers: 100 → 10 (90% reduction)</span></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead Flask to FastAPI Migration</h2>
+        <div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FastAPI Expert (2+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Backend Python Engineer (5+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Database Engineer (asyncpg)</span></div></div>
+        <div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> 2+ years FastAPI production experience</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Async Python (asyncio, asyncpg, httpx)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> SQLAlchemy 2.0 async</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Load testing (Locust, k6)</li></ul></div>
+      </section>
+    
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
+      <div class="grid gap-4">
+    <a href="/hire/fastapi-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">FastAPI Expert</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/python-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Python Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/python-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Backend Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+    </section>
+  
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Can we keep using Flask for some endpoints?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes—run both behind API gateway. Migrate high-traffic endpoints first.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What about Flask extensions (Flask-SQLAlchemy)?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Replace with native async libraries (SQLAlchemy 2.0 async). No direct equivalent.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Is FastAPI production-ready?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes—used by Netflix, Uber, Microsoft. Stable since 2020.</dd>
+    </div>
+  </dl>
+    </section>
+  
+          
+    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
+      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to migrate from Flask to FastAPI?</h3>
+      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire FastAPI experts who have migrated Flask APIs to 10x faster async services.</p>
+      <a href="/hire/fastapi-expert" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+        Hire FastAPI Expert <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </aside>
+  
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+</div></div>
+  </body>
+</html>

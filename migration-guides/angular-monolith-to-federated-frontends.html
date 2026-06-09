@@ -1,0 +1,1206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angular Monolith to Federated Frontends</title>
+    <script type="module" crossorigin src="/assets/index-C8ju-qce.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CYDosV_D.css">
+  
+    <meta name="description" content="A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.">
+    <meta property="og:title" content="Angular Monolith to Federated Frontends">
+    <meta property="og:description" content="A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends">
+    <link rel="canonical" href="https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends">
+    <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "headline": "Angular Monolith to Federated Frontends",
+      "datePublished": "2024-06-08",
+      "dateModified": "2024-06-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Offline Pixel"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Offline Pixel",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://offline-pixel.github.io/logo.png"
+        }
+      },
+      "description": "A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends"
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Angular 12 Monolith (NgRx) to Angular + React Module Federation Migration",
+        "description": "Strategic migration guide from Angular 12 Monolith (NgRx) to Angular + React Module Federation"
+      },
+      "keywords": "Angular 12 Monolith (NgRx), Angular + React Module Federation, incremental, migration, guide"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://offline-pixel.github.io"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Resources",
+          "item": "https://offline-pixel.github.io/resources/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Migration Guides",
+          "item": "https://offline-pixel.github.io/migration-guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Angular Monolith to Federated Frontends",
+          "item": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends"
+        }
+      ]
+    },
+    {
+      "@type": "IncrementalMigration",
+      "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends#migration",
+      "name": "Angular 12 Monolith (NgRx) to Angular + React Module Federation Migration",
+      "description": "A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.",
+      "sourceCode": {
+        "@type": "SoftwareApplication",
+        "name": "Angular 12 Monolith (NgRx)"
+      },
+      "targetCode": {
+        "@type": "SoftwareApplication",
+        "name": "Angular + React Module Federation"
+      },
+      "difficulty": "High",
+      "timeRequired": "12 months",
+      "creator": {
+        "@type": "Occupation",
+        "name": "microfrontends-expert"
+      }
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends#executive-summary",
+      "name": "Executive Summary",
+      "description": "A financial services company's Angular monolith had 150K lines of code, 30-minute builds, and 12 teams blocked by merge conflicts. Using Angular's Module Federation support, they decomposed it into 12 federated frontends over 12 months, allowing teams to migrate to React incrementally. Build time dropped to 8 minutes, and teams gained framework independence.",
+      "totalTime": "12 months",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "description": "Varies by scope"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Angular's Module Federation supports mixed Angular + React microfrontends"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Start with standalone modules (settings, reports) as first federated modules"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Custom Elements (Angular Elements) wrap Angular components for React use"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Shared state via event bus (not NgRx global store)"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "12-Month Angular Migration Plan",
+      "totalTime": "12 months",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Phase 1: Foundation (Months 1-3)",
+          "text": "Upgraded to Angular 13, built shell application, established Module Federation config, trained teams on microfrontends."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Phase 2: React Pilot (Month 4)",
+          "text": "Extracted reporting module as first React federated module—proved React interop worked."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Phase 3: Angular Modules (Months 5-8)",
+          "text": "Extracted auth, settings, and analytics as Angular federated modules."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Phase 4: Core Trading (Months 9-12)",
+          "text": "Extracted trading dashboard (most complex) as federated module—final cutover."
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Angular Monolith Assessment",
+      "text": "The monolith had 150K lines of TypeScript, 300 components, 50 NgRx stores, and 20 feature modules. The biggest bottlenecks were the trading dashboard (complex, high-traffic) and the reporting module (low traffic, good candidate for pilot).",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Technical Debt Identified",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "50+ NgRx stores with duplicated selectors (maintenance nightmare)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "30-minute production builds (unoptimized Angular CLI config)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "No module boundaries—any feature could import any component"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Mixed Angular versions (9 → 12 migration incomplete)"
+          }
+        ]
+      },
+      "potentialRisk": [
+        "Angular-to-React interop performance overhead",
+        "Shared NgRx state across federated modules",
+        "Federated module version mismatches (Angular 12 vs 13)",
+        "Team resistance to learning both Angular and React"
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Target Federated Frontend Architecture",
+      "text": "The target had 12 federated modules: shell (Angular host), auth (Angular), trading-dashboard (Angular), reporting (React), settings (React), analytics (React), etc. The shell loaded federated modules at runtime via Module Federation.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Architecture Components",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Angular shell (host) with Module Federation config",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Angular shell (host) with Module Federation config"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "React custom elements (Angular Elements wrapping React components)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "React custom elements (Angular Elements wrapping React components)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Event bus (RxJS Subject) for cross-module communication",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Event bus (RxJS Subject) for cross-module communication"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Shared authentication via JWT (stored in sessionStorage)",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Shared authentication via JWT (stored in sessionStorage)"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Feature flags for gradual rollout",
+            "item": {
+              "@type": "SoftwareApplication",
+              "name": "Feature flags for gradual rollout"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Common Angular Microfrontend Mistakes",
+      "description": "Pitfalls to avoid during migration",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Sharing NgRx store across federated modules"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Not upgrading Angular version before migration"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Overusing Angular Elements for React components"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "No version strategy for Angular dependencies"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Success Metrics for Angular Migration",
+      "description": "Key performance indicators for migration success",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Build time: 30 minutes → 8 minutes (73% reduction)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Build time: 30 minutes → 8 minutes (73% reduction)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Deployment frequency: monthly → weekly (4x increase)",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Deployment frequency: monthly → weekly (4x increase)"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Framework flexibility: Angular-only → Angular + React",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Framework flexibility: Angular-only → Angular + React"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Developer satisfaction: 2.5/5 → 4.5/5",
+          "item": {
+            "@type": "QuantitativeValue",
+            "name": "Developer satisfaction: 2.5/5 → 4.5/5"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Occupation",
+      "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends#lead-role",
+      "name": "microfrontends-expert",
+      "description": "Who Should Lead Angular Microfrontend Migration",
+      "occupationalCategory": "Lead Angular Architect (8+ years experience), Webpack Expert (Module Federation), DevOps Engineer (CI/CD for federated modules)",
+      "experienceRequirements": [
+        "Successfully led 1+ Angular microfrontend migration",
+        "Deep expertise in Module Federation and Webpack 5",
+        "Experience with Angular Elements and custom elements",
+        "Cross-framework integration (Angular + React)"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Testing Federated Angular Frontends",
+      "description": "The team used contract tests (PACT) for cross-module API calls, integration tests in staging with all federated modules deployed, and E2E tests for critical user journeys.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Checkpoint 1",
+          "text": "Contract tests for shell-to-module and module-to-module communication"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Checkpoint 2",
+          "text": "Integration tests in staging environment (12 modules deployed together)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Checkpoint 3",
+          "text": "E2E tests for critical journeys (login → trading dashboard → settings)"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Checkpoint 4",
+          "text": "Visual regression tests for UI consistency"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Rollback for Federated Modules",
+      "description": "Feature flags in the shell disabled any federated module within 1 minute. The team practiced rollbacks weekly.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "text": "Toggle feature flag to use fallback component or blank state"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "text": "Redeploy previous version of federated module"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "text": "Clear Module Federation cache"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "text": "Re-enable feature flag after verification"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Angular Migration Costs",
+      "text": "The migration cost $900K over 12 months (10 engineers × 12 months). Build time reduction (30 minutes → 8 minutes) saved 500 developer hours monthly.",
+      "subjectOf": {
+        "@type": "ItemList",
+        "name": "Cost Factors",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Engineering: 10 engineers × 12 months = 120 person-months ($800k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Infrastructure: Module Federation hosting, CDN ($30k/month)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Training: Angular Elements, Module Federation workshops ($70k)"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Opportunity cost: features delayed during migration ($200k)"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "name": "Related Roles",
+      "description": "Engineering roles involved in this type of migration",
+      "numberOfItems": 3,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Microfrontends Expert",
+          "url": "https://offline-pixel.github.io/hire/microfrontends-expert",
+          "item": {
+            "@type": "Occupation",
+            "name": "Microfrontends Expert"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Angular Architect",
+          "url": "https://offline-pixel.github.io/hire/mean-developer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Angular Architect"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Frontend Engineer",
+          "url": "https://offline-pixel.github.io/hire/mern-developer",
+          "item": {
+            "@type": "Occupation",
+            "name": "Frontend Engineer"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends#faq",
+      "name": "Frequently Asked Questions About Angular 12 Monolith (NgRx) to Angular + React Module Federation Migration",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can Angular and React microfrontends share the same DOM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, via Angular Elements wrapping React components. Each microfrontend has its own root element; the shell mounts them dynamically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle routing across Angular and React modules?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shell handles top-level routing; each module handles its own nested routes. Module Federation loads module when route matches."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What about bundle size with Angular and React together?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Module Federation shares common dependencies (zone.js, React). Initial bundle increased from 500KB to 800KB (acceptable for functionality gain)."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends",
+      "url": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends",
+      "name": "Angular Monolith to Federated Frontends",
+      "description": "A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.",
+      "isPartOf": {
+        "@id": "https://offline-pixel.github.io/#website"
+      },
+      "inLanguage": "en",
+      "dateModified": "2026-06-09",
+      "breadcrumb": {
+        "@id": "https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends#breadcrumb"
+      },
+      "primaryImageOfPage": "https://offline-pixel.github.io/favicon.svg"
+    }
+  ]
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Angular Monolith to Federated Frontends","description":"A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.","canonical":"https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends"},"seo_schema":{"@context":"https://schema.org","@type":"HowTo","headline":"Angular Monolith to Federated Frontends","datePublished":"2024-06-08","dateModified":"2024-06-08","author":{"@type":"Organization","name":"Offline Pixel"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/logo.png"}}},"migration":{"source_stack":"Angular 12 Monolith (NgRx)","target_stack":"Angular + React Module Federation","migration_type":"incremental","difficulty":"hard","estimated_timeline":"12 months","primary_role":"microfrontends-expert"},"executive_summary":{"title":"Executive Summary","content":"A financial services company's Angular monolith had 150K lines of code, 30-minute builds, and 12 teams blocked by merge conflicts. Using Angular's Module Federation support, they decomposed it into 12 federated frontends over 12 months, allowing teams to migrate to React incrementally. Build time dropped to 8 minutes, and teams gained framework independence.","key_takeaways":["Angular's Module Federation supports mixed Angular + React microfrontends","Start with standalone modules (settings, reports) as first federated modules","Custom Elements (Angular Elements) wrap Angular components for React use","Shared state via event bus (not NgRx global store)"]},"why_migrate":{"title":"Why Migrate from Angular Monolith","content":"The Angular monolith was slowing down 12 teams. Builds took 30 minutes, deployments required full regression testing (6 hours), and teams couldn't adopt React for new features without a complete rewrite.","business_drivers":["30-minute build time (developers waiting 2+ hours daily)","6-hour regression test suite for every deployment","Inability to adopt React (blocking modern features)","High developer turnover (Angular skills scarce)"]},"migration_readiness":{"title":"Angular Migration Readiness","content":"The team spent 2 months preparing: upgrading to Angular 13 (Module Federation support), building the shell application, and establishing shared authentication and state patterns.","requirements":["Angular 13+ for Module Federation support","Shell application (host) with routing","Custom Elements (Angular Elements) for React interop","Event bus (RxJS Subject) for cross-federation communication","CI/CD pipeline for federated module deployment"]},"current_state_assessment":{"title":"Angular Monolith Assessment","content":"The monolith had 150K lines of TypeScript, 300 components, 50 NgRx stores, and 20 feature modules. The biggest bottlenecks were the trading dashboard (complex, high-traffic) and the reporting module (low traffic, good candidate for pilot).","technical_debt":["50+ NgRx stores with duplicated selectors (maintenance nightmare)","30-minute production builds (unoptimized Angular CLI config)","No module boundaries—any feature could import any component","Mixed Angular versions (9 → 12 migration incomplete)"],"risks":["Angular-to-React interop performance overhead","Shared NgRx state across federated modules","Federated module version mismatches (Angular 12 vs 13)","Team resistance to learning both Angular and React"]},"target_architecture":{"title":"Target Federated Frontend Architecture","content":"The target had 12 federated modules: shell (Angular host), auth (Angular), trading-dashboard (Angular), reporting (React), settings (React), analytics (React), etc. The shell loaded federated modules at runtime via Module Federation.","architecture_components":["Angular shell (host) with Module Federation config","React custom elements (Angular Elements wrapping React components)","Event bus (RxJS Subject) for cross-module communication","Shared authentication via JWT (stored in sessionStorage)","Feature flags for gradual rollout"]},"migration_plan":{"title":"12-Month Angular Migration Plan","content":"The team prioritized low-risk modules first (reports, settings), then high-traffic features, finally complex interdependent modules.","steps":[{"step":"Phase 1: Foundation (Months 1-3)","description":"Upgraded to Angular 13, built shell application, established Module Federation config, trained teams on microfrontends."},{"step":"Phase 2: React Pilot (Month 4)","description":"Extracted reporting module as first React federated module—proved React interop worked."},{"step":"Phase 3: Angular Modules (Months 5-8)","description":"Extracted auth, settings, and analytics as Angular federated modules."},{"step":"Phase 4: Core Trading (Months 9-12)","description":"Extracted trading dashboard (most complex) as federated module—final cutover."}]},"data_migration":{"title":"State Management Migration","content":"The team replaced NgRx global store with event bus for cross-module communication. Each federated module maintained its own local state (NgRx within Angular modules, Redux within React modules).","considerations":["Event bus (RxJS Subject) for cross-module events (user logout, cart update)","Local state only within each federated module (no shared NgRx stores)","SessionStorage for user authentication and preferences","Event replay for modules loaded after events occurred"]},"application_migration":{"title":"Angular to React Interop Strategy","content":"The team used Angular Elements to wrap React components as custom elements. React modules exposed their entry components as custom elements that the Angular shell could load dynamically.","considerations":["Angular Elements polyfills for React component wrapping","Custom element naming convention (prefix-{module}-{component})","Shared dependency strategy (zone.js, React, ReactDOM)","Lazy load federated modules on route navigation"]},"testing_strategy":{"title":"Testing Federated Angular Frontends","content":"The team used contract tests (PACT) for cross-module API calls, integration tests in staging with all federated modules deployed, and E2E tests for critical user journeys.","checkpoints":["Contract tests for shell-to-module and module-to-module communication","Integration tests in staging environment (12 modules deployed together)","E2E tests for critical journeys (login → trading dashboard → settings)","Visual regression tests for UI consistency"]},"rollback_strategy":{"title":"Rollback for Federated Modules","content":"Feature flags in the shell disabled any federated module within 1 minute. The team practiced rollbacks weekly.","steps":["Toggle feature flag to use fallback component or blank state","Redeploy previous version of federated module","Clear Module Federation cache","Re-enable feature flag after verification"]},"common_mistakes":{"title":"Common Angular Microfrontend Mistakes","content":"Based on documented failures, these are the most frequent Angular migration pitfalls.","mistakes":[{"mistake":"Sharing NgRx store across federated modules","impact":"Action collisions and state corruption (weekly production bugs)","prevention":"Event bus instead of shared store; local state only"},{"mistake":"Not upgrading Angular version before migration","impact":"Module Federation unavailable; migration blocked for 3 months","prevention":"Upgrade to Angular 13+ as first step"},{"mistake":"Overusing Angular Elements for React components","impact":"Performance overhead (50ms per component instantiation)","prevention":"Use React for entire modules, not individual components"},{"mistake":"No version strategy for Angular dependencies","impact":"Incompatible Angular versions crashing shell (Angular 12 vs 13)","prevention":"Single version of Angular shared across all modules"}]},"cost_considerations":{"title":"Angular Migration Costs","content":"The migration cost $900K over 12 months (10 engineers × 12 months). Build time reduction (30 minutes → 8 minutes) saved 500 developer hours monthly.","cost_factors":["Engineering: 10 engineers × 12 months = 120 person-months ($800k)","Infrastructure: Module Federation hosting, CDN ($30k/month)","Training: Angular Elements, Module Federation workshops ($70k)","Opportunity cost: features delayed during migration ($200k)"]},"success_metrics":{"title":"Success Metrics for Angular Migration","content":"The migration was considered successful after achieving these metrics.","metrics":["Build time: 30 minutes → 8 minutes (73% reduction)","Deployment frequency: monthly → weekly (4x increase)","Framework flexibility: Angular-only → Angular + React","Developer satisfaction: 2.5/5 → 4.5/5"]},"who_should_lead_this_migration":{"title":"Who Should Lead Angular Microfrontend Migration","content":"This migration requires an Angular architect with Module Federation expertise and experience with mixed-framework architectures.","recommended_roles":["Lead Angular Architect (8+ years experience)","Webpack Expert (Module Federation)","DevOps Engineer (CI/CD for federated modules)"],"required_experience":["Successfully led 1+ Angular microfrontend migration","Deep expertise in Module Federation and Webpack 5","Experience with Angular Elements and custom elements","Cross-framework integration (Angular + React)"]},"faq":{"questions":[{"q":"Can Angular and React microfrontends share the same DOM?","a":"Yes, via Angular Elements wrapping React components. Each microfrontend has its own root element; the shell mounts them dynamically."},{"q":"How do you handle routing across Angular and React modules?","a":"Shell handles top-level routing; each module handles its own nested routes. Module Federation loads module when route matches."},{"q":"What about bundle size with Angular and React together?","a":"Module Federation shares common dependencies (zone.js, React). Initial bundle increased from 500KB to 800KB (acceptable for functionality gain)."}]},"related_roles":[{"title":"Microfrontends Expert","slug":"microfrontends-expert","url":"/hire/microfrontends-expert"},{"title":"Angular Architect","slug":"mean-developer","url":"/hire/mean-developer"},{"title":"Frontend Engineer","slug":"mern-developer","url":"/hire/mern-developer"}],"cta":{"title":"Need to migrate your Angular monolith?","body":"Hire microfrontends experts who have migrated large Angular apps to federated architecture.","button_text":"Hire Microfrontends Expert","button_link":"/hire/microfrontends-expert"}};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+
+    <!-- Brand / Logo -->
+    <a href="/" class="flex items-center gap-0.5 group" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105">
+        <img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain" />
+      </div>
+      <span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+        OFFLINE<span class="text-indigo-600">PIXEL</span>
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500">
+
+      <!-- Pine Script Core Page Asset -->
+      <a href="/pinescript-strategies.html" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines">
+        <svg class="h-4 w-4 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+        </svg>
+        <span>Pine Strategies</span>
+      </a>
+
+      <!-- Hierarchical Services Dropdown -->
+      <div id="services-dropdown" class="relative">
+        <button id="services-dropdown-btn" type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none">
+          <span>Expertise</span>
+          <svg id="dropdown-chevron" class="h-3 w-3 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <div id="services-dropdown-menu" class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 hidden">
+          <div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div>
+
+          <!-- QUANT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/quant-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Quant Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5 flex flex-wrap gap-x-1 gap-y-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-developer">Quant Dev,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-researcher">Researcher,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-trader">Trader,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/quant-junior">Junior Quant,</span>
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/senior-quant-engineer">Senior Quant</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATA ENGINEERING SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375 7.444 2.25 12 2.25s8.25 1.847 8.25 4.125zm0 0v3.75m-16.5-3.75v3.75m16.5 0v3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Platform Engineer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rust-engineer">Rust (Systems)</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/duckdb-engineer">DuckDB (Analytics)</span>, High-Performance Pipelines
+              </div>
+            </div>
+          </div>
+
+          <!-- ML SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/ml-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire ML Expert</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/llm-engineer">LLMs</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/rag-engineer">RAG</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/faiss-expert">FAISS</span>,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/walk-forward-validation-expert">Walk-Forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- APP DEVELOPMENT SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/app-developer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire App Developer</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/tauri-engineer">Tauri</span>, Preact,
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/microfrontends-expert">Microfrontends</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- PYTHON SECTION -->
+          <div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer" data-href="/hire/python-engineer">
+            <svg class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a9.004 9.004 0 018.716 6.747M12 3a9.004 9.004 0 00-8.716 6.747" />
+            </svg>
+            <div>
+              <div class="text-xs font-semibold text-slate-900 dark:text-white">Hire Python Dev</div>
+              <div class="text-[11px] text-slate-400 font-mono mt-0.5">
+                <span class="text-indigo-500 hover:text-indigo-400 cursor-pointer" data-href="/hire/fastapi-expert">FastAPI</span>, Pipelines, Structuring
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#cloud-enterprise" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation">
+        Cloud & Enterprise
+      </a>
+
+      <a href="#bi-analytics" class="transition-colors hover:text-slate-900 dark:hover:text-slate-300" title="Power BI Dashboards, DAX Optimization, and Executive Analytics">
+        Analytics
+      </a>
+    </nav>
+
+    <!-- CTA Area -->
+    <div class="flex items-center gap-4">
+      <button id="hire-online-btn" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+
+      <button id="mobile-menu-btn" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800" aria-label="Toggle navigation menu">
+        <svg id="mobile-menu-icon" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- MOBILE DRAWER -->
+  <div id="mobile-drawer" class="hidden border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden">
+
+    <!-- Pine Strategies -->
+    <a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a>
+
+    <!-- Quant Section -->
+    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div>
+      <a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a>
+      </div>
+    </div>
+
+    <!-- Data Engineering Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div>
+      <div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">ETL Pipelines</span>
+      </div>
+    </div>
+
+    <!-- ML Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML & AI Expertise</div>
+      <a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a>
+      </div>
+    </div>
+
+    <!-- App Development Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div>
+      <a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Preact</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a>
+      </div>
+    </div>
+
+    <!-- Python Section -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div>
+      <a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a>
+      <div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono">
+        <a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Pipelines</span>
+        <span class="text-slate-300 dark:text-slate-600">|</span>
+        <span class="text-slate-500">Structuring</span>
+      </div>
+    </div>
+
+    <!-- Other Services -->
+    <div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+      <a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud & Enterprise</a>
+      <a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+      <button id="mobile-hire-btn" class="w-full inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100" title="Book an Expert Engineering Consultation">
+        Hire Online
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Header JavaScript -->
+<script>
+(function() {
+  // Dropdown functionality
+  const dropdownBtn = document.getElementById('services-dropdown-btn');
+  const dropdownMenu = document.getElementById('services-dropdown-menu');
+  const dropdownChevron = document.getElementById('dropdown-chevron');
+  let isDropdownOpen = false;
+
+  function toggleDropdown() {
+    isDropdownOpen = !isDropdownOpen;
+    if (isDropdownOpen) {
+      dropdownMenu.classList.remove('hidden');
+      dropdownChevron.classList.add('rotate-180');
+    } else {
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  }
+
+  if (dropdownBtn) {
+    dropdownBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+  }
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('services-dropdown');
+    if (dropdown && !dropdown.contains(event.target) && isDropdownOpen) {
+      isDropdownOpen = false;
+      dropdownMenu.classList.add('hidden');
+      dropdownChevron.classList.remove('rotate-180');
+    }
+  });
+
+  // Handle clicks on dropdown items with data-href
+  document.querySelectorAll('[data-href]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const href = this.getAttribute('data-href');
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileDrawer.classList.remove('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+    } else {
+      mobileDrawer.classList.add('hidden');
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  }
+
+  // Hire Online button handlers - will be connected to tab navigation
+  const hireOnlineBtn = document.getElementById('hire-online-btn');
+  const mobileHireBtn = document.getElementById('mobile-hire-btn');
+
+  function handleHireClick() {
+    // This will be connected to your tab navigation system
+    // For now, scroll to allocate section
+    const allocateSection = document.getElementById('tab-allocate');
+    if (allocateSection) {
+      allocateSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    // Also close mobile menu if open
+    if (isMobileMenuOpen) {
+      toggleMobileMenu();
+    }
+  }
+
+  if (hireOnlineBtn) hireOnlineBtn.addEventListener('click', handleHireClick);
+  if (mobileHireBtn) mobileHireBtn.addEventListener('click', handleHireClick);
+
+  // Close mobile menu when clicking on any link inside
+  document.querySelectorAll('#mobile-drawer a, #mobile-drawer .cursor-pointer').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (isMobileMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  });
+})();
+</script>
+<div class="flex-1">
+    <main class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-black dark:to-slate-950">
+      
+    <div class="relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-3xl -z-10"></div>
+      <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 lg:pt-24 lg:pb-16">
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-xs font-semibold rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+            Angular 12 Monolith (NgRx) → Angular + React Module Federation
+          </span>
+          
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Angular Monolith to Federated Frontends</h1>
+        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.</p>
+      </div>
+    </div>
+  
+      
+    <nav aria-label="Breadcrumb" class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-black/30 backdrop-blur-sm sticky top-0 z-10">
+      <div class="max-w-4xl mx-auto px-6 py-3">
+        <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
+          
+            <li>
+              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a>
+            </li>
+            <li aria-hidden="true">/</li>
+          
+            <li>
+              <span class="text-slate-600 dark:text-slate-300">Angular + React Module Federation</span>
+            </li>
+            
+          
+        </ol>
+      </div>
+    </nav>
+  
+      <article class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-6">
+          
+    <div class="flex flex-wrap gap-2 mb-6">
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Angular 12 Monolith (NgRx) → Angular + React Module Federation</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Incremental</span>
+      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">HARD Difficulty</span>
+    </div>
+  
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Angular Monolith to Federated Frontends</h1>
+          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A comprehensive guide to migrating a 150K-line Angular monolith to Module Federation microfrontends with mixed framework support.</p>
+          
+    <div class="mt-8 flex flex-wrap gap-6 text-sm">
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">12 months</span></div>
+      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">microfrontends-expert</span></div>
+    </div>
+  
+        </div>
+        <div class="max-w-4xl mx-auto px-6 mt-12">
+          
+      <section class="fade-section opacity-0 mb-12">
+        <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A financial services company&#39;s Angular monolith had 150K lines of code, 30-minute builds, and 12 teams blocked by merge conflicts. Using Angular&#39;s Module Federation support, they decomposed it into 12 federated frontends over 12 months, allowing teams to migrate to React incrementally. Build time dropped to 8 minutes, and teams gained framework independence.</p>
+          <div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Angular&#39;s Module Federation supports mixed Angular + React microfrontends</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Start with standalone modules (settings, reports) as first federated modules</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Custom Elements (Angular Elements) wrap Angular components for React use</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Shared state via event bus (not NgRx global store)</span></div></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate from Angular Monolith</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The Angular monolith was slowing down 12 teams. Builds took 30 minutes, deployments required full regression testing (6 hours), and teams couldn&#39;t adopt React for new features without a complete rewrite.</p>
+        <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 30-minute build time (developers waiting 2+ hours daily)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 6-hour regression test suite for every deployment</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Inability to adopt React (blocking modern features)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> High developer turnover (Angular skills scarce)</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Angular Migration Readiness</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 2 months preparing: upgrading to Angular 13 (Module Federation support), building the shell application, and establishing shared authentication and state patterns.</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Angular 13+ for Module Federation support</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Shell application (host) with routing</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Custom Elements (Angular Elements) for React interop</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Event bus (RxJS Subject) for cross-federation communication</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> CI/CD pipeline for federated module deployment</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Angular Monolith Assessment</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The monolith had 150K lines of TypeScript, 300 components, 50 NgRx stores, and 20 feature modules. The biggest bottlenecks were the trading dashboard (complex, high-traffic) and the reporting module (low traffic, good candidate for pilot).</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• 50+ NgRx stores with duplicated selectors (maintenance nightmare)</li><li class="text-sm text-slate-600 dark:text-slate-400">• 30-minute production builds (unoptimized Angular CLI config)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No module boundaries—any feature could import any component</li><li class="text-sm text-slate-600 dark:text-slate-400">• Mixed Angular versions (9 → 12 migration incomplete)</li></ul></div>
+          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Angular-to-React interop performance overhead</li><li class="text-sm text-slate-600 dark:text-slate-400">• Shared NgRx state across federated modules</li><li class="text-sm text-slate-600 dark:text-slate-400">• Federated module version mismatches (Angular 12 vs 13)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Team resistance to learning both Angular and React</li></ul></div>
+        </div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target Federated Frontend Architecture</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The target had 12 federated modules: shell (Angular host), auth (Angular), trading-dashboard (Angular), reporting (React), settings (React), analytics (React), etc. The shell loaded federated modules at runtime via Module Federation.</p>
+        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Angular shell (host) with Module Federation config</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">React custom elements (Angular Elements wrapping React components)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Event bus (RxJS Subject) for cross-module communication</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Shared authentication via JWT (stored in sessionStorage)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Feature flags for gradual rollout</span></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">12-Month Angular Migration Plan</h2>
+        <ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Foundation (Months 1-3)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Upgraded to Angular 13, built shell application, established Module Federation config, trained teams on microfrontends.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: React Pilot (Month 4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Extracted reporting module as first React federated module—proved React interop worked.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Angular Modules (Months 5-8)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Extracted auth, settings, and analytics as Angular federated modules.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 4: Phase 4: Core Trading (Months 9-12)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Extracted trading dashboard (most complex) as federated module—final cutover.</p></li></ol>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">State Management Migration</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team replaced NgRx global store with event bus for cross-module communication. Each federated module maintained its own local state (NgRx within Angular modules, Redux within React modules).</p>
+        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Event bus (RxJS Subject) for cross-module events (user logout, cart update)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Local state only within each federated module (no shared NgRx stores)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> SessionStorage for user authentication and preferences</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Event replay for modules loaded after events occurred</li></ul>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Angular Microfrontend Mistakes</h2>
+        <div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Sharing NgRx store across federated modules</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Action collisions and state corruption (weekly production bugs)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Event bus instead of shared store; local state only</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Not upgrading Angular version before migration</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Module Federation unavailable; migration blocked for 3 months</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Upgrade to Angular 13+ as first step</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Overusing Angular Elements for React components</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Performance overhead (50ms per component instantiation)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Use React for entire modules, not individual components</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No version strategy for Angular dependencies</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Incompatible Angular versions crashing shell (Angular 12 vs 13)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Single version of Angular shared across all modules</p></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Success Metrics for Angular Migration</h2>
+        <div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Build time: 30 minutes → 8 minutes (73% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Deployment frequency: monthly → weekly (4x increase)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Framework flexibility: Angular-only → Angular + React</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Developer satisfaction: 2.5/5 → 4.5/5</span></div></div>
+      </section>
+    
+      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead Angular Microfrontend Migration</h2>
+        <div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Lead Angular Architect (8+ years experience)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Webpack Expert (Module Federation)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">DevOps Engineer (CI/CD for federated modules)</span></div></div>
+        <div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Successfully led 1+ Angular microfrontend migration</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Deep expertise in Module Federation and Webpack 5</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Experience with Angular Elements and custom elements</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Cross-framework integration (Angular + React)</li></ul></div>
+      </section>
+    
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
+      <div class="grid gap-4">
+    <a href="/hire/microfrontends-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Microfrontends Expert</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/mean-developer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Angular Architect</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  
+    <a href="/hire/mern-developer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Frontend Engineer</span>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+    </section>
+  
+          
+    <section class="fade-section opacity-0 mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
+      <dl class="space-y-4">
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Can Angular and React microfrontends share the same DOM?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes, via Angular Elements wrapping React components. Each microfrontend has its own root element; the shell mounts them dynamically.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How do you handle routing across Angular and React modules?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Shell handles top-level routing; each module handles its own nested routes. Module Federation loads module when route matches.</dd>
+    </div>
+  
+    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
+      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What about bundle size with Angular and React together?</dt>
+      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Module Federation shares common dependencies (zone.js, React). Initial bundle increased from 500KB to 800KB (acceptable for functionality gain).</dd>
+    </div>
+  </dl>
+    </section>
+  
+          
+    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
+      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Need to migrate your Angular monolith?</h3>
+      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire microfrontends experts who have migrated large Angular apps to federated architecture.</p>
+      <a href="/hire/microfrontends-expert" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+        Hire Microfrontends Expert <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+      </a>
+    </aside>
+  
+        </div>
+      </article>
+    </main>
+  </div>
+<footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+    <!-- Service Grid -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 pb-8 border-b border-slate-200 dark:border-slate-800">
+
+      <!-- Development Services -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9.75 3v2.25m4.5-2.25v2.25M4.5 9.75h15m-15 0A2.25 2.25 0 002.25 12v6.75A2.25 2.25 0 004.5 21h15a2.25 2.25 0 002.25-2.25V12A2.25 2.25 0 0019.5 9.75m-15 0V7.5A2.25 2.25 0 016.75 5.25h10.5A2.25 2.25 0 0119.5 7.5v2.25"
+            />
+          </svg>
+
+          <span>DEVELOPMENT SERVICES</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Hire Dedicated Developers & Remote Engineers</li>
+          <li>Custom Web Applications & Mobile App Development</li>
+          <li>High-Performance Software Architecture</li>
+          <li>Trading Systems & Data Dashboard Integration</li>
+        </ul>
+      </div>
+
+      <!-- Enterprise Solutions -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 21h16.5M4.5 3h15a.75.75 0 01.75.75v11.25a.75.75 0 01-.75.75h-15a.75.75 0 01-.75-.75V3.75A.75.75 0 014.5 3zm3 18V15.75m9 5.25V15.75"
+            />
+          </svg>
+
+          <span>ENTERPRISE SOLUTIONS</span>
+        </div>
+
+        <ul class="space-y-2 text-[11px] leading-relaxed">
+          <li>Legacy Code Software Modernization & Upgrades</li>
+          <li>Business Automation & Custom AI Solutions</li>
+          <li>Secure Cloud Infrastructure & API Integrations</li>
+          <li>Enterprise Data Engineering & Analytics Projects</li>
+        </ul>
+      </div>
+
+      <!-- Service Hubs -->
+      <div class="space-y-3">
+        <div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold">
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 text-indigo-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+            />
+          </svg>
+
+          <span>SERVICE HUBS</span>
+        </div>
+
+        <p class="text-[11px] leading-relaxed">
+          Providing digital transformation, software consulting, and tech
+          talent matching from our base
+          <span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>,
+          across
+          <span class="text-slate-800 dark:text-slate-300">
+            Cambridge-London (UCL/Imperial)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Boston-NY Circuit (MIT/Courant)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Chicago (UChicago/CMU)
+          </span>,
+          <span class="text-slate-800 dark:text-slate-300">
+            Singapore Quant Cluster (NUS/NTU)
+          </span>,
+          and
+          <span class="text-slate-800 dark:text-slate-300">
+            global clients
+          </span>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]">
+
+      <div class="flex items-center gap-2">
+        <div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+
+        <span>
+          &copy; 2026 OFFLINE PIXEL. All Rights Reserved.
+        </span>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="flex gap-6 font-sans text-xs">
+
+        <a
+          href="/career"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Career Opportunities"
+        >
+          Career
+        </a>
+
+        <a
+          href="#terms"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Terms of Service"
+        >
+          Terms
+        </a>
+
+        <a
+          href="#privacy"
+          class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors"
+          title="Privacy Policy"
+        >
+          Privacy
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Compliance Note -->
+    <div class="mt-6 text-center text-[10px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">
+      Offline Pixel specializes in custom technical transformations,
+      cross-platform UI integration, and backtesting engine orchestration.
+      All strategies, analytical setups, or models deployed are meant for
+      custom tooling parameters and statistical analysis. Historical
+      optimization pipelines are prone to walk-forward validation
+      dependencies.
+    </div>
+
+  </div>
+</footer>
+</div></div>
+  </body>
+</html>
