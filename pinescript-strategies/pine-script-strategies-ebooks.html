@@ -1,366 +1,593 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-        /* Specific styles for the ebook landing page */
-        .ebook-volume {
-            background-color: #f9f9f9;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .ebook-volume h3 {
-            color: #2c3e50;
-            margin-top: 0;
-            font-size: 1.8em;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .ebook-volume p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .ebook-volume ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        .ebook-volume ul li {
-            margin-bottom: 8px;
-        }
-        .ebook-volume .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .ebook-volume .btn:hover {
-            background-color: #2980b9;
-        }
-        .aggregate-rating-display {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-            font-size: 1.1em;
-            color: #555;
-        }
-        .stars {
-            color: #FFD700; /* Gold color for stars */
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-        .rating-value {
-            font-weight: bold;
-            margin-right: 5px;
-        }
-        .rating-count {
-            color: #777;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../styles/blog-common.css" />
+        <style>
+            .fullscreen {
+                padding: 10px 50px;
+                max-width: 70%;
+                margin: auto;
+                text-align: justify;
+            }
+            .tip {
+                background: #e8f4fc;
+                padding: 15px;
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+            }
+            .code-comment {
+                color: #6a9955;
+                font-style: italic;
+            }
+            /* Specific styles for the ebook landing page */
+            .ebook-volume {
+                background-color: #f9f9f9;
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 25px;
+                margin-bottom: 30px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            }
+            .ebook-volume h3 {
+                color: #2c3e50;
+                margin-top: 0;
+                font-size: 1.8em;
+                border-bottom: 2px solid #3498db;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .ebook-volume p {
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+            .ebook-volume ul {
+                list-style-type: disc;
+                margin-left: 20px;
+                margin-bottom: 15px;
+            }
+            .ebook-volume ul li {
+                margin-bottom: 8px;
+            }
+            .ebook-volume .btn {
+                display: inline-block;
+                margin-top: 15px;
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+            .ebook-volume .btn:hover {
+                background-color: #2980b9;
+            }
+            .aggregate-rating-display {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 20px;
+                font-size: 1.1em;
+                color: #555;
+            }
+            .stars {
+                color: #ffd700; /* Gold color for stars */
+                font-size: 1.5em;
+                margin-right: 10px;
+            }
+            .rating-value {
+                font-weight: bold;
+                margin-right: 5px;
+            }
+            .rating-count {
+                color: #777;
+            }
+        </style>
 
-    <title>Master Pine Script Strategies: The Complete Ebook Series</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-0MM8039GLD");
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617"
+            crossorigin="anonymous"
+        ></script>
 
-    <meta name="description" content="Unlock advanced algorithmic trading with our comprehensive Pine Script strategies ebook series. From beginner fundamentals to expert deployment, master TradingView's Pine Script." />
-    <meta name="keywords" content="Pine Script books, TradingView ebooks, algorithmic trading strategies, Pine Script curriculum, learn Pine Script, expert Pine Script, trading automation, custom indicators" />
+        <title>Master Pine Script Strategies: The Complete Ebook Series</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="RSS Feed"
+            href="/feed.xml"
+        />
 
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:title" content="Master Pine Script Strategies: The Complete Ebook Series">
-    <meta property="og:description" content="Unlock advanced algorithmic trading with our comprehensive Pine Script strategies ebook series. From beginner fundamentals to expert deployment, master TradingView's Pine Script.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-ebooks.html">
-    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png"> <!-- Assuming a relevant image -->
+        <meta
+            name="description"
+            content="Unlock advanced algorithmic trading with our comprehensive Pine Script strategies ebook series. From beginner fundamentals to expert deployment, master TradingView's Pine Script."
+        />
+        <meta
+            name="keywords"
+            content="Pine Script books, TradingView ebooks, algorithmic trading strategies, Pine Script curriculum, learn Pine Script, expert Pine Script, trading automation, custom indicators"
+        />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Master Pine Script Strategies: The Complete Ebook Series">
-    <meta name="twitter:description" content="Unlock advanced algorithmic trading with our comprehensive Pine Script strategies ebook series. From beginner fundamentals to expert deployment, master TradingView's Pine Script.">
-    <meta name="twitter:image" content="https://offline-pixel.github.io/assets/logo2.png"> <!-- Assuming a relevant image -->
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-ebooks.html" />
+        <!-- Open Graph / Social Meta -->
+        <meta
+            property="og:title"
+            content="Master Pine Script Strategies: The Complete Ebook Series"
+        />
+        <meta
+            property="og:description"
+            content="Unlock advanced algorithmic trading with our comprehensive Pine Script strategies ebook series. From beginner fundamentals to expert deployment, master TradingView's Pine Script."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:url"
+            content="https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-ebooks.html"
+        />
+        <meta
+            property="og:image"
+            content="https://offline-pixel.github.io/assets/logo2.png"
+        />
+        <!-- Assuming a relevant image -->
 
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "Master Pine Script Strategies: The Complete Ebook Series",
-      "description": "A comprehensive curriculum of Pine Script strategies ebooks, guiding traders from fundamental syntax to advanced algorithmic trading on TradingView.",
-      "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-ebooks.html",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "mainEntity": [
-        {
-          "@type": "Book",
-          "name": "Volume I: Pine Script Fundamentals for the Aspiring Analyst",
-          "description": "Introduction to TradingView, core Pine Script concepts, and construction of simple indicators and basic trading signals.",
-          "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-beginner-vol1.html",
-          "author": {
-            "@type": "Person",
-            "name": "A Fintech guy"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "99.00", // Assuming price for each book
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "reviewCount": "150"
-          }
-        },
-        {
-          "@type": "Book",
-          "name": "Volume II: Intermediate Pine Script: Building Blocks of Automation",
-          "description": "Writing more complex and robust strategies using advanced Pine Script features, implementing basic risk management, and understanding strategy optimization.",
-          "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-intermediate-vol1.html",
-          "author": {
-            "@type": "Person",
-            "name": "A Fintech Guy"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "99.00",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "reviewCount": "120"
-          }
-        },
-        {
-          "@type": "Book",
-          "name": "Volume III: Advanced Pine Script: Mastering Market Dynamics",
-          "description": "Implementing sophisticated trading logic, handling multi-timeframe analysis, integrating external data, and understanding advanced risk management and performance tuning.",
-          "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-advanced-vol1.html",
-          "author": {
-            "@type": "Person",
-            "name": "A Fintech Guy"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "99.00",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "90"
-          }
-        },
-        {
-          "@type": "Book",
-          "name": "Volume IV: Expert Pine Script: Innovation & Deployment",
-          "description": "Exploring cutting-edge techniques, integrating machine learning concepts, managing complex order flows, and understanding the nuances of deploying and maintaining high-performance algorithmic systems.",
-          "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-expert-vol1.html",
-          "author": {
-            "@type": "Person",
-            "name": "A Fintech Guy"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "99.00",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "75"
-          }
-        }
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "425",
-        "ratingValue": "4.7"
-      }
-    }
-    </script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Master Pine Script Strategies: The Complete Ebook Series</h1>
-      <p class="blog-subtitle">A comprehensive curriculum from a A Fintech Guy, guiding you from Pine Script fundamentals to advanced algorithmic trading on TradingView.</p>
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Master Pine Script Strategies: The Complete Ebook Series"
+        />
+        <meta
+            name="twitter:description"
+            content="Unlock advanced algorithmic trading with our comprehensive Pine Script strategies ebook series. From beginner fundamentals to expert deployment, master TradingView's Pine Script."
+        />
+        <meta
+            name="twitter:image"
+            content="https://offline-pixel.github.io/assets/logo2.png"
+        />
+        <!-- Assuming a relevant image -->
+        <link
+            rel="canonical"
+            href="https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-ebooks.html"
+        />
 
-      <!-- Display aggregate rating for the entire series -->
-      <div class="aggregate-rating-display">
-        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <!-- 5 stars filled for visual -->
-        <span class="rating-value">4.7</span> out of&nbsp;<span class="best-rating"> 5</span>
-        (<span class="rating-count">425</span>&nbsp;ratings)
-      </div>
+        <!-- JSON-LD Schema -->
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "name": "Master Pine Script Strategies: The Complete Ebook Series",
+                "description": "A comprehensive curriculum of Pine Script strategies ebooks, guiding traders from fundamental syntax to advanced algorithmic trading on TradingView.",
+                "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-ebooks.html",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Offline Pixel",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://offline-pixel.github.io/assets/logo2.png"
+                    }
+                },
+                "mainEntity": [
+                    {
+                        "@type": "Book",
+                        "name": "Volume I: Pine Script Fundamentals for the Aspiring Analyst",
+                        "description": "Introduction to TradingView, core Pine Script concepts, and construction of simple indicators and basic trading signals.",
+                        "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-beginner-vol1.html",
+                        "author": {
+                            "@type": "Person",
+                            "name": "A Fintech guy"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "99.00", // Assuming price for each book
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/InStock"
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.8",
+                            "reviewCount": "150"
+                        }
+                    },
+                    {
+                        "@type": "Book",
+                        "name": "Volume II: Intermediate Pine Script: Building Blocks of Automation",
+                        "description": "Writing more complex and robust strategies using advanced Pine Script features, implementing basic risk management, and understanding strategy optimization.",
+                        "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-intermediate-vol1.html",
+                        "author": {
+                            "@type": "Person",
+                            "name": "A Fintech Guy"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "99.00",
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/InStock"
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.7",
+                            "reviewCount": "120"
+                        }
+                    },
+                    {
+                        "@type": "Book",
+                        "name": "Volume III: Advanced Pine Script: Mastering Market Dynamics",
+                        "description": "Implementing sophisticated trading logic, handling multi-timeframe analysis, integrating external data, and understanding advanced risk management and performance tuning.",
+                        "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-advanced-vol1.html",
+                        "author": {
+                            "@type": "Person",
+                            "name": "A Fintech Guy"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "99.00",
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/InStock"
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.9",
+                            "reviewCount": "90"
+                        }
+                    },
+                    {
+                        "@type": "Book",
+                        "name": "Volume IV: Expert Pine Script: Innovation & Deployment",
+                        "description": "Exploring cutting-edge techniques, integrating machine learning concepts, managing complex order flows, and understanding the nuances of deploying and maintaining high-performance algorithmic systems.",
+                        "url": "https://offline-pixel.github.io/pinescript-strategies/pine-script-strategies-expert-vol1.html",
+                        "author": {
+                            "@type": "Person",
+                            "name": "A Fintech Guy"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "99.00",
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/InStock"
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "5.0",
+                            "reviewCount": "75"
+                        }
+                    }
+                ],
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": "425",
+                    "ratingValue": "4.7"
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header class="blog-header">
+            <div class="container">
+                <h1 class="blog-title">
+                    Master Pine Script Strategies: The Complete Ebook Series
+                </h1>
+                <p class="blog-subtitle">
+                    A comprehensive curriculum from a A Fintech Guy, guiding you
+                    from Pine Script fundamentals to advanced algorithmic
+                    trading on TradingView.
+                </p>
 
-      <p class="job-meta" style="text-align: center; justify-content: center;">
-        <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="btn custom-btn" target="_blank" rel="noopener noreferrer">Custom scripts @ $99/month</a>
-      </p>
-    </div>
-  </header>
-  <article class="fullscreen">
-    
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="https://offline-pixel.github.io/">Home</a> &gt;
-      <a href="https://offline-pixel.github.io/pinescript-strategies.html">Pine Script Strategies</a> &gt;
-      <span aria-current="page">Ebook Series</span>
-    </nav>
-</div>
+                <!-- Display aggregate rating for the entire series -->
+                <div class="aggregate-rating-display">
+                    <span class="stars"
+                        >&#9733;&#9733;&#9733;&#9733;&#9733;</span
+                    >
+                    <!-- 5 stars filled for visual -->
+                    <span class="rating-value">4.7</span> out of&nbsp;<span
+                        class="best-rating"
+                    >
+                        5</span
+                    >
+                    (<span class="rating-count">425</span>&nbsp;ratings)
+                </div>
 
-    <div class="pinescript-disclaimer"></div>
-    <ins class="adsbygoogle"
-       style="display:block; text-align:center;"
-       data-ad-layout="in-article"
-       data-ad-format="fluid"
-       data-ad-client="ca-pub-9243803325136617"
-       data-ad-slot="5548365171"></ins>
-    <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+                <p
+                    class="job-meta"
+                    style="text-align: center; justify-content: center"
+                >
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        class="btn custom-btn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Custom scripts @ $99/month</a
+                    >
+                </p>
+            </div>
+        </header>
+        <article class="fullscreen">
+            <div class="special-nav-div">
+                <a
+                    href="https://offlinepixel.gumroad.com/l/kpafhy"
+                    class=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
+                </a>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="https://offline-pixel.github.io/">Home</a> &gt;
+                    <a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >Pine Script Strategies</a
+                    >
+                    &gt;
+                    <span aria-current="page">Ebook Series</span>
+                </nav>
+            </div>
 
-    <p>Esteemed students, colleagues, and aspiring algorithmic traders from across the globe, it is my distinct honor to present a comprehensive curriculum for mastering Pine Script strategies. This four-volume series is meticulously designed to build upon foundational knowledge, guiding you from fundamental syntax to the most advanced concepts in algorithmic trading on the TradingView platform.</p>
-    <p>Our journey will be rigorous, yet rewarding, emphasizing not just the 'how' but also the 'why' behind each strategic decision and line of code. Prepare to delve deep into the art and science of market analysis, backtesting, and automated signal generation.</p>
+            <div class="pinescript-disclaimer"></div>
+            <ins
+                class="adsbygoogle"
+                style="display: block; text-align: center"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-9243803325136617"
+                data-ad-slot="5548365171"
+            ></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
 
-    <h2 style="text-align: center; margin-top: 40px; margin-bottom: 30px; color: #3498db;">The Complete Pine Script Mastery Curriculum</h2>
+            <p>
+                Esteemed students, colleagues, and aspiring algorithmic traders
+                from across the globe, it is my distinct honor to present a
+                comprehensive curriculum for mastering Pine Script strategies.
+                This four-volume series is meticulously designed to build upon
+                foundational knowledge, guiding you from fundamental syntax to
+                the most advanced concepts in algorithmic trading on the
+                TradingView platform.
+            </p>
+            <p>
+                Our journey will be rigorous, yet rewarding, emphasizing not
+                just the 'how' but also the 'why' behind each strategic decision
+                and line of code. Prepare to delve deep into the art and science
+                of market analysis, backtesting, and automated signal
+                generation.
+            </p>
 
-    <!-- Volume I -->
-    <div class="ebook-volume">
-        <h3>Volume I: Pine Script Fundamentals for the Aspiring Analyst</h3>
-        <p>This volume introduces the absolute beginner to the TradingView environment, the core concepts of Pine Script, and the construction of simple indicators and basic trading signals. It lays the essential groundwork for your algorithmic trading journey.</p>
-        <ul>
-            <li><b>Chapter 1:</b> The TradingView Ecosystem: Your Algorithmic Canvas</li>
-            <li><b>Chapter 2:</b> Your First Lines of Pine Script: The Basics</li>
-            <li><b>Chapter 3:</b> Building Simple Indicators: Your First Insights</li>
-            <li><b>Chapter 4:</b> Basic Strategy Concepts: From Idea to Signal</li>
-            <li><b>Chapter 5:</b> Visualizing Strategy Performance & Alerts</li>
-        </ul>
-        <p><b>(Approx. 300 Pages)</b></p>
-        <a href="./pinescript-strategies/pine-script-strategies-beginner-vol1.html" class="btn">Learn More & Get Volume I</a>
-    </div>
+            <h2
+                style="
+                    text-align: center;
+                    margin-top: 40px;
+                    margin-bottom: 30px;
+                    color: #3498db;
+                "
+            >
+                The Complete Pine Script Mastery Curriculum
+            </h2>
 
-    <!-- Volume II -->
-    <div class="ebook-volume">
-        <h3>Volume II: Intermediate Pine Script: Building Blocks of Automation</h3>
-        <p>Building on the fundamentals, this volume enables you to write more complex and robust strategies using advanced Pine Script features, implement basic risk management, and understand strategy optimization. You'll begin to automate your analytical insights.</p>
-        <ul>
-            <li><b>Chapter 1:</b> Control Flow and Logic: Deeper Pine Script</li>
-            <li><b>Chapter 2:</b> Advanced Indicator Techniques</li>
-            <li><b>Chapter 3:</b> Strategy Development: Beyond Simple Entries</li>
-            <li><b>Chapter 4:</b> Backtesting and Optimization: Deeper Dive</li>
-            <li><b>Chapter 5:</b> Building a Complete Intermediate Strategy</li>
-        </ul>
-        <p><b>(Approx. 300 Pages)</b></p>
-        <a href="./pinescript-strategies/pine-script-strategies-intermediate-vol1.html" class="btn">Learn More & Get Volume II</a>
-    </div>
+            <!-- Volume I -->
+            <div class="ebook-volume">
+                <h3>
+                    Volume I: Pine Script Fundamentals for the Aspiring Analyst
+                </h3>
+                <p>
+                    This volume introduces the absolute beginner to the
+                    TradingView environment, the core concepts of Pine Script,
+                    and the construction of simple indicators and basic trading
+                    signals. It lays the essential groundwork for your
+                    algorithmic trading journey.
+                </p>
+                <ul>
+                    <li>
+                        <b>Chapter 1:</b> The TradingView Ecosystem: Your
+                        Algorithmic Canvas
+                    </li>
+                    <li>
+                        <b>Chapter 2:</b> Your First Lines of Pine Script: The
+                        Basics
+                    </li>
+                    <li>
+                        <b>Chapter 3:</b> Building Simple Indicators: Your First
+                        Insights
+                    </li>
+                    <li>
+                        <b>Chapter 4:</b> Basic Strategy Concepts: From Idea to
+                        Signal
+                    </li>
+                    <li>
+                        <b>Chapter 5:</b> Visualizing Strategy Performance &
+                        Alerts
+                    </li>
+                </ul>
+                <p><b>(Approx. 300 Pages)</b></p>
+                <a
+                    href="./pinescript-strategies/pine-script-strategies-beginner-vol1.html"
+                    class="btn"
+                    >Learn More & Get Volume I</a
+                >
+            </div>
 
-    <!-- Volume III -->
-    <div class="ebook-volume">
-        <h3>Volume III: Advanced Pine Script: Mastering Market Dynamics</h3>
-        <p>This volume equips you with the skills to implement sophisticated trading logic, handle multi-timeframe analysis, integrate external data, and understand advanced risk management and performance tuning. Prepare for complex market interactions.</p>
-        <ul>
-            <li><b>Chapter 1:</b> Advanced Data Handling and Contexts</li>
-            <li><b>Chapter 2:</b> Sophisticated Trading Logic and Patterns</li>
-            <li><b>Chapter 3:</b> Advanced Risk Management & Position Sizing</li>
-            <li><b>Chapter 4:</b> Optimizing for Robustness and Performance</li>
-            <li><b>Chapter 5:</b> Building Professional-Grade Strategies</li>
-        </ul>
-        <p><b>(Approx. 300 Pages)</b></p>
-        <a href="./pinescript-strategies/pine-script-strategies-advanced-vol1.html" class="btn">Learn More & Get Volume III</a>
-    </div>
+            <!-- Volume II -->
+            <div class="ebook-volume">
+                <h3>
+                    Volume II: Intermediate Pine Script: Building Blocks of
+                    Automation
+                </h3>
+                <p>
+                    Building on the fundamentals, this volume enables you to
+                    write more complex and robust strategies using advanced Pine
+                    Script features, implement basic risk management, and
+                    understand strategy optimization. You'll begin to automate
+                    your analytical insights.
+                </p>
+                <ul>
+                    <li>
+                        <b>Chapter 1:</b> Control Flow and Logic: Deeper Pine
+                        Script
+                    </li>
+                    <li><b>Chapter 2:</b> Advanced Indicator Techniques</li>
+                    <li>
+                        <b>Chapter 3:</b> Strategy Development: Beyond Simple
+                        Entries
+                    </li>
+                    <li>
+                        <b>Chapter 4:</b> Backtesting and Optimization: Deeper
+                        Dive
+                    </li>
+                    <li>
+                        <b>Chapter 5:</b> Building a Complete Intermediate
+                        Strategy
+                    </li>
+                </ul>
+                <p><b>(Approx. 300 Pages)</b></p>
+                <a
+                    href="./pinescript-strategies/pine-script-strategies-intermediate-vol1.html"
+                    class="btn"
+                    >Learn More & Get Volume II</a
+                >
+            </div>
 
-    <!-- Volume IV -->
-    <div class="ebook-volume">
-        <h3>Volume IV: Expert Pine Script: Innovation & Deployment</h3>
-        <p>The pinnacle of our curriculum, this volume empowers you to explore cutting-edge techniques, integrate machine learning concepts, manage complex order flows, and understand the nuances of deploying and maintaining high-performance algorithmic systems. Become a true Pine Script innovator.</p>
-        <ul>
-            <li><b>Chapter 1:</b> Machine Learning Concepts in Pine Script</li>
-            <li><b>Chapter 2:</b> Advanced Order Management & Execution</li>
-            <li><b>Chapter 3:</b> External Data & Interoperability</li>
-            <li><b>Chapter 4:</b> High-Performance Pine Script & System Design</li>
-            <li><b>Chapter 5:</b> The Algorithmic Trader's Playbook: Beyond Code</li>
-        </ul>
-        <p><b>(Approx. 300 Pages)</b></p>
-        <a href="./pinescript-strategies/pine-script-strategies-expert-vol1.html" class="btn">Learn More & Get Volume IV</a>
-    </div>
+            <!-- Volume III -->
+            <div class="ebook-volume">
+                <h3>
+                    Volume III: Advanced Pine Script: Mastering Market Dynamics
+                </h3>
+                <p>
+                    This volume equips you with the skills to implement
+                    sophisticated trading logic, handle multi-timeframe
+                    analysis, integrate external data, and understand advanced
+                    risk management and performance tuning. Prepare for complex
+                    market interactions.
+                </p>
+                <ul>
+                    <li>
+                        <b>Chapter 1:</b> Advanced Data Handling and Contexts
+                    </li>
+                    <li>
+                        <b>Chapter 2:</b> Sophisticated Trading Logic and
+                        Patterns
+                    </li>
+                    <li>
+                        <b>Chapter 3:</b> Advanced Risk Management & Position
+                        Sizing
+                    </li>
+                    <li>
+                        <b>Chapter 4:</b> Optimizing for Robustness and
+                        Performance
+                    </li>
+                    <li>
+                        <b>Chapter 5:</b> Building Professional-Grade Strategies
+                    </li>
+                </ul>
+                <p><b>(Approx. 300 Pages)</b></p>
+                <a
+                    href="./pinescript-strategies/pine-script-strategies-advanced-vol1.html"
+                    class="btn"
+                    >Learn More & Get Volume III</a
+                >
+            </div>
 
-    <p style="margin-top: 30px;">This curriculum, dear students, is designed to provide a deep, practical, and intellectually stimulating journey into the world of Pine Script. Each volume will be filled with detailed explanations, practical code examples, and thought-provoking exercises to ensure you not only understand the concepts but can also apply them effectively to your trading endeavors.</p>
-    <p>Prepare to transform your trading ideas into powerful, automated realities.</p>
-    <p style="text-align: right; font-style: italic; margin-top: 20px;">Sincerely,<br>A Fintech Guy</p>
+            <!-- Volume IV -->
+            <div class="ebook-volume">
+                <h3>Volume IV: Expert Pine Script: Innovation & Deployment</h3>
+                <p>
+                    The pinnacle of our curriculum, this volume empowers you to
+                    explore cutting-edge techniques, integrate machine learning
+                    concepts, manage complex order flows, and understand the
+                    nuances of deploying and maintaining high-performance
+                    algorithmic systems. Become a true Pine Script innovator.
+                </p>
+                <ul>
+                    <li>
+                        <b>Chapter 1:</b> Machine Learning Concepts in Pine
+                        Script
+                    </li>
+                    <li>
+                        <b>Chapter 2:</b> Advanced Order Management & Execution
+                    </li>
+                    <li><b>Chapter 3:</b> External Data & Interoperability</li>
+                    <li>
+                        <b>Chapter 4:</b> High-Performance Pine Script & System
+                        Design
+                    </li>
+                    <li>
+                        <b>Chapter 5:</b> The Algorithmic Trader's Playbook:
+                        Beyond Code
+                    </li>
+                </ul>
+                <p><b>(Approx. 300 Pages)</b></p>
+                <a
+                    href="./pinescript-strategies/pine-script-strategies-expert-vol1.html"
+                    class="btn"
+                    >Learn More & Get Volume IV</a
+                >
+            </div>
 
-    <section class="cta-section custom-strategy-cta">
-        <h2 class="cta-title">Enhance Your Trading</h2>
-        <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-        <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-        <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="btn custom-btn" target="_blank" rel="noopener noreferrer">
-          Subscribe now @ $99/month
-        </a>
-    </section>
-</article>
+            <p style="margin-top: 30px">
+                This curriculum, dear students, is designed to provide a deep,
+                practical, and intellectually stimulating journey into the world
+                of Pine Script. Each volume will be filled with detailed
+                explanations, practical code examples, and thought-provoking
+                exercises to ensure you not only understand the concepts but can
+                also apply them effectively to your trading endeavors.
+            </p>
+            <p>
+                Prepare to transform your trading ideas into powerful, automated
+                realities.
+            </p>
+            <p style="text-align: right; font-style: italic; margin-top: 20px">
+                Sincerely,<br />A Fintech Guy
+            </p>
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
+            <section class="cta-section custom-strategy-cta">
+                <h2 class="cta-title">Enhance Your Trading</h2>
+                <p>
+                    Get a high-performance Pine Script analysis tool for
+                    actionable market insights, designed for traders on the
+                    move.
+                </p>
+                <p>
+                    This strategy runs in live mode on TradingView, helping you
+                    identify potential opportunities.
+                </p>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    class="btn custom-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Subscribe now @ $99/month
+                </a>
+            </section>
+        </article>
 
-</body>
+        <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-9243803325136617"
+            data-ad-slot="5548365171"
+        ></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <script src="../scripts/scripts.js"></script>
+        <script src="../scripts/dynamicContent.js" defer></script>
+        <script src="../scripts/pinescript-disclaimer.js"></script>
+    </body>
 </html>

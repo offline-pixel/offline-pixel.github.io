@@ -1,185 +1,324 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../styles/blog-common.css" />
+        <style>
+            .fullscreen {
+                padding: 10px 50px;
+                max-width: 70%;
+                margin: auto;
+                text-align: justify;
+            }
+            .tip {
+                background: #e8f4fc;
+                padding: 15px;
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+            }
+            .code-comment {
+                color: #6a9955;
+                font-style: italic;
+            }
+        </style>
 
-    <title>Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-0MM8039GLD");
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617"
+            crossorigin="anonymous"
+        ></script>
 
-    <meta name="description" content="Master the Herrick Payoff Index (HPI) in Pine Script for TradingView - a unique money flow indicator that combines price, volume, and open interest to assess market strength and identify trend reversals.">
-    <meta name="keywords" content="pine script strategies, Herrick Payoff Index, HPI, tradingview indicator, technical analysis, money flow, volume, open interest, trend confirmation, divergence, futures trading">
+        <title>
+            Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="RSS Feed"
+            href="/feed.xml"
+        />
 
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:title" content="Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide">
-    <meta property="og:description" content="Comprehensive tutorial on implementing and using the Herrick Payoff Index (HPI) in Pine Script for advanced trading strategies.">
-    <meta property="og:type" content="article">
+        <meta
+            name="description"
+            content="Master the Herrick Payoff Index (HPI) in Pine Script for TradingView - a unique money flow indicator that combines price, volume, and open interest to assess market strength and identify trend reversals."
+        />
+        <meta
+            name="keywords"
+            content="pine script strategies, Herrick Payoff Index, HPI, tradingview indicator, technical analysis, money flow, volume, open interest, trend confirmation, divergence, futures trading"
+        />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-HerrickPayoffIndex.html" />
+        <!-- Open Graph / Social Meta -->
+        <meta
+            property="og:title"
+            content="Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide"
+        />
+        <meta
+            property="og:description"
+            content="Comprehensive tutorial on implementing and using the Herrick Payoff Index (HPI) in Pine Script for advanced trading strategies."
+        />
+        <meta property="og:type" content="article" />
 
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide",
-      "description": "Master the Herrick Payoff Index (HPI) in Pine Script for TradingView - a unique money flow indicator that combines price, volume, and open interest to assess market strength and identify trend reversals.",
-      "author": {
-        "@type": "Person",
-        "name": "Offline Pixel Computers"
-      },
-      "datePublished": "2025-06-10",
-      "image": "https://offline-pixel.github.io/assets/logo2.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HerrickPayoffIndex.html"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://offline-pixel.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "PineScript Strategies",
-            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Herrick Payoff Index (HPI)",
-            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HerrickPayoffIndex.html"
-          }
-        ]
-      }
-    }
-    </script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script Herrick Payoff Index (HPI) </h1>
-      <p class="blog-subtitle">Master this advanced money flow indicator in TradingView's Pine Script that uniquely combines price, volume, and open interest to gauge market strength and anticipate powerful trend reversals.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide"
+        />
+        <link
+            rel="canonical"
+            href="https://offline-pixel.github.io/pinescript-strategies/pine-script-HerrickPayoffIndex.html"
+        />
 
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
+        <!-- JSON-LD Schema -->
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": "Pine Script Herrick Payoff Index (HPI) - Complete TradingView Guide",
+                "description": "Master the Herrick Payoff Index (HPI) in Pine Script for TradingView - a unique money flow indicator that combines price, volume, and open interest to assess market strength and identify trend reversals.",
+                "author": {
+                    "@type": "Person",
+                    "name": "Offline Pixel Computers"
+                },
+                "datePublished": "2025-06-10",
+                "image": "https://offline-pixel.github.io/assets/logo2.png",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HerrickPayoffIndex.html"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Offline Pixel",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://offline-pixel.github.io/assets/logo2.png"
+                    }
+                },
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://offline-pixel.github.io/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "PineScript Strategies",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "Herrick Payoff Index (HPI)",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HerrickPayoffIndex.html"
+                        }
+                    ]
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header class="blog-header">
+            <div class="container">
+                <h1 class="blog-title">
+                    Pine Script Herrick Payoff Index (HPI)
+                </h1>
+                <p class="blog-subtitle">
+                    Master this advanced money flow indicator in TradingView's
+                    Pine Script that uniquely combines price, volume, and open
+                    interest to gauge market strength and anticipate powerful
+                    trend reversals.
+                </p>
+                <p class="blog-subtitle">
+                    <small
+                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
+                        Rate</small
+                    >
+                </p>
 
-  <article class="fullscreen">
+                <p style="text-align: center; margin-top: 15px">
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img src="../assets/ss.png" width="100%" />
+                    </a>
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        class="new-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Get Pine Script Strategy
+                    </a>
+                </p>
+            </div>
+        </header>
 
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="https://offline-pixel.github.io/">Home</a> >
-  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-  <span aria-current="page">Herrick Payoff Index (HPI)</span>
-</nav>
-</div>
+        <article class="fullscreen">
+            <div class="special-nav-div">
+                <a
+                    href="https://offlinepixel.gumroad.com/l/kpafhy"
+                    class=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
+                </a>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="https://offline-pixel.github.io/">Home</a> >
+                    <a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >PineScript Strategies</a
+                    >
+                    >
+                    <span aria-current="page">Herrick Payoff Index (HPI)</span>
+                </nav>
+            </div>
 
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is the Herrick Payoff Index (HPI)?</h2>
-    <p>The <b>Herrick Payoff Index (HPI)</b> is a sophisticated momentum oscillator that measures the money flowing into or out of a futures contract. Unlike many other volume-based indicators that only consider price and volume, the HPI adds a crucial third component: <b>Open Interest</b>. This makes HPI particularly relevant for futures and options markets where open interest provides additional insight into market participation and commitment.</p>
+            <div class="pinescript-disclaimer"></div>
+            <ins
+                class="adsbygoogle"
+                style="display: block; text-align: center"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-9243803325136617"
+                data-ad-slot="5548365171"
+            ></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <h2>What is the Herrick Payoff Index (HPI)?</h2>
+            <p>
+                The <b>Herrick Payoff Index (HPI)</b> is a sophisticated
+                momentum oscillator that measures the money flowing into or out
+                of a futures contract. Unlike many other volume-based indicators
+                that only consider price and volume, the HPI adds a crucial
+                third component: <b>Open Interest</b>. This makes HPI
+                particularly relevant for futures and options markets where open
+                interest provides additional insight into market participation
+                and commitment.
+            </p>
 
-    <p>The HPI essentially calculates the dollar value of money flowing into or out of a security. A positive HPI value indicates that money is flowing into the asset (accumulation), while a negative value suggests money is flowing out (distribution). The indicator fluctuates around a zero line and is often smoothed with a moving average.</p>
+            <p>
+                The HPI essentially calculates the dollar value of money flowing
+                into or out of a security. A positive HPI value indicates that
+                money is flowing into the asset (accumulation), while a negative
+                value suggests money is flowing out (distribution). The
+                indicator fluctuates around a zero line and is often smoothed
+                with a moving average.
+            </p>
 
-    <p>HPI is primarily used by traders to:</p>
-    <ul>
-      <li> <b>Confirm price trends:</b> A rising HPI confirms an uptrend, and a falling HPI confirms a downtrend, especially in futures markets where open interest is a key factor.</li>
-      <li> <b>Identify divergences:</b> When price and HPI move in opposite directions, it can signal an impending trend reversal.</li>
-      <li> <b>Gauge market conviction:</b> Provides insight into the commitment of market participants.</li>
-    </ul>
+            <p>HPI is primarily used by traders to:</p>
+            <ul>
+                <li>
+                    <b>Confirm price trends:</b> A rising HPI confirms an
+                    uptrend, and a falling HPI confirms a downtrend, especially
+                    in futures markets where open interest is a key factor.
+                </li>
+                <li>
+                    <b>Identify divergences:</b> When price and HPI move in
+                    opposite directions, it can signal an impending trend
+                    reversal.
+                </li>
+                <li>
+                    <b>Gauge market conviction:</b> Provides insight into the
+                    commitment of market participants.
+                </li>
+            </ul>
 
-    <p>In Pine Script, incorporating the Herrick Payoff Index allows for a deeper analysis of money flow, especially when open interest data is available for the traded asset.</p>
+            <p>
+                In Pine Script, incorporating the Herrick Payoff Index allows
+                for a deeper analysis of money flow, especially when open
+                interest data is available for the traded asset.
+            </p>
 
-    <h2>Components and Calculation</h2>
-    <p>The calculation of the Herrick Payoff Index is complex, combining price changes, volume, and open interest. For each period (bar), the calculation generally involves:</p>
-    <ol>
-      <li> <b>Price Change:</b> The difference between the current day's closing price and the previous day's closing price (`close - close[1]`).</li>
-      <li> <b>Daily Range:</b> The difference between the current day's high and low (`high - low`).</li>
-      <li> <b>Volume:</b> The total trading volume for the current period.</li>
-      <li> <b>Open Interest:</b> The total number of open contracts for futures (or open interest for options). This is the unique and crucial component of HPI.</li>
-    </ol>
-    <p>The core formula for HPI (un-smoothed) is often presented as:</p>
-    <br>
-    `HPI = [ (Current Close - Previous Close) / (Current High - Current Low) ] * (Current Volume * HPI_Multiplier)`
-    <br>
-    Where `HPI_Multiplier` typically involves the lesser of current and previous Open Interest, or simply a scaling factor.
-    <br>
-    Specifically, a widely recognized version is:
-    <br>
-    `HPI = ( (close - close[1]) / (high - low) ) * volume * Min(openInterest, openInterest[1]) / ScalingFactor`
+            <h2>Components and Calculation</h2>
+            <p>
+                The calculation of the Herrick Payoff Index is complex,
+                combining price changes, volume, and open interest. For each
+                period (bar), the calculation generally involves:
+            </p>
+            <ol>
+                <li>
+                    <b>Price Change:</b> The difference between the current
+                    day's closing price and the previous day's closing price
+                    (`close - close[1]`).
+                </li>
+                <li>
+                    <b>Daily Range:</b> The difference between the current day's
+                    high and low (`high - low`).
+                </li>
+                <li>
+                    <b>Volume:</b> The total trading volume for the current
+                    period.
+                </li>
+                <li>
+                    <b>Open Interest:</b> The total number of open contracts for
+                    futures (or open interest for options). This is the unique
+                    and crucial component of HPI.
+                </li>
+            </ol>
+            <p>The core formula for HPI (un-smoothed) is often presented as:</p>
+            <br />
+            `HPI = [ (Current Close - Previous Close) / (Current High - Current
+            Low) ] * (Current Volume * HPI_Multiplier)`
+            <br />
+            Where `HPI_Multiplier` typically involves the lesser of current and
+            previous Open Interest, or simply a scaling factor.
+            <br />
+            Specifically, a widely recognized version is:
+            <br />
+            `HPI = ( (close - close[1]) / (high - low) ) * volume *
+            Min(openInterest, openInterest[1]) / ScalingFactor`
 
-    <p>The `ScalingFactor` (e.g., 1000 or 100000) is used to bring the HPI values into a more manageable range for plotting. The `Min(openInterest, openInterest[1])` ensures that if there's a sudden large change in open interest, the calculation isn't distorted by only one side. It also helps in situations where open interest data might be irregular.</p>
+            <p>
+                The `ScalingFactor` (e.g., 1000 or 100000) is used to bring the
+                HPI values into a more manageable range for plotting. The
+                `Min(openInterest, openInterest[1])` ensures that if there's a
+                sudden large change in open interest, the calculation isn't
+                distorted by only one side. It also helps in situations where
+                open interest data might be irregular.
+            </p>
 
-    <p>The final HPI value is usually smoothed using a moving average (e.g., 10-period SMA or EMA) to reduce noise and identify a clearer trend.</p>
+            <p>
+                The final HPI value is usually smoothed using a moving average
+                (e.g., 10-period SMA or EMA) to reduce noise and identify a
+                clearer trend.
+            </p>
 
-    <h2>Basic Herrick Payoff Index (HPI) Implementation in Pine Script</h2>
-    <p>Pine Script v5 provides a built-in function `ta.hpi()` which simplifies the calculation of the Herrick Payoff Index. It automatically handles the various components, including open interest if provided.</p>
-<pre><code><span class="comment">//@version=5</span>
+            <h2>
+                Basic Herrick Payoff Index (HPI) Implementation in Pine Script
+            </h2>
+            <p>
+                Pine Script v5 provides a built-in function `ta.hpi()` which
+                simplifies the calculation of the Herrick Payoff Index. It
+                automatically handles the various components, including open
+                interest if provided.
+            </p>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">indicator</span>(<span class="string">"My Herrick Payoff Index (HPI)"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
 
 <span class="comment">// Input for HPI smoothing length</span>
@@ -221,20 +360,43 @@ hpiValue = <span class="function">ta.hpi</span>(open, high, low, close, volume, 
 </code>
 </pre>
 
+            <div class="tip">
+                <b>Commitment Power:</b> HPI's inclusion of Open Interest makes
+                it particularly powerful for futures/options, as it reflects the
+                true commitment of market participants, not just trading
+                activity.
+            </div>
 
-    <div class="tip">
-     <b>Commitment Power:</b> HPI's inclusion of Open Interest makes it particularly powerful for futures/options, as it reflects the true commitment of market participants, not just trading activity.
-    </div>
+            <h2>
+                Practical HPI
+                <a
+                    href="https://offline-pixel.github.io/pinescript-strategies.html"
+                    >Trading Strategies</a
+                >
+            </h2>
 
-    <h2>Practical HPI <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
-
-    <h3>1. Zero-Line Crossovers (Money Flow Shift)</h3>
-    <p>Crossovers of the zero line indicate a shift in the overall money flow from net buying to net selling, or vice versa. These signals are best used as confirmations rather than standalone entries.</p>
-    <ul>
-      <li><strong>Bullish Signal</strong>: HPI crosses <b>above the zero line</b>. This suggests a shift to net money inflow, indicating accumulation and potentially a bullish trend.</li>
-      <li><strong>Bearish Signal</strong>: HPI crosses <b>below the zero line</b>. This suggests a shift to net money outflow, indicating distribution and potentially a bearish trend.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>1. Zero-Line Crossovers (Money Flow Shift)</h3>
+            <p>
+                Crossovers of the zero line indicate a shift in the overall
+                money flow from net buying to net selling, or vice versa. These
+                signals are best used as confirmations rather than standalone
+                entries.
+            </p>
+            <ul>
+                <li>
+                    <strong>Bullish Signal</strong>: HPI crosses
+                    <b>above the zero line</b>. This suggests a shift to net
+                    money inflow, indicating accumulation and potentially a
+                    bullish trend.
+                </li>
+                <li>
+                    <strong>Bearish Signal</strong>: HPI crosses
+                    <b>below the zero line</b>. This suggests a shift to net
+                    money outflow, indicating distribution and potentially a
+                    bearish trend.
+                </li>
+            </ul>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">strategy</span>(<span class="string">"HPI Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
 
 <span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"HPI Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
@@ -262,14 +424,30 @@ shortCondition = <span class="function">ta.crossunder</span>(hpiValue, <span cla
 </code>
 </pre>
 
-
-    <h3>2. HPI Divergence (Key Reversal Signal)</h3>
-    <p>Divergence between price and HPI is often considered the most powerful signal from the indicator, suggesting a weakening trend and potential reversal, as the money flow isn't confirming the price action.</p>
-    <ul>
-      <li><strong>Bullish Divergence</strong>: Price makes a <b>lower low</b>, but HPI makes a <b>higher low</b> (or fails to make a significantly lower low). This implies that despite falling prices, money is subtly flowing into the asset, hinting at a potential upward reversal.</li>
-      <li><strong>Bearish Divergence</strong>: Price makes a <b>higher high</b>, but HPI makes a <b>lower high</b> (or fails to make a significantly higher high). This implies that despite rising prices, money is subtly flowing out of the asset, hinting at a potential downward reversal.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>2. HPI Divergence (Key Reversal Signal)</h3>
+            <p>
+                Divergence between price and HPI is often considered the most
+                powerful signal from the indicator, suggesting a weakening trend
+                and potential reversal, as the money flow isn't confirming the
+                price action.
+            </p>
+            <ul>
+                <li>
+                    <strong>Bullish Divergence</strong>: Price makes a
+                    <b>lower low</b>, but HPI makes a <b>higher low</b> (or
+                    fails to make a significantly lower low). This implies that
+                    despite falling prices, money is subtly flowing into the
+                    asset, hinting at a potential upward reversal.
+                </li>
+                <li>
+                    <strong>Bearish Divergence</strong>: Price makes a
+                    <b>higher high</b>, but HPI makes a <b>lower high</b> (or
+                    fails to make a significantly higher high). This implies
+                    that despite rising prices, money is subtly flowing out of
+                    the asset, hinting at a potential downward reversal.
+                </li>
+            </ul>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">strategy</span>(<span class="string">"HPI Divergence Strategy"</span>, overlay=<span class="keyword">true</span>)
 
 <span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"HPI Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
@@ -303,14 +481,27 @@ bearishDiv = close > close[<span class="number">1</span>] <span class="keyword">
 </code>
 </pre>
 
-
-    <h3>3. HPI and Price Trend Confirmation</h3>
-    <p>A sustained trend in HPI that aligns with price action provides strong confirmation of the trend's health, particularly when open interest is factored in.</p>
-    <ul>
-      <li><strong>Uptrend Confirmation</strong>: Price is making higher highs and higher lows, and HPI is consistently positive and rising (making higher highs and higher lows). This confirms strong money flow into the asset.</li>
-      <li><strong>Downtrend Confirmation</strong>: Price is making lower highs and lower lows, and HPI is consistently negative and falling (making lower highs and lower lows). This confirms strong money flowing out of the asset.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>3. HPI and Price Trend Confirmation</h3>
+            <p>
+                A sustained trend in HPI that aligns with price action provides
+                strong confirmation of the trend's health, particularly when
+                open interest is factored in.
+            </p>
+            <ul>
+                <li>
+                    <strong>Uptrend Confirmation</strong>: Price is making
+                    higher highs and higher lows, and HPI is consistently
+                    positive and rising (making higher highs and higher lows).
+                    This confirms strong money flow into the asset.
+                </li>
+                <li>
+                    <strong>Downtrend Confirmation</strong>: Price is making
+                    lower highs and lower lows, and HPI is consistently negative
+                    and falling (making lower highs and lower lows). This
+                    confirms strong money flowing out of the asset.
+                </li>
+            </ul>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">strategy</span>(<span class="string">"HPI Trend Confirmation Strategy"</span>, overlay=<span class="keyword">true</span>)
 
 <span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">10</span>, <span class="keyword">title</span>=<span class="string">"HPI Smoothing Length"</span>, <span class="keyword">minval</span>=<span class="number">1</span>)
@@ -343,60 +534,165 @@ shortConfirm = close &lt; priceMA <span class="keyword">and</span> hpiValue &lt;
 </code>
 </pre>
 
+            <h2>Optimizing Herrick Payoff Index (HPI) Performance</h2>
+            <p>To get the most from the Herrick Payoff Index in Pine Script:</p>
+            <ul>
+                <li>
+                    <strong>Data Availability:</strong> HPI is most effective
+                    when reliable <b>open interest</b> data is available. For
+                    assets without open interest, the indicator will still
+                    calculate (often using volume as a proxy), but its unique
+                    advantage is diminished. Verify open interest data for your
+                    chosen asset/timeframe.
+                </li>
+                <li>
+                    <strong>Focus on Divergence:</strong> HPI's most robust and
+                    actionable signals often come from <b>divergences</b> with
+                    price. These are reliable indicators of weakening trends and
+                    potential reversals, as they reveal a disconnect between
+                    price and underlying money flow.
+                </li>
+                <li>
+                    <strong>Parameter Tuning:</strong> The `length` parameter
+                    smooths the HPI. Shorter lengths make it more responsive but
+                    potentially noisy. Longer lengths will smooth it out but
+                    introduce more lag. Experiment to find a balance for your
+                    trading style and asset.
+                </li>
+                <li>
+                    <strong>Combine with Price Action:</strong> Always confirm
+                    HPI signals with <b>price action</b>. A bullish divergence
+                    is stronger if price also forms a bullish reversal
+                    candlestick pattern or breaks a short-term resistance.
+                </li>
+                <li>
+                    <strong>Trend Context:</strong> Use HPI in the context of
+                    the larger trend. In an uptrend, focus on bullish
+                    divergences and zero-line bounces for long entries. In a
+                    downtrend, focus on bearish divergences and zero-line
+                    rejections for short entries.
+                </li>
+                <li>
+                    <strong>Volatile Markets:</strong> HPI can be particularly
+                    useful in volatile markets where rapid price swings might
+                    make simpler volume indicators less clear. The inclusion of
+                    range and open interest can provide more stable insights.
+                </li>
+            </ul>
 
-    <h2>Optimizing Herrick Payoff Index (HPI) Performance</h2>
-    <p>To get the most from the Herrick Payoff Index in Pine Script:</p>
-    <ul>
-      <li><strong>Data Availability:</strong> HPI is most effective when reliable <b>open interest</b> data is available. For assets without open interest, the indicator will still calculate (often using volume as a proxy), but its unique advantage is diminished. Verify open interest data for your chosen asset/timeframe.</li>
-      <li><strong>Focus on Divergence:</strong> HPI's most robust and actionable signals often come from <b>divergences</b> with price. These are reliable indicators of weakening trends and potential reversals, as they reveal a disconnect between price and underlying money flow.</li>
-      <li><strong>Parameter Tuning:</strong> The `length` parameter smooths the HPI. Shorter lengths make it more responsive but potentially noisy. Longer lengths will smooth it out but introduce more lag. Experiment to find a balance for your trading style and asset.</li>
-      <li><strong>Combine with Price Action:</strong> Always confirm HPI signals with <b>price action</b>. A bullish divergence is stronger if price also forms a bullish reversal candlestick pattern or breaks a short-term resistance.</li>
-      <li><strong>Trend Context:</strong> Use HPI in the context of the larger trend. In an uptrend, focus on bullish divergences and zero-line bounces for long entries. In a downtrend, focus on bearish divergences and zero-line rejections for short entries.</li>
-      <li><strong>Volatile Markets:</strong> HPI can be particularly useful in volatile markets where rapid price swings might make simpler volume indicators less clear. The inclusion of range and open interest can provide more stable insights.</li>
-    </ul>
+            <div class="tip">
+                <b>Money Flow Depth:</b> HPI's unique ability to incorporate
+                open interest provides a deeper look into the conviction of
+                market participants, beyond just daily transactional volume.
+            </div>
 
-    <div class="tip">
-     <b>Money Flow Depth:</b> HPI's unique ability to incorporate open interest provides a deeper look into the conviction of market participants, beyond just daily transactional volume.
-    </div>
+            <h2>Common HPI Pitfalls</h2>
+            <ul>
+                <li>
+                    <b>Open Interest Dependency:</b> If open interest data is
+                    not available or is inconsistent for an asset, HPI's primary
+                    advantage is lost, and it might behave similarly to other
+                    volume-price indicators.
+                </li>
+                <li>
+                    <b>Complexity and Interpretation:</b> HPI's calculation is
+                    more complex than basic volume indicators, which can make
+                    its nuanced interpretation challenging for beginners.
+                </li>
+                <li>
+                    <b>Lag:</b> As a smoothed, cumulative indicator, HPI
+                    inherently lags price action. Its signals are for
+                    confirmation or long-term trend shifts rather than immediate
+                    entries.
+                </li>
+                <li>
+                    <b>False Signals:</b> In very choppy or low-volume markets
+                    (especially those without strong open interest
+                    participation), HPI can generate ambiguous signals or
+                    whipsaws around the zero line.
+                </li>
+                <li>
+                    <b>Not a Standalone Indicator:</b> HPI provides crucial
+                    insights but should never be used in isolation. It works
+                    best as a confirming or filtering indicator within a broader
+                    trading strategy.
+                </li>
+            </ul>
 
-    <h2>Common HPI Pitfalls</h2>
-    <ul>
-      <li> <b>Open Interest Dependency:</b> If open interest data is not available or is inconsistent for an asset, HPI's primary advantage is lost, and it might behave similarly to other volume-price indicators.</li>
-      <li> <b>Complexity and Interpretation:</b> HPI's calculation is more complex than basic volume indicators, which can make its nuanced interpretation challenging for beginners.</li>
-      <li> <b>Lag:</b> As a smoothed, cumulative indicator, HPI inherently lags price action. Its signals are for confirmation or long-term trend shifts rather than immediate entries.</li>
-      <li> <b>False Signals:</b> In very choppy or low-volume markets (especially those without strong open interest participation), HPI can generate ambiguous signals or whipsaws around the zero line.</li>
-      <li> <b>Not a Standalone Indicator:</b> HPI provides crucial insights but should never be used in isolation. It works best as a confirming or filtering indicator within a broader trading strategy.</li>
-    </ul>
+            <h2>Conclusion</h2>
+            <p>
+                The Herrick Payoff Index (HPI) is an advanced and highly
+                insightful momentum oscillator available in Pine Script for
+                TradingView. By uniquely combining price, volume, and crucially,
+                <b>open interest</b>, it offers traders a deeper and more
+                comprehensive understanding of the money flow and underlying
+                conviction driving an asset's price. While its greatest strength
+                lies in identifying powerful <b>divergences</b> with price
+                (signaling potential trend reversals), it also excels at
+                confirming existing trends and validating shifts in market
+                sentiment through its zero-line crossovers. By understanding its
+                calculation, ensuring data availability (especially for open
+                interest), thoughtfully tuning its parameters, and integrating
+                it strategically with price action and other technical analysis
+                tools, you can leverage HPI to enhance your
+                <b
+                    ><a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >pine script strategies</a
+                    ></b
+                >
+                and gain a clearer understanding of the forces driving market
+                movement, particularly in futures and options markets.
+            </p>
 
-    <h2>Conclusion</h2>
-    <p>The Herrick Payoff Index (HPI) is an advanced and highly insightful momentum oscillator available in Pine Script for TradingView. By uniquely combining price, volume, and crucially, <b>open interest</b>, it offers traders a deeper and more comprehensive understanding of the money flow and underlying conviction driving an asset's price. While its greatest strength lies in identifying powerful <b>divergences</b> with price (signaling potential trend reversals), it also excels at confirming existing trends and validating shifts in market sentiment through its zero-line crossovers. By understanding its calculation, ensuring data availability (especially for open interest), thoughtfully tuning its parameters, and integrating it strategically with price action and other technical analysis tools, you can leverage HPI to enhance your <b><a href="https://offline-pixel.github.io/pinescript-strategies.html">pine script strategies</a></b> and gain a clearer understanding of the forces driving market movement, particularly in futures and options markets.</p>
-  
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
+            <section class="cta-section custom-strategy-cta">
+                <h2 class="cta-title">Enhance Your Trading</h2>
+                <p>
+                    Get a high-performance Pine Script analysis tool for
+                    actionable market insights, designed for traders on the
+                    move.
+                </p>
+                <p>
+                    This strategy runs in live mode on TradingView, helping you
+                    identify potential opportunities.
+                </p>
+                <p>
+                    <small
+                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
+                        Rate</small
+                    >
+                </p>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img src="../assets/ss.png" width="100%" />
+                </a>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    class="new-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get Pine Script Strategy
+                </a>
+            </section>
+        </article>
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
-
-</body>
+        <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-9243803325136617"
+            data-ad-slot="5548365171"
+        ></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <script src="../scripts/scripts.js"></script>
+        <script src="../scripts/dynamicContent.js" defer></script>
+        <script src="../scripts/pinescript-disclaimer.js"></script>
+    </body>
 </html>
