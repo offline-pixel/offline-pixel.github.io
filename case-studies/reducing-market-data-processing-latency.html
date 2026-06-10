@@ -5,10 +5,31 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reducing Market Data Processing Latency</title>
-    <script type="module" crossorigin src="/assets/index-DnvY4DoP.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
-    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-CU2yhFwf.css">
+    <script type="module" crossorigin src="/assets/index-Kj-oM2tz.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DXq1-kNr.js">
+    <link rel="modulepreload" crossorigin href="/assets/GameEngine-VLlxzCS5.js">
+    <link rel="modulepreload" crossorigin href="/assets/FundOrPass-CrSUsCty.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-9-ZHoXH8.js">
+    <link rel="modulepreload" crossorigin href="/assets/AlphaOrLuck-BJOki_0q.js">
+    <link rel="modulepreload" crossorigin href="/assets/BayesDetective-B2lYD8NP.js">
+    <link rel="modulepreload" crossorigin href="/assets/BubbleDetector-Du9yRbJt.js">
+    <link rel="modulepreload" crossorigin href="/assets/CoinTossMaster-B1ld9t0r.js">
+    <link rel="modulepreload" crossorigin href="/assets/DicePredictor-DOlDjygc.js">
+    <link rel="modulepreload" crossorigin href="/assets/DrawdownEscape-GyU3f55K.js">
+    <link rel="modulepreload" crossorigin href="/assets/ExpectedValue-Dw0WVEhc.js">
+    <link rel="modulepreload" crossorigin href="/assets/FindArbitrage-Ch2iRv8N.js">
+    <link rel="modulepreload" crossorigin href="/assets/FundBlowUp-DqwANuV6.js">
+    <link rel="modulepreload" crossorigin href="/assets/GuessNextCandle-Dd7E-eVA.js">
+    <link rel="modulepreload" crossorigin href="/assets/KellyBet-CDfdF9L3.js">
+    <link rel="modulepreload" crossorigin href="/assets/MarketMaker-DtcEa2Vu.js">
+    <link rel="modulepreload" crossorigin href="/assets/MonteCarlo-DaAYRPBq.js">
+    <link rel="modulepreload" crossorigin href="/assets/OverfitDetector-B_5oAUen.js">
+    <link rel="modulepreload" crossorigin href="/assets/PortfolioBuilder-hFbmPV7l.js">
+    <link rel="modulepreload" crossorigin href="/assets/ProbabilitySprint-BLxr5NVD.js">
+    <link rel="modulepreload" crossorigin href="/assets/SharpeHunter-B2A53h_s.js">
+    <link rel="modulepreload" crossorigin href="/assets/SignalOrNoise-8Ta--Goh.js">
+    <link rel="modulepreload" crossorigin href="/assets/UpOrDown-DNBs3yWC.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-FDqe_sns.css">
   
     <meta name="description" content="A quantitative trading firm reduced market data processing latency from 45μs to 8μs using kernel bypass and lock-free data structures.">
     <meta property="og:title" content="Reducing Market Data Processing Latency">
@@ -747,24 +768,16 @@
       <div class="max-w-4xl mx-auto px-6 py-3">
         <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
           
-            <li>
-              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
-            </li>
+            <li><a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a></li>
             <li aria-hidden="true">/</li>
           
-            <li>
-              <a href="/hire" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Hire</a>
-            </li>
+            <li><a href="/hire" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Hire</a></li>
             <li aria-hidden="true">/</li>
           
-            <li>
-              <a href="/case-studies" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Case Studies</a>
-            </li>
+            <li><a href="/case-studies" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Case Studies</a></li>
             <li aria-hidden="true">/</li>
           
-            <li>
-              <span class="text-slate-600 dark:text-slate-300">Quantitative Trading</span>
-            </li>
+            <li><span class="text-slate-600 dark:text-slate-300">Quantitative Trading</span></li>
             
           
         </ol>
@@ -772,144 +785,32 @@
     </nav>
   
       <article class="max-w-3xl mx-auto px-6 py-12 lg:py-16">
-        
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A systematic fund&#39;s market data feed handler was the latency bottleneck, adding 45μs before strategies could react. Rewriting in Rust with DPDK kernel bypass and lock-free order book reconstruction reduced latency by 82%, enabling new alpha strategies.</p>
-        
-          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 mt-4">
-            <h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Outcomes</h3>
-            <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> 82% reduction in feed processing latency (45μs → 8μs)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> Handles 10M messages/sec on single core</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> Enabled 3 new latency-sensitive strategies</li></ul>
-          </div>
-        
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Client Situation</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The fund&#39;s mid-frequency strategies required consistent sub-50μs data delivery. Their feed handler couldn&#39;t keep up during volatility spikes.</p>
-        
-          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6">
-            <h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Challenges</h3>
-            <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> 45μs processing latency eating into available decision window</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> Message drops during 10x volume spikes</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> Inability to add new instruments without increasing latency</li></ul>
-          </div>
-        
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Existing Architecture</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">C++ feed handler using Linux kernel networking with TCP. Order book reconstruction using STL containers with locks.</p>
-        
-          <ul class="space-y-2 border-l-2 border-red-400 pl-4"><li class="text-slate-700 dark:text-slate-300">Kernel networking stack adding 20-30μs overhead</li><li class="text-slate-700 dark:text-slate-300">Lock contention on order book during high update rates</li><li class="text-slate-700 dark:text-slate-300">Memory allocations causing unpredictable pauses</li></ul>
-        
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Solution Design</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Rust feed handler with DPDK for kernel bypass, lock-free order book using crossbeam, and pre-allocated memory pools.</p>
-        
-          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 mb-4">
-            <h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Decisions</h3>
-            <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Use DPDK for direct NIC to userspace packet delivery</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Lock-free order book using epoch-based memory reclamation</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> No-std Rust for deterministic allocation-free path</li></ul>
-          </div>
-        
-        
-          <div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Rust</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">DPDK</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">crossbeam</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">ClickHouse</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">gRPC</span></div>
-        
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Implementation</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Shadow mode for 6 weeks, comparing rebuilt feed handler against production baseline before cutover.</p>
-        
-          <ol class="space-y-4"><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 1: Phase 1: DPDK Integration</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Implemented packet capture and parsing in Rust using DPDK bindings.</p></li><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 2: Phase 2: Lock-Free Order Book</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Built concurrent order book with snapshot capability, zero allocations.</p></li><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 3: Phase 3: Full Deployment</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Replaced existing feed handler across all 50 trading servers.</p></li></ol>
-        
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Technical Challenges</h2>
-        <dl class="space-y-6"><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><dt class="font-semibold text-slate-900 dark:text-white mb-2">DPDK memory management in Rust</dt><dd class="space-y-2"><p class="text-sm text-slate-600 dark:text-slate-400"><strong class="font-medium">Impact:</strong> Huge pages causing cross-language memory safety issues</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong class="font-medium">Resolution:</strong> Created safe Rust abstractions over DPDK memory pools</p></dd></div><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><dt class="font-semibold text-slate-900 dark:text-white mb-2">Order book snapshot consistency</dt><dd class="space-y-2"><p class="text-sm text-slate-600 dark:text-slate-400"><strong class="font-medium">Impact:</strong> Risk queries seeing inconsistent state during updates</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong class="font-medium">Resolution:</strong> Double-buffered snapshots with epoch protection</p></dd></div></dl>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Results</h2>
-        <dl class="space-y-4 my-6">
-      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-        <dt class="font-semibold text-slate-900 dark:text-white mb-1">Feed handler processing latency (P99)</dt>
-        <dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">45μs</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">8μs</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">82% reduction</span></div></dd>
-      </div>
-    
-      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-        <dt class="font-semibold text-slate-900 dark:text-white mb-1">Max message rate (single core)</dt>
-        <dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">1.5M/sec</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">10M/sec</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">6.7x increase</span></div></dd>
-      </div>
-    
-      <div class="border-b border-slate-200 dark:border-slate-800 pb-4">
-        <dt class="font-semibold text-slate-900 dark:text-white mb-1">Memory allocations per message</dt>
-        <dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">3-5</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">0</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">100% elimination</span></div></dd>
-      </div>
-    </dl>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Lessons Learned</h2>
-        <ul class="space-y-3"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> Rust&#39;s ownership model caught 12 race conditions in order book logic</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> DPDK kernel bypass is essential for deterministic sub-10μs processing</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> Pre-allocated memory pools eliminated GC/alloc pauses entirely</li></ul>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">What We Would Do Differently</h2>
-        <ul class="space-y-3"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">💡</span> Use io_uring instead of DPDK for less vendor lock-in</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">💡</span> Implement persistent order book snapshots for recovery</li></ul>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Role Relevance</h2>
-        <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">Quant developers with systems programming expertise in Rust and kernel bypass were critical for achieving 8μs deterministic latency.</p>
-        
-          <div><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Critical Skills Demonstrated</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Kernel bypass (DPDK/io_uring)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Lock-free data structures</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Rust no_std development</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Order book reconstruction</span></div></div>
-        
-      </section>
-    
-        
-    <section class="fade-section opacity-0 mb-12">
+        <section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">A systematic fund&#39;s market data feed handler was the latency bottleneck, adding 45μs before strategies could react. Rewriting in Rust with DPDK kernel bypass and lock-free order book reconstruction reduced latency by 82%, enabling new alpha strategies.</p><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 mt-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Outcomes</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> 82% reduction in feed processing latency (45μs → 8μs)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> Handles 10M messages/sec on single core</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-500 mt-1">▹</span> Enabled 3 new latency-sensitive strategies</li></ul></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Client Situation</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The fund&#39;s mid-frequency strategies required consistent sub-50μs data delivery. Their feed handler couldn&#39;t keep up during volatility spikes.</p><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Challenges</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> 45μs processing latency eating into available decision window</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> Message drops during 10x volume spikes</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">⚠</span> Inability to add new instruments without increasing latency</li></ul></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Existing Architecture</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">C++ feed handler using Linux kernel networking with TCP. Order book reconstruction using STL containers with locks.</p><ul class="space-y-2 border-l-2 border-red-400 pl-4"><li class="text-slate-700 dark:text-slate-300">Kernel networking stack adding 20-30μs overhead</li><li class="text-slate-700 dark:text-slate-300">Lock contention on order book during high update rates</li><li class="text-slate-700 dark:text-slate-300">Memory allocations causing unpredictable pauses</li></ul></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Solution Design</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Rust feed handler with DPDK for kernel bypass, lock-free order book using crossbeam, and pre-allocated memory pools.</p><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6 mb-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Key Decisions</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Use DPDK for direct NIC to userspace packet delivery</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> Lock-free order book using epoch-based memory reclamation</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-emerald-600 dark:text-emerald-400 mt-1">✓</span> No-std Rust for deterministic allocation-free path</li></ul></div><div class="flex flex-wrap gap-2 mt-4"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Rust</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">DPDK</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">crossbeam</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">ClickHouse</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">gRPC</span></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Implementation</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Shadow mode for 6 weeks, comparing rebuilt feed handler against production baseline before cutover.</p><ol class="space-y-4"><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 1: Phase 1: DPDK Integration</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Implemented packet capture and parsing in Rust using DPDK bindings.</p></li><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 2: Phase 2: Lock-Free Order Book</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Built concurrent order book with snapshot capability, zero allocations.</p></li><li class="border-l-4 border-indigo-500 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Phase 3: Phase 3: Full Deployment</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Replaced existing feed handler across all 50 trading servers.</p></li></ol></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Technical Challenges</h2><dl class="space-y-6"><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><dt class="font-semibold text-slate-900 dark:text-white mb-2">DPDK memory management in Rust</dt><dd class="space-y-2"><p class="text-sm text-slate-600 dark:text-slate-400"><strong class="font-medium">Impact:</strong> Huge pages causing cross-language memory safety issues</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong class="font-medium">Resolution:</strong> Created safe Rust abstractions over DPDK memory pools</p></dd></div><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><dt class="font-semibold text-slate-900 dark:text-white mb-2">Order book snapshot consistency</dt><dd class="space-y-2"><p class="text-sm text-slate-600 dark:text-slate-400"><strong class="font-medium">Impact:</strong> Risk queries seeing inconsistent state during updates</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong class="font-medium">Resolution:</strong> Double-buffered snapshots with epoch protection</p></dd></div></dl></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Results</h2><dl class="space-y-4 my-6"><div class="border-b border-slate-200 dark:border-slate-800 pb-4"><dt class="font-semibold text-slate-900 dark:text-white mb-1">Feed handler processing latency (P99)</dt><dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">45μs</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">8μs</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">82% reduction</span></div></dd></div><div class="border-b border-slate-200 dark:border-slate-800 pb-4"><dt class="font-semibold text-slate-900 dark:text-white mb-1">Max message rate (single core)</dt><dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">1.5M/sec</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">10M/sec</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">6.7x increase</span></div></dd></div><div class="border-b border-slate-200 dark:border-slate-800 pb-4"><dt class="font-semibold text-slate-900 dark:text-white mb-1">Memory allocations per message</dt><dd class="grid grid-cols-3 gap-4 text-sm"><div><span class="text-slate-500 block text-xs">Before</span><span class="text-slate-700 dark:text-slate-300">3-5</span></div><div><span class="text-slate-500 block text-xs">After</span><span class="text-slate-700 dark:text-slate-300">0</span></div><div><span class="text-slate-500 block text-xs">Improvement</span><span class="text-slate-900 dark:text-white font-semibold">100% elimination</span></div></dd></div></dl></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Lessons Learned</h2><ul class="space-y-3"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> Rust&#39;s ownership model caught 12 race conditions in order book logic</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> DPDK kernel bypass is essential for deterministic sub-10μs processing</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-600 dark:text-indigo-400 mt-1">📘</span> Pre-allocated memory pools eliminated GC/alloc pauses entirely</li></ul></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">What We Would Do Differently</h2><ul class="space-y-3"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">💡</span> Use io_uring instead of DPDK for less vendor lock-in</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-amber-600 dark:text-amber-400 mt-1">💡</span> Implement persistent order book snapshots for recovery</li></ul></section><section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Role Relevance</h2><p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">Quant developers with systems programming expertise in Rust and kernel bypass were critical for achieving 8μs deterministic latency.</p><div><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Critical Skills Demonstrated</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Kernel bypass (DPDK/io_uring)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Lock-free data structures</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Rust no_std development</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Order book reconstruction</span></div></div></section>
+    <div class="fade-section opacity-0 mb-12">
       <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
       <div class="grid gap-4">
-    <a href="/hire/quant-developer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
-      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Quant Developer</span>
-      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  
-    <a href="/hire/rust-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
-      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Rust Engineer</span>
-      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  
-    <a href="/hire/quant-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
-      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Quant Engineer</span>
-      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-    </section>
-  
-        
-    <section class="fade-section opacity-0 mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
-      <dl class="space-y-4">
-    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
-      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Why Rust instead of C++ for the feed handler?</dt>
-      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Rust&#39;s memory safety without GC and fearless concurrency caught bugs that would have crashed C++ version.</dd>
+        <a href="/hire/quant-developer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+          <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Quant Developer</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      
+        <a href="/hire/rust-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+          <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Rust Engineer</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      
+        <a href="/hire/quant-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+          <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Quant Engineer</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
-  
-    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
-      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How do you handle feed recovery after disconnect?</dt>
-      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Snapshot recovery from ClickHouse with sequence number gap detection.</dd>
-    </div>
-  </dl>
-    </section>
-  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><div class="fade-section opacity-0"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2><dl class="space-y-4"><div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30"><dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Why Rust instead of C++ for the feed handler?</dt><dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Rust&#39;s memory safety without GC and fearless concurrency caught bugs that would have crashed C++ version.</dd></div><div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30"><dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How do you handle feed recovery after disconnect?</dt><dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Snapshot recovery from ClickHouse with sequence number gap detection.</dd></div></dl></div>
         
-    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
-      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to reduce your market data latency?</h3>
-      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire quant developers who have built sub-10μs feed handlers at scale.</p>
-      <a href="/hire/quant-developer" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+    <aside class="fade-section opacity-0 py-20 text-center">
+      <h3 class="text-2xl font-bold text-slate-500 mb-3">Ready to reduce your market data latency?</h3>
+      <p class="text-slate-500 mb-6">Hire quant developers who have built sub-10μs feed handlers at scale.</p>
+      <a href="/hire/quant-developer" class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white dark:bg-white dark:text-black rounded-xl font-semibold hover:bg-black/80 dark:hover:bg-white/80 transition-all hover:scale-105 shadow-lg">
         Hire Quant Developer <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
       </a>
     </aside>
