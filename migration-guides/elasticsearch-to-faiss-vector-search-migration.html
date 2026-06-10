@@ -5,10 +5,31 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elasticsearch to FAISS Vector Search Migration</title>
-    <script type="module" crossorigin src="/assets/index-DnvY4DoP.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DgQ1SXZU.js">
-    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-CoH0WVZD.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-CU2yhFwf.css">
+    <script type="module" crossorigin src="/assets/index-Kj-oM2tz.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DXq1-kNr.js">
+    <link rel="modulepreload" crossorigin href="/assets/GameEngine-VLlxzCS5.js">
+    <link rel="modulepreload" crossorigin href="/assets/FundOrPass-CrSUsCty.js">
+    <link rel="modulepreload" crossorigin href="/assets/ScrollTrigger-9-ZHoXH8.js">
+    <link rel="modulepreload" crossorigin href="/assets/AlphaOrLuck-BJOki_0q.js">
+    <link rel="modulepreload" crossorigin href="/assets/BayesDetective-B2lYD8NP.js">
+    <link rel="modulepreload" crossorigin href="/assets/BubbleDetector-Du9yRbJt.js">
+    <link rel="modulepreload" crossorigin href="/assets/CoinTossMaster-B1ld9t0r.js">
+    <link rel="modulepreload" crossorigin href="/assets/DicePredictor-DOlDjygc.js">
+    <link rel="modulepreload" crossorigin href="/assets/DrawdownEscape-GyU3f55K.js">
+    <link rel="modulepreload" crossorigin href="/assets/ExpectedValue-Dw0WVEhc.js">
+    <link rel="modulepreload" crossorigin href="/assets/FindArbitrage-Ch2iRv8N.js">
+    <link rel="modulepreload" crossorigin href="/assets/FundBlowUp-DqwANuV6.js">
+    <link rel="modulepreload" crossorigin href="/assets/GuessNextCandle-Dd7E-eVA.js">
+    <link rel="modulepreload" crossorigin href="/assets/KellyBet-CDfdF9L3.js">
+    <link rel="modulepreload" crossorigin href="/assets/MarketMaker-DtcEa2Vu.js">
+    <link rel="modulepreload" crossorigin href="/assets/MonteCarlo-DaAYRPBq.js">
+    <link rel="modulepreload" crossorigin href="/assets/OverfitDetector-B_5oAUen.js">
+    <link rel="modulepreload" crossorigin href="/assets/PortfolioBuilder-hFbmPV7l.js">
+    <link rel="modulepreload" crossorigin href="/assets/ProbabilitySprint-BLxr5NVD.js">
+    <link rel="modulepreload" crossorigin href="/assets/SharpeHunter-B2A53h_s.js">
+    <link rel="modulepreload" crossorigin href="/assets/SignalOrNoise-8Ta--Goh.js">
+    <link rel="modulepreload" crossorigin href="/assets/UpOrDown-DNBs3yWC.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-FDqe_sns.css">
   
     <meta name="description" content="A guide to migrating keyword-based Elasticsearch to FAISS vector search for semantic similarity at 100x lower latency.">
     <meta property="og:title" content="Elasticsearch to FAISS Vector Search Migration">
@@ -865,164 +886,53 @@
       <div class="max-w-4xl mx-auto px-6 py-3">
         <ol class="flex items-center gap-2 text-xs uppercase tracking-wider font-mono text-slate-400">
           
-            <li>
-              <a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a>
-            </li>
+            <li><a href="/" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Home</a></li>
             <li aria-hidden="true">/</li>
           
-            <li>
-              <a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a>
-            </li>
+            <li><a href="/resources" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Resources</a></li>
             <li aria-hidden="true">/</li>
           
-            <li>
-              <a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a>
-            </li>
+            <li><a href="/migration-guides" class="hover:text-slate-600 dark:hover:text-slate-300 transition-colors">Migration Guides</a></li>
             <li aria-hidden="true">/</li>
           
-            <li>
-              <span class="text-slate-600 dark:text-slate-300">FAISS + Sentence Transformers</span>
-            </li>
+            <li><span class="text-slate-600 dark:text-slate-300">FAISS + Sentence Transformers</span></li>
             
           
         </ol>
       </div>
     </nav>
   
-      <article class="max-w-4xl mx-auto px-6 py-12 lg:py-16">
-        <div class="max-w-4xl mx-auto px-6">
-          
-    <div class="flex flex-wrap gap-2 mb-6">
-      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Elasticsearch (Keyword/TF-IDF) → FAISS + Sentence Transformers</span>
-      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Incremental</span>
-      <span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">MEDIUM Difficulty</span>
-    </div>
-  
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Elasticsearch to FAISS Vector Search Migration</h1>
-          <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating keyword-based Elasticsearch to FAISS vector search for semantic similarity at 100x lower latency.</p>
-          
-    <div class="mt-8 flex flex-wrap gap-6 text-sm">
-      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">3-5 months</span></div>
-      <div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">faiss-expert</span></div>
-    </div>
-  
-        </div>
-        <div class="max-w-4xl mx-auto px-6 mt-12">
-          
-      <section class="fade-section opacity-0 mb-12">
-        <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800">
-          <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">An e-commerce search platform using Elasticsearch keyword matching had 65% recall—users couldn&#39;t find products using natural language. Over 4 months, they migrated to FAISS vector search with sentence embeddings, achieving 92% recall and 10x faster queries. This guide covers embedding generation, index building, and hybrid search strategies.</p>
-          <div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Replace keyword search with semantic embeddings for natural language</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">FAISS provides 100x faster similarity search than Elasticsearch script_score</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Hybrid search (keyword + vector) improves recall 15%</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Embedding quality determines search relevance</span></div></div>
-        </div>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate from Elasticsearch Keyword Search</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Elasticsearch&#39;s keyword-based search failed for synonyms and natural language queries. Users searched &quot;comfortable running shoes&quot; and got no results for &quot;soft sneakers.&quot;</p>
-        <ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 65% recall (users can&#39;t find products)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 30% search abandonment rate</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Elasticsearch cluster cost $10k/month (100 nodes)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Manual synonym lists (2 engineers full-time)</li></ul>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">FAISS Migration Readiness</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 1 month generating embeddings (Sentence-BERT), setting up FAISS, and creating evaluation framework.</p>
-        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Sentence-BERT model (fine-tuned on product descriptions)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> FAISS index (IVF, HNSW selection)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Embedding pipeline (100M products → 100GB vectors)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Evaluation dataset (10K queries with relevance labels)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Hybrid search (Elasticsearch + FAISS) for gradual rollout</li></ul>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Elasticsearch Assessment</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Elasticsearch had 100M documents, 100 nodes, 10k queries/second. Keyword search worked for exact matches but failed for synonyms.</p>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Manual synonym list (10K terms, outdated)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No semantic understanding (misses 35% of relevant results)</li><li class="text-sm text-slate-600 dark:text-slate-400">• script_score vector search too slow (500ms)</li><li class="text-sm text-slate-600 dark:text-slate-400">• High operational cost (100 nodes)</li></ul></div>
-          <div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Embedding quality (does it capture domain semantics?)</li><li class="text-sm text-slate-600 dark:text-slate-400">• FAISS index building time (100M vectors → 1 week)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Hybrid search complexity</li><li class="text-sm text-slate-600 dark:text-slate-400">• Team learning curve (FAISS vs Elasticsearch)</li></ul></div>
-        </div>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target FAISS Vector Search Architecture</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">FAISS for vector search + Elasticsearch for keyword (hybrid reranking).</p>
-        <div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Sentence-BERT (fine-tuned on product data)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FAISS index (IVF4096, PQ64, 100M vectors)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Elasticsearch (reduced to 10 nodes for keyword)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Hybrid reranker (combine vector + keyword scores)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">GPU inference for embeddings (8x A100)</span></div>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">4-Month FAISS Migration</h2>
-        <ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Embedding (Month 1)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Generated embeddings for 100M products using Sentence-BERT (2 weeks on GPU).</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: FAISS Index (Month 2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Built IVF4096 index, recall 92% at 10ms latency.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Hybrid (Month 3)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Hybrid search (vector + keyword) shadow mode, compare to Elasticsearch.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 4: Phase 4: Cutover (Month 4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">100% traffic on hybrid search, Elasticsearch reduced to 10 nodes.</p></li></ol>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Product Data to Embeddings</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Product titles, descriptions, and attributes converted to 384-dim embeddings via Sentence-BERT.</p>
-        <ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Batch inference (10M products/day)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Embedding storage (100M × 384 × 4 bytes = 150GB)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Quantization (FP16 reduces to 75GB, minimal recall loss)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Incremental updates (new products embedded daily)</li></ul>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Elasticsearch to FAISS Mistakes</h2>
-        <div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Using generic embeddings (not fine-tuned)</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Recall 70% vs fine-tuned 92%</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Fine-tune Sentence-BERT on domain data</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No hybrid search (pure vector)</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Misses exact term matches (product codes)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Hybrid vector + keyword search</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Single-stage retrieval only</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> HNSW recall 85%, reranking improves to 95%</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Two-stage: FAISS + cross-encoder reranker</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Not quantizing embeddings</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Index size 150GB (expensive)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> FP16 quantization (75GB, 1% recall loss)</p></div></div>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Migration Success Metrics</h2>
-        <div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Recall@10: 65% → 92% (42% improvement)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Query latency: 500ms → 15ms (97% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Search abandonment: 30% → 12% (60% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Elasticsearch nodes: 100 → 10 (90% reduction)</span></div></div>
-      </section>
-    
-      <section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead FAISS Migration</h2>
-        <div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FAISS Expert (3+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Search Engineer (Elasticsearch)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">ML Engineer (embeddings)</span></div></div>
-        <div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> FAISS index optimization</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Sentence-BERT fine-tuning</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Elasticsearch production</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Hybrid search design</li></ul></div>
-      </section>
-    
-          
-    <section class="fade-section opacity-0 mb-12">
+      <article class="max-w-3xl mx-auto px-6 py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-6"><div class="flex flex-wrap gap-2 mb-6"><span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Elasticsearch (Keyword/TF-IDF) → FAISS + Sentence Transformers</span><span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Incremental</span><span class="px-3 py-1 text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">MEDIUM Difficulty</span></div><h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight tracking-tight">Elasticsearch to FAISS Vector Search Migration</h1><p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">A guide to migrating keyword-based Elasticsearch to FAISS vector search for semantic similarity at 100x lower latency.</p><div class="mt-8 flex flex-wrap gap-6 text-sm"><div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Estimated Timeline</span><span class="text-slate-900 dark:text-white font-medium">3-5 months</span></div><div><span class="block text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400">Primary Role</span><span class="text-slate-900 dark:text-white font-medium">faiss-expert</span></div></div></div><div class="max-w-4xl mx-auto px-6 mt-12"><section class="fade-section opacity-0 mb-12"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800"><h2 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Executive Summary</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">An e-commerce search platform using Elasticsearch keyword matching had 65% recall—users couldn&#39;t find products using natural language. Over 4 months, they migrated to FAISS vector search with sentence embeddings, achieving 92% recall and 10x faster queries. This guide covers embedding generation, index building, and hybrid search strategies.</p><div class="grid md:grid-cols-2 gap-3 pt-4 border-t border-slate-200 dark:border-slate-800"><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Replace keyword search with semantic embeddings for natural language</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">FAISS provides 100x faster similarity search than Elasticsearch script_score</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Hybrid search (keyword + vector) improves recall 15%</span></div><div class="flex items-start gap-2"><span class="text-indigo-500 mt-0.5">✓</span><span class="text-sm text-slate-600 dark:text-slate-400">Embedding quality determines search relevance</span></div></div></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Why Migrate from Elasticsearch Keyword Search</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Elasticsearch&#39;s keyword-based search failed for synonyms and natural language queries. Users searched &quot;comfortable running shoes&quot; and got no results for &quot;soft sneakers.&quot;</p><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 65% recall (users can&#39;t find products)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> 30% search abandonment rate</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Elasticsearch cluster cost $10k/month (100 nodes)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-indigo-400 mt-1">→</span> Manual synonym lists (2 engineers full-time)</li></ul></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">FAISS Migration Readiness</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">The team spent 1 month generating embeddings (Sentence-BERT), setting up FAISS, and creating evaluation framework.</p><ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Sentence-BERT model (fine-tuned on product descriptions)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> FAISS index (IVF, HNSW selection)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Embedding pipeline (100M products → 100GB vectors)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Evaluation dataset (10K queries with relevance labels)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Hybrid search (Elasticsearch + FAISS) for gradual rollout</li></ul></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Elasticsearch Assessment</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Elasticsearch had 100M documents, 100 nodes, 10k queries/second. Keyword search worked for exact matches but failed for synonyms.</p><div class="grid md:grid-cols-2 gap-6"><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Technical Debt</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Manual synonym list (10K terms, outdated)</li><li class="text-sm text-slate-600 dark:text-slate-400">• No semantic understanding (misses 35% of relevant results)</li><li class="text-sm text-slate-600 dark:text-slate-400">• script_score vector search too slow (500ms)</li><li class="text-sm text-slate-600 dark:text-slate-400">• High operational cost (100 nodes)</li></ul></div><div class="bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-3">Risks</h3><ul class="space-y-2"><li class="text-sm text-slate-600 dark:text-slate-400">• Embedding quality (does it capture domain semantics?)</li><li class="text-sm text-slate-600 dark:text-slate-400">• FAISS index building time (100M vectors → 1 week)</li><li class="text-sm text-slate-600 dark:text-slate-400">• Hybrid search complexity</li><li class="text-sm text-slate-600 dark:text-slate-400">• Team learning curve (FAISS vs Elasticsearch)</li></ul></div></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Target FAISS Vector Search Architecture</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">FAISS for vector search + Elasticsearch for keyword (hybrid reranking).</p><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Sentence-BERT (fine-tuned on product data)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FAISS index (IVF4096, PQ64, 100M vectors)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Elasticsearch (reduced to 10 nodes for keyword)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Hybrid reranker (combine vector + keyword scores)</span><span class="px-3 py-1 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">GPU inference for embeddings (8x A100)</span></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">4-Month FAISS Migration</h2><ol class="space-y-4"><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 1: Phase 1: Embedding (Month 1)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Generated embeddings for 100M products using Sentence-BERT (2 weeks on GPU).</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 2: Phase 2: FAISS Index (Month 2)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Built IVF4096 index, recall 92% at 10ms latency.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 3: Phase 3: Hybrid (Month 3)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">Hybrid search (vector + keyword) shadow mode, compare to Elasticsearch.</p></li><li class="border-l-4 border-slate-300 dark:border-slate-700 pl-4"><h3 class="font-semibold text-slate-900 dark:text-white mb-1">Step 4: Phase 4: Cutover (Month 4)</h3><p class="text-slate-600 dark:text-slate-400 text-sm">100% traffic on hybrid search, Elasticsearch reduced to 10 nodes.</p></li></ol></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Product Data to Embeddings</h2><p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">Product titles, descriptions, and attributes converted to 384-dim embeddings via Sentence-BERT.</p><ul class="space-y-2 bg-slate-50 dark:bg-slate-900/50 rounded-xl p-6"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Batch inference (10M products/day)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Embedding storage (100M × 384 × 4 bytes = 150GB)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Quantization (FP16 reduces to 75GB, minimal recall loss)</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Incremental updates (new products embedded daily)</li></ul></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Common Elasticsearch to FAISS Mistakes</h2><div class="space-y-4"><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Using generic embeddings (not fine-tuned)</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Recall 70% vs fine-tuned 92%</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Fine-tune Sentence-BERT on domain data</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">No hybrid search (pure vector)</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Misses exact term matches (product codes)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Hybrid vector + keyword search</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Single-stage retrieval only</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> HNSW recall 85%, reranking improves to 95%</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> Two-stage: FAISS + cross-encoder reranker</p></div><div class="bg-slate-50 dark:bg-slate-900/30 rounded-xl p-5 border border-slate-200 dark:border-slate-800"><h3 class="font-bold text-slate-900 dark:text-white mb-2">Not quantizing embeddings</h3><p class="text-sm text-slate-600 dark:text-slate-400 mb-2"><strong>Impact:</strong> Index size 150GB (expensive)</p><p class="text-sm text-slate-700 dark:text-slate-300"><strong>Prevention:</strong> FP16 quantization (75GB, 1% recall loss)</p></div></div></section><section class="fade-section opacity-0 mb-12"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Migration Success Metrics</h2><div class="grid sm:grid-cols-2 gap-3"><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Recall@10: 65% → 92% (42% improvement)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Query latency: 500ms → 15ms (97% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Search abandonment: 30% → 12% (60% reduction)</span></div><div class="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg"><span class="text-indigo-500">✓</span><span class="text-sm text-slate-700 dark:text-slate-300">Elasticsearch nodes: 100 → 10 (90% reduction)</span></div></div></section><section class="fade-section opacity-0 mb-12 bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-8"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4">Who Should Lead FAISS Migration</h2><div class="mb-6"><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Recommended Roles</h3><div class="flex flex-wrap gap-2"><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">FAISS Expert (3+ years)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">Search Engineer (Elasticsearch)</span><span class="px-3 py-1 text-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">ML Engineer (embeddings)</span></div></div><div><h3 class="font-semibold text-slate-900 dark:text-white mb-2">Required Experience</h3><ul class="space-y-2"><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> FAISS index optimization</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Sentence-BERT fine-tuning</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Elasticsearch production</li><li class="flex items-start gap-2 text-slate-700 dark:text-slate-300"><span class="text-slate-400 mt-1">•</span> Hybrid search design</li></ul></div></section>
+    <div class="fade-section opacity-0 mb-12">
       <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Related Roles</h2>
       <div class="grid gap-4">
-    <a href="/hire/faiss-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
-      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">FAISS Expert</span>
-      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  
-    <a href="/hire/faiss-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
-      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Search Engineer</span>
-      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  
-    <a href="/hire/ml-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
-      <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">ML Engineer</span>
-      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-    </section>
-  
-          
-    <section class="fade-section opacity-0 mb-12">
-      <h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
-      <dl class="space-y-4">
-    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
-      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Do we still need Elasticsearch after FAISS migration?</dt>
-      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes—for exact term matches (product codes) and filtering. Hybrid search gives best results.</dd>
+        <a href="/hire/faiss-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+          <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">FAISS Expert</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      
+        <a href="/hire/faiss-expert" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+          <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">Search Engineer</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      
+        <a href="/hire/ml-engineer" class="group flex items-center justify-between p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md transition-all">
+          <span class="font-medium text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">ML Engineer</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
-  
-    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
-      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What embedding model works best?</dt>
-      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Sentence-BERT fine-tuned on domain data. For e-commerce, MS MARCO or fine-tuned BERT.</dd>
-    </div>
-  
-    <div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30">
-      <dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How often to rebuild FAISS index?</dt>
-      <dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Full rebuild weekly; incremental updates daily for new products.</dd>
-    </div>
-  </dl>
-    </section>
-  
-          
-    <aside class="fade-section opacity-0 mt-16 p-8 bg-slate-900 dark:bg-white rounded-2xl text-center">
-      <h3 class="text-2xl font-bold text-white dark:text-slate-900 mb-3">Ready to upgrade from keyword to vector search?</h3>
-      <p class="text-slate-300 dark:text-slate-600 mb-6">Hire FAISS experts who have migrated Elasticsearch to semantic vector search.</p>
-      <a href="/hire/faiss-expert" class="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-slate-900 text-slate-900 dark:text-white rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all hover:scale-105 shadow-lg">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script><ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script><div class="fade-section opacity-0"><h2 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2><dl class="space-y-4"><div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30"><dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">Do we still need Elasticsearch after FAISS migration?</dt><dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Yes—for exact term matches (product codes) and filtering. Hybrid search gives best results.</dd></div><div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30"><dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">What embedding model works best?</dt><dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Sentence-BERT fine-tuned on domain data. For e-commerce, MS MARCO or fine-tuned BERT.</dd></div><div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-slate-50 dark:bg-slate-900/30"><dt class="p-5 pb-3 font-semibold text-slate-900 dark:text-white">How often to rebuild FAISS index?</dt><dd class="p-5 pt-0 text-slate-600 dark:text-slate-400">Full rebuild weekly; incremental updates daily for new products.</dd></div></dl></div></div>
+        
+    <aside class="fade-section opacity-0 py-20 text-center">
+      <h3 class="text-2xl font-bold text-slate-500 mb-3">Ready to upgrade from keyword to vector search?</h3>
+      <p class="text-slate-500 mb-6">Hire FAISS experts who have migrated Elasticsearch to semantic vector search.</p>
+      <a href="/hire/faiss-expert" class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white dark:bg-white dark:text-black rounded-xl font-semibold hover:bg-black/80 dark:hover:bg-white/80 transition-all hover:scale-105 shadow-lg">
         Hire FAISS Expert <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
       </a>
     </aside>
   
-        </div>
       </article>
     </main>
   </div>
