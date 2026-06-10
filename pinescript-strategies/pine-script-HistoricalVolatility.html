@@ -1,182 +1,298 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../styles/blog-common.css" />
+        <style>
+            .fullscreen {
+                padding: 10px 50px;
+                max-width: 70%;
+                margin: auto;
+                text-align: justify;
+            }
+            .tip {
+                background: #e8f4fc;
+                padding: 15px;
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+            }
+            .code-comment {
+                color: #6a9955;
+                font-style: italic;
+            }
+        </style>
 
-    <title>Pine Script Historical Volatility - Complete TradingView Guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-0MM8039GLD");
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617"
+            crossorigin="anonymous"
+        ></script>
 
-    <meta name="description" content="Master Historical Volatility (HV) in Pine Script for TradingView - a statistical measure of price variation, crucial for risk management, options trading, and understanding market phases.">
-    <meta name="keywords" content="pine script strategies, Historical Volatility, HV, tradingview indicator, technical analysis, volatility, options trading, risk management, standard deviation, log returns, annualization">
+        <title>
+            Pine Script Historical Volatility - Complete TradingView Guide
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="RSS Feed"
+            href="/feed.xml"
+        />
 
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:title" content="Pine Script Historical Volatility - Complete TradingView Guide">
-    <meta property="og:description" content="Comprehensive tutorial on implementing and using Historical Volatility (HV) in Pine Script for advanced trading strategies.">
-    <meta property="og:type" content="article">
+        <meta
+            name="description"
+            content="Master Historical Volatility (HV) in Pine Script for TradingView - a statistical measure of price variation, crucial for risk management, options trading, and understanding market phases."
+        />
+        <meta
+            name="keywords"
+            content="pine script strategies, Historical Volatility, HV, tradingview indicator, technical analysis, volatility, options trading, risk management, standard deviation, log returns, annualization"
+        />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pine Script Historical Volatility - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html" />
+        <!-- Open Graph / Social Meta -->
+        <meta
+            property="og:title"
+            content="Pine Script Historical Volatility - Complete TradingView Guide"
+        />
+        <meta
+            property="og:description"
+            content="Comprehensive tutorial on implementing and using Historical Volatility (HV) in Pine Script for advanced trading strategies."
+        />
+        <meta property="og:type" content="article" />
 
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-<script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Pine Script Historical Volatility - Complete TradingView Guide",
-      "description": "Master Historical Volatility (HV) in Pine Script for TradingView - a statistical measure of price variation, crucial for risk management, options trading, and understanding market phases.",
-      "author": {
-        "@type": "Person",
-        "name": "Offline Pixel Computers"
-      },
-      "datePublished": "2025-06-10",
-      "image": "https://offline-pixel.github.io/assets/logo2.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://offline-pixel.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "PineScript Strategies",
-            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Historical Volatility",
-            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
-          }
-        ]
-      }
-    }
-    </script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script Historical Volatility </h1>
-      <p class="blog-subtitle">Master this statistical measure of price fluctuation in TradingView's Pine Script, crucial for risk management, option pricing, and understanding market phases.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Pine Script Historical Volatility - Complete TradingView Guide"
+        />
+        <link
+            rel="canonical"
+            href="https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
+        />
 
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
+        <!-- JSON-LD Schema -->
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": "Pine Script Historical Volatility - Complete TradingView Guide",
+                "description": "Master Historical Volatility (HV) in Pine Script for TradingView - a statistical measure of price variation, crucial for risk management, options trading, and understanding market phases.",
+                "author": {
+                    "@type": "Person",
+                    "name": "Offline Pixel Computers"
+                },
+                "datePublished": "2025-06-10",
+                "image": "https://offline-pixel.github.io/assets/logo2.png",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Offline Pixel",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://offline-pixel.github.io/assets/logo2.png"
+                    }
+                },
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://offline-pixel.github.io/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "PineScript Strategies",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "Historical Volatility",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-HistoricalVolatility.html"
+                        }
+                    ]
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header class="blog-header">
+            <div class="container">
+                <h1 class="blog-title">Pine Script Historical Volatility</h1>
+                <p class="blog-subtitle">
+                    Master this statistical measure of price fluctuation in
+                    TradingView's Pine Script, crucial for risk management,
+                    option pricing, and understanding market phases.
+                </p>
+                <p class="blog-subtitle">
+                    <small
+                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
+                        Rate</small
+                    >
+                </p>
 
-  <article class="fullscreen">
-  
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="https://offline-pixel.github.io/">Home</a> >
-    <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-    <span aria-current="page">Historical Volatility</span>
-  </nav>
-</div>
-  
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is Historical Volatility (HV)?</h2>
-    <p> <b>Historical Volatility (HV)</b> is a statistical measure that quantifies the degree of variation of a security's price returns over a specific past period. Unlike indicators like Average True Range (ATR) which measure average price movement, HV specifically uses <b>standard deviation of logarithmic returns</b> to represent volatility as a percentage. It indicates how much price has deviated from its average over time, effectively showing how "jumpy" or "calm" an asset has been.</p>
+                <p style="text-align: center; margin-top: 15px">
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img src="../assets/ss.png" width="100%" />
+                    </a>
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        class="new-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Get Pine Script Strategy
+                    </a>
+                </p>
+            </div>
+        </header>
 
-    <p>HV is crucial for <b>risk management</b>, particularly in <b>options trading</b> (where it's compared to implied volatility), and for understanding different market phases. High HV suggests unpredictable, large price swings, while low HV suggests stable, smaller price movements.</p>
+        <article class="fullscreen">
+            <div class="special-nav-div">
+                <a
+                    href="https://offlinepixel.gumroad.com/l/kpafhy"
+                    class=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
+                </a>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="https://offline-pixel.github.io/">Home</a> >
+                    <a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >PineScript Strategies</a
+                    >
+                    >
+                    <span aria-current="page">Historical Volatility</span>
+                </nav>
+            </div>
 
-    <p>In Pine Script, calculating and interpreting Historical Volatility allows traders and investors to adapt their strategies based on the current market's inherent risk and opportunity profile.</p>
+            <div class="pinescript-disclaimer"></div>
+            <ins
+                class="adsbygoogle"
+                style="display: block; text-align: center"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-9243803325136617"
+                data-ad-slot="5548365171"
+            ></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <h2>What is Historical Volatility (HV)?</h2>
+            <p>
+                <b>Historical Volatility (HV)</b> is a statistical measure that
+                quantifies the degree of variation of a security's price returns
+                over a specific past period. Unlike indicators like Average True
+                Range (ATR) which measure average price movement, HV
+                specifically uses
+                <b>standard deviation of logarithmic returns</b> to represent
+                volatility as a percentage. It indicates how much price has
+                deviated from its average over time, effectively showing how
+                "jumpy" or "calm" an asset has been.
+            </p>
 
-    <h2>Components and Calculation</h2>
-    <p>The calculation of Historical Volatility involves several statistical steps, typically annualized for consistency across different assets and timeframes:</p>
-    <ol>
-      <li><strong>Logarithmic Returns</strong>: For each period, calculate the natural logarithm of the current closing price divided by the previous closing price. This normalizes percentage changes.
-        <br>
-        `Log Return = math.log(close / close[1])`
-      </li>
-      <li><strong>Standard Deviation of Log Returns</strong>: Calculate the standard deviation of these logarithmic returns over a specified `length` (e.g., 20 periods for 20 trading days).
-        <br>
-        `StdDev_Log_Returns = ta.stdev(Log Return, length)`
-      </li>
-      <li><strong>Annualization</strong>: To compare volatility across different assets or timeframes, the daily (or per-period) standard deviation is annualized. This involves multiplying by the square root of the number of periods in a year.
-        <br>
-        * For daily data, typically `math.sqrt(252)` (representing 252 trading days in a year).
-        * For weekly data, `math.sqrt(52)`.
-        * For monthly data, `math.sqrt(12)`.
-        <br>
-        `Annualized HV = StdDev_Log_Returns * math.sqrt(Annualization Factor)`
-      </li>
-      <li><strong>Convert to Percentage</strong>: The result is often multiplied by 100 to express it as a percentage.
-        <br>
-        `Historical Volatility (%) = Annualized HV * 100`
-      </li>
-    </ol>
-    <p>A common `length` for daily charts is 20 periods, representing roughly one trading month.</p>
+            <p>
+                HV is crucial for <b>risk management</b>, particularly in
+                <b>options trading</b> (where it's compared to implied
+                volatility), and for understanding different market phases. High
+                HV suggests unpredictable, large price swings, while low HV
+                suggests stable, smaller price movements.
+            </p>
 
-    <h2>Basic Historical Volatility (HV) Implementation in Pine Script</h2>
-    <p>Pine Script v5 requires a custom function to calculate Historical Volatility, as `ta.hvol()` is not a direct built-in in its most common annualized form. We'll leverage `math.log` and `ta.stdev`.</p>
-<pre><code><span class="comment">//@version=5</span>
+            <p>
+                In Pine Script, calculating and interpreting Historical
+                Volatility allows traders and investors to adapt their
+                strategies based on the current market's inherent risk and
+                opportunity profile.
+            </p>
+
+            <h2>Components and Calculation</h2>
+            <p>
+                The calculation of Historical Volatility involves several
+                statistical steps, typically annualized for consistency across
+                different assets and timeframes:
+            </p>
+            <ol>
+                <li>
+                    <strong>Logarithmic Returns</strong>: For each period,
+                    calculate the natural logarithm of the current closing price
+                    divided by the previous closing price. This normalizes
+                    percentage changes.
+                    <br />
+                    `Log Return = math.log(close / close[1])`
+                </li>
+                <li>
+                    <strong>Standard Deviation of Log Returns</strong>:
+                    Calculate the standard deviation of these logarithmic
+                    returns over a specified `length` (e.g., 20 periods for 20
+                    trading days).
+                    <br />
+                    `StdDev_Log_Returns = ta.stdev(Log Return, length)`
+                </li>
+                <li>
+                    <strong>Annualization</strong>: To compare volatility across
+                    different assets or timeframes, the daily (or per-period)
+                    standard deviation is annualized. This involves multiplying
+                    by the square root of the number of periods in a year.
+                    <br />
+                    * For daily data, typically `math.sqrt(252)` (representing
+                    252 trading days in a year). * For weekly data,
+                    `math.sqrt(52)`. * For monthly data, `math.sqrt(12)`.
+                    <br />
+                    `Annualized HV = StdDev_Log_Returns *
+                    math.sqrt(Annualization Factor)`
+                </li>
+                <li>
+                    <strong>Convert to Percentage</strong>: The result is often
+                    multiplied by 100 to express it as a percentage.
+                    <br />
+                    `Historical Volatility (%) = Annualized HV * 100`
+                </li>
+            </ol>
+            <p>
+                A common `length` for daily charts is 20 periods, representing
+                roughly one trading month.
+            </p>
+
+            <h2>
+                Basic Historical Volatility (HV) Implementation in Pine Script
+            </h2>
+            <p>
+                Pine Script v5 requires a custom function to calculate
+                Historical Volatility, as `ta.hvol()` is not a direct built-in
+                in its most common annualized form. We'll leverage `math.log`
+                and `ta.stdev`.
+            </p>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">indicator</span>(<span class="string">"My Historical Volatility (HV)"</span>, overlay=<span class="keyword">false</span>, format=format.percent) <span class="comment">// overlay=false to plot in a separate pane</span>
 
 <span class="comment">// Input for HV length (number of periods for standard deviation)</span>
@@ -214,20 +330,47 @@ hvMA = <span class="function">ta.sma</span>(historicalVolatility, <span class="n
 </code>
 </pre>
 
+            <div class="tip">
+                <b>Percentage Volatility:</b> HV expresses volatility as a
+                percentage, directly comparable across different assets, unlike
+                ATR which is in absolute price units.
+            </div>
 
-    <div class="tip">
-     <b>Percentage Volatility:</b> HV expresses volatility as a percentage, directly comparable across different assets, unlike ATR which is in absolute price units.
-    </div>
+            <h2>
+                Practical Historical Volatility (HV)
+                <a
+                    href="https://offline-pixel.github.io/pinescript-strategies.html"
+                    >Trading Strategies</a
+                >
+            </h2>
 
-    <h2>Practical Historical Volatility (HV) <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
-
-    <h3>1. Volatility Regimes (Mean Reversion of Volatility)</h3>
-    <p>Volatility often exhibits mean-reverting behavior: periods of high volatility tend to be followed by periods of low volatility, and vice versa. HV helps identify these shifts.</p>
-    <ul>
-      <li><strong>High HV (Contracting Volatility)</strong>: When HV is significantly high (e.g., above its long-term average or a historical high threshold), it suggests volatility is stretched and might soon contract. This often occurs after sharp price movements. Traders might look for a <b>reversal</b> or a <b>period of consolidation</b> to follow.</li>
-      <li><strong>Low HV (Expanding Volatility)</strong>: When HV is significantly low (e.g., below its long-term average or a historical low threshold), it suggests volatility is compressed and might soon expand. This often occurs during quiet, range-bound periods. Traders might anticipate an <b>impending price breakout</b> or the start of a strong trend.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>1. Volatility Regimes (Mean Reversion of Volatility)</h3>
+            <p>
+                Volatility often exhibits mean-reverting behavior: periods of
+                high volatility tend to be followed by periods of low
+                volatility, and vice versa. HV helps identify these shifts.
+            </p>
+            <ul>
+                <li>
+                    <strong>High HV (Contracting Volatility)</strong>: When HV
+                    is significantly high (e.g., above its long-term average or
+                    a historical high threshold), it suggests volatility is
+                    stretched and might soon contract. This often occurs after
+                    sharp price movements. Traders might look for a
+                    <b>reversal</b> or a <b>period of consolidation</b> to
+                    follow.
+                </li>
+                <li>
+                    <strong>Low HV (Expanding Volatility)</strong>: When HV is
+                    significantly low (e.g., below its long-term average or a
+                    historical low threshold), it suggests volatility is
+                    compressed and might soon expand. This often occurs during
+                    quiet, range-bound periods. Traders might anticipate an
+                    <b>impending price breakout</b> or the start of a strong
+                    trend.
+                </li>
+            </ul>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">strategy</span>(<span class="string">"HV Volatility Regimes"</span>, overlay=<span class="keyword">true</span>)
 
 <span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>)
@@ -267,14 +410,35 @@ maSlow = <span class="function">ta.ema</span>(close, <span class="number">20</sp
 </code>
 </pre>
 
-    <h3>2. Options Trading (Implied Volatility vs. Historical Volatility)</h3>
-    <p>While Pine Script does not directly provide implied volatility data from options chains, traders often compare an option's implied volatility (IV) to the underlying asset's Historical Volatility (HV) to assess if options are relatively cheap or expensive.</p>
-    <ul>
-      <li> <b>IV > HV:</b> Options are expensive (premium is high relative to actual past price movement). Opportunity for option sellers (e.g., sell covered calls, put credit spreads).</li>
-      <li> <b>IV < HV:</b> Options are cheap (premium is low relative to actual past price movement). Opportunity for option buyers (e.g., buy calls, buy puts).</li>
-    </ul>
-    <p>This strategy is conceptual within Pine Script, as it requires external IV data, but HV itself is a core component.</p>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>
+                2. Options Trading (Implied Volatility vs. Historical
+                Volatility)
+            </h3>
+            <p>
+                While Pine Script does not directly provide implied volatility
+                data from options chains, traders often compare an option's
+                implied volatility (IV) to the underlying asset's Historical
+                Volatility (HV) to assess if options are relatively cheap or
+                expensive.
+            </p>
+            <ul>
+                <li>
+                    <b>IV > HV:</b> Options are expensive (premium is high
+                    relative to actual past price movement). Opportunity for
+                    option sellers (e.g., sell covered calls, put credit
+                    spreads).
+                </li>
+                <li>
+                    <b>IV < HV:</b> Options are cheap (premium is low relative
+                    to actual past price movement). Opportunity for option
+                    buyers (e.g., buy calls, buy puts).
+                </li>
+            </ul>
+            <p>
+                This strategy is conceptual within Pine Script, as it requires
+                external IV data, but HV itself is a core component.
+            </p>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">indicator</span>(<span class="string">"HV for Options Context"</span>, overlay=<span class="keyword">false</span>, format=format.percent)
 
 <span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>)
@@ -306,18 +470,30 @@ areOptionsCheap = historicalVolatility > <span class="number">0</span> <span cla
 </code>
 </pre>
 
-    <h3>3. Dynamic Stop Loss & Position Sizing</h3>
-    <p>Similar to ATR, Historical Volatility can be used to dynamically adjust risk management parameters, but on a percentage basis.</p>
-    <ul>
-      <li> <b>Dynamic Stop Loss:</b> For a long position, place a stop loss `X%` below your entry, where `X` is a multiple of the current HV. For a short position, `X%` above your entry.
-        <br>
-        `Stop Loss Price = Entry Price * (1 - (HV * Multiplier) / 100)` for longs.
-      </li>
-      <li> <b>Dynamic Position Sizing:</b> Adjust your position size so that your maximum dollar risk per trade remains constant. When HV is high, reduce position size; when HV is low, increase position size.
-        <br>
-        `Shares = Risk Per Trade / (Entry Price * HV)`</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>3. Dynamic Stop Loss & Position Sizing</h3>
+            <p>
+                Similar to ATR, Historical Volatility can be used to dynamically
+                adjust risk management parameters, but on a percentage basis.
+            </p>
+            <ul>
+                <li>
+                    <b>Dynamic Stop Loss:</b> For a long position, place a stop
+                    loss `X%` below your entry, where `X` is a multiple of the
+                    current HV. For a short position, `X%` above your entry.
+                    <br />
+                    `Stop Loss Price = Entry Price * (1 - (HV * Multiplier) /
+                    100)` for longs.
+                </li>
+                <li>
+                    <b>Dynamic Position Sizing:</b> Adjust your position size so
+                    that your maximum dollar risk per trade remains constant.
+                    When HV is high, reduce position size; when HV is low,
+                    increase position size.
+                    <br />
+                    `Shares = Risk Per Trade / (Entry Price * HV)`
+                </li>
+            </ul>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">strategy</span>(<span class="string">"HV Dynamic Risk Management"</span>, overlay=<span class="keyword">true</span>)
 
 <span class="keyword">length</span> = <span class="function">input.int</span>(<span class="number">20</span>, <span class="keyword">title</span>=<span class="string">"HV Length"</span>, <span class="keyword">minval</span>=<span class="number">2</span>)
@@ -369,64 +545,163 @@ qtyToTrade = <span class="number">0</span>
 </code>
 </pre>
 
+            <h2>Optimizing Historical Volatility Performance</h2>
+            <p>To get the most from Historical Volatility in Pine Script:</p>
+            <ul>
+                <li>
+                    <strong>Parameter Tuning:</strong>
+                    <ul>
+                        <li>
+                            `Length`: The period for calculating standard
+                            deviation. Common values are 20 (for daily charts,
+                            representing a month) or 252 (for annual
+                            volatility). Shorter lengths are more reactive to
+                            recent price swings, longer lengths provide a
+                            smoother, broader view.
+                        </li>
+                        <li>
+                            `Annualization Factor`: Crucial for consistency.
+                            Ensure it matches your chart's timeframe (e.g., 252
+                            for daily, 52 for weekly).
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Combine with Directional Indicators:</strong> HV
+                    tells you *how much* prices are moving, not *where*. Always
+                    combine it with trend-following or momentum indicators
+                    (e.g., moving averages, MACD, ADX) to confirm the direction
+                    of the market before acting on HV signals.
+                </li>
+                <li>
+                    <strong>Contextual Interpretation:</strong> HV levels are
+                    relative to the asset. What's "high" volatility for a stable
+                    large-cap stock might be "low" for a highly speculative
+                    cryptocurrency. Analyze historical HV ranges for the
+                    specific asset.
+                </li>
+                <li>
+                    <strong>Volatility Spikes and Contractions:</strong> The
+                    cyclical nature of volatility (expansion followed by
+                    contraction, and vice-versa) is a powerful concept. Look for
+                    HV reaching historical extremes as potential turning points
+                    for volatility itself, which can precede price reversals or
+                    strong breakouts.
+                </li>
+                <li>
+                    <strong>Options Trading Integration (External):</strong> For
+                    serious options trading, compare HV with implied volatility
+                    data from an options provider. HV helps determine if current
+                    market prices for options are cheap or expensive.
+                </li>
+            </ul>
 
-    <h2>Optimizing Historical Volatility Performance</h2>
-    <p>To get the most from Historical Volatility in Pine Script:</p>
-    <ul>
-      <li><strong>Parameter Tuning:</strong>
-        <ul>
-          <li>`Length`: The period for calculating standard deviation. Common values are 20 (for daily charts, representing a month) or 252 (for annual volatility). Shorter lengths are more reactive to recent price swings, longer lengths provide a smoother, broader view.</li>
-          <li>`Annualization Factor`: Crucial for consistency. Ensure it matches your chart's timeframe (e.g., 252 for daily, 52 for weekly).</li>
-        </ul>
-      </li>
-      <li><strong>Combine with Directional Indicators:</strong> HV tells you *how much* prices are moving, not *where*. Always combine it with trend-following or momentum indicators (e.g., moving averages, MACD, ADX) to confirm the direction of the market before acting on HV signals.</li>
-      <li><strong>Contextual Interpretation:</strong> HV levels are relative to the asset. What's "high" volatility for a stable large-cap stock might be "low" for a highly speculative cryptocurrency. Analyze historical HV ranges for the specific asset.</li>
-      <li><strong>Volatility Spikes and Contractions:</strong> The cyclical nature of volatility (expansion followed by contraction, and vice-versa) is a powerful concept. Look for HV reaching historical extremes as potential turning points for volatility itself, which can precede price reversals or strong breakouts.</li>
-      <li><strong>Options Trading Integration (External):</strong> For serious options trading, compare HV with implied volatility data from an options provider. HV helps determine if current market prices for options are cheap or expensive.</li>
-    </ul>
+            <div class="tip">
+                <b>Volatility as a Cycle:</b> Markets often alternate between
+                periods of low volatility (sideways, accumulation) and high
+                volatility (trending, distribution). HV helps you understand
+                where you are in this cycle.
+            </div>
 
-    <div class="tip">
-     <b>Volatility as a Cycle:</b> Markets often alternate between periods of low volatility (sideways, accumulation) and high volatility (trending, distribution). HV helps you understand where you are in this cycle.
-    </div>
+            <h2>Common Historical Volatility Pitfalls</h2>
+            <ul>
+                <li>
+                    <b>Not a Directional Signal:</b> The most critical mistake
+                    is using HV to predict future price direction. It measures
+                    past price *movement*, not future direction.
+                </li>
+                <li>
+                    <b>Lagging Indicator:</b> HV is based on past data and
+                    calculations, making it a lagging indicator. It reflects
+                    what has *already happened*.
+                </li>
+                <li>
+                    <b>Sensitivity to Outliers:</b> Extreme price swings (e.g.,
+                    flash crashes, news events) can cause temporary spikes in HV
+                    that might not be representative of the underlying
+                    volatility regime.
+                </li>
+                <li>
+                    <b>Parameter Dependency:</b> The HV value can change
+                    significantly depending on the `length` and
+                    `annualizationFactor` chosen, requiring careful selection
+                    and consistency.
+                </li>
+                <li>
+                    <b>Not a Standalone Indicator:</b> HV is a powerful
+                    analytical tool but should always be part of a comprehensive
+                    trading system that includes trend analysis, risk
+                    management, and confirmation from other indicators.
+                </li>
+            </ul>
 
-    <h2>Common Historical Volatility Pitfalls</h2>
-    <ul>
-      <li> <b>Not a Directional Signal:</b> The most critical mistake is using HV to predict future price direction. It measures past price *movement*, not future direction.</li>
-      <li> <b>Lagging Indicator:</b> HV is based on past data and calculations, making it a lagging indicator. It reflects what has *already happened*.</li>
-      <li> <b>Sensitivity to Outliers:</b> Extreme price swings (e.g., flash crashes, news events) can cause temporary spikes in HV that might not be representative of the underlying volatility regime.</li>
-      <li> <b>Parameter Dependency:</b> The HV value can change significantly depending on the `length` and `annualizationFactor` chosen, requiring careful selection and consistency.</li>
-      <li> <b>Not a Standalone Indicator:</b> HV is a powerful analytical tool but should always be part of a comprehensive trading system that includes trend analysis, risk management, and confirmation from other indicators.</li>
-    </ul>
+            <h2>Conclusion</h2>
+            <p>
+                Historical Volatility (HV) is a fundamental statistical measure
+                in Pine Script for TradingView, providing a quantifiable
+                understanding of an asset's price variability. By measuring the
+                annualized standard deviation of logarithmic returns, it offers
+                valuable insights into market behavior, aiding in crucial
+                aspects like risk management, position sizing, and adapting
+                strategies to changing volatility regimes. While it does not
+                predict price direction, its ability to signal periods of
+                volatility expansion (preceding breakouts) or contraction
+                (preceding reversals/consolidation) is invaluable. By
+                understanding its calculation, thoughtfully tuning its
+                parameters, and integrating it strategically with directional
+                indicators and robust risk management practices, you can
+                leverage Historical Volatility to enhance your trading decisions
+                and navigate various market environments with greater precision.
+            </p>
 
-    <h2>Conclusion</h2>
-    <p>Historical Volatility (HV) is a fundamental statistical measure in Pine Script for TradingView, providing a quantifiable understanding of an asset's price variability. By measuring the annualized standard deviation of logarithmic returns, it offers valuable insights into market behavior, aiding in crucial aspects like risk management, position sizing, and adapting strategies to changing volatility regimes. While it does not predict price direction, its ability to signal periods of volatility expansion (preceding breakouts) or contraction (preceding reversals/consolidation) is invaluable. By understanding its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and robust risk management practices, you can leverage Historical Volatility to enhance your trading decisions and navigate various market environments with greater precision.</p>
-  
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
+            <section class="cta-section custom-strategy-cta">
+                <h2 class="cta-title">Enhance Your Trading</h2>
+                <p>
+                    Get a high-performance Pine Script analysis tool for
+                    actionable market insights, designed for traders on the
+                    move.
+                </p>
+                <p>
+                    This strategy runs in live mode on TradingView, helping you
+                    identify potential opportunities.
+                </p>
+                <p>
+                    <small
+                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
+                        Rate</small
+                    >
+                </p>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img src="../assets/ss.png" width="100%" />
+                </a>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    class="new-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get Pine Script Strategy
+                </a>
+            </section>
+        </article>
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
-
-</body>
+        <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-9243803325136617"
+            data-ad-slot="5548365171"
+        ></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <script src="../scripts/scripts.js"></script>
+        <script src="../scripts/dynamicContent.js" defer></script>
+        <script src="../scripts/pinescript-disclaimer.js"></script>
+    </body>
 </html>

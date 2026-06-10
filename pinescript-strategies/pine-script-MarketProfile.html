@@ -1,171 +1,333 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../styles/blog-common.css" />
+        <style>
+            .fullscreen {
+                padding: 10px 50px;
+                max-width: 70%;
+                margin: auto;
+                text-align: justify;
+            }
+            .tip {
+                background: #e8f4fc;
+                padding: 15px;
+                border-left: 4px solid #3498db;
+                margin: 20px 0;
+            }
+            .code-comment {
+                color: #6a9955;
+                font-style: italic;
+            }
+        </style>
 
-    <title>Pine Script Market Profile - Complete TradingView Guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "G-0MM8039GLD");
+        </script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617"
+            crossorigin="anonymous"
+        ></script>
 
-    <meta name="description" content="Master Market Profile concepts in Pine Script for TradingView - analyze price distribution over time, identify key value areas, and leverage auction theory for advanced trading strategies.">
-    <meta name="keywords" content="pine script strategies, Market Profile, TPO, Point of Control, Value Area, Initial Balance, single prints, imbalance, balance, auction theory, intraday trading, supply demand">
+        <title>Pine Script Market Profile - Complete TradingView Guide</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="RSS Feed"
+            href="/feed.xml"
+        />
 
-    <!-- Open Graph / Social Meta -->
-    <meta property="og:title" content="Pine Script Market Profile - Complete TradingView Guide">
-    <meta property="og:description" content="Comprehensive tutorial on implementing Market Profile concepts and strategies in Pine Script for TradingView.">
-    <meta property="og:type" content="article">
+        <meta
+            name="description"
+            content="Master Market Profile concepts in Pine Script for TradingView - analyze price distribution over time, identify key value areas, and leverage auction theory for advanced trading strategies."
+        />
+        <meta
+            name="keywords"
+            content="pine script strategies, Market Profile, TPO, Point of Control, Value Area, Initial Balance, single prints, imbalance, balance, auction theory, intraday trading, supply demand"
+        />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pine Script Market Profile - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html" />
+        <!-- Open Graph / Social Meta -->
+        <meta
+            property="og:title"
+            content="Pine Script Market Profile - Complete TradingView Guide"
+        />
+        <meta
+            property="og:description"
+            content="Comprehensive tutorial on implementing Market Profile concepts and strategies in Pine Script for TradingView."
+        />
+        <meta property="og:type" content="article" />
 
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": "Pine Script Market Profile - Complete TradingView Guide",
-      "description": "Master Market Profile concepts in Pine Script for TradingView - analyze price distribution over time, identify key value areas, and leverage auction theory for advanced trading strategies.",
-      "author": {
-        "@type": "Person",
-        "name": "Offline Pixel Computers"
-      },
-      "datePublished": "2025-06-16",
-      "image": "https://offline-pixel.github.io/assets/logo2.png",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Offline Pixel",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://offline-pixel.github.io/assets/logo2.png"
-        }
-      },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://offline-pixel.github.io/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "PineScript Strategies",
-            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Market Profile",
-            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
-          }
-        ]
-      }
-    }
-    </script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script Market Profile </h1>
-      <p class="blog-subtitle">Master the core concepts of Market Profile in TradingView's Pine Script, a time-based distribution tool that reveals where the market spends its time and identifies key value areas for highly effective <a href="https://offline-pixel.github.io/pinescript-strategies.html">trading strategies</a>.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Pine Script Market Profile - Complete TradingView Guide"
+        />
+        <link
+            rel="canonical"
+            href="https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
+        />
 
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
+        <!-- JSON-LD Schema -->
+        <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                "headline": "Pine Script Market Profile - Complete TradingView Guide",
+                "description": "Master Market Profile concepts in Pine Script for TradingView - analyze price distribution over time, identify key value areas, and leverage auction theory for advanced trading strategies.",
+                "author": {
+                    "@type": "Person",
+                    "name": "Offline Pixel Computers"
+                },
+                "datePublished": "2025-06-16",
+                "image": "https://offline-pixel.github.io/assets/logo2.png",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Offline Pixel",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://offline-pixel.github.io/assets/logo2.png"
+                    }
+                },
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://offline-pixel.github.io/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "PineScript Strategies",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "name": "Market Profile",
+                            "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-MarketProfile.html"
+                        }
+                    ]
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <header class="blog-header">
+            <div class="container">
+                <h1 class="blog-title">Pine Script Market Profile</h1>
+                <p class="blog-subtitle">
+                    Master the core concepts of Market Profile in TradingView's
+                    Pine Script, a time-based distribution tool that reveals
+                    where the market spends its time and identifies key value
+                    areas for highly effective
+                    <a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >trading strategies</a
+                    >.
+                </p>
+                <p class="blog-subtitle">
+                    <small
+                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
+                        Rate</small
+                    >
+                </p>
 
-  <article class="fullscreen">
+                <p style="text-align: center; margin-top: 15px">
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img src="../assets/ss.png" width="100%" />
+                    </a>
+                    <a
+                        href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                        class="new-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Get Pine Script Strategy
+                    </a>
+                </p>
+            </div>
+        </header>
 
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="https://offline-pixel.github.io/">Home</a> >
-  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-  <span aria-current="page">Market Profile</span>
-</nav>
-</div>
+        <article class="fullscreen">
+            <div class="special-nav-div">
+                <a
+                    href="https://offlinepixel.gumroad.com/l/kpafhy"
+                    class=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
+                </a>
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="https://offline-pixel.github.io/">Home</a> >
+                    <a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >PineScript Strategies</a
+                    >
+                    >
+                    <span aria-current="page">Market Profile</span>
+                </nav>
+            </div>
 
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is Market Profile?</h2>
-    <p> <b>Market Profile</b> is an advanced charting technique developed by J. Peter Steidlmayer that organizes price and time information into a distribution. Unlike traditional bar or candlestick charts that focus on price over a set time, Market Profile displays <b>where and for how long</b> price traded at specific levels during a session. It helps traders understand market participants' value perception and discover areas of balance (where price spends a lot of time) and imbalance (where price moves quickly).</p>
+            <div class="pinescript-disclaimer"></div>
+            <ins
+                class="adsbygoogle"
+                style="display: block; text-align: center"
+                data-ad-layout="in-article"
+                data-ad-format="fluid"
+                data-ad-client="ca-pub-9243803325136617"
+                data-ad-slot="5548365171"
+            ></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            <h2>What is Market Profile?</h2>
+            <p>
+                <b>Market Profile</b> is an advanced charting technique
+                developed by J. Peter Steidlmayer that organizes price and time
+                information into a distribution. Unlike traditional bar or
+                candlestick charts that focus on price over a set time, Market
+                Profile displays <b>where and for how long</b> price traded at
+                specific levels during a session. It helps traders understand
+                market participants' value perception and discover areas of
+                balance (where price spends a lot of time) and imbalance (where
+                price moves quickly).
+            </p>
 
-    <p>Market Profile is based on <b>auction theory</b>, viewing the market as an auction process. Key components include:</p>
-    <ul>
-      <li> <b>Time Price Opportunities (TPOs):</b> These are the fundamental building blocks. Each time interval (e.g., 30 minutes) spent at a particular price level during a session is represented by a "TPO" (often a letter or a block).</li>
-      <li> <b>Point of Control (POC):</b> The price level within a session with the most TPOs. It represents the price where the market spent the most time, indicating the fairest value for that session.</li>
-      <li> <b>Value Area (VA):</b> The price range that contains a specified percentage (typically 70%) of the total TPOs for a session. It signifies the range where the majority of trading activity (in terms of time) occurred. The upper boundary is VAH (Value Area High) and the lower is VAL (Value Area Low).</li>
-      <li> <b>Initial Balance (IB):</b> The range established by price during the first hour (or a defined initial period) of the trading session. It provides early clues about the intraday volatility and potential trend.</li>
-      <li> <b>Single Prints (TPO Gaps):</b> Price levels where only a single TPO occurred, indicating rapid price movement through that level. These often act as weak support/resistance or areas to be revisited.</li>
-      <li> <b>Tails / Extremes:</b> Single TPOs at the very top or bottom of a profile, indicating rejection of higher or lower prices.</li>
-    </ul>
+            <p>
+                Market Profile is based on <b>auction theory</b>, viewing the
+                market as an auction process. Key components include:
+            </p>
+            <ul>
+                <li>
+                    <b>Time Price Opportunities (TPOs):</b> These are the
+                    fundamental building blocks. Each time interval (e.g., 30
+                    minutes) spent at a particular price level during a session
+                    is represented by a "TPO" (often a letter or a block).
+                </li>
+                <li>
+                    <b>Point of Control (POC):</b> The price level within a
+                    session with the most TPOs. It represents the price where
+                    the market spent the most time, indicating the fairest value
+                    for that session.
+                </li>
+                <li>
+                    <b>Value Area (VA):</b> The price range that contains a
+                    specified percentage (typically 70%) of the total TPOs for a
+                    session. It signifies the range where the majority of
+                    trading activity (in terms of time) occurred. The upper
+                    boundary is VAH (Value Area High) and the lower is VAL
+                    (Value Area Low).
+                </li>
+                <li>
+                    <b>Initial Balance (IB):</b> The range established by price
+                    during the first hour (or a defined initial period) of the
+                    trading session. It provides early clues about the intraday
+                    volatility and potential trend.
+                </li>
+                <li>
+                    <b>Single Prints (TPO Gaps):</b> Price levels where only a
+                    single TPO occurred, indicating rapid price movement through
+                    that level. These often act as weak support/resistance or
+                    areas to be revisited.
+                </li>
+                <li>
+                    <b>Tails / Extremes:</b> Single TPOs at the very top or
+                    bottom of a profile, indicating rejection of higher or lower
+                    prices.
+                </li>
+            </ul>
 
-    <p>Market Profile provides a powerful visual framework for understanding market structure, participant conviction, and potential turning points, making it a favorite among professional intraday traders for developing robust <b><a href="https://offline-pixel.github.io/pinescript-strategies.html">pine script strategies</a></b>.</p>
+            <p>
+                Market Profile provides a powerful visual framework for
+                understanding market structure, participant conviction, and
+                potential turning points, making it a favorite among
+                professional intraday traders for developing robust
+                <b
+                    ><a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >pine script strategies</a
+                    ></b
+                >.
+            </p>
 
-    <h2>Implementing Market Profile Concepts in Pine Script (Conceptual & Practical)</h2>
-    <p>A full, visually accurate representation of TPO-based Market Profile (with letters and complex horizontal stacking) is generally <b>not directly feasible or practical</b> to build efficiently using native Pine Script drawing objects (`box.new`, `label.new`, `line.new`) due to the sheer number of objects required and performance limitations. Pine Script is optimized for plotting lines, shapes, and columns, not complex horizontal histograms that adapt to letter counts across many bars/sessions.</p>
+            <h2>
+                Implementing Market Profile Concepts in Pine Script (Conceptual
+                & Practical)
+            </h2>
+            <p>
+                A full, visually accurate representation of TPO-based Market
+                Profile (with letters and complex horizontal stacking) is
+                generally <b>not directly feasible or practical</b> to build
+                efficiently using native Pine Script drawing objects (`box.new`,
+                `label.new`, `line.new`) due to the sheer number of objects
+                required and performance limitations. Pine Script is optimized
+                for plotting lines, shapes, and columns, not complex horizontal
+                histograms that adapt to letter counts across many
+                bars/sessions.
+            </p>
 
-    <p>However, Pine Script v5 does offer a robust `volume.profile_session` function, which creates a <b>Volume Profile</b> (volume at price, not time at price). Many traders use Volume Profile as a close proxy or in conjunction with Market Profile concepts. We can also manually calculate elements like the Initial Balance.</p>
+            <p>
+                However, Pine Script v5 does offer a robust
+                `volume.profile_session` function, which creates a
+                <b>Volume Profile</b> (volume at price, not time at price). Many
+                traders use Volume Profile as a close proxy or in conjunction
+                with Market Profile concepts. We can also manually calculate
+                elements like the Initial Balance.
+            </p>
 
-    <p>Below, we will demonstrate how you *could* conceptually build a simplified "Market Profile-like" visual (by drawing boxes based on TPO counts), and more importantly, how to derive and use key Market Profile <b>concepts</b> like Initial Balance, Point of Control, and Value Area in your <b><a href="https://offline-pixel.github.io/pinescript-strategies.html">pine script strategies</a></b>, which are often better calculated or taken from the built-in Volume Profile functionality.</p>
+            <p>
+                Below, we will demonstrate how you *could* conceptually build a
+                simplified "Market Profile-like" visual (by drawing boxes based
+                on TPO counts), and more importantly, how to derive and use key
+                Market Profile <b>concepts</b> like Initial Balance, Point of
+                Control, and Value Area in your
+                <b
+                    ><a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >pine script strategies</a
+                    ></b
+                >, which are often better calculated or taken from the built-in
+                Volume Profile functionality.
+            </p>
 
-    <h3>Conceptual TPO Profile Visualization (with Disclaimers)</h3>
-    <p>This code attempts to visualize TPOs by counting bars within price bins. It will plot boxes, but it won't be a classic TPO chart with letters. It's for conceptual understanding of the logic rather than a production-ready Market Profile visual.</p>
-<pre><code><span class="comment">//@version=5</span>
+            <h3>Conceptual TPO Profile Visualization (with Disclaimers)</h3>
+            <p>
+                This code attempts to visualize TPOs by counting bars within
+                price bins. It will plot boxes, but it won't be a classic TPO
+                chart with letters. It's for conceptual understanding of the
+                logic rather than a production-ready Market Profile visual.
+            </p>
+            <pre><code><span class="comment">//@version=5</span>
 <span class="function">indicator</span>(<span class="string">"Conceptual Market Profile (TPOs)"</span>, overlay=<span class="keyword">true</span>, max_bars_back=<span class="number">500</span>) <span class="comment">// overlay=true for visual on chart</span>
 
 <span class="comment">// --- User Inputs ---</span>
@@ -277,7 +439,7 @@ currentBarTPOPriceLevel = <span class="function">math.round</span>(currentBarMid
         <span class="comment">// Draw a box for each TPO price level</span>
         <span class="function">box.new</span>(leftX, priceLevel + actualPriceTick/<span class="number">2</span>, leftX + boxWidth, priceLevel - actualPriceTick/<span class="number">2</span>,
                  <span class="keyword">border_color</span>=<span class="keyword">na</span>, <span class="keyword">bgcolor</span>=boxColor, <span class="keyword">xloc</span>=xloc.bar_index)
-        
+
         <span class="comment">// Add TPO count as label (optional)</span>
         <span class="keyword">if</span> showLabels
             <span class="function">label.new</span>(leftX + boxWidth, priceLevel, <span class="keyword">text</span>=<span class="function">str.tostring</span>(tpoCount), <span class="keyword">xloc</span>=xloc.bar_index, <span class="keyword">yloc</span>=yloc.price,
@@ -405,69 +567,195 @@ isWithinIBPeriod = <span class="function">time_close</span> - <span class="keywo
 </code>
 </pre>
 
+            <h2>Optimizing Market Profile Strategies</h2>
+            <p>To get the most from Market Profile concepts in Pine Script:</p>
+            <ul>
+                <li>
+                    <b>Understanding Market Structure:</b> Market Profile is
+                    about understanding whether the market is in a state of
+                    <b>balance (consolidation)</b> or
+                    <b>imbalance (trending)</b>. Strategies should align with
+                    this understanding.
+                </li>
+                <li>
+                    <b>Context is King:</b> Always consider the broader market
+                    context (higher timeframe trend, fundamental news) when
+                    interpreting Market Profile levels.
+                </li>
+                <li>
+                    <b>Timeframe Alignment:</b> Market Profile is primarily an
+                    <b>intraday tool</b>. Ensure your chart's timeframe (e.g.,
+                    5-min, 15-min, 30-min) aligns with the `sessionTimeframe`
+                    you choose for profile calculation (typically "D" for daily
+                    profiles).
+                </li>
+                <li>
+                    <b>Initial Balance (IB) Analysis:</b> The IB provides early
+                    clues. A narrow IB suggests potential for a breakout or
+                    trend day. A wide IB suggests possible range-bound trading
+                    for the rest of the session. Look for IB extensions for
+                    strong trend days.
+                </li>
+                <li>
+                    <b>Value Area (VA) Dynamics:</b>
+                    <ul>
+                        <li>
+                            <b>Open within VA:</b> Often leads to a rotational
+                            day. Look for mean reversion trades.
+                        </li>
+                        <li>
+                            <b>Open outside VA but returns:</b> Absorption,
+                            price returns to previous value, indicating
+                            rejection of extremes.
+                        </li>
+                        <li>
+                            <b>Open outside VA and stays out:</b> Strong trend
+                            day, market accepting new value.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Single Prints / Tails:</b> These indicate areas of rapid
+                    price movement and usually act as weak support/resistance
+                    zones that might be revisited. Trading against single prints
+                    can be risky; trading *with* a sustained move through them
+                    can be profitable.
+                </li>
+                <li>
+                    <b>POC as a Magnet:</b> The POC often acts as a price
+                    magnet. Price tends to revert to the POC if it strays too
+                    far, especially on balance days. A break and hold of POC can
+                    signal conviction.
+                </li>
+                <li>
+                    <b>Combined Analysis:</b> Market Profile should be combined
+                    with other technical analysis tools (e.g., candlestick
+                    patterns, momentum oscillators, traditional
+                    support/resistance lines) for confirmation.
+                </li>
+            </ul>
 
-    <h2>Optimizing Market Profile Strategies</h2>
-    <p>To get the most from Market Profile concepts in Pine Script:</p>
-    <ul>
-      <li> <b>Understanding Market Structure:</b> Market Profile is about understanding whether the market is in a state of <b>balance (consolidation)</b> or <b>imbalance (trending)</b>. Strategies should align with this understanding.</li>
-      <li> <b>Context is King:</b> Always consider the broader market context (higher timeframe trend, fundamental news) when interpreting Market Profile levels.</li>
-      <li> <b>Timeframe Alignment:</b> Market Profile is primarily an <b>intraday tool</b>. Ensure your chart's timeframe (e.g., 5-min, 15-min, 30-min) aligns with the `sessionTimeframe` you choose for profile calculation (typically "D" for daily profiles).</li>
-      <li> <b>Initial Balance (IB) Analysis:</b> The IB provides early clues. A narrow IB suggests potential for a breakout or trend day. A wide IB suggests possible range-bound trading for the rest of the session. Look for IB extensions for strong trend days.</li>
-      <li> <b>Value Area (VA) Dynamics:</b>
-        <ul>
-          <li> <b>Open within VA:</b> Often leads to a rotational day. Look for mean reversion trades.</li>
-          <li> <b>Open outside VA but returns:</b> Absorption, price returns to previous value, indicating rejection of extremes.</li>
-          <li> <b>Open outside VA and stays out:</b> Strong trend day, market accepting new value.</li>
-        </ul>
-      </li>
-      <li> <b>Single Prints / Tails:</b> These indicate areas of rapid price movement and usually act as weak support/resistance zones that might be revisited. Trading against single prints can be risky; trading *with* a sustained move through them can be profitable.</li>
-      <li> <b>POC as a Magnet:</b> The POC often acts as a price magnet. Price tends to revert to the POC if it strays too far, especially on balance days. A break and hold of POC can signal conviction.</li>
-      <li> <b>Combined Analysis:</b> Market Profile should be combined with other technical analysis tools (e.g., candlestick patterns, momentum oscillators, traditional support/resistance lines) for confirmation.</li>
-    </ul>
+            <div class="tip">
+                <strong>Auction Theory Framework:</strong> Market Profile
+                provides a powerful framework for understanding market behavior
+                as an auction process, revealing areas of fair value and
+                imbalance through time and price.
+            </div>
 
-    <div class="tip">
-      <strong>Auction Theory Framework:</strong> Market Profile provides a powerful framework for understanding market behavior as an auction process, revealing areas of fair value and imbalance through time and price.
-    </div>
+            <h2>Common Market Profile Pitfalls</h2>
+            <ul>
+                <li>
+                    <b>Visual Complexity in Pine Script:</b> Replicating the
+                    full, interactive graphical TPO Market Profile (with
+                    letters) in Pine Script is highly challenging due to drawing
+                    limitations and performance. Pine Script's built-in
+                    `volume.profile_session` is for Volume Profile (volume at
+                    price), which is often used as a proxy but isn't identical.
+                </li>
+                <li>
+                    <b>Subjectivity:</b> Interpreting Market Profile patterns
+                    (e.g., P-shaped, b-shaped, D-shaped profiles) and single
+                    prints can be subjective.
+                </li>
+                <li>
+                    <b>Over-Reliance:</b> Using Market Profile as the sole
+                    decision-making tool without considering the broader market
+                    context, fundamental news, or other technical analysis can
+                    lead to poor trading decisions.
+                </li>
+                <li>
+                    <b>Lagging Element:</b> Market Profile shows where price
+                    *has been* and for how long. While it reveals areas of past
+                    activity, it's not a pure predictive tool for future
+                    movements.
+                </li>
+                <li>
+                    <b>False Breakouts:</b> Markets can often "fake out" around
+                    key Market Profile levels (IB, VAH/VAL, POC), leading to
+                    whipsaws if confirmation is not sought.
+                </li>
+                <li>
+                    <b>Misinterpreting Range vs. Trend:</b> Misjudging whether
+                    the market is in a balance or imbalance phase can lead to
+                    applying the wrong strategy (e.g., mean reversion on a
+                    strong trend day).
+                </li>
+            </ul>
 
-    <h2>Common Market Profile Pitfalls</h2>
-    <ul>
-      <li> <b>Visual Complexity in Pine Script:</b> Replicating the full, interactive graphical TPO Market Profile (with letters) in Pine Script is highly challenging due to drawing limitations and performance. Pine Script's built-in `volume.profile_session` is for Volume Profile (volume at price), which is often used as a proxy but isn't identical.</li>
-      <li> <b>Subjectivity:</b> Interpreting Market Profile patterns (e.g., P-shaped, b-shaped, D-shaped profiles) and single prints can be subjective.</li>
-      <li> <b>Over-Reliance:</b> Using Market Profile as the sole decision-making tool without considering the broader market context, fundamental news, or other technical analysis can lead to poor trading decisions.</li>
-      <li> <b>Lagging Element:</b> Market Profile shows where price *has been* and for how long. While it reveals areas of past activity, it's not a pure predictive tool for future movements.</li>
-      <li> <b>False Breakouts:</b> Markets can often "fake out" around key Market Profile levels (IB, VAH/VAL, POC), leading to whipsaws if confirmation is not sought.</li>
-      <li> <b>Misinterpreting Range vs. Trend:</b> Misjudging whether the market is in a balance or imbalance phase can lead to applying the wrong strategy (e.g., mean reversion on a strong trend day).</li>
-    </ul>
+            <h2>Conclusion</h2>
+            <p>
+                Market Profile is an advanced and insightful technical analysis
+                methodology that provides a unique time-based perspective on
+                market activity. While a complete graphical TPO Market Profile
+                is computationally challenging to render perfectly in Pine
+                Script, understanding its core concepts like
+                <b>Time Price Opportunities (TPOs)</b>,
+                <b>Point of Control (POC)</b>, <b>Value Area (VA)</b>,
+                <b>Initial Balance (IB)</b>, and <b>Single Prints</b> is
+                invaluable. Pine Script allows traders to programmatically
+                calculate and leverage these concepts (often using the built-in
+                Volume Profile as a strong proxy for price-volume distribution
+                and custom IB calculation) to build sophisticated
+                <b
+                    ><a
+                        href="https://offline-pixel.github.io/pinescript-strategies.html"
+                        >pine script strategies</a
+                    ></b
+                >. By combining the wisdom of Market Profile with other
+                confirming indicators and a robust understanding of market
+                structure, you can gain a significant edge in identifying
+                high-probability trading opportunities and navigating dynamic
+                market conditions.
+            </p>
 
-    <h2>Conclusion</h2>
-    <p>Market Profile is an advanced and insightful technical analysis methodology that provides a unique time-based perspective on market activity. While a complete graphical TPO Market Profile is computationally challenging to render perfectly in Pine Script, understanding its core concepts like <b>Time Price Opportunities (TPOs)</b>, <b>Point of Control (POC)</b>, <b>Value Area (VA)</b>, <b>Initial Balance (IB)</b>, and <b>Single Prints</b> is invaluable. Pine Script allows traders to programmatically calculate and leverage these concepts (often using the built-in Volume Profile as a strong proxy for price-volume distribution and custom IB calculation) to build sophisticated <b><a href="https://offline-pixel.github.io/pinescript-strategies.html">pine script strategies</a></b>. By combining the wisdom of Market Profile with other confirming indicators and a robust understanding of market structure, you can gain a significant edge in identifying high-probability trading opportunities and navigating dynamic market conditions.</p>
-  
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
+            <section class="cta-section custom-strategy-cta">
+                <h2 class="cta-title">Enhance Your Trading</h2>
+                <p>
+                    Get a high-performance Pine Script analysis tool for
+                    actionable market insights, designed for traders on the
+                    move.
+                </p>
+                <p>
+                    This strategy runs in live mode on TradingView, helping you
+                    identify potential opportunities.
+                </p>
+                <p>
+                    <small
+                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
+                        Rate</small
+                    >
+                </p>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <img src="../assets/ss.png" width="100%" />
+                </a>
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    class="new-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get Pine Script Strategy
+                </a>
+            </section>
+        </article>
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
-
-</body>
+        <ins
+            class="adsbygoogle"
+            style="display: block; text-align: center"
+            data-ad-layout="in-article"
+            data-ad-format="fluid"
+            data-ad-client="ca-pub-9243803325136617"
+            data-ad-slot="5548365171"
+        ></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <script src="../scripts/scripts.js"></script>
+        <script src="../scripts/dynamicContent.js" defer></script>
+        <script src="../scripts/pinescript-disclaimer.js"></script>
+    </body>
 </html>
