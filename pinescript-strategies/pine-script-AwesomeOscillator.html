@@ -1,58 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        }
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pine Script Awesome Oscillator - Complete TradingView Guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
-
-    <meta name="description" content="Master the Awesome Oscillator (AO) in Pine Script for TradingView - a momentum indicator by Bill Williams for identifying trend strength, reversals, and market structure.">
-    <meta name="keywords" content="pine script strategies, Awesome Oscillator, AO, tradingview indicator, technical analysis, momentum oscillator, Bill Williams, zero line, twin peaks, saucer">
-
-    <!-- Open Graph / Social Meta -->
+    <script type="module" crossorigin src="/assets/index-CM5-gUPC.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DiFM9AWt.js">
+    <link rel="modulepreload" crossorigin href="/assets/objectSpread2-BL5tB9tX.js">
+    <link rel="modulepreload" crossorigin href="/assets/jsxRuntime.module-PwBf1rlp.js">
+    <link rel="modulepreload" crossorigin href="/assets/preload-helper-BMbW3vOo.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CFRZGxl7.css">
+  
+    <meta name="description" content="Comprehensive tutorial on implementing and using the Awesome Oscillator in Pine Script for advanced trading strategies.">
     <meta property="og:title" content="Pine Script Awesome Oscillator - Complete TradingView Guide">
     <meta property="og:description" content="Comprehensive tutorial on implementing and using the Awesome Oscillator in Pine Script for advanced trading strategies.">
-    <meta property="og:type" content="article">
-
-    <!-- Twitter Card -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html">
     <meta name="twitter:card" content="summary_large_image">
+  
+    <meta name="keywords" content="pine script strategies, Awesome Oscillator, AO, tradingview indicator, technical analysis, momentum oscillator, Bill Williams, zero line, twin peaks, saucer">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
     <meta name="twitter:title" content="Pine Script Awesome Oscillator - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html" />
-
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-<script type="application/ld+json">
-{
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Pine Script Awesome Oscillator - Complete TradingView Guide",
@@ -98,269 +71,534 @@
       }
     ]
   }
-}
-</script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script Awesome Oscillator </h1>
-      <p class="blog-subtitle">Master this unique momentum indicator by Bill Williams in TradingView's Pine Script for identifying market momentum, trend shifts, and reversal signals.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Pine Script Awesome Oscillator - Complete TradingView Guide","description":"Master the Awesome Oscillator (AO) in Pine Script for TradingView - a momentum indicator by Bill Williams for identifying trend strength, reversals, and market structure.","keywords":"pine script strategies, Awesome Oscillator, AO, tradingview indicator, technical analysis, momentum oscillator, Bill Williams, zero line, twin peaks, saucer","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html","ogTitle":"Pine Script Awesome Oscillator - Complete TradingView Guide","ogDescription":"Comprehensive tutorial on implementing and using the Awesome Oscillator in Pine Script for advanced trading strategies.","twitterTitle":"Pine Script Awesome Oscillator - Complete TradingView Guide","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Awesome Oscillator - Complete TradingView Guide","description":"Master the Awesome Oscillator (AO) in Pine Script for TradingView - a momentum indicator by Bill Williams for identifying trend strength and reversals.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Awesome Oscillator","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"Awesome Oscillator","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AwesomeOscillator.html"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script Awesome Oscillator","subtitle":"Master this unique momentum indicator by Bill Williams in TradingView's Pine Script for identifying market momentum, trend shifts, and reversal signals.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What is the Awesome Oscillator (AO)?","html":"<p>The <b>Awesome Oscillator (AO)</b> is a momentum indicator developed by Bill Williams, the creator of the Alligator Indicator and Fractals. Unlike most oscillators that compare closing prices, the AO compares the recent market momentum (5-period simple moving average of midpoints) with the broader market momentum (34-period simple moving average of midpoints). It is typically plotted as a histogram, with bars colored green (momentum up) or red (momentum down).</p><p>The Awesome Oscillator is designed to reflect the underlying driving force of the price, helping traders identify changes in momentum, confirm trends, and spot potential reversal signals based on specific patterns.</p>"},{"type":"content","title":"Components and Calculation","html":"<p>The calculation of the Awesome Oscillator is based on two Simple Moving Averages (SMAs) of the <code>midpoint</code> price (which is <code>(High + Low) / 2</code>):</p>","orderedItems":["<b>Short Period SMA</b>: Calculate a 5-period SMA of the <code>midpoint</code> price.","<b>Long Period SMA</b>: Calculate a 34-period SMA of the <code>midpoint</code> price.","<b>AO Formula</b>:<br><code>AO = Short Period SMA of Midpoint - Long Period SMA of Midpoint</code><br>The resulting value oscillates around a zero line. Bars are colored based on their relation to the previous bar: green if current AO > previous AO, red if current AO < previous AO."]},{"type":"code","title":"Basic Awesome Oscillator Implementation in Pine Script","description":"Pine Script v5 provides a convenient built-in function `ta.ao()` for straightforward implementation.","code":"//@version=5\nindicator(\"My Awesome Oscillator\", overlay=false)\n\n// Calculate Awesome Oscillator using the built-in function\n// ta.ao uses (high+low)/2 as source and default lengths 5 and 34\naoValue = ta.ao()\n\n// Plot the Awesome Oscillator as a histogram\n// Color based on whether current AO is greater than previous AO\nplot(aoValue, title=\"AO\", style=plot.style_columns, color=aoValue >= aoValue[1] ? color.green : color.red)\n\n// Plot the Zero Line\nhline(0, \"Zero Line\", color.gray, linestyle=hline.style_solid)"},{"type":"tip","title":"Histogram Colors","content":"Green bars indicate rising momentum; red bars indicate falling momentum. This is key for interpreting signals."},{"type":"strategies","title":"Practical Awesome Oscillator Trading Strategies","strategies":[{"name":"1. Zero Line Crossover","description":"The zero line is a crucial level for the Awesome Oscillator, indicating a shift in momentum from bearish to bullish or vice versa. It's often used as a primary signal for trend initiation.","subItems":["<b>Buy Signal</b>: AO crosses above the zero line. This indicates a shift from bearish to bullish momentum.","<b>Sell Signal</b>: AO crosses below the zero line. This indicates a shift from bullish to bearish momentum."],"code":"//@version=5\nstrategy(\"AO Zero Line Crossover Strategy\", overlay=true)\n\n// Calculate Awesome Oscillator\naoValue = ta.ao()\n\n// Define conditions for entries\nlongSignal = ta.crossover(aoValue, 0)\nshortSignal = ta.crossunder(aoValue, 0)\n\n// Strategy entries/exits\nif (longSignal)\n    strategy.entry(\"Long\", strategy.long)\n\nif (shortSignal)\n    strategy.entry(\"Short\", strategy.short)"},{"name":"2. Twin Peaks Strategy","description":"The Twin Peaks strategy uses two peaks (or troughs) on the Awesome Oscillator for reversal signals. This is considered a more reliable signal than simple zero-line crossovers.","subItems":["<b>Bullish Twin Peaks</b>: Occurs below the zero line.<br>1. A trough (lowest point) forms below the zero line.<br>2. AO rises but stays below the zero line, then forms a second, higher trough.<br>3. AO then crosses above the zero line.<br>This indicates weakening bearish momentum.","<b>Bearish Twin Peaks</b>: Occurs above the zero line.<br>1. A peak (highest point) forms above the zero line.<br>2. AO falls but stays above the zero line, then forms a second, lower peak.<br>3. AO then crosses below the zero line.<br>This indicates weakening bullish momentum."],"code":"//@version=5\nindicator(\"AO Twin Peaks Scanner\", overlay=true)\n\n// Calculate Awesome Oscillator\naoValue = ta.ao()\n\n// Plot AO as a histogram\nplot(aoValue, title=\"AO\", style=plot.style_columns, color=aoValue >= aoValue[1] ? color.new(color.green, 0) : color.new(color.red, 0))\nhline(0, \"Zero Line\", color.gray, linestyle=hline.style_solid)\n\n// Simplified Bullish Twin Peak (AO makes higher low below zero, then crosses zero)\nbullishTwinPeakSignal = aoValue[2] < 0 and aoValue[1] < 0 and aoValue > 0 and aoValue[1] > aoValue[2]\n\n// Simplified Bearish Twin Peak (AO makes lower high above zero, then crosses zero)\nbearishTwinPeakSignal = aoValue[2] > 0 and aoValue[1] > 0 and aoValue < 0 and aoValue[1] < aoValue[2]\n\nplotshape(bullishTwinPeakSignal, title=\"Bullish Twin Peak\", location=location.belowbar, color=color.new(color.green, 0), style=shape.triangleup, size=size.small)\nplotshape(bearishTwinPeakSignal, title=\"Bearish Twin Peak\", location=location.abovebar, color=color.new(color.red, 0), style=shape.triangledown, size=size.small)\n\nalertcondition(bullishTwinPeakSignal, \"Bullish AO Twin Peaks\", \"Potential bullish reversal based on AO Twin Peaks.\")\nalertcondition(bearishTwinPeakSignal, \"Bearish AO Twin Peaks\", \"Potential bearish reversal based on AO Twin Peaks.\")"},{"name":"3. Saucer Strategy","description":"The Saucer strategy is a short-term momentum signal that uses three consecutive bars of the Awesome Oscillator (or two for the bearish signal) that are on the same side of the zero line but change color, indicating a subtle shift in momentum.","subItems":["<b>Bullish Saucer</b>: Occurs above the zero line.<br>1. AO is above the zero line.<br>2. The first bar is red (AO[2] < AO[1]).<br>3. The second bar is red and lower than the first red bar (AO[1] < AO[2]).<br>4. The third bar is green (AO > AO[1]).<br>This implies a brief dip in positive momentum followed by a resumption of strength.","<b>Bearish Saucer</b>: Occurs below the zero line.<br>1. AO is below the zero line.<br>2. The first bar is green (AO[2] > AO[1]).<br>3. The second bar is green and higher than the first green bar (AO[1] > AO[2]).<br>4. The third bar is red (AO < AO[1]).<br>This implies a brief rally in negative momentum followed by a resumption of weakness."],"code":"//@version=5\nstrategy(\"AO Saucer Strategy\", overlay=true)\n\n// Calculate Awesome Oscillator\naoValue = ta.ao()\n\n// Plot AO as a histogram in a separate pane\nplot(aoValue, title=\"AO\", style=plot.style_columns, color=aoValue >= aoValue[1] ? color.new(color.green, 0) : color.new(color.red, 0), display=display.pane_only)\nhline(0, \"Zero Line\", color=color.new(color.gray, 0), linestyle=hline.style_solid, display=display.pane_only)\n\n// Bullish Saucer condition\n// AO is above zero, previous two bars are red and decreasing, current bar is green\nbullishSaucer = aoValue > 0 and aoValue[1] < aoValue[2] and aoValue[1] < aoValue and aoValue > aoValue[1]\n\n// Bearish Saucer condition\n// AO is below zero, previous two bars are green and increasing, current bar is red\nbearishSaucer = aoValue < 0 and aoValue[1] > aoValue[2] and aoValue[1] > aoValue and aoValue < aoValue[1]\n\n// Strategy entries/exits\nif (bullishSaucer)\n    strategy.entry(\"Long\", strategy.long)\n\nif (bearishSaucer)\n    strategy.entry(\"Short\", strategy.short)"}]},{"type":"content","title":"Optimizing Awesome Oscillator Performance","html":"<p>To get the most from the Awesome Oscillator in Pine Script:</p>","listItems":["<b>Understand Bill Williams' Philosophy:</b> The AO is best understood within Bill Williams' broader trading system, which focuses on market fractal geometry and the psychology of trading. It's often used in conjunction with his other indicators like Fractals and Alligator.","<b>Combine Signals:</b> Do not rely on a single AO signal in isolation. For higher probability trades, look for confluence between AO signals (e.g., zero line crossover + saucer), or combine them with price action and other indicators.","<b>Multi-Timeframe Analysis:</b> Confirm AO signals on a higher timeframe for broader trend context. A strong AO signal on a lower timeframe gains credibility if it aligns with the momentum bias of a higher timeframe.","<b>Market Conditions:</b> AO tends to perform well in trending markets. In sideways or extremely choppy markets, its signals might be less reliable."]},{"type":"tip","title":"Zero Line as Equilibrium","content":"Think of the zero line as the balance point between bullish and bearish forces. Crossing it signifies a shift in who is currently dominating the market."},{"type":"content","title":"Common Awesome Oscillator Pitfalls","listItems":["<b>Lag:</b> Despite being a momentum indicator, AO uses SMAs, which inherently introduce some lag. It's not a leading indicator.","<b>False Signals in Ranging Markets:</b> In consolidations, AO can frequently cross the zero line or produce false saucer/twin peaks signals.","<b>Subjectivity in Twin Peaks/Saucers:</b> While the general rules are defined, precisely identifying peaks and troughs for the Twin Peaks strategy can sometimes be subjective without robust swing point detection.","<b>Not a Standalone Indicator:</b> AO is part of a larger system. Using it in isolation without other tools can lead to less effective trading.","<b>No Fixed Overbought/Oversold Zones:</b> Unlike RSI or Stochastic, AO doesn't have fixed overbought/oversold levels. Its extremes are relative to its own historical range."]},{"type":"conclusion","title":"Conclusion","html":"<p>The Awesome Oscillator is a powerful and visually intuitive momentum indicator available in Pine Script for TradingView. Developed by Bill Williams, it offers a unique perspective on market momentum by comparing short-term and long-term price midpoint averages. Whether used for identifying shifts across the zero line, spotting the nuanced Twin Peaks pattern, or leveraging the short-term Saucer signal, the AO provides valuable insights into the underlying forces driving price. By understanding its calculation and characteristic patterns, and integrating it strategically within your broader technical analysis framework, you can leverage the Awesome Oscillator to enhance your trading decisions and gain a clearer view of market dynamics.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a class=\"text-amber-500\" href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300"><header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90"><div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a href="/" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development" class="flex items-center gap-0.5 group"><div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105"><img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain"/></div><span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">OFFLINE<span class="text-indigo-600">PIXEL</span></span></a><nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500"><a href="/pinescript-strategies.html" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg><span>Pine Strategies</span></a><div class="relative group"><button type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none"><span>Expertise</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 transition-transform "><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></button><div class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 transition-all duration-200 opacity-0 invisible scale-95 pointer-events-none"><div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/quant-engineer">Hire Quant Expert</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Quant Dev</a>, </span><span><a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Researcher</a>, </span><span><a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Trader</a>, </span><span><a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Junior Quant</a>, </span><span><a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Senior Quant</a></span></div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><span>Hire Platform Engineer</span></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Rust (Systems)</a>, </span><span><a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">DuckDB (Analytics)</a></span>, High-Performance Pipelines</div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/ml-engineer">Hire ML Expert</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">LLMs</a>, </span><span><a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">RAG</a>, </span><span><a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">FAISS</a>, </span><span><a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Walk-Forward</a></span></div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/app-developer">Hire App Developer</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Tauri</a>, </span><span><a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Microfrontends</a></span>, Preact</div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/python-engineer">Hire Python Dev</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">FastAPI</a></span>, Pipelines, Structuring</div></div></div></div></div><a href="#cloud-enterprise" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><span>Cloud &amp; Enterprise</span></a><a href="#bi-analytics" title="Power BI Dashboards, DAX Optimization, and Executive Analytics" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><span>Analytics</span></a></nav><div class="flex items-center gap-4"><button type="button" disabled title="Book an Expert Engineering Consultation" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 opacity-50 cursor-not-allowed">Raise A Request</button><button type="button" disabled aria-label="Toggle navigation menu" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg></button></div></div><div class="border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden transition-all duration-200 max-h-0 opacity-0 invisible overflow-hidden p-0 border-0"><div class="hidden"><a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div><a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a></span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div><div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a></span><span class="text-slate-500"> | ETL Pipelines</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML &amp; AI Expertise</div><a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a></span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div><a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a></span><span class="text-slate-500"> | Preact</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div><a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a></span><span class="text-slate-500"> | Pipelines, Structuring</span></div></div><div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800"><a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud &amp; Enterprise</a><a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a></div><div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800"><button type="button" title="Book an Expert Engineering Consultation" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 ">Raise A Request</button></div></div></div></header><div class="flex-1">
+    <div class="min-h-screen bg-white dark:bg-black">
+      <!-- Hero Section - EXACT match -->
+      <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div>
+        <div class="absolute inset-0 opacity-5 dark:opacity-10">
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        </div>
+        <div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
 
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
+        <div class="relative max-w-5xl mx-auto px-6 py-24 text-center">
+          <div class="animate-in mb-8">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+              </svg>
+              <span>/</span>
+              <a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a>
+              <span>/</span>
+              <span class="text-indigo-500">pine-script-AwesomeOscillator</span>
+            </div>
+          </div>
+
+          <h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6">
+            <span class="text-indigo-500">$</span>
+            <span class="inline-block min-w-[200px]">Pine Script Awesome Oscillator</span>
+          </h1>
+
+          <p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">
+            Master this unique momentum indicator by Bill Williams in TradingView&#39;s Pine Script for identifying market momentum, trend shifts, and reversal signals.
+          </p>
+
+          <div class="animate-in flex flex-wrap justify-center gap-6 mb-10">
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">500+ Clients Helped</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+              <span class="text-sm font-mono">100% Satisfaction</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">Live Trading Ready</span>
+            </div>
+          </div>
+
+          <div class="animate-in flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+              </svg>
               Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
-
-  <article class="fullscreen">
-  
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="https://offline-pixel.github.io/">Home</a> >
-  <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-  <span aria-current="page">Awesome Oscillator</span>
-</nav>
-</div>
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is the Awesome Oscillator (AO)?</h2>
-    <p>The <b>Awesome Oscillator (AO)</b> is a momentum indicator developed by Bill Williams, the creator of the Alligator Indicator and Fractals. Unlike most oscillators that compare closing prices, the AO compares the recent market momentum (5-period simple moving average of midpoints) with the broader market momentum (34-period simple moving average of midpoints). It is typically plotted as a histogram, with bars colored green (momentum up) or red (momentum down).</p>
-
-    <p>The Awesome Oscillator is designed to reflect the underlying driving force of the price, helping traders identify changes in momentum, confirm trends, and spot potential reversal signals based on specific patterns.</p>
-
-    <h2>Components and Calculation</h2>
-    <p>The calculation of the Awesome Oscillator is based on two Simple Moving Averages (SMAs) of the `midpoint` price (which is `(High + Low) / 2`):</p>
-    <ol>
-      <li><strong>Short Period SMA</strong>: Calculate a 5-period SMA of the `midpoint` price.</li>
-      <li><strong>Long Period SMA</strong>: Calculate a 34-period SMA of the `midpoint` price.</li>
-      <li><strong>AO Formula</strong>:
-        <br>
-        `AO = Short Period SMA of Midpoint - Long Period SMA of Midpoint`
-        <br>
-        The resulting value oscillates around a zero line. Bars are colored based on their relation to the previous bar: green if current AO > previous AO, red if current AO < previous AO.
-      </li>
-    </ol>
-
-    <h2>Basic Awesome Oscillator Implementation in Pine Script</h2>
-    <p>Pine Script v5 provides a convenient built-in function `ta.ao()` for straightforward implementation.</p>
-
-    <pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"My Awesome Oscillator"</span>, overlay=<span class="keyword">false</span>) <span class="comment">// overlay=false to plot in a separate pane</span>
-
-<span class="comment">// Calculate Awesome Oscillator using the built-in function</span>
-<span class="comment">// ta.ao uses (high+low)/2 as source and default lengths 5 and 34</span>
-aoValue = <span class="function">ta.ao</span>()
-
-<span class="comment">// Plot the Awesome Oscillator as a histogram</span>
-<span class="comment">// Color based on whether current AO is greater than previous AO</span>
-<span class="function">plot</span>(aoValue, <span class="keyword">title</span>=<span class="string">"AO"</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_columns</span>, <span class="keyword">color</span>=aoValue >= aoValue[<span class="number">1</span>] ? <span class="keyword">color</span>.<span class="function">green</span> : <span class="keyword">color</span>.<span class="function">red</span>)
-
-<span class="comment">// Plot the Zero Line</span>
-<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_solid</span>)
-</code>
-</pre>
-
-    <div class="tip">
-      <strong>Histogram Colors:</strong> Green bars indicate rising momentum; red bars indicate falling momentum. This is key for interpreting signals.
-    </div>
-
-    <h2>Practical Awesome Oscillator <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
-
-    <h3>1. Zero Line Crossover</h3>
-    <p>The zero line is a crucial level for the Awesome Oscillator, indicating a shift in momentum from bearish to bullish or vice versa. It's often used as a primary signal for trend initiation.</p>
-    <ul>
-      <li><strong>Buy Signal</strong>: AO crosses above the zero line. This indicates a shift from bearish to bullish momentum.</li>
-      <li><strong>Sell Signal</strong>: AO crosses below the zero line. This indicates a shift from bullish to bearish momentum.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">strategy</span>(<span class="string">"AO Zero Line Crossover Strategy"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Calculate Awesome Oscillator</span>
-aoValue = <span class="function">ta.ao</span>()
-
-<span class="comment">// Define conditions for entries</span>
-longSignal = <span class="function">ta.crossover</span>(aoValue, <span class="number">0</span>)
-shortSignal = <span class="function">ta.crossunder</span>(aoValue, <span class="number">0</span>)
-
-<span class="comment">// Strategy entries/exits</span>
-<span class="keyword">if</span> (longSignal)
-    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
-
-<span class="keyword">if</span> (shortSignal)
-    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
-
-<span class="comment">// Plot AO in a separate pane for visualization</span>
-<span class="comment">// plot(aoValue, title="AO", style=plot.style_columns, color=aoValue >= aoValue[1] ? color.green : color.red, display=display.pane_only)</span>
-<span class="comment">// hline(0, "Zero Line", color.gray, display=display.pane_only)</span>
-</code>
-</pre>
-
-    <h3>2. Twin Peaks Strategy</h3>
-    <p>The Twin Peaks strategy uses two peaks (or troughs) on the Awesome Oscillator for reversal signals. This is considered a more reliable signal than simple zero-line crossovers.</p>
-    <ul>
-      <li><strong>Bullish Twin Peaks</strong>: Occurs below the zero line.
-        <ol>
-          <li>A trough (lowest point) forms below the zero line.</li>
-          <li>AO rises but stays below the zero line, then forms a second, higher trough (not necessarily a new lowest point for the entire indicator, just within the relevant swings).</li>
-          <li>AO then crosses above the zero line.</li>
-        </ol>
-        This indicates weakening bearish momentum.
-      </li>
-      <li><strong>Bearish Twin Peaks</strong>: Occurs above the zero line.
-        <ol>
-          <li>A peak (highest point) forms above the zero line.</li>
-          <li>AO falls but stays above the zero line, then forms a second, lower peak.</li>
-          <li>AO then crosses below the zero line.</li>
-        </ol>
-        This indicates weakening bullish momentum.
-      </li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">indicator</span>(<span class="string">"AO Twin Peaks Scanner"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Calculate Awesome Oscillator</span>
-aoValue = <span class="function">ta.ao</span>()
-
-<span class="comment">// Plot AO as a histogram</span>
-<span class="function">plot</span>(aoValue, <span class="keyword">title</span>=<span class="string">"AO"</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_columns</span>, <span class="keyword">color</span>=aoValue >= aoValue[<span class="number">1</span>] ? <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>) : <span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>))
-<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>.<span class="function">gray</span>, <span class="keyword">linestyle</span>=<span class="keyword">hline</span>.<span class="function">style_solid</span>)
-
-<span class="comment">// Implementing robust Twin Peaks logic requires advanced peak/trough detection.</span>
-<span class="comment">// This is a simplified conceptual example to illustrate the idea, focusing on general AO direction changes around peaks/troughs.</span>
-<span class="comment">// For a fully robust Twin Peaks strategy, you would need to identify actual swing points in AO.</span>
-
-<span class="comment">// Simplified Bullish Twin Peak (AO makes higher low below zero, then crosses zero)</span>
-bullishTwinPeakSignal = aoValue[<span class="number">2</span>] &lt; <span class="number">0</span> <span class="keyword">and</span> aoValue[<span class="number">1</span>] &lt; <span class="number">0</span> <span class="keyword">and</span> aoValue > <span class="number">0</span> <span class="keyword">and</span> aoValue[<span class="number">1</span>] > aoValue[<span class="number">2</span>]
-
-<span class="comment">// Simplified Bearish Twin Peak (AO makes lower high above zero, then crosses zero)</span>
-bearishTwinPeakSignal = aoValue[<span class="number">2</span>] > <span class="number">0</span> <span class="keyword">and</span> aoValue[<span class="number">1</span>] > <span class="number">0</span> <span class="keyword">and</span> aoValue &lt; <span class="number">0</span> <span class="keyword">and</span> aoValue[<span class="number">1</span>] &lt; aoValue[<span class="number">2</span>]
-
-<span class="function">plotshape</span>(bullishTwinPeakSignal, <span class="keyword">title</span>=<span class="string">"Bullish Twin Peak"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">belowbar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">green</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangleup</span>, <span class="keyword">size</span>=size.small)
-<span class="function">plotshape</span>(bearishTwinPeakSignal, <span class="keyword">title</span>=<span class="string">"Bearish Twin Peak"</span>, <span class="keyword">location</span>=<span class="keyword">location</span>.<span class="function">abovebar</span>, <span class="keyword">color</span>=<span class="keyword">color</span>.<span class="function">new</span>(<span class="keyword">color</span>.<span class="function">red</span>, <span class="number">0</span>), <span class="keyword">style</span>=<span class="keyword">shape</span>.<span class="function">triangledown</span>, <span class="keyword">size</span>=size.small)
-
-<span class="function">alertcondition</span>(bullishTwinPeakSignal, <span class="string">"Bullish AO Twin Peaks"</span>, <span class="string">"Potential bullish reversal based on AO Twin Peaks."</span>)
-<span class="function">alertcondition</span>(bearishTwinPeakSignal, <span class="string">"Bearish AO Twin Peaks"</span>, <span class="string">"Potential bearish reversal based on AO Twin Peaks."</span>)
-</code>
-</pre>
-
-    <h3>3. Saucer Strategy</h3>
-    <p>The Saucer strategy is a short-term momentum signal that uses three consecutive bars of the Awesome Oscillator (or two for the bearish signal) that are on the same side of the zero line but change color, indicating a subtle shift in momentum.</p>
-    <ul>
-      <li><strong>Bullish Saucer</strong>: Occurs above the zero line.
-        <ol>
-          <li>AO is above the zero line.</li>
-          <li>The first bar is red (AO[2] < AO[1]).</li>
-          <li>The second bar is red and lower than the first red bar (AO[1] < AO[2]).</li>
-          <li>The third bar is green (AO > AO[1]).</li>
-        </ol>
-        This implies a brief dip in positive momentum followed by a resumption of strength.
-      </li>
-      <li><strong>Bearish Saucer</strong>: Occurs below the zero line.
-        <ol>
-          <li>AO is below the zero line.</li>
-          <li>The first bar is green (AO[2] > AO[1]).</li>
-          <li>The second bar is green and higher than the first green bar (AO[1] > AO[2]).</li>
-          <li>The third bar is red (AO < AO[1]).</li>
-        </ol>
-        This implies a brief rally in negative momentum followed by a resumption of weakness.
-      </li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="function">strategy</span>(<span class="string">"AO Saucer Strategy"</span>, overlay=<span class="keyword">true</span>)
-
-<span class="comment">// Calculate Awesome Oscillator</span>
-aoValue = <span class="function">ta.ao</span>()
-
-<span class="comment">// Plot AO as a histogram in a separate pane</span>
-<span class="function">plot</span>(aoValue, <span class="keyword">title</span>=<span class="string">"AO"</span>, <span class="keyword">style</span>=<span class="keyword">plot.style_columns</span>, <span class="keyword">color</span>=aoValue >= aoValue[<span class="number">1</span>] ? <span class="keyword">color.new</span>(<span class="keyword">color.green</span>, <span class="number">0</span>) : <span class="keyword">color.new</span>(<span class="keyword">color.red</span>, <span class="number">0</span>), <span class="keyword">display</span>=<span class="keyword">display.pane_only</span>)
-<span class="function">hline</span>(<span class="number">0</span>, <span class="string">"Zero Line"</span>, <span class="keyword">color</span>=<span class="keyword">color.new</span>(<span class="keyword">color.gray</span>, <span class="number">0</span>), <span class="keyword">linestyle</span>=<span class="keyword">hline.style_solid</span>, <span class="keyword">display</span>=<span class="keyword">display.pane_only</span>)
-
-<span class="comment">// Bullish Saucer condition</span>
-<span class="comment">// AO is above zero, previous two bars are red and decreasing, current bar is green</span>
-bullishSaucer = aoValue > <span class="number">0</span> <span class="keyword">and</span> aoValue[<span class="number">1</span>] < aoValue[<span class="number">2</span>] <span class="keyword">and</span> aoValue[<span class="number">1</span>] < aoValue <span class="keyword">and</span> aoValue > aoValue[<span class="number">1</span>]
-
-<span class="comment">// Bearish Saucer condition</span>
-<span class="comment">// AO is below zero, previous two bars are green and increasing, current bar is red</span>
-bearishSaucer = aoValue < <span class="number">0</span> <span class="keyword">and</span> aoValue[<span class="number">1</span>] > aoValue[<span class="number">2</span>] <span class="keyword">and</span> aoValue[<span class="number">1</span>] > aoValue <span class="keyword">and</span> aoValue < aoValue[<span class="number">1</span>]
-
-<span class="comment">// Strategy entries/exits</span>
-<span class="keyword">if</span> (bullishSaucer)
-    <span class="function">strategy.entry</span>(<span class="string">"Long"</span>, <span class="keyword">strategy</span>.<span class="function">long</span>)
-
-<span class="keyword">if</span> (bearishSaucer)
-    <span class="function">strategy.entry</span>(<span class="string">"Short"</span>, <span class="keyword">strategy</span>.<span class="function">short</span>)
-</code>
-</pre>
-
-
-    <h2>Optimizing Awesome Oscillator Performance</h2>
-    <p>To get the most from the Awesome Oscillator in Pine Script:</p>
-    <ul>
-      <li><strong>Understand Bill Williams' Philosophy:</strong> The AO is best understood within Bill Williams' broader trading system, which focuses on market fractal geometry and the psychology of trading. It's often used in conjunction with his other indicators like Fractals and Alligator.</li>
-      <li><strong>Combine Signals:</strong> Do not rely on a single AO signal in isolation. For higher probability trades, look for confluence between AO signals (e.g., zero line crossover + saucer), or combine them with price action and other indicators.</li>
-      <li><strong>Multi-Timeframe Analysis:</strong> Confirm AO signals on a higher timeframe for broader trend context. A strong AO signal on a lower timeframe gains credibility if it aligns with the momentum bias of a higher timeframe.</li>
-      <li><strong>Market Conditions:</strong> AO tends to perform well in trending markets. In sideways or extremely choppy markets, its signals might be less reliable.</li>
-    </ul>
-
-    <div class="tip">
-      <strong>Zero Line as Equilibrium:</strong> Think of the zero line as the balance point between bullish and bearish forces. Crossing it signifies a shift in who is currently dominating the market.
-    </div>
-
-    <h2>Common Awesome Oscillator Pitfalls</h2>
-    <ul>
-      <li> <b>Lag:</b> Despite being a momentum indicator, AO uses SMAs, which inherently introduce some lag. It's not a leading indicator.</li>
-      <li> <b>False Signals in Ranging Markets:</b> In consolidations, AO can frequently cross the zero line or produce false saucer/twin peaks signals.</li>
-      <li> <b>Subjectivity in Twin Peaks/Saucers:</b> While the general rules are defined, precisely identifying peaks and troughs for the Twin Peaks strategy can sometimes be subjective without robust swing point detection.</li>
-      <li> <b>Not a Standalone Indicator:</b> AO is part of a larger system. Using it in isolation without other tools can lead to less effective trading.</li>
-      <li> <b>No Fixed Overbought/Oversold Zones:</b> Unlike RSI or Stochastic, AO doesn't have fixed overbought/oversold levels. Its extremes are relative to its own historical range.</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-    <p>The Awesome Oscillator is a powerful and visually intuitive momentum indicator available in Pine Script for TradingView. Developed by Bill Williams, it offers a unique perspective on market momentum by comparing short-term and long-term price midpoint averages. Whether used for identifying shifts across the zero line, spotting the nuanced Twin Peaks pattern, or leveraging the short-term Saucer signal, the AO provides valuable insights into the underlying forces driving price. By understanding its calculation and characteristic patterns, and integrating it strategically within your broader technical analysis framework, you can leverage the Awesome Oscillator to enhance your trading decisions and gain a clearer view of market dynamics.</p>
-  
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+              </svg>
             </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
+            
+              <a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
+                </svg>
+                Get The Option Buyer guide now
+              </a>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        
+          <div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl">
+            <div class="flex items-start gap-3">
+              <span class="text-amber-500 text-lg">⚠️</span>
+              <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a class="text-amber-500" href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div>
+            </div>
+          </div>
+        
+
+        
+          <div class="animate-in mb-10">
+            <ins class="adsbygoogle" style="display: block; text-align: center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171" data-adtest="on"></ins>
+          </div>
+        
+
+        
+      <section id="section-0" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is the Awesome Oscillator (AO)?</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>The <b>Awesome Oscillator (AO)</b> is a momentum indicator developed by Bill Williams, the creator of the Alligator Indicator and Fractals. Unlike most oscillators that compare closing prices, the AO compares the recent market momentum (5-period simple moving average of midpoints) with the broader market momentum (34-period simple moving average of midpoints). It is typically plotted as a histogram, with bars colored green (momentum up) or red (momentum down).</p><p>The Awesome Oscillator is designed to reflect the underlying driving force of the price, helping traders identify changes in momentum, confirm trends, and spot potential reversal signals based on specific patterns.</p>
+          </div>
         </section>
-</article>
+      <section id="section-1" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>The calculation of the Awesome Oscillator is based on two Simple Moving Averages (SMAs) of the <code>midpoint</code> price (which is <code>(High + Low) / 2</code>):</p>
+          </div>
+        <ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Short Period SMA</b>: Calculate a 5-period SMA of the <code>midpoint</code> price.</li><li><b>Long Period SMA</b>: Calculate a 34-period SMA of the <code>midpoint</code> price.</li><li><b>AO Formula</b>:<br><code>AO = Short Period SMA of Midpoint - Long Period SMA of Midpoint</code><br>The resulting value oscillates around a zero line. Bars are colored based on their relation to the previous bar: green if current AO > previous AO, red if current AO < previous AO.</li></ol></section>
+      <section id="section-2" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Awesome Oscillator Implementation in Pine Script</h2>
+    
+        <div class="code-block mt-6">
+          <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3 text-slate-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                </svg>
+                <span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span>
+              </div>
+              <button class="text-slate-500 hover:text-white transition-colors" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;My Awesome Oscillator&quot;, overlay=false)
 
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
+// Calculate Awesome Oscillator using the built-in function
+// ta.ao uses (high+low)/2 as source and default lengths 5 and 34
+aoValue = ta.ao()
 
-</body>
+// Plot the Awesome Oscillator as a histogram
+// Color based on whether current AO is greater than previous AO
+plot(aoValue, title=&quot;AO&quot;, style=plot.style_columns, color=aoValue &gt;= aoValue[1] ? color.green : color.red)
+
+// Plot the Zero Line
+hline(0, &quot;Zero Line&quot;, color.gray, linestyle=hline.style_solid)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+              </button>
+            </div>
+            <pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator(&quot;My Awesome Oscillator&quot;, overlay=false)
+
+// Calculate Awesome Oscillator using the built-in function
+// ta.ao uses (high+low)/2 as source and default lengths 5 and 34
+aoValue = ta.ao()
+
+// Plot the Awesome Oscillator as a histogram
+// Color based on whether current AO is greater than previous AO
+plot(aoValue, title=&quot;AO&quot;, style=plot.style_columns, color=aoValue &gt;= aoValue[1] ? color.green : color.red)
+
+// Plot the Zero Line
+hline(0, &quot;Zero Line&quot;, color.gray, linestyle=hline.style_solid)</code></pre>
+            <div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3">
+              <span class="text-indigo-400 text-xs">$</span>
+              <span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-3" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Histogram Colors</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Histogram Colors</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Green bars indicate rising momentum; red bars indicate falling momentum. This is key for interpreting signals.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-4" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Practical Awesome Oscillator Trading Strategies</h2>
+    <div class="mt-6 space-y-8">
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. Zero Line Crossover</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">The zero line is a crucial level for the Awesome Oscillator, indicating a shift in momentum from bearish to bullish or vice versa. It&#39;s often used as a primary signal for trend initiation.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Buy Signal</b>: AO crosses above the zero line. This indicates a shift from bearish to bullish momentum.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Sell Signal</b>: AO crosses below the zero line. This indicates a shift from bullish to bearish momentum.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;AO Zero Line Crossover Strategy&quot;, overlay=true)
+
+// Calculate Awesome Oscillator
+aoValue = ta.ao()
+
+// Define conditions for entries
+longSignal = ta.crossover(aoValue, 0)
+shortSignal = ta.crossunder(aoValue, 0)
+
+// Strategy entries/exits
+if (longSignal)
+    strategy.entry(&quot;Long&quot;, strategy.long)
+
+if (shortSignal)
+    strategy.entry(&quot;Short&quot;, strategy.short)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;AO Zero Line Crossover Strategy&quot;, overlay=true)
+
+// Calculate Awesome Oscillator
+aoValue = ta.ao()
+
+// Define conditions for entries
+longSignal = ta.crossover(aoValue, 0)
+shortSignal = ta.crossunder(aoValue, 0)
+
+// Strategy entries/exits
+if (longSignal)
+    strategy.entry(&quot;Long&quot;, strategy.long)
+
+if (shortSignal)
+    strategy.entry(&quot;Short&quot;, strategy.short)</code></pre>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. Twin Peaks Strategy</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">The Twin Peaks strategy uses two peaks (or troughs) on the Awesome Oscillator for reversal signals. This is considered a more reliable signal than simple zero-line crossovers.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Bullish Twin Peaks</b>: Occurs below the zero line.<br>1. A trough (lowest point) forms below the zero line.<br>2. AO rises but stays below the zero line, then forms a second, higher trough.<br>3. AO then crosses above the zero line.<br>This indicates weakening bearish momentum.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Bearish Twin Peaks</b>: Occurs above the zero line.<br>1. A peak (highest point) forms above the zero line.<br>2. AO falls but stays above the zero line, then forms a second, lower peak.<br>3. AO then crosses below the zero line.<br>This indicates weakening bullish momentum.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;AO Twin Peaks Scanner&quot;, overlay=true)
+
+// Calculate Awesome Oscillator
+aoValue = ta.ao()
+
+// Plot AO as a histogram
+plot(aoValue, title=&quot;AO&quot;, style=plot.style_columns, color=aoValue &gt;= aoValue[1] ? color.new(color.green, 0) : color.new(color.red, 0))
+hline(0, &quot;Zero Line&quot;, color.gray, linestyle=hline.style_solid)
+
+// Simplified Bullish Twin Peak (AO makes higher low below zero, then crosses zero)
+bullishTwinPeakSignal = aoValue[2] &lt; 0 and aoValue[1] &lt; 0 and aoValue &gt; 0 and aoValue[1] &gt; aoValue[2]
+
+// Simplified Bearish Twin Peak (AO makes lower high above zero, then crosses zero)
+bearishTwinPeakSignal = aoValue[2] &gt; 0 and aoValue[1] &gt; 0 and aoValue &lt; 0 and aoValue[1] &lt; aoValue[2]
+
+plotshape(bullishTwinPeakSignal, title=&quot;Bullish Twin Peak&quot;, location=location.belowbar, color=color.new(color.green, 0), style=shape.triangleup, size=size.small)
+plotshape(bearishTwinPeakSignal, title=&quot;Bearish Twin Peak&quot;, location=location.abovebar, color=color.new(color.red, 0), style=shape.triangledown, size=size.small)
+
+alertcondition(bullishTwinPeakSignal, &quot;Bullish AO Twin Peaks&quot;, &quot;Potential bullish reversal based on AO Twin Peaks.&quot;)
+alertcondition(bearishTwinPeakSignal, &quot;Bearish AO Twin Peaks&quot;, &quot;Potential bearish reversal based on AO Twin Peaks.&quot;)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+indicator(&quot;AO Twin Peaks Scanner&quot;, overlay=true)
+
+// Calculate Awesome Oscillator
+aoValue = ta.ao()
+
+// Plot AO as a histogram
+plot(aoValue, title=&quot;AO&quot;, style=plot.style_columns, color=aoValue &gt;= aoValue[1] ? color.new(color.green, 0) : color.new(color.red, 0))
+hline(0, &quot;Zero Line&quot;, color.gray, linestyle=hline.style_solid)
+
+// Simplified Bullish Twin Peak (AO makes higher low below zero, then crosses zero)
+bullishTwinPeakSignal = aoValue[2] &lt; 0 and aoValue[1] &lt; 0 and aoValue &gt; 0 and aoValue[1] &gt; aoValue[2]
+
+// Simplified Bearish Twin Peak (AO makes lower high above zero, then crosses zero)
+bearishTwinPeakSignal = aoValue[2] &gt; 0 and aoValue[1] &gt; 0 and aoValue &lt; 0 and aoValue[1] &lt; aoValue[2]
+
+plotshape(bullishTwinPeakSignal, title=&quot;Bullish Twin Peak&quot;, location=location.belowbar, color=color.new(color.green, 0), style=shape.triangleup, size=size.small)
+plotshape(bearishTwinPeakSignal, title=&quot;Bearish Twin Peak&quot;, location=location.abovebar, color=color.new(color.red, 0), style=shape.triangledown, size=size.small)
+
+alertcondition(bullishTwinPeakSignal, &quot;Bullish AO Twin Peaks&quot;, &quot;Potential bullish reversal based on AO Twin Peaks.&quot;)
+alertcondition(bearishTwinPeakSignal, &quot;Bearish AO Twin Peaks&quot;, &quot;Potential bearish reversal based on AO Twin Peaks.&quot;)</code></pre>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">3. Saucer Strategy</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">The Saucer strategy is a short-term momentum signal that uses three consecutive bars of the Awesome Oscillator (or two for the bearish signal) that are on the same side of the zero line but change color, indicating a subtle shift in momentum.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Bullish Saucer</b>: Occurs above the zero line.<br>1. AO is above the zero line.<br>2. The first bar is red (AO[2] < AO[1]).<br>3. The second bar is red and lower than the first red bar (AO[1] < AO[2]).<br>4. The third bar is green (AO > AO[1]).<br>This implies a brief dip in positive momentum followed by a resumption of strength.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Bearish Saucer</b>: Occurs below the zero line.<br>1. AO is below the zero line.<br>2. The first bar is green (AO[2] > AO[1]).<br>3. The second bar is green and higher than the first green bar (AO[1] > AO[2]).<br>4. The third bar is red (AO < AO[1]).<br>This implies a brief rally in negative momentum followed by a resumption of weakness.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;AO Saucer Strategy&quot;, overlay=true)
+
+// Calculate Awesome Oscillator
+aoValue = ta.ao()
+
+// Plot AO as a histogram in a separate pane
+plot(aoValue, title=&quot;AO&quot;, style=plot.style_columns, color=aoValue &gt;= aoValue[1] ? color.new(color.green, 0) : color.new(color.red, 0), display=display.pane_only)
+hline(0, &quot;Zero Line&quot;, color=color.new(color.gray, 0), linestyle=hline.style_solid, display=display.pane_only)
+
+// Bullish Saucer condition
+// AO is above zero, previous two bars are red and decreasing, current bar is green
+bullishSaucer = aoValue &gt; 0 and aoValue[1] &lt; aoValue[2] and aoValue[1] &lt; aoValue and aoValue &gt; aoValue[1]
+
+// Bearish Saucer condition
+// AO is below zero, previous two bars are green and increasing, current bar is red
+bearishSaucer = aoValue &lt; 0 and aoValue[1] &gt; aoValue[2] and aoValue[1] &gt; aoValue and aoValue &lt; aoValue[1]
+
+// Strategy entries/exits
+if (bullishSaucer)
+    strategy.entry(&quot;Long&quot;, strategy.long)
+
+if (bearishSaucer)
+    strategy.entry(&quot;Short&quot;, strategy.short)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;AO Saucer Strategy&quot;, overlay=true)
+
+// Calculate Awesome Oscillator
+aoValue = ta.ao()
+
+// Plot AO as a histogram in a separate pane
+plot(aoValue, title=&quot;AO&quot;, style=plot.style_columns, color=aoValue &gt;= aoValue[1] ? color.new(color.green, 0) : color.new(color.red, 0), display=display.pane_only)
+hline(0, &quot;Zero Line&quot;, color=color.new(color.gray, 0), linestyle=hline.style_solid, display=display.pane_only)
+
+// Bullish Saucer condition
+// AO is above zero, previous two bars are red and decreasing, current bar is green
+bullishSaucer = aoValue &gt; 0 and aoValue[1] &lt; aoValue[2] and aoValue[1] &lt; aoValue and aoValue &gt; aoValue[1]
+
+// Bearish Saucer condition
+// AO is below zero, previous two bars are green and increasing, current bar is red
+bearishSaucer = aoValue &lt; 0 and aoValue[1] &gt; aoValue[2] and aoValue[1] &gt; aoValue and aoValue &lt; aoValue[1]
+
+// Strategy entries/exits
+if (bullishSaucer)
+    strategy.entry(&quot;Long&quot;, strategy.long)
+
+if (bearishSaucer)
+    strategy.entry(&quot;Short&quot;, strategy.short)</code></pre>
+            </div>
+          </div></div></section>
+      <section id="section-5" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Awesome Oscillator Performance</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>To get the most from the Awesome Oscillator in Pine Script:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Understand Bill Williams' Philosophy:</b> The AO is best understood within Bill Williams' broader trading system, which focuses on market fractal geometry and the psychology of trading. It's often used in conjunction with his other indicators like Fractals and Alligator.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Combine Signals:</b> Do not rely on a single AO signal in isolation. For higher probability trades, look for confluence between AO signals (e.g., zero line crossover + saucer), or combine them with price action and other indicators.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Multi-Timeframe Analysis:</b> Confirm AO signals on a higher timeframe for broader trend context. A strong AO signal on a lower timeframe gains credibility if it aligns with the momentum bias of a higher timeframe.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Market Conditions:</b> AO tends to perform well in trending markets. In sideways or extremely choppy markets, its signals might be less reliable.</span>
+        </li>
+      </ul></section>
+      <section id="section-6" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Zero Line as Equilibrium</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Zero Line as Equilibrium</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Think of the zero line as the balance point between bullish and bearish forces. Crossing it signifies a shift in who is currently dominating the market.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-7" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Awesome Oscillator Pitfalls</h2>
+    <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Lag:</b> Despite being a momentum indicator, AO uses SMAs, which inherently introduce some lag. It's not a leading indicator.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>False Signals in Ranging Markets:</b> In consolidations, AO can frequently cross the zero line or produce false saucer/twin peaks signals.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Subjectivity in Twin Peaks/Saucers:</b> While the general rules are defined, precisely identifying peaks and troughs for the Twin Peaks strategy can sometimes be subjective without robust swing point detection.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Not a Standalone Indicator:</b> AO is part of a larger system. Using it in isolation without other tools can lead to less effective trading.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>No Fixed Overbought/Oversold Zones:</b> Unlike RSI or Stochastic, AO doesn't have fixed overbought/oversold levels. Its extremes are relative to its own historical range.</span>
+        </li>
+      </ul></section>
+      <section id="section-8" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2>
+    
+        <div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-indigo-500 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path>
+            </svg>
+            <div>
+              <h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3>
+              <div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>The Awesome Oscillator is a powerful and visually intuitive momentum indicator available in Pine Script for TradingView. Developed by Bill Williams, it offers a unique perspective on market momentum by comparing short-term and long-term price midpoint averages. Whether used for identifying shifts across the zero line, spotting the nuanced Twin Peaks pattern, or leveraging the short-term Saucer signal, the AO provides valuable insights into the underlying forces driving price. By understanding its calculation and characteristic patterns, and integrating it strategically within your broader technical analysis framework, you can leverage the Awesome Oscillator to enhance your trading decisions and gain a clearer view of market dynamics.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        
+          <div class="animate-in mt-20 text-center">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800">
+              <h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2>
+              <p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
+              <p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
+              <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+                </svg>
+                Get Pine Script Strategy
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        
+      </div>
+
+      <style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style>
+    </div>
+  </div><footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950"><div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"><div class="grid grid-cols-1 gap-8 md:grid-cols-2 pb-8 border-b border-slate-200 dark:border-slate-800"><div class="space-y-3"><div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><span>HIRE ENGINEERS</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-0"><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/rust-engineer" title="Hire Rust Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Rust Engineers</a></li><li><a href="/hire/llm-engineer" title="Hire LLM Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">LLM Engineers</a></li><li><a href="/hire/ml-engineer" title="Hire ML Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">ML Engineers</a></li><li><a href="/hire/rag-engineer" title="Hire RAG Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">RAG Engineers</a></li><li><a href="/hire/quant-engineer" title="Hire Quant Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Engineers</a></li><li><a href="/hire/quant-developer" title="Hire Quant Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Developers</a></li><li><a href="/hire/quant-researcher" title="Hire Quant Researchers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Researchers</a></li></ul><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/quant-trader" title="Hire Quant Traders" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Traders</a></li><li><a href="/hire/python-engineer" title="Hire Python Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Python Engineers</a></li><li><a href="/hire/fastapi-expert" title="Hire FastAPI Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FastAPI Experts</a></li><li><a href="/hire/duckdb-engineer" title="Hire DuckDB Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">DuckDB Engineers</a></li><li><a href="/hire/faiss-expert" title="Hire FAISS Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FAISS Experts</a></li><li><a href="/hire/tauri-engineer" title="Hire Tauri Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Tauri Engineers</a></li><li><a href="/hire/app-developer" title="Hire App Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">App Developers</a></li></ul><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/mern-developer" title="Hire MERN Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">MERN Developers</a></li><li><a href="/hire/mean-developer" title="Hire MEAN Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">MEAN Developers</a></li><li><a href="/hire/pinescript-developer" title="Hire PineScript Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">PineScript Developers</a></li><li><a href="/hire/microfrontends-expert" title="Hire Microfrontends Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Microfrontends Experts</a></li><li><a href="/hire/microservices-expert" title="Hire Microservices Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Microservices Experts</a></li><li><a href="/hire/walk-forward-validation-expert" title="Hire Walk-Forward Validation Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Walk-Forward Validation Experts</a></li></ul></div></div><div class="space-y-3"><div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"></path></svg><span>DEVELOPMENT SERVICES &amp; HUBS</span></div><ul class="space-y-1.5 text-[11px] leading-relaxed"><li>Custom Web Applications &amp; Mobile App Development</li><li>High-Performance Software Architecture</li><li>Trading Systems &amp; Data Dashboard Integration</li><li>Legacy Code Modernization &amp; Upgrades</li><li>Business Automation &amp; Custom AI Solutions</li><li>Secure Cloud Infrastructure &amp; API Integrations</li></ul><div class="pt-1"><p class="text-[11px] leading-relaxed">Providing digital transformation, software consulting, and tech talent matching from our base<span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>, across<span><span class="text-slate-800 dark:text-slate-300"> Cambridge-London (UCL/Imperial)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Boston-NY Circuit (MIT/Courant)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Chicago (UChicago/CMU)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Singapore Quant Cluster (NUS/NTU)</span></span>, and<span class="text-slate-800 dark:text-slate-300"> to all global clients.</span></p></div></div></div><div class="mt-4 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]"><div class="flex items-center gap-2"><div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div><span>© 2026 OFFLINE PIXEL. All Rights Reserved.</span></div><div class="flex gap-6 font-sans text-xs flex-wrap justify-center"><a href="/hire/" title="Hire Expert Engineers" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Hire Engineers</a><a href="/career" title="Automated Trading Solutions" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Career</a><a href="#terms" title="Terms of Service" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Terms</a><a href="#privacy" title="Privacy Policy" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Privacy</a></div></div><div class="mt-4 text-center text-[8px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">Offline Pixel specializes in custom technical transformations, cross-platform UI integration, and backtesting engine orchestration. All strategies, analytical setups, or models deployed are meant for custom tooling parameters and statistical analysis. Historical optimization pipelines are prone to walk-forward validation dependencies.</div></div></footer></div></div>
+  </body>
 </html>
