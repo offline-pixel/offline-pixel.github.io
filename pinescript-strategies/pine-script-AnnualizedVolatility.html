@@ -1,58 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/blog-common.css" />
-    <style>
-        .fullscreen {
-            padding: 10px 50px;
-            max-width: 70%;
-            margin: auto;
-            text-align: justify;
-        }
-        .tip {
-            background: #e8f4fc;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .code-comment {
-            color: #6a9955;
-            font-style: italic;
-        } 
-    </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MM8039GLD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-0MM8039GLD');
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pine Script Annualized Volatility - Complete TradingView Guide</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="alternate" type="application/atom+xml" title="RSS Feed" href="/feed.xml" />
-
-    <meta name="description" content="Master Annualized Volatility in Pine Script for TradingView - a precise measure of historical price fluctuation, essential for quantitative analysis, options pricing, and advanced risk management strategies.">
-    <meta name="keywords" content="pine script strategies, Annualized Volatility, HV, Historical Volatility, tradingview indicator, technical analysis, risk management, options trading, standard deviation, log returns, annualization">
-
-    <!-- Open Graph / Social Meta -->
+    <script type="module" crossorigin src="/assets/index-CM5-gUPC.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-DiFM9AWt.js">
+    <link rel="modulepreload" crossorigin href="/assets/objectSpread2-BL5tB9tX.js">
+    <link rel="modulepreload" crossorigin href="/assets/jsxRuntime.module-PwBf1rlp.js">
+    <link rel="modulepreload" crossorigin href="/assets/preload-helper-BMbW3vOo.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CFRZGxl7.css">
+  
+    <meta name="description" content="Comprehensive tutorial on implementing and using Annualized Volatility in Pine Script for advanced trading strategies.">
     <meta property="og:title" content="Pine Script Annualized Volatility - Complete TradingView Guide">
     <meta property="og:description" content="Comprehensive tutorial on implementing and using Annualized Volatility in Pine Script for advanced trading strategies.">
-    <meta property="og:type" content="article">
-
-    <!-- Twitter Card -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html">
     <meta name="twitter:card" content="summary_large_image">
+  
+    <meta name="keywords" content="pine script strategies, Annualized Volatility, HV, Historical Volatility, tradingview indicator, technical analysis, risk management, options trading, standard deviation, log returns, annualization">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
     <meta name="twitter:title" content="Pine Script Annualized Volatility - Complete TradingView Guide">
-    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html" />
-
-    <!-- JSON-LD Schema -->
-    <link rel="icon" href="../favicon.ico" type="image/x-icon">
-<script type="application/ld+json">
-{
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Pine Script Annualized Volatility - Complete TradingView Guide",
@@ -98,325 +71,664 @@
       }
     ]
   }
-}
-</script>
-</head>
-<body>
-  <header class="blog-header">
-    <div class="container">
-      <h1 class="blog-title">Pine Script Annualized Volatility </h1>
-      <p class="blog-subtitle">Master this precise statistical measure of price fluctuation in TradingView's Pine Script, crucial for quantitative analysis, option pricing, and dynamic risk management strategies.</p>
-      <p class="blog-subtitle"><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Pine Script Annualized Volatility - Complete TradingView Guide","description":"Master Annualized Volatility in Pine Script for TradingView - a precise measure of historical price fluctuation, essential for quantitative analysis, options pricing, and advanced risk management strategies.","keywords":"pine script strategies, Annualized Volatility, HV, Historical Volatility, tradingview indicator, technical analysis, risk management, options trading, standard deviation, log returns, annualization","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html","ogTitle":"Pine Script Annualized Volatility - Complete TradingView Guide","ogDescription":"Comprehensive tutorial on implementing and using Annualized Volatility in Pine Script for advanced trading strategies.","twitterTitle":"Pine Script Annualized Volatility - Complete TradingView Guide","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Annualized Volatility - Complete TradingView Guide","description":"Master Annualized Volatility in Pine Script for TradingView - a precise measure of historical price fluctuation for quantitative analysis and risk management.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Annualized Volatility","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"Annualized Volatility","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-AnnualizedVolatility.html"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script Annualized Volatility","subtitle":"Master this precise statistical measure of price fluctuation in TradingView's Pine Script, crucial for quantitative analysis, option pricing, and dynamic risk management strategies.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What is Annualized Volatility?","html":"<p><b>Annualized Volatility</b> (often referred to as Historical Volatility when based on past prices) is a statistical measure that quantifies the degree of price variation of a security over a specified period, and then scales it to an annual basis. It is calculated as the <b>standard deviation of logarithmic returns</b>, multiplied by the square root of a relevant annualization factor (e.g., 252 for daily trading days, 52 for weeks, 12 for months). Expressed as a percentage, it provides a standardized way to compare the volatility of different assets or different timeframes.</p><p>This indicator is fundamental in <b>quantitative finance</b>, particularly for <b>options pricing models</b> (like Black-Scholes), and for sophisticated <b>risk management</b>. High annualized volatility suggests unpredictable, large price swings on an annual basis, while low annualized volatility implies more stable, smaller annual price movements.</p><p>In Pine Script, calculating and interpreting Annualized Volatility allows traders and investors to incorporate a robust measure of risk into their decision-making process, adapting their strategies based on the current market's inherent risk and opportunity profile on a standardized scale.</p>"},{"type":"content","title":"Components and Calculation","html":"<p>The calculation of Annualized Volatility involves these precise steps:</p>","orderedItems":["<b>Logarithmic Returns</b>: For each trading period (e.g., daily bar), calculate the natural logarithm of the current closing price divided by the previous closing price. This converts simple percentage changes into a continuous compounding rate.<br><code>Log Return = math.log(close / close[1])</code>","<b>Standard Deviation of Log Returns</b>: Calculate the standard deviation of these logarithmic returns over a specified <code>length</code> (e.g., 20 periods for one trading month). This gives the per-period volatility.<br><code>StdDev_Log_Returns = ta.stdev(Log Return, length)</code>","<b>Annualization Factor</b>: This factor scales the per-period volatility to an annual figure. It depends on the frequency of your chart's bars and the number of those periods in a typical trading year.<br>For <b>Daily</b> charts: <code>math.sqrt(252)</code><br>For <b>Weekly</b> charts: <code>math.sqrt(52)</code><br>For <b>Monthly</b> charts: <code>math.sqrt(12)</code><br>For <b>Intraday</b> charts (e.g., 60-min): <code>math.sqrt(98280)</code>","<b>Annualized Volatility Formula</b>: Multiply the standard deviation of log returns by the square root of the annualization factor. The result is typically multiplied by 100 to express it as a percentage.<br><code>Annualized Volatility (%) = StdDev_Log_Returns * math.sqrt(Annualization Factor) * 100</code>"],"additionalHtml":"<p>A common <code>length</code> for daily charts is 20 periods, representing roughly one trading month's volatility.</p>"},{"type":"code","title":"Basic Annualized Volatility Implementation in Pine Script","description":"Pine Script v5 requires a custom function to calculate Annualized Volatility, as there is no direct built-in for it in its fully annualized form. We'll leverage `math.log` and `ta.stdev`.","code":"//@version=5\nindicator(\"My Annualized Volatility\", overlay=false, format=format.percent)\n\n// Input for Volatility calculation length (e.g., 20 for 20 trading days)\nlength = input.int(20, title=\"Volatility Length\", minval=2)\n\n// Input for Annualization Factor\n// 252 for daily trading days (stocks), 365 for calendar days (crypto/commodities)\n// 52 for weekly, 12 for monthly. Adjust based on your chart's timeframe.\nannualizationFactor = input.int(252, title=\"Annualization Factor (e.g., 252 for daily)\", minval=1)\n\n// Calculate Logarithmic Returns for each bar\n// Use 'nz' to handle the first bar where close[1] is NaN, setting it to 0.0 to avoid NaNs propagating\nlogReturn = math.log(close / nz(close[1], close))\n\n// Calculate Standard Deviation of Log Returns over the specified length\n// 'ta.stdev' handles its own NaN propagation for initial bars\nstdevLogReturns = ta.stdev(logReturn, length)\n\n// Annualize the Standard Deviation and convert to percentage\n// Add a check for stdevLogReturns being NaN (occurs for first 'length' bars)\nannualizedVolatility = (not na(stdevLogReturns) and stdevLogReturns > 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0\n\n// Plot the Annualized Volatility line\nplot(annualizedVolatility, title=\"Annualized Volatility (%)\", color=color.blue, linewidth=2)\n\n// Optional: Add a Simple Moving Average (SMA) of Annualized Volatility to identify trends in volatility\navgVolLength = input.int(50, title=\"Avg Volatility MA Length\", minval=1)\navgAnnualizedVolatility = ta.sma(annualizedVolatility, avgVolLength)\nplot(avgAnnualizedVolatility, title=\"Avg Annualized Volatility\", color=color.gray, linewidth=1, style=plot.style_line)\n\n// Highlight background when Annualized Volatility is significantly higher or lower than its average\nbgcolor(annualizedVolatility > avgAnnualizedVolatility * 1.2 ? color.new(color.red, 90) : na, title=\"High Annualized Volatility\")\nbgcolor(annualizedVolatility < avgAnnualizedVolatility * 0.8 ? color.new(color.green, 90) : na, title=\"Low Annualized Volatility\")"},{"type":"tip","title":"Standardized Comparison","content":"Annualized Volatility allows direct comparison of risk levels across different assets (e.g., stocks vs. commodities) and different timeframes (e.g., daily vs. weekly charts), as it's always expressed on a comparable annual basis."},{"type":"strategies","title":"Practical Annualized Volatility Trading Strategies","strategies":[{"name":"1. Volatility Regime Identification (Mean Reversion of Volatility)","description":"Volatility tends to be mean-reverting: periods of low volatility are often followed by high volatility, and vice versa. Annualized Volatility helps pinpoint these shifts, which can precede major price movements.","subItems":["<b>Low Volatility (Anticipate Expansion)</b>: When Annualized Volatility is at historically low levels for an asset, it suggests the market is consolidating and a significant price move (breakout) might be imminent. This is a 'calm before the storm' scenario.","<b>High Volatility (Anticipate Contraction)</b>: When Annualized Volatility is at historically high levels, it suggests the market is experiencing extreme price swings and might soon revert to a calmer period (consolidation or reversal). This often occurs after sharp, trending moves."],"code":"//@version=5\nstrategy(\"Annualized Volatility Regimes\", overlay=true)\n\nlength = input.int(20, title=\"Volatility Length\", minval=2)\nannualizationFactor = input.int(252, title=\"Annualization Factor\", minval=1)\nlowVolThreshold = input.float(15.0, title=\"Low Volatility Threshold (%)\", minval=5.0, step=1.0)\nhighVolThreshold = input.float(30.0, title=\"High Volatility Threshold (%)\", minval=10.0, step=1.0)\n\nlogReturn = math.log(close / nz(close[1], close))\nstdevLogReturns = ta.stdev(logReturn, length)\nannualizedVolatility = (not na(stdevLogReturns) and stdevLogReturns > 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0\n\nplot(annualizedVolatility, \"Annualized Volatility\", color=color.blue, display=display.pane_only)\nhline(lowVolThreshold, \"Low Vol Threshold\", color=color.green, linestyle=hline.style_dashed, display=display.pane_only)\nhline(highVolThreshold, \"High Vol Threshold\", color=color.red, linestyle=hline.style_dashed, display=display.pane_only)\n\n// Conditions for Volatility Shifts\nisLowVol = annualizedVolatility < lowVolThreshold\nisHighVol = annualizedVolatility > highVolThreshold\n\n// Strategy: Enter on breakout after low volatility, exit on reversal after high volatility\nmaFast = ta.ema(close, 10)\nmaSlow = ta.ema(close, 20)\n\nif (isLowVol[1] and ta.crossover(maFast, maSlow))\n    strategy.entry(\"Long (Vol Expand)\", strategy.long)\n\nif (isHighVol[1] and ta.crossunder(maFast, maSlow))\n    strategy.entry(\"Short (Vol Contract)\", strategy.short)\n\nstrategy.close(\"Long (Vol Expand)\", when=ta.crossunder(maFast, maSlow))\nstrategy.close(\"Short (Vol Contract)\", when=ta.crossover(maFast, maSlow))"},{"name":"2. Options Trading and Pricing","description":"Annualized Volatility is the backbone of options pricing. While Pine Script does not natively provide implied volatility (IV) from options chains, traders often compare an option's IV to the underlying asset's HV (Annualized Volatility) to determine if options are relatively over- or undervalued.","subItems":["<b>IV > HV:</b> Implied volatility is higher than historical volatility. Options premiums are relatively expensive, favoring option sellers (e.g., selling covered calls, put credit spreads).","<b>IV < HV:</b> Implied volatility is lower than historical volatility. Options premiums are relatively cheap, favoring option buyers (e.g., buying calls, buying puts)."],"code":"//@version=5\nindicator(\"Annualized Volatility for Options Strategy\", overlay=false, format=format.percent)\n\nlength = input.int(20, title=\"HV Length\", minval=2)\nannualizationFactor = input.int(252, title=\"Annualization Factor\", minval=1)\n\nlogReturn = math.log(close / nz(close[1], close))\nstdevLogReturns = ta.stdev(logReturn, length)\nhistoricalVolatility = (not na(stdevLogReturns) and stdevLogReturns > 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0\n\nplot(historicalVolatility, \"Annualized Volatility (%)\", color=color.blue, linewidth=2)\n\n// Input for hypothetical Implied Volatility (for demonstration purposes only)\nimpliedVol = input.float(na, title=\"Implied Volatility (%) (Manual Input for Demo)\", group=\"Options Context\", tooltip=\"Manually input Implied Volatility from an external options platform for comparison.\")\n\nplot(not na(impliedVol) ? impliedVol : na, \"Implied Volatility\", color=color.orange, linewidth=2)\n\nareOptionsExpensive = historicalVolatility > 0 and impliedVol > historicalVolatility * 1.2\nareOptionsCheap = historicalVolatility > 0 and impliedVol < historicalVolatility * 0.8\n\nbgcolor(areOptionsExpensive ? color.new(color.red, 90) : na, title=\"Options Potentially Expensive\")\nbgcolor(areOptionsCheap ? color.new(color.green, 90) : na, title=\"Options Potentially Cheap\")\n\nalertcondition(areOptionsExpensive, \"Options Expensive Signal\", \"Implied Volatility is high relative to Historical Volatility, favoring selling options.\")\nalertcondition(areOptionsCheap, \"Options Cheap Signal\", \"Implied Volatility is low relative to Historical Volatility, favoring buying options.\")"},{"name":"3. Dynamic Risk Management and Position Sizing","description":"Annualized Volatility can be integrated into dynamic risk management systems to adjust stop-loss levels and position sizes based on the current market's inherent risk, ensuring consistent dollar-based risk per trade.","subItems":["<b>Dynamic Stop Loss</b>: For a long position, set a stop loss <code>X%</code> below your entry, where <code>X</code> is a multiple of the current Annualized Volatility (e.g., 1.5 * HV). For a short, <code>X%</code> above. This makes stops adaptable to current market conditions.<br><code>Stop Loss Price = Entry Price * (1 - (Annualized Volatility / 100 * Multiplier))</code> for longs.","<b>Dynamic Position Sizing</b>: Adjust the number of shares/contracts so that the monetary risk per trade remains constant. When volatility is high, reduce position size; when low, increase it.<br><code>Shares = Desired_Risk_Amount / (Entry Price * (Annualized Volatility / 100 * Multiplier))</code>"],"code":"//@version=5\nstrategy(\"HV Dynamic Risk Management\", overlay=true)\n\nlength = input.int(20, title=\"HV Length\", minval=2)\nannualizationFactor = input.int(252, title=\"Annualization Factor\", minval=1)\nhvStopLossMultiplier = input.float(1.5, title=\"HV Stop Loss Multiplier (e.g., 1.5x HV)\", minval=0.1, step=0.1)\naccountRiskPerTrade = input.float(1000.0, title=\"Max $ Risk Per Trade\", minval=10)\n\nlogReturn = math.log(close / nz(close[1], close))\nstdevLogReturns = ta.stdev(logReturn, length)\nannualizedVolatilityUnscaled = (not na(stdevLogReturns) and stdevLogReturns > 0) ? stdevLogReturns * math.sqrt(annualizationFactor) : 0.0\n\nmaLength = input.int(20, \"Entry MA Length\", minval=1)\nmaValue = ta.sma(close, maLength)\n\nlongCondition = ta.crossover(close, maValue)\nshortCondition = ta.crossunder(close, maValue)\n\nlongStopLossPercentage = annualizedVolatilityUnscaled * hvStopLossMultiplier\nshortStopLossPercentage = annualizedVolatilityUnscaled * hvStopLossMultiplier\n\nlongStopPrice = strategy.position_avg_price * (1 - longStopLossPercentage)\nshortStopPrice = strategy.position_avg_price * (1 + shortStopLossPercentage)\n\nqtyToTrade = 0\nif (annualizedVolatilityUnscaled > 0)\n    riskPerShareCalc = close * annualizedVolatilityUnscaled * hvStopLossMultiplier\n    if (riskPerShareCalc > 0)\n        qtyToTrade := math.floor(accountRiskPerTrade / riskPerShareCalc)\n        qtyToTrade := math.max(1, qtyToTrade)\n\nif (longCondition)\n    strategy.entry(\"Long HV Risk\", strategy.long, qty=qtyToTrade)\n\nif (shortCondition)\n    strategy.entry(\"Short HV Risk\", strategy.short, qty=qtyToTrade)\n\nstrategy.exit(\"Long Exit\", from_entry=\"Long HV Risk\", stop=longStopPrice)\nstrategy.exit(\"Short Exit\", from_entry=\"Short HV Risk\", stop=shortStopPrice)\n\nplot(annualizedVolatilityUnscaled * 100, \"Annualized Volatility %\", color=color.purple, display=display.pane_only)\nplot(strategy.position_avg_price > 0 ? longStopPrice : na, \"Long Stop\", color=color.red, style=plot.style_linebr)\nplot(strategy.position_avg_price < 0 ? shortStopPrice : na, \"Short Stop\", color=color.green, style=plot.style_linebr)"}]},{"type":"content","title":"Optimizing Annualized Volatility Performance","html":"<p>To get the most from Annualized Volatility in Pine Script:</p>","listItems":["<b>Precise Parameter Tuning:</b>","<b>Combine with Directional Analysis:</b> Annualized Volatility measures risk/magnitude, not direction. It must be paired with trend-following, momentum, or price action analysis to determine trade direction.","<b>Contextual Interpretation:</b> The absolute percentage value of Annualized Volatility is relative. What's 'high' or 'low' for one asset (e.g., a blue-chip stock) might be completely different for another (e.g., a meme coin). Compare current HV to its historical range for the specific asset.","<b>Volatility Spikes and Contractions:</b> Markets often cycle between high and low volatility. Look for HV to reach historical extremes (lows indicating potential future breakouts, highs indicating potential contractions or reversals).","<b>Multi-Timeframe Analysis:</b> Analyze Annualized Volatility on higher timeframes to understand the broader volatility environment before making decisions on lower timeframes."]},{"type":"tip","title":"Core for Quantitative Analysis","content":"Annualized Volatility is a fundamental concept in quantitative finance, forming the basis for advanced risk models, portfolio optimization, and derivatives pricing."},{"type":"content","title":"Common Annualized Volatility Pitfalls","listItems":["<b>Not a Directional Signal:</b> The most critical mistake is using Annualized Volatility as a direct buy/sell signal. It quantifies <i>how much</i> prices are moving, not <i>where</i> they will move.","<b>Lagging Indicator:</b> As it's based on historical data, Annualized Volatility is a lagging indicator. It reflects past price behavior.","<b>Sensitive to Price Gaps/Outliers:</b> Sudden large price movements or gaps can significantly impact the standard deviation and thus the Annualized Volatility, potentially distorting its immediate readings.","<b>Incorrect Annualization Factor:</b> Using the wrong annualization factor for your chart's timeframe will lead to incorrect and misleading volatility figures.","<b>Division by Zero:</b> The log return calculation <code>close / close[1]</code> can lead to issues if <code>close[1]</code> is zero. Also, the standard deviation itself can be zero (if all log returns are the same). Implement checks to prevent division by zero errors.","<b>Not a Standalone Indicator:</b> Annualized Volatility provides crucial risk context but should always be part of a comprehensive trading system, never used in isolation."]},{"type":"conclusion","title":"Conclusion","html":"<p>Annualized Volatility is a sophisticated and highly valuable statistical measure in Pine Script for TradingView. By precisely quantifying the historical degree of price variation on a standardized annual basis, it offers traders and investors a robust tool for advanced risk management, options analysis, and understanding market volatility regimes. While it does not predict price direction, its ability to signal periods of volatility expansion (often preceding breakouts) or contraction (often preceding consolidation or reversals) is invaluable. By mastering its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and sound risk management practices, you can leverage Annualized Volatility to enhance your trading decisions and navigate complex market environments with greater quantitative insight.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a class=\"text-amber-500\" href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300"><header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90"><div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a href="/" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development" class="flex items-center gap-0.5 group"><div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105"><img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain"/></div><span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">OFFLINE<span class="text-indigo-600">PIXEL</span></span></a><nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500"><a href="/pinescript-strategies.html" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg><span>Pine Strategies</span></a><div class="relative group"><button type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none"><span>Expertise</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 transition-transform "><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></button><div class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 transition-all duration-200 opacity-0 invisible scale-95 pointer-events-none"><div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/quant-engineer">Hire Quant Expert</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Quant Dev</a>, </span><span><a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Researcher</a>, </span><span><a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Trader</a>, </span><span><a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Junior Quant</a>, </span><span><a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Senior Quant</a></span></div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><span>Hire Platform Engineer</span></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Rust (Systems)</a>, </span><span><a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">DuckDB (Analytics)</a></span>, High-Performance Pipelines</div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/ml-engineer">Hire ML Expert</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">LLMs</a>, </span><span><a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">RAG</a>, </span><span><a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">FAISS</a>, </span><span><a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Walk-Forward</a></span></div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/app-developer">Hire App Developer</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Tauri</a>, </span><span><a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Microfrontends</a></span>, Preact</div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/python-engineer">Hire Python Dev</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">FastAPI</a></span>, Pipelines, Structuring</div></div></div></div></div><a href="#cloud-enterprise" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><span>Cloud &amp; Enterprise</span></a><a href="#bi-analytics" title="Power BI Dashboards, DAX Optimization, and Executive Analytics" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><span>Analytics</span></a></nav><div class="flex items-center gap-4"><button type="button" disabled title="Book an Expert Engineering Consultation" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 opacity-50 cursor-not-allowed">Raise A Request</button><button type="button" disabled aria-label="Toggle navigation menu" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg></button></div></div><div class="border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden transition-all duration-200 max-h-0 opacity-0 invisible overflow-hidden p-0 border-0"><div class="hidden"><a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div><a href="/hire/quant-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/quant-developer" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-researcher" class="text-indigo-500 hover:text-indigo-400">Researcher</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-trader" class="text-indigo-500 hover:text-indigo-400">Trader</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-junior" class="text-indigo-500 hover:text-indigo-400">Junior</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/senior-quant-engineer" class="text-indigo-500 hover:text-indigo-400">Senior</a></span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div><div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/rust-engineer" class="text-indigo-500 hover:text-indigo-400">Rust</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/duckdb-engineer" class="text-indigo-500 hover:text-indigo-400">DuckDB</a></span><span class="text-slate-500"> | ETL Pipelines</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML &amp; AI Expertise</div><a href="/hire/ml-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/llm-engineer" class="text-indigo-500 hover:text-indigo-400">LLMs</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/rag-engineer" class="text-indigo-500 hover:text-indigo-400">RAG</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/faiss-expert" class="text-indigo-500 hover:text-indigo-400">FAISS</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/walk-forward-validation-expert" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a></span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div><a href="/hire/app-developer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/tauri-engineer" class="text-indigo-500 hover:text-indigo-400">Tauri</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/microfrontends-expert" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a></span><span class="text-slate-500"> | Preact</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div><a href="/hire/python-engineer" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/fastapi-expert" class="text-indigo-500 hover:text-indigo-400">FastAPI</a></span><span class="text-slate-500"> | Pipelines, Structuring</span></div></div><div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800"><a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud &amp; Enterprise</a><a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a></div><div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800"><button type="button" title="Book an Expert Engineering Consultation" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 ">Raise A Request</button></div></div></div></header><div class="flex-1">
+    <div class="min-h-screen bg-white dark:bg-black">
+      <!-- Hero Section - EXACT match -->
+      <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div>
+        <div class="absolute inset-0 opacity-5 dark:opacity-10">
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        </div>
+        <div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
 
-      <p style="text-align: center; margin-top:15px">
-<a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
+        <div class="relative max-w-5xl mx-auto px-6 py-24 text-center">
+          <div class="animate-in mb-8">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+              </svg>
+              <span>/</span>
+              <a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a>
+              <span>/</span>
+              <span class="text-indigo-500">pine-script-AnnualizedVolatility</span>
+            </div>
+          </div>
+
+          <h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6">
+            <span class="text-indigo-500">$</span>
+            <span class="inline-block min-w-[200px]">Pine Script Annualized Volatility</span>
+          </h1>
+
+          <p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">
+            Master this precise statistical measure of price fluctuation in TradingView&#39;s Pine Script, crucial for quantitative analysis, option pricing, and dynamic risk management strategies.
+          </p>
+
+          <div class="animate-in flex flex-wrap justify-center gap-6 mb-10">
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">500+ Clients Helped</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+              <span class="text-sm font-mono">100% Satisfaction</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">Live Trading Ready</span>
+            </div>
+          </div>
+
+          <div class="animate-in flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+              </svg>
               Get Pine Script Strategy
-            </a></p>
-    </div>
-  </header>
-  
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+              </svg>
+            </a>
+            
+              <a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
+                </svg>
+                Get The Option Buyer guide now
+              </a>
+            
+          </div>
+        </div>
+      </section>
 
-  <article class="fullscreen">
-  
-  <div class="special-nav-div">
-    <a href="https://offlinepixel.gumroad.com/l/kpafhy" class="" target="_blank" rel="noopener noreferrer">
-      Get &nbsp;<b>The Option Buyer</b>&nbsp; guide now
-    </a>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="https://offline-pixel.github.io/">Home</a> >
-    <a href="https://offline-pixel.github.io/pinescript-strategies.html">PineScript Strategies</a> >
-    <span aria-current="page">Annualized Volatility</span>
-  </nav>
-</div>  
-  <div class="pinescript-disclaimer"></div>
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-    <h2>What is Annualized Volatility?</h2>
-    <p> <b>Annualized Volatility</b> (often referred to as Historical Volatility when based on past prices) is a statistical measure that quantifies the degree of price variation of a security over a specified period, and then scales it to an annual basis. It is calculated as the <b>standard deviation of logarithmic returns</b>, multiplied by the square root of a relevant annualization factor (e.g., 252 for daily trading days, 52 for weeks, 12 for months). Expressed as a percentage, it provides a standardized way to compare the volatility of different assets or different timeframes.</p>
+      <!-- Main Content -->
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        
+          <div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl">
+            <div class="flex items-start gap-3">
+              <span class="text-amber-500 text-lg">⚠️</span>
+              <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a class="text-amber-500" href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div>
+            </div>
+          </div>
+        
 
-    <p>This indicator is fundamental in <b>quantitative finance</b>, particularly for <b>options pricing models</b> (like Black-Scholes), and for sophisticated <b>risk management</b>. High annualized volatility suggests unpredictable, large price swings on an annual basis, while low annualized volatility implies more stable, smaller annual price movements.</p>
+        
+          <div class="animate-in mb-10">
+            <ins class="adsbygoogle" style="display: block; text-align: center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171" data-adtest="on"></ins>
+          </div>
+        
 
-    <p>In Pine Script, calculating and interpreting Annualized Volatility allows traders and investors to incorporate a robust measure of risk into their decision-making process, adapting their strategies based on the current market's inherent risk and opportunity profile on a standardized scale.</p>
+        
+      <section id="section-0" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What is Annualized Volatility?</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p><b>Annualized Volatility</b> (often referred to as Historical Volatility when based on past prices) is a statistical measure that quantifies the degree of price variation of a security over a specified period, and then scales it to an annual basis. It is calculated as the <b>standard deviation of logarithmic returns</b>, multiplied by the square root of a relevant annualization factor (e.g., 252 for daily trading days, 52 for weeks, 12 for months). Expressed as a percentage, it provides a standardized way to compare the volatility of different assets or different timeframes.</p><p>This indicator is fundamental in <b>quantitative finance</b>, particularly for <b>options pricing models</b> (like Black-Scholes), and for sophisticated <b>risk management</b>. High annualized volatility suggests unpredictable, large price swings on an annual basis, while low annualized volatility implies more stable, smaller annual price movements.</p><p>In Pine Script, calculating and interpreting Annualized Volatility allows traders and investors to incorporate a robust measure of risk into their decision-making process, adapting their strategies based on the current market's inherent risk and opportunity profile on a standardized scale.</p>
+          </div>
+        </section>
+      <section id="section-1" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>The calculation of Annualized Volatility involves these precise steps:</p>
+          </div>
+        <ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Logarithmic Returns</b>: For each trading period (e.g., daily bar), calculate the natural logarithm of the current closing price divided by the previous closing price. This converts simple percentage changes into a continuous compounding rate.<br><code>Log Return = math.log(close / close[1])</code></li><li><b>Standard Deviation of Log Returns</b>: Calculate the standard deviation of these logarithmic returns over a specified <code>length</code> (e.g., 20 periods for one trading month). This gives the per-period volatility.<br><code>StdDev_Log_Returns = ta.stdev(Log Return, length)</code></li><li><b>Annualization Factor</b>: This factor scales the per-period volatility to an annual figure. It depends on the frequency of your chart's bars and the number of those periods in a typical trading year.<br>For <b>Daily</b> charts: <code>math.sqrt(252)</code><br>For <b>Weekly</b> charts: <code>math.sqrt(52)</code><br>For <b>Monthly</b> charts: <code>math.sqrt(12)</code><br>For <b>Intraday</b> charts (e.g., 60-min): <code>math.sqrt(98280)</code></li><li><b>Annualized Volatility Formula</b>: Multiply the standard deviation of log returns by the square root of the annualization factor. The result is typically multiplied by 100 to express it as a percentage.<br><code>Annualized Volatility (%) = StdDev_Log_Returns * math.sqrt(Annualization Factor) * 100</code></li></ol></section>
+      <section id="section-2" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Annualized Volatility Implementation in Pine Script</h2>
+    
+        <div class="code-block mt-6">
+          <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3 text-slate-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                </svg>
+                <span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span>
+              </div>
+              <button class="text-slate-500 hover:text-white transition-colors" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;My Annualized Volatility&quot;, overlay=false, format=format.percent)
 
-    <h2>Components and Calculation</h2>
-    <p>The calculation of Annualized Volatility involves these precise steps:</p>
-    <ol>
-      <li><strong>Logarithmic Returns</strong>: For each trading period (e.g., daily bar), calculate the natural logarithm of the current closing price divided by the previous closing price. This converts simple percentage changes into a continuous compounding rate.
-        <br>
-        `Log Return = math.log(close / close[1])`
-      </li>
-      <li><strong>Standard Deviation of Log Returns</strong>: Calculate the standard deviation of these logarithmic returns over a specified `length` (e.g., 20 periods for one trading month). This gives the per-period volatility.
-        <br>
-        `StdDev_Log_Returns = ta.stdev(Log Return, length)`
-      </li>
-      <li><strong>Annualization Factor</strong>: This factor scales the per-period volatility to an annual figure. It depends on the frequency of your chart's bars and the number of those periods in a typical trading year.
-        <ul>
-          <li>For <b>Daily</b> charts: `math.sqrt(252)` (representing approximately 252 trading days in a year).</li>
-          <li>For <b>Weekly</b> charts: `math.sqrt(52)`.</li>
-          <li>For <b>Monthly</b> charts: `math.sqrt(12)`.</li>
-          <li>For <b>Intraday</b> charts (e.g., 60-min): If there are 6.5 trading hours * 60 min = 390 bars per day, then 390 bars/day * 252 days/year = 98280 bars/year. So, `math.sqrt(98280)`.</li>
-        </ul>
-      </li>
-      <li><strong>Annualized Volatility Formula</strong>: Multiply the standard deviation of log returns by the square root of the annualization factor. The result is typically multiplied by 100 to express it as a percentage.
-        <br>
-        `Annualized Volatility (%) = StdDev_Log_Returns * math.sqrt(Annualization Factor) * 100`
-      </li>
-    </ol>
-    <p>A common `length` for daily charts is 20 periods, representing roughly one trading month's volatility.</p>
+// Input for Volatility calculation length (e.g., 20 for 20 trading days)
+length = input.int(20, title=&quot;Volatility Length&quot;, minval=2)
 
-    <h2>Basic Annualized Volatility Implementation in Pine Script</h2>
-    <p>Pine Script v5 requires a custom function to calculate Annualized Volatility, as there is no direct built-in for it in its fully annualized form. We'll leverage `math.log` and `ta.stdev`.</p>
-<pre><code><span class="comment">//@version=5</span>
-<span class="keyword">indicator</span>(<span class="string">"My Annualized Volatility"</span>, overlay=<span class="keyword">false</span>, format=<span class="keyword">format</span>.percent) <span class="comment">// overlay=false to plot in a separate pane, format as percentage</span>
+// Input for Annualization Factor
+// 252 for daily trading days (stocks), 365 for calendar days (crypto/commodities)
+// 52 for weekly, 12 for monthly. Adjust based on your chart&#39;s timeframe.
+annualizationFactor = input.int(252, title=&quot;Annualization Factor (e.g., 252 for daily)&quot;, minval=1)
 
-<span class="comment">// Input for Volatility calculation length (e.g., 20 for 20 trading days)</span>
-length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"Volatility Length"</span>, minval=<span class="number">2</span>) <span class="comment">// Minval 2 needed for log return calculation</span>
+// Calculate Logarithmic Returns for each bar
+// Use &#39;nz&#39; to handle the first bar where close[1] is NaN, setting it to 0.0 to avoid NaNs propagating
+logReturn = math.log(close / nz(close[1], close))
 
-<span class="comment">// Input for Annualization Factor</span>
-<span class="comment">// 252 for daily trading days (stocks), 365 for calendar days (crypto/commodities)</span>
-<span class="comment">// 52 for weekly, 12 for monthly. Adjust based on your chart's timeframe.</span>
-annualizationFactor = <span class="keyword">input</span>.int(<span class="number">252</span>, title=<span class="string">"Annualization Factor (e.g., 252 for daily)"</span>, minval=<span class="number">1</span>)
+// Calculate Standard Deviation of Log Returns over the specified length
+// &#39;ta.stdev&#39; handles its own NaN propagation for initial bars
+stdevLogReturns = ta.stdev(logReturn, length)
 
-<span class="comment">// Calculate Logarithmic Returns for each bar</span>
-<span class="comment">// Use 'nz' to handle the first bar where close[1] is NaN, setting it to 0.0 to avoid NaNs propagating</span>
-logReturn = <span class="builtin">math.log</span>(close / <span class="builtin">nz</span>(close[<span class="number">1</span>], close)) <span class="comment">// nz(close[1], close) handles first bar where close[1] is NaN</span>
+// Annualize the Standard Deviation and convert to percentage
+// Add a check for stdevLogReturns being NaN (occurs for first &#39;length&#39; bars)
+annualizedVolatility = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0
 
-<span class="comment">// Calculate Standard Deviation of Log Returns over the specified length</span>
-<span class="comment">// 'ta.stdev' handles its own NaN propagation for initial bars</span>
-stdevLogReturns = <span class="builtin">ta.stdev</span>(logReturn, length)
+// Plot the Annualized Volatility line
+plot(annualizedVolatility, title=&quot;Annualized Volatility (%)&quot;, color=color.blue, linewidth=2)
 
-<span class="comment">// Annualize the Standard Deviation and convert to percentage</span>
-<span class="comment">// Add a check for stdevLogReturns being NaN (occurs for first 'length' bars)</span>
-annualizedVolatility = (<span class="keyword">not</span> <span class="builtin">na</span>(stdevLogReturns) <span class="keyword">and</span> stdevLogReturns &gt; <span class="number">0</span>) ? stdevLogReturns * <span class="builtin">math.sqrt</span>(annualizationFactor) * <span class="number">100</span> : <span class="number">0.0</span>
+// Optional: Add a Simple Moving Average (SMA) of Annualized Volatility to identify trends in volatility
+avgVolLength = input.int(50, title=&quot;Avg Volatility MA Length&quot;, minval=1)
+avgAnnualizedVolatility = ta.sma(annualizedVolatility, avgVolLength)
+plot(avgAnnualizedVolatility, title=&quot;Avg Annualized Volatility&quot;, color=color.gray, linewidth=1, style=plot.style_line)
 
-<span class="comment">// Plot the Annualized Volatility line</span>
-<span class="builtin">plot</span>(annualizedVolatility, title=<span class="string">"Annualized Volatility (%)"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+// Highlight background when Annualized Volatility is significantly higher or lower than its average
+bgcolor(annualizedVolatility &gt; avgAnnualizedVolatility * 1.2 ? color.new(color.red, 90) : na, title=&quot;High Annualized Volatility&quot;)
+bgcolor(annualizedVolatility &lt; avgAnnualizedVolatility * 0.8 ? color.new(color.green, 90) : na, title=&quot;Low Annualized Volatility&quot;)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+              </button>
+            </div>
+            <pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator(&quot;My Annualized Volatility&quot;, overlay=false, format=format.percent)
 
-<span class="comment">// Optional: Add a Simple Moving Average (SMA) of Annualized Volatility to identify trends in volatility</span>
-avgVolLength = <span class="keyword">input</span>.int(<span class="number">50</span>, title=<span class="string">"Avg Volatility MA Length"</span>, minval=<span class="number">1</span>)
-avgAnnualizedVolatility = <span class="builtin">ta.sma</span>(annualizedVolatility, avgVolLength)
-<span class="builtin">plot</span>(avgAnnualizedVolatility, title=<span class="string">"Avg Annualized Volatility"</span>, color=<span class="builtin">color</span>.gray, linewidth=<span class="number">1</span>, style=<span class="builtin">plot</span>.style_line)
+// Input for Volatility calculation length (e.g., 20 for 20 trading days)
+length = input.int(20, title=&quot;Volatility Length&quot;, minval=2)
 
-<span class="comment">// Highlight background when Annualized Volatility is significantly higher or lower than its average</span>
-<span class="builtin">bgcolor</span>(annualizedVolatility &gt; avgAnnualizedVolatility * <span class="number">1.2</span> ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.red, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"High Annualized Volatility"</span>)
-<span class="builtin">bgcolor</span>(annualizedVolatility &lt; avgAnnualizedVolatility * <span class="number">0.8</span> ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.green, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"Low Annualized Volatility"</span>)</code></pre>
+// Input for Annualization Factor
+// 252 for daily trading days (stocks), 365 for calendar days (crypto/commodities)
+// 52 for weekly, 12 for monthly. Adjust based on your chart&#39;s timeframe.
+annualizationFactor = input.int(252, title=&quot;Annualization Factor (e.g., 252 for daily)&quot;, minval=1)
 
-    <div class="tip">
-      <strong>Standardized Comparison:</strong> Annualized Volatility allows direct comparison of risk levels across different assets (e.g., stocks vs. commodities) and different timeframes (e.g., daily vs. weekly charts), as it's always expressed on a comparable annual basis.
-    </div>
+// Calculate Logarithmic Returns for each bar
+// Use &#39;nz&#39; to handle the first bar where close[1] is NaN, setting it to 0.0 to avoid NaNs propagating
+logReturn = math.log(close / nz(close[1], close))
 
-    <h2>Practical Annualized Volatility <a href="https://offline-pixel.github.io/pinescript-strategies.html">Trading Strategies</a></h2>
+// Calculate Standard Deviation of Log Returns over the specified length
+// &#39;ta.stdev&#39; handles its own NaN propagation for initial bars
+stdevLogReturns = ta.stdev(logReturn, length)
 
-    <h3>1. Volatility Regime Identification (Mean Reversion of Volatility)</h3>
-    <p>Volatility tends to be mean-reverting: periods of low volatility are often followed by high volatility, and vice versa. Annualized Volatility helps pinpoint these shifts, which can precede major price movements.</p>
-    <ul>
-      <li><strong>Low Volatility (Anticipate Expansion)</strong>: When Annualized Volatility is at historically low levels for an asset, it suggests the market is consolidating and a significant price move (breakout) might be imminent. This is a "calm before the storm" scenario.</li>
-      <li><strong>High Volatility (Anticipate Contraction)</strong>: When Annualized Volatility is at historically high levels, it suggests the market is experiencing extreme price swings and might soon revert to a calmer period (consolidation or reversal). This often occurs after sharp, trending moves.</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="keyword">strategy</span>(<span class="string">"Annualized Volatility Regimes"</span>, overlay=<span class="keyword">true</span>)
+// Annualize the Standard Deviation and convert to percentage
+// Add a check for stdevLogReturns being NaN (occurs for first &#39;length&#39; bars)
+annualizedVolatility = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0
 
-length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"Volatility Length"</span>, minval=<span class="number">2</span>)
-annualizationFactor = <span class="keyword">input</span>.int(<span class="number">252</span>, title=<span class="string">"Annualization Factor"</span>, minval=<span class="number">1</span>)
-lowVolThreshold = <span class="keyword">input</span>.float(<span class="number">15.0</span>, title=<span class="string">"Low Volatility Threshold (%)"</span>, minval=<span class="number">5.0</span>, step=<span class="number">1.0</span>)
-highVolThreshold = <span class="keyword">input</span>.float(<span class="number">30.0</span>, title=<span class="string">"High Volatility Threshold (%)"</span>, minval=<span class="number">10.0</span>, step=<span class="number">1.0</span>)
+// Plot the Annualized Volatility line
+plot(annualizedVolatility, title=&quot;Annualized Volatility (%)&quot;, color=color.blue, linewidth=2)
 
-logReturn = <span class="builtin">math.log</span>(close / <span class="builtin">nz</span>(close[<span class="number">1</span>], close))
-stdevLogReturns = <span class="builtin">ta.stdev</span>(logReturn, length)
-annualizedVolatility = (<span class="keyword">not</span> <span class="builtin">na</span>(stdevLogReturns) <span class="keyword">and</span> stdevLogReturns &gt; <span class="number">0</span>) ? stdevLogReturns * <span class="builtin">math.sqrt</span>(annualizationFactor) * <span class="number">100</span> : <span class="number">0.0</span>
+// Optional: Add a Simple Moving Average (SMA) of Annualized Volatility to identify trends in volatility
+avgVolLength = input.int(50, title=&quot;Avg Volatility MA Length&quot;, minval=1)
+avgAnnualizedVolatility = ta.sma(annualizedVolatility, avgVolLength)
+plot(avgAnnualizedVolatility, title=&quot;Avg Annualized Volatility&quot;, color=color.gray, linewidth=1, style=plot.style_line)
 
-<span class="builtin">plot</span>(annualizedVolatility, <span class="string">"Annualized Volatility"</span>, color=<span class="builtin">color</span>.blue, display=<span class="builtin">display</span>.pane_only)
-<span class="builtin">hline</span>(lowVolThreshold, <span class="string">"Low Vol Threshold"</span>, color=<span class="builtin">color</span>.green, linestyle=<span class="builtin">hline</span>.style_dashed, display=<span class="builtin">display</span>.pane_only)
-<span class="builtin">hline</span>(highVolThreshold, <span class="string">"High Vol Threshold"</span>, color=<span class="builtin">color</span>.red, linestyle=<span class="builtin">hline</span>.style_dashed, display=<span class="builtin">display</span>.pane_only)
+// Highlight background when Annualized Volatility is significantly higher or lower than its average
+bgcolor(annualizedVolatility &gt; avgAnnualizedVolatility * 1.2 ? color.new(color.red, 90) : na, title=&quot;High Annualized Volatility&quot;)
+bgcolor(annualizedVolatility &lt; avgAnnualizedVolatility * 0.8 ? color.new(color.green, 90) : na, title=&quot;Low Annualized Volatility&quot;)</code></pre>
+            <div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3">
+              <span class="text-indigo-400 text-xs">$</span>
+              <span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-3" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Standardized Comparison</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Standardized Comparison</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Annualized Volatility allows direct comparison of risk levels across different assets (e.g., stocks vs. commodities) and different timeframes (e.g., daily vs. weekly charts), as it's always expressed on a comparable annual basis.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-4" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Practical Annualized Volatility Trading Strategies</h2>
+    <div class="mt-6 space-y-8">
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. Volatility Regime Identification (Mean Reversion of Volatility)</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">Volatility tends to be mean-reverting: periods of low volatility are often followed by high volatility, and vice versa. Annualized Volatility helps pinpoint these shifts, which can precede major price movements.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Low Volatility (Anticipate Expansion)</b>: When Annualized Volatility is at historically low levels for an asset, it suggests the market is consolidating and a significant price move (breakout) might be imminent. This is a 'calm before the storm' scenario.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>High Volatility (Anticipate Contraction)</b>: When Annualized Volatility is at historically high levels, it suggests the market is experiencing extreme price swings and might soon revert to a calmer period (consolidation or reversal). This often occurs after sharp, trending moves.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;Annualized Volatility Regimes&quot;, overlay=true)
 
-<span class="comment">// Conditions for Volatility Shifts</span>
+length = input.int(20, title=&quot;Volatility Length&quot;, minval=2)
+annualizationFactor = input.int(252, title=&quot;Annualization Factor&quot;, minval=1)
+lowVolThreshold = input.float(15.0, title=&quot;Low Volatility Threshold (%)&quot;, minval=5.0, step=1.0)
+highVolThreshold = input.float(30.0, title=&quot;High Volatility Threshold (%)&quot;, minval=10.0, step=1.0)
+
+logReturn = math.log(close / nz(close[1], close))
+stdevLogReturns = ta.stdev(logReturn, length)
+annualizedVolatility = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0
+
+plot(annualizedVolatility, &quot;Annualized Volatility&quot;, color=color.blue, display=display.pane_only)
+hline(lowVolThreshold, &quot;Low Vol Threshold&quot;, color=color.green, linestyle=hline.style_dashed, display=display.pane_only)
+hline(highVolThreshold, &quot;High Vol Threshold&quot;, color=color.red, linestyle=hline.style_dashed, display=display.pane_only)
+
+// Conditions for Volatility Shifts
 isLowVol = annualizedVolatility &lt; lowVolThreshold
 isHighVol = annualizedVolatility &gt; highVolThreshold
 
-<span class="comment">// Strategy: Enter on breakout after low volatility, exit on reversal after high volatility</span>
-<span class="comment">// (Conceptual - needs proper directional confirmation from price action)</span>
-maFast = <span class="builtin">ta.ema</span>(close, <span class="number">10</span>)
-maSlow = <span class="builtin">ta.ema</span>(close, <span class="number">20</span>)
+// Strategy: Enter on breakout after low volatility, exit on reversal after high volatility
+maFast = ta.ema(close, 10)
+maSlow = ta.ema(close, 20)
 
-<span class="comment">// Enter long if low volatility and bullish crossover</span>
-<span class="keyword">if</span> (isLowVol[<span class="number">1</span>] <span class="keyword">and</span> <span class="builtin">ta.crossover</span>(maFast, maSlow))
-    <span class="builtin">strategy</span>.entry(<span class="string">"Long (Vol Expand)"</span>, <span class="builtin">strategy</span>.long)
+if (isLowVol[1] and ta.crossover(maFast, maSlow))
+    strategy.entry(&quot;Long (Vol Expand)&quot;, strategy.long)
 
-<span class="comment">// Enter short if high volatility and bearish crossover</span>
-<span class="keyword">if</span> (isHighVol[<span class="number">1</span>] <span class="keyword">and</span> <span class="builtin">ta.crossunder</span>(maFast, maSlow))
-    <span class="builtin">strategy</span>.entry(<span class="string">"Short (Vol Contract)"</span>, <span class="builtin">strategy</span>.short)
+if (isHighVol[1] and ta.crossunder(maFast, maSlow))
+    strategy.entry(&quot;Short (Vol Contract)&quot;, strategy.short)
 
-<span class="comment">// Basic exit logic: close on counter-trend MA cross</span>
-<span class="builtin">strategy</span>.close(<span class="string">"Long (Vol Expand)"</span>, when=<span class="builtin">ta.crossunder</span>(maFast, maSlow))
-<span class="builtin">strategy</span>.close(<span class="string">"Short (Vol Contract)"</span>, when=<span class="builtin">ta.crossover</span>(maFast, maSlow))</code></pre>
-    <h3>2. Options Trading and Pricing</h3>
-    <p>Annualized Volatility is the backbone of options pricing. While Pine Script does not natively provide implied volatility (IV) from options chains, traders often compare an option's IV to the underlying asset's HV (Annualized Volatility) to determine if options are relatively over- or undervalued.</p>
-    <ul>
-      <li> <b>IV > HV:</b> Implied volatility is higher than historical volatility. Options premiums are relatively expensive, favoring option sellers (e.g., selling covered calls, put credit spreads).</li>
-      <li> <b>IV < HV:</b> Implied volatility is lower than historical volatility. Options premiums are relatively cheap, favoring option buyers (e.g., buying calls, buying puts).</li>
-    </ul>
-    <p>This strategy is conceptual within Pine Script as it relies on external IV data, but Annualized Volatility is the direct comparable.</p>
-<pre><code><span class="comment">//@version=5</span>
-<span class="keyword">indicator</span>(<span class="string">"Annualized Volatility for Options Strategy"</span>, overlay=<span class="keyword">false</span>, format=<span class="keyword">format</span>.percent)
+strategy.close(&quot;Long (Vol Expand)&quot;, when=ta.crossunder(maFast, maSlow))
+strategy.close(&quot;Short (Vol Contract)&quot;, when=ta.crossover(maFast, maSlow))">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;Annualized Volatility Regimes&quot;, overlay=true)
 
-length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"HV Length"</span>, minval=<span class="number">2</span>)
-annualizationFactor = <span class="keyword">input</span>.int(<span class="number">252</span>, title=<span class="string">"Annualization Factor"</span>, minval=<span class="number">1</span>)
+length = input.int(20, title=&quot;Volatility Length&quot;, minval=2)
+annualizationFactor = input.int(252, title=&quot;Annualization Factor&quot;, minval=1)
+lowVolThreshold = input.float(15.0, title=&quot;Low Volatility Threshold (%)&quot;, minval=5.0, step=1.0)
+highVolThreshold = input.float(30.0, title=&quot;High Volatility Threshold (%)&quot;, minval=10.0, step=1.0)
 
-logReturn = <span class="builtin">math.log</span>(close / <span class="builtin">nz</span>(close[<span class="number">1</span>], close))
-stdevLogReturns = <span class="builtin">ta.stdev</span>(logReturn, length)
-historicalVolatility = (<span class="keyword">not</span> <span class="builtin">na</span>(stdevLogReturns) <span class="keyword">and</span> stdevLogReturns &gt; <span class="number">0</span>) ? stdevLogReturns * <span class="builtin">math.sqrt</span>(annualizationFactor) * <span class="number">100</span> : <span class="number">0.0</span>
+logReturn = math.log(close / nz(close[1], close))
+stdevLogReturns = ta.stdev(logReturn, length)
+annualizedVolatility = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0
 
-<span class="builtin">plot</span>(historicalVolatility, <span class="string">"Annualized Volatility (%)"</span>, color=<span class="builtin">color</span>.blue, linewidth=<span class="number">2</span>)
+plot(annualizedVolatility, &quot;Annualized Volatility&quot;, color=color.blue, display=display.pane_only)
+hline(lowVolThreshold, &quot;Low Vol Threshold&quot;, color=color.green, linestyle=hline.style_dashed, display=display.pane_only)
+hline(highVolThreshold, &quot;High Vol Threshold&quot;, color=color.red, linestyle=hline.style_dashed, display=display.pane_only)
 
-<span class="comment">// Input for hypothetical Implied Volatility (for demonstration purposes only)</span>
-<span class="comment">// In a real scenario, this data would come from an external source (e.g., an options broker API or manual input).</span>
-impliedVol = <span class="keyword">input</span>.float(<span class="keyword">na</span>, title=<span class="string">"Implied Volatility (%) (Manual Input for Demo)"</span>, group=<span class="string">"Options Context"</span>, tooltip=<span class="string">"Manually input Implied Volatility from an external options platform for comparison."</span>)
+// Conditions for Volatility Shifts
+isLowVol = annualizedVolatility &lt; lowVolThreshold
+isHighVol = annualizedVolatility &gt; highVolThreshold
 
-<span class="comment">// Plot the hypothetical Implied Volatility for visual comparison</span>
-<span class="builtin">plot</span>(<span class="keyword">not</span> <span class="builtin">na</span>(impliedVol) ? impliedVol : <span class="keyword">na</span>, <span class="string">"Implied Volatility"</span>, color=<span class="builtin">color</span>.orange, linewidth=<span class="number">2</span>)
+// Strategy: Enter on breakout after low volatility, exit on reversal after high volatility
+maFast = ta.ema(close, 10)
+maSlow = ta.ema(close, 20)
 
-<span class="comment">// Determine if options are relatively expensive or cheap based on IV vs HV</span>
-areOptionsExpensive = historicalVolatility &gt; <span class="number">0</span> <span class="keyword">and</span> impliedVol &gt; historicalVolatility * <span class="number">1.2</span> <span class="comment">// IV is 20% higher than HV</span>
-areOptionsCheap = historicalVolatility &gt; <span class="number">0</span> <span class="keyword">and</span> impliedVol &lt; historicalVolatility * <span class="number">0.8</span> <span class="comment">// IV is 20% lower than HV</span>
+if (isLowVol[1] and ta.crossover(maFast, maSlow))
+    strategy.entry(&quot;Long (Vol Expand)&quot;, strategy.long)
 
-<span class="builtin">bgcolor</span>(areOptionsExpensive ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.red, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"Options Potentially Expensive"</span>)
-<span class="builtin">bgcolor</span>(areOptionsCheap ? <span class="builtin">color.new</span>(<span class="builtin">color</span>.green, <span class="number">90</span>) : <span class="keyword">na</span>, title=<span class="string">"Options Potentially Cheap"</span>)
+if (isHighVol[1] and ta.crossunder(maFast, maSlow))
+    strategy.entry(&quot;Short (Vol Contract)&quot;, strategy.short)
 
-<span class="builtin">alertcondition</span>(areOptionsExpensive, <span class="string">"Options Expensive Signal"</span>, <span class="string">"Implied Volatility is high relative to Historical Volatility, favoring selling options."</span>)
-<span class="builtin">alertcondition</span>(areOptionsCheap, <span class="string">"Options Cheap Signal"</span>, <span class="string">"Implied Volatility is low relative to Historical Volatility, favoring buying options."</span>)</code></pre>
+strategy.close(&quot;Long (Vol Expand)&quot;, when=ta.crossunder(maFast, maSlow))
+strategy.close(&quot;Short (Vol Contract)&quot;, when=ta.crossover(maFast, maSlow))</code></pre>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. Options Trading and Pricing</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">Annualized Volatility is the backbone of options pricing. While Pine Script does not natively provide implied volatility (IV) from options chains, traders often compare an option&#39;s IV to the underlying asset&#39;s HV (Annualized Volatility) to determine if options are relatively over- or undervalued.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>IV > HV:</b> Implied volatility is higher than historical volatility. Options premiums are relatively expensive, favoring option sellers (e.g., selling covered calls, put credit spreads).</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>IV < HV:</b> Implied volatility is lower than historical volatility. Options premiums are relatively cheap, favoring option buyers (e.g., buying calls, buying puts).</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;Annualized Volatility for Options Strategy&quot;, overlay=false, format=format.percent)
 
-    <h3>3. Dynamic Risk Management and Position Sizing</h3>
-    <p>Annualized Volatility can be integrated into dynamic risk management systems to adjust stop-loss levels and position sizes based on the current market's inherent risk, ensuring consistent dollar-based risk per trade.</p>
-    <ul>
-      <li><strong>Dynamic Stop Loss</strong>: For a long position, set a stop loss `X%` below your entry, where `X` is a multiple of the current Annualized Volatility (e.g., 1.5 * HV). For a short, `X%` above. This makes stops adaptable to current market conditions.
-        <br>
-        `Stop Loss Price = Entry Price * (1 - (Annualized Volatility / 100 * Multiplier))` for longs.
-      </li>
-      <li><strong>Dynamic Position Sizing</strong>: Adjust the number of shares/contracts so that the monetary risk per trade remains constant. When volatility is high, reduce position size; when low, increase it.
-        <br>
-        `Shares = Desired_Risk_Amount / (Entry Price * (Annualized Volatility / 100 * Multiplier))`</li>
-    </ul>
-<pre><code><span class="comment">//@version=5</span>
-<span class="keyword">strategy</span>(<span class="string">"HV Dynamic Risk Management"</span>, overlay=<span class="keyword">true</span>)
+length = input.int(20, title=&quot;HV Length&quot;, minval=2)
+annualizationFactor = input.int(252, title=&quot;Annualization Factor&quot;, minval=1)
 
-length = <span class="keyword">input</span>.int(<span class="number">20</span>, title=<span class="string">"HV Length"</span>, minval=<span class="number">2</span>)
-annualizationFactor = <span class="keyword">input</span>.int(<span class="number">252</span>, title=<span class="string">"Annualization Factor"</span>, minval=<span class="number">1</span>)
-hvStopLossMultiplier = <span class="keyword">input</span>.float(<span class="number">1.5</span>, title=<span class="string">"HV Stop Loss Multiplier (e.g., 1.5x HV)"</span>, minval=<span class="number">0.1</span>, step=<span class="number">0.1</span>)
-accountRiskPerTrade = <span class="keyword">input</span>.float(<span class="number">1000.0</span>, title=<span class="string">"Max $ Risk Per Trade"</span>, minval=<span class="number">10</span>) <span class="comment">// Example: $1000 risk</span>
+logReturn = math.log(close / nz(close[1], close))
+stdevLogReturns = ta.stdev(logReturn, length)
+historicalVolatility = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0
 
-logReturn = <span class="builtin">math.log</span>(close / <span class="builtin">nz</span>(close[<span class="number">1</span>], close))
-stdevLogReturns = <span class="builtin">ta.stdev</span>(logReturn, length)
-<span class="comment">// Use the un-percentaged HV for direct calculation</span>
-annualizedVolatilityUnscaled = (<span class="keyword">not</span> <span class="builtin">na</span>(stdevLogReturns) <span class="keyword">and</span> stdevLogReturns &gt; <span class="number">0</span>) ? stdevLogReturns * <span class="builtin">math.sqrt</span>(annualizationFactor) : <span class="number">0.0</span>
+plot(historicalVolatility, &quot;Annualized Volatility (%)&quot;, color=color.blue, linewidth=2)
 
-<span class="comment">// Simple entry: crossing a 20-period SMA</span>
-maLength = <span class="keyword">input</span>.int(<span class="number">20</span>, <span class="string">"Entry MA Length"</span>, minval=<span class="number">1</span>)
-maValue = <span class="builtin">ta.sma</span>(close, maLength)
+// Input for hypothetical Implied Volatility (for demonstration purposes only)
+impliedVol = input.float(na, title=&quot;Implied Volatility (%) (Manual Input for Demo)&quot;, group=&quot;Options Context&quot;, tooltip=&quot;Manually input Implied Volatility from an external options platform for comparison.&quot;)
 
-longCondition = <span class="builtin">ta.crossover</span>(close, maValue)
-shortCondition = <span class="builtin">ta.crossunder</span>(close, maValue)
+plot(not na(impliedVol) ? impliedVol : na, &quot;Implied Volatility&quot;, color=color.orange, linewidth=2)
 
-<span class="comment">// Calculate dynamic stop loss percentage</span>
+areOptionsExpensive = historicalVolatility &gt; 0 and impliedVol &gt; historicalVolatility * 1.2
+areOptionsCheap = historicalVolatility &gt; 0 and impliedVol &lt; historicalVolatility * 0.8
+
+bgcolor(areOptionsExpensive ? color.new(color.red, 90) : na, title=&quot;Options Potentially Expensive&quot;)
+bgcolor(areOptionsCheap ? color.new(color.green, 90) : na, title=&quot;Options Potentially Cheap&quot;)
+
+alertcondition(areOptionsExpensive, &quot;Options Expensive Signal&quot;, &quot;Implied Volatility is high relative to Historical Volatility, favoring selling options.&quot;)
+alertcondition(areOptionsCheap, &quot;Options Cheap Signal&quot;, &quot;Implied Volatility is low relative to Historical Volatility, favoring buying options.&quot;)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+indicator(&quot;Annualized Volatility for Options Strategy&quot;, overlay=false, format=format.percent)
+
+length = input.int(20, title=&quot;HV Length&quot;, minval=2)
+annualizationFactor = input.int(252, title=&quot;Annualization Factor&quot;, minval=1)
+
+logReturn = math.log(close / nz(close[1], close))
+stdevLogReturns = ta.stdev(logReturn, length)
+historicalVolatility = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) * 100 : 0.0
+
+plot(historicalVolatility, &quot;Annualized Volatility (%)&quot;, color=color.blue, linewidth=2)
+
+// Input for hypothetical Implied Volatility (for demonstration purposes only)
+impliedVol = input.float(na, title=&quot;Implied Volatility (%) (Manual Input for Demo)&quot;, group=&quot;Options Context&quot;, tooltip=&quot;Manually input Implied Volatility from an external options platform for comparison.&quot;)
+
+plot(not na(impliedVol) ? impliedVol : na, &quot;Implied Volatility&quot;, color=color.orange, linewidth=2)
+
+areOptionsExpensive = historicalVolatility &gt; 0 and impliedVol &gt; historicalVolatility * 1.2
+areOptionsCheap = historicalVolatility &gt; 0 and impliedVol &lt; historicalVolatility * 0.8
+
+bgcolor(areOptionsExpensive ? color.new(color.red, 90) : na, title=&quot;Options Potentially Expensive&quot;)
+bgcolor(areOptionsCheap ? color.new(color.green, 90) : na, title=&quot;Options Potentially Cheap&quot;)
+
+alertcondition(areOptionsExpensive, &quot;Options Expensive Signal&quot;, &quot;Implied Volatility is high relative to Historical Volatility, favoring selling options.&quot;)
+alertcondition(areOptionsCheap, &quot;Options Cheap Signal&quot;, &quot;Implied Volatility is low relative to Historical Volatility, favoring buying options.&quot;)</code></pre>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">3. Dynamic Risk Management and Position Sizing</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">Annualized Volatility can be integrated into dynamic risk management systems to adjust stop-loss levels and position sizes based on the current market&#39;s inherent risk, ensuring consistent dollar-based risk per trade.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Dynamic Stop Loss</b>: For a long position, set a stop loss <code>X%</code> below your entry, where <code>X</code> is a multiple of the current Annualized Volatility (e.g., 1.5 * HV). For a short, <code>X%</code> above. This makes stops adaptable to current market conditions.<br><code>Stop Loss Price = Entry Price * (1 - (Annualized Volatility / 100 * Multiplier))</code> for longs.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Dynamic Position Sizing</b>: Adjust the number of shares/contracts so that the monetary risk per trade remains constant. When volatility is high, reduce position size; when low, increase it.<br><code>Shares = Desired_Risk_Amount / (Entry Price * (Annualized Volatility / 100 * Multiplier))</code></span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;HV Dynamic Risk Management&quot;, overlay=true)
+
+length = input.int(20, title=&quot;HV Length&quot;, minval=2)
+annualizationFactor = input.int(252, title=&quot;Annualization Factor&quot;, minval=1)
+hvStopLossMultiplier = input.float(1.5, title=&quot;HV Stop Loss Multiplier (e.g., 1.5x HV)&quot;, minval=0.1, step=0.1)
+accountRiskPerTrade = input.float(1000.0, title=&quot;Max $ Risk Per Trade&quot;, minval=10)
+
+logReturn = math.log(close / nz(close[1], close))
+stdevLogReturns = ta.stdev(logReturn, length)
+annualizedVolatilityUnscaled = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) : 0.0
+
+maLength = input.int(20, &quot;Entry MA Length&quot;, minval=1)
+maValue = ta.sma(close, maLength)
+
+longCondition = ta.crossover(close, maValue)
+shortCondition = ta.crossunder(close, maValue)
+
 longStopLossPercentage = annualizedVolatilityUnscaled * hvStopLossMultiplier
 shortStopLossPercentage = annualizedVolatilityUnscaled * hvStopLossMultiplier
 
-<span class="comment">// Calculate dynamic stop price</span>
-longStopPrice = <span class="builtin">strategy</span>.position_avg_price * (<span class="number">1</span> - longStopLossPercentage)
-shortStopPrice = <span class="builtin">strategy</span>.position_avg_price * (<span class="number">1</span> + shortStopLossPercentage)
+longStopPrice = strategy.position_avg_price * (1 - longStopLossPercentage)
+shortStopPrice = strategy.position_avg_price * (1 + shortStopLossPercentage)
 
-<span class="comment">// Calculate dynamic position size (number of shares)</span>
-<span class="comment">// Risk per share = Entry Price * (Annualized Volatility unscaled * Multiplier)</span>
-qtyToTrade = <span class="number">0</span>
-<span class="keyword">if</span> (annualizedVolatilityUnscaled &gt; <span class="number">0</span>) <span class="comment">// Ensure volatility is calculated</span>
+qtyToTrade = 0
+if (annualizedVolatilityUnscaled &gt; 0)
     riskPerShareCalc = close * annualizedVolatilityUnscaled * hvStopLossMultiplier
-    <span class="keyword">if</span> (riskPerShareCalc &gt; <span class="number">0</span>)
-        qtyToTrade := <span class="builtin">math.floor</span>(accountRiskPerTrade / riskPerShareCalc)
-        qtyToTrade := <span class="builtin">math.max</span>(<span class="number">1</span>, qtyToTrade) <span class="comment">// Ensure at least 1 share</span>
+    if (riskPerShareCalc &gt; 0)
+        qtyToTrade := math.floor(accountRiskPerTrade / riskPerShareCalc)
+        qtyToTrade := math.max(1, qtyToTrade)
 
-<span class="keyword">if</span> (longCondition)
-    <span class="builtin">strategy</span>.entry(<span class="string">"Long HV Risk"</span>, <span class="builtin">strategy</span>.long, qty=qtyToTrade)
+if (longCondition)
+    strategy.entry(&quot;Long HV Risk&quot;, strategy.long, qty=qtyToTrade)
 
-<span class="keyword">if</span> (shortCondition)
-    <span class="builtin">strategy</span>.entry(<span class="string">"Short HV Risk"</span>, <span class="builtin">strategy</span>.short, qty=qtyToTrade)
+if (shortCondition)
+    strategy.entry(&quot;Short HV Risk&quot;, strategy.short, qty=qtyToTrade)
 
-<span class="comment">// Apply dynamic stop losses</span>
-<span class="builtin">strategy</span>.exit(<span class="string">"Long Exit"</span>, from_entry=<span class="string">"Long HV Risk"</span>, stop=longStopPrice)
-<span class="builtin">strategy</span>.exit(<span class="string">"Short Exit"</span>, from_entry=<span class="string">"Short HV Risk"</span>, stop=shortStopPrice)
+strategy.exit(&quot;Long Exit&quot;, from_entry=&quot;Long HV Risk&quot;, stop=longStopPrice)
+strategy.exit(&quot;Short Exit&quot;, from_entry=&quot;Short HV Risk&quot;, stop=shortStopPrice)
 
-<span class="comment">// Plot annualized volatility (in percentage for readability)</span>
-<span class="builtin">plot</span>(annualizedVolatilityUnscaled * <span class="number">100</span>, <span class="string">"Annualized Volatility %"</span>, color=<span class="builtin">color</span>.purple, display=<span class="builtin">display</span>.pane_only)
-<span class="comment">// Plot dynamic stop loss levels</span>
-<span class="builtin">plot</span>(<span class="builtin">strategy</span>.position_avg_price &gt; <span class="number">0</span> ? longStopPrice : <span class="keyword">na</span>, <span class="string">"Long Stop"</span>, color=<span class="builtin">color</span>.red, style=<span class="builtin">plot</span>.style_linebr)
-<span class="builtin">plot</span>(<span class="builtin">strategy</span>.position_avg_price &lt; <span class="number">0</span> ? shortStopPrice : <span class="keyword">na</span>, <span class="string">"Short Stop"</span>, color=<span class="builtin">color</span>.green, style=<span class="builtin">plot</span>.style_linebr)</code></pre>
+plot(annualizedVolatilityUnscaled * 100, &quot;Annualized Volatility %&quot;, color=color.purple, display=display.pane_only)
+plot(strategy.position_avg_price &gt; 0 ? longStopPrice : na, &quot;Long Stop&quot;, color=color.red, style=plot.style_linebr)
+plot(strategy.position_avg_price &lt; 0 ? shortStopPrice : na, &quot;Short Stop&quot;, color=color.green, style=plot.style_linebr)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;HV Dynamic Risk Management&quot;, overlay=true)
 
-    <h2>Optimizing Annualized Volatility Performance</h2>
-    <p>To get the most from Annualized Volatility in Pine Script:</p>
-    <ul>
-      <li><strong>Precise Parameter Tuning:</strong>
-        <ul>
-          <li>`Length`: This defines the lookback period for calculating standard deviation. Commonly used lengths are 20 (for monthly volatility on daily charts), 60 (for quarterly), or 252 (for yearly). Choose a length that aligns with the typical duration of volatility cycles you are interested in.</li>
-          <li>`Annualization Factor`: This is critical. Ensure it perfectly matches your chart's timeframe. For example, 252 for daily trading days (stocks), 365 for daily calendar days (crypto, forex), 52 for weekly, 12 for monthly. Incorrect factors will lead to incorrect annualized values.</li>
-        </ul>
-      </li>
-      <li><strong>Combine with Directional Analysis:</strong> Annualized Volatility measures risk/magnitude, not direction. It must be paired with trend-following, momentum, or price action analysis to determine trade direction.</li>
-      <li><strong>Contextual Interpretation:</strong> The absolute percentage value of Annualized Volatility is relative. What's "high" or "low" for one asset (e.g., a blue-chip stock) might be completely different for another (e.g., a meme coin). Compare current HV to its historical range for the specific asset.</li>
-      <li><strong>Volatility Spikes and Contractions:</strong> Markets often cycle between high and low volatility. Look for HV to reach historical extremes (lows indicating potential future breakouts, highs indicating potential contractions or reversals).</li>
-      <li><strong>Multi-Timeframe Analysis:</strong> Analyze Annualized Volatility on higher timeframes to understand the broader volatility environment before making decisions on lower timeframes.</li>
-    </ul>
+length = input.int(20, title=&quot;HV Length&quot;, minval=2)
+annualizationFactor = input.int(252, title=&quot;Annualization Factor&quot;, minval=1)
+hvStopLossMultiplier = input.float(1.5, title=&quot;HV Stop Loss Multiplier (e.g., 1.5x HV)&quot;, minval=0.1, step=0.1)
+accountRiskPerTrade = input.float(1000.0, title=&quot;Max $ Risk Per Trade&quot;, minval=10)
 
-    <div class="tip">
-      <strong>Core for Quantitative Analysis:</strong> Annualized Volatility is a fundamental concept in quantitative finance, forming the basis for advanced risk models, portfolio optimization, and derivatives pricing.
+logReturn = math.log(close / nz(close[1], close))
+stdevLogReturns = ta.stdev(logReturn, length)
+annualizedVolatilityUnscaled = (not na(stdevLogReturns) and stdevLogReturns &gt; 0) ? stdevLogReturns * math.sqrt(annualizationFactor) : 0.0
+
+maLength = input.int(20, &quot;Entry MA Length&quot;, minval=1)
+maValue = ta.sma(close, maLength)
+
+longCondition = ta.crossover(close, maValue)
+shortCondition = ta.crossunder(close, maValue)
+
+longStopLossPercentage = annualizedVolatilityUnscaled * hvStopLossMultiplier
+shortStopLossPercentage = annualizedVolatilityUnscaled * hvStopLossMultiplier
+
+longStopPrice = strategy.position_avg_price * (1 - longStopLossPercentage)
+shortStopPrice = strategy.position_avg_price * (1 + shortStopLossPercentage)
+
+qtyToTrade = 0
+if (annualizedVolatilityUnscaled &gt; 0)
+    riskPerShareCalc = close * annualizedVolatilityUnscaled * hvStopLossMultiplier
+    if (riskPerShareCalc &gt; 0)
+        qtyToTrade := math.floor(accountRiskPerTrade / riskPerShareCalc)
+        qtyToTrade := math.max(1, qtyToTrade)
+
+if (longCondition)
+    strategy.entry(&quot;Long HV Risk&quot;, strategy.long, qty=qtyToTrade)
+
+if (shortCondition)
+    strategy.entry(&quot;Short HV Risk&quot;, strategy.short, qty=qtyToTrade)
+
+strategy.exit(&quot;Long Exit&quot;, from_entry=&quot;Long HV Risk&quot;, stop=longStopPrice)
+strategy.exit(&quot;Short Exit&quot;, from_entry=&quot;Short HV Risk&quot;, stop=shortStopPrice)
+
+plot(annualizedVolatilityUnscaled * 100, &quot;Annualized Volatility %&quot;, color=color.purple, display=display.pane_only)
+plot(strategy.position_avg_price &gt; 0 ? longStopPrice : na, &quot;Long Stop&quot;, color=color.red, style=plot.style_linebr)
+plot(strategy.position_avg_price &lt; 0 ? shortStopPrice : na, &quot;Short Stop&quot;, color=color.green, style=plot.style_linebr)</code></pre>
+            </div>
+          </div></div></section>
+      <section id="section-5" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Annualized Volatility Performance</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>To get the most from Annualized Volatility in Pine Script:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Precise Parameter Tuning:</b></span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Combine with Directional Analysis:</b> Annualized Volatility measures risk/magnitude, not direction. It must be paired with trend-following, momentum, or price action analysis to determine trade direction.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Contextual Interpretation:</b> The absolute percentage value of Annualized Volatility is relative. What's 'high' or 'low' for one asset (e.g., a blue-chip stock) might be completely different for another (e.g., a meme coin). Compare current HV to its historical range for the specific asset.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Volatility Spikes and Contractions:</b> Markets often cycle between high and low volatility. Look for HV to reach historical extremes (lows indicating potential future breakouts, highs indicating potential contractions or reversals).</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Multi-Timeframe Analysis:</b> Analyze Annualized Volatility on higher timeframes to understand the broader volatility environment before making decisions on lower timeframes.</span>
+        </li>
+      </ul></section>
+      <section id="section-6" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Core for Quantitative Analysis</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Core for Quantitative Analysis</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Annualized Volatility is a fundamental concept in quantitative finance, forming the basis for advanced risk models, portfolio optimization, and derivatives pricing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-7" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Annualized Volatility Pitfalls</h2>
+    <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Not a Directional Signal:</b> The most critical mistake is using Annualized Volatility as a direct buy/sell signal. It quantifies <i>how much</i> prices are moving, not <i>where</i> they will move.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Lagging Indicator:</b> As it's based on historical data, Annualized Volatility is a lagging indicator. It reflects past price behavior.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Sensitive to Price Gaps/Outliers:</b> Sudden large price movements or gaps can significantly impact the standard deviation and thus the Annualized Volatility, potentially distorting its immediate readings.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Incorrect Annualization Factor:</b> Using the wrong annualization factor for your chart's timeframe will lead to incorrect and misleading volatility figures.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Division by Zero:</b> The log return calculation <code>close / close[1]</code> can lead to issues if <code>close[1]</code> is zero. Also, the standard deviation itself can be zero (if all log returns are the same). Implement checks to prevent division by zero errors.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Not a Standalone Indicator:</b> Annualized Volatility provides crucial risk context but should always be part of a comprehensive trading system, never used in isolation.</span>
+        </li>
+      </ul></section>
+      <section id="section-8" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2>
+    
+        <div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-indigo-500 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path>
+            </svg>
+            <div>
+              <h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3>
+              <div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>Annualized Volatility is a sophisticated and highly valuable statistical measure in Pine Script for TradingView. By precisely quantifying the historical degree of price variation on a standardized annual basis, it offers traders and investors a robust tool for advanced risk management, options analysis, and understanding market volatility regimes. While it does not predict price direction, its ability to signal periods of volatility expansion (often preceding breakouts) or contraction (often preceding consolidation or reversals) is invaluable. By mastering its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and sound risk management practices, you can leverage Annualized Volatility to enhance your trading decisions and navigate complex market environments with greater quantitative insight.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        
+          <div class="animate-in mt-20 text-center">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800">
+              <h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2>
+              <p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
+              <p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
+              <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+                </svg>
+                Get Pine Script Strategy
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        
+      </div>
+
+      <style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style>
     </div>
-
-    <h2>Common Annualized Volatility Pitfalls</h2>
-    <ul>
-      <li> <b>Not a Directional Signal:</b> The most critical mistake is using Annualized Volatility as a direct buy/sell signal. It quantifies *how much* prices are moving, not *where* they will move.</li>
-      <li> <b>Lagging Indicator:</b> As it's based on historical data, Annualized Volatility is a lagging indicator. It reflects past price behavior.</li>
-      <li> <b>Sensitive to Price Gaps/Outliers:</b> Sudden large price movements or gaps can significantly impact the standard deviation and thus the Annualized Volatility, potentially distorting its immediate readings.</li>
-      <li> <b>Incorrect Annualization Factor:</b> Using the wrong annualization factor for your chart's timeframe will lead to incorrect and misleading volatility figures.</li>
-      <li> <b>Division by Zero:</b> The log return calculation `close / close[1]` can lead to issues if `close[1]` is zero. Also, the standard deviation itself can be zero (if all log returns are the same). Implement checks to prevent division by zero errors.</li>
-      <li> <b>Not a Standalone Indicator:</b> Annualized Volatility provides crucial risk context but should always be part of a comprehensive trading system, never used in isolation.</li>
-    </ul>
-
-    <h2>Conclusion</h2>
-    <p>Annualized Volatility is a sophisticated and highly valuable statistical measure in Pine Script for TradingView. By precisely quantifying the historical degree of price variation on a standardized annual basis, it offers traders and investors a robust tool for advanced risk management, options analysis, and understanding market volatility regimes. While it does not predict price direction, its ability to signal periods of volatility expansion (often preceding breakouts) or contraction (often preceding consolidation or reversals) is invaluable. By mastering its calculation, thoughtfully tuning its parameters, and integrating it strategically with directional indicators and sound risk management practices, you can leverage Annualized Volatility to enhance your trading decisions and navigate complex market environments with greater quantitative insight.</p>
-  
-        <section class="cta-section custom-strategy-cta">
-            <h2 class="cta-title">Enhance Your Trading</h2>
-            <p>Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
-            <p>This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
-            <p><small>⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate</small></p>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer">
-              <img src="../assets/ss.png" width="100%" />
-            </a>
-            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" class="new-link" target="_blank" rel="noopener noreferrer">
-              Get Pine Script Strategy
-            </a>
-        </section>
-</article>
-
-  <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-9243803325136617"
-     data-ad-slot="5548365171"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  <script src="../scripts/scripts.js"></script>
-  <script src="../scripts/dynamicContent.js" defer></script>
-  <script src="../scripts/pinescript-disclaimer.js"></script>
-
-</body>
+  </div><footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950"><div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"><div class="grid grid-cols-1 gap-8 md:grid-cols-2 pb-8 border-b border-slate-200 dark:border-slate-800"><div class="space-y-3"><div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><span>HIRE ENGINEERS</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-0"><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/rust-engineer" title="Hire Rust Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Rust Engineers</a></li><li><a href="/hire/llm-engineer" title="Hire LLM Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">LLM Engineers</a></li><li><a href="/hire/ml-engineer" title="Hire ML Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">ML Engineers</a></li><li><a href="/hire/rag-engineer" title="Hire RAG Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">RAG Engineers</a></li><li><a href="/hire/quant-engineer" title="Hire Quant Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Engineers</a></li><li><a href="/hire/quant-developer" title="Hire Quant Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Developers</a></li><li><a href="/hire/quant-researcher" title="Hire Quant Researchers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Researchers</a></li></ul><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/quant-trader" title="Hire Quant Traders" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Traders</a></li><li><a href="/hire/python-engineer" title="Hire Python Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Python Engineers</a></li><li><a href="/hire/fastapi-expert" title="Hire FastAPI Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FastAPI Experts</a></li><li><a href="/hire/duckdb-engineer" title="Hire DuckDB Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">DuckDB Engineers</a></li><li><a href="/hire/faiss-expert" title="Hire FAISS Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FAISS Experts</a></li><li><a href="/hire/tauri-engineer" title="Hire Tauri Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Tauri Engineers</a></li><li><a href="/hire/app-developer" title="Hire App Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">App Developers</a></li></ul><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/mern-developer" title="Hire MERN Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">MERN Developers</a></li><li><a href="/hire/mean-developer" title="Hire MEAN Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">MEAN Developers</a></li><li><a href="/hire/pinescript-developer" title="Hire PineScript Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">PineScript Developers</a></li><li><a href="/hire/microfrontends-expert" title="Hire Microfrontends Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Microfrontends Experts</a></li><li><a href="/hire/microservices-expert" title="Hire Microservices Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Microservices Experts</a></li><li><a href="/hire/walk-forward-validation-expert" title="Hire Walk-Forward Validation Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Walk-Forward Validation Experts</a></li></ul></div></div><div class="space-y-3"><div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"></path></svg><span>DEVELOPMENT SERVICES &amp; HUBS</span></div><ul class="space-y-1.5 text-[11px] leading-relaxed"><li>Custom Web Applications &amp; Mobile App Development</li><li>High-Performance Software Architecture</li><li>Trading Systems &amp; Data Dashboard Integration</li><li>Legacy Code Modernization &amp; Upgrades</li><li>Business Automation &amp; Custom AI Solutions</li><li>Secure Cloud Infrastructure &amp; API Integrations</li></ul><div class="pt-1"><p class="text-[11px] leading-relaxed">Providing digital transformation, software consulting, and tech talent matching from our base<span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>, across<span><span class="text-slate-800 dark:text-slate-300"> Cambridge-London (UCL/Imperial)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Boston-NY Circuit (MIT/Courant)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Chicago (UChicago/CMU)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Singapore Quant Cluster (NUS/NTU)</span></span>, and<span class="text-slate-800 dark:text-slate-300"> to all global clients.</span></p></div></div></div><div class="mt-4 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]"><div class="flex items-center gap-2"><div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div><span>© 2026 OFFLINE PIXEL. All Rights Reserved.</span></div><div class="flex gap-6 font-sans text-xs flex-wrap justify-center"><a href="/hire/" title="Hire Expert Engineers" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Hire Engineers</a><a href="/career" title="Automated Trading Solutions" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Career</a><a href="#terms" title="Terms of Service" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Terms</a><a href="#privacy" title="Privacy Policy" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Privacy</a></div></div><div class="mt-4 text-center text-[8px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">Offline Pixel specializes in custom technical transformations, cross-platform UI integration, and backtesting engine orchestration. All strategies, analytical setups, or models deployed are meant for custom tooling parameters and statistical analysis. Historical optimization pipelines are prone to walk-forward validation dependencies.</div></div></footer></div></div>
+  </body>
 </html>
