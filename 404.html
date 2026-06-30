@@ -4,68 +4,328 @@
         <meta charset="utf-8" />
         <title>Redirecting - Offline Pixel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Custom styles for things Tailwind can't handle -->
         <style>
-            body {
-                font-family: sans-serif;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh;
-                margin: 0;
-                background-color: #f9fafb;
-            }
-            .container {
-                text-align: center;
-                padding: 2rem;
-            }
-            .progress-bar-container {
-                width: 100%;
-                max-width: 300px;
-                height: 6px;
-                background: #e5e7eb;
-                border-radius: 3px;
-                overflow: hidden;
-                margin: 20px auto;
-            }
             .progress-bar-fill {
-                height: 100%;
-                background: #2563eb;
-                width: 0%;
-                transition: width 1.5s linear;
+                transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
             .hidden {
-                display: none;
+                display: none !important;
             }
-            h1 {
-                font-size: 1.5rem;
-                color: #1f2937;
+            .animate-in {
+                animation: fadeInUp 0.6s ease-out forwards;
             }
-            .error-code {
-                font-size: 5rem;
-                font-weight: 900;
-                color: #2563eb;
-                margin-bottom: 1rem;
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
-            a {
-                color: #2563eb;
-                text-decoration: none;
-                font-weight: 500;
+            /* Simple icon replacements using Unicode/HTML entities */
+            .icon {
+                display: inline-block;
+                width: 1rem;
+                height: 1rem;
+                flex-shrink: 0;
             }
         </style>
     </head>
-    <body>
-        <div id="redirect-ui" class="container hidden">
-            <h1>Redirecting to your article...</h1>
-            <div class="progress-bar-container">
-                <div id="fill" class="progress-bar-fill"></div>
+    <body
+        class="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans antialiased"
+    >
+        <!-- Redirect UI with Loading Bar + Metrics + CTA -->
+        <div
+            id="redirect-ui"
+            class="hidden text-center px-8 py-12 max-w-2xl w-full"
+        >
+            <div class="">
+                <h1
+                    class="text-2xl font-semibold text-gray-800 dark:text-white mb-2"
+                >
+                    Redirecting to your article...
+                </h1>
+                <p class="text-gray-500 dark:text-gray-400 mb-8">
+                    Please wait while we take you to the content
+                </p>
+
+                <!-- Progress Bar -->
+                <div
+                    class="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-10"
+                >
+                    <div
+                        id="fill"
+                        class="h-full bg-blue-600 w-0 rounded-full progress-bar-fill"
+                    ></div>
+                </div>
+
+                <!-- Metrics -->
+                <div
+                    class="flex flex-wrap justify-center gap-6 mb-10 animate-in"
+                >
+                    <div
+                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
+                    >
+                        <span class="icon" aria-hidden="true">👥</span>
+                        <span class="text-sm font-mono"
+                            >500+ Clients Helped</span
+                        >
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
+                    >
+                        <span class="icon" aria-hidden="true">⭐</span>
+                        <span class="text-sm font-mono">100% Satisfaction</span>
+                    </div>
+                    <div
+                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
+                    >
+                        <span class="icon" aria-hidden="true">⏱️</span>
+                        <span class="text-sm font-mono"
+                            >Live Trading Ready</span
+                        >
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <a
+                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg w-full"
+                >
+                    <span class="icon" aria-hidden="true">💻</span>
+                    Get Pinescript strategy
+                    <span class="icon" aria-hidden="true">→</span>
+                </a>
             </div>
         </div>
 
-        <div id="error-ui" class="container">
-            <div class="error-code">404</div>
-            <h1>Page Not Found</h1>
-            <p>The page you are looking for does not exist.</p>
-            <a href="/">← Back to Homepage</a>
+        <!-- Error UI -->
+        <div id="error-ui" class="text-center px-8 py-12 max-w-[450px] w-full">
+            <div class="">
+                <div
+                    class="text-7xl font-extrabold text-blue-600 leading-none mb-2"
+                >
+                    404
+                </div>
+                <h1
+                    class="text-2xl font-semibold text-gray-800 dark:text-white mb-2"
+                >
+                    Page Not Found
+                </h1>
+                <p class="text-gray-500 dark:text-gray-400 mb-8">
+                    The page you are looking for does not exist.
+                </p>
+
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    Try one of these popular articles instead:
+                </p>
+
+                <!-- Grid Links -->
+                <div class="grid grid-cols-3 gap-2 mb-8">
+                    <a
+                        href="/pinescript-strategies/pine-script-rsi/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        RSI
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-supertrend/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        SuperTrend
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-bollinger-bands/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Bollinger Bands
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-vwap-daily/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        VWAP
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-ema/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        EMA
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-stochastic/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Stochastic
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-atr/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        ATR
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-ichimoku-cloud/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Ichimoku
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-fibonacci-retracements/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Fibonacci
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-parabolic-sar/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Parabolic SAR
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-engulfing/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Engulfing
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-pivot-points/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Pivot Points
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-obv/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        OBV
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-gann-square-of-nine/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Gann Square
+                    </a>
+                    <a
+                        href="/pinescript-strategies/pine-script-volumeprofile/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Volume Profile
+                    </a>
+                    <!-- Accumulation Distribution Line -->
+                    <a
+                        href="/pinescript-strategies/pine-script-accumulation-distribution-line/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Accumulation Distribution
+                    </a>
+
+                    <!-- Anchored VWAP -->
+                    <a
+                        href="/pinescript-strategies/pine-script-anchored-vwap/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Anchored VWAP
+                    </a>
+
+                    <!-- Annualized Volatility -->
+                    <a
+                        href="/pinescript-strategies/pine-script-annualized-volatility/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Annualized Volatility
+                    </a>
+
+                    <!-- Awesome Oscillator -->
+                    <a
+                        href="/pinescript-strategies/pine-script-awesome-oscillator/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Awesome Oscillator
+                    </a>
+
+                    <!-- Camarilla Pivots -->
+                    <a
+                        href="/pinescript-strategies/pine-script-camarilla-pivots/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Camarilla Pivots
+                    </a>
+
+                    <!-- Master Pine Script ta.stoch -->
+                    <a
+                        href="/pinescript-strategies/master-pine-script-v5-ta-stock/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        ta.stoch Arguments
+                    </a>
+
+                    <!-- CCI -->
+                    <a
+                        href="/pinescript-strategies/pine-script-cci/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        CCI
+                    </a>
+
+                    <!-- Chaikin Money Flow -->
+                    <a
+                        href="/pinescript-strategies/pine-script-chaikin-money-flow/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Chaikin Money Flow
+                    </a>
+
+                    <!-- Chaikin Volatility -->
+                    <a
+                        href="/pinescript-strategies/pine-script-chaikin-volatility/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Chaikin Volatility
+                    </a>
+
+                    <!-- Choppiness Index -->
+                    <a
+                        href="/pinescript-strategies/pine-script-choppiness-index/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Choppiness Index
+                    </a>
+
+                    <!-- CMO -->
+                    <a
+                        href="/pinescript-strategies/pine-script-cmo/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        CMO
+                    </a>
+
+                    <!-- Coppock Curve -->
+                    <a
+                        href="/pinescript-strategies/pine-script-coppock-curve/"
+                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
+                    >
+                        Coppock Curve
+                    </a>
+                </div>
+
+                <!-- Home Button -->
+                <a
+                    href="/"
+                    class="inline-block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+                >
+                    ← Home
+                </a>
+            </div>
         </div>
 
         <script>
@@ -85,60 +345,77 @@
                 "pine-script-stochastic",
                 "pine-script-supertrend",
                 "pine-script-volumeprofile",
+
+                "pine-script-accumulation-distribution-line",
+                "pine-script-anchored-vwap",
+                "pine-script-annualized-volatility",
+                "pine-script-awesome-oscillator",
+                "pine-script-camarilla-pivots",
+                "master-pine-script-v5-ta-stock",
+                "pine-script-cci",
+                "pine-script-chaikin-money-flow",
+                "pine-script-chaikin-volatility",
+                "pine-script-choppiness-index",
+                "pine-script-cmo",
+                "pine-script-coppock-curve",
             ];
 
             const path = window.location.pathname;
-            console.log("Current Path:", path);
             if (
                 path ===
                 "/migration-guides/electron-to-tauri-migration-framework"
             ) {
                 executeRedirect(
-                    "/migration-guides/electron-to-tauri-migration",
+                    "/migration-guides/electron-to-tauri-migration/",
                 );
             }
             // 1. Normalize and validate
             if (path.includes("/pinescript-strategies/")) {
                 let rawSlug = path.split("/").pop().replace(".html", "");
-
-                // Convert CamelCase to kebab-case: e.g., BollingerBands -> bollinger-bands
                 let normalized = rawSlug
                     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
                     .toLowerCase();
-
-                // Ensure prefix
                 if (!normalized.startsWith("pine-script-")) {
                     normalized =
                         "pine-script-" + normalized.replace("pine-script-", "");
                 }
-
-                console.log("Extracted Raw Slug:", rawSlug);
-                console.log("Normalized Slug:", normalized);
-
                 if (ALLOWED_SLUGS.includes(normalized)) {
                     console.log("Match found! Redirecting to:", normalized);
-                    executeRedirect(`/pinescript-strategies/${normalized}`);
+                    executeRedirect(`/pinescript-strategies/${normalized}/`);
                 } else {
+                    // Handle special cases
                     if (normalized == "pine-script-volume-profile") {
-                        executeRedirect("pine-script-volumeprofile");
+                        executeRedirect("pine-script-volumeprofile/");
+                    } else if (normalized == "pine-script-super-trend") {
+                        executeRedirect("pine-script-supertrend/");
+                    } else if (normalized == "pine-script-c-c-i") {
+                        executeRedirect("pine-script-cci/");
+                    } else if (normalized == "pine-script-anchored-v-w-a-p") {
+                        executeRedirect("pine-script-anchored-vwap/");
+                    } else if (normalized == "pine-script-c-m-o") {
+                        executeRedirect("pine-script-cmo/");
+                    } else {
+                        console.warn(
+                            "No match found in ALLOWED_SLUGS for:",
+                            normalized,
+                        );
                     }
-                    console.warn(
-                        "No match found in ALLOWED_SLUGS for:",
-                        normalized,
-                    );
                 }
             }
 
             function executeRedirect(targetUrl) {
+                // Hide error UI, show redirect UI
                 document.getElementById("error-ui").style.display = "none";
                 document
                     .getElementById("redirect-ui")
                     .classList.remove("hidden");
 
+                // Start progress bar animation after a small delay
                 setTimeout(() => {
                     document.getElementById("fill").style.width = "100%";
                 }, 100);
 
+                // Redirect after animation completes
                 setTimeout(() => {
                     window.location.replace(targetUrl);
                 }, 1600);
