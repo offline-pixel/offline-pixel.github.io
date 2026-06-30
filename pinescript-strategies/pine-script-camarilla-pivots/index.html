@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pine Script Camarilla Pivots - Complete TradingView Guide</title>
+    <script type="module" crossorigin src="/assets/index-DaKW218x.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/chunk-Dr08xHX1.js">
+    <link rel="modulepreload" crossorigin href="/assets/loadBinaryData-KiVgU0te.js">
+    <link rel="modulepreload" crossorigin href="/assets/objectSpread2-Cl-cator.js">
+    <link rel="modulepreload" crossorigin href="/assets/jsxRuntime.module-B3xSLfL4.js">
+    <link rel="modulepreload" crossorigin href="/assets/preload-helper-gog1kQ6n.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CWLnfhB_.css">
+  
+    <meta name="description" content="Comprehensive tutorial on implementing and using Camarilla Pivots in Pine Script for advanced trading strategies.">
+    <meta property="og:title" content="Pine Script Camarilla Pivots - Complete TradingView Guide">
+    <meta property="og:description" content="Comprehensive tutorial on implementing and using Camarilla Pivots in Pine Script for advanced trading strategies.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/">
+    <link rel="canonical" href="https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/">
+    <meta name="twitter:card" content="summary_large_image">
+  
+    <meta name="keywords" content="pine script strategies, Camarilla Pivots, tradingview indicator, technical analysis, support resistance, intraday trading, mean reversion, breakout trading, range trading">
+    <meta property="og:image" content="https://offline-pixel.github.io/assets/logo2.png">
+    <meta name="twitter:title" content="Pine Script Camarilla Pivots - Complete TradingView Guide">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Pine Script Camarilla Pivots - Complete TradingView Guide",
+  "description": "Master Camarilla Pivots in Pine Script for TradingView - unique intraday support/resistance levels for mean reversion and breakout trading.",
+  "author": {
+    "@type": "Person",
+    "name": "Offline Pixel Computers"
+  },
+  "datePublished": "2025-06-10",
+  "image": "https://offline-pixel.github.io/assets/logo2.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Offline Pixel",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://offline-pixel.github.io/assets/logo2.png"
+    }
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://offline-pixel.github.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "PineScript Strategies",
+        "item": "https://offline-pixel.github.io/pinescript-strategies.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Camarilla Pivots",
+        "item": "https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/"
+      }
+    ]
+  }
+}</script><script>window.__INITIAL_DATA__ = {"meta":{"title":"Pine Script Camarilla Pivots - Complete TradingView Guide","description":"Master Camarilla Pivots in Pine Script for TradingView - a unique set of intraday support and resistance levels known for identifying mean reversion and breakout opportunities.","keywords":"pine script strategies, Camarilla Pivots, tradingview indicator, technical analysis, support resistance, intraday trading, mean reversion, breakout trading, range trading","canonical":"https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/","ogTitle":"Pine Script Camarilla Pivots - Complete TradingView Guide","ogDescription":"Comprehensive tutorial on implementing and using Camarilla Pivots in Pine Script for advanced trading strategies.","twitterTitle":"Pine Script Camarilla Pivots - Complete TradingView Guide","schema":{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pine Script Camarilla Pivots - Complete TradingView Guide","description":"Master Camarilla Pivots in Pine Script for TradingView - unique intraday support/resistance levels for mean reversion and breakout trading.","author":{"@type":"Person","name":"Offline Pixel Computers"},"datePublished":"2025-06-10","image":"https://offline-pixel.github.io/assets/logo2.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/"},"publisher":{"@type":"Organization","name":"Offline Pixel","logo":{"@type":"ImageObject","url":"https://offline-pixel.github.io/assets/logo2.png"}},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://offline-pixel.github.io/"},{"@type":"ListItem","position":2,"name":"PineScript Strategies","item":"https://offline-pixel.github.io/pinescript-strategies.html"},{"@type":"ListItem","position":3,"name":"Camarilla Pivots","item":"https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/"}]}}},"breadcrumb":{"items":[{"name":"Home","url":"https://offline-pixel.github.io/"},{"name":"PineScript Strategies","url":"https://offline-pixel.github.io/pinescript-strategies.html"},{"name":"Camarilla Pivots","url":"https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/"}]},"specialNav":{"linkUrl":"https://offlinepixel.gumroad.com/l/kpafhy","linkText":"Get The Option Buyer guide now"},"header":{"title":"Pine Script Camarilla Pivots","subtitle":"Master this highly popular intraday pivot point system in TradingView's Pine Script, known for identifying potential reversals and breakout opportunities, particularly in mean-reverting markets.","rating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"sections":[{"type":"content","title":"What are Camarilla Pivots?","html":"<p><b>Camarilla Pivots</b> are a unique set of intraday support and resistance levels that are typically used by short-term traders to identify potential reversal points or breakout opportunities. Unlike Classic Pivot Points, which are designed to project relatively wide ranges, Camarilla Pivots emphasize price action near the previous day's close. This results in tighter support and resistance levels that are particularly effective in capturing mean-reverting price action, where price tends to return to a central point.</p><p>Developed by Nick Stott, Camarilla Pivots are calculated using the previous day's (or chosen period's) High, Low, and Closing prices. They consist of four resistance levels (H1, H2, H3, H4) and four support levels (L1, L2, L3, L4), along with a central Pivot Point (PP), though the PP is less emphasized than the H3/L3 levels.</p><p>Traders primarily use Camarilla Pivots for:</p>","listItems":["<b>Mean Reversion (Reversals):</b> Price often bounces off L3 (for buying) or H3 (for selling), aiming for a return to the previous day's close or H1/L1.","<b>Breakout Trading:</b> A decisive break above H4 or below L4 can signal a strong continuation or trending day.","<b>Setting Entry/Exit Points:</b> Providing clear reference points for order placement."],"additionalHtml":"<p>In Pine Script, Camarilla Pivots are a powerful tool for short-term <a href=\"https://offline-pixel.github.io/pinescript-strategies.html\">trading strategies</a>, providing precise levels based on the previous period's volatility and closing dynamics.</p>"},{"type":"content","title":"Components and Calculation (Camarilla Pivots)","html":"<p>Camarilla Pivots are calculated using the previous period's High, Low, and Close prices. The formulas place more weight on the previous day's close, resulting in levels that are closer to the closing price. The pivot range is primarily derived from the previous day's range <code>(High - Low)</code>.</p>","orderedItems":["<b>Pivot Point (PP):</b><br><code>PP = (H + L + C) / 3</code> (Same as Classic Pivot Point, but less focused)","<b>Resistance Levels (H1 to H4):</b><br><code>H1 = C + (Range * 1.1 / 12)</code><br><code>H2 = C + (Range * 1.1 / 6)</code><br><code>H3 = C + (Range * 1.1 / 4)</code><br><code>H4 = C + (Range * 1.1 / 2)</code>","<b>Support Levels (L1 to L4):</b><br><code>L1 = C - (Range * 1.1 / 12)</code><br><code>L2 = C - (Range * 1.1 / 6)</code><br><code>L3 = C - (Range * 1.1 / 4)</code><br><code>L4 = C - (Range * 1.1 / 2)</code>"],"additionalHtml":"<p>These levels remain constant throughout the current trading day and are recalculated at the start of the next trading day (or chosen period, e.g., week, month).</p>"},{"type":"code","title":"Basic Camarilla Pivots Implementation in Pine Script","description":"Pine Script v5 provides a built-in function `ta.pivotpoints()` that can calculate various pivot types, including \"Camarilla\". This simplifies the implementation significantly.","code":"//@version=5\nindicator(\"My Camarilla Pivots\", overlay=true, max_bars_back=500)\n\n// Input for the Pivot Point calculation timeframe\n// Camarilla pivots are predominantly used for intraday trading, so \"D\" (Daily) is most common.\npivotTimeframe = input.string(\"D\", title=\"Pivot Timeframe\", options=[\"D\", \"W\", \"M\"])\n\n// Get the Pivot Points values using ta.pivotpoints() with \"Camarilla\" type\n// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]\n// Note: For Camarilla, these usually map to H1-H4 and L1-L4 for Pine Script's built-in.\n// Specifically, for Camarilla, the ta.pivotpoints function typically returns:\n// pp (Pivot Point)\n// r1 (H1), r2 (H2), r3 (H3), r4 (H4 - not directly in the 3 R/S outputs, but calculated)\n// s1 (L1), s2 (L2), s3 (L3), s4 (L4 - not directly in the 3 R/S outputs, but calculated)\n\n// Let's manually get H1-H4 and L1-L4 since ta.pivotpoints only gives R1-R3 and S1-S3.\n// We'll calculate them based on the previous bar's HLC.\n// We need to fetch previous day's HLC.\nprevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)\nprevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)\nprevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)\n\n// Ensure we have valid previous day data\nif not na(prevHigh) and not na(prevLow) and not na(prevClose)\n    range = prevHigh - prevLow\n\n    // Calculate Camarilla Levels\n    cam_h4 = (prevClose + range * 1.1 / 2)\n    cam_h3 = (prevClose + range * 1.1 / 4)\n    cam_h2 = (prevClose + range * 1.1 / 6)\n    cam_h1 = (prevClose + range * 1.1 / 12)\n\n    cam_l1 = (prevClose - range * 1.1 / 12)\n    cam_l2 = (prevClose - range * 1.1 / 6)\n    cam_l3 = (prevClose - range * 1.1 / 4)\n    cam_l4 = (prevClose - range * 1.1 / 2)\n\n    // Plotting the Camarilla Levels\n    plot(cam_h4, title=\"H4\", color=color.new(color.red, 0), linewidth=2, style=plot.style_stepline)\n    plot(cam_h3, title=\"H3\", color=color.new(color.red, 0), linewidth=1, style=plot.style_stepline)\n    plot(cam_h2, title=\"H2\", color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)\n    plot(cam_h1, title=\"H1\", color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)\n\n    plot(cam_l1, title=\"L1\", color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)\n    plot(cam_l2, title=\"L2\", color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)\n    plot(cam_l3, title=\"L3\", color=color.new(color.green, 0), linewidth=1, style=plot.style_stepline)\n    plot(cam_l4, title=\"L4\", color=color.new(color.green, 0), linewidth=2, style=plot.style_stepline)\n\n    // Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)\n    var label h4_label = na\n    var label h3_label = na\n    var label h2_label = na\n    var label h1_label = na\n    var label l1_label = na\n    var label l2_label = na\n    var label l3_label = na\n    var label l4_label = na\n\n    // Check if it's the first bar of the new period (e.g., new day)\n    isNewPeriod = ta.change(time(pivotTimeframe))\n\n    if isNewPeriod\n        label.delete(h4_label)\n        label.delete(h3_label)\n        label.delete(h2_label)\n        label.delete(h1_label)\n        label.delete(l1_label)\n        label.delete(l2_label)\n        label.delete(l3_label)\n        label.delete(l4_label)\n\n        h4_label := label.new(bar_index, cam_h4, text=\"H4\", style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)\n        h3_label := label.new(bar_index, cam_h3, text=\"H3\", style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)\n        h2_label := label.new(bar_index, cam_h2, text=\"H2\", style=label.style_label_left, color=color.new(color.orange, 70), textcolor=color.white)\n        h1_label := label.new(bar_index, cam_h1, text=\"H1\", style=label.style_label_left, color=color.new(color.orange, 70), textcolor=color.white)\n        l1_label := label.new(bar_index, cam_l1, text=\"L1\", style=label.style_label_left, color=color.new(color.lime, 70), textcolor=color.white)\n        l2_label := label.new(bar_index, cam_l2, text=\"L2\", style=label.style_label_left, color=color.new(color.lime, 70), textcolor=color.white)\n        l3_label := label.new(bar_index, cam_l3, text=\"L3\", style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)\n        l4_label := label.new(bar_index, cam_l4, text=\"L4\", style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)\n\n    // Extend labels horizontally\n    label.set_x(h4_label, bar_index)\n    label.set_x(h3_label, bar_index)\n    label.set_x(h2_label, bar_index)\n    label.set_x(h1_label, bar_index)\n    label.set_x(l1_label, bar_index)\n    label.set_x(l2_label, bar_index)\n    label.set_x(l3_label, bar_index)\n    label.set_x(l4_label, bar_index)"},{"type":"tip","title":"Mean Reversion Focus","content":"Camarilla Pivots are often favored for mean reversion strategies, particularly the L3 and H3 levels, as price tends to revert towards the central ranges."},{"type":"strategies","title":"Practical Camarilla Pivots Trading Strategies","strategies":[{"name":"1. Mean Reversion / Reversal Trading (L3 & H3)","description":"This is the most popular strategy with Camarilla Pivots. Traders look for price to test and then reverse from the L3 and H3 levels, aiming for a return to the previous day's close or the H1/L1 levels.","subItems":["<b>Buy Signal (Reversal):</b> Price declines and touches or briefly penetrates <b>L3</b>, then shows signs of reversal (e.g., bullish candlestick, strong bounce, or closes back above L3). Entry around L3, with targets at L2, L1, or even the previous day's close. Stop loss just below L4.","<b>Sell Signal (Reversal):</b> Price rallies and touches or briefly penetrates <b>H3</b>, then shows signs of reversal (e.g., bearish candlestick, strong rejection, or closes back below H3). Entry around H3, with targets at H2, H1, or the previous day's close. Stop loss just above H4."],"code":"//@version=5\nstrategy(\"Camarilla Reversal Strategy\", overlay=true)\n\npivotTimeframe = input.string(\"D\", title=\"Pivot Timeframe\", options=[\"D\", \"W\", \"M\"])\n\n// Request previous day's data\nprevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)\nprevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)\nprevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)\n\n// Calculate Camarilla Levels\nvar float cam_h3 = na\nvar float cam_l3 = na\nvar float cam_h1 = na\nvar float cam_l1 = na\nvar float cam_h4 = na\nvar float cam_l4 = na\n\nif not na(prevHigh) and not na(prevLow) and not na(prevClose)\n    range = prevHigh - prevLow\n    cam_h3 := (prevClose + range * 1.1 / 4)\n    cam_l3 := (prevClose - range * 1.1 / 4)\n    cam_h1 := (prevClose + range * 1.1 / 12)\n    cam_l1 := (prevClose - range * 1.1 / 12)\n    cam_h4 := (prevClose + range * 1.1 / 2)\n    cam_l4 := (prevClose - range * 1.1 / 2)\n\n// Plotting (simplified for strategy example)\nplot(cam_h3, title=\"H3\", color=color.new(color.red, 0), linewidth=1, style=plot.style_stepline)\nplot(cam_l3, title=\"L3\", color=color.new(color.green, 0), linewidth=1, style=plot.style_stepline)\n\n// Long Entry: Price crosses below L3 and immediately closes back above L3.\nlongCondition = close > cam_l3 and close[1] <= cam_l3[1]\n\n// Short Entry: Price crosses above H3 and immediately closes back below H3.\nshortCondition = close < cam_h3 and close[1] >= cam_h3[1]\n\n// Only trigger if a new pivot period has started and levels are available\nisNewPeriod = ta.change(time(pivotTimeframe))\n\nif longCondition and not isNewPeriod and not na(cam_l4) and not na(cam_l1)\n    strategy.entry(\"Long L3 Reversal\", strategy.long)\n\nif shortCondition and not isNewPeriod and not na(cam_h4) and not na(cam_h1)\n    strategy.entry(\"Short H3 Reversal\", strategy.short)\n\n// Exit logic for reversals\n// Target: L1 for short, H1 for long\n// Stop Loss: L4 for long, H4 for short\nstrategy.exit(\"Long L3 Reversal Exit\", from_entry=\"Long L3 Reversal\", profit=cam_h1, stop=cam_l4)\nstrategy.exit(\"Short H3 Reversal Exit\", from_entry=\"Short H3 Reversal\", profit=cam_l1, stop=cam_h4)"},{"name":"2. Breakout Trading (H4 & L4)","description":"While often used for mean reversion, Camarilla Pivots also offer robust levels for breakout trading. A decisive break beyond H4 or L4 indicates strong momentum and a potential trending day.","subItems":["<b>Buy Signal (Breakout):</b> Price decisively breaks and holds <b>above H4</b>, often with high volume. This suggests a strong continuation of the uptrend. Target profit levels are often set at fixed risk-reward ratios or by using Fibonacci extensions.","<b>Sell Signal (Breakout):</b> Price decisively breaks and holds <b>below L4</b>, often with high volume. This suggests a strong continuation of the downtrend."],"code":"//@version=5\nstrategy(\"Camarilla Breakout Strategy\", overlay=true)\n\npivotTimeframe = input.string(\"D\", title=\"Pivot Timeframe\", options=[\"D\", \"W\", \"M\"])\n\n// Request previous day's data\nprevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)\nprevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)\nprevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)\n\n// Calculate Camarilla Levels\nvar float cam_h4 = na\nvar float cam_l4 = na\n\nif not na(prevHigh) and not na(prevLow) and not na(prevClose)\n    range = prevHigh - prevLow\n    cam_h4 := (prevClose + range * 1.1 / 2)\n    cam_l4 := (prevClose - range * 1.1 / 2)\n\n// Plotting (simplified for strategy example)\nplot(cam_h4, title=\"H4\", color=color.new(color.red, 0), linewidth=2, style=plot.style_stepline)\nplot(cam_l4, title=\"L4\", color=color.new(color.green, 0), linewidth=2, style=plot.style_stepline)\n\n// Breakout logic: Price closes decisively above H4 or below L4\nlongBreakoutCondition = close > cam_h4 and close[1] <= cam_h4[1]\nshortBreakoutCondition = close < cam_l4 and close[1] >= cam_l4[1]\n\n// Optional: Add volume confirmation for breakouts\nvolumeFactor = input.float(1.5, title=\"Volume Confirmation Factor\", minval=1.0, step=0.1)\navgVolume = ta.sma(volume, 20)\nisHighVolume = volume > avgVolume * volumeFactor\n\nif (longBreakoutCondition and isHighVolume)\n    strategy.entry(\"Long H4 Breakout\", strategy.long)\n\nif (shortBreakoutCondition and isHighVolume)\n    strategy.entry(\"Short L4 Breakout\", strategy.short)\n\n// Exit: Fixed profit/loss or target a fixed number of ATRs\natrLength = input.int(14, title=\"ATR Length for Exits\", minval=1)\natrValue = ta.atr(atrLength)\n\nprofitMultiplier = input.float(2.0, title=\"Profit Target (ATR)\", minval=0.5, step=0.1)\nstopLossMultiplier = input.float(1.0, title=\"Stop Loss (ATR)\", minval=0.1, step=0.1)\n\nstrategy.exit(\"Long H4 Breakout Exit\", from_entry=\"Long H4 Breakout\",\n             profit=strategy.position_avg_price + atrValue * profitMultiplier,\n             stop=strategy.position_avg_price - atrValue * stopLossMultiplier)\n\nstrategy.exit(\"Short L4 Breakout Exit\", from_entry=\"Short L4 Breakout\",\n             profit=strategy.position_avg_price - atrValue * profitMultiplier,\n             stop=strategy.position_avg_price + atrValue * stopLossMultiplier)"},{"name":"3. Range Trading (Between H1 & L1, or H2 & L2)","description":"The inner Camarilla levels (H1, H2, L1, L2) often define a normal trading range. Price tends to fluctuate within these levels on non-trending days.","subItems":["<b>Sideways Market Indication:</b> If price is trading consistently between L1 and H1 (or L2 and H2), it indicates a consolidation or low-volatility day.","<b>Strategy:</b> Traders might look for very short-term scalping opportunities within these ranges, buying near L1/L2 and selling near H1/H2, or simply avoid trading altogether until a clear break occurs."],"code":"//@version=5\nindicator(\"Camarilla Range Detector\", overlay=true)\n\npivotTimeframe = input.string(\"D\", title=\"Pivot Timeframe\", options=[\"D\", \"W\", \"M\"])\n\n// Request previous day's data\nprevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)\nprevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)\nprevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)\n\n// Calculate Camarilla Levels (H1, L1)\nvar float cam_h1 = na\nvar float cam_l1 = na\n\nif not na(prevHigh) and not na(prevLow) and not na(prevClose)\n    range = prevHigh - prevLow\n    cam_h1 := (prevClose + range * 1.1 / 12)\n    cam_l1 := (prevClose - range * 1.1 / 12)\n\n// Plotting (simplified for detector)\nplot(cam_h1, title=\"H1\", color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)\nplot(cam_l1, title=\"L1\", color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)\n\n// Determine if price is trading within the H1-L1 range\nisTradingInRange = close < cam_h1 and close > cam_l1 and\n                   open > cam_l1 and open < cam_h1\n\n// Color background to easily visualize range-bound periods\nbgcolor(isTradingInRange ? color.new(color.yellow, 95) : na, title=\"Range-Bound Zone\")\n\n// Alert if price enters or exits the range\nalertcondition(ta.crossover(close, cam_h1) or ta.crossunder(close, cam_l1),\n               \"Price Exiting Camarilla Range\", \"Price is breaking out of the H1-L1 Camarilla range.\")\nalertcondition(isTradingInRange[1] == false and isTradingInRange,\n               \"Price Entering Camarilla Range\", \"Price is entering the H1-L1 Camarilla range.\")"}]},{"type":"content","title":"Optimizing Camarilla Pivots Performance","html":"<p>To get the most from Camarilla Pivots in Pine Script:</p>","listItems":["<b>Timeframe Selection:</b> Camarilla Pivots are designed for <b>intraday trading</b>. Using them on daily or weekly charts might provide less relevant signals as their calculation emphasizes short-term volatility. Ensure your chart timeframe is lower (e.g., 5-min, 15-min, 1-hour) than the pivot calculation timeframe (typically \"D\").","<b>Confirmation is Key:</b> Never rely solely on Camarilla Pivots. Combine them with other indicators (e.g., volume, momentum oscillators like RSI, MACD, or candlestick patterns) to confirm reversals or breakouts.","<b>Open Interest (for Futures):</b> For futures markets, observe open interest. A breakout above H4/below L4 on increasing open interest would be a stronger signal.","<b>Volatility Context:</b> Camarilla pivots work well in normal to moderately volatile markets. In extremely high-volatility markets, price might blow through all levels quickly. In very low-volatility markets, ranges might be too tight to be actionable.","<b>Trade Entry/Exit Zones:</b> Don't expect exact bounces. Think of Camarilla levels as <b>zones</b> where price action is likely to react. Look for price to consolidate around these levels or form clear reversal/continuation patterns."]},{"type":"tip","title":"Tight Levels for Intraday","content":"Camarilla's unique formulas place its levels closer to the previous close, making them more sensitive and ideal for short-term price swings and reversals within the trading day."},{"type":"content","title":"Common Camarilla Pivots Pitfalls","listItems":["<b>Timeframe Misuse:</b> Using Camarilla Pivots on daily or higher timeframes, or trying to trade them on very low liquidity assets, will likely yield poor results.","<b>False Signals/Whipsaws:</b> In very choppy markets or during strong news events, price can repeatedly cross Camarilla levels, leading to whipsaws and false signals.","<b>Over-Reliance:</b> Using Camarilla Pivots as the sole decision-making tool without additional confirmation can lead to significant losses.","<b>Gap Risk:</b> Large overnight gaps can make the previous day's Camarilla levels less relevant for the current day's trading, especially if the gap opens far beyond H4 or L4.","<b>Limited Beyond H4/L4:</b> There are no standard levels beyond H4 and L4. Once price breaks these, it's considered to be in a strong trend, and other tools (e.g., trend lines, dynamic moving averages) might be more appropriate for targets."]},{"type":"conclusion","title":"Conclusion","html":"<p>Camarilla Pivots are a powerful and widely utilized set of intraday support and resistance levels in Pine Script for TradingView. By emphasizing price action near the previous period's close, they offer precise levels for identifying potential <b>mean reversion (reversal)</b> opportunities around H3/L3 and <b>breakout</b> opportunities beyond H4/L4. While primarily suited for short-term and intraday trading, their effectiveness is significantly enhanced when combined with other confirming indicators, such as candlestick patterns, volume, or momentum oscillators. By understanding their calculation, applying them to appropriate timeframes, and integrating them strategically into your <b><a href=\"https://offline-pixel.github.io/pinescript-strategies.html\">pine script strategies</a></b>, you can leverage Camarilla Pivots to improve your entry/exit timing and manage risk in dynamic markets.</p>"}],"footer":{"ctaTitle":"Enhance Your Trading","ctaDescription":"Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.","ctaSubtext":"This strategy runs in live mode on TradingView, helping you identify potential opportunities.","ctaRating":"⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction Rate","ctaImage":"../assets/ss.png","ctaLink":"https://offlinepixel.gumroad.com/l/trader-on-the-go","ctaText":"Get Pine Script Strategy"},"disclaimer":"Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a class=\"text-amber-500\" href=\"https://offlinepixel.gumroad.com/l/trader-on-the-go\" target=\"_blank\" rel=\"nofollow\">Invite Only Scripts</a>","adsense":{"client":"ca-pub-9243803325136617","slot":"5548365171"},"scripts":["../scripts/scripts.js","../scripts/dynamicContent.js","../scripts/pinescript-disclaimer.js"]};</script></head>
+  <body>
+    <div id="app"><div class="flex min-h-screen flex-col bg-white text-slate-500 dark:bg-slate-950 selection:bg-indigo-500/20 transition-colors duration-300"><header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90"><div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"><a href="/" title="Offline Pixel - Custom Quant, ML, and Enterprise App Development" class="flex items-center gap-0.5 group"><div class="flex h-9 w-9 items-center justify-center rounded-lg transition-transform group-hover:scale-105"><img src="/logo.png" alt="Logo" class="h-7 w-7 object-contain"/></div><span class="font-mono text-lg font-bold tracking-tight text-slate-900 dark:text-white">OFFLINE<span class="text-indigo-600">PIXEL</span></span></a><nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-500"><a href="/pinescript-strategies.html" title="Pine Script Trading Strategies, Backtesting, and Automation Pipelines" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg><span>Pine Strategies</span></a><div class="relative group"><button type="button" class="flex items-center gap-1 hover:text-slate-900 dark:hover:text-slate-300 transition-colors focus:outline-none"><span>Expertise</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-3 w-3 transition-transform "><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg></button><div class="absolute left-0 mt-3 w-80 rounded-xl border border-slate-200 bg-white p-2 shadow-xl dark:border-slate-800 dark:bg-slate-950 transition-all duration-200 opacity-0 invisible scale-95 pointer-events-none"><div class="p-2 text-[11px] font-mono uppercase tracking-wider text-slate-400">Please select a service</div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/quant-engineer/">Hire Quant Expert</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/quant-developer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Quant Dev</a>, </span><span><a href="/hire/quant-researcher/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Researcher</a>, </span><span><a href="/hire/quant-trader/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Trader</a>, </span><span><a href="/hire/quant-junior/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Junior Quant</a>, </span><span><a href="/hire/senior-quant-engineer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Senior Quant</a></span></div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><span>Hire Platform Engineer</span></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/rust-engineer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Rust (Systems)</a>, </span><span><a href="/hire/duckdb-engineer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">DuckDB (Analytics)</a></span>, High-Performance Pipelines</div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/ml-engineer/">Hire ML Expert</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/llm-engineer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">LLMs</a>, </span><span><a href="/hire/rag-engineer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">RAG</a>, </span><span><a href="/hire/faiss-expert/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">FAISS</a>, </span><span><a href="/hire/walk-forward-validation-expert/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Walk-Forward</a></span></div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/app-developer/">Hire App Developer</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/tauri-engineer/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Tauri</a>, </span><span><a href="/hire/microfrontends-expert/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">Microfrontends</a></span>, Preact</div></div></div><div class="flex items-start gap-3 rounded-lg p-2.5 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="mt-0.5 h-4 w-4 text-indigo-500 shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3m-19.5 0a4.5 4.5 0 0 1 .9-2.7L5.737 5.1a3.375 3.375 0 0 1 2.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 0 1 .9 2.7m0 0a3 3 0 0 1-3 3m0 3h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Zm-3 6h.008v.008h-.008v-.008Zm0-6h.008v.008h-.008v-.008Z"></path></svg><div><div class="text-xs font-semibold text-slate-900 dark:text-white"><a href="/hire/python-engineer/">Hire Python Dev</a></div><div class="text-[11px] text-slate-400 font-mono mt-0.5"><span><a href="/hire/fastapi-expert/" class="text-indigo-500 hover:text-indigo-400 cursor-pointer">FastAPI</a></span>, Pipelines, Structuring</div></div></div></div></div><a href="#cloud-enterprise" title="Enterprise System Migration, Cloud Architecture, and Power Platform Automation" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><span>Cloud &amp; Enterprise</span></a><a href="#bi-analytics" title="Power BI Dashboards, DAX Optimization, and Executive Analytics" class="flex items-center gap-1.5 text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"><span>Analytics</span></a></nav><div class="flex items-center gap-4"><button type="button" disabled title="Book an Expert Engineering Consultation" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 opacity-50 cursor-not-allowed">Raise A Request</button><button type="button" disabled aria-label="Toggle navigation menu" class="inline-flex lg:hidden h-9 w-9 items-center justify-center rounded-lg border border-slate-200 text-slate-500 dark:border-slate-800"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg></button></div></div><div class="border-t border-slate-200 bg-white px-4 py-4 dark:border-slate-800 dark:bg-slate-950 lg:hidden transition-all duration-200 max-h-0 opacity-0 invisible overflow-hidden p-0 border-0"><div class="hidden"><a href="/pinescript-strategies.html" class="block py-2 text-sm font-medium text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Pine Strategies</a><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Quant Expertise</div><a href="/hire/quant-engineer/" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Quant Expert</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/quant-developer/" class="text-indigo-500 hover:text-indigo-400">Quant Dev</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-researcher/" class="text-indigo-500 hover:text-indigo-400">Researcher</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-trader/" class="text-indigo-500 hover:text-indigo-400">Trader</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/quant-junior/" class="text-indigo-500 hover:text-indigo-400">Junior</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/senior-quant-engineer/" class="text-indigo-500 hover:text-indigo-400">Senior</a></span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Data Engineering</div><div class="block py-2 text-sm text-slate-700 dark:text-slate-300">Hire Data Engineer</div><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/rust-engineer/" class="text-indigo-500 hover:text-indigo-400">Rust</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/duckdb-engineer/" class="text-indigo-500 hover:text-indigo-400">DuckDB</a></span><span class="text-slate-500"> | ETL Pipelines</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">ML &amp; AI Expertise</div><a href="/hire/ml-engineer/" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire ML Expert</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/llm-engineer/" class="text-indigo-500 hover:text-indigo-400">LLMs</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/rag-engineer/" class="text-indigo-500 hover:text-indigo-400">RAG</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/faiss-expert/" class="text-indigo-500 hover:text-indigo-400">FAISS</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/walk-forward-validation-expert/" class="text-indigo-500 hover:text-indigo-400">Walk-Forward</a></span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">App Development</div><a href="/hire/app-developer/" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire App Developer</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/tauri-engineer/" class="text-indigo-500 hover:text-indigo-400">Tauri</a><span class="text-slate-300 dark:text-slate-600"> | </span></span><span><a href="/hire/microfrontends-expert/" class="text-indigo-500 hover:text-indigo-400">Microfrontends</a></span><span class="text-slate-500"> | Preact</span></div></div><div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800"><div class="text-[10px] font-mono uppercase tracking-wider text-slate-400 mb-2">Python Engineering</div><a href="/hire/python-engineer/" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Hire Python Dev</a><div class="pl-3 mb-2 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-mono"><span><a href="/hire/fastapi-expert/" class="text-indigo-500 hover:text-indigo-400">FastAPI</a></span><span class="text-slate-500"> | Pipelines, Structuring</span></div></div><div class="mt-2 pt-2 border-t border-slate-100 dark:border-slate-800"><a href="#cloud-enterprise" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Cloud &amp; Enterprise</a><a href="#bi-analytics" class="block py-2 text-sm text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Analytics</a></div><div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800"><button type="button" title="Book an Expert Engineering Consultation" class="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 ">Raise A Request</button></div></div></div></header><div class="flex-1">
+    <div class="min-h-screen bg-white dark:bg-black">
+      <!-- Hero Section - EXACT match -->
+      <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-black dark:via-slate-950 dark:to-black"></div>
+        <div class="absolute inset-0 opacity-5 dark:opacity-10">
+          <div class="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+        </div>
+        <div class="absolute top-20 left-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-indigo-500/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+        <div class="relative max-w-5xl mx-auto px-6 py-24 text-center">
+          <div class="animate-in mb-8">
+            <div class="inline-flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+              </svg>
+              <span>/</span>
+              <a href="/pinescript-strategies.html" class="hover:text-indigo-500 transition-colors">pinescript-strategies</a>
+              <span>/</span>
+              <span class="text-indigo-500">pine-script-camarilla-pivots</span>
+            </div>
+          </div>
+
+          <h1 class="animate-in hero-title text-3xl md:text-4xl lg:text-5xl font-black font-mono text-slate-900 dark:text-white tracking-tight mb-6">
+            <span class="text-indigo-500">$</span>
+            <span class="inline-block min-w-[200px]">Pine Script Camarilla Pivots</span>
+          </h1>
+
+          <p class="animate-in text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto mb-6">
+            Master this highly popular intraday pivot point system in TradingView&#39;s Pine Script, known for identifying potential reversals and breakout opportunities, particularly in mean-reverting markets.
+          </p>
+
+          <div class="animate-in flex flex-wrap justify-center gap-6 mb-10">
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">500+ Clients Helped</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+              <span class="text-sm font-mono">100% Satisfaction</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+              </svg>
+              <span class="text-sm font-mono">Live Trading Ready</span>
+            </div>
+          </div>
+
+          <div class="animate-in flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+              </svg>
+              Get Pine Script Strategy
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+              </svg>
+            </a>
+            
+              <a href="https://offlinepixel.gumroad.com/l/kpafhy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-8 py-4 border border-slate-200 dark:border-slate-800 bg-white dark:bg-black text-slate-700 dark:text-slate-300 rounded-xl font-mono text-sm font-semibold hover:border-indigo-500 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"></path>
+                </svg>
+                Get The Option Buyer guide now
+              </a>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        
+          <div class="animate-in mb-10 p-5 bg-amber-50 dark:bg-amber-950/10 border-l-4 border-amber-500 rounded-r-xl">
+            <div class="flex items-start gap-3">
+              <span class="text-amber-500 text-lg">⚠️</span>
+              <div class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Trading financial markets carries risk. All content (PineScript code, indicators, strategies) on this website is for educational purposes only. Past performance is not indicative of future results. By using any code or information from this site, you agree that you are solely responsible for your trading decisions. The author disclaims all liability for any losses incurred. To gain from experts experiences, You can always try our <a class="text-amber-500" href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="nofollow">Invite Only Scripts</a></div>
+            </div>
+          </div>
+        
+
+        
+          <div class="animate-in mb-10">
+            <ins class="adsbygoogle" style="display: block; text-align: center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-9243803325136617" data-ad-slot="5548365171" data-adtest="on"></ins>
+          </div>
+        
+
+        
+      <section id="section-0" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">01</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">What are Camarilla Pivots?</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p><b>Camarilla Pivots</b> are a unique set of intraday support and resistance levels that are typically used by short-term traders to identify potential reversal points or breakout opportunities. Unlike Classic Pivot Points, which are designed to project relatively wide ranges, Camarilla Pivots emphasize price action near the previous day's close. This results in tighter support and resistance levels that are particularly effective in capturing mean-reverting price action, where price tends to return to a central point.</p><p>Developed by Nick Stott, Camarilla Pivots are calculated using the previous day's (or chosen period's) High, Low, and Closing prices. They consist of four resistance levels (H1, H2, H3, H4) and four support levels (L1, L2, L3, L4), along with a central Pivot Point (PP), though the PP is less emphasized than the H3/L3 levels.</p><p>Traders primarily use Camarilla Pivots for:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Mean Reversion (Reversals):</b> Price often bounces off L3 (for buying) or H3 (for selling), aiming for a return to the previous day's close or H1/L1.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Breakout Trading:</b> A decisive break above H4 or below L4 can signal a strong continuation or trending day.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Setting Entry/Exit Points:</b> Providing clear reference points for order placement.</span>
+        </li>
+      </ul></section>
+      <section id="section-1" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">02</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Components and Calculation (Camarilla Pivots)</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>Camarilla Pivots are calculated using the previous period's High, Low, and Close prices. The formulas place more weight on the previous day's close, resulting in levels that are closer to the closing price. The pivot range is primarily derived from the previous day's range <code>(High - Low)</code>.</p>
+          </div>
+        <ol class="mt-6 space-y-3 list-decimal list-inside text-slate-600 dark:text-slate-400"><li><b>Pivot Point (PP):</b><br><code>PP = (H + L + C) / 3</code> (Same as Classic Pivot Point, but less focused)</li><li><b>Resistance Levels (H1 to H4):</b><br><code>H1 = C + (Range * 1.1 / 12)</code><br><code>H2 = C + (Range * 1.1 / 6)</code><br><code>H3 = C + (Range * 1.1 / 4)</code><br><code>H4 = C + (Range * 1.1 / 2)</code></li><li><b>Support Levels (L1 to L4):</b><br><code>L1 = C - (Range * 1.1 / 12)</code><br><code>L2 = C - (Range * 1.1 / 6)</code><br><code>L3 = C - (Range * 1.1 / 4)</code><br><code>L4 = C - (Range * 1.1 / 2)</code></li></ol></section>
+      <section id="section-2" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">03</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Basic Camarilla Pivots Implementation in Pine Script</h2>
+    
+        <div class="code-block mt-6">
+          <div class="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+            <div class="flex items-center justify-between px-5 py-3 bg-slate-800 border-b border-slate-700">
+              <div class="flex gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3 text-slate-500">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"></path>
+                </svg>
+                <span class="text-[11px] font-mono text-slate-400">pine-script@terminal</span>
+              </div>
+              <button class="text-slate-500 hover:text-white transition-colors" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;My Camarilla Pivots&quot;, overlay=true, max_bars_back=500)
+
+// Input for the Pivot Point calculation timeframe
+// Camarilla pivots are predominantly used for intraday trading, so &quot;D&quot; (Daily) is most common.
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Get the Pivot Points values using ta.pivotpoints() with &quot;Camarilla&quot; type
+// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]
+// Note: For Camarilla, these usually map to H1-H4 and L1-L4 for Pine Script&#39;s built-in.
+// Specifically, for Camarilla, the ta.pivotpoints function typically returns:
+// pp (Pivot Point)
+// r1 (H1), r2 (H2), r3 (H3), r4 (H4 - not directly in the 3 R/S outputs, but calculated)
+// s1 (L1), s2 (L2), s3 (L3), s4 (L4 - not directly in the 3 R/S outputs, but calculated)
+
+// Let&#39;s manually get H1-H4 and L1-L4 since ta.pivotpoints only gives R1-R3 and S1-S3.
+// We&#39;ll calculate them based on the previous bar&#39;s HLC.
+// We need to fetch previous day&#39;s HLC.
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Ensure we have valid previous day data
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+
+    // Calculate Camarilla Levels
+    cam_h4 = (prevClose + range * 1.1 / 2)
+    cam_h3 = (prevClose + range * 1.1 / 4)
+    cam_h2 = (prevClose + range * 1.1 / 6)
+    cam_h1 = (prevClose + range * 1.1 / 12)
+
+    cam_l1 = (prevClose - range * 1.1 / 12)
+    cam_l2 = (prevClose - range * 1.1 / 6)
+    cam_l3 = (prevClose - range * 1.1 / 4)
+    cam_l4 = (prevClose - range * 1.1 / 2)
+
+    // Plotting the Camarilla Levels
+    plot(cam_h4, title=&quot;H4&quot;, color=color.new(color.red, 0), linewidth=2, style=plot.style_stepline)
+    plot(cam_h3, title=&quot;H3&quot;, color=color.new(color.red, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_h2, title=&quot;H2&quot;, color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_h1, title=&quot;H1&quot;, color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)
+
+    plot(cam_l1, title=&quot;L1&quot;, color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_l2, title=&quot;L2&quot;, color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_l3, title=&quot;L3&quot;, color=color.new(color.green, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_l4, title=&quot;L4&quot;, color=color.new(color.green, 0), linewidth=2, style=plot.style_stepline)
+
+    // Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)
+    var label h4_label = na
+    var label h3_label = na
+    var label h2_label = na
+    var label h1_label = na
+    var label l1_label = na
+    var label l2_label = na
+    var label l3_label = na
+    var label l4_label = na
+
+    // Check if it&#39;s the first bar of the new period (e.g., new day)
+    isNewPeriod = ta.change(time(pivotTimeframe))
+
+    if isNewPeriod
+        label.delete(h4_label)
+        label.delete(h3_label)
+        label.delete(h2_label)
+        label.delete(h1_label)
+        label.delete(l1_label)
+        label.delete(l2_label)
+        label.delete(l3_label)
+        label.delete(l4_label)
+
+        h4_label := label.new(bar_index, cam_h4, text=&quot;H4&quot;, style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+        h3_label := label.new(bar_index, cam_h3, text=&quot;H3&quot;, style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+        h2_label := label.new(bar_index, cam_h2, text=&quot;H2&quot;, style=label.style_label_left, color=color.new(color.orange, 70), textcolor=color.white)
+        h1_label := label.new(bar_index, cam_h1, text=&quot;H1&quot;, style=label.style_label_left, color=color.new(color.orange, 70), textcolor=color.white)
+        l1_label := label.new(bar_index, cam_l1, text=&quot;L1&quot;, style=label.style_label_left, color=color.new(color.lime, 70), textcolor=color.white)
+        l2_label := label.new(bar_index, cam_l2, text=&quot;L2&quot;, style=label.style_label_left, color=color.new(color.lime, 70), textcolor=color.white)
+        l3_label := label.new(bar_index, cam_l3, text=&quot;L3&quot;, style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+        l4_label := label.new(bar_index, cam_l4, text=&quot;L4&quot;, style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+
+    // Extend labels horizontally
+    label.set_x(h4_label, bar_index)
+    label.set_x(h3_label, bar_index)
+    label.set_x(h2_label, bar_index)
+    label.set_x(h1_label, bar_index)
+    label.set_x(l1_label, bar_index)
+    label.set_x(l2_label, bar_index)
+    label.set_x(l3_label, bar_index)
+    label.set_x(l4_label, bar_index)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+              </button>
+            </div>
+            <pre class="p-6 overflow-x-auto"><code class="language-pinescript text-sm font-mono leading-relaxed">//@version=5
+indicator(&quot;My Camarilla Pivots&quot;, overlay=true, max_bars_back=500)
+
+// Input for the Pivot Point calculation timeframe
+// Camarilla pivots are predominantly used for intraday trading, so &quot;D&quot; (Daily) is most common.
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Get the Pivot Points values using ta.pivotpoints() with &quot;Camarilla&quot; type
+// This function returns a tuple: [pp, r1, r2, r3, s1, s2, s3]
+// Note: For Camarilla, these usually map to H1-H4 and L1-L4 for Pine Script&#39;s built-in.
+// Specifically, for Camarilla, the ta.pivotpoints function typically returns:
+// pp (Pivot Point)
+// r1 (H1), r2 (H2), r3 (H3), r4 (H4 - not directly in the 3 R/S outputs, but calculated)
+// s1 (L1), s2 (L2), s3 (L3), s4 (L4 - not directly in the 3 R/S outputs, but calculated)
+
+// Let&#39;s manually get H1-H4 and L1-L4 since ta.pivotpoints only gives R1-R3 and S1-S3.
+// We&#39;ll calculate them based on the previous bar&#39;s HLC.
+// We need to fetch previous day&#39;s HLC.
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Ensure we have valid previous day data
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+
+    // Calculate Camarilla Levels
+    cam_h4 = (prevClose + range * 1.1 / 2)
+    cam_h3 = (prevClose + range * 1.1 / 4)
+    cam_h2 = (prevClose + range * 1.1 / 6)
+    cam_h1 = (prevClose + range * 1.1 / 12)
+
+    cam_l1 = (prevClose - range * 1.1 / 12)
+    cam_l2 = (prevClose - range * 1.1 / 6)
+    cam_l3 = (prevClose - range * 1.1 / 4)
+    cam_l4 = (prevClose - range * 1.1 / 2)
+
+    // Plotting the Camarilla Levels
+    plot(cam_h4, title=&quot;H4&quot;, color=color.new(color.red, 0), linewidth=2, style=plot.style_stepline)
+    plot(cam_h3, title=&quot;H3&quot;, color=color.new(color.red, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_h2, title=&quot;H2&quot;, color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_h1, title=&quot;H1&quot;, color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)
+
+    plot(cam_l1, title=&quot;L1&quot;, color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_l2, title=&quot;L2&quot;, color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_l3, title=&quot;L3&quot;, color=color.new(color.green, 0), linewidth=1, style=plot.style_stepline)
+    plot(cam_l4, title=&quot;L4&quot;, color=color.new(color.green, 0), linewidth=2, style=plot.style_stepline)
+
+    // Optional: Add labels to the pivot lines for clarity (only on the first bar of a new period)
+    var label h4_label = na
+    var label h3_label = na
+    var label h2_label = na
+    var label h1_label = na
+    var label l1_label = na
+    var label l2_label = na
+    var label l3_label = na
+    var label l4_label = na
+
+    // Check if it&#39;s the first bar of the new period (e.g., new day)
+    isNewPeriod = ta.change(time(pivotTimeframe))
+
+    if isNewPeriod
+        label.delete(h4_label)
+        label.delete(h3_label)
+        label.delete(h2_label)
+        label.delete(h1_label)
+        label.delete(l1_label)
+        label.delete(l2_label)
+        label.delete(l3_label)
+        label.delete(l4_label)
+
+        h4_label := label.new(bar_index, cam_h4, text=&quot;H4&quot;, style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+        h3_label := label.new(bar_index, cam_h3, text=&quot;H3&quot;, style=label.style_label_left, color=color.new(color.red, 70), textcolor=color.white)
+        h2_label := label.new(bar_index, cam_h2, text=&quot;H2&quot;, style=label.style_label_left, color=color.new(color.orange, 70), textcolor=color.white)
+        h1_label := label.new(bar_index, cam_h1, text=&quot;H1&quot;, style=label.style_label_left, color=color.new(color.orange, 70), textcolor=color.white)
+        l1_label := label.new(bar_index, cam_l1, text=&quot;L1&quot;, style=label.style_label_left, color=color.new(color.lime, 70), textcolor=color.white)
+        l2_label := label.new(bar_index, cam_l2, text=&quot;L2&quot;, style=label.style_label_left, color=color.new(color.lime, 70), textcolor=color.white)
+        l3_label := label.new(bar_index, cam_l3, text=&quot;L3&quot;, style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+        l4_label := label.new(bar_index, cam_l4, text=&quot;L4&quot;, style=label.style_label_left, color=color.new(color.green, 70), textcolor=color.white)
+
+    // Extend labels horizontally
+    label.set_x(h4_label, bar_index)
+    label.set_x(h3_label, bar_index)
+    label.set_x(h2_label, bar_index)
+    label.set_x(h1_label, bar_index)
+    label.set_x(l1_label, bar_index)
+    label.set_x(l2_label, bar_index)
+    label.set_x(l3_label, bar_index)
+    label.set_x(l4_label, bar_index)</code></pre>
+            <div class="px-6 pb-4 flex items-center gap-2 border-t border-slate-800 pt-3">
+              <span class="text-indigo-400 text-xs">$</span>
+              <span class="text-slate-500 text-xs font-mono">✓ Compiled successfully</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-3" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">04</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Mean Reversion Focus</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Mean Reversion Focus</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Camarilla Pivots are often favored for mean reversion strategies, particularly the L3 and H3 levels, as price tends to revert towards the central ranges.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-4" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">05</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Practical Camarilla Pivots Trading Strategies</h2>
+    <div class="mt-6 space-y-8">
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">1. Mean Reversion / Reversal Trading (L3 &amp; H3)</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">This is the most popular strategy with Camarilla Pivots. Traders look for price to test and then reverse from the L3 and H3 levels, aiming for a return to the previous day&#39;s close or the H1/L1 levels.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Buy Signal (Reversal):</b> Price declines and touches or briefly penetrates <b>L3</b>, then shows signs of reversal (e.g., bullish candlestick, strong bounce, or closes back above L3). Entry around L3, with targets at L2, L1, or even the previous day's close. Stop loss just below L4.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Sell Signal (Reversal):</b> Price rallies and touches or briefly penetrates <b>H3</b>, then shows signs of reversal (e.g., bearish candlestick, strong rejection, or closes back below H3). Entry around H3, with targets at H2, H1, or the previous day's close. Stop loss just above H4.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;Camarilla Reversal Strategy&quot;, overlay=true)
+
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Request previous day&#39;s data
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Calculate Camarilla Levels
+var float cam_h3 = na
+var float cam_l3 = na
+var float cam_h1 = na
+var float cam_l1 = na
+var float cam_h4 = na
+var float cam_l4 = na
+
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+    cam_h3 := (prevClose + range * 1.1 / 4)
+    cam_l3 := (prevClose - range * 1.1 / 4)
+    cam_h1 := (prevClose + range * 1.1 / 12)
+    cam_l1 := (prevClose - range * 1.1 / 12)
+    cam_h4 := (prevClose + range * 1.1 / 2)
+    cam_l4 := (prevClose - range * 1.1 / 2)
+
+// Plotting (simplified for strategy example)
+plot(cam_h3, title=&quot;H3&quot;, color=color.new(color.red, 0), linewidth=1, style=plot.style_stepline)
+plot(cam_l3, title=&quot;L3&quot;, color=color.new(color.green, 0), linewidth=1, style=plot.style_stepline)
+
+// Long Entry: Price crosses below L3 and immediately closes back above L3.
+longCondition = close &gt; cam_l3 and close[1] &lt;= cam_l3[1]
+
+// Short Entry: Price crosses above H3 and immediately closes back below H3.
+shortCondition = close &lt; cam_h3 and close[1] &gt;= cam_h3[1]
+
+// Only trigger if a new pivot period has started and levels are available
+isNewPeriod = ta.change(time(pivotTimeframe))
+
+if longCondition and not isNewPeriod and not na(cam_l4) and not na(cam_l1)
+    strategy.entry(&quot;Long L3 Reversal&quot;, strategy.long)
+
+if shortCondition and not isNewPeriod and not na(cam_h4) and not na(cam_h1)
+    strategy.entry(&quot;Short H3 Reversal&quot;, strategy.short)
+
+// Exit logic for reversals
+// Target: L1 for short, H1 for long
+// Stop Loss: L4 for long, H4 for short
+strategy.exit(&quot;Long L3 Reversal Exit&quot;, from_entry=&quot;Long L3 Reversal&quot;, profit=cam_h1, stop=cam_l4)
+strategy.exit(&quot;Short H3 Reversal Exit&quot;, from_entry=&quot;Short H3 Reversal&quot;, profit=cam_l1, stop=cam_h4)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;Camarilla Reversal Strategy&quot;, overlay=true)
+
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Request previous day&#39;s data
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Calculate Camarilla Levels
+var float cam_h3 = na
+var float cam_l3 = na
+var float cam_h1 = na
+var float cam_l1 = na
+var float cam_h4 = na
+var float cam_l4 = na
+
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+    cam_h3 := (prevClose + range * 1.1 / 4)
+    cam_l3 := (prevClose - range * 1.1 / 4)
+    cam_h1 := (prevClose + range * 1.1 / 12)
+    cam_l1 := (prevClose - range * 1.1 / 12)
+    cam_h4 := (prevClose + range * 1.1 / 2)
+    cam_l4 := (prevClose - range * 1.1 / 2)
+
+// Plotting (simplified for strategy example)
+plot(cam_h3, title=&quot;H3&quot;, color=color.new(color.red, 0), linewidth=1, style=plot.style_stepline)
+plot(cam_l3, title=&quot;L3&quot;, color=color.new(color.green, 0), linewidth=1, style=plot.style_stepline)
+
+// Long Entry: Price crosses below L3 and immediately closes back above L3.
+longCondition = close &gt; cam_l3 and close[1] &lt;= cam_l3[1]
+
+// Short Entry: Price crosses above H3 and immediately closes back below H3.
+shortCondition = close &lt; cam_h3 and close[1] &gt;= cam_h3[1]
+
+// Only trigger if a new pivot period has started and levels are available
+isNewPeriod = ta.change(time(pivotTimeframe))
+
+if longCondition and not isNewPeriod and not na(cam_l4) and not na(cam_l1)
+    strategy.entry(&quot;Long L3 Reversal&quot;, strategy.long)
+
+if shortCondition and not isNewPeriod and not na(cam_h4) and not na(cam_h1)
+    strategy.entry(&quot;Short H3 Reversal&quot;, strategy.short)
+
+// Exit logic for reversals
+// Target: L1 for short, H1 for long
+// Stop Loss: L4 for long, H4 for short
+strategy.exit(&quot;Long L3 Reversal Exit&quot;, from_entry=&quot;Long L3 Reversal&quot;, profit=cam_h1, stop=cam_l4)
+strategy.exit(&quot;Short H3 Reversal Exit&quot;, from_entry=&quot;Short H3 Reversal&quot;, profit=cam_l1, stop=cam_h4)</code></pre>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">2. Breakout Trading (H4 &amp; L4)</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">While often used for mean reversion, Camarilla Pivots also offer robust levels for breakout trading. A decisive break beyond H4 or L4 indicates strong momentum and a potential trending day.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Buy Signal (Breakout):</b> Price decisively breaks and holds <b>above H4</b>, often with high volume. This suggests a strong continuation of the uptrend. Target profit levels are often set at fixed risk-reward ratios or by using Fibonacci extensions.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Sell Signal (Breakout):</b> Price decisively breaks and holds <b>below L4</b>, often with high volume. This suggests a strong continuation of the downtrend.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+strategy(&quot;Camarilla Breakout Strategy&quot;, overlay=true)
+
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Request previous day&#39;s data
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Calculate Camarilla Levels
+var float cam_h4 = na
+var float cam_l4 = na
+
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+    cam_h4 := (prevClose + range * 1.1 / 2)
+    cam_l4 := (prevClose - range * 1.1 / 2)
+
+// Plotting (simplified for strategy example)
+plot(cam_h4, title=&quot;H4&quot;, color=color.new(color.red, 0), linewidth=2, style=plot.style_stepline)
+plot(cam_l4, title=&quot;L4&quot;, color=color.new(color.green, 0), linewidth=2, style=plot.style_stepline)
+
+// Breakout logic: Price closes decisively above H4 or below L4
+longBreakoutCondition = close &gt; cam_h4 and close[1] &lt;= cam_h4[1]
+shortBreakoutCondition = close &lt; cam_l4 and close[1] &gt;= cam_l4[1]
+
+// Optional: Add volume confirmation for breakouts
+volumeFactor = input.float(1.5, title=&quot;Volume Confirmation Factor&quot;, minval=1.0, step=0.1)
+avgVolume = ta.sma(volume, 20)
+isHighVolume = volume &gt; avgVolume * volumeFactor
+
+if (longBreakoutCondition and isHighVolume)
+    strategy.entry(&quot;Long H4 Breakout&quot;, strategy.long)
+
+if (shortBreakoutCondition and isHighVolume)
+    strategy.entry(&quot;Short L4 Breakout&quot;, strategy.short)
+
+// Exit: Fixed profit/loss or target a fixed number of ATRs
+atrLength = input.int(14, title=&quot;ATR Length for Exits&quot;, minval=1)
+atrValue = ta.atr(atrLength)
+
+profitMultiplier = input.float(2.0, title=&quot;Profit Target (ATR)&quot;, minval=0.5, step=0.1)
+stopLossMultiplier = input.float(1.0, title=&quot;Stop Loss (ATR)&quot;, minval=0.1, step=0.1)
+
+strategy.exit(&quot;Long H4 Breakout Exit&quot;, from_entry=&quot;Long H4 Breakout&quot;,
+             profit=strategy.position_avg_price + atrValue * profitMultiplier,
+             stop=strategy.position_avg_price - atrValue * stopLossMultiplier)
+
+strategy.exit(&quot;Short L4 Breakout Exit&quot;, from_entry=&quot;Short L4 Breakout&quot;,
+             profit=strategy.position_avg_price - atrValue * profitMultiplier,
+             stop=strategy.position_avg_price + atrValue * stopLossMultiplier)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+strategy(&quot;Camarilla Breakout Strategy&quot;, overlay=true)
+
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Request previous day&#39;s data
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Calculate Camarilla Levels
+var float cam_h4 = na
+var float cam_l4 = na
+
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+    cam_h4 := (prevClose + range * 1.1 / 2)
+    cam_l4 := (prevClose - range * 1.1 / 2)
+
+// Plotting (simplified for strategy example)
+plot(cam_h4, title=&quot;H4&quot;, color=color.new(color.red, 0), linewidth=2, style=plot.style_stepline)
+plot(cam_l4, title=&quot;L4&quot;, color=color.new(color.green, 0), linewidth=2, style=plot.style_stepline)
+
+// Breakout logic: Price closes decisively above H4 or below L4
+longBreakoutCondition = close &gt; cam_h4 and close[1] &lt;= cam_h4[1]
+shortBreakoutCondition = close &lt; cam_l4 and close[1] &gt;= cam_l4[1]
+
+// Optional: Add volume confirmation for breakouts
+volumeFactor = input.float(1.5, title=&quot;Volume Confirmation Factor&quot;, minval=1.0, step=0.1)
+avgVolume = ta.sma(volume, 20)
+isHighVolume = volume &gt; avgVolume * volumeFactor
+
+if (longBreakoutCondition and isHighVolume)
+    strategy.entry(&quot;Long H4 Breakout&quot;, strategy.long)
+
+if (shortBreakoutCondition and isHighVolume)
+    strategy.entry(&quot;Short L4 Breakout&quot;, strategy.short)
+
+// Exit: Fixed profit/loss or target a fixed number of ATRs
+atrLength = input.int(14, title=&quot;ATR Length for Exits&quot;, minval=1)
+atrValue = ta.atr(atrLength)
+
+profitMultiplier = input.float(2.0, title=&quot;Profit Target (ATR)&quot;, minval=0.5, step=0.1)
+stopLossMultiplier = input.float(1.0, title=&quot;Stop Loss (ATR)&quot;, minval=0.1, step=0.1)
+
+strategy.exit(&quot;Long H4 Breakout Exit&quot;, from_entry=&quot;Long H4 Breakout&quot;,
+             profit=strategy.position_avg_price + atrValue * profitMultiplier,
+             stop=strategy.position_avg_price - atrValue * stopLossMultiplier)
+
+strategy.exit(&quot;Short L4 Breakout Exit&quot;, from_entry=&quot;Short L4 Breakout&quot;,
+             profit=strategy.position_avg_price - atrValue * profitMultiplier,
+             stop=strategy.position_avg_price + atrValue * stopLossMultiplier)</code></pre>
+            </div>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 transition-all">
+            <h3 class="text-xl font-bold font-mono text-slate-900 dark:text-white mb-3">3. Range Trading (Between H1 &amp; L1, or H2 &amp; L2)</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">The inner Camarilla levels (H1, H2, L1, L2) often define a normal trading range. Price tends to fluctuate within these levels on non-trending days.</p>
+        <ul class="mb-6 space-y-2">
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Sideways Market Indication:</b> If price is trading consistently between L1 and H1 (or L2 and H2), it indicates a consolidation or low-volatility day.</span>
+              </li>
+            
+              <li class="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                <span class="text-indigo-500">→</span>
+                <span><b>Strategy:</b> Traders might look for very short-term scalping opportunities within these ranges, buying near L1/L2 and selling near H1/H2, or simply avoid trading altogether until a clear break occurs.</span>
+              </li>
+            </ul>
+            <div class="mt-4">
+              <button class="text-xs text-indigo-500 hover:text-indigo-400 mb-2 inline-flex items-center gap-1" onclick="copyCode(this)" data-code="//@version=5
+indicator(&quot;Camarilla Range Detector&quot;, overlay=true)
+
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Request previous day&#39;s data
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Calculate Camarilla Levels (H1, L1)
+var float cam_h1 = na
+var float cam_l1 = na
+
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+    cam_h1 := (prevClose + range * 1.1 / 12)
+    cam_l1 := (prevClose - range * 1.1 / 12)
+
+// Plotting (simplified for detector)
+plot(cam_h1, title=&quot;H1&quot;, color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)
+plot(cam_l1, title=&quot;L1&quot;, color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)
+
+// Determine if price is trading within the H1-L1 range
+isTradingInRange = close &lt; cam_h1 and close &gt; cam_l1 and
+                   open &gt; cam_l1 and open &lt; cam_h1
+
+// Color background to easily visualize range-bound periods
+bgcolor(isTradingInRange ? color.new(color.yellow, 95) : na, title=&quot;Range-Bound Zone&quot;)
+
+// Alert if price enters or exits the range
+alertcondition(ta.crossover(close, cam_h1) or ta.crossunder(close, cam_l1),
+               &quot;Price Exiting Camarilla Range&quot;, &quot;Price is breaking out of the H1-L1 Camarilla range.&quot;)
+alertcondition(isTradingInRange[1] == false and isTradingInRange,
+               &quot;Price Entering Camarilla Range&quot;, &quot;Price is entering the H1-L1 Camarilla range.&quot;)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-3 w-3">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z"></path>
+                </svg>
+                Copy code
+              </button>
+              <pre class="bg-slate-900 rounded-xl p-4 overflow-x-auto"><code class="language-pinescript text-xs font-mono">//@version=5
+indicator(&quot;Camarilla Range Detector&quot;, overlay=true)
+
+pivotTimeframe = input.string(&quot;D&quot;, title=&quot;Pivot Timeframe&quot;, options=[&quot;D&quot;, &quot;W&quot;, &quot;M&quot;])
+
+// Request previous day&#39;s data
+prevHigh = request.security(syminfo.tickerid, pivotTimeframe, high[1], lookahead=barmerge.lookahead_on)
+prevLow = request.security(syminfo.tickerid, pivotTimeframe, low[1], lookahead=barmerge.lookahead_on)
+prevClose = request.security(syminfo.tickerid, pivotTimeframe, close[1], lookahead=barmerge.lookahead_on)
+
+// Calculate Camarilla Levels (H1, L1)
+var float cam_h1 = na
+var float cam_l1 = na
+
+if not na(prevHigh) and not na(prevLow) and not na(prevClose)
+    range = prevHigh - prevLow
+    cam_h1 := (prevClose + range * 1.1 / 12)
+    cam_l1 := (prevClose - range * 1.1 / 12)
+
+// Plotting (simplified for detector)
+plot(cam_h1, title=&quot;H1&quot;, color=color.new(color.orange, 0), linewidth=1, style=plot.style_stepline)
+plot(cam_l1, title=&quot;L1&quot;, color=color.new(color.lime, 0), linewidth=1, style=plot.style_stepline)
+
+// Determine if price is trading within the H1-L1 range
+isTradingInRange = close &lt; cam_h1 and close &gt; cam_l1 and
+                   open &gt; cam_l1 and open &lt; cam_h1
+
+// Color background to easily visualize range-bound periods
+bgcolor(isTradingInRange ? color.new(color.yellow, 95) : na, title=&quot;Range-Bound Zone&quot;)
+
+// Alert if price enters or exits the range
+alertcondition(ta.crossover(close, cam_h1) or ta.crossunder(close, cam_l1),
+               &quot;Price Exiting Camarilla Range&quot;, &quot;Price is breaking out of the H1-L1 Camarilla range.&quot;)
+alertcondition(isTradingInRange[1] == false and isTradingInRange,
+               &quot;Price Entering Camarilla Range&quot;, &quot;Price is entering the H1-L1 Camarilla range.&quot;)</code></pre>
+            </div>
+          </div></div></section>
+      <section id="section-5" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">06</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Optimizing Camarilla Pivots Performance</h2>
+    
+          <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400 leading-relaxed">
+            <p>To get the most from Camarilla Pivots in Pine Script:</p>
+          </div>
+        <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Timeframe Selection:</b> Camarilla Pivots are designed for <b>intraday trading</b>. Using them on daily or weekly charts might provide less relevant signals as their calculation emphasizes short-term volatility. Ensure your chart timeframe is lower (e.g., 5-min, 15-min, 1-hour) than the pivot calculation timeframe (typically "D").</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Confirmation is Key:</b> Never rely solely on Camarilla Pivots. Combine them with other indicators (e.g., volume, momentum oscillators like RSI, MACD, or candlestick patterns) to confirm reversals or breakouts.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Open Interest (for Futures):</b> For futures markets, observe open interest. A breakout above H4/below L4 on increasing open interest would be a stronger signal.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Volatility Context:</b> Camarilla pivots work well in normal to moderately volatile markets. In extremely high-volatility markets, price might blow through all levels quickly. In very low-volatility markets, ranges might be too tight to be actionable.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Trade Entry/Exit Zones:</b> Don't expect exact bounces. Think of Camarilla levels as <b>zones</b> where price action is likely to react. Look for price to consolidate around these levels or form clear reversal/continuation patterns.</span>
+        </li>
+      </ul></section>
+      <section id="section-6" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">07</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Tight Levels for Intraday</h2>
+    
+        <div class="mt-6 p-6 bg-indigo-50 dark:bg-indigo-950/20 rounded-2xl border border-indigo-200 dark:border-indigo-800">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-indigo-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-indigo-500">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"></path>
+              </svg>
+            </div>
+            <div>
+              <strong class="text-indigo-700 dark:text-indigo-400 block mb-2">Tight Levels for Intraday</strong>
+              <p class="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">Camarilla's unique formulas place its levels closer to the previous close, making them more sensitive and ideal for short-term price swings and reversals within the trading day.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="section-7" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">08</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Common Camarilla Pivots Pitfalls</h2>
+    <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Timeframe Misuse:</b> Using Camarilla Pivots on daily or higher timeframes, or trying to trade them on very low liquidity assets, will likely yield poor results.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>False Signals/Whipsaws:</b> In very choppy markets or during strong news events, price can repeatedly cross Camarilla levels, leading to whipsaws and false signals.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Over-Reliance:</b> Using Camarilla Pivots as the sole decision-making tool without additional confirmation can lead to significant losses.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Gap Risk:</b> Large overnight gaps can make the previous day's Camarilla levels less relevant for the current day's trading, especially if the gap opens far beyond H4 or L4.</span>
+        </li>
+      
+        <li class="flex items-start gap-3">
+          <span class="text-indigo-500 mt-1">▸</span>
+          <span class="text-slate-600 dark:text-slate-400"><b>Limited Beyond H4/L4:</b> There are no standard levels beyond H4 and L4. Once price breaks these, it's considered to be in a strong trend, and other tools (e.g., trend lines, dynamic moving averages) might be more appropriate for targets.</span>
+        </li>
+      </ul></section>
+      <section id="section-8" class="animate-in mb-16 scroll-mt-24">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl font-black font-mono text-indigo-500 opacity-50">09</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-indigo-500/20 to-transparent"></div>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold font-mono text-slate-900 dark:text-white mb-6">Conclusion</h2>
+    
+        <div class="mt-6 p-8 bg-gradient-to-r from-slate-100 to-slate-50 dark:from-slate-900/50 dark:to-slate-950/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex gap-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 text-indigo-500 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"></path>
+            </svg>
+            <div>
+              <h3 class="text-2xl font-bold font-mono text-slate-900 dark:text-white mb-4">Conclusion</h3>
+              <div class="text-slate-600 dark:text-slate-400 leading-relaxed"><p>Camarilla Pivots are a powerful and widely utilized set of intraday support and resistance levels in Pine Script for TradingView. By emphasizing price action near the previous period's close, they offer precise levels for identifying potential <b>mean reversion (reversal)</b> opportunities around H3/L3 and <b>breakout</b> opportunities beyond H4/L4. While primarily suited for short-term and intraday trading, their effectiveness is significantly enhanced when combined with other confirming indicators, such as candlestick patterns, volume, or momentum oscillators. By understanding their calculation, applying them to appropriate timeframes, and integrating them strategically into your <b><a href="https://offline-pixel.github.io/pinescript-strategies.html">pine script strategies</a></b>, you can leverage Camarilla Pivots to improve your entry/exit timing and manage risk in dynamic markets.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        
+          <div class="animate-in mt-20 text-center">
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 to-slate-800 dark:from-black dark:to-slate-950 p-12 border border-slate-800">
+              <h2 class="text-3xl md:text-4xl font-black font-mono text-white mb-4">Enhance Your Trading</h2>
+              <p class="text-slate-300 mb-6 max-w-2xl mx-auto">Get a high-performance Pine Script analysis tool for actionable market insights, designed for traders on the move.</p>
+              <p class="text-slate-400 text-sm mb-6">This strategy runs in live mode on TradingView, helping you identify potential opportunities.</p>
+              <a href="https://offlinepixel.gumroad.com/l/trader-on-the-go" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-white text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"></path>
+                </svg>
+                Get Pine Script Strategy
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        
+      </div>
+
+      <style>
+        @keyframes shimmer { 0% { background-position: 0% 0%; } 100% { background-position: 200% 0%; } }
+        .animate-in { opacity: 0; transform: translateY(20px); }
+        .token.comment, .token.prolog, .token.doctype, .token.cdata { color: #6a9955; font-style: italic; }
+        .token.keyword { color: #569cd6; }
+        .token.string { color: #ce9178; }
+        .token.number { color: #b5cea8; }
+        .token.function, .token.builtin { color: #dcdcaa; }
+        .token.operator, .token.punctuation { color: #d4d4d4; }
+      </style>
+    </div>
+  </div><footer class="w-full border-t border-slate-200 bg-slate-50 font-mono text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950"><div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"><div class="grid grid-cols-1 gap-8 md:grid-cols-2 pb-8 border-b border-slate-200 dark:border-slate-800"><div class="space-y-3"><div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Zm.75-12h9v9h-9v-9Z"></path></svg><span>HIRE ENGINEERS</span></div><div class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-0"><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/rust-engineer/" title="Hire Rust Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Rust Engineers</a></li><li><a href="/hire/llm-engineer/" title="Hire LLM Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">LLM Engineers</a></li><li><a href="/hire/ml-engineer/" title="Hire ML Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">ML Engineers</a></li><li><a href="/hire/rag-engineer/" title="Hire RAG Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">RAG Engineers</a></li><li><a href="/hire/quant-engineer/" title="Hire Quant Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Engineers</a></li><li><a href="/hire/quant-developer/" title="Hire Quant Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Developers</a></li><li><a href="/hire/quant-researcher/" title="Hire Quant Researchers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Researchers</a></li></ul><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/quant-trader/" title="Hire Quant Traders" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Quant Traders</a></li><li><a href="/hire/python-engineer/" title="Hire Python Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Python Engineers</a></li><li><a href="/hire/fastapi-expert/" title="Hire FastAPI Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FastAPI Experts</a></li><li><a href="/hire/duckdb-engineer/" title="Hire DuckDB Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">DuckDB Engineers</a></li><li><a href="/hire/faiss-expert/" title="Hire FAISS Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">FAISS Experts</a></li><li><a href="/hire/tauri-engineer/" title="Hire Tauri Engineers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Tauri Engineers</a></li><li><a href="/hire/app-developer/" title="Hire App Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">App Developers</a></li></ul><ul class="space-y-1.5 text-[11px] leading-relaxed"><li><a href="/hire/mern-developer/" title="Hire MERN Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">MERN Developers</a></li><li><a href="/hire/mean-developer/" title="Hire MEAN Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">MEAN Developers</a></li><li><a href="/hire/pinescript-developer/" title="Hire PineScript Developers" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">PineScript Developers</a></li><li><a href="/hire/microfrontends-expert/" title="Hire Microfrontends Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Microfrontends Experts</a></li><li><a href="/hire/microservices-expert/" title="Hire Microservices Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Microservices Experts</a></li><li><a href="/hire/walk-forward-validation-expert/" title="Hire Walk-Forward Validation Experts" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Walk-Forward Validation Experts</a></li></ul></div></div><div class="space-y-3"><div class="flex items-center gap-2 text-slate-900 dark:text-white font-semibold"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="h-4 w-4 text-indigo-500"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z"></path></svg><span>DEVELOPMENT SERVICES &amp; HUBS</span></div><ul class="space-y-1.5 text-[11px] leading-relaxed"><li>Custom Web Applications &amp; Mobile App Development</li><li>High-Performance Software Architecture</li><li>Trading Systems &amp; Data Dashboard Integration</li><li>Legacy Code Modernization &amp; Upgrades</li><li>Business Automation &amp; Custom AI Solutions</li><li>Secure Cloud Infrastructure &amp; API Integrations</li></ul><div class="pt-1"><p class="text-[11px] leading-relaxed">Providing digital transformation, software consulting, and tech talent matching from our base<span class="text-slate-800 dark:text-slate-300"> Jind (HR)</span>, across<span><span class="text-slate-800 dark:text-slate-300"> Cambridge-London (UCL/Imperial)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Boston-NY Circuit (MIT/Courant)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Chicago (UChicago/CMU)</span>,</span><span><span class="text-slate-800 dark:text-slate-300"> Singapore Quant Cluster (NUS/NTU)</span></span>, and<span class="text-slate-800 dark:text-slate-300"> to all global clients.</span></p></div></div></div><div class="mt-4 flex flex-col items-center justify-between gap-4 sm:flex-row text-[11px]"><div class="flex items-center gap-2"><div class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></div><span>© 2026 OFFLINE PIXEL. All Rights Reserved.</span></div><div class="flex gap-6 font-sans text-xs flex-wrap justify-center"><a href="/hire/" title="Hire Expert Engineers" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Hire Engineers</a><a href="/career/" title="Automated Trading Solutions" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Career</a><a href="#terms" title="Terms of Service" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Terms</a><a href="#privacy" title="Privacy Policy" class="hover:text-slate-900 dark:hover:text-slate-300 transition-colors">Privacy</a></div></div><div class="mt-4 text-center text-[8px] text-slate-400 dark:text-slate-600 max-w-4xl mx-auto leading-relaxed">Offline Pixel specializes in custom technical transformations, cross-platform UI integration, and backtesting engine orchestration. All strategies, analytical setups, or models deployed are meant for custom tooling parameters and statistical analysis. Historical optimization pipelines are prone to walk-forward validation dependencies.</div></div></footer></div></div>
+  </body>
+</html>
