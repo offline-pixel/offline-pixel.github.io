@@ -10,12 +10,16 @@
             href="/feed.xml"
         />
 
-        <link rel="stylesheet" href="./styles/blog-common.css" />
-        <link rel="stylesheet" href="./styles/side-income.css" />
+        <!-- Tailwind + Font Awesome -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
+
         <style>
-            .fullscreen {
-                padding: 10px 50px;
-                max-width: 70%;
+            .container-child {
+                max-width: 80%;
                 margin: auto;
                 text-align: justify;
             }
@@ -24,6 +28,7 @@
                 padding: 15px;
                 border-left: 4px solid #3498db;
                 margin: 20px 0;
+                border-radius: 8px;
             }
             .code-comment {
                 color: #6a9955;
@@ -35,18 +40,15 @@
                 display: block;
                 margin: auto;
             }
-
             .wick {
                 stroke-width: 1;
                 stroke: #ccc;
                 stroke-linecap: round;
             }
-
             .candle {
                 transform-origin: bottom;
                 animation: growCandle 0.6s ease-out;
             }
-
             @keyframes growCandle {
                 from {
                     transform: scaleY(0);
@@ -61,6 +63,333 @@
             h1.blog-title,
             .blog-subtitle {
                 color: inherit;
+            }
+
+            .stats-container {
+                display: flex;
+                justify-content: center;
+                gap: 1.5rem;
+                margin: 1.5rem 0;
+                flex-wrap: wrap;
+            }
+            .stat-card {
+                background: #f3f4f6;
+                padding: 1rem 2rem;
+                border-radius: 12px;
+                text-align: center;
+                min-width: 120px;
+                transition: transform 0.2s;
+            }
+            .stat-card:hover {
+                transform: translateY(-4px);
+            }
+            .dark .stat-card {
+                background: #1f2937;
+            }
+            .stat-value {
+                font-size: 1.75rem;
+                font-weight: 700;
+                color: #2563eb;
+            }
+            .dark .stat-value {
+                color: #60a5fa;
+            }
+            .stat-label {
+                font-size: 0.875rem;
+                color: #6b7280;
+            }
+            .dark .stat-label {
+                color: #9ca3af;
+            }
+
+            .filter-container {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin: 1.5rem 0;
+            }
+            .filter-btn {
+                padding: 0.5rem 1.25rem;
+                border-radius: 9999px;
+                border: none;
+                cursor: pointer;
+                font-size: 0.875rem;
+                font-weight: 500;
+                background: #e5e7eb;
+                color: #374151;
+                transition: all 0.2s;
+            }
+            .dark .filter-btn {
+                background: #374151;
+                color: #d1d5db;
+            }
+            .filter-btn:hover {
+                background: #d1d5db;
+            }
+            .dark .filter-btn:hover {
+                background: #4b5563;
+            }
+            .filter-btn.active {
+                background: #2563eb;
+                color: white;
+            }
+            .dark .filter-btn.active {
+                background: #3b82f6;
+            }
+
+            .cards-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 0.375rem;
+                max-width: 90%;
+                margin: 1.5rem auto;
+                overflow: hidden;
+            }
+            .card-row-container {
+                display: flex;
+                gap: 0.375rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                transition: transform 0.1s ease-out;
+                will-change: transform;
+            }
+            .card {
+                flex: 0 0 auto;
+                width: 14%;
+                min-width: 140px;
+                background: #f9fafb;
+                border-radius: 8px;
+                padding: 0.5rem 0.75rem;
+                transition: all 0.2s;
+                border: 1px solid #e5e7eb;
+                opacity: 0;
+                animation: fadeInCard 0.5s ease forwards;
+                animation-delay: var(--card-animation-delay, 0s);
+            }
+            .dark .card {
+                background: #1f2937;
+                border-color: #374151;
+            }
+            .card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            }
+            .dark .card:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            }
+            .card .anchor {
+                text-decoration: none;
+                display: block;
+            }
+            .card-title {
+                font-size: 0.7rem;
+                font-weight: 500;
+                color: #1f2937;
+                margin: 0;
+                line-height: 1.3;
+            }
+            .dark .card-title {
+                color: #f3f4f6;
+            }
+            .card-title .card-number {
+                color: #9ca3af;
+                font-weight: 400;
+                margin-right: 0.25rem;
+            }
+            .dark .card-title .card-number {
+                color: #6b7280;
+            }
+            .card-title small {
+                font-weight: 400;
+                color: #6b7280;
+            }
+            .dark .card-title small {
+                color: #9ca3af;
+            }
+            .card-title b {
+                font-weight: 600;
+            }
+            .income-badge {
+                font-size: 0.55rem;
+                text-transform: uppercase;
+                font-weight: 600;
+                padding: 0.1rem 0.4rem;
+                border-radius: 9999px;
+                background: #e5e7eb;
+                color: #6b7280;
+                display: inline-block;
+                margin-top: 0.25rem;
+            }
+            .dark .income-badge {
+                background: #374151;
+                color: #9ca3af;
+            }
+            .card.Beginner .income-badge {
+                background: #dbeafe;
+                color: #1d4ed8;
+            }
+            .dark .card.Beginner .income-badge {
+                background: #1e3a5f;
+                color: #60a5fa;
+            }
+            .card.Intermediate .income-badge {
+                background: #fef3c7;
+                color: #b45309;
+            }
+            .dark .card.Intermediate .income-badge {
+                background: #78350f;
+                color: #fbbf24;
+            }
+            .card.Advanced .income-badge {
+                background: #fce4ec;
+                color: #b91c1c;
+            }
+            .dark .card.Advanced .income-badge {
+                background: #7f1d1d;
+                color: #f87171;
+            }
+            .card.Expert .income-badge {
+                background: #e0e7ff;
+                color: #3730a3;
+            }
+            .dark .card.Expert .income-badge {
+                background: #1e1b4b;
+                color: #818cf8;
+            }
+
+            @keyframes fadeInCard {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .faq-section {
+                max-width: 80%;
+                margin: 2rem auto;
+            }
+            .faq-item {
+                margin-bottom: 1rem;
+                padding: 1rem;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+            }
+            .dark .faq-item {
+                border-color: #374151;
+            }
+            .faq-question {
+                font-weight: 600;
+                color: #1f2937;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .dark .faq-question {
+                color: #f3f4f6;
+            }
+            .faq-answer {
+                margin-top: 0.5rem;
+                color: #4b5563;
+                padding-top: 0.5rem;
+                border-top: 1px solid #e5e7eb;
+            }
+            .dark .faq-answer {
+                color: #9ca3af;
+                border-top-color: #374151;
+            }
+
+            .cta-section {
+                max-width: 80%;
+                margin: 2rem auto;
+                padding: 2rem;
+                text-align: center;
+                background: #f9fafb;
+                border-radius: 12px;
+            }
+            .dark .cta-section {
+                background: #1f2937;
+            }
+            .new-link {
+                display: inline-block;
+                margin-top: 1rem;
+                padding: 0.75rem 2rem;
+                background: #2563eb;
+                color: white;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.2s;
+            }
+            .new-link:hover {
+                background: #1d4ed8;
+                transform: scale(1.02);
+            }
+
+            .breadcrumb {
+                font-size: 0.875rem;
+                color: #6b7280;
+                padding: 0.5rem 0;
+                max-width: 80%;
+                margin: 0 auto;
+            }
+            .dark .breadcrumb {
+                color: #9ca3af;
+            }
+            .breadcrumb a {
+                color: #2563eb;
+                text-decoration: none;
+            }
+            .dark .breadcrumb a {
+                color: #60a5fa;
+            }
+            .breadcrumb a:hover {
+                text-decoration: underline;
+            }
+
+            .intro ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem 1.5rem;
+                justify-content: center;
+            }
+            .intro ul li {
+                font-size: 0.875rem;
+            }
+
+            @media (max-width: 768px) {
+                .container-child,
+                .faq-section,
+                .cta-section,
+                .breadcrumb {
+                    max-width: 95%;
+                }
+                .cards-grid {
+                    max-width: 98%;
+                }
+                .card {
+                    width: 30%;
+                    min-width: 100px;
+                }
+                .stat-card {
+                    padding: 0.75rem 1.25rem;
+                    min-width: 80px;
+                }
+                .stat-value {
+                    font-size: 1.25rem;
+                }
+            }
+            @media (max-width: 480px) {
+                .card {
+                    width: 45%;
+                    min-width: 80px;
+                }
+                .filter-btn {
+                    padding: 0.35rem 0.75rem;
+                    font-size: 0.75rem;
+                }
             }
         </style>
 
@@ -80,9 +409,7 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
             rel="stylesheet"
         />
-        <!--<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9243803325136617" crossorigin="anonymous"></script>-->
 
-        <!-- Enhanced Meta Tags -->
         <title>
             75+ Profitable Pine Script Strategies - Starting @$14/week
         </title>
@@ -96,7 +423,6 @@
         />
         <meta name="robots" content="index, follow" />
 
-        <!-- Open Graph / Social Meta -->
         <meta
             property="og:title"
             content="75+ Profitable Pine Script Strategies - Starting @$14/week"
@@ -115,7 +441,6 @@
             content="https://offline-pixel.github.io/assets/logo2.png"
         />
 
-        <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
         <meta
             name="twitter:title"
@@ -130,13 +455,11 @@
             content="https://offline-pixel.github.io/assets/logo2.png"
         />
 
-        <!-- Canonical Link -->
         <link
             rel="canonical"
             href="https://offline-pixel.github.io/pinescript-strategies.html"
         />
 
-        <!-- JSON-LD Schema Markup -->
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -200,93 +523,130 @@
             }
         </script>
     </head>
-    <body>
-        <header class="blog-header">
-            <div class="container">
-                <h1 class="blog-title">Pinescript Strategies & Indicators</h1>
-                <p class="blog-subtitle">
+    <body
+        class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans antialiased"
+    >
+        <div
+            class="py-10 px-4 bg-white dark:bg-black border-b border-gray-200 dark:border-gray-800"
+        >
+            <div class="max-w-4xl mx-auto text-center">
+                <h1
+                    class="text-3xl md:text-4xl font-bold text-black dark:text-white mb-2"
+                >
+                    Pinescript Strategies & Indicators
+                </h1>
+                <p
+                    class="text-gray-700 dark:text-gray-300 mb-2 max-w-2xl mx-auto"
+                >
                     Dive deep into TradingView's Pinescript with our
                     comprehensive tutorials on essential indicators and advanced
                     pinescript trading strategies
                 </p>
-                <p class="blog-subtitle">
-                    <small
-                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
-                        Rate</small
-                    >
-                </p>
-
-                <div style="text-align: center; margin-top: 15px">
+                <div
+                    class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+                >
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <span>500+ Clients Helped</span>
+                    <span
+                        class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"
+                    ></span>
+                    <span>100% Satisfaction Rate</span>
+                </div>
+                <div class="mt-6">
                     <a
                         href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="block mx-auto"
                     >
-                        <img src="../assets/ss.png" width="100%" />
+                        <img
+                            src="./assets/ss.png"
+                            class="w-full rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all"
+                            alt="Pine Script Strategy"
+                        />
                     </a>
                     <a
                         href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
-                        class="new-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="inline-block mt-4 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-lg transition-all hover:scale-105 hover:shadow-md"
                     >
-                        Get Pine Script Strategy
+                        <i class="fas fa-code mr-2"></i>Get Pine Script Strategy
                     </a>
                 </div>
             </div>
-        </header>
+        </div>
 
-        <main class="container">
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="https://offline-pixel.github.io/">Home</a> >
-                <span aria-current="page">Pine Script Strategies</span>
+        <main class="max-w-6xl mx-auto px-4 py-6">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-500 dark:text-gray-400 py-2 mb-4">
+                <a
+                    href="https://offline-pixel.github.io/"
+                    class="text-blue-600 dark:text-blue-400 hover:underline"
+                    >Home</a
+                >
+                <span class="mx-2">›</span>
+                <span class="text-gray-700 dark:text-gray-300 font-medium"
+                    >Pine Script Strategies</span
+                >
             </nav>
-            <div class="container-child">
-                <section class="intro">
-                    <h2>Pine Script Strategies</h2>
-                    <p>
+
+            <!-- Intro Section -->
+            <div class="max-w-4xl mx-auto">
+                <section class="mb-8">
+                    <h2
+                        class="text-2xl font-bold text-gray-900 dark:text-white mb-4"
+                    >
+                        Pine Script Strategies
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
                         This is the most comprehensive collection of
                         ready-to-use Pine Script strategies available online.
                         Whether you're learning algorithmic trading or looking
                         to enhance your existing TradingView scripts, you'll
                         find practical code examples for:
                     </p>
-
-                    <ul style="list-style: none">
-                        <li>
-                            <strong
-                                ><small
-                                    >Trend-following strategies</small
-                                ></strong
+                    <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                        <span
+                            class="bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full text-sm"
+                        >
+                            <strong>Trend-following</strong>
+                            <span class="text-gray-500 dark:text-gray-400"
+                                >(Moving Averages, MACD, SuperTrend)</span
                             >
-                            <small>( Moving Averages, MACD, SuperTrend)</small>
-                        </li>
-                        <li>
-                            <strong
-                                ><small>Mean-reversion systems</small></strong
+                        </span>
+                        <span
+                            class="bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full text-sm"
+                        >
+                            <strong>Mean-reversion</strong>
+                            <span class="text-gray-500 dark:text-gray-400"
+                                >(Bollinger Bands, RSI, Stochastic)</span
                             >
-                            <small>( Bollinger Bands, RSI, Stochastic)</small>
-                        </li>
-                        <li>
-                            <strong
-                                ><small>Volume-based approaches</small></strong
+                        </span>
+                        <span
+                            class="bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full text-sm"
+                        >
+                            <strong>Volume-based</strong>
+                            <span class="text-gray-500 dark:text-gray-400"
+                                >(OBV, VWAP, Accumulation/Distribution)</span
                             >
-                            <small
-                                >( OBV, VWAP, Accumulation/Distribution)</small
+                        </span>
+                        <span
+                            class="bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-full text-sm"
+                        >
+                            <strong>Pattern recognition</strong>
+                            <span class="text-gray-500 dark:text-gray-400"
+                                >(Candlestick patterns, Fibonacci, Gann)</span
                             >
-                        </li>
-                        <li>
-                            <strong
-                                ><small
-                                    >Advanced pattern recognition</small
-                                ></strong
-                            >
-                            <small
-                                >( Candlestick patterns, Fibonacci, Gann)</small
-                            >
-                        </li>
-                    </ul>
+                        </span>
+                    </div>
                 </section>
+
+                <!-- Stats & Filters -->
                 <div>
                     <div class="stats-container">
                         <div class="stat-card">
@@ -302,6 +662,7 @@
                             <div class="stat-label">Code Examples</div>
                         </div>
                     </div>
+
                     <div class="filter-container">
                         <button class="filter-btn active" data-filter="all">
                             All Guides
@@ -315,132 +676,39 @@
                         <button class="filter-btn" data-filter="Advanced">
                             Advanced
                         </button>
+                        <button class="filter-btn" data-filter="Expert">
+                            Expert
+                        </button>
                     </div>
 
                     <svg
                         id="chart"
                         viewBox="0 0 600 180"
                         preserveAspectRatio="none"
+                        class="w-4/5 mx-auto my-4"
                     ></svg>
-
-                    <script>
-                        const svg = document.getElementById("chart");
-                        const maxCandles = 100;
-                        const candleWidth = 6;
-                        const gap = 2;
-                        const chartHeight = 180;
-                        const maxPrice = 200;
-                        const minPrice = 80;
-
-                        const candleData = [];
-
-                        function getRandomCandle(prevClose) {
-                            const open =
-                                prevClose ?? random(minPrice, maxPrice);
-                            const close = random(open - 15, open + 15);
-                            const high = Math.max(open, close) + random(1, 10);
-                            const low = Math.min(open, close) - random(1, 10);
-                            return { open, close, high, low };
-                        }
-
-                        function random(min, max) {
-                            return Math.round(
-                                Math.random() * (max - min) + min,
-                            );
-                        }
-
-                        function renderCandles() {
-                            svg.innerHTML = "";
-                            const totalWidth = (candleWidth + gap) * maxCandles;
-                            svg.setAttribute(
-                                "viewBox",
-                                `0 0 ${totalWidth} ${chartHeight}`,
-                            );
-
-                            candleData.forEach((candle, i) => {
-                                const x = i * (candleWidth + gap);
-                                const scale =
-                                    chartHeight / (maxPrice - minPrice);
-                                const color =
-                                    candle.close > candle.open
-                                        ? "#4ade80"
-                                        : "#ef4444";
-                                const bodyHeight =
-                                    Math.abs(candle.close - candle.open) *
-                                    scale;
-                                const bodyY =
-                                    chartHeight -
-                                    Math.max(candle.open, candle.close) * scale;
-                                const wickHigh =
-                                    chartHeight - candle.high * scale;
-                                const wickLow =
-                                    chartHeight - candle.low * scale;
-
-                                const wick = document.createElementNS(
-                                    "http://www.w3.org/2000/svg",
-                                    "line",
-                                );
-                                wick.setAttribute("x1", x + candleWidth / 2);
-                                wick.setAttribute("x2", x + candleWidth / 2);
-                                wick.setAttribute("y1", wickHigh);
-                                wick.setAttribute("y2", wickLow);
-                                wick.setAttribute("class", "wick");
-                                svg.appendChild(wick);
-
-                                const rect = document.createElementNS(
-                                    "http://www.w3.org/2000/svg",
-                                    "rect",
-                                );
-                                rect.setAttribute("x", x);
-                                rect.setAttribute("y", bodyY);
-                                rect.setAttribute("width", candleWidth);
-                                rect.setAttribute("height", bodyHeight);
-                                rect.setAttribute("fill", color);
-                                rect.setAttribute("class", "candle");
-                                svg.appendChild(rect);
-                            });
-                        }
-
-                        function addNewCandle() {
-                            const lastClose =
-                                candleData[candleData.length - 1]?.close ??
-                                undefined;
-                            const newCandle = getRandomCandle(lastClose);
-                            if (candleData.length >= maxCandles) {
-                                candleData.shift();
-                            }
-                            candleData.push(newCandle);
-                            renderCandles();
-                        }
-
-                        // Seed initial candles
-                        for (let i = 0; i < maxCandles; i++) addNewCandle();
-
-                        // Add new candle every 60 seconds
-                        setInterval(() => {
-                            addNewCandle();
-                        }, 5000);
-                    </script>
                 </div>
             </div>
 
-            <div class="cards-grid" id="mainCardsGridContainer">
-                <!-- Blog cards will be dynamically loaded here by JavaScript -->
-            </div>
-            <section
-                class="faq-section"
-                style="max-width: 80%; text-align: justify; margin: auto"
-            >
-                <h2>Pine Script Strategies FAQ</h2>
+            <div class="cards-grid" id="mainCardsGridContainer"></div>
+
+            <section class="faq-section max-w-4xl mx-auto my-8">
+                <h2 class="text-2xl font-bold mb-4">
+                    Pine Script Strategies FAQ
+                </h2>
                 <div class="tip">
-                    <strong>Pro Tip:</strong> Combine multiple strategies for
-                    better results. For example, use a moving average for trend
-                    direction and RSI for entry timing.
+                    <strong
+                        ><i class="fas fa-lightbulb mr-2"></i>Pro Tip:</strong
+                    >
+                    Combine multiple strategies for better results. For example,
+                    use a moving average for trend direction and RSI for entry
+                    timing.
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <strong>What are Pine Script strategies?</strong>
+                        <span>What are Pine Script strategies?</span>
+                        <!--<i class="fas fa-chevron-down text-gray-400"></i>-->
                     </div>
                     <div class="faq-answer">
                         <a
@@ -457,10 +725,10 @@
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <strong
-                            >Are these Pine Script strategies
-                            profitable?</strong
+                        <span
+                            >Are these Pine Script strategies profitable?</span
                         >
+                        <!--<i class="fas fa-chevron-down text-gray-400"></i>-->
                     </div>
                     <div class="faq-answer">
                         While all strategies shown have profit potential, actual
@@ -472,9 +740,8 @@
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <strong
-                            >How do I use these Pine Script strategies?</strong
-                        >
+                        <span>How do I use these Pine Script strategies?</span>
+                        <!--<i class="fas fa-chevron-down text-gray-400"></i>-->
                     </div>
                     <div class="faq-answer">
                         Simply copy the code from any strategy page, paste into
@@ -485,10 +752,11 @@
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <strong
+                        <span
                             >What's the difference between beginner and advanced
-                            strategies?</strong
+                            strategies?</span
                         >
+                        <!--<i class="fas fa-chevron-down text-gray-400"></i>-->
                     </div>
                     <div class="faq-answer">
                         Beginner strategies use basic indicators like SMA/EMA,
@@ -498,149 +766,167 @@
                     </div>
                 </div>
             </section>
-            <section class="cta-section custom-strategy-cta">
-                <h2 class="cta-title">Enhance Your Trading</h2>
-                <p>
+
+            <section class="max-w-4xl mx-auto my-10 p-8 text-center">
+                <h2
+                    class="text-2xl md:text-3xl font-bold text-black dark:text-white mb-3"
+                >
+                    Enhance Your Trading
+                </h2>
+                <p
+                    class="text-gray-700 dark:text-gray-300 text-base max-w-2xl mx-auto"
+                >
                     Get a high-performance Pine Script analysis tool for
                     actionable market insights, designed for traders on the
                     move.
                 </p>
-                <p>
+                <p
+                    class="text-gray-600 dark:text-gray-400 text-sm mt-1 max-w-2xl mx-auto"
+                >
                     This strategy runs in live mode on TradingView, helping you
                     identify potential opportunities.
                 </p>
-                <p>
-                    <small
-                        >⭐⭐⭐ 500+ Clients Helped | 💯 100% Satisfaction
-                        Rate</small
-                    >
-                </p>
+                <div
+                    class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400 my-4"
+                >
+                    <div class="flex">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <span>500+ Clients Helped</span>
+                    <span
+                        class="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600"
+                    ></span>
+                    <span>100% Satisfaction Rate</span>
+                </div>
                 <a
                     href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="block mx-auto"
                 >
-                    <img src="../assets/ss.png" width="100%" />
+                    <img
+                        src="./assets/ss.png"
+                        class="w-full rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all"
+                        alt="Pine Script Strategy"
+                    />
                 </a>
                 <a
                     href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
-                    class="new-link"
                     target="_blank"
                     rel="noopener noreferrer"
+                    class="inline-block mt-4 px-8 py-3 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-lg transition-all hover:scale-105 hover:shadow-md"
                 >
-                    Get Pine Script Strategy
+                    <i class="fas fa-code mr-2"></i>Get Pine Script Strategy
                 </a>
             </section>
         </main>
-        <script src="./scripts/chat-buttons.js"></script>
-        <script>
-            injectChatButtons("#bottom-chat-buttons", {
-                margins: "20px 0 0 0",
-                position: "prepend",
-            });
-        </script>
+
         <script>
             // Blog titles data for Pine Script articles
             const blogTitles = [
+                // Beginner Level
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>SMA (Simple Moving Average)</b>",
-                    link: "pinescript-strategies/pine-script-SMA.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-sma/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>EMA (Exponential Moving Average)</b>",
                     link: "pinescript-strategies/pine-script-ema/",
-                    level: "beginner",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>MACD (Moving Average Convergence Divergence)</b>",
-                    link: "pinescript-strategies/pine-script-MACD.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-macd/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>SuperTrend (ATR-based)</b>",
                     link: "pinescript-strategies/pine-script-supertrend/",
-                    level: "beginner",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Parabolic SAR</b>",
                     link: "pinescript-strategies/pine-script-parabolic-sar/",
-                    level: "beginner",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Ichimoku Cloud</b>",
                     link: "pinescript-strategies/pine-script-ichimoku-cloud/",
-                    level: "beginner",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Vortex Indicator</b>",
-                    link: "pinescript-strategies/pine-script-VortexIndicator.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-vortex-indicator/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Trix (Triple Exponential Average)</b>",
-                    link: "pinescript-strategies/pine-script-Trix.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-trix/",
+                    level: "Beginner",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>KAMA (Kaufman’s Adaptive MA)</b>",
-                    link: "pinescript-strategies/pine-script-KAMA.html",
-                    level: "beginner",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>KAMA (Kaufman's Adaptive MA)</b>",
+                    link: "pinescript-strategies/pine-script-kama/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Hull Moving Average (HMA)</b>",
-                    link: "pinescript-strategies/pine-script-HMA.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-hma/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Double EMA (DEMA)</b>",
-                    link: "pinescript-strategies/pine-script-DEMA.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-dema/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Triple EMA (TEMA)</b>",
-                    link: "pinescript-strategies/pine-script-TEMA.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-tema/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Zero Lag EMA (ZLEMA)</b>",
-                    link: "pinescript-strategies/pine-script-ZLEMA.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-zlema/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>VWMA (Volume Weighted MA)</b>",
-                    link: "pinescript-strategies/pine-script-VWMA.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-vwma/",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Tillson T3</b>",
-                    link: "pinescript-strategies/pine-script-TillsonT3.html",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-tillson-t3/",
+                    level: "Beginner",
                 },
-
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>RSI (Relative Strength Index)</b>",
                     link: "pinescript-strategies/pine-script-rsi/",
-                    level: "beginner",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Stochastic %K and %D</b>",
                     link: "pinescript-strategies/pine-script-stochastic/",
-                    level: "beginner",
+                    level: "Beginner",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>CCI (Commodity Channel Index)</b>",
-                    link: "pinescript-strategies/pine-script-cci",
-                    level: "beginner",
+                    link: "pinescript-strategies/pine-script-cci/",
+                    level: "Beginner",
                 },
+
+                // Intermediate Level
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Williams %R</b>",
-                    link: "pinescript-strategies/pine-script-WilliamsR.html",
+                    link: "pinescript-strategies/pine-script-williams-r/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Ultimate Oscillator</b>",
-                    link: "pinescript-strategies/pine-script-UltimateOscillator.html",
+                    link: "pinescript-strategies/pine-script-ultimate-oscillator/",
                     level: "Intermediate",
                 },
                 {
@@ -650,17 +936,17 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Money Flow Index (MFI)</b>",
-                    link: "pinescript-strategies/pine-script-MFI.html",
+                    link: "pinescript-strategies/pine-script-mfi/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Force Index</b>",
-                    link: "pinescript-strategies/pine-script-ForceIndex.html",
+                    link: "pinescript-strategies/pine-script-force-index/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>ROC (Rate of Change)</b>",
-                    link: "pinescript-strategies/pine-script-ROC.html",
+                    link: "pinescript-strategies/pine-script-roc/",
                     level: "Intermediate",
                 },
                 {
@@ -670,7 +956,7 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Know Sure Thing (KST)</b>",
-                    link: "pinescript-strategies/pine-script-KST.html",
+                    link: "pinescript-strategies/pine-script-kst/",
                     level: "Intermediate",
                 },
                 {
@@ -680,27 +966,27 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Elder-Ray Index</b>",
-                    link: "pinescript-strategies/pine-script-ElderRayIndex.html",
+                    link: "pinescript-strategies/pine-script-elder-ray-index/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Detrended Price Oscillator (DPO)</b>",
-                    link: "pinescript-strategies/pine-script-DPO.html",
+                    link: "pinescript-strategies/pine-script-dpo/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Mass Index</b>",
-                    link: "pinescript-strategies/pine-script-MassIndex.html",
+                    link: "pinescript-strategies/pine-script-mass-index/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Relative Vigor Index (RVI)</b>",
-                    link: "pinescript-strategies/pine-script-RVI.html",
+                    link: "pinescript-strategies/pine-script-rvi/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Gopalakrishnan Range Index (GAPO)</b>",
-                    link: "pinescript-strategies/pine-script-GAPO.html",
+                    link: "pinescript-strategies/pine-script-gapo/",
                     level: "Intermediate",
                 },
                 {
@@ -710,10 +996,9 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Qstick</b>",
-                    link: "pinescript-strategies/pine-script-Qstick.html",
+                    link: "pinescript-strategies/pine-script-qstick/",
                     level: "Intermediate",
                 },
-
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Average True Range (ATR)</b>",
                     link: "pinescript-strategies/pine-script-atr/",
@@ -726,12 +1011,12 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Keltner Channels</b>",
-                    link: "pinescript-strategies/pine-script-KeltnerChannels.html",
+                    link: "pinescript-strategies/pine-script-keltner-channels/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Donchian Channels</b>",
-                    link: "pinescript-strategies/pine-script-DonchianChannels.html",
+                    link: "pinescript-strategies/pine-script-donchian-channels/",
                     level: "Intermediate",
                 },
                 {
@@ -741,17 +1026,17 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Historical Volatility</b>",
-                    link: "pinescript-strategies/pine-script-HistoricalVolatility.html",
+                    link: "pinescript-strategies/pine-script-historical-volatility/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Ulcer Index</b>",
-                    link: "pinescript-strategies/pine-script-UlcerIndex.html",
+                    link: "pinescript-strategies/pine-script-ulcer-index/",
                     level: "Intermediate",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Relative Volatility Index</b>",
-                    link: "pinescript-strategies/pine-script-RelativeVolatilityIndex.html",
+                    link: "pinescript-strategies/pine-script-relative-volatility-index/",
                     level: "Intermediate",
                 },
                 {
@@ -761,86 +1046,86 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Fractal Chaos Bands</b>",
-                    link: "pinescript-strategies/pine-script-FractalChaosBands.html",
+                    link: "pinescript-strategies/pine-script-fractal-chaos-bands/",
                     level: "Intermediate",
                 },
 
+                // Expert Level
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Obv</b>",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>OBV (On Balance Volume)</b>",
                     link: "pinescript-strategies/pine-script-obv/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Vwap Daily</b>",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>VWAP Daily</b>",
                     link: "pinescript-strategies/pine-script-vwap-daily/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Accumulation distribution line</b>",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Accumulation Distribution Line</b>",
                     link: "pinescript-strategies/pine-script-accumulation-distribution-line/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Chaikin money flow</b>",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Chaikin Money Flow</b>",
                     link: "pinescript-strategies/pine-script-chaikin-money-flow/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Ease of movement</b>",
-                    link: "pinescript-strategies/pine-script-EaseOfMovement.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Ease of Movement</b>",
+                    link: "pinescript-strategies/pine-script-ease-of-movement/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume roc</b>",
-                    link: "pinescript-strategies/pine-script-VolumeROC.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume Rate of Change</b>",
+                    link: "pinescript-strategies/pine-script-volume-roc/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume price trend</b>",
-                    link: "pinescript-strategies/pine-script-VolumePriceTrend.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume Price Trend</b>",
+                    link: "pinescript-strategies/pine-script-volume-price-trend/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Negative volume index</b>",
-                    link: "pinescript-strategies/pine-script-NegativeVolumeIndex.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Negative Volume Index</b>",
+                    link: "pinescript-strategies/pine-script-negative-volume-index/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Positive volume index</b>",
-                    link: "pinescript-strategies/pine-script-PositiveVolumeIndex.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Positive Volume Index</b>",
+                    link: "pinescript-strategies/pine-script-positive-volume-index/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Demand index</b>",
-                    link: "pinescript-strategies/pine-script-DemandIndex.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Demand Index</b>",
+                    link: "pinescript-strategies/pine-script-demand-index/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Herrick payoff index</b>",
-                    link: "pinescript-strategies/pine-script-HerrickPayoffIndex.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Herrick Payoff Index</b>",
+                    link: "pinescript-strategies/pine-script-herrick-payoff-index/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume weighted macd</b>",
-                    link: "pinescript-strategies/pine-script-VolumeWeightedMACD.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume Weighted MACD</b>",
+                    link: "pinescript-strategies/pine-script-volume-weighted-macd/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume adjusted rsi</b>",
-                    link: "pinescript-strategies/pine-script-VolumeAdjustedRSI.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume Adjusted RSI</b>",
+                    link: "pinescript-strategies/pine-script-volume-adjusted-rsi/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Volume Oscillator</b>",
-                    link: "pinescript-strategies/pine-script-volume-oscillator.html",
+                    link: "pinescript-strategies/pine-script-volume-oscillator/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Twiggs Money Flow</b>",
-                    link: "pinescript-strategies/pine-script-twiggs-money-flow.html",
+                    link: "pinescript-strategies/pine-script-twiggs-money-flow/",
                     level: "Expert",
                 },
-
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Pivot Points</b>",
                     link: "pinescript-strategies/pine-script-pivot-points/",
@@ -858,21 +1143,21 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Woodie Pivots</b>",
-                    link: "pinescript-strategies/pine-script-WoodiePivots.html",
+                    link: "pinescript-strategies/pine-script-woodie-pivots/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Tom Demark Pivots</b>",
-                    link: "pinescript-strategies/pine-script-TomDemarkPivots.html",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Tom DeMark Pivots</b>",
+                    link: "pinescript-strategies/pine-script-tom-demark-pivots/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Murrey Math Lines</b>",
-                    link: "pinescript-strategies/pine-script-MurreyMathLines.html",
+                    link: "pinescript-strategies/pine-script-murrey-math-lines/",
                     level: "Expert",
                 },
                 {
-                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Gann Square Of Nine</b>",
+                    title: "<small>Profitable Pinescript Strategies on -</small> <b>Gann Square of Nine</b>",
                     link: "pinescript-strategies/pine-script-gann-square-of-nine/",
                     level: "Expert",
                 },
@@ -886,7 +1171,6 @@
                     link: "pinescript-strategies/pine-script-anchored-vwap/",
                     level: "Expert",
                 },
-
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Engulfing (Bullish/Bearish)</b>",
                     link: "pinescript-strategies/pine-script-engulfing/",
@@ -894,57 +1178,57 @@
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Hammer</b>",
-                    link: "pinescript-strategies/pine-script-hammer.html",
+                    link: "pinescript-strategies/pine-script-hammer/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Hanging Man</b>",
-                    link: "pinescript-strategies/pine-script-hanging-man.html",
+                    link: "pinescript-strategies/pine-script-hanging-man/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Morning Star</b>",
-                    link: "pinescript-strategies/pine-script-morning-star.html",
+                    link: "pinescript-strategies/pine-script-morning-star/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Evening Star</b>",
-                    link: "pinescript-strategies/pine-script-evening-star.html",
+                    link: "pinescript-strategies/pine-script-evening-star/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Doji</b>",
-                    link: "pinescript-strategies/pine-script-doji.html",
+                    link: "pinescript-strategies/pine-script-doji/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Piercing Line</b>",
-                    link: "pinescript-strategies/pine-script-piercing-line.html",
+                    link: "pinescript-strategies/pine-script-piercing-line/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Dark Cloud Cover</b>",
-                    link: "pinescript-strategies/pine-script-dark-cloud-cover.html",
+                    link: "pinescript-strategies/pine-script-dark-cloud-cover/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Three White Soldiers</b>",
-                    link: "pinescript-strategies/pine-script-three-white-soldiers.html",
+                    link: "pinescript-strategies/pine-script-three-white-soldiers/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Three Black Crows</b>",
-                    link: "pinescript-strategies/pine-script-three-black-crows.html",
+                    link: "pinescript-strategies/pine-script-three-black-crows/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Harami (Bullish/Bearish)</b>",
-                    link: "pinescript-strategies/pine-script-harami.html",
+                    link: "pinescript-strategies/pine-script-harami/",
                     level: "Expert",
                 },
                 {
                     title: "<small>Profitable Pinescript Strategies on -</small> <b>Shooting Star</b>",
-                    link: "pinescript-strategies/pine-script-shooting-star.html",
+                    link: "pinescript-strategies/pine-script-shooting-star/",
                     level: "Expert",
                 },
             ];
@@ -983,11 +1267,6 @@
 
                     // Determine income level based on title content
                     let incomeLevel = el.level;
-                    // if (title.includes('$1') || title.includes('$1250') || title.includes('$1500') || title.includes('$1750')) {
-                    //     incomeLevel = 'intermediate';
-                    // } else if (title.includes('$2') || title.includes('$2500') || title.includes('$3000') || title.includes('$5000')) {
-                    //     incomeLevel = 'advanced';
-                    // }
 
                     const card = document.createElement("div");
                     card.className = `card ${incomeLevel}`;
@@ -1043,11 +1322,6 @@
                     filteredTitles = blogTitles.filter((el) => {
                         const title = el.title;
                         let incomeLevel = el.level;
-                        // if (title.includes('$1') || title.includes('$1250') || title.includes('$1500') || title.includes('$1750')) {
-                        //     incomeLevel = 'intermediate';
-                        // } else if (title.includes('$2') || title.includes('$2500') || title.includes('$3000') || title.includes('$5000')) {
-                        //     incomeLevel = 'advanced';
-                        // }
                         return incomeLevel === filter;
                     });
                 }
@@ -1111,6 +1385,91 @@
                 // Initial application of row scroll animation
                 applyRowScrollAnimationOffsets();
             };
+
+            // SVG Chart Animation
+            const svg = document.getElementById("chart");
+            const maxCandles = 100;
+            const candleWidth = 6;
+            const gap = 2;
+            const chartHeight = 180;
+            const maxPrice = 200;
+            const minPrice = 80;
+
+            const candleData = [];
+
+            function getRandomCandle(prevClose) {
+                const open = prevClose ?? random(minPrice, maxPrice);
+                const close = random(open - 15, open + 15);
+                const high = Math.max(open, close) + random(1, 10);
+                const low = Math.min(open, close) - random(1, 10);
+                return { open, close, high, low };
+            }
+
+            function random(min, max) {
+                return Math.round(Math.random() * (max - min) + min);
+            }
+
+            function renderCandles() {
+                svg.innerHTML = "";
+                const totalWidth = (candleWidth + gap) * maxCandles;
+                svg.setAttribute("viewBox", `0 0 ${totalWidth} ${chartHeight}`);
+
+                candleData.forEach((candle, i) => {
+                    const x = i * (candleWidth + gap);
+                    const scale = chartHeight / (maxPrice - minPrice);
+                    const color =
+                        candle.close > candle.open ? "#4ade80" : "#ef4444";
+                    const bodyHeight =
+                        Math.abs(candle.close - candle.open) * scale;
+                    const bodyY =
+                        chartHeight -
+                        Math.max(candle.open, candle.close) * scale;
+                    const wickHigh = chartHeight - candle.high * scale;
+                    const wickLow = chartHeight - candle.low * scale;
+
+                    const wick = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "line",
+                    );
+                    wick.setAttribute("x1", x + candleWidth / 2);
+                    wick.setAttribute("x2", x + candleWidth / 2);
+                    wick.setAttribute("y1", wickHigh);
+                    wick.setAttribute("y2", wickLow);
+                    wick.setAttribute("class", "wick");
+                    svg.appendChild(wick);
+
+                    const rect = document.createElementNS(
+                        "http://www.w3.org/2000/svg",
+                        "rect",
+                    );
+                    rect.setAttribute("x", x);
+                    rect.setAttribute("y", bodyY);
+                    rect.setAttribute("width", candleWidth);
+                    rect.setAttribute("height", bodyHeight);
+                    rect.setAttribute("fill", color);
+                    rect.setAttribute("class", "candle");
+                    svg.appendChild(rect);
+                });
+            }
+
+            function addNewCandle() {
+                const lastClose =
+                    candleData[candleData.length - 1]?.close ?? undefined;
+                const newCandle = getRandomCandle(lastClose);
+                if (candleData.length >= maxCandles) {
+                    candleData.shift();
+                }
+                candleData.push(newCandle);
+                renderCandles();
+            }
+
+            // Seed initial candles
+            for (let i = 0; i < maxCandles; i++) addNewCandle();
+
+            // Add new candle every 5 seconds
+            setInterval(() => {
+                addNewCandle();
+            }, 5000);
         </script>
         <script src="scripts/scripts.js" defer></script>
     </body>
