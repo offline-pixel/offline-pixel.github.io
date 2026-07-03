@@ -4,11 +4,14 @@
         <meta charset="utf-8" />
         <title>Redirecting - Offline Pixel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <!-- Tailwind CSS CDN -->
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://offline-pixel.github.io/" />
+        <meta http-equiv="status" content="200 OK" />
         <script src="https://cdn.tailwindcss.com"></script>
-
-        <!-- Custom styles for things Tailwind can't handle -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        />
         <style>
             .progress-bar-fill {
                 transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -16,351 +19,440 @@
             .hidden {
                 display: none !important;
             }
-            .animate-in {
-                animation: fadeInUp 0.6s ease-out forwards;
-            }
-            @keyframes fadeInUp {
+            @keyframes fadeIn {
                 from {
                     opacity: 0;
-                    transform: translateY(20px);
+                    transform: translateY(8px);
                 }
                 to {
                     opacity: 1;
                     transform: translateY(0);
                 }
             }
-            /* Simple icon replacements using Unicode/HTML entities */
-            .icon {
-                display: inline-block;
-                width: 1rem;
-                height: 1rem;
-                flex-shrink: 0;
+            .animate-in {
+                animation: fadeIn 0.4s ease-out forwards;
+            }
+            .search-dropdown {
+                max-height: 300px;
+                overflow-y: auto;
+                scrollbar-width: thin;
+            }
+            .search-dropdown::-webkit-scrollbar {
+                width: 4px;
+            }
+            .search-dropdown::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 4px;
+            }
+            .search-dropdown::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            .search-highlight {
+                background: #dbeafe;
+                font-weight: 600;
+            }
+            .dark .search-highlight {
+                background: #1e3a5f;
+                color: #93c5fd;
+            }
+            @media (min-width: 768px) {
+                .popular-links-grid {
+                    display: grid;
+                    grid-template-columns: repeat(
+                        auto-fill,
+                        minmax(140px, 1fr)
+                    );
+                    gap: 0.375rem;
+                }
             }
         </style>
     </head>
     <body
-        class="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans antialiased"
+        class="flex items-start justify-center min-h-screen bg-gray-50 dark:bg-gray-900 font-sans p-4 pt-8 md:pt-12"
     >
-        <!-- Redirect UI with Loading Bar + Metrics + CTA -->
+        <!-- Redirect UI -->
         <div
             id="redirect-ui"
-            class="hidden text-center px-8 py-12 max-w-2xl w-full"
+            class="hidden text-center w-full max-w-5xl mx-auto"
         >
-            <div class="">
-                <h1
-                    class="text-2xl font-semibold text-gray-800 dark:text-white mb-2"
-                >
-                    Redirecting to your article...
-                </h1>
-                <p class="text-gray-500 dark:text-gray-400 mb-8">
-                    Please wait while we take you to the content
-                </p>
+            <h1
+                class="text-xl font-semibold text-gray-800 dark:text-white mb-1"
+            >
+                Redirecting...
+            </h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                Taking you to the content
+            </p>
 
-                <!-- Progress Bar -->
+            <div
+                class="w-full max-w-md mx-auto h-1 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-6"
+            >
                 <div
-                    class="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden mb-10"
-                >
-                    <div
-                        id="fill"
-                        class="h-full bg-blue-600 w-0 rounded-full progress-bar-fill"
-                    ></div>
-                </div>
-
-                <!-- Metrics -->
-                <div
-                    class="flex flex-wrap justify-center gap-6 mb-10 animate-in"
-                >
-                    <div
-                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
-                    >
-                        <span class="icon" aria-hidden="true">👥</span>
-                        <span class="text-sm font-mono"
-                            >500+ Clients Helped</span
-                        >
-                    </div>
-                    <div
-                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
-                    >
-                        <span class="icon" aria-hidden="true">⭐</span>
-                        <span class="text-sm font-mono">100% Satisfaction</span>
-                    </div>
-                    <div
-                        class="flex items-center gap-2 text-slate-500 dark:text-slate-400"
-                    >
-                        <span class="icon" aria-hidden="true">⏱️</span>
-                        <span class="text-sm font-mono"
-                            >Live Trading Ready</span
-                        >
-                    </div>
-                </div>
-
-                <!-- CTA Button -->
-                <a
-                    href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-black dark:bg-white text-white dark:text-black rounded-xl font-mono text-sm font-semibold hover:scale-105 transition-all shadow-lg w-full"
-                >
-                    <span class="icon" aria-hidden="true">💻</span>
-                    Get Pinescript strategy
-                    <span class="icon" aria-hidden="true">→</span>
-                </a>
+                    id="fill"
+                    class="h-full bg-blue-600 w-0 rounded-full progress-bar-fill"
+                ></div>
             </div>
+
+            <div
+                class="flex flex-wrap justify-center gap-4 text-xs text-gray-500 dark:text-gray-400 animate-in"
+            >
+                <span><i class="fas fa-users mr-1"></i>500+ Clients</span>
+                <span><i class="fas fa-star mr-1"></i>100% Satisfied</span>
+                <span><i class="fas fa-bolt mr-1"></i>Live Trading</span>
+            </div>
+
+            <a
+                href="https://offlinepixel.gumroad.com/l/trader-on-the-go"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-4 inline-flex items-center justify-center gap-2 max-w-md mx-auto w-full px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg text-sm font-semibold hover:scale-[1.02] transition-all"
+            >
+                <i class="fas fa-code"></i> Get Pinescript Strategy
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
 
         <!-- Error UI -->
-        <div id="error-ui" class="text-center px-8 py-12 max-w-[450px] w-full">
-            <div class="">
+        <div id="error-ui" class="text-center w-full max-w-5xl mx-auto px-4">
+            <div>
                 <div
-                    class="text-7xl font-extrabold text-blue-600 leading-none mb-2"
+                    class="text-7xl font-extrabold text-blue-600 leading-none mb-1"
                 >
                     404
                 </div>
                 <h1
-                    class="text-2xl font-semibold text-gray-800 dark:text-white mb-2"
+                    class="text-xl font-semibold text-gray-800 dark:text-white mb-1"
                 >
                     Page Not Found
                 </h1>
-                <p class="text-gray-500 dark:text-gray-400 mb-8">
-                    The page you are looking for does not exist.
-                </p>
-
                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    Try one of these popular articles instead:
+                    The page you're looking for doesn't exist.
                 </p>
 
-                <!-- Grid Links -->
-                <div class="grid grid-cols-3 gap-2 mb-8">
-                    <a
-                        href="/pinescript-strategies/pine-script-rsi/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        RSI
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-supertrend/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        SuperTrend
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-bollinger-bands/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Bollinger Bands
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-vwap-daily/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        VWAP
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-ema/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        EMA
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-stochastic/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Stochastic
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-atr/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        ATR
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-ichimoku-cloud/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Ichimoku
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-fibonacci-retracements/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Fibonacci
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-parabolic-sar/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Parabolic SAR
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-engulfing/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Engulfing
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-pivot-points/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Pivot Points
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-obv/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        OBV
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-gann-square-of-nine/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Gann Square
-                    </a>
-                    <a
-                        href="/pinescript-strategies/pine-script-volumeprofile/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Volume Profile
-                    </a>
-                    <!-- Accumulation Distribution Line -->
-                    <a
-                        href="/pinescript-strategies/pine-script-accumulation-distribution-line/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Accumulation Distribution
-                    </a>
-
-                    <!-- Anchored VWAP -->
-                    <a
-                        href="/pinescript-strategies/pine-script-anchored-vwap/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Anchored VWAP
-                    </a>
-
-                    <!-- Annualized Volatility -->
-                    <a
-                        href="/pinescript-strategies/pine-script-annualized-volatility/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Annualized Volatility
-                    </a>
-
-                    <!-- Awesome Oscillator -->
-                    <a
-                        href="/pinescript-strategies/pine-script-awesome-oscillator/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Awesome Oscillator
-                    </a>
-
-                    <!-- Camarilla Pivots -->
-                    <a
-                        href="/pinescript-strategies/pine-script-camarilla-pivots/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Camarilla Pivots
-                    </a>
-
-                    <!-- Master Pine Script ta.stoch -->
-                    <a
-                        href="/pinescript-strategies/master-pine-script-v5-ta-stock/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        ta.stoch Arguments
-                    </a>
-
-                    <!-- CCI -->
-                    <a
-                        href="/pinescript-strategies/pine-script-cci/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        CCI
-                    </a>
-
-                    <!-- Chaikin Money Flow -->
-                    <a
-                        href="/pinescript-strategies/pine-script-chaikin-money-flow/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Chaikin Money Flow
-                    </a>
-
-                    <!-- Chaikin Volatility -->
-                    <a
-                        href="/pinescript-strategies/pine-script-chaikin-volatility/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Chaikin Volatility
-                    </a>
-
-                    <!-- Choppiness Index -->
-                    <a
-                        href="/pinescript-strategies/pine-script-choppiness-index/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Choppiness Index
-                    </a>
-
-                    <!-- CMO -->
-                    <a
-                        href="/pinescript-strategies/pine-script-cmo/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        CMO
-                    </a>
-
-                    <!-- Coppock Curve -->
-                    <a
-                        href="/pinescript-strategies/pine-script-coppock-curve/"
-                        class="bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-2 rounded-lg text-sm transition-colors duration-200 text-gray-800 dark:text-gray-200"
-                    >
-                        Coppock Curve
-                    </a>
+                <!-- Search -->
+                <div class="relative max-w-md mx-auto mb-4">
+                    <div class="relative">
+                        <i
+                            class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-sm"
+                        ></i>
+                        <input
+                            type="text"
+                            id="search-input"
+                            placeholder="Search 70+ articles..."
+                            class="w-full pl-9 pr-4 py-2.5 bg-gray-100 dark:bg-gray-800 border-0 rounded-lg text-sm text-gray-800 dark:text-gray-200 focus:ring-2 focus:ring-blue-500 focus:outline-none transition-shadow"
+                            autocomplete="off"
+                        />
+                    </div>
+                    <div
+                        id="search-results"
+                        class="search-dropdown absolute left-0 right-0 mt-1 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 hidden max-h-72 overflow-y-auto z-10"
+                    ></div>
                 </div>
 
-                <!-- Home Button -->
+                <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">
+                    Or browse popular articles:
+                </p>
+                <div
+                    class="flex flex-wrap justify-center gap-1.5 mb-4 popular-links-grid"
+                    id="popular-links"
+                ></div>
+
                 <a
                     href="/"
-                    class="inline-block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200"
+                    class="inline-block max-w-md mx-auto w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors"
                 >
-                    ← Home
+                    <i class="fas fa-arrow-left mr-2"></i>Home
                 </a>
             </div>
         </div>
 
         <script>
-            const ALLOWED_SLUGS = [
-                "pine-script-vwap-daily",
-                "pine-script-atr",
-                "pine-script-bollinger-bands",
-                "pine-script-ema",
-                "pine-script-engulfing",
-                "pine-script-fibonacci-retracements",
-                "pine-script-gann-square-of-nine",
-                "pine-script-ichimoku-cloud",
-                "pine-script-obv",
-                "pine-script-parabolic-sar",
-                "pine-script-pivot-points",
-                "pine-script-rsi",
-                "pine-script-stochastic",
-                "pine-script-supertrend",
-                "pine-script-volumeprofile",
-
-                "pine-script-accumulation-distribution-line",
-                "pine-script-anchored-vwap",
-                "pine-script-annualized-volatility",
-                "pine-script-awesome-oscillator",
-                "pine-script-camarilla-pivots",
-                "master-pine-script-v5-ta-stock",
-                "pine-script-cci",
-                "pine-script-chaikin-money-flow",
-                "pine-script-chaikin-volatility",
-                "pine-script-choppiness-index",
-                "pine-script-cmo",
-                "pine-script-coppock-curve",
+            // All slugs with labels - single source of truth
+            const ALL_ARTICLES = [
+                { slug: "pine-script-vwap-daily", label: "VWAP" },
+                { slug: "pine-script-atr", label: "ATR" },
+                {
+                    slug: "pine-script-bollinger-bands",
+                    label: "Bollinger Bands",
+                },
+                { slug: "pine-script-ema", label: "EMA" },
+                { slug: "pine-script-engulfing", label: "Engulfing" },
+                {
+                    slug: "pine-script-fibonacci-retracements",
+                    label: "Fibonacci",
+                },
+                {
+                    slug: "pine-script-gann-square-of-nine",
+                    label: "Gann Square",
+                },
+                { slug: "pine-script-ichimoku-cloud", label: "Ichimoku" },
+                { slug: "pine-script-obv", label: "OBV" },
+                { slug: "pine-script-parabolic-sar", label: "Parabolic SAR" },
+                { slug: "pine-script-pivot-points", label: "Pivot Points" },
+                { slug: "pine-script-rsi", label: "RSI" },
+                { slug: "pine-script-stochastic", label: "Stochastic" },
+                { slug: "pine-script-supertrend", label: "SuperTrend" },
+                { slug: "pine-script-volumeprofile", label: "Volume Profile" },
+                {
+                    slug: "pine-script-accumulation-distribution-line",
+                    label: "Accumulation Distribution",
+                },
+                { slug: "pine-script-anchored-vwap", label: "Anchored VWAP" },
+                {
+                    slug: "pine-script-annualized-volatility",
+                    label: "Annualized Volatility",
+                },
+                {
+                    slug: "pine-script-awesome-oscillator",
+                    label: "Awesome Oscillator",
+                },
+                {
+                    slug: "pine-script-camarilla-pivots",
+                    label: "Camarilla Pivots",
+                },
+                {
+                    slug: "master-pine-script-v5-ta-stock",
+                    label: "ta.stoch Arguments",
+                },
+                { slug: "pine-script-cci", label: "CCI" },
+                {
+                    slug: "pine-script-chaikin-money-flow",
+                    label: "Chaikin Money Flow",
+                },
+                {
+                    slug: "pine-script-chaikin-volatility",
+                    label: "Chaikin Volatility",
+                },
+                {
+                    slug: "pine-script-choppiness-index",
+                    label: "Choppiness Index",
+                },
+                { slug: "pine-script-cmo", label: "CMO" },
+                { slug: "pine-script-coppock-curve", label: "Coppock Curve" },
+                {
+                    slug: "pine-script-dark-cloud-cover",
+                    label: "Dark Cloud Cover",
+                },
+                { slug: "pine-script-dema", label: "DEMA" },
+                { slug: "pine-script-demand-index", label: "Demand Index" },
+                { slug: "pine-script-doji", label: "Doji" },
+                {
+                    slug: "pine-script-donchian-channels",
+                    label: "Donchian Channels",
+                },
+                { slug: "pine-script-dpo", label: "DPO" },
+                {
+                    slug: "pine-script-ease-of-movement",
+                    label: "Ease of Movement",
+                },
+                {
+                    slug: "pine-script-elder-ray-index",
+                    label: "Elder-Ray Index",
+                },
+                { slug: "pine-script-evening-star", label: "Evening Star" },
+                { slug: "pine-script-force-index", label: "Force Index" },
+                {
+                    slug: "pine-script-fractal-chaos-bands",
+                    label: "Fractal Chaos Bands",
+                },
+                { slug: "pine-script-gapo", label: "GAPO" },
+                { slug: "pine-script-hammer", label: "Hammer" },
+                { slug: "pine-script-harami", label: "Harami" },
+                {
+                    slug: "pine-script-herrick-payoff-index",
+                    label: "Herrick Payoff Index",
+                },
+                {
+                    slug: "pine-script-historical-volatility",
+                    label: "Historical Volatility",
+                },
+                { slug: "pine-script-hma", label: "HMA" },
+                { slug: "pine-script-kama", label: "KAMA" },
+                {
+                    slug: "pine-script-keltner-channels",
+                    label: "Keltner Channels",
+                },
+                { slug: "pine-script-kst", label: "KST" },
+                { slug: "pine-script-macd", label: "MACD" },
+                { slug: "pine-script-market-profile", label: "Market Profile" },
+                { slug: "pine-script-mass-index", label: "Mass Index" },
+                { slug: "pine-script-mfi", label: "MFI" },
+                { slug: "pine-script-morning-star", label: "Morning Star" },
+                {
+                    slug: "pine-script-murrey-math-lines",
+                    label: "Murrey Math Lines",
+                },
+                {
+                    slug: "pine-script-negative-volume-index",
+                    label: "Negative Volume Index",
+                },
+                { slug: "pine-script-piercing-line", label: "Piercing Line" },
+                {
+                    slug: "pine-script-positive-volume-index",
+                    label: "Positive Volume Index",
+                },
+                { slug: "pine-script-qstick", label: "Qstick" },
+                {
+                    slug: "pine-script-relative-volatility-index",
+                    label: "Relative Volatility Index",
+                },
+                { slug: "pine-script-roc", label: "ROC" },
+                { slug: "pine-script-rvi", label: "RVI" },
+                { slug: "pine-script-shooting-star", label: "Shooting Star" },
+                { slug: "pine-script-sma", label: "SMA" },
+                { slug: "pine-script-tema", label: "TEMA" },
+                {
+                    slug: "pine-script-three-black-crows",
+                    label: "Three Black Crows",
+                },
+                {
+                    slug: "pine-script-three-white-soldiers",
+                    label: "Three White Soldiers",
+                },
+                { slug: "pine-script-tillson-t3", label: "Tillson T3" },
+                {
+                    slug: "pine-script-tom-demark-pivots",
+                    label: "Tom DeMark Pivots",
+                },
+                { slug: "pine-script-trix", label: "Trix" },
+                {
+                    slug: "pine-script-twiggs-money-flow",
+                    label: "Twiggs Money Flow",
+                },
+                { slug: "pine-script-ulcer-index", label: "Ulcer Index" },
+                {
+                    slug: "pine-script-ultimate-oscillator",
+                    label: "Ultimate Oscillator",
+                },
+                {
+                    slug: "pine-script-volume-oscillator",
+                    label: "Volume Oscillator",
+                },
+                {
+                    slug: "pine-script-volume-adjusted-rsi",
+                    label: "Volume-Adjusted RSI",
+                },
+                {
+                    slug: "pine-script-volume-price-trend",
+                    label: "Volume Price Trend",
+                },
+                { slug: "pine-script-volume-roc", label: "Volume ROC" },
+                {
+                    slug: "pine-script-volume-weighted-macd",
+                    label: "Volume-Weighted MACD",
+                },
+                {
+                    slug: "pine-script-vortex-indicator",
+                    label: "Vortex Indicator",
+                },
+                { slug: "pine-script-vwma", label: "VWMA" },
+                { slug: "pine-script-williams-r", label: "Williams %R" },
+                { slug: "pine-script-woodie-pivots", label: "Woodie Pivots" },
+                { slug: "pine-script-zlema", label: "ZLEMA" },
             ];
 
+            const ALL_SLUGS = ALL_ARTICLES.map((a) => a.slug);
+            const SPECIAL_CASES = {
+                "pine-script-volume-profile": "pine-script-volumeprofile/",
+                "pine-script-super-trend": "pine-script-supertrend/",
+                "pine-script-c-c-i": "pine-script-cci/",
+                "pine-script-anchored-v-w-a-p": "pine-script-anchored-vwap/",
+                "pine-script-c-m-o": "pine-script-cmo/",
+            };
+
+            // Build popular links
+            const container = document.getElementById("popular-links");
+            ALL_ARTICLES.forEach((article) => {
+                const a = document.createElement("a");
+                a.href = `/pinescript-strategies/${article.slug}/`;
+                a.className =
+                    "bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 px-3 py-1.5 rounded-lg text-xs transition-colors duration-200 text-gray-800 dark:text-gray-200 text-center";
+                a.textContent = article.label;
+                container.appendChild(a);
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById("search-input");
+            const searchResults = document.getElementById("search-results");
+
+            function highlightText(text, query) {
+                const regex = new RegExp(
+                    `(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+                    "gi",
+                );
+                return text.replace(
+                    regex,
+                    '<span class="search-highlight">$1</span>',
+                );
+            }
+
+            function performSearch(query) {
+                const trimmed = query.trim().toLowerCase();
+                if (trimmed.length < 3) {
+                    searchResults.classList.add("hidden");
+                    return;
+                }
+
+                const results = ALL_ARTICLES.filter(
+                    (article) =>
+                        article.label.toLowerCase().includes(trimmed) ||
+                        article.slug.toLowerCase().includes(trimmed),
+                );
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = `
+                        <div class="px-4 py-3 text-sm text-gray-500 dark:text-gray-400 text-center">
+                            <i class="fas fa-search mr-2"></i>No articles found
+                        </div>
+                    `;
+                    searchResults.classList.remove("hidden");
+                    return;
+                }
+
+                searchResults.innerHTML = results
+                    .map(
+                        (article) => `
+                    <a href="/pinescript-strategies/${article.slug}/"
+                       class="flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-150 border-b border-gray-100 dark:border-gray-700 last:border-0">
+                        <span class="text-sm text-gray-800 dark:text-gray-200">${highlightText(article.label, trimmed)}</span>
+                        <i class="fas fa-arrow-right text-xs text-gray-400 dark:text-gray-500"></i>
+                    </a>
+                `,
+                    )
+                    .join("");
+
+                searchResults.classList.remove("hidden");
+            }
+
+            searchInput.addEventListener("input", function (e) {
+                performSearch(e.target.value);
+            });
+
+            searchInput.addEventListener("focus", function () {
+                if (this.value.trim().length >= 3) {
+                    performSearch(this.value);
+                }
+            });
+
+            document.addEventListener("click", function (e) {
+                if (
+                    !e.target.closest("#search-input") &&
+                    !e.target.closest("#search-results")
+                ) {
+                    searchResults.classList.add("hidden");
+                }
+            });
+
+            searchInput.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                    searchResults.classList.add("hidden");
+                    this.blur();
+                }
+            });
+
+            // Redirect logic
             const path = window.location.pathname;
+
             if (
                 path ===
                 "/migration-guides/electron-to-tauri-migration-framework"
@@ -369,7 +461,7 @@
                     "/migration-guides/electron-to-tauri-migration/",
                 );
             }
-            // 1. Normalize and validate
+
             if (path.includes("/pinescript-strategies/")) {
                 let rawSlug = path.split("/").pop().replace(".html", "");
                 let normalized = rawSlug
@@ -379,43 +471,24 @@
                     normalized =
                         "pine-script-" + normalized.replace("pine-script-", "");
                 }
-                if (ALLOWED_SLUGS.includes(normalized)) {
-                    console.log("Match found! Redirecting to:", normalized);
+
+                if (ALL_SLUGS.includes(normalized)) {
                     executeRedirect(`/pinescript-strategies/${normalized}/`);
-                } else {
-                    // Handle special cases
-                    if (normalized == "pine-script-volume-profile") {
-                        executeRedirect("pine-script-volumeprofile/");
-                    } else if (normalized == "pine-script-super-trend") {
-                        executeRedirect("pine-script-supertrend/");
-                    } else if (normalized == "pine-script-c-c-i") {
-                        executeRedirect("pine-script-cci/");
-                    } else if (normalized == "pine-script-anchored-v-w-a-p") {
-                        executeRedirect("pine-script-anchored-vwap/");
-                    } else if (normalized == "pine-script-c-m-o") {
-                        executeRedirect("pine-script-cmo/");
-                    } else {
-                        console.warn(
-                            "No match found in ALLOWED_SLUGS for:",
-                            normalized,
-                        );
-                    }
+                } else if (SPECIAL_CASES[normalized]) {
+                    executeRedirect(SPECIAL_CASES[normalized]);
                 }
             }
 
             function executeRedirect(targetUrl) {
-                // Hide error UI, show redirect UI
                 document.getElementById("error-ui").style.display = "none";
                 document
                     .getElementById("redirect-ui")
                     .classList.remove("hidden");
 
-                // Start progress bar animation after a small delay
                 setTimeout(() => {
                     document.getElementById("fill").style.width = "100%";
                 }, 100);
 
-                // Redirect after animation completes
                 setTimeout(() => {
                     window.location.replace(targetUrl);
                 }, 1600);
