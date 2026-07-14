@@ -1,0 +1,475 @@
+# Offline Pixel Knowledge Base
+
+## Hire / Roles
+
+- [Hire](https://offline-pixel.github.io/hire/) - Browse available roles and positions.
+- [Rust Engineer](https://offline-pixel.github.io/hire/rust-engineer/) - Systems programming with Rust.
+- [LLM Engineer](https://offline-pixel.github.io/hire/llm-engineer/) - Large language model applications and deployment.
+- [FAISS Expert](https://offline-pixel.github.io/hire/faiss-expert/) - Vector similarity search at scale.
+- [Quant Engineer](https://offline-pixel.github.io/hire/quant-engineer/) - Build trading infrastructure and platforms.
+- [Quant Developer](https://offline-pixel.github.io/hire/quant-developer/) - Implement quantitative trading strategies.
+- [Quant Researcher](https://offline-pixel.github.io/hire/quant-researcher/) - Discover alpha and build models.
+- [Quant Trader](https://offline-pixel.github.io/hire/quant-trader/) - Systematic execution and market making.
+- [Quant Junior](https://offline-pixel.github.io/hire/quant-junior/) - Entry-level quantitative finance roles.
+- [Senior Quant Engineer](https://offline-pixel.github.io/hire/senior-quant-engineer/) - Lead quantitative platform development.
+- [FastAPI Expert](https://offline-pixel.github.io/hire/fastapi-expert/) - High-performance async API development.
+- [ML Engineer](https://offline-pixel.github.io/hire/ml-engineer/) - Deploy models to production.
+- [DuckDB Engineer](https://offline-pixel.github.io/hire/duckdb-engineer/) - Analytics and data processing with DuckDB.
+- [RAG Engineer](https://offline-pixel.github.io/hire/rag-engineer/) - Retrieval-augmented generation systems.
+- [App Developer](https://offline-pixel.github.io/hire/app-developer/) - Build mobile and desktop applications.
+- [Python Engineer](https://offline-pixel.github.io/hire/python-engineer/) - Backend systems and APIs.
+- [Tauri Engineer](https://offline-pixel.github.io/hire/tauri-engineer/) - Cross-platform desktop apps with Rust.
+- [MERN Developer](https://offline-pixel.github.io/hire/mern-developer/) - MongoDB, Express, React, Node.js.
+- [MEAN Developer](https://offline-pixel.github.io/hire/mean-developer/) - MongoDB, Express, Angular, Node.js.
+- [PineScript Developer](https://offline-pixel.github.io/hire/pinescript-developer/) - Write TradingView indicators.
+- [Walk-Forward Validation Expert](https://offline-pixel.github.io/hire/walk-forward-validation-expert/) - Validate trading strategies over time.
+- [Microfrontends Expert](https://offline-pixel.github.io/hire/microfrontends-expert/) - Independent frontend delivery.
+- [Microservices Expert](https://offline-pixel.github.io/hire/microservices-expert/) - Distributed system architecture.
+
+---
+
+## Comparisons
+
+- [Compare](https://offline-pixel.github.io/compare/) - Side-by-side role and technology comparisons.
+- [Academic vs Industry Quant Researcher](https://offline-pixel.github.io/compare/academic-quant-researcher-vs-industry-quant/) - Different focuses and expectations.
+- [Angular Developer vs MEAN Developer](https://offline-pixel.github.io/compare/angular-developer-vs-mean-developer/) - Technology stack comparison.
+- [App Developer vs Mobile Engineer](https://offline-pixel.github.io/compare/app-developer-vs-mobile-engineer/) - Scope and skills.
+- [AWS SageMaker vs Vertex AI vs Azure ML](https://offline-pixel.github.io/compare/aws-sagemaker-vs-vertex-ai-vs-azure-ml-hiring/) - Cloud ML platform hiring.
+- [C++ Quant Developer vs Rust Quant Developer](https://offline-pixel.github.io/compare/cpp-quant-developer-vs-rust-quant-developer/) - Memory safety vs performance.
+- [C++ Quant Engineer vs Java Quant Engineer](https://offline-pixel.github.io/compare/cpp-quant-engineer-vs-java-quant-engineer/) - Language choice for quant systems.
+- [Django vs Flask vs FastAPI](https://offline-pixel.github.io/compare/django-vs-flask-vs-fastapi-hiring/) - Python web frameworks.
+- [DuckDB Engineer vs Data Engineer](https://offline-pixel.github.io/compare/duckdb-engineer-vs-data-engineer/) - Specialized vs general data roles.
+- [DuckDB Expert vs BigQuery Specialist](https://offline-pixel.github.io/compare/duckdb-expert-vs-bigquery-specialist/) - Analytics database comparison.
+- [DuckDB vs ClickHouse for Real-Time](https://offline-pixel.github.io/compare/duckdb-vs-clickhouse-for-real-time-analytics/) - Real-time analytics databases.
+- [DuckDB vs Snowflake for Analytics](https://offline-pixel.github.io/compare/duckdb-vs-snowflake-for-analytics-workloads/) - Data warehousing alternatives.
+- [FAISS Expert vs RAG Engineer](https://offline-pixel.github.io/compare/faiss-expert-vs-rag-engineer/) - Vector search vs retrieval augmented.
+- [FAISS Expert vs Vector Database Engineer](https://offline-pixel.github.io/compare/faiss-expert-vs-vector-database-engineer/) - Similarity search expertise.
+- [FAISS vs Milvus for Large-Scale Search](https://offline-pixel.github.io/compare/faiss-vs-milvus-for-large-scale-similarity-search/) - Vector search libraries.
+- [FAISS vs Pinecone for Production](https://offline-pixel.github.io/compare/faiss-vs-pinecone-for-production-search/) - Self-hosted vs managed.
+- [FastAPI Expert vs Django Developer](https://offline-pixel.github.io/compare/fastapi-expert-vs-django-developer/) - Async vs sync frameworks.
+- [FastAPI Expert vs Node.js Backend](https://offline-pixel.github.io/compare/fastapi-expert-vs-nodejs-backend-engineer/) - Python vs JavaScript backend.
+- [FastAPI vs Flask for Microservices](https://offline-pixel.github.io/compare/fastapi-vs-flask-for-microservices/) - Python microservice frameworks.
+- [FastAPI vs Spring Boot for APIs](https://offline-pixel.github.io/compare/fastapi-vs-spring-boot-for-api-development/) - Java vs Python API development.
+- [Fullstack MEAN vs Backend Node.js](https://offline-pixel.github.io/compare/fullstack-mean-vs-backend-nodejs-developer/) - JavaScript stack comparison.
+- [Fullstack MERN vs Backend Node.js](https://offline-pixel.github.io/compare/fullstack-mern-vs-backend-nodejs-developer/) - React vs Angular approaches.
+- [GPT Engineer vs Open Source LLM Engineer](https://offline-pixel.github.io/compare/gpt-engineer-vs-open-source-llm-engineer/) - Proprietary vs open source.
+- [iOS vs Android Developer](https://offline-pixel.github.io/compare/ios-vs-android-developer-hiring/) - Mobile platform comparison.
+- [LangChain vs LlamaIndex Engineer](https://offline-pixel.github.io/compare/langchain-vs-llamaindex-engineer-hiring/) - LLM application frameworks.
+- [LLM Engineer vs NLP Specialist](https://offline-pixel.github.io/compare/llm-engineer-vs-nlp-specialist/) - Traditional NLP vs generative AI.
+- [LLM Engineer vs RAG Engineer](https://offline-pixel.github.io/compare/llm-engineer-vs-rag-engineer/) - Model building vs retrieval.
+- [LLM Fine-Tuning vs Prompt Engineer](https://offline-pixel.github.io/compare/llm-fine-tuning-engineer-vs-prompt-engineer/) - Model training vs interaction.
+- [LLM Specialist vs ML Engineer](https://offline-pixel.github.io/compare/llm-specialist-vs-ml-engineer/) - Generative vs traditional ML.
+- [Low-Latency vs High-Throughput Quant](https://offline-pixel.github.io/compare/low-latency-vs-high-throughput-quant-development/) - Trading system optimization.
+- [Macro Quant vs Statistical Quant](https://offline-pixel.github.io/compare/macro-quant-vs-statistical-quant-researcher/) - Economic vs data-driven.
+- [MEAN vs MERN Developer](https://offline-pixel.github.io/compare/mean-developer-vs-mern-developer/) - Angular vs React stack.
+- [MEAN vs Java Fullstack](https://offline-pixel.github.io/compare/mean-vs-java-fullstack-hiring/) - JavaScript vs Java fullstack.
+- [MERN vs MEAN Developer](https://offline-pixel.github.io/compare/mern-developer-vs-mean-developer/) - React vs Angular comparison.
+- [MERN vs Next.js](https://offline-pixel.github.io/compare/mern-vs-nextjs-hiring/) - React frameworks.
+- [ML Engineer vs Data Engineer](https://offline-pixel.github.io/compare/ml-engineer-vs-data-engineer/) - Model vs pipeline focus.
+- [ML Engineer vs Data Scientist](https://offline-pixel.github.io/compare/ml-engineer-vs-data-scientist/) - Production vs exploration.
+- [ML Engineer vs LLM Engineer](https://offline-pixel.github.io/compare/ml-engineer-vs-llm-engineer/) - Traditional ML vs generative.
+- [Native App vs PWA Developer](https://offline-pixel.github.io/compare/native-app-vs-pwa-developer/) - Native vs web technologies.
+- [Prop Trading vs Hedge Fund Quant](https://offline-pixel.github.io/compare/prop-trading-quant-vs-hedge-fund-quant-trader/) - Different trading models.
+- [Python Data Engineer vs Python Backend](https://offline-pixel.github.io/compare/python-data-engineer-vs-python-backend-engineer/) - Data vs API focus.
+- [Python Engineer vs Python Developer](https://offline-pixel.github.io/compare/python-engineer-vs-python-developer/) - System vs application.
+- [Python vs Node.js for Backend](https://offline-pixel.github.io/compare/python-vs-nodejs-for-backend-hiring/) - Technology selection.
+- [Quant Architect vs Quant Lead](https://offline-pixel.github.io/compare/quant-architect-vs-quant-lead/) - Technical vs team leadership.
+- [Quant Developer vs Quant Researcher](https://offline-pixel.github.io/compare/quant-developer-vs-quant-researcher/) - Implementation vs research.
+- [Quant Engineer vs Quant Developer](https://offline-pixel.github.io/compare/quant-engineer-vs-quant-developer/) - Infrastructure vs strategy.
+- [Quant Researcher vs Quant Trader](https://offline-pixel.github.io/compare/quant-researcher-vs-quant-trader/) - Alpha vs execution.
+- [Quant Trader vs Algorithmic Trader](https://offline-pixel.github.io/compare/quant-trader-vs-algorithmic-trader/) - Systematic vs rules-based.
+- [RAG Engineer vs LLM Engineer](https://offline-pixel.github.io/compare/rag-engineer-vs-llm-engineer/) - Search vs generation.
+- [RAG vs Fine-Tuning Which to Hire](https://offline-pixel.github.io/compare/rag-vs-fine-tuning-which-to-hire-for/) - Two approaches to LLM customization.
+- [React Developer vs MERN Developer](https://offline-pixel.github.io/compare/react-developer-vs-mern-developer/) - React vs full MERN stack.
+- [Rust Developer vs Rust Architect](https://offline-pixel.github.io/compare/rust-developer-vs-rust-architect/) - Implementation vs design.
+- [Rust Engineer vs C++ Developer](https://offline-pixel.github.io/compare/rust-engineer-vs-cpp-developer/) - Modern vs traditional systems.
+- [Rust Quant vs Python Quant](https://offline-pixel.github.io/compare/rust-quant-vs-python-quant/) - Performance vs productivity.
+- [Rust vs Go for Backend Systems](https://offline-pixel.github.io/compare/rust-vs-go-for-backend-systems/) - Two systems languages.
+- [Rust vs Python for Performance-Critical Apps](https://offline-pixel.github.io/compare/rust-vs-python-for-performance-critical-applications/) - When to choose Rust.
+- [Systems Engineer vs Application Developer](https://offline-pixel.github.io/compare/systems-engineer-vs-application-developer/) - Low-level vs high-level.
+- [React Native vs Flutter vs Tauri](https://offline-pixel.github.io/compare/react-native-vs-flutter-vs-tauri-hiring/) - Cross-platform approaches.
+- [Tauri Engineer vs Electron Developer](https://offline-pixel.github.io/compare/tauri-engineer-vs-electron-developer/) - Modern vs legacy desktop.
+- [Tauri vs React Native for Desktop Apps](https://offline-pixel.github.io/compare/tauri-vs-react-native-for-desktop-apps/) - Desktop vs mobile frameworks.
+- [Tauri vs Wails Developer](https://offline-pixel.github.io/compare/tauri-vs-wails-developer-hiring/) - Rust desktop alternatives.
+- [TensorFlow vs PyTorch Engineer](https://offline-pixel.github.io/compare/tensorflow-vs-pytorch-engineer/) - ML framework expertise.
+- [Vector Database RAG vs Graph RAG](https://offline-pixel.github.io/compare/vector-database-rag-vs-graph-rag-engineer/) - Retrieval approaches.
+
+---
+
+## Blogs
+
+- [Blogs](https://offline-pixel.github.io/blogs/) - Insights and hiring guides.
+- [Angular vs React which backend developers prefer](https://offline-pixel.github.io/blogs/angular-vs-react-which-backend-developers-prefer/) - Frontend preferences.
+- [Common mistakes when hiring systems programmers](https://offline-pixel.github.io/blogs/common-mistakes-when-hiring-systems-programmers/) - Hiring pitfalls.
+- [How is a quant developer different from a regular software engineer?](https://offline-pixel.github.io/blogs/how-is-a-quant-developer-different-from-a-regular-software-engineer/) - Finance vs general engineering.
+- [How long does it take to find a qualified Rust engineer?](https://offline-pixel.github.io/blogs/how-long-does-it-take-to-find-a-qualified-rust-engineer/) - Hiring timelines.
+- [How much does a DuckDB expert cost?](https://offline-pixel.github.io/blogs/how-much-does-a-duckdb-expert-cost/) - Analytics engineer salaries.
+- [How much does a MEAN developer cost?](https://offline-pixel.github.io/blogs/how-much-does-a-mean-developer-cost/) - Angular stack salaries.
+- [How much does a MERN developer cost?](https://offline-pixel.github.io/blogs/how-much-does-a-mern-developer-cost/) - React stack salaries.
+- [How much does a Python engineer cost in North America?](https://offline-pixel.github.io/blogs/how-much-does-a-python-engineer-cost-in-north-america/) - Python developer rates.
+- [How much does a quant developer cost in the USA?](https://offline-pixel.github.io/blogs/how-much-does-a-quant-developer-cost-in-the-usa/) - Quant developer salaries.
+- [How much does a quant researcher earn in London vs NYC?](https://offline-pixel.github.io/blogs/how-much-does-a-quant-researcher-earn-in-london-vs-nyc/) - Geographic salary comparison.
+- [How much does it cost to hire a FastAPI expert?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-a-fastapi-expert/) - FastAPI hiring costs.
+- [How much does it cost to hire a mobile app developer?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-a-mobile-app-developer/) - Mobile developer rates.
+- [How much does it cost to hire a quant engineer in Europe?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-a-quant-engineer-in-europe/) - European quant salaries.
+- [How much does it cost to hire a senior ML engineer?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-a-senior-ml-engineer/) - ML engineer salaries.
+- [How much does it cost to hire a senior Rust developer?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-a-senior-rust-developer/) - Rust developer rates.
+- [How much does it cost to hire a vector database engineer?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-a-vector-database-engineer/) - Vector search salaries.
+- [How much does it cost to hire an LLM specialist?](https://offline-pixel.github.io/blogs/how-much-does-it-cost-to-hire-an-llm-specialist/) - Generative AI hiring costs.
+- [How to evaluate a candidate's backtesting framework knowledge](https://offline-pixel.github.io/blogs/how-to-evaluate-a-candidates-backtesting-framework-knowledge/) - Backtesting assessment.
+- [How to evaluate a candidate's production ML experience](https://offline-pixel.github.io/blogs/how-to-evaluate-a-candidates-production-ml-experience/) - ML production skills.
+- [How to evaluate a candidate's RAG architecture skills](https://offline-pixel.github.io/blogs/how-to-evaluate-a-candidates-rag-architecture-skills/) - RAG system design.
+- [How to evaluate a candidate's RAG implementation skills](https://offline-pixel.github.io/blogs/how-to-evaluate-a-candidates-rag-implementation-skills/) - RAG coding assessment.
+- [How to hire a cross-platform app developer](https://offline-pixel.github.io/blogs/how-to-hire-a-cross-platform-app-developer/) - Cross-platform hiring.
+- [How to hire a FastAPI developer for high-concurrency systems](https://offline-pixel.github.io/blogs/how-to-hire-a-fastapi-developer-for-high-concurrency-systems/) - Async API hiring.
+- [How to hire a MEAN stack developer](https://offline-pixel.github.io/blogs/how-to-hire-a-mean-stack-developer/) - Angular stack hiring.
+- [How to hire a MERN stack developer](https://offline-pixel.github.io/blogs/how-to-hire-a-mern-stack-developer/) - React stack hiring.
+- [How to hire a Python developer for data-intensive applications](https://offline-pixel.github.io/blogs/how-to-hire-a-python-developer-for-data-intensive-applications/) - Data Python hiring.
+- [How to hire a quant developer for high-frequency trading](https://offline-pixel.github.io/blogs/how-to-hire-a-quant-developer-for-high-frequency-trading/) - HFT quant hiring.
+- [How to hire a quant developer for your trading system](https://offline-pixel.github.io/blogs/how-to-hire-a-quant-developer-for-your-trading-system/) - Trading system hiring.
+- [How to hire a quant researcher for alpha discovery](https://offline-pixel.github.io/blogs/how-to-hire-a-quant-researcher-for-alpha-discovery/) - Alpha research hiring.
+- [How to hire a quant trader for execution strategies](https://offline-pixel.github.io/blogs/how-to-hire-a-quant-trader-for-execution-strategies/) - Execution quant hiring.
+- [How to hire a RAG specialist for LLM applications](https://offline-pixel.github.io/blogs/how-to-hire-a-rag-specialist-for-llm-applications/) - RAG hiring guide.
+- [How to hire a Rust-based desktop app developer](https://offline-pixel.github.io/blogs/how-to-hire-a-rust-based-desktop-app-developer/) - Tauri/desktop Rust hiring.
+- [How to hire a similarity search engineer](https://offline-pixel.github.io/blogs/how-to-hire-a-similarity-search-engineer/) - Vector search hiring.
+- [How to hire an analytics engineer for OLAP workloads](https://offline-pixel.github.io/blogs/how-to-hire-an-analytics-engineer-for-olap-workloads/) - Analytics engineering.
+- [How to hire an ML engineer for model deployment](https://offline-pixel.github.io/blogs/how-to-hire-an-ml-engineer-for-model-deployment/) - ML deployment hiring.
+- [How to tell if you need an LLM engineer or a ML engineer](https://offline-pixel.github.io/blogs/how-to-tell-if-you-need-an-llm-engineer-or-a-ml-engineer/) - Role selection.
+- [MEAN Stack vs MERN Stack which is right for your project](https://offline-pixel.github.io/blogs/mean-stack-vs-mern-stack-which-is-right-for-your-project/) - Stack selection.
+- [Native vs Cross-Platform which should you hire for](https://offline-pixel.github.io/blogs/native-vs-cross-platform-which-should-you-hire-for/) - Platform strategy.
+- [Rust vs C++ which is better for high-frequency trading](https://offline-pixel.github.io/blogs/rust-vs-cpp-which-is-better-for-high-frequency-trading/) - HFT language choice.
+- [Should you hire a Rust engineer or train your existing team](https://offline-pixel.github.io/blogs/should-you-hire-a-rust-engineer-or-train-your-existing-team/) - Build vs buy talent.
+- [What does a machine learning engineer do in production](https://offline-pixel.github.io/blogs/what-does-a-machine-learning-engineer-do-in-production/) - ML engineering roles.
+- [What does a quant engineer do day-to-day](https://offline-pixel.github.io/blogs/what-does-a-quant-engineer-do-day-to-day/) - Quant engineering responsibilities.
+- [What does a quant researcher do all day](https://offline-pixel.github.io/blogs/what-does-a-quant-researcher-do-all-day/) - Quant research responsibilities.
+- [What does an LLM engineer actually do](https://offline-pixel.github.io/blogs/what-does-an-llm-engineer-actually-do/) - LLM engineering responsibilities.
+- [What interview questions actually test Python expertise](https://offline-pixel.github.io/blogs/what-interview-questions-actually-test-python-expertise/) - Python assessment.
+- [What interview questions find the best app developers](https://offline-pixel.github.io/blogs/what-interview-questions-find-the-best-app-developers/) - App developer assessment.
+- [What interview questions find the best FastAPI engineers](https://offline-pixel.github.io/blogs/what-interview-questions-find-the-best-fastapi-engineers/) - FastAPI assessment.
+- [What interview questions reveal real LLM expertise](https://offline-pixel.github.io/blogs/what-interview-questions-reveal-real-llm-expertise/) - LLM assessment.
+- [What interview questions reveal real ML engineering expertise](https://offline-pixel.github.io/blogs/what-interview-questions-reveal-real-ml-engineering-expertise/) - ML engineering assessment.
+- [What interview questions test quant development skills](https://offline-pixel.github.io/blogs/what-interview-questions-test-quant-development-skills/) - Quant assessment.
+- [What is DuckDB and why are companies hiring DuckDB engineers](https://offline-pixel.github.io/blogs/what-is-duckdb-and-why-are-companies-hiring-duckdb-engineers/) - DuckDB overview.
+- [What is FAISS and when should you hire an expert](https://offline-pixel.github.io/blogs/what-is-faiss-and-when-should-you-hire-an-expert/) - FAISS overview.
+- [What is RAG and when do you need a RAG engineer](https://offline-pixel.github.io/blogs/what-is-rag-and-when-do-you-need-a-rag-engineer/) - RAG overview.
+- [What is the difference between a quant trader and a regular trader](https://offline-pixel.github.io/blogs/what-is-the-difference-between-a-quant-trader-and-a-regular-trader/) - Quant vs traditional.
+- [What metrics matter when evaluating a quant trader's performance](https://offline-pixel.github.io/blogs/what-metrics-matter-when-evaluating-a-quant-traders-performance/) - Quant performance metrics.
+- [What questions to ask in a quant technical interview](https://offline-pixel.github.io/blogs/what-questions-to-ask-in-a-quant-technical-interview/) - Quant interview.
+- [What questions to ask in a Rust technical interview](https://offline-pixel.github.io/blogs/what-questions-to-ask-in-a-rust-technical-interview/) - Rust interview.
+- [What skills are needed to build production trading systems](https://offline-pixel.github.io/blogs/what-skills-are-needed-to-build-production-trading-systems/) - Trading system skills.
+- [What skills make a great quantitative researcher](https://offline-pixel.github.io/blogs/what-skills-make-a-great-quantitative-researcher/) - Quant researcher skills.
+- [What skills to look for in a generative AI engineer](https://offline-pixel.github.io/blogs/what-skills-to-look-for-in-a-generative-ai-engineer/) - GenAI skills.
+- [What skills to look for in an MLOps engineer](https://offline-pixel.github.io/blogs/what-skills-to-look-for-in-an-mlops-engineer/) - MLOps skills.
+- [What to expect from a senior LLM engineer in the first month](https://offline-pixel.github.io/blogs/what-to-expect-from-a-senior-llm-engineer-in-the-first-month/) - LLM onboarding.
+- [What to expect from a senior ML engineer in the first 90 days](https://offline-pixel.github.io/blogs/what-to-expect-from-a-senior-ml-engineer-in-the-first-90-days/) - ML onboarding.
+- [What to expect from a senior Rust engineer in the first 30 days](https://offline-pixel.github.io/blogs/what-to-expect-from-a-senior-rust-engineer-in-the-first-30-days/) - Rust onboarding.
+- [What to expect when hiring a senior quant engineer](https://offline-pixel.github.io/blogs/what-to-expect-when-hiring-a-senior-quant-engineer/) - Quant onboarding.
+- [What to look for in a FAISS performance tuning specialist](https://offline-pixel.github.io/blogs/what-to-look-for-in-a-faiss-performance-tuning-specialist/) - FAISS performance skills.
+- [What to look for in a low-latency C++ or Rust developer](https://offline-pixel.github.io/blogs/what-to-look-for-in-a-low-latency-cpp-or-rust-developer/) - Low-latency skills.
+- [What to look for in a Python async backend engineer](https://offline-pixel.github.io/blogs/what-to-look-for-in-a-python-async-backend-engineer/) - Async Python skills.
+- [What to look for in a React Native or Flutter engineer](https://offline-pixel.github.io/blogs/what-to-look-for-in-a-react-native-or-flutter-engineer/) - Cross-platform skills.
+- [What to look for in a React Node.js engineer](https://offline-pixel.github.io/blogs/what-to-look-for-in-a-react-nodejs-engineer/) - React Node.js skills.
+- [What to look for in an Angular Node.js engineer](https://offline-pixel.github.io/blogs/what-to-look-for-in-an-angular-nodejs-engineer/) - Angular Node.js skills.
+- [What to look for when hiring a Python backend engineer](https://offline-pixel.github.io/blogs/what-to-look-for-when-hiring-a-python-backend-engineer/) - Python backend skills.
+- [What to look for when hiring a Rust engineer](https://offline-pixel.github.io/blogs/what-to-look-for-when-hiring-a-rust-engineer/) - Rust hiring guide.
+- [Why DuckDB is beating SQLite for data analytics](https://offline-pixel.github.io/blogs/why-duckdb-is-beating-sqlite-for-data-analytics/) - Database comparison.
+- [Why FastAPI is overtaking Django for backend APIs](https://offline-pixel.github.io/blogs/why-fastapi-is-overtaking-django-for-backend-apis/) - FastAPI vs Django.
+- [Why fine-tuning expertise matters for production LLM systems](https://offline-pixel.github.io/blogs/why-fine-tuning-expertise-matters-for-production-llm-systems/) - LLM fine-tuning.
+- [Why low-latency programming matters in quantitative finance](https://offline-pixel.github.io/blogs/why-low-latency-programming-matters-in-quantitative-finance/) - Low-latency finance.
+- [Why MEAN remains relevant for enterprise applications](https://offline-pixel.github.io/blogs/why-mean-remains-relevant-for-enterprise-applications/) - MEAN stack relevance.
+- [Why memory safety matters in financial systems](https://offline-pixel.github.io/blogs/why-memory-safety-matters-in-financial-systems/) - Rust for finance.
+- [Why MERN remains popular for fullstack JavaScript](https://offline-pixel.github.io/blogs/why-mern-remains-popular-for-fullstack-javascript-development/) - MERN stack relevance.
+- [Why MLOps matters when hiring machine learning talent](https://offline-pixel.github.io/blogs/why-mlops-matters-when-hiring-machine-learning-talent/) - MLOps importance.
+- [Why Python remains the top choice for backend APIs](https://offline-pixel.github.io/blogs/why-python-remains-the-top-choice-for-backend-apis/) - Python popularity.
+- [Why RAG is essential for production LLM systems](https://offline-pixel.github.io/blogs/why-rag-is-essential-for-production-llm-systems/) - RAG importance.
+- [What is Tauri and should you hire a Tauri developer](https://offline-pixel.github.io/blogs/what-is-tauri-and-should-you-hire-a-tauri-developer/) - Tauri overview.
+- [Why Tauri is replacing Electron for desktop apps](https://offline-pixel.github.io/blogs/why-tauri-is-replacing-electron-for-desktop-apps/) - Tauri vs Electron.
+- [Why vector search matters for your recommendation engine](https://offline-pixel.github.io/blogs/why-vector-search-matters-for-your-recommendation-engine/) - Vector search importance.
+
+---
+
+## Industries
+
+- [Industries](https://offline-pixel.github.io/industries/) - Industry-specific insights.
+- [Benefits of generative AI for customer support automation](https://offline-pixel.github.io/industries/benefits-of-generative-ai-for-customer-support-automation/) - GenAI support.
+- [Benefits of hiring quant engineers for investment banks](https://offline-pixel.github.io/industries/benefits-of-hiring-quant-engineers-for-investment-banks/) - Quant in banking.
+- [Benefits of hiring Rust developers for blockchain infrastructure](https://offline-pixel.github.io/industries/benefits-of-hiring-rust-developers-for-blockchain-infrastructure/) - Rust for blockchain.
+- [Benefits of vector similarity search in bioinformatics](https://offline-pixel.github.io/industries/benefits-of-vector-similarity-search-in-bioinformatics/) - Vector search in biotech.
+- [How AdTech companies use DuckDB for campaign analytics](https://offline-pixel.github.io/industries/how-adtech-companies-use-duckdb-for-campaign-analytics/) - DuckDB in AdTech.
+- [How asset managers use quant researchers for portfolio optimization](https://offline-pixel.github.io/industries/how-asset-managers-use-quant-researchers-for-portfolio-optimization/) - Quant in asset management.
+- [How commodities firms use quant traders](https://offline-pixel.github.io/industries/how-commodities-firms-use-quant-traders/) - Quant in commodities.
+- [How commodities trading firms use quant engineers](https://offline-pixel.github.io/industries/how-commodities-trading-firms-use-quant-engineers/) - Quant in trading.
+- [How data platforms use Python engineers for ETL pipelines](https://offline-pixel.github.io/industries/how-data-platforms-use-python-engineers-for-etl-pipelines/) - Python in data.
+- [How ecommerce companies hire app developers for shopping apps](https://offline-pixel.github.io/industries/how-ecommerce-companies-hire-app-developers-for-shopping-apps/) - Ecommerce apps.
+- [How ecommerce companies use FAISS for product recommendations](https://offline-pixel.github.io/industries/how-ecommerce-companies-use-faiss-for-product-recommendations/) - FAISS in ecommerce.
+- [How enterprise companies hire MEAN developers for admin portals](https://offline-pixel.github.io/industries/how-enterprise-companies-hire-mean-developers-for-admin-portals/) - MEAN in enterprise.
+- [How exchange connectivity teams use quant developers](https://offline-pixel.github.io/industries/how-exchange-connectivity-teams-use-quant-developers/) - Quant in exchanges.
+- [How FAISS powers real-time fraud detection systems](https://offline-pixel.github.io/industries/how-faiss-powers-real-time-fraud-detection-systems/) - FAISS in fraud.
+- [How fintech apps hire developers for secure mobile banking](https://offline-pixel.github.io/industries/how-fintech-apps-hire-developers-for-secure-mobile-banking/) - Fintech apps.
+- [How fintech companies hire ML engineers for fraud detection](https://offline-pixel.github.io/industries/how-fintech-companies-hire-ml-engineers-for-fraud-detection/) - ML in fintech.
+- [How fintech firms use DuckDB engineers for portfolio analytics](https://offline-pixel.github.io/industries/how-fintech-firms-use-duckdb-engineers-for-portfolio-analytics/) - DuckDB in fintech.
+- [How fintech firms use LLM engineers for regulatory document review](https://offline-pixel.github.io/industries/how-fintech-firms-use-llm-engineers-for-regulatory-document-review/) - LLM in fintech.
+- [How healthcare APIs benefit from FastAPI performance](https://offline-pixel.github.io/industries/how-healthcare-apis-benefit-from-fastapi-performance/) - FastAPI in healthcare.
+- [How healthcare organizations use RAG for clinical research](https://offline-pixel.github.io/industries/how-healthcare-organizations-use-rag-for-clinical-research/) - RAG in healthcare.
+- [How healthcare uses ML engineers for diagnostic tools](https://offline-pixel.github.io/industries/how-healthcare-uses-ml-engineers-for-diagnostic-tools/) - ML in healthcare.
+- [How high-frequency trading firms hire quant developers](https://offline-pixel.github.io/industries/how-high-frequency-trading-firms-hire-quant-developers/) - HFT hiring.
+- [How insurance companies use MEAN stack for CRM systems](https://offline-pixel.github.io/industries/how-insurance-companies-use-mean-stack-for-crm-systems/) - MEAN in insurance.
+- [How LLM engineers help healthcare organizations process clinical notes](https://offline-pixel.github.io/industries/how-llm-engineers-help-healthcare-organizations-process-clinical-notes/) - LLM in healthcare.
+- [How proprietary trading firms build low-latency systems](https://offline-pixel.github.io/industries/how-proprietary-trading-firms-build-low-latency-systems/) - Low-latency in trading.
+- [How proprietary trading firms hire quant traders](https://offline-pixel.github.io/industries/how-proprietary-trading-firms-hire-quant-traders/) - Quant in prop trading.
+- [How Rust improves security in fintech backend systems](https://offline-pixel.github.io/industries/how-rust-improves-security-in-fintech-backend-systems/) - Rust in fintech.
+- [How Rust prevents crashes in critical trading systems](https://offline-pixel.github.io/industries/how-rust-prevents-crashes-in-critical-trading-systems/) - Rust in trading.
+- [How SaaS companies hire Tauri engineers for desktop apps](https://offline-pixel.github.io/industries/how-saas-companies-hire-tauri-engineers-for-desktop-apps/) - Tauri in SaaS.
+- [How SaaS startups hire MERN developers for web applications](https://offline-pixel.github.io/industries/how-saas-startups-hire-mern-developers-for-web-applications/) - MERN in SaaS.
+- [How systematic hedge funds hire quant researchers](https://offline-pixel.github.io/industries/how-systematic-hedge-funds-hire-quant-researchers/) - Quant in hedge funds.
+- [Why automotive companies hire ML engineers for ADAS systems](https://offline-pixel.github.io/industries/why-automotive-companies-hire-ml-engineers-for-adas-systems/) - ML in automotive.
+- [Why banking and finance teams need MEAN developers](https://offline-pixel.github.io/industries/why-banking-and-finance-teams-need-mean-developers/) - MEAN in finance.
+- [Why BI teams need DuckDB experts for dashboards](https://offline-pixel.github.io/industries/why-bi-teams-need-duckdb-experts-for-dashboards/) - DuckDB in BI.
+- [Why cloud providers are hiring Rust engineers for control planes](https://offline-pixel.github.io/industries/why-cloud-providers-are-hiring-rust-engineers-for-control-planes/) - Rust in cloud.
+- [Why crypto exchanges need quant developers for order matching](https://offline-pixel.github.io/industries/why-crypto-exchanges-need-quant-developers-for-order-matching/) - Quant in crypto.
+- [Why crypto exchanges need quant traders for liquidity](https://offline-pixel.github.io/industries/why-crypto-exchanges-need-quant-traders-for-liquidity/) - Quant in crypto.
+- [Why customer support teams need RAG engineers for knowledge bases](https://offline-pixel.github.io/industries/why-customer-support-teams-need-rag-engineers-for-knowledge-bases/) - RAG in support.
+- [Why ecommerce platforms need MERN developers](https://offline-pixel.github.io/industries/why-ecommerce-platforms-need-mern-developers/) - MERN in ecommerce.
+- [Why ecommerce platforms need ML engineers for recommendations](https://offline-pixel.github.io/industries/why-ecommerce-platforms-need-ml-engineers-for-recommendations/) - ML in ecommerce.
+- [Why fintech startups are choosing FastAPI over Flask](https://offline-pixel.github.io/industries/why-fintech-startups-are-choosing-fastapi-over-flask/) - FastAPI in fintech.
+- [Why fintech startups hire Python engineers for trading backends](https://offline-pixel.github.io/industries/why-fintech-startups-hire-python-engineers-for-trading-backends/) - Python in fintech.
+- [Why healthcare startups need app developers for patient portals](https://offline-pixel.github.io/industries/why-healthcare-startups-need-app-developers-for-patient-portals/) - App dev in healthcare.
+- [Why hedge funds are hiring quant engineers from fintech](https://offline-pixel.github.io/industries/why-hedge-funds-are-hiring-quant-engineers-from-fintech/) - Quant hiring trends.
+- [Why image search platforms need FAISS experts](https://offline-pixel.github.io/industries/why-image-search-platforms-need-faiss-experts/) - FAISS in image search.
+- [Why legal departments hire RAG engineers for document retrieval](https://offline-pixel.github.io/industries/why-legal-departments-hire-rag-engineers-for-document-retrieval/) - RAG in legal.
+- [Why legal teams are hiring LLM engineers for document analysis](https://offline-pixel.github.io/industries/why-legal-teams-are-hiring-llm-engineers-for-document-analysis/) - LLM in legal.
+- [Why market-making firms need low-latency quant developers](https://offline-pixel.github.io/industries/why-market-making-firms-need-low-latency-quant-developers/) - Quant in market-making.
+- [Why pension funds need quantitative research expertise](https://offline-pixel.github.io/industries/why-pension-funds-need-quantitative-research-expertise/) - Quant in pensions.
+- [Why Rust engineers are critical for high-frequency trading](https://offline-pixel.github.io/industries/why-rust-engineers-are-critical-for-high-frequency-trading/) - Rust in HFT.
+- [Why SaaS companies hire FastAPI experts for backend services](https://offline-pixel.github.io/industries/why-saas-companies-hire-fastapi-experts-for-backend-services/) - FastAPI in SaaS.
+- [Why SaaS companies need LLM engineers for feature development](https://offline-pixel.github.io/industries/why-saas-companies-need-llm-engineers-for-feature-development/) - LLM in SaaS.
+- [Why SaaS companies rely on Python engineers for API development](https://offline-pixel.github.io/industries/why-saas-companies-rely-on-python-engineers-for-api-development/) - Python in SaaS.
+
+---
+
+## Case Studies
+
+- [Case Studies](https://offline-pixel.github.io/case-studies/) - Real-world implementation stories.
+- [Migration Guides](https://offline-pixel.github.io/migration-guides/) - Step-by-step migration paths.
+- [Accelerating analytics workloads with DuckDB](https://offline-pixel.github.io/case-studies/accelerating-analytics-workloads-with-duckdb/) - Faster query times.
+- [Accelerating product recommendations with FAISS](https://offline-pixel.github.io/case-studies/accelerating-product-recommendations-with-faiss/) - Faster recommendations.
+- [Automating business processes with Python](https://offline-pixel.github.io/case-studies/automating-business-processes-with-python/) - Python automation.
+- [Automating customer support with generative AI](https://offline-pixel.github.io/case-studies/automating-customer-support-with-generative-ai/) - GenAI support.
+- [Automating market data analysis for growing funds](https://offline-pixel.github.io/case-studies/automating-market-data-analysis-for-growing-funds/) - Market data automation.
+- [Automating technical analysis with PineScript](https://offline-pixel.github.io/case-studies/automating-technical-analysis-with-pinescript/) - PineScript automation.
+- [Building end-to-end MLOps platforms](https://offline-pixel.github.io/case-studies/building-end-to-end-mlops-platforms/) - MLOps implementation.
+- [Building enterprise admin platforms with MEAN](https://offline-pixel.github.io/case-studies/building-enterprise-admin-platforms-with-mean/) - MEAN for admin.
+- [Building enterprise document intelligence with LLMs](https://offline-pixel.github.io/case-studies/building-enterprise-document-intelligence-with-llms/) - LLM document processing.
+- [Building first quant research workflows](https://offline-pixel.github.io/case-studies/building-first-quant-research-workflows/) - Quant research setup.
+- [Building high-growth marketplaces with MERN](https://offline-pixel.github.io/case-studies/building-high-growth-marketplaces-with-mern/) - MERN for marketplaces.
+- [Building high-retention mobile applications](https://offline-pixel.github.io/case-studies/building-high-retention-mobile-applications/) - Mobile app retention.
+- [Building high-throughput API platforms](https://offline-pixel.github.io/case-studies/building-high-throughput-api-platforms/) - High-throughput APIs.
+- [Building local-first analytics platforms](https://offline-pixel.github.io/case-studies/building-local-first-analytics-platforms/) - Local analytics.
+- [Building low-latency market data platforms](https://offline-pixel.github.io/case-studies/building-low-latency-market-data-platforms/) - Low-latency platforms.
+- [Building production RAG for enterprise search](https://offline-pixel.github.io/case-studies/building-production-rag-for-enterprise-search/) - RAG in production.
+- [Building profitable TradingView strategies](https://offline-pixel.github.io/case-studies/building-profitable-tradingview-strategies/) - TradingView strategies.
+- [Building real-time data platforms with FastAPI](https://offline-pixel.github.io/case-studies/building-real-time-data-platforms-with-fastapi/) - FastAPI real-time.
+- [Building real-time trading infrastructure](https://offline-pixel.github.io/case-studies/building-real-time-trading-infrastructure/) - Trading infrastructure.
+- [Building resilient distributed systems at scale](https://offline-pixel.github.io/case-studies/building-resilient-distributed-systems-at-scale/) - Resilient systems.
+- [Building scalable backtesting infrastructure](https://offline-pixel.github.io/case-studies/building-scalable-backtesting-infrastructure/) - Backtesting scale.
+- [Building secure cross-platform desktop software](https://offline-pixel.github.io/case-studies/building-secure-cross-platform-desktop-software/) - Secure desktop apps.
+- [Creating institutional-grade trading indicators](https://offline-pixel.github.io/case-studies/creating-institutional-grade-trading-indicators/) - Trading indicators.
+- [Deploying machine learning at scale](https://offline-pixel.github.io/case-studies/deploying-machine-learning-at-scale/) - ML deployment.
+- [Designing multi-asset trading platforms](https://offline-pixel.github.io/case-studies/designing-multi-asset-trading-platforms/) - Multi-asset platforms.
+- [Discovering alpha with alternative data](https://offline-pixel.github.io/case-studies/discovering-alpha-with-alternative-data/) - Alpha discovery.
+- [Improving answer accuracy with RAG systems](https://offline-pixel.github.io/case-studies/improving-answer-accuracy-with-rag-systems/) - RAG accuracy.
+- [Improving app performance and engagement](https://offline-pixel.github.io/case-studies/improving-app-performance-and-engagement/) - App performance.
+- [Improving desktop app startup performance](https://offline-pixel.github.io/case-studies/improving-desktop-app-startup-performance/) - Desktop startup.
+- [Improving execution performance for systematic trading](https://offline-pixel.github.io/case-studies/improving-execution-performance-for-systematic-trading/) - Trading execution.
+- [Improving execution quality for systematic strategies](https://offline-pixel.github.io/case-studies/improving-execution-quality-for-systematic-strategies/) - Execution quality.
+- [Improving factor model performance](https://offline-pixel.github.io/case-studies/improving-factor-model-performance/) - Factor models.
+- [Improving fullstack development velocity with MERN](https://offline-pixel.github.io/case-studies/improving-fullstack-development-velocity-with-mern/) - MERN velocity.
+- [Improving memory safety in financial platforms with Rust](https://offline-pixel.github.io/case-studies/improving-memory-safety-in-financial-platforms-with-rust/) - Rust memory safety.
+- [Improving model inference performance](https://offline-pixel.github.io/case-studies/improving-model-inference-performance/) - Model inference.
+- [Improving strategy robustness with walk-forward validation](https://offline-pixel.github.io/case-studies/improving-strategy-robustness-with-walk-forward-validation/) - Walk-forward validation.
+- [Improving system reliability through service decomposition](https://offline-pixel.github.io/case-studies/improving-system-reliability-through-service-decomposition/) - System reliability.
+- [Improving team autonomy using microfrontend architecture](https://offline-pixel.github.io/case-studies/improving-team-autonomy-using-microfrontend-architecture/) - Microfrontends.
+- [Migrating high-throughput services from Go to Rust](https://offline-pixel.github.io/case-studies/migrating-high-throughput-services-from-go-to-rust/) - Go to Rust migration.
+- [Modernizing enterprise workflows with MEAN](https://offline-pixel.github.io/case-studies/modernizing-enterprise-workflows-with-mean/) - MEAN modernization.
+- [Optimizing order routing for high-frequency trading](https://offline-pixel.github.io/case-studies/optimizing-order-routing-for-high-frequency-trading/) - Order routing.
+- [Reducing API response times with FastAPI](https://offline-pixel.github.io/case-studies/reducing-api-response-times-with-fastapi/) - FastAPI performance.
+- [Reducing data warehouse costs using DuckDB](https://offline-pixel.github.io/case-studies/reducing-data-warehouse-costs-using-duckdb/) - DuckDB cost savings.
+- [Reducing deployment bottlenecks with microfrontends](https://offline-pixel.github.io/case-studies/reducing-deployment-bottlenecks-with-microfrontends/) - Microfrontends deployment.
+- [Reducing desktop app memory usage with Tauri](https://offline-pixel.github.io/case-studies/reducing-desktop-app-memory-usage-with-tauri/) - Tauri memory savings.
+- [Reducing manual review workflows using LLMs](https://offline-pixel.github.io/case-studies/reducing-manual-review-workflows-using-llms/) - LLM automation.
+- [Reducing market data processing latency](https://offline-pixel.github.io/case-studies/reducing-market-data-processing-latency/) - Market data latency.
+- [Reducing overfitting in algorithmic trading models](https://offline-pixel.github.io/case-studies/reducing-overfitting-in-algorithmic-trading-models/) - Overfitting prevention.
+- [Reducing search latency in image retrieval systems](https://offline-pixel.github.io/case-studies/reducing-search-latency-in-image-retrieval-systems/) - Image search latency.
+- [Reducing slippage in algorithmic trading](https://offline-pixel.github.io/case-studies/reducing-slippage-in-algorithmic-trading/) - Trading slippage.
+- [Reducing trading system latency with Rust](https://offline-pixel.github.io/case-studies/reducing-trading-system-latency-with-rust/) - Rust performance.
+- [Scaling billion-vector search with FAISS](https://offline-pixel.github.io/case-studies/scaling-billion-vector-search-with-faiss/) - FAISS scaling.
+- [Scaling cross-platform consumer apps](https://offline-pixel.github.io/case-studies/scaling-cross-platform-consumer-apps/) - Cross-platform scaling.
+- [Scaling data-intensive Python backends](https://offline-pixel.github.io/case-studies/scaling-data-intensive-python-backends/) - Python scaling.
+- [Scaling document retrieval platforms](https://offline-pixel.github.io/case-studies/scaling-document-retrieval-platforms/) - Document retrieval.
+- [Scaling FastAPI for high-concurrency APIs](https://offline-pixel.github.io/case-studies/scaling-fastapi-for-high-concurrency-apis/) - FastAPI concurrency.
+- [Scaling high-traffic platforms with microservices](https://offline-pixel.github.io/case-studies/scaling-high-traffic-platforms-with-microservices/) - Microservices scaling.
+- [Scaling internal business applications with MEAN](https://offline-pixel.github.io/case-studies/scaling-internal-business-applications-with-mean/) - MEAN internal apps.
+- [Scaling large enterprise frontends with microfrontends](https://offline-pixel.github.io/case-studies/scaling-large-enterprise-frontends-with-microfrontends/) - Microfrontends scaling.
+- [Scaling market-making operations](https://offline-pixel.github.io/case-studies/scaling-market-making-operations/) - Market-making scaling.
+- [Scaling portfolio analytics in real-time](https://offline-pixel.github.io/case-studies/scaling-portfolio-analytics-in-real-time/) - Portfolio analytics.
+- [Scaling research pipelines for systematic funds](https://offline-pixel.github.io/case-studies/scaling-research-pipelines-for-systematic-funds/) - Research scaling.
+- [Scaling risk analytics for global portfolios](https://offline-pixel.github.io/case-studies/scaling-risk-analytics-for-global-portfolios/) - Risk analytics.
+- [Scaling SaaS platforms with MERN](https://offline-pixel.github.io/case-studies/scaling-saas-platforms-with-mern/) - MERN SaaS scaling.
+- [Supporting small systematic trading teams](https://offline-pixel.github.io/case-studies/supporting-small-systematic-trading-teams/) - Small trading teams.
+- [Validating multi-asset trading systems at scale](https://offline-pixel.github.io/case-studies/validating-multi-asset-trading-systems-at-scale/) - Multi-asset validation.
+
+---
+
+## Migration Guides
+
+- [Academic finance projects to production research](https://offline-pixel.github.io/migration-guides/academic-finance-projects-to-production-research/) - Research to production.
+- [Angular monolith to federated frontends](https://offline-pixel.github.io/migration-guides/angular-monolith-to-federated-frontends/) - Microfrontend migration.
+- [AngularJS to MERN migration](https://offline-pixel.github.io/migration-guides/angularjs-to-mern-migration/) - Legacy to MERN.
+- [AngularJS to modern MEAN stack](https://offline-pixel.github.io/migration-guides/angularjs-to-modern-mean-stack/) - Legacy to MEAN.
+- [Backtesting framework modernization](https://offline-pixel.github.io/migration-guides/backtesting-framework-modernization/) - Backtesting updates.
+- [Backtesting-only workflows to walk-forward validation](https://offline-pixel.github.io/migration-guides/backtesting-only-workflows-to-walk-forward-validation/) - Validation upgrade.
+- [Basic vector search to production RAG](https://offline-pixel.github.io/migration-guides/basic-vector-search-to-production-rag/) - Vector search to RAG.
+- [Chatbot to enterprise LLM platform](https://offline-pixel.github.io/migration-guides/chatbot-to-enterprise-llm-platform-migration/) - Chatbot to LLM.
+- [Chatbots to RAG-powered assistants](https://offline-pixel.github.io/migration-guides/chatbots-to-rag-powered-assistants/) - RAG upgrade.
+- [Cloud warehouse to DuckDB cost optimization](https://offline-pixel.github.io/migration-guides/cloud-warehouse-to-duckdb-cost-optimization/) - Cost optimization.
+- [C++ to Rust modernization framework](https://offline-pixel.github.io/migration-guides/cpp-to-rust-modernization-framework/) - Language migration.
+- [Custom indicators to fully automated strategies](https://offline-pixel.github.io/migration-guides/custom-indicators-to-fully-automated-strategies/) - Automation upgrade.
+- [Discretionary to systematic trading transition](https://offline-pixel.github.io/migration-guides/discretionary-to-systematic-trading-transition/) - Trading transition.
+- [Django to FastAPI modernization](https://offline-pixel.github.io/migration-guides/django-to-fastapi-api-modernization/) - Framework migration.
+- [Elasticsearch to FAISS vector search migration](https://offline-pixel.github.io/migration-guides/elasticsearch-to-faiss-vector-search-migration/) - Search migration.
+- [Electron to Tauri migration](https://offline-pixel.github.io/migration-guides/electron-to-tauri-migration/) - Desktop framework migration.
+- [Excel-based analysis to Python research](https://offline-pixel.github.io/migration-guides/excel-based-analysis-to-python-research/) - Excel to Python.
+- [Excel-based strategies to TradingView](https://offline-pixel.github.io/migration-guides/excel-based-strategies-to-tradingview/) - Excel to TradingView.
+- [Flask to FastAPI performance migration](https://offline-pixel.github.io/migration-guides/flask-to-fastapi-performance-migration/) - Performance upgrade.
+- [Java enterprise to MEAN stack](https://offline-pixel.github.io/migration-guides/java-enterprise-applications-to-mean-stack/) - Java to MEAN.
+- [Legacy enterprise portals to MEAN](https://offline-pixel.github.io/migration-guides/legacy-enterprise-portals-to-mean/) - Portal modernization.
+- [Legacy enterprise systems to cloud-native services](https://offline-pixel.github.io/migration-guides/legacy-enterprise-systems-to-cloud-native-services/) - Cloud migration.
+- [Legacy execution platform modernization](https://offline-pixel.github.io/migration-guides/legacy-execution-platform-modernization/) - Execution modernization.
+- [Legacy mobile app modernization](https://offline-pixel.github.io/migration-guides/legacy-mobile-app-modernization/) - Mobile modernization.
+- [Legacy quant research to robust validation pipelines](https://offline-pixel.github.io/migration-guides/legacy-quant-research-to-robust-validation-pipelines/) - Research upgrade.
+- [Legacy risk platform modernization](https://offline-pixel.github.io/migration-guides/legacy-risk-platform-modernization/) - Risk modernization.
+- [Legacy scripting to Python automation](https://offline-pixel.github.io/migration-guides/legacy-scripting-to-python-automation/) - Script to Python.
+- [Legacy trading platform modernization](https://offline-pixel.github.io/migration-guides/legacy-trading-platform-modernization/) - Trading modernization.
+- [Manual execution to algorithmic trading](https://offline-pixel.github.io/migration-guides/manual-execution-to-algorithmic-trading/) - Manual to algorithmic.
+- [Manual knowledge bases to RAG systems](https://offline-pixel.github.io/migration-guides/manual-knowledge-bases-to-rag-systems/) - Knowledge to RAG.
+- [Manual market analysis to systematic workflows](https://offline-pixel.github.io/migration-guides/manual-market-analysis-to-systematic-workflows/) - Manual to systematic.
+- [Manual model deployment to automated MLOps](https://offline-pixel.github.io/migration-guides/manual-model-deployment-to-automated-mlops/) - Manual to MLOps.
+- [Manual research processes to automated platforms](https://offline-pixel.github.io/migration-guides/manual-research-processes-to-automated-platforms/) - Research automation.
+- [Manual trading rules to PineScript automation](https://offline-pixel.github.io/migration-guides/manual-trading-rules-to-pinescript-automation/) - Rules to PineScript.
+- [Manual trading workflows to systematic execution](https://offline-pixel.github.io/migration-guides/manual-trading-workflows-to-systematic-execution/) - Trading automation.
+- [Monolith to microservices transformation](https://offline-pixel.github.io/migration-guides/monolith-to-microservices-transformation/) - Architecture migration.
+- [Monolithic apps to Python services](https://offline-pixel.github.io/migration-guides/monolithic-applications-to-python-services/) - App to services.
+- [Monolithic frontend to microfrontend architecture](https://offline-pixel.github.io/migration-guides/monolithic-frontend-to-microfrontend-architecture/) - Frontend migration.
+- [Monolithic Python app to FastAPI services](https://offline-pixel.github.io/migration-guides/monolithic-python-app-to-fastapi-services/) - Python to FastAPI.
+- [Monolithic quant platform to distributed architecture](https://offline-pixel.github.io/migration-guides/monolithic-quant-platform-to-distributed-architecture/) - Quant platform migration.
+- [Monolithic trading platform to microservices](https://offline-pixel.github.io/migration-guides/monolithic-trading-platform-to-microservices/) - Trading microservices.
+- [Monolithic web app to MERN architecture](https://offline-pixel.github.io/migration-guides/monolithic-web-app-to-mern-architecture/) - Web to MERN.
+- [Native desktop app to Tauri platform](https://offline-pixel.github.io/migration-guides/native-desktop-app-to-tauri-platform/) - Native to Tauri.
+- [Native to cross-platform app development](https://offline-pixel.github.io/migration-guides/native-to-cross-platform-app-development/) - Cross-platform migration.
+- [Node.js to Rust backend migration](https://offline-pixel.github.io/migration-guides/nodejs-to-rust-backend-migration/) - Node.js to Rust.
+- [Notebook-based models to production MLOps](https://offline-pixel.github.io/migration-guides/notebook-based-models-to-production-mlops/) - Notebook to MLOps.
+- [OpenAI to hybrid LLM stack migration](https://offline-pixel.github.io/migration-guides/openai-to-hybrid-llm-stack-migration/) - LLM migration.
+- [PHP to MERN modernization](https://offline-pixel.github.io/migration-guides/php-to-mern-modernization/) - PHP to MERN.
+- [PHP to Python backend migration](https://offline-pixel.github.io/migration-guides/php-to-python-backend-migration/) - PHP to Python.
+- [Pinecone to FAISS cost optimization](https://offline-pixel.github.io/migration-guides/pinecone-to-faiss-cost-optimization-migration/) - Vector DB cost optimization.
+- [Postgres to DuckDB analytics migration](https://offline-pixel.github.io/migration-guides/postgres-to-duckdb-analytics-migration/) - Postgres to DuckDB.
+- [Python to Rust for performance-critical applications](https://offline-pixel.github.io/migration-guides/python-to-rust-for-performance-critical-applications/) - Python to Rust.
+- [Python trading systems to low-latency architecture](https://offline-pixel.github.io/migration-guides/python-trading-systems-to-low-latency-architecture/) - Trading performance.
+- [React monolith to independent microfrontends](https://offline-pixel.github.io/migration-guides/react-monolith-to-independent-microfrontends/) - React to microfrontends.
+- [Research notebooks to production alpha pipelines](https://offline-pixel.github.io/migration-guides/research-notebooks-to-production-alpha-pipelines/) - Research to production.
+- [Rule-based AI to LLM-driven automation](https://offline-pixel.github.io/migration-guides/rule-based-ai-to-llm-driven-automation/) - AI to LLM.
+- [Scaling startup architectures with microservices](https://offline-pixel.github.io/migration-guides/scaling-startup-architectures-with-microservices/) - Startup scaling.
+- [Single-asset to multi-asset trading systems](https://offline-pixel.github.io/migration-guides/single-asset-to-multi-asset-trading-systems/) - Multi-asset expansion.
+- [Spreadsheet-based risk models to production systems](https://offline-pixel.github.io/migration-guides/spreadsheet-based-risk-models-to-production-systems/) - Spreadsheet to production.
+- [SQLite to DuckDB performance upgrade](https://offline-pixel.github.io/migration-guides/sqlite-to-duckdb-performance-upgrade/) - Performance upgrade.
+- [Static model validation to adaptive testing frameworks](https://offline-pixel.github.io/migration-guides/static-model-validation-to-adaptive-testing-frameworks/) - Validation upgrade.
+- [Traditional analytics to ML platforms](https://offline-pixel.github.io/migration-guides/traditional-analytics-to-machine-learning-platforms/) - Analytics to ML.
+- [Traditional factor models to ML strategies](https://offline-pixel.github.io/migration-guides/traditional-factor-models-to-machine-learning-strategies/) - Factor to ML.
+- [Traditional search to vector search architecture](https://offline-pixel.github.io/migration-guides/traditional-search-to-vector-search-architecture/) - Search to vector search.
+- [Wails to Tauri modernization](https://offline-pixel.github.io/migration-guides/wails-to-tauri-modernization/) - Desktop framework upgrade.
+- [Web app to mobile platform expansion](https://offline-pixel.github.io/migration-guides/web-app-to-mobile-platform-expansion/) - Web to mobile.
+
+---
+
+## PineScript Strategies
+
+- [PineScript SMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-sma/) - Simple Moving Average.
+- [PineScript EMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-ema/) - Exponential Moving Average.
+- [PineScript DEMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-dema/) - Double Exponential Moving Average.
+- [PineScript TEMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-tema/) - Triple Exponential Moving Average.
+- [PineScript HMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-hma/) - Hull Moving Average.
+- [PineScript KAMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-kama/) - Kaufman Adaptive Moving Average.
+- [PineScript VWMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-vwma/) - Volume Weighted Moving Average.
+- [PineScript ZLEMA](https://offline-pixel.github.io/pinescript-strategies/pine-script-zlema/) - Zero Lag Exponential Moving Average.
+- [PineScript Tillson T3](https://offline-pixel.github.io/pinescript-strategies/pine-script-tillson-t3/) - Tillson T3 Moving Average.
+- [PineScript RSI](https://offline-pixel.github.io/pinescript-strategies/pine-script-rsi/) - Relative Strength Index.
+- [PineScript Stochastic](https://offline-pixel.github.io/pinescript-strategies/pine-script-stochastic/) - Stochastic Oscillator.
+- [PineScript MACD](https://offline-pixel.github.io/pinescript-strategies/pine-script-macd/) - Moving Average Convergence Divergence.
+- [PineScript CCI](https://offline-pixel.github.io/pinescript-strategies/pine-script-cci/) - Commodity Channel Index.
+- [PineScript Williams %R](https://offline-pixel.github.io/pinescript-strategies/pine-script-williams-r/) - Williams %R Oscillator.
+- [PineScript Ultimate Oscillator](https://offline-pixel.github.io/pinescript-strategies/pine-script-ultimate-oscillator/) - Ultimate Oscillator.
+- [PineScript CMO](https://offline-pixel.github.io/pinescript-strategies/pine-script-cmo/) - Chande Momentum Oscillator.
+- [PineScript MFI](https://offline-pixel.github.io/pinescript-strategies/pine-script-mfi/) - Money Flow Index.
+- [PineScript Force Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-force-index/) - Force Index.
+- [PineScript ROC](https://offline-pixel.github.io/pinescript-strategies/pine-script-roc/) - Rate of Change.
+- [PineScript Awesome Oscillator](https://offline-pixel.github.io/pinescript-strategies/pine-script-awesome-oscillator/) - Awesome Oscillator.
+- [PineScript KST](https://offline-pixel.github.io/pinescript-strategies/pine-script-kst/) - Know Sure Thing.
+- [PineScript Coppock Curve](https://offline-pixel.github.io/pinescript-strategies/pine-script-coppock-curve/) - Coppock Curve.
+- [PineScript Elder-Ray Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-elder-ray-index/) - Elder-Ray Index.
+- [PineScript DPO](https://offline-pixel.github.io/pinescript-strategies/pine-script-dpo/) - Detrended Price Oscillator.
+- [PineScript Mass Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-mass-index/) - Mass Index.
+- [PineScript RVI](https://offline-pixel.github.io/pinescript-strategies/pine-script-rvi/) - Relative Vigor Index.
+- [PineScript GAPO](https://offline-pixel.github.io/pinescript-strategies/pine-script-gapo/) - GAPO Indicator.
+- [PineScript Choppiness Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-choppiness-index/) - Choppiness Index.
+- [PineScript Qstick](https://offline-pixel.github.io/pinescript-strategies/pine-script-qstick/) - Qstick Indicator.
+- [PineScript TRIX](https://offline-pixel.github.io/pinescript-strategies/pine-script-trix/) - TRIX Indicator.
+- [PineScript Vortex Indicator](https://offline-pixel.github.io/pinescript-strategies/pine-script-vortex-indicator/) - Vortex Indicator.
+- [PineScript ATR](https://offline-pixel.github.io/pinescript-strategies/pine-script-atr/) - Average True Range.
+- [PineScript Bollinger Bands](https://offline-pixel.github.io/pinescript-strategies/pine-script-bollinger-bands/) - Bollinger Bands.
+- [PineScript Keltner Channels](https://offline-pixel.github.io/pinescript-strategies/pine-script-keltner-channels/) - Keltner Channels.
+- [PineScript Donchian Channels](https://offline-pixel.github.io/pinescript-strategies/pine-script-donchian-channels/) - Donchian Channels.
+- [PineScript Chaikin Volatility](https://offline-pixel.github.io/pinescript-strategies/pine-script-chaikin-volatility/) - Chaikin Volatility.
+- [PineScript Historical Volatility](https://offline-pixel.github.io/pinescript-strategies/pine-script-historical-volatility/) - Historical Volatility.
+- [PineScript Ulcer Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-ulcer-index/) - Ulcer Index.
+- [PineScript Relative Volatility Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-relative-volatility-index/) - Relative Volatility Index.
+- [PineScript Annualized Volatility](https://offline-pixel.github.io/pinescript-strategies/pine-script-annualized-volatility/) - Annualized Volatility.
+- [PineScript Fractal Chaos Bands](https://offline-pixel.github.io/pinescript-strategies/pine-script-fractal-chaos-bands/) - Fractal Chaos Bands.
+- [PineScript OBV](https://offline-pixel.github.io/pinescript-strategies/pine-script-obv/) - On-Balance Volume.
+- [PineScript Volume Profile](https://offline-pixel.github.io/pinescript-strategies/pine-script-volumeprofile/) - Volume Profile.
+- [PineScript VWAP Daily](https://offline-pixel.github.io/pinescript-strategies/pine-script-vwap-daily/) - Daily VWAP.
+- [PineScript Accumulation Distribution Line](https://offline-pixel.github.io/pinescript-strategies/pine-script-accumulation-distribution-line/) - Accumulation Distribution.
+- [PineScript Chaikin Money Flow](https://offline-pixel.github.io/pinescript-strategies/pine-script-chaikin-money-flow/) - Chaikin Money Flow.
+- [PineScript Ease of Movement](https://offline-pixel.github.io/pinescript-strategies/pine-script-ease-of-movement/) - Ease of Movement.
+- [PineScript Volume ROC](https://offline-pixel.github.io/pinescript-strategies/pine-script-volume-roc/) - Volume Rate of Change.
+- [PineScript Volume Price Trend](https://offline-pixel.github.io/pinescript-strategies/pine-script-volume-price-trend/) - Volume Price Trend.
+- [PineScript Negative Volume Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-negative-volume-index/) - Negative Volume Index.
+- [PineScript Positive Volume Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-positive-volume-index/) - Positive Volume Index.
+- [PineScript Demand Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-demand-index/) - Demand Index.
+- [PineScript Herrick Payoff Index](https://offline-pixel.github.io/pinescript-strategies/pine-script-herrick-payoff-index/) - Herrick Payoff Index.
+- [PineScript Volume Weighted MACD](https://offline-pixel.github.io/pinescript-strategies/pine-script-volume-weighted-macd/) - Volume Weighted MACD.
+- [PineScript Volume Adjusted RSI](https://offline-pixel.github.io/pinescript-strategies/pine-script-volume-adjusted-rsi/) - Volume Adjusted RSI.
+- [PineScript Volume Oscillator](https://offline-pixel.github.io/pinescript-strategies/pine-script-volume-oscillator/) - Volume Oscillator.
+- [PineScript Twiggs Money Flow](https://offline-pixel.github.io/pinescript-strategies/pine-script-twiggs-money-flow/) - Twiggs Money Flow.
+- [PineScript Pivot Points](https://offline-pixel.github.io/pinescript-strategies/pine-script-pivot-points/) - Pivot Points.
+- [PineScript Fibonacci Retracements](https://offline-pixel.github.io/pinescript-strategies/pine-script-fibonacci-retracements/) - Fibonacci Retracements.
+- [PineScript Gann Square of Nine](https://offline-pixel.github.io/pinescript-strategies/pine-script-gann-square-of-nine/) - Gann Square of Nine.
+- [PineScript Camarilla Pivots](https://offline-pixel.github.io/pinescript-strategies/pine-script-camarilla-pivots/) - Camarilla Pivots.
+- [PineScript Woodie Pivots](https://offline-pixel.github.io/pinescript-strategies/pine-script-woodie-pivots/) - Woodie Pivots.
+- [PineScript Tom DeMark Pivots](https://offline-pixel.github.io/pinescript-strategies/pine-script-tom-demark-pivots/) - Tom DeMark Pivots.
+- [PineScript Murrey Math Lines](https://offline-pixel.github.io/pinescript-strategies/pine-script-murrey-math-lines/) - Murrey Math Lines.
+- [PineScript Anchored VWAP](https://offline-pixel.github.io/pinescript-strategies/pine-script-anchored-vwap/) - Anchored VWAP.
+- [PineScript Engulfing](https://offline-pixel.github.io/pinescript-strategies/pine-script-engulfing/) - Engulfing Pattern.
+- [PineScript Hammer](https://offline-pixel.github.io/pinescript-strategies/pine-script-hammer/) - Hammer Pattern.
+- [PineScript Hanging Man](https://offline-pixel.github.io/pinescript-strategies/pine-script-hanging-man/) - Hanging Man Pattern.
+- [PineScript Morning Star](https://offline-pixel.github.io/pinescript-strategies/pine-script-morning-star/) - Morning Star Pattern.
+- [PineScript Evening Star](https://offline-pixel.github.io/pinescript-strategies/pine-script-evening-star/) - Evening Star Pattern.
+- [PineScript Doji](https://offline-pixel.github.io/pinescript-strategies/pine-script-doji/) - Doji Pattern.
+- [PineScript Piercing Line](https://offline-pixel.github.io/pinescript-strategies/pine-script-piercing-line/) - Piercing Line Pattern.
+- [PineScript Dark Cloud Cover](https://offline-pixel.github.io/pinescript-strategies/pine-script-dark-cloud-cover/) - Dark Cloud Cover Pattern.
+- [PineScript Three White Soldiers](https://offline-pixel.github.io/pinescript-strategies/pine-script-three-white-soldiers/) - Three White Soldiers Pattern.
+- [PineScript Three Black Crows](https://offline-pixel.github.io/pinescript-strategies/pine-script-three-black-crows/) - Three Black Crows Pattern.
+- [PineScript Harami](https://offline-pixel.github.io/pinescript-strategies/pine-script-harami/) - Harami Pattern.
+- [PineScript Shooting Star](https://offline-pixel.github.io/pinescript-strategies/pine-script-shooting-star/) - Shooting Star Pattern.
+- [PineScript Supertrend](https://offline-pixel.github.io/pinescript-strategies/pine-script-supertrend/) - Supertrend Indicator.
+- [PineScript Parabolic SAR](https://offline-pixel.github.io/pinescript-strategies/pine-script-parabolic-sar/) - Parabolic SAR.
+- [PineScript Ichimoku Cloud](https://offline-pixel.github.io/pinescript-strategies/pine-script-ichimoku-cloud/) - Ichimoku Cloud.
